@@ -32,7 +32,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Enum
-     * @since 1.18
      */
     enum VulkanBarrierFlags {
         NONE,
@@ -47,12 +46,8 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Enum
-     * @since 1.18
      */
     enum VulkanBarrierType {
-        /**
-         * no barrier type
-         */
         NONE,
         TYPE_MEMORY,
         TYPE_BUFFER,
@@ -67,9 +62,6 @@ export namespace GstVulkan {
 
         // Static fields
 
-        /**
-         * undetermined error
-         */
         static FAILED: number;
 
         // Constructors
@@ -80,13 +72,19 @@ export namespace GstVulkan {
 
         static quark(): GLib.Quark;
         /**
-         * if `result` indicates an error condition, fills out {@link GLib.Error} with details of
+         * if `result` indicates an error condition, fills out `Gerror` with details of
          * the error
          * @param result a VkResult
+         * @param error a {@link GLib.Error} to fill
          * @param format the printf-like format to write into the {@link GLib.Error}
          * @param ___ arguments for `format`
          */
-        static to_g_error(result: Vulkan.Result, format: string, ___: any[]): [Vulkan.Result, GLib.Error | null];
+        static to_g_error(
+            result: Vulkan.Result,
+            error: GLib.Error | null,
+            format: string,
+            ___: any[],
+        ): [Vulkan.Result, GLib.Error | null];
     }
 
     /**
@@ -98,36 +96,14 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Enum
-     * @since 1.18
      */
     enum VulkanFormatScaling {
-        /**
-         * [0, 2^n - 1] -> [0.0, 1.0]
-         */
         UNORM,
-        /**
-         * [-2^(n-1), 2^(n-1) - 1] -> [-1.0, 1.0]
-         */
         SNORM,
-        /**
-         * [0, 2^n - 1] -> [0.0, float(2^n - 1)]
-         */
         USCALED,
-        /**
-         * [-2^(n-1), 2^(n-1) - 1] -> [float(-2^(n-1)), float(2^(n-1) - 1)]
-         */
         SSCALED,
-        /**
-         * [0, 2^n - 1] -> [0, 2^n - 1]
-         */
         UINT,
-        /**
-         * [-2^(n-1), 2^(n-1) - 1] -> [-2^(n-1), 2^(n-1) - 1]
-         */
         SINT,
-        /**
-         * `GST_VULKAN_FORMAT_SCALING_UNORM` but the first three components are gamma corrected for the sRGB colour space.
-         */
         SRGB,
     }
 
@@ -140,49 +116,15 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Enum
-     * @since 1.18
      */
     enum VulkanHandleType {
-        /**
-         * descripter set layout
-         */
         DESCRIPTOR_SET_LAYOUT,
-        /**
-         * pipeline layout
-         */
         PIPELINE_LAYOUT,
-        /**
-         * pipeline
-         */
         PIPELINE,
-        /**
-         * render pass
-         */
         RENDER_PASS,
-        /**
-         * sampler
-         */
         SAMPLER,
-        /**
-         * framebuffer
-         */
         FRAMEBUFFER,
-        /**
-         * shader
-         */
         SHADER,
-        /**
-         * video session
-         */
-        VIDEO_SESSION,
-        /**
-         * video session parameters
-         */
-        VIDEO_SESSION_PARAMETERS,
-        /**
-         * sampler with YCBCR conversion
-         */
-        SAMPLER_YCBCR_CONVERSION,
     }
 
     /**
@@ -193,17 +135,8 @@ export namespace GstVulkan {
 
         // Static fields
 
-        /**
-         * failed
-         */
         static FAILED: number;
-        /**
-         * old libraries
-         */
         static OLD_LIBS: number;
-        /**
-         * resource unavailable
-         */
         static RESOURCE_UNAVAILABLE: number;
 
         // Constructors
@@ -215,102 +148,77 @@ export namespace GstVulkan {
         static quark(): GLib.Quark;
     }
 
-    /**
-     * @since 1.18
-     */
     const CAPS_FEATURE_MEMORY_VULKAN_BUFFER: string;
-    /**
-     * @since 1.18
-     */
     const CAPS_FEATURE_MEMORY_VULKAN_IMAGE: string;
-    /**
-     * @since 1.18
-     */
     const VULKAN_BUFFER_MEMORY_ALLOCATOR_NAME: string;
-    /**
-     * @since 1.18
-     */
     const VULKAN_DEVICE_CONTEXT_TYPE_STR: string;
-    /**
-     * @since 1.18
-     */
     const VULKAN_DISPLAY_CONTEXT_TYPE_STR: string;
-    /**
-     * @since 1.18
-     */
     const VULKAN_IMAGE_MEMORY_ALLOCATOR_NAME: string;
-    /**
-     * @since 1.18
-     */
     const VULKAN_INSTANCE_CONTEXT_TYPE_STR: string;
-    /**
-     * @since 1.18
-     */
     const VULKAN_MAX_COMPONENTS: number;
-    /**
-     * @since 1.18
-     */
     const VULKAN_MEMORY_ALLOCATOR_NAME: string;
     /**
-     * @since 1.18
+     * The printf format specifier for raw Vulkan non dispatchable handles.
      */
+    const VULKAN_NON_DISPATCHABLE_HANDLE_FORMAT: string;
     const VULKAN_QUEUE_CONTEXT_TYPE_STR: string;
-    /**
-     * @since 1.18
-     */
     const VULKAN_SWAPPER_VIDEO_FORMATS: string;
     /**
      * @param context a {@link Gst.Context}
+     * @param device resulting {@link GstVulkan.VulkanDevice}
      * @returns Whether `device` was in `context`
      * @since 1.18
      */
-    function context_get_vulkan_device(context: Gst.Context): [boolean, VulkanDevice | null];
+    function context_get_vulkan_device(context: Gst.Context, device: VulkanDevice): boolean;
     /**
      * @param context a {@link Gst.Context}
+     * @param display resulting {@link GstVulkan.VulkanDisplay}
      * @returns Whether `display` was in `context`
      * @since 1.18
      */
-    function context_get_vulkan_display(context: Gst.Context): [boolean, VulkanDisplay | null];
+    function context_get_vulkan_display(context: Gst.Context, display: VulkanDisplay): boolean;
     /**
      * @param context a {@link Gst.Context}
+     * @param instance resulting {@link GstVulkan.VulkanInstance}
      * @returns Whether `instance` was in `context`
      * @since 1.18
      */
-    function context_get_vulkan_instance(context: Gst.Context): [boolean, VulkanInstance | null];
+    function context_get_vulkan_instance(context: Gst.Context, instance: VulkanInstance): boolean;
     /**
      * @param context a {@link Gst.Context}
+     * @param queue resulting {@link GstVulkan.VulkanQueue}
      * @returns Whether `queue` was in `context`
      * @since 1.18
      */
-    function context_get_vulkan_queue(context: Gst.Context): [boolean, VulkanQueue | null];
+    function context_get_vulkan_queue(context: Gst.Context, queue: VulkanQueue): boolean;
     /**
      * Sets `device` on `context`
      * @param context a {@link Gst.Context}
      * @param device a {@link GstVulkan.VulkanDevice}
      * @since 1.18
      */
-    function context_set_vulkan_device(context: Gst.Context, device?: VulkanDevice | null): void;
+    function context_set_vulkan_device(context: Gst.Context, device: VulkanDevice): void;
     /**
      * Sets `display` on `context`
      * @param context a {@link Gst.Context}
      * @param display a {@link GstVulkan.VulkanDisplay}
      * @since 1.18
      */
-    function context_set_vulkan_display(context: Gst.Context, display?: VulkanDisplay | null): void;
+    function context_set_vulkan_display(context: Gst.Context, display: VulkanDisplay): void;
     /**
      * Sets `instance` on `context`
      * @param context a {@link Gst.Context}
      * @param instance a {@link GstVulkan.VulkanInstance}
      * @since 1.18
      */
-    function context_set_vulkan_instance(context: Gst.Context, instance?: VulkanInstance | null): void;
+    function context_set_vulkan_instance(context: Gst.Context, instance: VulkanInstance): void;
     /**
      * Sets `queue` on `context`
      * @param context a {@link Gst.Context}
      * @param queue a {@link GstVulkan.VulkanQueue}
      * @since 1.18
      */
-    function context_set_vulkan_queue(context: Gst.Context, queue?: VulkanQueue | null): void;
+    function context_set_vulkan_queue(context: Gst.Context, queue: VulkanQueue): void;
     /**
      * @param mem a {@link Gst.Memory}
      * @returns whether the memory at `mem` is a {@link GstVulkan.VulkanBufferMemory}
@@ -345,19 +253,6 @@ export namespace GstVulkan {
         mem_prop_flags: Vulkan.MemoryPropertyFlags,
     ): Gst.Memory;
     /**
-     * Allocate a new {@link GstVulkan.VulkanBufferMemory}.
-     * @param device a {@link GstVulkan.VulkanDevice}
-     * @param buffer_info the VkBufferCreateInfo structure
-     * @param mem_prop_flags memory properties flags for the backing memory
-     * @returns a {@link Gst.Memory} object backed by a vulkan buffer          backed by vulkan device memory
-     * @since 1.24
-     */
-    function vulkan_buffer_memory_alloc_with_buffer_info(
-        device: VulkanDevice,
-        buffer_info: Vulkan.BufferCreateInfo,
-        mem_prop_flags: Vulkan.MemoryPropertyFlags,
-    ): Gst.Memory;
-    /**
      * Initializes the Vulkan buffer memory allocator. It is safe to call this function
      * multiple times.  This must be called before any other {@link GstVulkan.VulkanBufferMemory} operation.
      * @since 1.18
@@ -381,19 +276,17 @@ export namespace GstVulkan {
         notify?: GLib.DestroyNotify | null,
     ): Gst.Memory;
     /**
-     * @param device a {@link GstVulkan.VulkanDevice}
-     * @param code the SPIR-V shader byte code
-     * @param size length of `code`.  Must be a multiple of 4
-     * @returns a {@link GstVulkan.VulkanHandle} for `image` matching the                           original layout and format of `image` or `null`
-     * @since 1.18
+     * @param device
+     * @param code
+     * @param size
      */
     function vulkan_create_shader(device: VulkanDevice, code: string, size: number): VulkanHandle;
     /**
      * @param type a {@link GstVulkan.VulkanDisplayType}
-     * @returns the Vulkan extension string required for creating a                      VkSurfaceKHR using a window system handle or `null`
+     * @returns the Vulkan extension string required for creating a VkSurfaceKHR using a window system handle or `null`
      * @since 1.18
      */
-    function vulkan_display_type_to_extension_string(type: VulkanDisplayType | null): string | null;
+    function vulkan_display_type_to_extension_string(type: VulkanDisplayType | null): string;
     /**
      * Perform the steps necessary for retrieving a {@link GstVulkan.VulkanInstance} and
      * (optionally) an {@link GstVulkan.VulkanDisplay} from the surrounding elements or from
@@ -413,65 +306,15 @@ export namespace GstVulkan {
         display_ptr: VulkanDisplay | null,
         instance_ptr: VulkanInstance,
     ): [boolean, VulkanDisplay | null, VulkanInstance];
-    /**
-     * Perform the steps necessary for retrieving a {@link GstVulkan.VulkanDevice} from
-     * the surrounding elements or create a new device according to the device_id.
-     *
-     * If the contents of `device_ptr` is not `null`, then no
-     * {@link Gst.Context} query is necessary and no {@link GstVulkan.VulkanDevice}
-     * retrieval is performed.
-     * @param element a {@link Gst.Element}
-     * @param instance the {@link GstVulkan.VulkanInstance}
-     * @param device_ptr the resulting {@link GstVulkan.VulkanDevice}
-     * @param device_id The device number to use, 0 is default.
-     * @returns whether a {@link GstVulkan.VulkanDevice} exists in `device_ptr`
-     * @since 1.26
-     */
-    function vulkan_ensure_element_device(
-        element: Gst.Element,
-        instance: VulkanInstance,
-        device_ptr: VulkanDevice | null,
-        device_id: number,
-    ): [boolean, VulkanDevice | null];
-    /**
-     * @since 1.18
-     */
     function vulkan_error_quark(): GLib.Quark;
     /**
-     * @param format Vulkan Format
-     * @returns the `format` aspect
-     * @since 1.24
+     * @param format
      */
-    function vulkan_format_get_aspect(format: Vulkan.Format): number;
+    function vulkan_format_get_info(format: Vulkan.Format): VulkanFormatInfo;
     /**
-     * @param format a valid {@link Vulkan.Format}
-     * @returns the {@link GstVulkan.VulkanFormatInfo} for `format` or `null`
-     * @since 1.18
-     */
-    function vulkan_format_get_info(format: Vulkan.Format): VulkanFormatInfo | null;
-    /**
-     * @param vk_format the Vulkan format to convert
-     * @returns the {@link GstVideo.VideoFormat} that maps to `vk_format`
-     * @since 1.24
-     */
-    function vulkan_format_to_video_format(vk_format: Vulkan.Format): GstVideo.VideoFormat;
-    /**
-     * @param image a {@link GstVulkan.VulkanImageMemory}
-     * @returns a {@link GstVulkan.VulkanImageView} for `image` matching the                           original layout and format of `image`
-     * @since 1.18
+     * @param image
      */
     function vulkan_get_or_create_image_view(image: VulkanImageMemory): VulkanImageView;
-    /**
-     * Create a new {@link GstVulkan.VulkanImageView} with a specific `create_info`.
-     * @param image a {@link GstVulkan.VulkanImageMemory}
-     * @param create_info a VkImageViewCreateInfo
-     * @returns a {@link GstVulkan.VulkanImageView} for `image` matching the                           original layout and format of `image`
-     * @since 1.24
-     */
-    function vulkan_get_or_create_image_view_with_info(
-        image: VulkanImageMemory,
-        create_info?: Vulkan.ImageViewCreateInfo | null,
-    ): VulkanImageView;
     /**
      * Performs the steps necessary for executing a context query including
      * posting a message for the application to respond.
@@ -485,7 +328,7 @@ export namespace GstVulkan {
      * @param query a {@link Gst.Query} of type {@link Gst.QueryType.CONTEXT}
      * @param display a {@link GstVulkan.VulkanDisplay}
      * @param instance a {@link GstVulkan.VulkanInstance}
-     * @param device a {@link GstVulkan.VulkanDevice}
+     * @param device a {@link GstVulkan.VulkanInstance}
      * @returns Whether the `query` was successfully responded to from the passed          `display`, `instance`, and `device`.
      * @since 1.18
      */
@@ -534,18 +377,6 @@ export namespace GstVulkan {
         height: number,
         tiling: Vulkan.ImageTiling,
         usage: Vulkan.ImageUsageFlags,
-        mem_prop_flags: Vulkan.MemoryPropertyFlags,
-    ): Gst.Memory;
-    /**
-     * @param device a {@link GstVulkan.VulkanDevice}
-     * @param image_info VkImageCreateInfo structure
-     * @param mem_prop_flags VkMemoryPropertyFlags flags
-     * @returns a {@link Gst.Memory} object backed by a vulkan device memory
-     * @since 1.24
-     */
-    function vulkan_image_memory_alloc_with_image_info(
-        device: VulkanDevice,
-        image_info: Vulkan.ImageCreateInfo,
         mem_prop_flags: Vulkan.MemoryPropertyFlags,
     ): Gst.Memory;
     /**
@@ -603,19 +434,20 @@ export namespace GstVulkan {
     ): Gst.Memory;
     /**
      * @param device a {@link GstVulkan.VulkanDevice}
-     * @param req memory requirements to look for
+     * @param type_bits memory type bits to search for
      * @param properties memory properties to search for
+     * @param type_index resulting index of the memory type
      * @returns whether a valid memory type could be found
-     * @since 1.24
+     * @since 1.18
      */
-    function vulkan_memory_find_memory_type_index_with_requirements(
+    function vulkan_memory_find_memory_type_index_with_type_properties(
         device: VulkanDevice,
-        req: Vulkan.MemoryRequirements,
+        type_bits: number,
         properties: Vulkan.MemoryPropertyFlags,
-    ): [boolean, number];
+        type_index: number,
+    ): boolean;
     /**
      * @param prop_bits
-     * @since 1.18
      */
     function vulkan_memory_heap_flags_to_string(prop_bits: Vulkan.MemoryHeapFlags): string;
     /**
@@ -626,15 +458,8 @@ export namespace GstVulkan {
     function vulkan_memory_init_once(): void;
     /**
      * @param prop_bits
-     * @since 1.18
      */
     function vulkan_memory_property_flags_to_string(prop_bits: Vulkan.MemoryPropertyFlags): string;
-    /**
-     * @param present_mode a {@link Vulkan.PresentModeKHR}
-     * @returns name of `present_mode`
-     * @since 1.20
-     */
-    function vulkan_present_mode_to_string(present_mode: Vulkan.PresentModeKHR): string;
     /**
      * @param element a {@link Gst.Element}
      * @param query the {@link Gst.Query} to perform
@@ -645,28 +470,18 @@ export namespace GstVulkan {
     function vulkan_run_query(element: Gst.Element, query: Gst.Query, direction: Gst.PadDirection | null): boolean;
     /**
      * @param sample_count_bits
-     * @since 1.18
      */
     function vulkan_sample_count_flags_to_string(sample_count_bits: Vulkan.SampleCountFlags): string;
     /**
-     * A {@link GstVulkan.VulkanTrashNotify} implementation for unreffing a {@link Gst.MiniObject} when the
-     * associated {@link GstVulkan.VulkanFence} is signalled
-     * @param device the {@link GstVulkan.VulkanDevice}
-     * @param user_data the {@link Gst.MiniObject}
-     * @since 1.18
+     * @param device
+     * @param user_data
      */
     function vulkan_trash_mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
     /**
-     * A {@link GstVulkan.VulkanTrashNotify} implementation for unreffing a {@link Gst.Object} when the
-     * associated {@link GstVulkan.VulkanFence} is signalled
-     * @param device the {@link GstVulkan.VulkanDevice}
-     * @param user_data the {@link Gst.MiniObject}
-     * @since 1.18
+     * @param device
+     * @param user_data
      */
     function vulkan_trash_object_unref(device: VulkanDevice, user_data?: any | null): void;
-    /**
-     * @since 1.18
-     */
     function vulkan_window_error_quark(): GLib.Quark;
     /**
      * @gir-type Callback
@@ -719,7 +534,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Flags
-     * @since 1.18
      */
     enum VulkanDisplayType {
         /**
@@ -747,9 +561,6 @@ export namespace GstVulkan {
          */
         WIN32,
         ANDROID,
-        /**
-         * any display type
-         */
         ANY,
     }
 
@@ -762,28 +573,12 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Flags
-     * @since 1.18
      */
     enum VulkanFormatFlags {
-        /**
-         * is a YUV format
-         */
         YUV,
-        /**
-         * is a RGB format
-         */
         RGB,
-        /**
-         * has an alpha channel
-         */
         ALPHA,
-        /**
-         * data is stored in little-endiate byte order
-         */
         LE,
-        /**
-         * data is stored complex and cannot be read/write only using the information in the {@link GstVulkan.VulkanFormatInfo}
-         */
         COMPLEX,
     }
 
@@ -802,7 +597,6 @@ export namespace GstVulkan {
     /**
      * Opaque {@link GstVulkan.VulkanBufferMemoryAllocator} struct
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanBufferMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanBufferMemoryAllocator>;
@@ -859,9 +653,8 @@ export namespace GstVulkan {
     }
 
     /**
-     * Opaque {@link GstVulkan.VulkanBufferPool} struct
+     * Opaque GstVulkanBufferPool struct
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanBufferPool>;
@@ -911,20 +704,6 @@ export namespace GstVulkan {
             ...args: GObject.GjsParameters<VulkanBufferPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Static methods
-
-        /**
-         * Sets the `usage` of the buffers to setup.
-         * @param config the {@link Gst.Structure} with the pool's configuration.
-         * @param usage The Vulkan buffer usage flags.
-         * @param mem_properties
-         */
-        static config_set_allocation_params(
-            config: Gst.Structure,
-            usage: Vulkan.BufferUsageFlags,
-            mem_properties: Vulkan.MemoryPropertyFlags,
-        ): void;
     }
 
     namespace VulkanCommandPool {
@@ -941,7 +720,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanCommandPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanCommandPool>;
@@ -1026,7 +804,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanDescriptorCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanDescriptorCache>;
@@ -1050,7 +827,7 @@ export namespace GstVulkan {
 
         _init(...args: any[]): void;
 
-        static ['new'](pool: VulkanDescriptorPool, layouts: VulkanHandle[]): VulkanDescriptorCache;
+        static ['new'](pool: VulkanDescriptorPool, n_layouts: number, layouts: VulkanHandle): VulkanDescriptorCache;
 
         // Signals
 
@@ -1102,7 +879,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanDescriptorPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanDescriptorPool>;
@@ -1154,10 +930,11 @@ export namespace GstVulkan {
         // Methods
 
         /**
-         * @param layouts list of {@link GstVulkan.VulkanHandle} containing                                     descriptor set layouts
+         * @param n_layouts
+         * @param layouts
          * @returns a new {@link GstVulkan.VulkanDescriptorSet}
          */
-        create(layouts: VulkanHandle[]): VulkanDescriptorSet;
+        create(n_layouts: number, layouts: VulkanHandle): VulkanDescriptorSet;
         /**
          * @returns the parent {@link GstVulkan.VulkanDevice} for this descriptor pool
          */
@@ -1188,7 +965,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanDevice>;
@@ -1270,42 +1046,18 @@ export namespace GstVulkan {
 
         // Methods
 
-        /**
-         * @returns a new {@link GstVulkan.VulkanFence} or `null`
-         */
-        create_fence(): VulkanFence | null;
-        /**
-         * Disable an Vulkan extension by `name`.  Disabling an extension will only have
-         * an effect before the call to `gst_vulkan_device_open()`.
-         * @param name extension name to enable
-         * @returns whether the Vulkan extension could be disabled.
-         */
-        disable_extension(name: string): boolean;
-        /**
-         * Enable an Vulkan extension by `name`.  Enabling an extension will
-         * only have an effect before the call to `gst_vulkan_device_open()`.
-         * @param name extension name to enable
-         * @returns whether the Vulkan extension could be enabled.
-         */
-        enable_extension(name: string): boolean;
-        /**
-         * Enable an Vulkan layer by `name`.  Enabling a layer will
-         * only have an effect before the call to `gst_vulkan_device_open()`.
-         * @param name layer name to enable
-         * @returns whether the Vulkan layer could be enabled.
-         */
-        enable_layer(name: string): boolean;
+        create_fence(): VulkanFence;
         /**
          * Iterate over each queue family available on {@link GstVulkan.VulkanDevice}
-         * @param func a {@link GstVulkan.VulkanDeviceForEachQueueFunc}    to run for each {@link GstVulkan.VulkanQueue}
+         * @param func a {@link GstVulkan.VulkanDeviceForEachQueueFunc} to run for each {@link GstVulkan.VulkanQueue}
          */
-        foreach_queue(func: VulkanDeviceForEachQueueFunc): void;
+        foreach_queue(func?: VulkanDeviceForEachQueueFunc | null): void;
         /**
          * @returns the {@link GstVulkan.VulkanInstance} used to create this `device`
          */
-        get_instance(): VulkanInstance | null;
+        get_instance(): VulkanInstance;
         /**
-         * Performs `vkGetDeviceProcAddr()` with `device` and `name`
+         * Performs vkGetDeviceProcAddr() with `device` and `name`
          * @param name name of the function to retrieve
          * @returns the function pointer for `name` or `null`
          */
@@ -1317,30 +1069,10 @@ export namespace GstVulkan {
          */
         get_queue(queue_family: number, queue_i: number): VulkanQueue;
         /**
-         * @param name extension name
-         * @returns whether extension `name` is enabled
-         */
-        is_extension_enabled(name: string): boolean;
-        /**
-         * @param name layer name
-         * @returns whether layer `name` is enabled
-         */
-        is_layer_enabled(name: string): boolean;
-        /**
          * Attempts to create the internal {@link Vulkan.Device} object.
          * @returns whether a vulkan device could be created
          */
         open(): boolean;
-        /**
-         * @returns An array with the family     indexes of the created queues in `device`
-         */
-        queue_family_indices(): number[];
-        /**
-         * Select a compatible queue from the `device` supporting the `expected_flags`.
-         * @param expected_flags a VkQueueFlagBits
-         * @returns a {@link GstVulkan.VulkanQueue} for `queue` matching                                      the `expected_flags`
-         */
-        select_queue(expected_flags: Vulkan.QueueFlagBits): VulkanQueue | null;
     }
 
     namespace VulkanDisplay {
@@ -1359,7 +1091,6 @@ export namespace GstVulkan {
      * The contents of a {@link GstVulkan.VulkanDisplay} are private and should only be accessed
      * through the provided API
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanDisplay extends Gst.Object {
         static $gtype: GObject.GType<VulkanDisplay>;
@@ -1409,8 +1140,6 @@ export namespace GstVulkan {
         /**
          * This function will read the `GST_VULKAN_WINDOW` environment variable for
          * a user choice or choose the first supported implementation.
-         *
-         * `gst_vulkan_instance_fill_info()` must have been called prior to this function.
          * @param instance a {@link GstVulkan.VulkanInstance}
          */
         static choose_type(instance: VulkanInstance): VulkanDisplayType;
@@ -1435,12 +1164,10 @@ export namespace GstVulkan {
         // Virtual methods
 
         /**
-         * create a window
          * @virtual
          */
-        vfunc_create_window(): VulkanWindow | null;
+        vfunc_create_window(): VulkanWindow;
         /**
-         * get the native handle to the display
          * @virtual
          */
         vfunc_get_handle(): any | null;
@@ -1448,18 +1175,18 @@ export namespace GstVulkan {
         // Methods
 
         /**
-         * @returns a new {@link GstVulkan.VulkanWindow} for `display` or                                      `null`.
+         * @returns a new {@link GstVulkan.VulkanWindow} for `display` or `null`.
          */
-        create_window(): VulkanWindow | null;
+        create_window(): VulkanWindow;
         /**
          * Execute `compare_func` over the list of windows stored by `display`.  The
          * first argument to `compare_func` is the {@link GstVulkan.VulkanWindow} being checked and the
          * second argument is `data`.
          * @param data some data to pass to `compare_func`
          * @param compare_func a comparison function to run
-         * @returns The first {@link GstVulkan.VulkanWindow} that                                      `compare_func` matches, or `null`
+         * @returns The first {@link GstVulkan.VulkanWindow} that causes a match          from `compare_func`
          */
-        find_window(data: any | null, compare_func: GLib.CompareFunc): VulkanWindow | null;
+        find_window(data: any | null, compare_func: GLib.CompareFunc): VulkanWindow;
         /**
          * @returns the winsys specific handle of `display`
          */
@@ -1489,7 +1216,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanFenceCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanFenceCache>;
@@ -1547,7 +1273,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanFullScreenQuad extends Gst.Object {
         static $gtype: GObject.GType<VulkanFullScreenQuad>;
@@ -1601,30 +1326,8 @@ export namespace GstVulkan {
 
         // Methods
 
-        /**
-         * Helper function for creation and submission of a command buffer that draws
-         * a full screen quad.  If you need to add other things to the command buffer,
-         * create the command buffer manually and call
-         * `gst_vulkan_full_screen_quad_prepare_draw()`,
-         * `gst_vulkan_full_screen_quad_fill_command_buffer()` and
-         * `gst_vulkan_full_screen_quad_submit()` instead.
-         * @returns whether the draw was successful
-         */
         draw(): boolean;
         /**
-         * Enables blending of the input image to the output image.
-         *
-         * See also: `gst_vulkan_full_screen_quad_set_blend_operation()` and
-         * `gst_vulkan_full_screen_quad_set_blend_factors()`.
-         * @param enable_blend whether to enable blending
-         */
-        enable_blend(enable_blend: boolean): void;
-        /**
-         * @param enable_clear whether to clear the framebuffer on load
-         */
-        enable_clear(enable_clear: boolean): void;
-        /**
-         * `cmd` must be locked with `gst_vulkan_command_buffer_lock()`.
          * @param cmd the {@link GstVulkan.VulkanCommandBuffer} to fill with commands
          * @param fence
          * @returns whether `cmd` could be filled with the necessary commands
@@ -1632,74 +1335,38 @@ export namespace GstVulkan {
         fill_command_buffer(cmd: VulkanCommandBuffer, fence: VulkanFence): boolean;
         get_last_fence(): VulkanFence;
         /**
-         * @returns The currently configured     {@link GstVulkan.VulkanQueue}
-         */
-        get_queue(): VulkanQueue | null;
-        /**
-         * @param fence a {@link GstVulkan.VulkanFence} that will be signalled after submission
-         * @returns whether the necessary information could be generated for drawing a frame.
+         * @param fence
          */
         prepare_draw(fence: VulkanFence): boolean;
         /**
-         * You need to enable blend with `gst_vulkan_full_screen_quad_enable_blend()`.
-         *
-         * See also: `gst_vulkan_full_screen_quad_set_blend_operation()`.
-         * @param src_blend_factor the {@link Vulkan.BlendFactor} for the source image for the colour                    components (RGB)
-         * @param dst_blend_factor the {@link Vulkan.BlendFactor} for the destination image for the                    colour components (RGB)
-         * @param src_alpha_blend_factor the {@link Vulkan.BlendFactor} for the source image for the                          alpha component.
-         * @param dst_alpha_blend_factor the {@link Vulkan.BlendFactor} for the destination image for                          the alpha component.
-         */
-        set_blend_factors(
-            src_blend_factor: Vulkan.BlendFactor,
-            dst_blend_factor: Vulkan.BlendFactor,
-            src_alpha_blend_factor: Vulkan.BlendFactor,
-            dst_alpha_blend_factor: Vulkan.BlendFactor,
-        ): void;
-        /**
-         * You need to enable blend with `gst_vulkan_full_screen_quad_enable_blend()`.
-         *
-         * See also: `gst_vulkan_full_screen_quad_set_blend_factors()`.
-         * @param colour_blend_op the {@link Vulkan.BlendOp} to use for blending colour (RGB) values
-         * @param alpha_blend_op the {@link Vulkan.BlendOp} to use for blending alpha values
-         */
-        set_blend_operation(colour_blend_op: Vulkan.BlendOp, alpha_blend_op: Vulkan.BlendOp): void;
-        /**
-         * See also `gst_vulkan_full_screen_quad_set_vertex_buffer()`
-         * @param indices the index data.  Must be a {@link GstVulkan.VulkanBufferMemory}
-         * @param n_indices number of indices in `indices`
-         * @returns whether the index data could be set
+         * @param indices
+         * @param n_indices
          */
         set_index_buffer(indices: Gst.Memory, n_indices: number): boolean;
         /**
-         * @param in_info the input {@link GstVideo.VideoInfo} to set
-         * @param out_info the output {@link GstVideo.VideoInfo} to set
-         * @returns whether the information could be successfully set
+         * @param in_info
+         * @param out_info
          */
         set_info(in_info: GstVideo.VideoInfo, out_info: GstVideo.VideoInfo): boolean;
         /**
-         * @param buffer the input {@link Gst.Buffer} to set
-         * @returns whether the input buffer could be changed
+         * @param buffer
          */
-        set_input_buffer(buffer?: Gst.Buffer | null): boolean;
+        set_input_buffer(buffer: Gst.Buffer): boolean;
         /**
-         * @param buffer the output {@link Gst.Buffer} to set
-         * @returns whether the input buffer could be changed
+         * @param buffer
          */
-        set_output_buffer(buffer?: Gst.Buffer | null): boolean;
+        set_output_buffer(buffer: Gst.Buffer): boolean;
         /**
-         * @param vert the vertex shader to set
-         * @param frag the fragment shader to set
-         * @returns whether the shaders could be set
+         * @param vert
+         * @param frag
          */
         set_shaders(vert: VulkanHandle, frag: VulkanHandle): boolean;
         /**
-         * @param uniforms the uniform data to set. Must be a {@link GstVulkan.VulkanBufferMemory}
-         * @returns whether the shaders could be set
+         * @param uniforms
          */
         set_uniform_buffer(uniforms: Gst.Memory): boolean;
         /**
-         * @param vertices the vertex data. Must be a {@link GstVulkan.VulkanBufferMemory}
-         * @returns whether the index data could be set
+         * @param vertices
          */
         set_vertex_buffer(vertices: Gst.Memory): boolean;
         /**
@@ -1724,7 +1391,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     abstract class VulkanHandlePool extends Gst.Object {
         static $gtype: GObject.GType<VulkanHandlePool>;
@@ -1774,23 +1440,19 @@ export namespace GstVulkan {
         // Virtual methods
 
         /**
-         * acquire a handle for usage
          * @virtual
          */
         vfunc_acquire(): any | null;
         /**
-         * allocate a new handle
          * @virtual
          */
         vfunc_alloc(): any | null;
         /**
-         * free a handle
          * @param handle
          * @virtual
          */
         vfunc_free(handle?: any | null): void;
         /**
-         * release a handle for possible reuse at the next call to `acquire`
          * @param handle
          * @virtual
          */
@@ -1819,8 +1481,8 @@ export namespace GstVulkan {
     }
 
     /**
+     * Opaque GstVulkanImageBufferPool struct
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanImageBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanImageBufferPool>;
@@ -1872,50 +1534,6 @@ export namespace GstVulkan {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Static methods
-
-        /**
-         * Gets the configuration of the Vulkan image buffer pool.
-         * @param config the {@link Gst.Structure} with the pool's configuration.
-         */
-        static config_get_allocation_params(
-            config: Gst.Structure,
-        ): [Vulkan.ImageUsageFlags | null, Vulkan.MemoryPropertyFlags | null, Vulkan.ImageLayout | null, number];
-        /**
-         * Sets the `usage` and `mem_properties`, `initial_layout` and `initial_access` of
-         * the images to setup.
-         *
-         * If `initial_access` is VK_IMAGE_LAYOUT_UNDEFINED or
-         * VK_IMAGE_LAYOUT_PREINITIALIZED, the image crated by this pool has not been
-         * initialized to a particular layout
-         * @param config the {@link Gst.Structure} with the pool's configuration.
-         * @param usage The Vulkan image usage flags.
-         * @param mem_properties Vulkan memory property flags.
-         * @param initial_layout Initial Vulkan image layout.
-         * @param initial_access Access flags for the layout transition if `initial_layout` is not VK_IMAGE_LAYOUT_UNDEFINED or VK_IMAGE_LAYOUT_PREINITIALIZED.
-         */
-        static config_set_allocation_params(
-            config: Gst.Structure,
-            usage: Vulkan.ImageUsageFlags,
-            mem_properties: Vulkan.MemoryPropertyFlags,
-            initial_layout: Vulkan.ImageLayout,
-            initial_access: number,
-        ): void;
-        /**
-         * Decode `caps` are used when the buffers are going to be used either as decoded
-         * dest or DPB images.
-         * @param config the {@link Gst.Structure} with the pool's configuration.
-         * @param caps Upstream decode caps.
-         */
-        static config_set_decode_caps(config: Gst.Structure, caps: Gst.Caps): void;
-        /**
-         * Encode `caps` are used when the buffers are going to be used either as encoded
-         * src or DPB images.
-         * @param config the {@link Gst.Structure} with the pool's configuration.
-         * @param caps Upstream encode caps.
-         */
-        static config_set_encode_caps(config: Gst.Structure, caps: Gst.Caps): void;
     }
 
     namespace VulkanImageMemoryAllocator {
@@ -1933,7 +1551,6 @@ export namespace GstVulkan {
     /**
      * Opaque {@link GstVulkan.VulkanImageMemoryAllocator} struct
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanImageMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanImageMemoryAllocator>;
@@ -1984,55 +1601,24 @@ export namespace GstVulkan {
              * Overrides the {@link GstVulkan.VulkanDevice} creation mechanism.
              * It can be called from any thread.
              * @signal
-             * @since 1.26
+             * @since 1.18
              * @run-last
              */
-            'create-device': (arg0: number) => VulkanDevice;
-            'notify::requested-api-major': (pspec: GObject.ParamSpec) => void;
-            'notify::requested-api-minor': (pspec: GObject.ParamSpec) => void;
+            'create-device': () => VulkanDevice;
             'notify::name': (pspec: GObject.ParamSpec) => void;
             'notify::parent': (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
 
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-            requested_api_major: number;
-            requestedApiMajor: number;
-            requested_api_minor: number;
-            requestedApiMinor: number;
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanInstance extends Gst.Object {
         static $gtype: GObject.GType<VulkanInstance>;
-
-        // Properties
-
-        /**
-         * @since 1.18
-         */
-        get requested_api_major(): number;
-        set requested_api_major(val: number);
-        /**
-         * @since 1.18
-         */
-        get requestedApiMajor(): number;
-        set requestedApiMajor(val: number);
-        /**
-         * @since 1.18
-         */
-        get requested_api_minor(): number;
-        set requested_api_minor(val: number);
-        /**
-         * @since 1.18
-         */
-        get requestedApiMinor(): number;
-        set requestedApiMinor(val: number);
 
         /**
          * Compile-time signal type information.
@@ -2099,114 +1685,15 @@ export namespace GstVulkan {
         // Methods
 
         /**
-         * @param major the API major version to check
-         * @param minor the API minor version to check
-         * @param patch the API patch version to check
-         * @returns whether the {@link GstVulkan.VulkanInstance} supports the version specified          by `major`, `minor` and `patch`.
-         */
-        check_api_version(major: number, minor: number, patch: number): boolean;
-        /**
-         * Check if the configured vulkan instance supports the specified version.
-         * Will not work prior to opening the instance with `gst_vulkan_instance_open()`.
-         * If a specific version is requested, the `patch` level is ignored.
-         * @param major major version
-         * @param minor minor version
-         * @param patch patch version
-         * @returns whether `instance` is at least the requested version.
-         */
-        check_version(major: number, minor: number, patch: number): boolean;
-        /**
          * @returns a new {@link GstVulkan.VulkanDevice}
          */
         create_device(): VulkanDevice;
         /**
-         * @param device_index the device index to create the new {@link GstVulkan.VulkanDevice} from
-         * @returns a new {@link GstVulkan.VulkanDevice}
-         */
-        create_device_with_index(device_index: number): VulkanDevice;
-        /**
-         * Disable an Vulkan extension by `name`.  Disabling an extension will only have
-         * an effect before the call to `gst_vulkan_instance_open()`.
-         * @param name extension name to enable
-         * @returns whether the Vulkan extension could be disabled.
-         */
-        disable_extension(name: string): boolean;
-        /**
-         * Enable an Vulkan extension by `name`.  Extensions cannot be enabled until
-         * `gst_vulkan_instance_fill_info()` has been called.  Enabling an extension will
-         * only have an effect before the call to `gst_vulkan_instance_open()`.
-         * @param name extension name to enable
-         * @returns whether the Vulkan extension could be enabled.
-         */
-        enable_extension(name: string): boolean;
-        /**
-         * Enable an Vulkan layer by `name`.  Layer cannot be enabled until
-         * `gst_vulkan_instance_fill_info()` has been called.  Enabling a layer will
-         * only have an effect before the call to `gst_vulkan_instance_open()`.
-         * @param name layer name to enable
-         * @returns whether the Vulkan layer could be enabled.
-         */
-        enable_layer(name: string): boolean;
-        /**
-         * Retrieve as much information about the available Vulkan instance without
-         * actually creating an Vulkan instance.  Will not do anything while `instance`
-         * is open.
-         * @returns whether the instance information could be retrieved
-         */
-        fill_info(): boolean;
-        /**
-         * Returns the vulkan API version configured when constructing the
-         * {@link GstVulkan.VulkanInstance}. This value can be any valid Vulkan API version and may
-         * not match `gst_vulkan_instance_get_version()` in any way.  This version is the
-         * maximum allowed vulkan API to be used in any capacity.
-         *
-         * This will not return valid values until `gst_vulkan_instance_open()` has been
-         * called.
-         */
-        get_api_version(): [number, number, number];
-        /**
-         * Retrieves information about an extension.
-         *
-         * Will not find any extensions before `gst_vulkan_instance_fill_info()` has been
-         * called.
-         * @param name the layer name to look for
-         * @returns whether extension `name` is available
-         */
-        get_extension_info(name: string): [boolean, number];
-        /**
-         * Retrieves information about a layer.
-         *
-         * Will not find any layers before `gst_vulkan_instance_fill_info()` has been
-         * called.
-         * @param name the layer name to look for
-         * @returns whether layer `name` is available
-         */
-        get_layer_info(name: string): [boolean, string, number, number];
-        /**
-         * Performs `vkGetInstanceProcAddr()` with `instance` and `name`
+         * Performs vkGetInstanceProcAddr() with `instance` and `name`
          * @param name name of the function to retrieve
          * @returns the function pointer for `name` or `null`
          */
         get_proc_address(name: string): any | null;
-        /**
-         * Retrieve the vulkan instance supported version.  Only returns the supported
-         * API version by the instance without taking into account the requested API
-         * version.  This means `gst_vulkan_instance_check_version()` will return
-         * different values if a specific version has been requested (which is the
-         * default) than a version check that is performed manually by retrieving the
-         * version with this function.
-         */
-        get_version(): [number, number, number];
-        /**
-         * @param name extension name
-         * @returns whether extension `name` is enabled
-         */
-        is_extension_enabled(name: string): boolean;
-        /**
-         * @param name layer name
-         * @returns whether layer `name` is enabled
-         */
-        is_layer_enabled(name: string): boolean;
         /**
          * @returns whether the instance could be created
          */
@@ -2228,7 +1715,6 @@ export namespace GstVulkan {
     /**
      * Opaque {@link GstVulkan.VulkanMemoryAllocator} struct
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanMemoryAllocator>;
@@ -2272,218 +1758,6 @@ export namespace GstVulkan {
         emit(signal: string, ...args: any[]): void;
     }
 
-    namespace VulkanOperation {
-        // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::command-pool': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-            command_pool: VulkanCommandPool;
-            commandPool: VulkanCommandPool;
-        }
-    }
-
-    /**
-     * When using the operation `cmd_buf`, you should lock it using
-     * `gst_vulkan_command_buffer_lock()`, but you have to unlock it, with
-     * `gst_vulkan_command_buffer_unlock()`, when calling any of {@link GstVulkan.VulkanOperation}
-     * methods.
-     * @gir-type Class
-     * @since 1.24
-     */
-    class VulkanOperation extends Gst.Object {
-        static $gtype: GObject.GType<VulkanOperation>;
-
-        // Properties
-
-        /**
-         * @construct-only
-         */
-        get command_pool(): VulkanCommandPool;
-        /**
-         * @construct-only
-         */
-        get commandPool(): VulkanCommandPool;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: VulkanOperation.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<VulkanOperation.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](cmd_pool: VulkanCommandPool): VulkanOperation;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof VulkanOperation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VulkanOperation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VulkanOperation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VulkanOperation.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof VulkanOperation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VulkanOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Add `frame` as an operation dependency by adding the timeline semaphores in
-         * each memory of `frame` into either the wait semaphore array. The signal array
-         * hold the same semaphores but increasing their current value.
-         * @param frame a Vulkan Image {@link Gst.Buffer}
-         * @param wait_stage pipeline stage to wait (VkPipelineStageFlags or   VkPipelineStageFlags2)
-         * @param signal_stage pipeline stage to signal (VkPipelineStageFlags or   VkPipelineStageFlags2)
-         * @returns whether the `frame` was added as dependency.
-         */
-        add_dependency_frame(frame: Gst.Buffer, wait_stage: number, signal_stage: number): boolean;
-        /**
-         * See also: `gst_vulkan_operation_update_frame()`
-         *
-         * Adds an image memory barrier per memory in `frame` with its future state. And
-         * it updates the `frame` barrier state by calling internally
-         * `gst_vulkan_operation_update_frame()`.
-         * @param frame a Vulkan Image {@link Gst.Buffer}
-         * @param src_stage source pipeline stage (VkPipelineStageFlags or   VkPipelineStageFlags2)
-         * @param dst_stage destination pipeline stage (VkPipelineStageFlags or   VkPipelineStageFlags2)
-         * @param new_access the new access flags (VkAccessFlags2 or VkAccessFlags)
-         * @param new_layout the new VkImageLayout
-         * @param new_queue destination {@link GstVulkan.VulkanQueue} for a transfer of `frame`   ownership
-         * @returns whether the `frame` barriers were appended
-         */
-        add_frame_barrier(
-            frame: Gst.Buffer,
-            src_stage: number,
-            dst_stage: number,
-            new_access: number,
-            new_layout: Vulkan.ImageLayout,
-            new_queue?: VulkanQueue | null,
-        ): boolean;
-        /**
-         * See also: `gst_vulkan_operation_end()` and `gst_vulkan_operation_reset()`
-         *
-         * Attempts to set the operation ready to work. It instantiates the common
-         * command buffer in `self` and calls vkBeginCommandBuffer.
-         *
-         * After calling this function you can register commands in the command buffer,
-         * and finally call `gst_vulkan_operation_end()`. `gst_vulkan_operation_reset()` is
-         * called internally if something failed.
-         * @returns whether the operation started. It might fill `error`.
-         */
-        begin(): boolean;
-        /**
-         * Begins a query operation with `id` in the current command buffer. If video maintenance1 extension
-         * is available the query will be recorded as a video inline query. If NULL is passed to `base`,
-         * the query will be recorded as a normal query anyway.
-         * @param base a VkBaseInStructure base
-         * @param id query id
-         * @returns whether the begin command was set
-         */
-        begin_query(base: Vulkan.BaseInStructure, id: number): boolean;
-        /**
-         * Discards barriers, and all the semaphore arrays populated by
-         * `gst_vulkan_operation_add_dependency_frame()`.
-         */
-        discard_dependencies(): void;
-        /**
-         * Tries to enable the query pool for the current operation.
-         * @param query_type the VkQueryType to enable
-         * @param n_queries number of queries to enable
-         * @param pnext the structure pointer to use as pNext
-         * @returns whether the query pool was enabled. It might populate `error` in case    of error.
-         */
-        enable_query(query_type: number, n_queries: number, pnext?: any | null): boolean;
-        /**
-         * See also: `gst_vulkan_operation_begin()` and `gst_vulkan_operation_reset()`
-         *
-         * It calls vkEndCommandBuffer, and later either vkQueueSubmit or
-         * vkQueueSubmit2KHR filling up the semaphores from images declared as
-         * dependencies.
-         *
-         * You have called `gst_vulkan_operation_begin()` before.
-         * `gst_vulkan_operation_reset()` is called internally if something fails
-         * @returns whether the operation failed. It might fill `error`.
-         */
-        end(): boolean;
-        /**
-         * Ends a query operation with `id` in the current command buffer. A query with
-         * `id` has had started with `gst_vulkan_operation_begin_query()`
-         * @param id query id
-         * @returns whether the end command was set
-         */
-        end_query(id: number): boolean;
-        /**
-         * Gets the latest operation results of all the queries in `data`. API users have
-         * to parse the binary array of `data` according of their needs (usually is a
-         * guint32 array of size of n_query).
-         *
-         * Don't free `data`.
-         * @returns whether a status was fetched. If not, it might populate `error`
-         */
-        get_query(): [boolean, any];
-        /**
-         * It's a wrapper to vkCmdPipelineBarrier2{KHR} if it's available.
-         * @param dependency_info a pointer to VkDependencyInfo
-         * @returns `true` if vkCmdPipelineBarrier2{KHR} it's available. `false`,   otherwise.
-         */
-        pipeline_barrier2(dependency_info?: any | null): boolean;
-        /**
-         * Resets the operation to a clean state.
-         */
-        reset(): void;
-        /**
-         * Add or update the internal list of the future state of `frame`. This state
-         * will be set after `gst_vulkan_operation_end()`.
-         *
-         * This method is useful when new barriers are added to the array without using
-         * `gst_vulkan_operation_add_frame_barrier()`.
-         * @param frame a {@link Gst.Buffer} to update after submit
-         * @param dst_stage destination pipeline stage (VkPipelineStageFlags or   VkPipelineStageFlags2)
-         * @param new_access the new access flags (VkAccessFlags2 or VkAccessFlags)
-         * @param new_layout the new VkImageLayout
-         * @param new_queue destination {@link GstVulkan.VulkanQueue} for a transfer of `frame`   ownership
-         */
-        update_frame(
-            frame: Gst.Buffer,
-            dst_stage: number,
-            new_access: number,
-            new_layout: Vulkan.ImageLayout,
-            new_queue?: VulkanQueue | null,
-        ): void;
-        /**
-         * @returns whether the operations are using synchronization2 extension.
-         */
-        use_sync2(): boolean;
-        /**
-         * Waits for the operation's fence to signal.
-         * @returns whether the operation succeed.
-         */
-        wait(): boolean;
-    }
-
     namespace VulkanPhysicalDevice {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
@@ -2505,7 +1779,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanPhysicalDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanPhysicalDevice>;
@@ -2540,8 +1813,9 @@ export namespace GstVulkan {
 
         // Fields
 
+        n_device_layers: number;
+        n_device_extensions: number;
         n_queue_families: number;
-        queue_family_ops: VulkanQueueFamilyOps;
 
         // Constructors
 
@@ -2577,50 +1851,16 @@ export namespace GstVulkan {
         // Static methods
 
         /**
-         * @param type a `VkPhysicalDeviceType
+         * @param type
          */
         static type_to_string(type: Vulkan.PhysicalDeviceType): string;
 
         // Methods
 
         /**
-         * Note: This is the intersection of the exposed supported API version as would
-         * be returned by `gst_vulkan_physical_device_get_api_version()` and
-         * `gst_vulkan_instance_check_version()`.  The latter will take into account any
-         * requested API version and may result in a different result than directly
-         * comparing against `gst_vulkan_instance_get_version()`.
-         * @param major the API major version to check
-         * @param minor the API minor version to check
-         * @param patch the API patch version to check
-         * @returns whether the {@link GstVulkan.VulkanPhysicalDevice} supports the version specified          by `major`, `minor` and `patch`.
-         */
-        check_api_version(major: number, minor: number, patch: number): boolean;
-        /**
-         * Retrieves the advertised Vulkan API version of the {@link GstVulkan.VulkanPhysicalDevice}.
-         */
-        get_api_version(): [number, number, number];
-        /**
-         * Retrieves information about a device extension.
-         *
-         * Will not find any extensions before `gst_vulkan_instance_fill_info()` has been
-         * called.
-         * @param name the extension name to look for
-         * @returns whether extension `name` is available
-         */
-        get_extension_info(name: string): [boolean, number];
-        /**
          * @returns The {@link GstVulkan.VulkanInstance} associated with this physical device
          */
         get_instance(): VulkanInstance;
-        /**
-         * Retrieves information about a layer.
-         *
-         * Will not find any layers before `gst_vulkan_instance_fill_info()` has been
-         * called.
-         * @param name the layer name to look for
-         * @returns whether layer `name` is available
-         */
-        get_layer_info(name: string): [boolean, string, number, number];
     }
 
     namespace VulkanQueue {
@@ -2637,7 +1877,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanQueue extends Gst.Object {
         static $gtype: GObject.GType<VulkanQueue>;
@@ -2711,13 +1950,13 @@ export namespace GstVulkan {
         // Methods
 
         /**
-         * @returns a new {@link GstVulkan.VulkanCommandPool} or `null`
+         * @returns a new `GstVUlkanCommandPool` or `null`
          */
         create_command_pool(): VulkanCommandPool;
         /**
          * @returns the {@link GstVulkan.VulkanDevice} for `queue`
          */
-        get_device(): VulkanDevice | null;
+        get_device(): VulkanDevice;
         /**
          * Locks the queue for command submission using `vkQueueSubmit()` to meet the
          * Vulkan requirements for externally synchronised resources.
@@ -2752,7 +1991,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanSwapper extends Gst.Object {
         static $gtype: GObject.GType<VulkanSwapper>;
@@ -2816,9 +2054,9 @@ export namespace GstVulkan {
         // Methods
 
         /**
-         * @param available_queue a {@link GstVulkan.VulkanQueue} chosen elsewhere
+         * @param available_queue
          */
-        choose_queue(available_queue?: VulkanQueue | null): boolean;
+        choose_queue(available_queue: VulkanQueue): boolean;
         get_supported_caps(): Gst.Caps;
         get_surface_rectangles(): [
             GstVideo.VideoRectangle | null,
@@ -2849,7 +2087,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanTrashFenceList extends VulkanTrashList {
         static $gtype: GObject.GType<VulkanTrashFenceList>;
@@ -2909,7 +2146,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanTrashList extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanTrashList>;
@@ -2953,19 +2189,16 @@ export namespace GstVulkan {
         // Virtual methods
 
         /**
-         * the {@link GstVulkan.VulkanTrashListAdd} functions
-         * @param trash the {@link GstVulkan.VulkanTrash} to add to `trash_list`
+         * @param trash
          * @virtual
          */
         vfunc_add_func(trash: VulkanTrash): boolean;
         /**
-         * the {@link GstVulkan.VulkanTrashListGC} function
          * @virtual
          */
         vfunc_gc_func(): void;
         /**
-         * the {@link GstVulkan.VulkanTrashListWait} function
-         * @param timeout the timeout in ns to wait
+         * @param timeout
          * @virtual
          */
         vfunc_wait_func(timeout: number): boolean;
@@ -2984,18 +2217,12 @@ export namespace GstVulkan {
         // Conflicted with GstVulkan.VulkanHandlePool.acquire
         acquire(...args: never[]): any;
         /**
-         * @param trash {@link GstVulkan.VulkanTrash} object to add to the list
-         * @returns whether `trash` could be added to `trash_list`
+         * @param trash
          */
         add(trash: VulkanTrash): boolean;
-        /**
-         * Remove any stored {@link GstVulkan.VulkanTrash} objects that have had their associated
-         * {@link GstVulkan.VulkanFence} signalled.
-         */
         gc(): void;
         /**
-         * @param timeout timeout in ns to wait, -1 for indefinite
-         * @returns whether the wait succeeded in waiting for all objects to be freed.
+         * @param timeout
          */
         wait(timeout: number): boolean;
     }
@@ -3015,7 +2242,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Class
-     * @since 1.18
      */
     class VulkanVideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VulkanVideoFilter>;
@@ -3061,21 +2287,6 @@ export namespace GstVulkan {
             ...args: GObject.GjsParameters<VulkanVideoFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * @returns The currently configured     {@link GstVulkan.VulkanDevice}
-         */
-        get_device(): VulkanDevice | null;
-        /**
-         * @returns The currently configured     {@link GstVulkan.VulkanInstance}
-         */
-        get_instance(): VulkanInstance | null;
-        /**
-         * @returns The currently configured     {@link GstVulkan.VulkanQueue}
-         */
-        get_queue(): VulkanQueue | null;
     }
 
     namespace VulkanWindow {
@@ -3126,7 +2337,6 @@ export namespace GstVulkan {
      * {@link GstVulkan.VulkanWindow} is an opaque struct and should only be accessed through the
      * provided api.
      * @gir-type Class
-     * @since 1.18
      */
     abstract class VulkanWindow extends Gst.Object {
         static $gtype: GObject.GType<VulkanWindow>;
@@ -3184,17 +2394,17 @@ export namespace GstVulkan {
          */
         vfunc_close(): void;
         /**
-         * retrieve whether this window supports presentation
          * @param device a {@link GstVulkan.VulkanDevice}
          * @param queue_family_idx the queue family
          * @virtual
          */
         vfunc_get_presentation_support(device: VulkanDevice, queue_family_idx: number): boolean;
         /**
-         * retrieve the current size of the window
+         * @param width
+         * @param height
          * @virtual
          */
-        vfunc_get_surface_dimensions(): [number, number];
+        vfunc_get_surface_dimensions(width: number, height: number): void;
         /**
          * Tell a `window` that it should handle events from the window system. These
          * events are forwarded upstream as navigation events. In some window systems
@@ -3206,12 +2416,10 @@ export namespace GstVulkan {
          */
         vfunc_handle_events(handle_events: boolean): void;
         /**
-         * open the connection to the display
          * @virtual
          */
         vfunc_open(): boolean;
         /**
-         * set the external window handle to render into
          * @param handle
          * @virtual
          */
@@ -3233,7 +2441,11 @@ export namespace GstVulkan {
          * @returns whether the given combination of `window`, `device` and          `queue_family_idx` supports presentation
          */
         get_presentation_support(device: VulkanDevice, queue_family_idx: number): boolean;
-        get_surface_dimensions(): [number, number];
+        /**
+         * @param width
+         * @param height
+         */
+        get_surface_dimensions(width: number, height: number): void;
         /**
          * Tell a `window` that it should handle events from the window system. These
          * events are forwarded upstream as navigation events. In some window systems
@@ -3279,7 +2491,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanBarrierBufferInfo {
         static $gtype: GObject.GType<VulkanBarrierBufferInfo>;
@@ -3287,7 +2498,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanBarrierImageInfo {
         static $gtype: GObject.GType<VulkanBarrierImageInfo>;
@@ -3295,7 +2505,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanBarrierMemoryInfo {
         static $gtype: GObject.GType<VulkanBarrierMemoryInfo>;
@@ -3305,14 +2514,10 @@ export namespace GstVulkan {
         type: VulkanBarrierType;
         flags: VulkanBarrierFlags;
         queue: VulkanQueue;
-        pipeline_stages: number;
-        access_flags: number;
-        semaphore_value: number;
     }
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanBufferMemory {
         static $gtype: GObject.GType<VulkanBufferMemory>;
@@ -3320,6 +2525,9 @@ export namespace GstVulkan {
         // Fields
 
         device: VulkanDevice;
+        wrapped: boolean;
+        notify: GLib.DestroyNotify;
+        user_data: any;
 
         // Static methods
 
@@ -3337,36 +2545,10 @@ export namespace GstVulkan {
             mem_prop_flags: Vulkan.MemoryPropertyFlags,
         ): Gst.Memory;
         /**
-         * Allocate a new {@link GstVulkan.VulkanBufferMemory}.
-         * @param device a {@link GstVulkan.VulkanDevice}
-         * @param buffer_info the VkBufferCreateInfo structure
-         * @param mem_prop_flags memory properties flags for the backing memory
-         */
-        static alloc_with_buffer_info(
-            device: VulkanDevice,
-            buffer_info: Vulkan.BufferCreateInfo,
-            mem_prop_flags: Vulkan.MemoryPropertyFlags,
-        ): Gst.Memory;
-        /**
          * Initializes the Vulkan buffer memory allocator. It is safe to call this function
          * multiple times.  This must be called before any other {@link GstVulkan.VulkanBufferMemory} operation.
          */
         static init_once(): void;
-        /**
-         * Allocated a new wrapped {@link GstVulkan.VulkanBufferMemory} with `buffer`.
-         * @param device a {@link GstVulkan.VulkanDevice}
-         * @param buffer a {@link Vulkan.Buffer}
-         * @param usage usage flags of `buffer`
-         * @param user_data user data to call `notify` with
-         * @param notify a {@link GLib.DestroyNotify} called when `buffer` is no longer in use
-         */
-        static wrapped(
-            device: VulkanDevice,
-            buffer: Vulkan.Buffer,
-            usage: Vulkan.BufferUsageFlags,
-            user_data?: any | null,
-            notify?: GLib.DestroyNotify | null,
-        ): Gst.Memory;
     }
 
     /**
@@ -3386,7 +2568,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanCommandBuffer {
         static $gtype: GObject.GType<VulkanCommandBuffer>;
@@ -3405,9 +2586,14 @@ export namespace GstVulkan {
 
         /**
          * Increases the refcount of the given buffer by one.
-         * @returns `cmd`
+         * @returns `buf`
          */
         ref(): VulkanCommandBuffer;
+        /**
+         * Decreases the refcount of the buffer. If the refcount reaches 0, the buffer
+         * will be freed.
+         */
+        unref(): void;
     }
 
     /**
@@ -3445,7 +2631,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanDescriptorSet {
         static $gtype: GObject.GType<VulkanDescriptorSet>;
@@ -3458,21 +2643,41 @@ export namespace GstVulkan {
 
         // Constructors
 
-        constructor(pool: VulkanDescriptorPool, set: Vulkan.DescriptorSet, layouts: VulkanHandle[]);
+        constructor(pool: VulkanDescriptorPool, set: Vulkan.DescriptorSet, n_layouts: number, layouts: VulkanHandle);
 
         static new_wrapped(
             pool: VulkanDescriptorPool,
             set: Vulkan.DescriptorSet,
-            layouts: VulkanHandle[],
+            n_layouts: number,
+            layouts: VulkanHandle,
         ): VulkanDescriptorSet;
 
         // Methods
 
         /**
          * Increases the refcount of the given buffer by one.
-         * @returns `set`
+         * @returns `buf`
          */
         ref(): VulkanDescriptorSet;
+        /**
+         * Decreases the refcount of the buffer. If the refcount reaches 0, the buffer
+         * will be freed.
+         */
+        unref(): void;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class VulkanDescriptorSetClass {
+        static $gtype: GObject.GType<VulkanDescriptorSetClass>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    abstract class VulkanDescriptorSetPrivate {
+        static $gtype: GObject.GType<VulkanDescriptorSetPrivate>;
     }
 
     /**
@@ -3498,33 +2703,7 @@ export namespace GstVulkan {
     }
 
     /**
-     * Encoder query result. Expected to be used in `gst_vulkan_operation_get_query()`
      * @gir-type Struct
-     * @since 1.26
-     */
-    class VulkanEncodeQueryResult {
-        static $gtype: GObject.GType<VulkanEncodeQueryResult>;
-
-        // Fields
-
-        offset: number;
-        data_size: number;
-        status: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                offset: number;
-                data_size: number;
-                status: number;
-            }>,
-        );
-    }
-
-    /**
-     * @gir-type Struct
-     * @since 1.18
      */
     class VulkanFence {
         static $gtype: GObject.GType<VulkanFence>;
@@ -3557,7 +2736,6 @@ export namespace GstVulkan {
     type VulkanFenceCacheClass = typeof VulkanFenceCache;
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanFormatInfo {
         static $gtype: GObject.GType<VulkanFormatInfo>;
@@ -3580,18 +2758,6 @@ export namespace GstVulkan {
     }
 
     /**
-     * @gir-type Struct
-     * @since 1.26
-     */
-    class VulkanFormatMap {
-        static $gtype: GObject.GType<VulkanFormatMap>;
-
-        // Fields
-
-        format: GstVideo.VideoFormat;
-    }
-
-    /**
      * @gir-type Alias
      */
     type VulkanFullScreenQuadClass = typeof VulkanFullScreenQuad;
@@ -3603,12 +2769,8 @@ export namespace GstVulkan {
     }
 
     /**
-     * Holds information about a vulkan non dispatchable handle that only has
-     * a vulkan device as a parent and no specific host synchronisation
-     * requirements.  Command buffers have extra requirements that are serviced by
-     * more specific implementations ({@link GstVulkan.VulkanCommandBuffer}, {@link GstVulkan.VulkanCommandPool}).
+     * Holds information about a vulkan non dispatchable handle
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanHandle {
         static $gtype: GObject.GType<VulkanHandle>;
@@ -3617,7 +2779,6 @@ export namespace GstVulkan {
 
         device: VulkanDevice;
         type: VulkanHandleType;
-        handle: VulkanHandleTypedef;
         notify: VulkanHandleDestroyNotify;
         user_data: any;
 
@@ -3644,7 +2805,7 @@ export namespace GstVulkan {
          * @param query a {@link Gst.Query} of type {@link Gst.QueryType.CONTEXT}
          * @param display a {@link GstVulkan.VulkanDisplay}
          * @param instance a {@link GstVulkan.VulkanInstance}
-         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param device a {@link GstVulkan.VulkanInstance}
          */
         static context_query(
             element: Gst.Element,
@@ -3713,12 +2874,24 @@ export namespace GstVulkan {
          * @returns `buf`
          */
         ref(): VulkanHandle;
+        /**
+         * Decreases the refcount of the buffer. If the refcount reaches 0, the buffer
+         * will be freed.
+         */
+        unref(): void;
     }
 
     /**
      * @gir-type Alias
      */
     type VulkanHandlePoolClass = typeof VulkanHandlePool;
+    /**
+     * @gir-type Struct
+     */
+    abstract class VulkanHandleTypedef {
+        static $gtype: GObject.GType<VulkanHandleTypedef>;
+    }
+
     /**
      * @gir-type Alias
      */
@@ -3732,7 +2905,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanImageMemory {
         static $gtype: GObject.GType<VulkanImageMemory>;
@@ -3740,6 +2912,11 @@ export namespace GstVulkan {
         // Fields
 
         device: VulkanDevice;
+        wrapped: boolean;
+        notify: GLib.DestroyNotify;
+        user_data: any;
+        views: any[];
+        outstanding_views: any[];
 
         // Static methods
 
@@ -3763,40 +2940,10 @@ export namespace GstVulkan {
             mem_prop_flags: Vulkan.MemoryPropertyFlags,
         ): Gst.Memory;
         /**
-         * @param device a {@link GstVulkan.VulkanDevice}
-         * @param image_info VkImageCreateInfo structure
-         * @param mem_prop_flags VkMemoryPropertyFlags flags
-         */
-        static alloc_with_image_info(
-            device: VulkanDevice,
-            image_info: Vulkan.ImageCreateInfo,
-            mem_prop_flags: Vulkan.MemoryPropertyFlags,
-        ): Gst.Memory;
-        /**
          * Initializes the Vulkan image memory allocator. It is safe to call this function
          * multiple times.  This must be called before any other {@link GstVulkan.VulkanImageMemory} operation.
          */
         static init_once(): void;
-        /**
-         * @param device a {@link GstVulkan.VulkanDevice}
-         * @param image a VkImage
-         * @param format the VkFormat for `image`
-         * @param width width of `image`
-         * @param height height of `image`
-         * @param tiling tiling of `image`
-         * @param usage usage flags of `image`
-         * @param user_data user data for `notify`
-         */
-        static wrapped(
-            device: VulkanDevice,
-            image: Vulkan.Image,
-            format: Vulkan.Format,
-            width: number,
-            height: number,
-            tiling: Vulkan.ImageTiling,
-            usage: Vulkan.ImageUsageFlags,
-            user_data?: any | null,
-        ): Gst.Memory;
 
         // Methods
 
@@ -3806,9 +2953,9 @@ export namespace GstVulkan {
         add_view(view: VulkanImageView): void;
         /**
          * @param find_func {@link GstVulkan.VulkanImageMemoryFindViewFunc} to search with
-         * @returns the first {@link GstVulkan.VulkanImageView} that                                     `find_func` returns `true` for, or `null`
+         * @returns the first {@link GstVulkan.VulkanImageView} that `find_func` returns `true` for, or `null`
          */
-        find_view(find_func: VulkanImageMemoryFindViewFunc): VulkanImageView | null;
+        find_view(find_func: VulkanImageMemoryFindViewFunc): VulkanImageView;
         /**
          * @returns the height of `image`
          */
@@ -3821,9 +2968,7 @@ export namespace GstVulkan {
          * @param allocator
          * @param parent
          * @param device
-         * @param format
          * @param usage
-         * @param initial_layout
          * @param params
          * @param size
          * @param user_data
@@ -3832,9 +2977,7 @@ export namespace GstVulkan {
             allocator: Gst.Allocator,
             parent: Gst.Memory,
             device: VulkanDevice,
-            format: Vulkan.Format,
             usage: Vulkan.ImageUsageFlags,
-            initial_layout: Vulkan.ImageLayout,
             params: Gst.AllocationParams,
             size: number,
             user_data?: any | null,
@@ -3847,7 +2990,6 @@ export namespace GstVulkan {
     type VulkanImageMemoryAllocatorClass = typeof VulkanImageMemoryAllocator;
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanImageView {
         static $gtype: GObject.GType<VulkanImageView>;
@@ -3869,6 +3011,11 @@ export namespace GstVulkan {
          * @returns `trash`
          */
         ref(): VulkanImageView;
+        /**
+         * Decreases the refcount of the trash object. If the refcount reaches 0, the
+         * trash will be freed.
+         */
+        unref(): void;
     }
 
     /**
@@ -3884,7 +3031,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanMemory {
         static $gtype: GObject.GType<VulkanMemory>;
@@ -3893,7 +3039,6 @@ export namespace GstVulkan {
 
         device: VulkanDevice;
         map_count: number;
-        mapping: any;
 
         // Static methods
 
@@ -3914,14 +3059,16 @@ export namespace GstVulkan {
         ): Gst.Memory;
         /**
          * @param device a {@link GstVulkan.VulkanDevice}
-         * @param req memory requirements to look for
+         * @param type_bits memory type bits to search for
          * @param properties memory properties to search for
+         * @param type_index resulting index of the memory type
          */
-        static find_memory_type_index_with_requirements(
+        static find_memory_type_index_with_type_properties(
             device: VulkanDevice,
-            req: Vulkan.MemoryRequirements,
+            type_bits: number,
             properties: Vulkan.MemoryPropertyFlags,
-        ): [boolean, number];
+            type_index: number,
+        ): boolean;
         /**
          * @param prop_bits
          */
@@ -3944,17 +3091,6 @@ export namespace GstVulkan {
     /**
      * @gir-type Alias
      */
-    type VulkanOperationClass = typeof VulkanOperation;
-    /**
-     * @gir-type Struct
-     */
-    abstract class VulkanOperationPrivate {
-        static $gtype: GObject.GType<VulkanOperationPrivate>;
-    }
-
-    /**
-     * @gir-type Alias
-     */
     type VulkanPhysicalDeviceClass = typeof VulkanPhysicalDevice;
     /**
      * @gir-type Struct
@@ -3967,28 +3103,6 @@ export namespace GstVulkan {
      * @gir-type Alias
      */
     type VulkanQueueClass = typeof VulkanQueue;
-    /**
-     * @gir-type Struct
-     * @since 1.24
-     */
-    class VulkanQueueFamilyOps {
-        static $gtype: GObject.GType<VulkanQueueFamilyOps>;
-
-        // Fields
-
-        video: number;
-        query_result_status: boolean;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                video: number;
-                query_result_status: boolean;
-            }>,
-        );
-    }
-
     /**
      * @gir-type Struct
      */
@@ -4009,7 +3123,6 @@ export namespace GstVulkan {
 
     /**
      * @gir-type Struct
-     * @since 1.18
      */
     class VulkanTrash {
         static $gtype: GObject.GType<VulkanTrash>;
@@ -4022,26 +3135,22 @@ export namespace GstVulkan {
 
         // Constructors
 
-        constructor(fence: VulkanFence, notify: VulkanTrashNotify);
+        constructor(fence: VulkanFence);
 
-        static ['new'](fence: VulkanFence, notify: VulkanTrashNotify): VulkanTrash;
+        static ['new'](fence: VulkanFence): VulkanTrash;
 
         static new_free_semaphore(fence: VulkanFence, semaphore: Vulkan.Semaphore): VulkanTrash;
 
         // Static methods
 
         /**
-         * A {@link GstVulkan.VulkanTrashNotify} implementation for unreffing a {@link Gst.MiniObject} when the
-         * associated {@link GstVulkan.VulkanFence} is signalled
-         * @param device the {@link GstVulkan.VulkanDevice}
-         * @param user_data the {@link Gst.MiniObject}
+         * @param device
+         * @param user_data
          */
         static mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
         /**
-         * A {@link GstVulkan.VulkanTrashNotify} implementation for unreffing a {@link Gst.Object} when the
-         * associated {@link GstVulkan.VulkanFence} is signalled
-         * @param device the {@link GstVulkan.VulkanDevice}
-         * @param user_data the {@link Gst.MiniObject}
+         * @param device
+         * @param user_data
          */
         static object_unref(device: VulkanDevice, user_data?: any | null): void;
 
@@ -4052,6 +3161,11 @@ export namespace GstVulkan {
          * @returns `trash`
          */
         ref(): VulkanTrash;
+        /**
+         * Decreases the refcount of the trash object. If the refcount reaches 0, the
+         * trash will be freed.
+         */
+        unref(): void;
     }
 
     /**
@@ -4077,10 +3191,6 @@ export namespace GstVulkan {
         static $gtype: GObject.GType<VulkanWindowPrivate>;
     }
 
-    /**
-     * @gir-type Alias
-     */
-    type VulkanHandleTypedef = number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

@@ -3301,6 +3301,13 @@ export namespace TelepathyGLib {
      */
     function handle_ensure(self: HandleRepoIface, id: string, context?: any | null): Handle;
     /**
+     * If the given handle type is valid, return `true`. If not, set `error`
+     * and return `false`.
+     * @param type A handle type, valid or not, to be checked
+     * @returns `true` if the handle type is valid.
+     */
+    function handle_type_is_valid(type: HandleType | null): boolean;
+    /**
      * <!---->
      * @param type A handle type, which need not be valid
      * @returns a human-readable string describing the handle type, e.g. "contact".  For invalid handle types, returns "(no handle)" for 0 or  "(invalid handle type)" for others.
@@ -8957,7 +8964,7 @@ export namespace TelepathyGLib {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9012,7 +9019,7 @@ export namespace TelepathyGLib {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9087,7 +9094,7 @@ export namespace TelepathyGLib {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9707,9 +9714,6 @@ export namespace TelepathyGLib {
         // Virtual methods
 
         /**
-         * the function called to request user approval of
-         *  unrequested (incoming) channels matching this client's approver filter
-         *  (since 0.11.13)
          * @param account a {@link TelepathyGLib.Account} with `TP_ACCOUNT_FEATURE_CORE`, and any other  features added via `tp_base_client_add_account_features()` or  `tp_simple_client_factory_add_account_features()`, prepared if  possible
          * @param connection a {@link TelepathyGLib.Connection} with `TP_CONNECTION_FEATURE_CORE`,  and any other features added via `tp_base_client_add_connection_features()`,  or `tp_simple_client_factory_add_connection_features()`, prepared if possible
          * @param channels a {@link GLib.List} of {@link TelepathyGLib.Channel},  each with `TP_CHANNEL_FEATURE_CORE`, and any other features added via  `tp_base_client_add_channel_features()` or  `tp_simple_client_factory_add_channel_features()`, prepared if possible
@@ -9725,8 +9729,6 @@ export namespace TelepathyGLib {
             context: AddDispatchOperationContext,
         ): void;
         /**
-         * the function called to handle channels matching this
-         *  client's handler filter (since 0.11.13)
          * @param account a {@link TelepathyGLib.Account} with `TP_ACCOUNT_FEATURE_CORE`, and any other  features added via `tp_base_client_add_account_features()` or  `tp_simple_client_factory_add_account_features()`, prepared if  possible
          * @param connection a {@link TelepathyGLib.Connection} with `TP_CONNECTION_FEATURE_CORE`,  and any other features added via `tp_base_client_add_connection_features()`,  or `tp_simple_client_factory_add_connection_features()`, prepared if possible
          * @param channels a {@link GLib.List} of {@link TelepathyGLib.Channel},  each with `TP_CHANNEL_FEATURE_CORE`, and any other features added via  `tp_base_client_add_channel_features()` or  `tp_simple_client_factory_add_channel_features()`, prepared if possible
@@ -9744,8 +9746,6 @@ export namespace TelepathyGLib {
             context: HandleChannelsContext,
         ): void;
         /**
-         * the function called to observe newly-created channels
-         *  matching this client's observer filter (since 0.11.13)
          * @param account a {@link TelepathyGLib.Account} with `TP_ACCOUNT_FEATURE_CORE`, and any other  features added via `tp_base_client_add_account_features()` or  `tp_simple_client_factory_add_account_features()`, prepared if  possible
          * @param connection a {@link TelepathyGLib.Connection} with `TP_CONNECTION_FEATURE_CORE`,  and any other features added via `tp_base_client_add_connection_features()`,  or `tp_simple_client_factory_add_connection_features()`, prepared if possible
          * @param channels a {@link GLib.List} of {@link TelepathyGLib.Channel},  each with `TP_CHANNEL_FEATURE_CORE`, and any other features added via  `tp_base_client_add_channel_features()` or  `tp_simple_client_factory_add_channel_features()`, prepared if possible
@@ -10368,45 +10368,26 @@ export namespace TelepathyGLib {
         // Virtual methods
 
         /**
-         * If set by subclasses, will be called just after the state
-         *  changes to CONNECTED. May be `null` if nothing special needs to happen.
          * @virtual
          */
         vfunc_connected(): void;
         /**
-         * If set by subclasses, will be called just after the state
-         *  changes to CONNECTING. May be `null` if nothing special needs to happen.
          * @virtual
          */
         vfunc_connecting(): void;
         /**
-         * If set by subclasses, will be called just after the state
-         *  changes to DISCONNECTED. May be `null` if nothing special needs to happen.
          * @virtual
          */
         vfunc_disconnected(): void;
         /**
-         * Construct a unique name for this connection
-         *  (for example using the protocol's format for usernames). If `null` (the
-         *  default), a unique name will be generated. Subclasses should usually
-         *  override this to get more obvious names, to aid debugging and prevent
-         *  multiple connections to the same account.
          * @virtual
          */
         vfunc_get_unique_connection_name(): string;
         /**
-         * Called after `disconnected()` is called, to clean up the
-         *  connection. Must start the shutdown process for the underlying
-         *  network connection, and arrange for `tp_base_connection_finish_shutdown()`
-         *  to be called after the underlying connection has been closed. May not
-         *  be left as `null`.
          * @virtual
          */
         vfunc_shut_down(): void;
         /**
-         * Asynchronously start connecting - called to implement
-         *  the Connect D-Bus method. See {@link TelepathyGLib.BaseConnectionStartConnectingImpl} for
-         *  details. May not be left as `null`.
          * @virtual
          */
         vfunc_start_connecting(): boolean;
@@ -10767,7 +10748,7 @@ export namespace TelepathyGLib {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -10822,7 +10803,7 @@ export namespace TelepathyGLib {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -10897,7 +10878,7 @@ export namespace TelepathyGLib {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20868,7 +20849,7 @@ export namespace TelepathyGLib {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -20923,7 +20904,7 @@ export namespace TelepathyGLib {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -20998,7 +20979,7 @@ export namespace TelepathyGLib {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -24853,7 +24834,7 @@ export namespace TelepathyGLib {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -24908,7 +24889,7 @@ export namespace TelepathyGLib {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -24983,7 +24964,7 @@ export namespace TelepathyGLib {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

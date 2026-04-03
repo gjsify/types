@@ -818,144 +818,6 @@ export namespace Gwebgl {
          * @param height
          */
         viewport(x: number, y: number, width: number, height: number): void;
-    }
-
-    namespace WebGLRenderingContext {
-        // Signal signatures
-        interface SignalSignatures extends WebGLRenderingContextBase.SignalSignatures {
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::alpha': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::stencil': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::premultiplied-alpha': (pspec: GObject.ParamSpec) => void;
-            'notify::preserve-drawing-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::prefer-low-power-to-high-performance': (pspec: GObject.ParamSpec) => void;
-            'notify::fail-if-major-performance-caveat': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends WebGLRenderingContextBase.ConstructorProps {
-            width: number;
-            height: number;
-            alpha: boolean;
-            depth: boolean;
-            stencil: boolean;
-            antialias: boolean;
-            premultipliedAlpha: boolean;
-            preserveDrawingBuffer: boolean;
-            preferLowPowerToHighPerformance: boolean;
-            failIfMajorPerformanceCaveat: boolean;
-        }
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class WebGLRenderingContext extends WebGLRenderingContextBase {
-        static $gtype: GObject.GType<WebGLRenderingContext>;
-
-        // Properties
-
-        /**
-         * @construct-only
-         */
-        get width(): number;
-        /**
-         * @construct-only
-         */
-        get height(): number;
-        /**
-         * @construct-only
-         */
-        get alpha(): boolean;
-        /**
-         * @construct-only
-         */
-        get depth(): boolean;
-        /**
-         * @construct-only
-         */
-        get stencil(): boolean;
-        /**
-         * @construct-only
-         */
-        get antialias(): boolean;
-        /**
-         * @construct-only
-         */
-        get premultipliedAlpha(): boolean;
-        /**
-         * @construct-only
-         */
-        get preserveDrawingBuffer(): boolean;
-        /**
-         * @construct-only
-         */
-        get preferLowPowerToHighPerformance(): boolean;
-        /**
-         * @construct-only
-         */
-        get failIfMajorPerformanceCaveat(): boolean;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: WebGLRenderingContext.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<WebGLRenderingContext.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](
-            width: number,
-            height: number,
-            alpha: boolean,
-            depth: boolean,
-            stencil: boolean,
-            antialias: boolean,
-            premultipliedAlpha: boolean,
-            preserveDrawingBuffer: boolean,
-            preferLowPowerToHighPerformance: boolean,
-            failIfMajorPerformanceCaveat: boolean,
-        ): WebGLRenderingContext;
-        // Conflicted with Gwebgl.WebGLRenderingContextBase.new
-
-        static ['new'](...args: never[]): any;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof WebGLRenderingContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebGLRenderingContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebGLRenderingContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebGLRenderingContext.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof WebGLRenderingContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebGLRenderingContext.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
         /**
          * @param variant
          */
@@ -1178,6 +1040,144 @@ export namespace Gwebgl {
          * @param value
          */
         uniformMatrix4fv(location: number, transpose: boolean, value: number[]): void;
+    }
+
+    namespace WebGLRenderingContext {
+        // Signal signatures
+        interface SignalSignatures extends WebGLRenderingContextBase.SignalSignatures {
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::alpha': (pspec: GObject.ParamSpec) => void;
+            'notify::depth': (pspec: GObject.ParamSpec) => void;
+            'notify::stencil': (pspec: GObject.ParamSpec) => void;
+            'notify::antialias': (pspec: GObject.ParamSpec) => void;
+            'notify::premultiplied-alpha': (pspec: GObject.ParamSpec) => void;
+            'notify::preserve-drawing-buffer': (pspec: GObject.ParamSpec) => void;
+            'notify::prefer-low-power-to-high-performance': (pspec: GObject.ParamSpec) => void;
+            'notify::fail-if-major-performance-caveat': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends WebGLRenderingContextBase.ConstructorProps {
+            width: number;
+            height: number;
+            alpha: boolean;
+            depth: boolean;
+            stencil: boolean;
+            antialias: boolean;
+            premultipliedAlpha: boolean;
+            preserveDrawingBuffer: boolean;
+            preferLowPowerToHighPerformance: boolean;
+            failIfMajorPerformanceCaveat: boolean;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class WebGLRenderingContext extends WebGLRenderingContextBase {
+        static $gtype: GObject.GType<WebGLRenderingContext>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get width(): number;
+        /**
+         * @construct-only
+         */
+        get height(): number;
+        /**
+         * @construct-only
+         */
+        get alpha(): boolean;
+        /**
+         * @construct-only
+         */
+        get depth(): boolean;
+        /**
+         * @construct-only
+         */
+        get stencil(): boolean;
+        /**
+         * @construct-only
+         */
+        get antialias(): boolean;
+        /**
+         * @construct-only
+         */
+        get premultipliedAlpha(): boolean;
+        /**
+         * @construct-only
+         */
+        get preserveDrawingBuffer(): boolean;
+        /**
+         * @construct-only
+         */
+        get preferLowPowerToHighPerformance(): boolean;
+        /**
+         * @construct-only
+         */
+        get failIfMajorPerformanceCaveat(): boolean;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: WebGLRenderingContext.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<WebGLRenderingContext.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](
+            width: number,
+            height: number,
+            alpha: boolean,
+            depth: boolean,
+            stencil: boolean,
+            antialias: boolean,
+            premultipliedAlpha: boolean,
+            preserveDrawingBuffer: boolean,
+            preferLowPowerToHighPerformance: boolean,
+            failIfMajorPerformanceCaveat: boolean,
+        ): WebGLRenderingContext;
+        // Conflicted with Gwebgl.WebGLRenderingContextBase.new
+
+        static ['new'](...args: never[]): any;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof WebGLRenderingContext.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WebGLRenderingContext.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof WebGLRenderingContext.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WebGLRenderingContext.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof WebGLRenderingContext.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<WebGLRenderingContext.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
         get_width(): number;
         get_height(): number;
         get_alpha(): boolean;
@@ -1909,24 +1909,6 @@ export namespace Gwebgl {
          * @param index
          */
         getStringi(name: number, index: number): string;
-        /**
-         * @param target
-         * @param variant
-         * @param usage
-         */
-        bufferData2(target: number, variant: GLib.Variant, usage: number): void;
-        /**
-         * @param target
-         * @param size
-         * @param usage
-         */
-        bufferDataSizeOnly2(target: number, size: number, usage: number): void;
-        /**
-         * @param target
-         * @param offset
-         * @param variant
-         */
-        bufferSubData2(target: number, offset: number, variant: GLib.Variant): void;
         get_width(): number;
         get_height(): number;
         get_alpha(): boolean;

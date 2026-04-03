@@ -100,15 +100,7 @@ export namespace Accounts {
     const MANAGER_INTERFACE: string;
     const MANAGER_OBJECT_PATH: string;
     const MANAGER_SERVICE_NAME: string;
-    /**
-     * Return the libaccounts-glib error domain.
-     * @returns the libaccounts-glib error domain.
-     */
     function accounts_error_quark(): GLib.Quark;
-    /**
-     * Return the libaccounts-glib error domain.
-     * @returns the libaccounts-glib error domain.
-     */
     function errors_quark(): GLib.Quark;
     /**
      * Frees the list `list`.
@@ -653,7 +645,7 @@ export namespace Accounts {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -708,7 +700,7 @@ export namespace Accounts {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -783,7 +775,7 @@ export namespace Accounts {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1512,12 +1504,6 @@ export namespace Accounts {
          */
         list_services(): Service[];
         /**
-         * Get the list of services that are supported by `application`.
-         * @param application a {@link Accounts.Application}.
-         * @returns a {@link GLib.List} of {@link Accounts.Service} items representing all the services which are supported. Must be free'd with `ag_service_list_free()`.
-         */
-        list_services_by_application(application: Application): Service[];
-        /**
          * Gets a list of all the installed services where the service type name is
          * `service_type`.
          * @param service_type the type of the service.
@@ -1735,7 +1721,7 @@ export namespace Accounts {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1790,7 +1776,7 @@ export namespace Accounts {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1865,7 +1851,7 @@ export namespace Accounts {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2155,7 +2141,7 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      * @gir-type Struct
      */
-    abstract class Application {
+    class Application {
         static $gtype: GObject.GType<Application>;
 
         // Methods
@@ -2165,6 +2151,11 @@ export namespace Accounts {
          * @returns the description of `self`.
          */
         get_description(): string;
+        /**
+         * Get the `GDesktopAppInfo` of the application.
+         * @returns the `GDesktopAppInfo` for `self`, or `null` if failed.
+         */
+        get_desktop_app_info(): never;
         /**
          * Get the translation domain of the {@link Accounts.Application}.
          * @returns the translation domain.
@@ -2188,12 +2179,6 @@ export namespace Accounts {
          */
         ref(): Application;
         /**
-         * Check whether the application supports the given service.
-         * @param service an {@link Accounts.Service}.
-         * @returns `true` if `service` is supported, `false` otherwise.
-         */
-        supports_service(service: Service): boolean;
-        /**
          * Decrements the reference count of `self`. The item is destroyed when the
          * count gets to 0.
          */
@@ -2204,7 +2189,7 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      * @gir-type Struct
      */
-    abstract class AuthData {
+    class AuthData {
         static $gtype: GObject.GType<AuthData>;
 
         // Methods
@@ -2269,7 +2254,7 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      * @gir-type Struct
      */
-    abstract class Provider {
+    class Provider {
         static $gtype: GObject.GType<Provider>;
 
         // Static methods
@@ -2338,11 +2323,6 @@ export namespace Accounts {
          */
         get_single_account(): boolean;
         /**
-         * Get list of tags specified for the {@link Accounts.Provider}.
-         * @returns {@link GLib.List} of tags for `provider`. The list must be freed with `g_list_free()`. Entries are owned by the {@link Accounts.Provider} type and must not be free'd.
-         */
-        get_tags(): string[];
-        /**
          * Check whether `domain` is supported by this provider, by matching it with the
          * regex returned by `ag_provider_get_domains_regex()`.
          * If the provider does not define a regular expression to match the supported
@@ -2366,7 +2346,7 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      * @gir-type Struct
      */
-    abstract class Service {
+    class Service {
         static $gtype: GObject.GType<Service>;
 
         // Static methods
@@ -2451,7 +2431,7 @@ export namespace Accounts {
      * Opaque structure. Use related accessor functions.
      * @gir-type Struct
      */
-    abstract class ServiceType {
+    class ServiceType {
         static $gtype: GObject.GType<ServiceType>;
 
         // Static methods

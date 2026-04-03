@@ -2175,7 +2175,7 @@ export namespace IAnjuta {
              * @param source_search_directories List of directories to search for 		      source files.
              * @virtual
              */
-            vfunc_attach(pid: never, source_search_directories: string[]): boolean;
+            vfunc_attach(pid: number, source_search_directories: string[]): boolean;
             /**
              * Connect to a remote debugger and run program
              * @param server remote server
@@ -2399,7 +2399,7 @@ export namespace IAnjuta {
          * @param source_search_directories List of directories to search for 		      source files.
          * @returns TRUE if sucessful, other FALSE.
          */
-        attach(pid: never, source_search_directories: string[]): boolean;
+        attach(pid: number, source_search_directories: string[]): boolean;
         /**
          * Connect to a remote debugger and run program
          * @param server remote server
@@ -7647,7 +7647,7 @@ export namespace IAnjuta {
              * @param environment List of additional environment variables
              * @virtual
              */
-            vfunc_execute_command(directory: string, command: string, environment: string[]): never;
+            vfunc_execute_command(directory: string, command: string, environment: string[]): number;
         }
 
         // Constructor properties interface
@@ -7675,7 +7675,7 @@ export namespace IAnjuta {
          * @param environment List of additional environment variables
          * @returns Process ID
          */
-        execute_command(directory: string, command: string, environment: string[]): never;
+        execute_command(directory: string, command: string, environment: string[]): number;
     }
 
     export const Terminal: TerminalNamespace & {

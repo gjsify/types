@@ -274,6 +274,9 @@ export namespace EDataServerUI {
 
         // Properties
 
+        /**
+         * The GdkRGBA color to render
+         */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
 
@@ -549,7 +552,7 @@ export namespace EDataServerUI {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -604,7 +607,7 @@ export namespace EDataServerUI {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -679,7 +682,7 @@ export namespace EDataServerUI {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1031,26 +1034,6 @@ export namespace EDataServerUI {
         // Methods
 
         /**
-         * Completes an ongoing credentials prompt on idle, by finishing the `async_result`.
-         * This function is meant to be used by an {@link EDataServerUI.CredentialsPrompterImpl} implementation.
-         * To actually finish the credentials prompt previously started with
-         * `e_credentials_prompter_prompt()`, the `e_credentials_prompter_prompt_finish()` should
-         * be called from the provided callback.
-         *
-         * Using `null` `credentials` will result in a G_IO_ERROR_CANCELLED error, if
-         * no other `error` is provided.
-         * @param async_result a {@link Gio.SimpleAsyncResult}
-         * @param source an {@link EDataServer.Source}, on which the prompt was started
-         * @param credentials credentials, as provided by a user, on `null`, when the prompt was cancelled
-         * @param error a resulting {@link GLib.Error}, or `null`
-         */
-        complete_prompt_call(
-            async_result: Gio.SimpleAsyncResult,
-            source: EDataServer.Source,
-            credentials: EDataServer.NamedParameters | null,
-            error: GLib.Error,
-        ): void;
-        /**
          * Returns, whether can respond to credential prompts automatically.
          * Default value is `true`.
          *
@@ -1364,7 +1347,7 @@ export namespace EDataServerUI {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1419,7 +1402,7 @@ export namespace EDataServerUI {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1494,7 +1477,7 @@ export namespace EDataServerUI {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2321,7 +2304,7 @@ export namespace EDataServerUI {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2376,7 +2359,7 @@ export namespace EDataServerUI {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2451,7 +2434,7 @@ export namespace EDataServerUI {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3023,7 +3006,7 @@ export namespace EDataServerUI {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3078,7 +3061,7 @@ export namespace EDataServerUI {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3153,7 +3136,7 @@ export namespace EDataServerUI {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3631,7 +3614,7 @@ export namespace EDataServerUI {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3686,7 +3669,7 @@ export namespace EDataServerUI {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3761,7 +3744,7 @@ export namespace EDataServerUI {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

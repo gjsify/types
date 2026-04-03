@@ -16,7 +16,6 @@ import type Gst from '@girs/gst-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type GstCodecParsers from '@girs/gstcodecparsers-1.0';
 
 export namespace GstCodecs {
     /**
@@ -462,19 +461,12 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new {@link GstCodecs.AV1Picture} is created.
          * Subclass can set implementation specific user data
-         * on the {@link GstCodecs.AV1Picture} via gst_av1_picture_set_user_data
+         * on the {@link GstCodecs.AV1Picture} via `gst_av1_picture_set_user_data()`
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.AV1Picture}
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: AV1Picture): Gst.FlowReturn;
-        /**
-         * Notifies subclass of SPS update
-         * @param seq_hdr a {@link GstCodecParsers.AV1SequenceHeaderOBU}
-         * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
-         * @virtual
-         */
-        vfunc_new_sequence(seq_hdr: GstCodecParsers.AV1SequenceHeaderOBU, max_dpb_size: number): Gst.FlowReturn;
         /**
          * Called with a {@link GstCodecs.AV1Picture} which is required to be outputted.
          * The {@link GstVideo.VideoCodecFrame} must be consumed by subclass.
@@ -610,7 +602,7 @@ export namespace GstCodecs {
         /**
          * Called when a new field picture is created for interlaced field picture.
          * Subclass can attach implementation specific user data on `second_field` via
-         * gst_h264_picture_set_user_data
+         * `gst_h264_picture_set_user_data()`
          * @param first_field the first field {@link GstCodecs.H264Picture} already decoded
          * @param second_field a {@link GstCodecs.H264Picture} for the second field
          * @virtual
@@ -619,19 +611,12 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new {@link GstCodecs.H264Picture} is created.
          * Subclass can set implementation specific user data
-         * on the {@link GstCodecs.H264Picture} via gst_h264_picture_set_user_data
+         * on the {@link GstCodecs.H264Picture} via `gst_h264_picture_set_user_data()`
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.H264Picture}
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: H264Picture): Gst.FlowReturn;
-        /**
-         * Notifies subclass of SPS update
-         * @param sps a {@link GstCodecParsers.H264SPS}
-         * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
-         * @virtual
-         */
-        vfunc_new_sequence(sps: GstCodecParsers.H264SPS, max_dpb_size: number): Gst.FlowReturn;
         /**
          * Called with a {@link GstCodecs.H264Picture} which is required to be outputted.
          * The {@link GstVideo.VideoCodecFrame} must be consumed by subclass.
@@ -763,19 +748,12 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new {@link GstCodecs.H265Picture} is created.
          * Subclass can set implementation specific user data
-         * on the {@link GstCodecs.H265Picture} via gst_h265_picture_set_user_data
+         * on the {@link GstCodecs.H265Picture} via `gst_h265_picture_set_user_data()`
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.H265Picture}
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: H265Picture): Gst.FlowReturn;
-        /**
-         * Notifies subclass of video sequence update
-         * @param sps a {@link GstCodecParsers.H265SPS}
-         * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
-         * @virtual
-         */
-        vfunc_new_sequence(sps: GstCodecParsers.H265SPS, max_dpb_size: number): Gst.FlowReturn;
         /**
          * @param frame
          * @param picture
@@ -802,135 +780,10 @@ export namespace GstCodecs {
          */
         get_picture(system_frame_number: number): H265Picture | null;
         /**
-         * Retrieve the extended SPS values attached to the given {@link GstCodecParsers.H265SPS}
-         * @param sps the {@link GstCodecParsers.H265SPS} matching the requested {@link GstCodecParsers.H265SPSEXT}
-         * @returns a {@link GstCodecParsers.H265SPSEXT} if successful, or `null` otherwise
-         */
-        get_sps_ext(sps: GstCodecParsers.H265SPS): GstCodecParsers.H265SPSEXT | null;
-        /**
          * Called to en/disable reference picture modification process.
          * @param process whether subclass is requiring reference picture modification process
          */
         set_process_ref_pic_lists(process: boolean): void;
-    }
-
-    namespace H266Decoder {
-        // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
-            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
-            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
-            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GstVideo.VideoDecoder.ConstructorProps {}
-    }
-
-    /**
-     * The opaque {@link GstCodecs.H266Decoder} data structure.
-     * @gir-type Class
-     * @since 1.26
-     */
-    abstract class H266Decoder extends GstVideo.VideoDecoder {
-        static $gtype: GObject.GType<H266Decoder>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: H266Decoder.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<H266Decoder.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof H266Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, H266Decoder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof H266Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, H266Decoder.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof H266Decoder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<H266Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Virtual methods
-
-        /**
-         * Provides per slice data with parsed slice header and required raw bitstream
-         * for subclass to decode it.
-         * @param picture a {@link GstCodecs.H266Picture}
-         * @param slice a {@link GstCodecs.H266Slice}
-         * @virtual
-         */
-        vfunc_decode_slice(picture: H266Picture, slice: H266Slice): Gst.FlowReturn;
-        /**
-         * Optional. Called per one {@link GstCodecs.H266Picture} to notify subclass to finish
-         * decoding process for the {@link GstCodecs.H266Picture}
-         * @param picture a {@link GstCodecs.H266Picture}
-         * @virtual
-         */
-        vfunc_end_picture(picture: H266Picture): Gst.FlowReturn;
-        /**
-         * Optional. Called by baseclass to query whether delaying output is
-         * preferred by subclass or not.
-         * @param live whether upstream is live or not
-         * @virtual
-         */
-        vfunc_get_preferred_output_delay(live: boolean): number;
-        /**
-         * Optional. Called whenever new {@link GstCodecs.H266Picture} is created.
-         * Subclass can set implementation specific user data
-         * on the {@link GstCodecs.H266Picture} via gst_h266_picture_set_user_data
-         * @param frame a {@link GstVideo.VideoCodecFrame}
-         * @param picture a {@link GstCodecs.H266Picture}
-         * @virtual
-         */
-        vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: H266Picture): Gst.FlowReturn;
-        /**
-         * Notifies subclass of video sequence update
-         * @param sps a {@link GstCodecParsers.H266SPS}
-         * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
-         * @virtual
-         */
-        vfunc_new_sequence(sps: GstCodecParsers.H266SPS, max_dpb_size: number): Gst.FlowReturn;
-        /**
-         * @param frame
-         * @param picture
-         * @virtual
-         */
-        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: H266Picture): Gst.FlowReturn;
-        /**
-         * Optional. Called per one {@link GstCodecs.H266Picture} to notify subclass to prepare
-         * decoding process for the {@link GstCodecs.H266Picture}
-         * @param picture a {@link GstCodecs.H266Picture}
-         * @param slice a {@link GstCodecs.H266Slice}
-         * @param dpb a {@link GstCodecs.H266Dpb}
-         * @virtual
-         */
-        vfunc_start_picture(picture: H266Picture, slice: H266Slice, dpb: H266Dpb): Gst.FlowReturn;
     }
 
     namespace Mpeg2Decoder {
@@ -1022,7 +875,7 @@ export namespace GstCodecs {
         /**
          * Called when a new field picture is created for interlaced field picture.
          * Subclass can attach implementation specific user data on `second_field` via
-         * gst_mpeg2_picture_set_user_data
+         * `gst_mpeg2_picture_set_user_data()`
          * @param first_field the first field {@link GstCodecs.Mpeg2Picture} already decoded
          * @param second_field a {@link GstCodecs.Mpeg2Picture} for the second field
          * @virtual
@@ -1031,28 +884,12 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new {@link GstCodecs.Mpeg2Picture} is created.
          * Subclass can set implementation specific user data
-         * on the {@link GstCodecs.Mpeg2Picture} via gst_mpeg2_picture_set_user_data
+         * on the {@link GstCodecs.Mpeg2Picture} via `gst_mpeg2_picture_set_user_data()`
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.Mpeg2Picture}
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: Mpeg2Picture): Gst.FlowReturn;
-        /**
-         * Notifies subclass of SPS update
-         * @param seq a {@link GstCodecParsers.MpegVideoSequenceHdr}
-         * @param seq_ext a {@link GstCodecParsers.MpegVideoSequenceExt}
-         * @param seq_display_ext
-         * @param seq_scalable_ext
-         * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
-         * @virtual
-         */
-        vfunc_new_sequence(
-            seq: GstCodecParsers.MpegVideoSequenceHdr,
-            seq_ext: GstCodecParsers.MpegVideoSequenceExt,
-            seq_display_ext: GstCodecParsers.MpegVideoSequenceDisplayExt,
-            seq_scalable_ext: GstCodecParsers.MpegVideoSequenceScalableExt,
-            max_dpb_size: number,
-        ): Gst.FlowReturn;
         /**
          * Called with a {@link GstCodecs.Mpeg2Picture} which is required to be outputted.
          * The {@link GstVideo.VideoCodecFrame} must be consumed by subclass.
@@ -1143,15 +980,6 @@ export namespace GstCodecs {
 
         /**
          * @param picture
-         * @param parser
-         * @virtual
-         */
-        vfunc_decode_picture(picture: Vp8Picture, parser: GstCodecParsers.Vp8Parser): Gst.FlowReturn;
-        /**
-         * Optional.
-         *                     Called per one {@link GstCodecs.Vp8Picture} to notify subclass to finish
-         *                     decoding process for the {@link GstCodecs.Vp8Picture}
-         * @param picture
          * @virtual
          */
         vfunc_end_picture(picture: Vp8Picture): Gst.FlowReturn;
@@ -1163,37 +991,18 @@ export namespace GstCodecs {
          */
         vfunc_get_preferred_output_delay(is_live: boolean): number;
         /**
-         * Optional.
-         *                     Called whenever new {@link GstCodecs.Vp8Picture} is created.
-         *                     Subclass can set implementation specific user data
-         *                     on the {@link GstCodecs.Vp8Picture} via gst_vp8_picture_set_user_data
          * @param frame
          * @param picture
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: Vp8Picture): Gst.FlowReturn;
         /**
-         * Notifies subclass of SPS update
-         * @param frame_hdr
-         * @param max_dpb_size
-         * @virtual
-         */
-        vfunc_new_sequence(frame_hdr: GstCodecParsers.Vp8FrameHdr, max_dpb_size: number): Gst.FlowReturn;
-        /**
-         * Called with a {@link GstCodecs.Vp8Picture} which is required to be outputted.
-         *                     Subclass can retrieve parent {@link GstVideo.VideoCodecFrame} by using
-         *                     `gst_video_decoder_get_frame()` with system_frame_number
-         *                     and the {@link GstVideo.VideoCodecFrame} must be consumed by subclass via
-         *                     gst_video_decoder_{finish,drop,release}_frame().
          * @param frame
          * @param picture
          * @virtual
          */
         vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: Vp8Picture): Gst.FlowReturn;
         /**
-         * Optional.
-         *                     Called per one {@link GstCodecs.Vp8Picture} to notify subclass to prepare
-         *                     decoding process for the {@link GstCodecs.Vp8Picture}
          * @param picture
          * @virtual
          */
@@ -1304,7 +1113,7 @@ export namespace GstCodecs {
         /**
          * Optional. Called whenever new {@link GstCodecs.Vp9Picture} is created.
          * Subclass can set implementation specific user data on the {@link GstCodecs.Vp9Picture}
-         * via gst_vp9_picture_set_user_data
+         * via `gst_vp9_picture_set_user_data()`
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.Vp9Picture}
          * @virtual
@@ -1389,41 +1198,15 @@ export namespace GstCodecs {
         constructor(properties?: Partial<{}>);
 
         static ['new'](): AV1Picture;
-    }
-
-    /**
-     * @gir-type Struct
-     * @since 1.20
-     */
-    class AV1Tile {
-        static $gtype: GObject.GType<AV1Tile>;
-
-        // Fields
-
-        tile_group: GstCodecParsers.AV1TileGroupOBU;
-    }
-
-    /**
-     * Base struct for coded picture representation
-     * @gir-type Struct
-     * @since 1.24
-     */
-    class CodecPicture {
-        static $gtype: GObject.GType<CodecPicture>;
 
         // Methods
 
         /**
          * Gets private data set on the picture via
-         * `gst_codec_picture_set_user_data()` previously.
+         * `gst_av1_picture_set_user_data()` previously.
          * @returns The previously set user_data
          */
         get_user_data(): any | null;
-        /**
-         * Sets `discont_state` to `picture`
-         * @param discont_state a {@link GstVideo.VideoCodecState}
-         */
-        set_discont_state(discont_state?: GstVideo.VideoCodecState | null): void;
         /**
          * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
          * the picture is freed.
@@ -1433,6 +1216,23 @@ export namespace GstCodecs {
          * @param user_data private data
          */
         set_user_data(user_data?: any | null): void;
+    }
+
+    /**
+     * @gir-type Struct
+     * @since 1.20
+     */
+    class AV1Tile {
+        static $gtype: GObject.GType<AV1Tile>;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                tile_group: unknown;
+                obu: unknown;
+            }>,
+        );
     }
 
     /**
@@ -1553,16 +1353,6 @@ export namespace GstCodecs {
          */
         num_ref_frames(): number;
         /**
-         * Perform "8.2.5.4 Adaptive memory control decoded reference picture marking process"
-         * @param ref_pic_marking a {@link GstCodecParsers.H264RefPicMarking}
-         * @param picture a {@link GstCodecs.H264Picture}
-         * @returns `true` if successful
-         */
-        perform_memory_management_control_operation(
-            ref_pic_marking: GstCodecParsers.H264RefPicMarking,
-            picture: H264Picture,
-        ): boolean;
-        /**
          * @param interlaced `true` if interlaced
          */
         set_interlaced(interlaced: boolean): void;
@@ -1594,6 +1384,24 @@ export namespace GstCodecs {
         constructor(properties?: Partial<{}>);
 
         static ['new'](): H264Picture;
+
+        // Methods
+
+        /**
+         * Gets private data set on the picture via
+         * `gst_h264_picture_set_user_data()` previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param user_data private data
+         */
+        set_user_data(user_data?: any | null): void;
     }
 
     /**
@@ -1602,17 +1410,12 @@ export namespace GstCodecs {
     class H264Slice {
         static $gtype: GObject.GType<H264Slice>;
 
-        // Fields
-
-        header: GstCodecParsers.H264SliceHdr;
-        nalu: GstCodecParsers.H264NalUnit;
-
         // Constructors
 
         constructor(
             properties?: Partial<{
-                header: GstCodecParsers.H264SliceHdr;
-                nalu: GstCodecParsers.H264NalUnit;
+                header: unknown;
+                nalu: unknown;
             }>,
         );
     }
@@ -1736,6 +1539,24 @@ export namespace GstCodecs {
         constructor(properties?: Partial<{}>);
 
         static ['new'](): H265Picture;
+
+        // Methods
+
+        /**
+         * Gets private data set on the picture via
+         * `gst_h265_picture_set_user_data()` previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param user_data private data
+         */
+        set_user_data(user_data?: any | null): void;
     }
 
     /**
@@ -1744,145 +1565,14 @@ export namespace GstCodecs {
     class H265Slice {
         static $gtype: GObject.GType<H265Slice>;
 
-        // Fields
-
-        header: GstCodecParsers.H265SliceHdr;
-        nalu: GstCodecParsers.H265NalUnit;
-
         // Constructors
 
         constructor(
             properties?: Partial<{
-                header: GstCodecParsers.H265SliceHdr;
-                nalu: GstCodecParsers.H265NalUnit;
+                header: unknown;
+                nalu: unknown;
             }>,
         );
-    }
-
-    /**
-     * @gir-type Alias
-     */
-    type H266DecoderClass = typeof H266Decoder;
-    /**
-     * @gir-type Struct
-     */
-    abstract class H266DecoderPrivate {
-        static $gtype: GObject.GType<H266DecoderPrivate>;
-    }
-
-    /**
-     * The {@link GstCodecs.H266Dpb} represents the dpb for decoding.
-     * @gir-type Struct
-     * @since 1.26
-     */
-    abstract class H266Dpb {
-        static $gtype: GObject.GType<H266Dpb>;
-
-        // Methods
-
-        /**
-         * Store the `picture` and perform increase pic_latency_cnt as defined in
-         * "C.5.2.3 Additional bumping" process
-         * @param picture a {@link GstCodecs.H266Picture}
-         */
-        add(picture: H266Picture): void;
-        /**
-         * Perform bumping process as defined in C.5.2.4 "Bumping" process.
-         * If `drain` is `true`, `dpb` will remove a {@link GstCodecs.H266Picture} from internal array
-         * so that returned {@link GstCodecs.H266Picture} could hold the last reference of it.
-         * @param drain whether draining or not
-         * @returns a {@link GstCodecs.H266Picture} which is needed to be outputted
-         */
-        bump(drain: boolean): H266Picture | null;
-        /**
-         * Clear all stored {@link GstCodecs.H266Picture}
-         */
-        clear(): void;
-        /**
-         * Delete unneeded pictures from dpb as defined in "C.5.2.2 Output and
-         * removal of pictures from the DPB".
-         */
-        delete_unused(): void;
-        /**
-         * Free the `dpb`
-         */
-        free(): void;
-        /**
-         * @returns the number of maximum pictures
-         */
-        get_max_num_pics(): number;
-        /**
-         * Find a picture which has matching poc
-         * @param poc a picture order count
-         * @returns a {@link GstCodecs.H266Picture}
-         */
-        get_picture_by_poc(poc: number): H266Picture | null;
-        /**
-         * Find a picture which has matching poc_lsb
-         * @param poc_lsb a picture order count lsb
-         * @returns a {@link GstCodecs.H266Picture}
-         */
-        get_picture_by_poc_lsb(poc_lsb: number): H266Picture | null;
-        /**
-         * @returns a {@link GLib.Array} of   {@link GstCodecs.H266Picture} stored in `dpb`
-         */
-        get_pictures_all(): H266Picture[];
-        /**
-         * @returns the length of stored dpb array
-         */
-        get_size(): number;
-        /**
-         * Mark all pictures are no needed for output
-         */
-        mark_all_non_output(): void;
-        /**
-         * Mark all pictures are not referenced
-         */
-        mark_all_non_ref(): void;
-        /**
-         * @param max_num_reorder_pics dpb_max_num_reorder_pics[HighestTid]
-         * @param max_latency_increase MaxLatencyPictures[HighestTid]
-         * @param max_dec_pic_buffering dpb_max_dec_pic_buffering_minus1[HighestTid] + 1   or zero if this shouldn't be used for bumping decision.
-         * @returns `true` if bumping is required
-         */
-        needs_bump(max_num_reorder_pics: number, max_latency_increase: number, max_dec_pic_buffering: number): boolean;
-        /**
-         * @returns The number of referenced pictures in dpb.
-         */
-        num_ref_pictures(): number;
-        /**
-         * Set the number of maximum allowed pictures to store
-         * @param max_num_pics the maximum number of picture
-         */
-        set_max_num_pics(max_num_pics: number): void;
-    }
-
-    /**
-     * The {@link GstCodecs.H266Picture} represents a picture for decoding.
-     * @gir-type Struct
-     * @since 1.26
-     */
-    class H266Picture {
-        static $gtype: GObject.GType<H266Picture>;
-
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
-
-        static ['new'](): H266Picture;
-    }
-
-    /**
-     * The {@link GstCodecs.H266Slice} represents a slice for decoding.
-     * @gir-type Struct
-     * @since 1.26
-     */
-    class H266Slice {
-        static $gtype: GObject.GType<H266Slice>;
-
-        // Fields
-
-        nalu: GstCodecParsers.H266NalUnit;
     }
 
     /**
@@ -1946,6 +1636,24 @@ export namespace GstCodecs {
         constructor(properties?: Partial<{}>);
 
         static ['new'](): Mpeg2Picture;
+
+        // Methods
+
+        /**
+         * Gets private data set on the picture via
+         * `gst_mpeg2_picture_set_user_data()` previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param user_data private data
+         */
+        set_user_data(user_data?: any | null): void;
     }
 
     /**
@@ -1982,6 +1690,24 @@ export namespace GstCodecs {
         constructor(properties?: Partial<{}>);
 
         static ['new'](): Vp8Picture;
+
+        // Methods
+
+        /**
+         * Gets private data set on the picture via
+         * `gst_vp8_picture_set_user_data()` previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param user_data private data
+         */
+        set_user_data(user_data?: any | null): void;
     }
 
     /**
@@ -2145,6 +1871,24 @@ export namespace GstCodecs {
         constructor(properties?: Partial<{}>);
 
         static ['new'](): Vp9Picture;
+
+        // Methods
+
+        /**
+         * Gets private data set on the picture via
+         * `gst_vp9_picture_set_user_data()` previously.
+         * @returns The previously set user_data
+         */
+        get_user_data(): any | null;
+        /**
+         * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
+         * the picture is freed.
+         *
+         * If a `user_data` was previously set, then the previous set `notify` will be called
+         * before the `user_data` is replaced.
+         * @param user_data private data
+         */
+        set_user_data(user_data?: any | null): void;
     }
 
     /**
@@ -2239,33 +1983,6 @@ export namespace GstCodecs {
          * Frees `parser`.
          */
         free(): void;
-        /**
-         * Parses the compressed information in the VP9 bitstream contained in `data`,
-         * and fills in `header` with the parsed values.
-         * The `size` argument represent the whole frame size.
-         * @param header The {@link GstCodecs.Vp9FrameHeader} to fill
-         * @param data The data to parse
-         * @param size The size of the `data` to parse
-         * @returns a {@link GstCodecParsers.Vp9ParserResult}
-         */
-        parse_compressed_frame_header(
-            header: Vp9FrameHeader,
-            data: number,
-            size: number,
-        ): GstCodecParsers.Vp9ParserResult;
-        /**
-         * Parses the VP9 bitstream contained in `data`, and fills in `header`
-         * with the information. The `size` argument represent the whole frame size.
-         * @param header The {@link GstCodecs.Vp9FrameHeader} to fill
-         * @param data The data to parse
-         * @param size The size of the `data` to parse
-         * @returns a {@link GstCodecParsers.Vp9ParserResult}
-         */
-        parse_uncompressed_frame_header(
-            header: Vp9FrameHeader,
-            data: number,
-            size: number,
-        ): GstCodecParsers.Vp9ParserResult;
     }
 
     /**

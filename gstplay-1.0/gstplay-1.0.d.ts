@@ -86,28 +86,6 @@ export namespace GstPlay {
     /**
      * @gir-type Enum
      */
-    export namespace PlayLoop {
-        export const $gtype: GObject.GType<PlayLoop>;
-    }
-
-    /**
-     * @gir-type Enum
-     * @since 1.28
-     */
-    enum PlayLoop {
-        /**
-         * Don't loop.
-         */
-        NONE,
-        /**
-         * Loop over the current track.
-         */
-        TRACK,
-    }
-
-    /**
-     * @gir-type Enum
-     */
     export namespace PlayMessage {
         export const $gtype: GObject.GType<PlayMessage>;
     }
@@ -248,107 +226,49 @@ export namespace GstPlay {
      */
     function play_error_quark(): GLib.Quark;
     /**
-     * @param loop a {@link GstPlay.PlayLoop}
-     * @returns a string with the name of the loop.
-     * @since 1.28
-     */
-    function play_loop_get_name(loop: PlayLoop | null): string;
-    /**
      * @param message_type a {@link GstPlay.PlayMessage}
      * @returns a string with the name of the message.
      * @since 1.20
      */
     function play_message_get_name(message_type: PlayMessage | null): string;
     /**
-     * Reads the stream ID the play message `msg` applies to, if any.
-     * @param msg A {@link Gst.Message}
-     * @returns The stream ID this message applies to
-     * @since 1.26
-     */
-    function play_message_get_stream_id(msg: Gst.Message): string | null;
-    /**
-     * Reads the URI the play message `msg` applies to.
-     * @param msg A {@link Gst.Message}
-     * @returns The URI this message applies to
-     * @since 1.26
-     */
-    function play_message_get_uri(msg: Gst.Message): string;
-    /**
-     * Parse the given buffering `msg` and extract the corresponding value
-     * @param msg A {@link Gst.Message}
-     * @since 1.26
-     */
-    function play_message_parse_buffering(msg: Gst.Message): number;
-    /**
-     * Parse the given buffering `msg` and extract the corresponding value
+     * Parse the given buffering-percent `msg` and extract the corresponding value
      * @param msg A {@link Gst.Message}
      * @since 1.20
-     * @deprecated since 1.26: Use `gst_play_message_parse_buffering()`.
      */
     function play_message_parse_buffering_percent(msg: Gst.Message): number;
     /**
-     * Parse the given duration-changed `msg` and extract the corresponding {@link Gst.ClockTime}
-     * @param msg A {@link Gst.Message}
-     * @since 1.26
-     */
-    function play_message_parse_duration_changed(msg: Gst.Message): Gst.ClockTime | null;
-    /**
-     * Parse the given duration-changed `msg` and extract the corresponding {@link Gst.ClockTime}
+     * Parse the given duration `msg` and extract the corresponding {@link Gst.ClockTime}
      * @param msg A {@link Gst.Message}
      * @since 1.20
-     * @deprecated since 1.26: Use `gst_play_message_parse_duration_changed()`.
      */
     function play_message_parse_duration_updated(msg: Gst.Message): Gst.ClockTime | null;
     /**
-     * Parse the given error `msg` and extract the corresponding {@link GLib.Error}.
-     *
-     * Since 1.26 the details will always contain the URI this refers to in an
-     * "uri" field of type string, and (if known) the string "stream-id" it is
-     * referring to.
+     * Parse the given error `msg` and extract the corresponding {@link GLib.Error}
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function play_message_parse_error(msg: Gst.Message): [GLib.Error | null, Gst.Structure | null];
     /**
-     * Parses missing plugin descriptions and installer details from a
-     * GST_PLAY_ERROR_MISSING_PLUGIN error message.
-     *
-     * Both arrays will have the same length, and strings at the same index
-     * correspond to each other.
-     *
-     * The installer details can be passed to `gst_install_plugins_sync()` or
-     * `gst_install_plugins_async()`.
-     * @param msg A {@link Gst.Message}
-     * @returns `true` if the message contained a missing-plugin error.
-     * @since 1.26
-     */
-    function play_message_parse_error_missing_plugin(msg: Gst.Message): [boolean, string[] | null, string[] | null];
-    /**
-     * Parse the given media-info-updated `msg` and extract the corresponding media information
+     * Parse the given `msg` and extract the corresponding media information
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function play_message_parse_media_info_updated(msg: Gst.Message): PlayMediaInfo | null;
     /**
-     * Parse the given mute-changed `msg` and extract the corresponding audio muted state
+     * Parse the given `msg` and extract the corresponding audio muted state
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function play_message_parse_muted_changed(msg: Gst.Message): boolean;
     /**
-     * Parse the given position-updated `msg` and extract the corresponding {@link Gst.ClockTime}
+     * Parse the given position `msg` and extract the corresponding {@link Gst.ClockTime}
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function play_message_parse_position_updated(msg: Gst.Message): Gst.ClockTime | null;
     /**
-     * Parse the given seek-done `msg` and extract the corresponding {@link Gst.ClockTime}
-     * @param msg A {@link Gst.Message}
-     * @since 1.26
-     */
-    function play_message_parse_seek_done(msg: Gst.Message): Gst.ClockTime | null;
-    /**
-     * Parse the given state-changed `msg` and extract the corresponding {@link GstPlay.PlayState}
+     * Parse the given state `msg` and extract the corresponding {@link GstPlay.PlayState}
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
@@ -360,47 +280,23 @@ export namespace GstPlay {
      */
     function play_message_parse_type(msg: Gst.Message): PlayMessage | null;
     /**
-     * Parse the given uri-loaded `msg` and extract the corresponding value
-     * @param msg A {@link Gst.Message}
-     * @since 1.26
-     */
-    function play_message_parse_uri_loaded(msg: Gst.Message): string;
-    /**
-     * Parse the given video-dimensions-changed `msg` and extract the corresponding video dimensions
+     * Parse the given `msg` and extract the corresponding video dimensions
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function play_message_parse_video_dimensions_changed(msg: Gst.Message): [number, number];
     /**
-     * Parse the given volume-changed `msg` and extract the corresponding audio volume
+     * Parse the given `msg` and extract the corresponding audio volume
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function play_message_parse_volume_changed(msg: Gst.Message): number;
     /**
-     * Parse the given warning `msg` and extract the corresponding {@link GLib.Error}.
-     *
-     * Since 1.26 the details will always contain the URI this refers to in an
-     * "uri" field of type string, and (if known) the string "stream-id" it is
-     * referring to.
+     * Parse the given error `msg` and extract the corresponding {@link GLib.Error} warning
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function play_message_parse_warning(msg: Gst.Message): [GLib.Error | null, Gst.Structure | null];
-    /**
-     * Parses missing plugin descriptions and installer details from a
-     * GST_PLAY_ERROR_MISSING_PLUGIN warning message.
-     *
-     * Both arrays will have the same length, and strings at the same index
-     * correspond to each other.
-     *
-     * The installer details can be passed to `gst_install_plugins_sync()` or
-     * `gst_install_plugins_async()`.
-     * @param msg A {@link Gst.Message}
-     * @returns `true` if the message contained a missing-plugin error.
-     * @since 1.26
-     */
-    function play_message_parse_warning_missing_plugin(msg: Gst.Message): [boolean, string[] | null, string[] | null];
     /**
      * Gets a string representing the given state.
      * @param state a {@link GstPlay.PlayState}
@@ -465,39 +361,6 @@ export namespace GstPlay {
     }
 
     /**
-     * The goal of the GstPlay library is to ease the integration of multimedia
-     * playback features in applications. Thus, if you need to build a media player
-     * from the ground-up, GstPlay provides the features you will most likely need.
-     *
-     * An example player is available in gst-examples/playback/player/gst-play/.
-     *
-     * Internally the GstPlay makes use of the `playbin3` element. The legacy
-     * `playbin2` can be selected if the `GST_PLAY_USE_PLAYBIN3=0` environment
-     * variable has been set.
-     *
-     * **Important note**: If your application relies on the GstBus to get
-     * notifications from GstPlay, you need to add some explicit clean-up code in
-     * order to prevent the GstPlay object from leaking. See below for the details.
-     * If you use the GstPlaySignalAdapter, no special clean-up is required.
-     *
-     * When the GstPlaySignalAdapter is not used, the GstBus owned by GstPlay should
-     * be set to flushing state before any attempt to drop the last reference of the
-     * GstPlay object. An example in C:
-     *
-     * ```c
-     * ...
-     * GstBus *bus = gst_play_get_message_bus (player);
-     * gst_bus_set_flushing (bus, TRUE);
-     * gst_object_unref (bus);
-     * gst_object_unref (player);
-     * ```
-     *
-     * The messages managed by the player contain a reference to itself, and if the
-     * bus watch is just removed together with dropping the player then the bus will
-     * simply keep them around forever (and the bus never goes away because the
-     * player has a strong reference to it, so there's a reference cycle as long as
-     * there are messages). Setting the bus to flushing state forces it to get rid
-     * of its queued messages, thus breaking any possible reference cycle.
      * @gir-type Class
      * @since 1.20
      */
@@ -624,14 +487,6 @@ export namespace GstPlay {
         /**
          * @param config a {@link GstPlay.Play} configuration
          */
-        static config_get_loop(config: Gst.Structure): PlayLoop;
-        /**
-         * @param config a {@link GstPlay.Play} configuration
-         */
-        static config_get_pipeline_dump_in_error_details(config: Gst.Structure): boolean;
-        /**
-         * @param config a {@link GstPlay.Play} configuration
-         */
         static config_get_position_update_interval(config: Gst.Structure): number;
         /**
          * @param config a {@link GstPlay.Play} configuration
@@ -644,26 +499,8 @@ export namespace GstPlay {
          */
         static config_get_user_agent(config: Gst.Structure): string | null;
         /**
-         * Sets the looping mode.
-         *
-         * Looping is disabled by default.
-         * @param config a {@link GstPlay.Play} configuration
-         * @param loop {@link GstPlay.PlayLoop}
-         */
-        static config_set_loop(config: Gst.Structure, loop: PlayLoop): void;
-        /**
-         * When enabled, the error message emitted by {@link GstPlay.Play} will include a pipeline
-         * dump (in Graphviz DOT format) in the error details {@link Gst.Structure}. The field
-         * name is `pipeline-dump`.
-         *
-         * This option is disabled by default.
-         * @param config a {@link GstPlay.Play} configuration
-         * @param value Include pipeline dumps in error details, or not.
-         */
-        static config_set_pipeline_dump_in_error_details(config: Gst.Structure, value: boolean): void;
-        /**
-         * Set desired interval in milliseconds between two position-updated messages.
-         * Pass 0 to stop updating the position.
+         * set desired interval in milliseconds between two position-updated messages.
+         * pass 0 to stop updating the position.
          * @param config a {@link GstPlay.Play} configuration
          * @param interval interval in ms
          */
@@ -805,7 +642,7 @@ export namespace GstPlay {
          */
         get_rate(): number;
         /**
-         * Current subtitle URI
+         * current subtitle URI
          * @returns URI of the current external subtitle.   `g_free()` after usage.
          */
         get_subtitle_uri(): string | null;
@@ -821,7 +658,7 @@ export namespace GstPlay {
         get_uri(): string | null;
         /**
          * Get a snapshot of the currently selected video stream, if any. The format can be
-         * selected with `format` and optional configuration is possible with `config`.
+         * selected with `format` and optional configuration is possible with `config`
          * Currently supported settings are:
          * - width, height of type G_TYPE_INT
          * - pixel-aspect-ratio of type GST_TYPE_FRACTION
@@ -866,11 +703,6 @@ export namespace GstPlay {
          */
         set_audio_track_enabled(enabled: boolean): void;
         /**
-         * @param stream_id stream id
-         * @returns `true` or `false` Sets the audio track `stream_id`.
-         */
-        set_audio_track_id(stream_id?: string | null): boolean;
-        /**
          * Sets audio-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
          */
@@ -884,7 +716,7 @@ export namespace GstPlay {
         set_color_balance(type: PlayColorBalanceType | null, value: number): void;
         /**
          * Set the configuration of the play. If the play is already configured, and
-         * the configuration hasn't changed, this function will return `true`. If the
+         * the configuration haven't change, this function will return `true`. If the
          * play is not in the GST_PLAY_STATE_STOPPED, this method will return `false`
          * and active configuration will remain.
          *
@@ -929,11 +761,6 @@ export namespace GstPlay {
          */
         set_subtitle_track_enabled(enabled: boolean): void;
         /**
-         * @param stream_id stream id
-         * @returns `true` or `false` Sets the subtitle track `stream_id`.
-         */
-        set_subtitle_track_id(stream_id?: string | null): boolean;
-        /**
          * Sets the external subtitle URI. This should be combined with a call to
          * gst_play_set_subtitle_track_enabled(`play`, TRUE) so the subtitles are actually
          * rendered.
@@ -945,17 +772,6 @@ export namespace GstPlay {
          * @param offset `gint64` in nanoseconds
          */
         set_subtitle_video_offset(offset: number): void;
-        /**
-         * @param audio_stream_id audio stream id
-         * @param video_stream_id video stream id
-         * @param subtitle_stream_id subtitle stream id
-         * @returns `true` or `false` Sets the selected track stream ids. Setting `null` as stream id disables the corresponding track.
-         */
-        set_track_ids(
-            audio_stream_id?: string | null,
-            video_stream_id?: string | null,
-            subtitle_stream_id?: string | null,
-        ): boolean;
         /**
          * Sets the next URI to play.
          * @param uri next URI to play.
@@ -972,13 +788,8 @@ export namespace GstPlay {
          */
         set_video_track_enabled(enabled: boolean): void;
         /**
-         * @param stream_id stream id
-         * @returns `true` or `false` Sets the video track `stream_id`.
-         */
-        set_video_track_id(stream_id?: string | null): boolean;
-        /**
          * @param name visualization element obtained from `gst_play_visualizations_get`()
-         * @returns `true` if the visualization was set correctly. Otherwise, `false`.
+         * @returns `true` if the visualizations was set correctly. Otherwise, `false`.
          */
         set_visualization(name?: string | null): boolean;
         /**
@@ -1415,11 +1226,6 @@ export namespace GstPlay {
          */
         get_index(): number;
         /**
-         * A string stream id identifying this {@link GstPlay.PlayStreamInfo}.
-         * @returns stream id string.
-         */
-        get_stream_id(): string;
-        /**
          * Function to return human readable name for the stream type
          * of the given `info` (ex: "audio", "video", "subtitle")
          * @returns a human readable name
@@ -1791,7 +1597,7 @@ export namespace GstPlay {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1846,7 +1652,7 @@ export namespace GstPlay {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1921,7 +1727,7 @@ export namespace GstPlay {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

@@ -603,7 +603,7 @@ export namespace GdkWayland {
          * have transparency, black otherwise.)
          *
          * This function always returns a valid pointer, but it will return a
-         * pointer to a “nil” surface if `other` is already in an error state
+         * pointer to a &#x201C;nil&#x201D; surface if `other` is already in an error state
          * or any other error occurs.
          * @param content the content for the new surface
          * @param width width of the new surface
@@ -621,7 +621,7 @@ export namespace GdkWayland {
          * decrements `surface`'s reference count.
          *
          * The window system resources for all children of `surface` are also
-         * destroyed, but the children’s reference counts are not decremented.
+         * destroyed, but the children&#x2019;s reference counts are not decremented.
          *
          * Note that a surface will not be destroyed automatically when its
          * reference count reaches zero. You must call this function yourself
@@ -676,8 +676,8 @@ export namespace GdkWayland {
         /**
          * Returns the height of the given `surface`.
          *
-         * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * Surface size is reported in &#x201D;application pixels&#x201D;, not
+         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
          * @returns The height of `surface`
          */
         get_height(): number;
@@ -722,8 +722,8 @@ export namespace GdkWayland {
         /**
          * Returns the width of the given `surface`.
          *
-         * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * Surface size is reported in &#x201D;application pixels&#x201D;, not
+         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
          * @returns The width of `surface`
          */
         get_width(): number;
@@ -732,7 +732,7 @@ export namespace GdkWayland {
          *
          * For toplevel surfaces, withdraws them, so they will no longer be
          * known to the window manager; for all surfaces, unmaps them, so
-         * they won’t be displayed. Normally done automatically as
+         * they won&#x2019;t be displayed. Normally done automatically as
          * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
          */
         hide(): void;
@@ -790,7 +790,7 @@ export namespace GdkWayland {
          * An input region is typically used with RGBA surfaces. The alpha
          * channel of the surface defines which pixels are invisible and
          * allows for nicely antialiased borders, and the input region
-         * controls where the surface is “clickable”.
+         * controls where the surface is &#x201C;clickable&#x201D;.
          *
          * Use {@link Gdk.Display.supports_input_shapes} to find out if
          * a particular backend supports input regions.
@@ -1310,7 +1310,7 @@ export namespace GdkWayland {
         /**
          * Begins an interactive resize operation.
          *
-         * You might use this function to implement a “window resize grip.”
+         * You might use this function to implement a &#x201C;window resize grip.&#x201D;
          * @param edge the edge or corner from which the drag is started
          * @param device the device used for the operation
          * @param button the button being used to drag, or 0 for a keyboard-initiated drag
@@ -1488,7 +1488,7 @@ export namespace GdkWayland {
          * on `parent` and keep `surface` above `parent`.
          *
          * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
-         * if you’re using [GtkWindow](../gtk4/class.Window.html).
+         * if you&#x2019;re using [GtkWindow](../gtk4/class.Window.html).
          * @param parent another toplevel {@link Gdk.Surface}
          */
         set_transient_for(parent: Gdk.Surface): void;
@@ -1551,7 +1551,7 @@ export namespace GdkWayland {
          * have transparency, black otherwise.)
          *
          * This function always returns a valid pointer, but it will return a
-         * pointer to a “nil” surface if `other` is already in an error state
+         * pointer to a &#x201C;nil&#x201D; surface if `other` is already in an error state
          * or any other error occurs.
          * @param content the content for the new surface
          * @param width width of the new surface
@@ -1569,7 +1569,7 @@ export namespace GdkWayland {
          * decrements `surface`'s reference count.
          *
          * The window system resources for all children of `surface` are also
-         * destroyed, but the children’s reference counts are not decremented.
+         * destroyed, but the children&#x2019;s reference counts are not decremented.
          *
          * Note that a surface will not be destroyed automatically when its
          * reference count reaches zero. You must call this function yourself
@@ -1624,8 +1624,8 @@ export namespace GdkWayland {
         /**
          * Returns the height of the given `surface`.
          *
-         * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * Surface size is reported in &#x201D;application pixels&#x201D;, not
+         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
          * @returns The height of `surface`
          */
         get_height(): number;
@@ -1670,8 +1670,8 @@ export namespace GdkWayland {
         /**
          * Returns the width of the given `surface`.
          *
-         * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * Surface size is reported in &#x201D;application pixels&#x201D;, not
+         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
          * @returns The width of `surface`
          */
         get_width(): number;
@@ -1680,7 +1680,7 @@ export namespace GdkWayland {
          *
          * For toplevel surfaces, withdraws them, so they will no longer be
          * known to the window manager; for all surfaces, unmaps them, so
-         * they won’t be displayed. Normally done automatically as
+         * they won&#x2019;t be displayed. Normally done automatically as
          * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
          */
         hide(): void;
@@ -1738,7 +1738,7 @@ export namespace GdkWayland {
          * An input region is typically used with RGBA surfaces. The alpha
          * channel of the surface defines which pixels are invisible and
          * allows for nicely antialiased borders, and the input region
-         * controls where the surface is “clickable”.
+         * controls where the surface is &#x201C;clickable&#x201D;.
          *
          * Use {@link Gdk.Display.supports_input_shapes} to find out if
          * a particular backend supports input regions.

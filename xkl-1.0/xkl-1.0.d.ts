@@ -104,13 +104,13 @@ export namespace Xkl {
      * @gir-type Callback
      */
     interface ConfigItemProcessFunc {
-        (config: ConfigRegistry, item: ConfigItem, data?: any | null): void;
+        (config: ConfigRegistry, item: ConfigItem, data: any): void;
     }
     /**
      * @gir-type Callback
      */
     interface TwoConfigItemsProcessFunc {
-        (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data?: any | null): void;
+        (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data: any): void;
     }
     /**
      * @gir-type Flags
@@ -739,8 +739,8 @@ export namespace Xkl {
             return_value: GObject.Value | any,
             n_param_values: number,
             param_values: GObject.Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any,
+            marshal_data: any,
         ): void;
         /**
          * @param closure
@@ -755,8 +755,8 @@ export namespace Xkl {
             return_value: GObject.Value | any,
             n_param_values: number,
             param_values: GObject.Value | any,
-            invocation_hint?: any | null,
-            marshal_data?: any | null,
+            invocation_hint: any,
+            marshal_data: any,
         ): void;
         /**
          * Get the instance of the XklEngine. Within a process, there is always once instance.

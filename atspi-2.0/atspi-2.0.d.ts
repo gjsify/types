@@ -366,35 +366,6 @@ export namespace Atspi {
     /**
      * @gir-type Enum
      */
-    export namespace Live {
-        export const $gtype: GObject.GType<Live>;
-    }
-
-    /**
-     * Enumeration used to indicate a type of live region and how assertive it
-     * should be in terms of speaking notifications. Currently, this is only used
-     * for "announcement" events, but it may be used for additional purposes
-     * in the future.
-     * @gir-type Enum
-     */
-    enum Live {
-        /**
-         * No live region.
-         */
-        NONE,
-        /**
-         * This live region should be considered polite.
-         */
-        POLITE,
-        /**
-         * This live region should be considered assertive.
-         */
-        ASSERTIVE,
-    }
-
-    /**
-     * @gir-type Enum
-     */
     export namespace LocaleType {
         export const $gtype: GObject.GType<LocaleType>;
     }
@@ -480,10 +451,6 @@ export namespace Atspi {
          */
         META3,
         /**
-         * Alias for META3.
-         */
-        SUPER,
-        /**
          * A symbolic meta key name that is mapped by AT-SPI
          * to the appropriate META value, for the convenience of the client.
          */
@@ -501,12 +468,12 @@ export namespace Atspi {
      * {@link Atspi.RelationType} specifies a relationship between objects
      * (possibly one-to-many
      * or many-to-one) outside of the normal parent/child hierarchical
-     * relationship. It allows better semantic identification of how objects
+     * relationship. It allows better semantic       identification of how objects
      * are associated with one another.       For instance the
      * `ATSPI_RELATION_LABELLED_BY`
-     * relationship may be used to identify labelling information that should
+     * relationship may be used to identify labelling information       that should
      * accompany the accessible name property when presenting an object's content or
-     * identity to the end user.  Similarly,
+     * identity       to the end user.  Similarly,
      * `ATSPI_RELATION_CONTROLLER_FOR` can be used
      * to further specify the context in which a valuator is useful, and/or the
      * other UI components which are directly effected by user interactions with
@@ -636,33 +603,35 @@ export namespace Atspi {
          */
         DESCRIBED_BY,
         /**
-         * Reciprocal of {@link Atspi.RelationType.DETAILS_FOR}. Indicates that this object has a
-         * detailed or extended description, the contents of which can be found in the
-         * target object(s). This relation type is most appropriate for information
-         * that is sufficiently lengthy as to make navigation to the container of that
-         * information desirable. For less verbose information suitable for
-         * announcement only, see {@link Atspi.RelationType.DESCRIBED_BY}. If the detailed
-         * information describes an error condition, {@link Atspi.RelationType.ERROR_FOR} should
-         * be used instead.
+         * Reciprocal of {@link Atspi.RelationType.DETAILS_FOR}. Indicates
+         * that this object has a detailed or extended description, the contents of
+         * which can be found in the target object(s). This relation type is most
+         * appropriate for information that is sufficiently lengthy as to make
+         * navigation to the container of that information desirable. For less verbose
+         * information suitable for announcement only, see {@link Atspi.RelationType.DESCRIBED_BY}.
+         * If the detailed information describes an error condition,
+         * {@link Atspi.RelationType.ERROR_FOR} should be used instead. `Since`: 2.26.
          */
         DETAILS,
         /**
-         * Reciprocal of {@link Atspi.RelationType.DETAILS}. Indicates that this object provides a
-         * detailed or extended description about the target object(s). See also
-         * {@link Atspi.RelationType.DESCRIPTION_FOR} and {@link Atspi.RelationType.ERROR_FOR}.
+         * Reciprocal of {@link Atspi.RelationType.DETAILS}. Indicates
+         * that this object provides a detailed or extended description about the target
+         * object(s). See also {@link Atspi.RelationType.DESCRIPTION_FOR} and
+         * {@link Atspi.RelationType.ERROR_FOR}. `Since`: 2.26.
          */
         DETAILS_FOR,
         /**
-         * Reciprocal of {@link Atspi.RelationType.ERROR_FOR}. Indicates that this object has one
-         * or more errors, the nature of which is described in the contents of the
-         * target object(s). Objects that have this relation type should also contain
-         * {@link Atspi.StateType.INVALID_ENTRY} in their {@link Atspi.StateSet}.
+         * Reciprocal of {@link Atspi.RelationType.ERROR_FOR}.
+         * Indicates that this object has one or more errors, the nature of which is
+         * described in the contents of the target object(s). Objects that have this
+         * relation type should also contain {@link Atspi.StateType.INVALID_ENTRY} in their
+         * {@link Atspi.StateSet}. `Since`: 2.26.
          */
         ERROR_MESSAGE,
         /**
-         * Reciprocal of {@link Atspi.RelationType.ERROR_MESSAGE}. Indicates that this object
-         * contains an error message describing an invalid condition in the target
-         * object(s).
+         * Reciprocal of {@link Atspi.RelationType.ERROR_MESSAGE}.
+         * Indicates that this object contains an error message describing an invalid
+         * condition in the target object(s). `Since`: 2.26.
          */
         ERROR_FOR,
         /**
@@ -720,7 +689,7 @@ export namespace Atspi {
         CANVAS,
         /**
          * A choice that can be checked or unchecked and
-         * provides a separate indicator for the current state.
+         * provides a separate       indicator for the current state.
          */
         CHECK_BOX,
         /**
@@ -746,7 +715,7 @@ export namespace Atspi {
          */
         DATE_EDITOR,
         /**
-         * An inconifed internal frame within a DESKTOP_FRAME.
+         * An inconifed internal frame within a DESKTOP_PANE.
          */
         DESKTOP_ICON,
         /**
@@ -769,14 +738,14 @@ export namespace Atspi {
          */
         DIRECTORY_PANE,
         /**
-         * An object used for drawing custom user interface
-         * elements.
-         */
-        DRAWING_AREA,
-        /**
          * A specialized dialog that displays the files in
          * the directory and lets the user select a file, browse a different
          * directory, or specify a filename.
+         */
+        DRAWING_AREA,
+        /**
+         * An object used for drawing custom user interface
+         * elements.
          */
         FILE_CHOOSER,
         /**
@@ -821,9 +790,8 @@ export namespace Atspi {
          */
         INTERNAL_FRAME,
         /**
-         * For text views, see `ATSPI_ROLE_TEXT`. For generic containers, see
-         * `ATSPI_ROLE_PANEL`. For objects whose role is not known by the implementor,
-         * see `ATSPI_ROLE_UNKNOWN`.
+         * An object used to present an icon or short string in an
+         * interface.
          */
         LABEL,
         /**
@@ -895,7 +863,7 @@ export namespace Atspi {
          * An object the user can manipulate to tell the
          * application to do something.
          */
-        BUTTON,
+        PUSH_BUTTON,
         /**
          * A specialized check box that will cause other
          * radio buttons in the same group to become unchecked when this one is
@@ -927,7 +895,7 @@ export namespace Atspi {
          * a large amount of information. `ATSPI_ROLE_SCROLL_PANE` objects are usually
          * accompanied by `ATSPI_ROLE_SCROLL_BAR` controllers, on which the
          * `ATSPI_RELATION_CONTROLLER_FOR` and `ATSPI_RELATION_CONTROLLED_BY`
-         * reciprocal relations are set. See `atspi_get_relation_set`.
+         * reciprocal relations are set. See  `atspi_get_relation_set`.
          */
         SCROLL_PANE,
         /**
@@ -937,13 +905,14 @@ export namespace Atspi {
         SEPARATOR,
         /**
          * An object that allows the user to select from a bounded
-         * range.  Unlike `ATSPI_ROLE_SCROLL_BAR`, `ATSPI_ROLE_SLIDER` objects need not control
-         * 'viewport'-like objects.
+         * range.
          */
         SLIDER,
         /**
          * An object which allows one of a set of choices to
-         * be selected, and which displays the current choice.
+         * be selected, and which displays the current choice.  Unlike
+         * `ATSPI_ROLE_SCROLL_BAR`, `ATSPI_ROLE_SLIDER` objects need not control
+         * 'viewport'-like objects.
          */
         SPIN_BUTTON,
         /**
@@ -1066,7 +1035,7 @@ export namespace Atspi {
         /**
          * An object corresponding to the toplevel accessible
          * of an application, which may contain `ATSPI_ROLE_FRAME` objects or other
-         * accessible objects. Children of objects with the #ATSPI_ROLE_DESKTOP_FRAME role are generally
+         * accessible objects. Children of `AccessibleDesktop` objects  are generally
          * `ATSPI_ROLE_APPLICATION` objects.
          */
         APPLICATION,
@@ -1099,7 +1068,7 @@ export namespace Atspi {
         /**
          * The object is a graphical depiction of quantitative data.
          * It may contain multiple subelements whose attributes and/or description
-         * may be queried to obtain both the quantitative data and information about
+         * may be queried to obtain both the  quantitative data and information about
          * how the data is being presented. The `ATSPI_LABELLED_BY` relation is
          * particularly important in interpreting objects of this type, as is the
          * accessible description property. See `ATSPI_ROLE_CAPTION`.
@@ -1114,7 +1083,7 @@ export namespace Atspi {
         /**
          * The object is a visual frame or container which
          * contains a view of document content. {@link Atspi.Document} frames may occur within
-         * another {@link Atspi.Document} instance, in which case the second document may be
+         * another {@link Atspi.Document} instance, in which case the second  document may be
          * said to be embedded in the containing instance.  HTML frames are often
          * ATSPI_ROLE_DOCUMENT_FRAME:  Either this object, or a singleton descendant,
          * should implement the {@link Atspi.Document} interface.
@@ -1123,7 +1092,7 @@ export namespace Atspi {
         /**
          * The object serves as a heading for content which
          * follows it in a document. The 'heading level' of the heading, if
-         * available,  may be obtained by querying the object's attributes.
+         * availabe,  may be obtained by       querying the object's attributes.
          */
         HEADING,
         /**
@@ -1243,70 +1212,81 @@ export namespace Atspi {
          */
         INFO_BAR,
         /**
-         * A bar that serves as a level indicator to, for instance, show the strength
-         * of a password or the state of a battery.
+         * A bar that serves as a level indicator to, for
+         * instance, show the strength of a password or the state of a battery. `Since`: 2.8
          */
         LEVEL_BAR,
         /**
-         * A bar that serves as the title of a window or a dialog.
+         * A bar that serves as the title of a window or a
+         *  dialog. `Since`: 2.12
          */
         TITLE_BAR,
         /**
-         * An object which contains a text section that is quoted from another source.
+         * An object which contains a text section
+         *  that is quoted from another source.  `Since`: 2.12
          */
         BLOCK_QUOTE,
         /**
-         * An object which represents an audio element.
+         * An object which represents an audio
+         *  element. `Since`: 2.12
          */
         AUDIO,
         /**
-         * An object which represents a video element.
+         * An object which represents a video
+         *  element. `Since`: 2.12
          */
         VIDEO,
         /**
-         * A definition of a term or concept.
+         * A definition of a term or concept. `Since`: 2.12
          */
         DEFINITION,
         /**
-         * A section of a page that consists of a composition that forms an
-         * independent part of a document, page, or site. Examples: A blog entry, a
-         * news story, a forum post.
+         * A section of a page that consists of a
+         *  composition that forms an independent part of a document, page, or
+         *  site. Examples: A blog entry, a news story, a forum post. `Since`:
+         *  2.12
          */
         ARTICLE,
         /**
-         * A region of a web page intended as a navigational landmark. This is
-         * designed to allow Assistive Technologies to provide quick navigation among
-         * key regions within a document.
+         * A region of a web page intended as a
+         *  navigational landmark. This is designed to allow Assistive
+         *  Technologies to provide quick navigation among key regions within a
+         *  document. `Since`: 2.12
          */
         LANDMARK,
         /**
-         * A text widget or container holding log content, such as chat history and
-         * error logs. In this role there is a relationship between the arrival of new
-         * items in the log and the reading order. The log contains a meaningful
-         * sequence and new information is added only to the end of the log, not at
-         * arbitrary points.
+         * A text widget or container holding log content, such
+         *  as chat history and error logs. In this role there is a
+         *  relationship between the arrival of new items in the log and the
+         *  reading order. The log contains a meaningful sequence and new
+         *  information is added only to the end of the log, not at arbitrary
+         *  points. `Since`: 2.12
          */
         LOG,
         /**
-         * A container where non-essential information changes frequently. Common
-         * usages of marquee include stock tickers and ad banners. The primary
-         * difference between a marquee and a log is that logs usually have a
-         * meaningful order or sequence of important content changes.
+         * A container where non-essential information
+         *  changes frequently. Common usages of marquee include stock tickers
+         *  and ad banners. The primary difference between a marquee and a log
+         *  is that logs usually have a meaningful order or sequence of
+         *  important content changes. `Since`: 2.12
          */
         MARQUEE,
         /**
-         * A text widget or container that holds a mathematical expression.
+         * A text widget or container that holds a mathematical
+         *  expression. `Since`: 2.12
          */
         MATH,
         /**
-         * A widget whose purpose is to display a rating,  such as the number of stars
-         * associated with a song in a media player. Objects of this role should also
-         * implement AtspiValue.
+         * A widget whose purpose is to display a rating,
+         *  such as the number of stars associated with a song in a media
+         *  player. Objects of this role should also implement
+         *  AtspiValue. `Since`: 2.12
          */
         RATING,
         /**
-         * An object containing a numerical counter which indicates an amount of
-         * elapsed time from a start point, or the time remaining until an end point.
+         * An object containing a numerical counter which
+         *  indicates an amount of elapsed time from a start point, or the time
+         *  remaining until an end point. `Since`: 2.12
          */
         TIMER,
         /**
@@ -1320,87 +1300,87 @@ export namespace Atspi {
          *  object which has an accessible relation pointing to another object. The
          *  displayed information, as a general rule, should be exposed through the
          *  accessible name of the object. For labels which describe another widget, see
+         *  `ATSPI_ROLE_LABEL`. For text views, see `ATSPI_ROLE_TEXT`. For generic
+         *  containers, see `ATSPI_ROLE_PANEL`. For objects whose role is not known by the
+         *  implementor, see `ATSPI_ROLE_UNKNOWN`. `Since`: 2.16.
          */
         STATIC,
         /**
-         * An object that represents a mathematical fraction.
+         * An object that represents a mathematical fraction. `Since`: 2.16.
          */
         MATH_FRACTION,
         /**
-         * An object that represents a mathematical expression displayed with a
-         * radical.
+         * An object that represents a mathematical expression
+         *  displayed with a radical. `Since`: 2.16.
          */
         MATH_ROOT,
         /**
-         * An object that contains text that is displayed as a subscript.
+         * An object that contains text that is displayed as a
+         *  subscript. `Since`: 2.16.
          */
         SUBSCRIPT,
         /**
-         * An object that contains text that is displayed as a superscript.
+         * An object that contains text that is displayed as a
+         *  superscript. `Since`: 2.16.
          */
         SUPERSCRIPT,
         /**
-         * An object that represents a list of term-value groups. A term-value group
-         * represents an individual description and consist of one or more names
-         * (`ATSPI_ROLE_DESCRIPTION_TERM`) followed by one or more values
-         * (`ATSPI_ROLE_DESCRIPTION_VALUE`). For each list, there should not be more
-         * than one group with the same term name.
+         * An object that represents a list of term-value
+         *  groups. A term-value group represents an individual description and consist
+         *  of one or more names (`ATSPI_ROLE_DESCRIPTION_TERM`) followed by one or more
+         *  values (`ATSPI_ROLE_DESCRIPTION_VALUE`). For each list, there should not be
+         *  more than one group with the same term name. `Since`: 2.26.
          */
         DESCRIPTION_LIST,
         /**
-         * An object that represents a term or phrase with a corresponding definition.
+         * An object that represents a term or phrase
+         *  with a corresponding definition. `Since`: 2.26.
          */
         DESCRIPTION_TERM,
         /**
-         * An object that represents the description,  definition, or value of a term.
+         * An object that represents the description,
+         *  definition, or value of a term. `Since`: 2.26.
          */
         DESCRIPTION_VALUE,
         /**
-         * An object that contains the text of a footnote.
+         * An object that contains the text of a footnote. `Since`: 2.26.
          */
         FOOTNOTE,
         /**
-         * Content previously deleted or proposed to be deleted, e.g. in revision
-         * history or a content view providing suggestions from reviewers.
+         * Content previously deleted or proposed to be
+         * deleted, e.g. in revision history or a content view providing suggestions
+         * from reviewers. `Since`: 2.34.
          */
         CONTENT_DELETION,
         /**
-         * Content previously inserted or proposed to be inserted, e.g. in revision
-         * history or a content view providing suggestions from reviewers.
+         * Content previously inserted or proposed to be
+         * inserted, e.g. in revision history or a content view providing suggestions
+         * from reviewers. `Since`: 2.34.
          */
         CONTENT_INSERTION,
         /**
-         * A run of content that is marked or highlighted, such as for reference
-         * purposes, or to call it out as having a special purpose. If the marked
-         * content has an associated section in the document elaborating on the reason
-         * for the mark, then {@link Atspi.RelationType.DETAILS} should be used on the mark to
-         * point to that associated section. In addition, the reciprocal relation
+         * A run of content that is marked or highlighted, such as for
+         * reference purposes, or to call it out as having a special purpose. If the
+         * marked content has an associated section in the document elaborating on the
+         * reason for the mark, then {@link Atspi.RelationType.DETAILS} should be used on the mark
+         * to point to that associated section. In addition, the reciprocal relation
          * {@link Atspi.RelationType.DETAILS_FOR} should be used on the associated content section
-         * to point back to the mark.
+         * to point back to the mark. `Since`: 2.36.
          */
         MARK,
         /**
-         * A container for content that is called out as a proposed change from the
-         * current version of the document, such as by a reviewer of the content. An
-         * object with this role should include children with
-         * {@link Atspi.Role.CONTENT_DELETION} and/or {@link Atspi.Role.CONTENT_INSERTION}, in any
-         * order, to indicate what the actual change is.
+         * A container for content that is called out as a proposed
+         * change from the current version of the document, such as by a reviewer of the
+         * content. This role should include either {@link Atspi.Role.CONTENT_DELETION} and/or
+         * {@link Atspi.Role.CONTENT_INSERTION} children, in any order, to indicate what the
+         * actual change is. `Since`: 2.36
          */
         SUGGESTION,
         /**
-         * A specialized push button to open a menu.
-         */
-        PUSH_BUTTON_MENU,
-        /**
-         * A switch that can be toggled on/off.
-         */
-        SWITCH,
-        /**
          * Not a valid role, used for finding end of
-         * enumeration.
+         *  enumeration.
          */
         LAST_DEFINED,
-        PUSH_BUTTON,
     }
 
     /**
@@ -1461,7 +1441,7 @@ export namespace Atspi {
 
     /**
      * Enumeration used by various interfaces indicating every possible state
-     * an {@link Atspi.Accessible} object can assume.
+     * an `AtspiAccesible` object can assume.
      * @gir-type Enum
      */
     enum StateType {
@@ -1487,7 +1467,7 @@ export namespace Atspi {
         ARMED,
         /**
          * Indicates the current object is busy, i.e. onscreen
-         * representation is in the process of changing, or the object is
+         * representation is in the process of changing, or       the object is
          * temporarily unavailable for interaction due to activity already in progress.
          */
         BUSY,
@@ -1501,7 +1481,7 @@ export namespace Atspi {
         COLLAPSED,
         /**
          * Indicates that this object no longer has a valid
-         * backing widget (for instance, if its peer object has been destroyed).
+         * backing widget        (for instance, if its peer object has been destroyed).
          */
         DEFUNCT,
         /**
@@ -1586,7 +1566,7 @@ export namespace Atspi {
         /**
          * Indicates this object is the child of an object
          * that allows its children to be selected and that this child is one of
-         * those children that can be selected.
+         * those children       that can be selected.
          */
         SELECTABLE,
         /**
@@ -1739,20 +1719,23 @@ export namespace Atspi {
          */
         VISITED,
         /**
-         * Indicates this object has the potential to be checked, such as a checkbox
-         * or toggle-able table cell.
+         * Indicates this object has the potential to
+         *  be checked, such as a checkbox or toggle-able table cell. `Since`:
+         *  2.12
          */
         CHECKABLE,
         /**
-         * Indicates that the object has a popup context menu or sub-level menu
-         * which may or may not be showing. This means that activation renders
-         * conditional content. Note that ordinary tooltips are not considered
-         * popups in this context.
+         * Indicates that the object has a popup
+         * context menu or sub-level menu which may or may not be
+         * showing. This means that activation renders conditional content.
+         * Note that ordinary tooltips are not considered popups in this
+         * context. `Since`: 2.12
          */
         HAS_POPUP,
         /**
-         * Indicates that an object which is ENABLED and SENSITIVE has a value
-         * which can be read, but not modified, by the user.
+         * Indicates that an object which is ENABLED and
+         * SENSITIVE has a value which can be read, but not modified, by the
+         * user. `Since`: 2.16
          */
         READ_ONLY,
         /**
@@ -1912,39 +1895,9 @@ export namespace Atspi {
     }
 
     /**
-     * The version of the Application D-Bus interface.
-     * @since 2.59
-     */
-    const ACCESSIBLE_VERSION: number;
-    /**
-     * The version of the Action D-Bus interface.
-     * @since 2.59
-     */
-    const ACTION_VERSION: number;
-    /**
-     * The version of the Application D-Bus interface.
-     * @since 2.59
-     */
-    const APPLICATION_VERSION: number;
-    /**
-     * The version of the Cache D-Bus interface.
-     * @since 2.59
-     */
-    const CACHE_VERSION: number;
-    /**
-     * The version of the Collection D-Bus interface.
-     * @since 2.59
-     */
-    const COLLECTION_VERSION: number;
-    /**
      * One higher than the highest valid value of {@link Atspi.ComponentLayer}.
      */
     const COMPONENTLAYER_COUNT: number;
-    /**
-     * The version of the Component D-Bus interface.
-     * @since 2.59
-     */
-    const COMPONENT_VERSION: number;
     /**
      * One higher than the highest valid value of {@link Atspi.CoordType}.
      */
@@ -1966,8 +1919,6 @@ export namespace Atspi {
     const DBUS_INTERFACE_HYPERLINK: string;
     const DBUS_INTERFACE_HYPERTEXT: string;
     const DBUS_INTERFACE_IMAGE: string;
-    const DBUS_INTERFACE_KEYBOARD_MONITOR: string;
-    const DBUS_INTERFACE_POINTER_LOCATOR: string;
     const DBUS_INTERFACE_REGISTRY: string;
     const DBUS_INTERFACE_SELECTION: string;
     const DBUS_INTERFACE_SOCKET: string;
@@ -1975,60 +1926,16 @@ export namespace Atspi {
     const DBUS_INTERFACE_TABLE_CELL: string;
     const DBUS_INTERFACE_TEXT: string;
     const DBUS_INTERFACE_VALUE: string;
-    const DBUS_NAME_A11Y_MANAGER: string;
     const DBUS_NAME_REGISTRY: string;
-    const DBUS_PATH_A11Y_MANAGER: string;
     const DBUS_PATH_DEC: string;
     const DBUS_PATH_NULL: string;
     const DBUS_PATH_REGISTRY: string;
     const DBUS_PATH_ROOT: string;
     const DBUS_PATH_SCREEN_READER: string;
-    const DEVICE_A11Y_MANAGER_VIRTUAL_MOD_END: number;
-    const DEVICE_A11Y_MANAGER_VIRTUAL_MOD_START: number;
-    /**
-     * The version of the DeviceEventController D-Bus interface.
-     * @since 2.59
-     */
-    const DEVICE_EVENT_CONTROLLER_VERSION: number;
-    /**
-     * The version of the DeviceEventListener D-Bus interface.
-     * @since 2.59
-     */
-    const DEVICE_EVENT_LISTENER_VERSION: number;
-    /**
-     * The version of the Document D-Bus interface.
-     * @since 2.59
-     */
-    const DOCUMENT_VERSION: number;
-    /**
-     * The version of the EditableText D-Bus interface.
-     * @since 2.59
-     */
-    const EDITABLE_TEXT_VERSION: number;
     /**
      * One higher than the highest valid value of {@link Atspi.EventType}.
      */
     const EVENTTYPE_COUNT: number;
-    /**
-     * The version of the Event D-Bus interface.
-     * @since 2.59
-     */
-    const EVENT_VERSION: number;
-    /**
-     * The version of the Hyperlink D-Bus interface.
-     * @since 2.59
-     */
-    const HYPERLINK_VERSION: number;
-    /**
-     * The version of the Hypertext D-Bus interface.
-     * @since 2.59
-     */
-    const HYPERTEXT_VERSION: number;
-    /**
-     * The version of the Image D-Bus interface.
-     * @since 2.59
-     */
-    const IMAGE_VERSION: number;
     /**
      * One higher than the highest valid value of {@link Atspi.KeyEventType}.
      */
@@ -2042,16 +1949,10 @@ export namespace Atspi {
      */
     const LOCALE_TYPE_COUNT: number;
     const MATCHTYPES_COUNT: number;
-    const MAX_CHILDREN: number;
     /**
      * One higher than the highest valid value of {@link Atspi.ModifierType}.
      */
     const MODIFIERTYPE_COUNT: number;
-    /**
-     * The version of the Registry D-Bus interface.
-     * @since 2.59
-     */
-    const REGISTRY_VERSION: number;
     /**
      * One higher than the highest valid value of {@link Atspi.RelationType}.
      */
@@ -2065,16 +1966,6 @@ export namespace Atspi {
      */
     const SCROLLTYPE_COUNT: number;
     /**
-     * The version of the Selection D-Bus interface.
-     * @since 2.59
-     */
-    const SELECTION_VERSION: number;
-    /**
-     * The version of the Socket D-Bus interface.
-     * @since 2.59
-     */
-    const SOCKET_VERSION: number;
-    /**
      * One higher than the highest valid value of {@link Atspi.CollectionSortOrder}.
      */
     const SORTORDER_COUNT: number;
@@ -2082,16 +1973,6 @@ export namespace Atspi {
      * One higher than the highest valid value of {@link Atspi.StateType}.
      */
     const STATETYPE_COUNT: number;
-    /**
-     * The version of the TableCell D-Bus interface.
-     * @since 2.59
-     */
-    const TABLE_CELL_VERSION: number;
-    /**
-     * The version of the Table D-Bus interface.
-     * @since 2.59
-     */
-    const TABLE_VERSION: number;
     /**
      * One higher than the highest valid value of {@link Atspi.TextBoundaryType}.
      */
@@ -2101,20 +1982,10 @@ export namespace Atspi {
      */
     const TEXT_CLIP_TYPE_COUNT: number;
     /**
-     * The version of the Text D-Bus interface.
-     * @since 2.59
-     */
-    const TEXT_VERSION: number;
-    /**
      * One higher than the highest valid value of
      * #AtspiCollection_TreeTraversalType.
      */
     const TREETRAVERSALTYPE_COUNT: number;
-    /**
-     * The version of the Value D-Bus interface.
-     * @since 2.59
-     */
-    const VALUE_VERSION: number;
     /**
      * Removes a device event listener from the registry's listener queue,
      *            ceasing notification of events of the specified type.
@@ -2183,14 +2054,6 @@ export namespace Atspi {
      */
     function generate_mouse_event(x: number, y: number, name: string): boolean;
     /**
-     * Like atspi_generate_mouse_event, but asynchronous.
-     * @param x a `glong` indicating the screen x coordinate of the mouse event.
-     * @param y a `glong` indicating the screen y coordinate of the mouse event.
-     * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-     * @param callback a callback to be called when a reply is received. May be NULL.
-     */
-    function generate_mouse_event_async(x: number, y: number, name: string, callback: GenerateMouseEventCB): void;
-    /**
      * Gets the virtual desktop indicated by index `i`.
      * NOTE: currently multiple virtual desktops are not implemented;
      * as a consequence, any `i` value different from 0 will not return a
@@ -2219,11 +2082,6 @@ export namespace Atspi {
      */
     function get_desktop_list(): Accessible[];
     /**
-     * Returns the version of the AT-SPI library being used at runtime.
-     * @since 2.50
-     */
-    function get_version(): [number, number, number];
-    /**
      * Connects to the accessibility registry and initializes the SPI.
      * @returns 0 on success, 1 if already initialized, or an integer error code.
      */
@@ -2234,11 +2092,11 @@ export namespace Atspi {
      */
     function is_initialized(): boolean;
     /**
-     * This function does nothing and should not be called.
-     * @param listener
-     * @param event_types
-     * @param filter
-     * @returns Always returns `false`.
+     * Registers a listener for device events, for instance button events.
+     * @param listener a pointer to the {@link Atspi.DeviceListener} which requests             the events.
+     * @param event_types an {@link Atspi.DeviceEventMask} mask indicating which             types of key events are requested ({@link Atspi.KeyEventType.PRESSED}, etc.).
+     * @param filter Unused parameter.
+     * @returns `true` if successful, otherwise `false`.
      */
     function register_device_event_listener(
         listener: DeviceListener,
@@ -2268,13 +2126,8 @@ export namespace Atspi {
         sync_type: KeyListenerSyncType | null,
     ): boolean;
     /**
-     * Gets the localized description string describing the {@link Atspi.Role} `role`.
-     * @param role an {@link Atspi.Role} object to query.
-     * @returns the localized string describing the AtspiRole
-     */
-    function role_get_localized_name(role: Role | null): string;
-    /**
      * Gets a localizable string that indicates the name of an {@link Atspi.Role}.
+     * <em>DEPRECATED.</em>
      * @param role an {@link Atspi.Role} object to query.
      * @returns a localizable string name for an {@link Atspi.Role} enumerated type.
      */
@@ -2288,13 +2141,18 @@ export namespace Atspi {
      */
     function set_main_context(cnx: GLib.MainContext): void;
     /**
-     * Deprecated. This function no longer does anything and should not be used.
+     * Sets the reference window that will be used when atspi_generate_mouse_event
+     * is called. Coordinates will be assumed to be relative to this window. This
+     * is needed because, due to Wayland's security model, it is not currently
+     * possible to retrieve global coordinates.
+     * If NULL is passed, then AT-SPI will use the window that has focus at the
+     * time that atspi_generate_mouse_event is called.
      * @param accessible the {@link Atspi.Accessible} corresponding to the window to select.              should be a top-level window with a role of              ATSPI_ROLE_APPLICATION.
      */
     function set_reference_window(accessible: Accessible): void;
     /**
      * Set the timeout used for method calls. If this is not set explicitly,
-     * a default of 800 ms is used.
+     * a default of 0.8 ms is used.
      * Note that at-spi2-registryd currently uses a timeout of 3 seconds when
      * sending a keyboard event notification. This means that, if an AT makes
      * a call in response to the keyboard notification and the application
@@ -2337,12 +2195,6 @@ export namespace Atspi {
     /**
      * @gir-type Callback
      */
-    interface GenerateMouseEventCB {
-        (user_data?: any | null): void;
-    }
-    /**
-     * @gir-type Callback
-     */
     interface KeyCallback {
         (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void;
     }
@@ -2374,49 +2226,6 @@ export namespace Atspi {
     /**
      * @gir-type Flags
      */
-    export namespace DeviceCapability {
-        export const $gtype: GObject.GType<DeviceCapability>;
-    }
-
-    /**
-     * Enumeration used to query and enable device capabilities.
-     * @gir-type Flags
-     * @since 2.60
-     */
-    enum DeviceCapability {
-        /**
-         * The capability to monitor keystrokes.
-         */
-        KEYBOARD_MONITOR,
-        /**
-         * The capability to synthesize keystrokes.
-         */
-        KEYBOARD_SYNTH,
-        /**
-         * The capability to set key grabs.
-         */
-        KEYBOARD_GRAB,
-        /**
-         * The capability to monitor the location of the pointer.
-         */
-        POINTER_MONITOR,
-        /**
-         * The capability to synthesize pointer motion.
-         */
-        POINTER_SYNTH,
-        /**
-         * The capability to monitor touch presses.
-         */
-        TOUCH_MONITOR,
-        /**
-         * The capability to synthesize touch events.
-         */
-        TOUCH_SYNTH,
-    }
-
-    /**
-     * @gir-type Flags
-     */
     export namespace KeyListenerSyncType {
         export const $gtype: GObject.GType<KeyListenerSyncType>;
     }
@@ -2440,7 +2249,7 @@ export namespace Atspi {
         NOSYNC,
         /**
          * Events are delivered synchronously, before the
-         * currently focused application sees them.
+         * currently focussed application sees them.
          */
         SYNCHRONOUS,
         /**
@@ -2508,11 +2317,6 @@ export namespace Atspi {
     }
 
     /**
-     * The base interface which is implemented by all accessible objects.
-     *
-     * All objects support interfaces for querying their contained 'children'
-     * and position in the accessible-object hierarchy, whether or not they
-     * actually have children.
      * @gir-type Class
      */
     class Accessible
@@ -2602,10 +2406,6 @@ export namespace Atspi {
          */
         clear_cache(): void;
         /**
-         * Clears the cached information only for the given accessible.
-         */
-        clear_cache_single(): void;
-        /**
          * Gets the accessible id of the accessible.  This is not meant to be presented
          * to the user, but to be an id which is stable over application development.
          * Typically, this is the gtkbuilder id.
@@ -2616,7 +2416,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Action} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Action} interface          instance, or NULL if `obj` does not implement {@link Atspi.Action}.
          */
-        get_action(): Action;
+        get_action_iface(): Action;
         /**
          * Gets the {@link Atspi.Action} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Action} interface          instance, or NULL if `obj` does not implement {@link Atspi.Action}.
@@ -2665,7 +2465,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Collection} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Collection} interface          instance, or NULL if `obj` does not implement {@link Atspi.Collection}.
          */
-        get_collection(): Collection;
+        get_collection_iface(): Collection;
         /**
          * Gets the {@link Atspi.Collection} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Collection} interface          instance, or NULL if `obj` does not implement {@link Atspi.Collection}.
@@ -2675,7 +2475,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Component} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Component} interface          instance, or NULL if `obj` does not implement {@link Atspi.Component}.
          */
-        get_component(): Component;
+        get_component_iface(): Component;
         /**
          * Gets the {@link Atspi.Component} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Component} interface          instance, or NULL if `obj` does not implement {@link Atspi.Component}.
@@ -2690,7 +2490,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Document} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Document} interface          instance, or NULL if `obj` does not implement {@link Atspi.Document}.
          */
-        get_document(): Document;
+        get_document_iface(): Document;
         /**
          * Gets the {@link Atspi.Document} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Document} interface          instance, or NULL if `obj` does not implement {@link Atspi.Document}.
@@ -2700,19 +2500,12 @@ export namespace Atspi {
          * Gets the {@link Atspi.EditableText} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.EditableText} interface          instance, or NULL if `obj` does not implement {@link Atspi.EditableText}.
          */
-        get_editable_text(): EditableText;
+        get_editable_text_iface(): EditableText;
         /**
          * Gets the {@link Atspi.EditableText} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.EditableText} interface          instance, or NULL if `obj` does not implement {@link Atspi.EditableText}.
          */
         get_editable_text_iface(): EditableText;
-        /**
-         * Gets the help text associated with the accessible, if set. When this is
-         * present, it provides information that a screen reader can relay to the user
-         * to explain how to interact with the object.
-         * @returns a character string representing the help text for the {@link Atspi.Accessible} object or NULL on exception.
-         */
-        get_help_text(): string;
         /**
          * Gets the {@link Atspi.Hyperlink} interface for an {@link Atspi.Accessible}.
          * @returns the {@link Atspi.Hyperlink} object associated with          the given {@link Atspi.Accessible}, or NULL if not supported.
@@ -2722,7 +2515,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Hypertext} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Hypertext} interface          instance, or NULL if `obj` does not implement {@link Atspi.Hypertext}.
          */
-        get_hypertext(): Hypertext;
+        get_hypertext_iface(): Hypertext;
         /**
          * Gets the {@link Atspi.Hypertext} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Hypertext} interface          instance, or NULL if `obj` does not implement {@link Atspi.Hypertext}.
@@ -2738,7 +2531,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Image} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Image} interface instance, or          NULL if `obj` does not implement {@link Atspi.Image}.
          */
-        get_image(): Image;
+        get_image_iface(): Image;
         /**
          * Gets the {@link Atspi.Image} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Image} interface instance, or          NULL if `obj` does not implement {@link Atspi.Image}.
@@ -2804,12 +2597,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Selection} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Selection} interface          instance, or NULL if `obj` does not implement {@link Atspi.Selection}.
          */
-        get_selection(): Selection;
-        /**
-         * @param args
-         */
-        // Conflicted with Atspi.Text.get_selection
-        get_selection(...args: never[]): any;
+        get_selection_iface(): Selection;
         /**
          * Gets the {@link Atspi.Selection} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Selection} interface          instance, or NULL if `obj` does not implement {@link Atspi.Selection}.
@@ -2824,12 +2612,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Table} interface instance, or          NULL if `obj` does not implement {@link Atspi.Table}.
          */
-        get_table(): Table;
-        /**
-         * @param args
-         */
-        // Conflicted with Atspi.TableCell.get_table
-        get_table(...args: never[]): any;
+        get_table_iface(): Table;
         /**
          * Gets the {@link Atspi.TableCell} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.TableCell} interface instance,          or NULL if `obj` does not implement {@link Atspi.Table}.
@@ -2844,12 +2627,7 @@ export namespace Atspi {
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Text} interface instance, or          NULL if `obj` does not implement {@link Atspi.Text}.
          */
-        get_text(): Text;
-        /**
-         * @param args
-         */
-        // Conflicted with Atspi.Text.get_text
-        get_text(...args: never[]): any;
+        get_text_iface(): Text;
         /**
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Text} interface instance, or          NULL if `obj` does not implement {@link Atspi.Text}.
@@ -2871,95 +2649,12 @@ export namespace Atspi {
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Value} interface instance, or          NULL if `obj` does not implement {@link Atspi.Value}.
          */
-        get_value(): Value;
+        get_value_iface(): Value;
         /**
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Value} interface instance, or          NULL if `obj` does not implement {@link Atspi.Value}.
          */
         get_value_iface(): Value;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Action} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Action} interface,          `FALSE` otherwise.
-         */
-        is_action(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Application} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Application} interface,          `FALSE` otherwise.
-         */
-        is_application(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Collection} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Collection} interface,          `FALSE` otherwise.
-         */
-        is_collection(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements {@link Atspi.Component}.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Component} interface,          `FALSE` otherwise.
-         */
-        is_component(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Document} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Document} interface,          `FALSE` otherwise.
-         */
-        is_document(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.EditableText} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.EditableText} interface,          `FALSE` otherwise.
-         */
-        is_editable_text(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Hyperlink} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Hypertext} interface,          `FALSE` otherwise.
-         */
-        is_hyperlink(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Hypertext} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Hypertext} interface,          `FALSE` otherwise.
-         */
-        is_hypertext(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Image} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Image} interface,          `FALSE` otherwise.
-         */
-        is_image(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Selection} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Selection} interface,          `FALSE` otherwise.
-         */
-        is_selection(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Table} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Table} interface,          `FALSE` otherwise.
-         */
-        is_table(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.TableCell} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Table} interface,          `FALSE` otherwise.
-         */
-        is_table_cell(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Text} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Text} interface,          `FALSE` otherwise.
-         */
-        is_text(): boolean;
-        /**
-         * Query whether the specified {@link Atspi.Accessible} implements the
-         * {@link Atspi.Value} interface.
-         * @returns `TRUE` if `obj` implements the {@link Atspi.Value} interface,          `FALSE` otherwise.
-         */
-        is_value(): boolean;
         /**
          * Sets the type of data to cache for accessibles.
          * If this is not set for an application or is reset to ATSPI_CACHE_UNDEFINED,
@@ -3039,7 +2734,7 @@ export namespace Atspi {
          * @param rule An {@link Atspi.MatchRule} describing the match criteria.
          * @param sortby An {@link Atspi.CollectionSortOrder} specifying the way the results are to          be sorted.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of `TRUE`) or only the direct children (on case of `FALSE`).
+         * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule.
          */
         get_matches(
@@ -3056,7 +2751,7 @@ export namespace Atspi {
          * @param sortby An {@link Atspi.CollectionSortOrder} specifying the way the results are to          be sorted.
          * @param tree An {@link Atspi.CollectionTreeTraversalType} specifying restrictions on          the objects to be traversed.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of `TRUE`) or only the direct children (on case of `FALSE`).
+         * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule that preceed          `current_object`.
          */
         get_matches_from(
@@ -3076,7 +2771,7 @@ export namespace Atspi {
          * @param tree An {@link Atspi.CollectionTreeTraversalType} specifying restrictions on          the objects to be traversed.
          * @param limit_scope If `TRUE`, only descendants of `current_object`'s parent          will be returned. Otherwise (if `FALSE`), any accessible may be          returned if it would preceed `current_object` in a flattened          hierarchy.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of `TRUE`) or only the direct children (on case of `FALSE`).
+         * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule after          `current_object`.
          */
         get_matches_to(
@@ -3178,8 +2873,8 @@ export namespace Atspi {
         scroll_to_point(coords: CoordType | null, x: number, y: number): boolean;
         /**
          * Moves and resizes the specified component.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
@@ -3188,14 +2883,14 @@ export namespace Atspi {
         set_extents(x: number, y: number, width: number, height: number, ctype: CoordType | null): boolean;
         /**
          * Moves the component to the specified position.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns `TRUE` if successful; `FALSE` otherwise.
          */
         set_position(x: number, y: number, ctype: CoordType | null): boolean;
         /**
-         * Resizes the specified component to the given pixel dimensions.
+         * Resizes the specified component to the given coordinates.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @returns `TRUE` if successful; `FALSE` otherwise.
@@ -3229,21 +2924,6 @@ export namespace Atspi {
          * @returns a `gint` indicating the page count of an `AccessibleDocument` object.
          */
         get_page_count(): number;
-        /**
-         * Returns an array of AtspiTextSelections within this document.
-         * @returns a GArray of AtspiTextSelection structures representing the selection.
-         */
-        get_text_selections(): TextSelection[];
-        /**
-         * Makes 1 or more selections within this document denoted by the given
-         * array of AtspiTextSelections. Any existing physical selection (inside or
-         * outside this document) is replaced by the new selections. All objects within
-         * the given selection ranges must be descendants of this document. Otherwise
-         * FALSE will be returned.
-         * @param selections a GArray of AtspiTextSelections              to be selected.
-         * @returns TRUE if the selection was made successfully; FALSE otherwise.
-         */
-        set_text_selections(selections: TextSelection[]): boolean;
         /**
          * Copies text from an {@link Atspi.EditableText} object into the system clipboard.
          *
@@ -3371,11 +3051,11 @@ export namespace Atspi {
         deselect_child(child_index: number): boolean;
         /**
          * Removes a child from the selected children list of an {@link Atspi.Selection}.
-         *          Note that `selected_child_index` is the index in the
-         *          selected-children list, not the index in the parent container.
-         *          `selected_child_index` in this method and `child_index` in
-         *          `atspi_selection_select_child` are asymmetric.
-         * @param selected_child_index a `gint` indicating which of the selected children              of the {@link Atspi.Accessible} is to be deselected.
+         *          Note that `child_index` is the index in the selected-children list,
+         *          not the index in the parent container.  `selectedChildIndex` in this
+         *          method, and `child_index` in `atspi_selection_select_child`
+         *          are asymmetric.
+         * @param selected_child_index a `gint` indicating which of the selected children              of the {@link Atspi.Accessible} is to be selected.
          * @returns `TRUE` if the child was successfully deselected, `FALSE` otherwise.
          */
         deselect_selected_child(selected_child_index: number): boolean;
@@ -3665,6 +3345,11 @@ export namespace Atspi {
          */
         get_row_span(): number;
         /**
+         * Returns a reference to the accessible of the containing table.
+         * @returns the AtspiAccessible for the containing table.
+         */
+        get_table(): Accessible;
+        /**
          * Selects some text (adds a text selection) in an {@link Atspi.Text} object.
          * @param start_offset the starting offset of the desired new selection.
          * @param end_offset the offset of the first character after the new selection.
@@ -3690,6 +3375,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an {@link Atspi.Text}
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a `gint` indicating the offset from which the attribute        search is based.
          * @returns a {@link GLib.HashTable} describing the attributes at the given character offset.
          */
@@ -3775,6 +3461,12 @@ export namespace Atspi {
          */
         get_range_extents(start_offset: number, end_offset: number, type: CoordType | null): Rect;
         /**
+         * Gets the bounds of the `selection_num`-th active text selection for an
+         *         {@link Atspi.Text} object.
+         * @param selection_num a `gint` indicating which selection to query.
+         */
+        get_selection(selection_num: number): Range;
+        /**
          * Gets a portion of the text exposed through an {@link Atspi.Text} according to a given `offset`
          * and a specific `granularity`, along with the start and end offsets defining the
          * boundaries of such a portion of text.
@@ -3810,6 +3502,20 @@ export namespace Atspi {
          * @returns a newly allocated string containing the text at the `offset` bounded   by the specified `granularity`. Use `g_free()` to free the returned string.   Returns `null` if the offset is invalid or no implementation is available.
          */
         get_string_at_offset(offset: number, granularity: TextGranularity | null): TextRange;
+        /**
+         * Gets a range of text from an {@link Atspi.Text} object.  The number of bytes
+         *          in the returned string may exceed either end_offset or start_offset, since
+         *          UTF-8 is a variable-width encoding.
+         * @param start_offset a `gint` indicating the start of the desired text range.
+         * @param end_offset a `gint` indicating the first character past the desired range.
+         * @returns a text string containing characters from `start_offset`          to `end_offset`-1, inclusive, encoded as UTF-8.
+         */
+        get_text(start_offset: number, end_offset: number): string;
+        /**
+         * @param args
+         */
+        // Conflicted with Atspi.Value.get_text
+        get_text(...args: never[]): any;
         /**
          * Gets delimited text from an {@link Atspi.Text} object which follows a given
          *          text offset.
@@ -4003,7 +3709,7 @@ export namespace Atspi {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4058,7 +3764,7 @@ export namespace Atspi {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4133,7 +3839,7 @@ export namespace Atspi {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4367,11 +4073,6 @@ export namespace Atspi {
     }
 
     /**
-     * An interface identifying the root object associated
-     * with a running application.
-     *
-     * An interface identifying an object which is the root of the
-     * hierarchy associated with a running application.
      * @gir-type Class
      */
     class Application extends GObject.Object {
@@ -4395,7 +4096,6 @@ export namespace Atspi {
         toolkit_version: string;
         atspi_version: string;
         time_added: any;
-        pid: never;
 
         // Constructors
 
@@ -4427,32 +4127,11 @@ export namespace Atspi {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-            /**
-             * @signal
-             * @run-last
-             */
-            'key-pressed': (arg0: number, arg1: number, arg2: ModifierType, arg3: string) => void;
-            /**
-             * @signal
-             * @run-last
-             */
-            'key-released': (arg0: number, arg1: number, arg2: ModifierType, arg3: string) => void;
-            /**
-             * Signals that the pointer has moved.
-             * @signal
-             * @run-last
-             */
-            'pointer-moved': (arg0: Accessible, arg1: number, arg2: number) => void;
-            'notify::app-id': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            app_id: string;
-            appId: string;
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4460,17 +4139,6 @@ export namespace Atspi {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-
-        // Properties
-
-        /**
-         * @construct-only
-         */
-        get app_id(): string;
-        /**
-         * @construct-only
-         */
-        get appId(): string;
 
         /**
          * Compile-time signal type information.
@@ -4488,8 +4156,6 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): Device;
-
-        static new_full(app_id?: string | null): Device;
 
         // Signals
 
@@ -4518,35 +4184,7 @@ export namespace Atspi {
          * @param kd
          * @virtual
          */
-        vfunc_add_key_grab(kd: KeyDefinition): boolean;
-        /**
-         * Synthesizes a mouse event at a specific screen coordinate.
-         * Most AT clients should use the `AccessibleAction` interface when
-         * tempted to generate mouse events, rather than this method.
-         * Event names: b1p = button 1 press; b2r = button 2 release;
-         *              b3c = button 3 click; b2d = button 2 double-click;
-         *              abs = absolute motion; rel = relative motion.
-         * @param obj The {@link Atspi.Accessible} that should receive the click.
-         * @param x a `gint` indicating the x coordinate of the mouse event, relative to     `obj`..
-         * @param y a `gint` indicating the y coordinate of the mouse event, relative to     `obj`..
-         * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-         * @virtual
-         */
-        vfunc_generate_mouse_event(obj: Accessible, x: number, y: number, name: string): void;
-        /**
-         * Returns the capabilities currently enabled for this device.
-         * @virtual
-         */
-        vfunc_get_capabilities(): DeviceCapability;
-        /**
-         * Gets the modifier for a given keysym, if one exists. Does not create a new
-         * mapping. This function should be used when the intention is to query a
-         * locking modifier such as num lock via atspi_device_get_locked_modifiers,
-         * rather than to add key grabs.
-         * @param keysym the XKB keysym to map.
-         * @virtual
-         */
-        vfunc_get_keysym_modifier(keysym: number): number;
+        vfunc_add_key_grab(kd: KeyDefinition): void;
         /**
          * Returns the locked modifiers (ie, num lock, caps lock) associated with this
          * keyboard.
@@ -4554,7 +4192,7 @@ export namespace Atspi {
          */
         vfunc_get_locked_modifiers(): number;
         /**
-         * Gets the modifier for a given keycode, if one exists. Does not create a new
+         * Gets the modifier for a given keycode, if one exists. Does not creatt a new
          * mapping. This function should be used when the intention is to query a
          * locking modifier such as num lock via atspi_device_get_locked_modifiers,
          * rather than to add key grabs.
@@ -4569,19 +4207,6 @@ export namespace Atspi {
          * @virtual
          */
         vfunc_grab_keyboard(): boolean;
-        /**
-         * Maps the specified keysym to a modifier so that it can be used in
-         * conjunction with other keys to create a key grab. If the given keysym is
-         * already mapped, then this function will return the modifier that is
-         * currently mapped to the keysym, without doing anything else. Otherwise,
-         * it will use the last modifier that AT-SPI used to map a keysym. If no keys
-         * have yet been mapped using this device, then it will look for a modifier
-         * that is not currently being used. If no unused modifier can be found,
-         * then it will use the first modifier by default.
-         * @param keysym the XKB keysym to map.
-         * @virtual
-         */
-        vfunc_map_keysym_modifier(keysym: number): number;
         /**
          * Maps the specified key code to a modifier so that it can be used in
          * conjunction with other keys to create a key grab. If the given keycode is
@@ -4602,21 +4227,10 @@ export namespace Atspi {
          */
         vfunc_remove_key_grab(id: number): void;
         /**
-         * @param capabilities A bitmask specifying the capabilities that should be enabled. This replaces the existing set of enabled capabilities, so, if it excludes some capabilities that are currently enabled, then those capabilities may be disabled.
-         * @virtual
-         */
-        vfunc_set_capabilities(capabilities: DeviceCapability): DeviceCapability;
-        /**
          * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
          * @virtual
          */
         vfunc_ungrab_keyboard(): void;
-        /**
-         * Removes a mapped modifier from the given keysym.
-         * @param keysym the XKB keysym to unmap.
-         * @virtual
-         */
-        vfunc_unmap_keysym_modifier(keysym: number): void;
         /**
          * Removes a mapped modifier from the given keycode.
          * @param keycode the keycode to unmap.
@@ -4629,50 +4243,19 @@ export namespace Atspi {
         /**
          * @param kd a {@link Atspi.KeyDefinition} specifying the key code to grab.
          * @param callback the function to call when the            given key is pressed.
-         * @returns an identifier that can be later used to remove the grab, or 0 if the key/modifier combination could not be grabbed. Add a key grab for the given key/modifier combination.
+         * @returns an identifier that can be later used to remove the grab. Add a key grab for the given key/modifier combination.
          */
         add_key_grab(kd: KeyDefinition, callback?: KeyCallback | null): number;
         /**
          * Add a callback that will receive a notification whenever a key is
          * pressed or released.
-         * @param callback the   function to call when the given key is pressed.
+         * @param callback the function to call when the given key is            pressed.
          */
-        add_key_watcher(callback: KeyCallback): void;
-        clear_key_grabs(): void;
-        /**
-         * Synthesizes a mouse event at a specific screen coordinate.
-         * Most AT clients should use the `AccessibleAction` interface when
-         * tempted to generate mouse events, rather than this method.
-         * Event names: b1p = button 1 press; b2r = button 2 release;
-         *              b3c = button 3 click; b2d = button 2 double-click;
-         *              abs = absolute motion; rel = relative motion.
-         * @param obj The {@link Atspi.Accessible} that should receive the click.
-         * @param x a `gint` indicating the x coordinate of the mouse event, relative to     `obj`..
-         * @param y a `gint` indicating the y coordinate of the mouse event, relative to     `obj`..
-         * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
-         */
-        generate_mouse_event(obj: Accessible, x: number, y: number, name: string): void;
-        /**
-         * Returns the application ID of the device.
-         */
-        get_app_id(): string;
-        /**
-         * Returns the capabilities currently enabled for this device.
-         */
-        get_capabilities(): DeviceCapability;
+        add_key_watcher(callback?: KeyCallback | null): void;
         /**
          * @param id
          */
         get_grab_by_id(id: number): KeyDefinition;
-        /**
-         * Gets the modifier for a given keysym, if one exists. Does not create a new
-         * mapping. This function should be used when the intention is to query a
-         * locking modifier such as num lock via atspi_device_get_locked_modifiers,
-         * rather than to add key grabs.
-         * @param keysym the XKB keysym to map.
-         * @returns the modifier that is mapped to this keysym.
-         */
-        get_keysym_modifier(keysym: number): number;
         /**
          * Returns the locked modifiers (ie, num lock, caps lock) associated with this
          * keyboard.
@@ -4680,7 +4263,7 @@ export namespace Atspi {
          */
         get_locked_modifiers(): number;
         /**
-         * Gets the modifier for a given keycode, if one exists. Does not create a new
+         * Gets the modifier for a given keycode, if one exists. Does not creatt a new
          * mapping. This function should be used when the intention is to query a
          * locking modifier such as num lock via atspi_device_get_locked_modifiers,
          * rather than to add key grabs.
@@ -4695,19 +4278,6 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         grab_keyboard(): boolean;
-        /**
-         * Maps the specified keysym to a modifier so that it can be used in
-         * conjunction with other keys to create a key grab. If the given keysym is
-         * already mapped, then this function will return the modifier that is
-         * currently mapped to the keysym, without doing anything else. Otherwise,
-         * it will use the last modifier that AT-SPI used to map a keysym. If no keys
-         * have yet been mapped using this device, then it will look for a modifier
-         * that is not currently being used. If no unused modifier can be found,
-         * then it will use the first modifier by default.
-         * @param keysym the XKB keysym to map.
-         * @returns the modifier that is now mapped to this keysym. This return value can be passed to atspi_device_add_key_grab.
-         */
-        map_keysym_modifier(keysym: number): number;
         /**
          * Maps the specified key code to a modifier so that it can be used in
          * conjunction with other keys to create a key grab. If the given keycode is
@@ -4735,24 +4305,9 @@ export namespace Atspi {
          */
         remove_key_grab(id: number): void;
         /**
-         * Sets the application ID of the device.
-         * @param app_id the application ID.
-         */
-        set_app_id(app_id: string): void;
-        /**
-         * @param capabilities A bitmask specifying the capabilities that should be enabled. This replaces the existing set of enabled capabilities, so, if it excludes some capabilities that are currently enabled, then those capabilities may be disabled.
-         * @returns The new set of capabilities that are enabled. This may differ from the value passed in if the device does not support all of the requested capabilities.
-         */
-        set_capabilities(capabilities: DeviceCapability | null): DeviceCapability;
-        /**
          * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
          */
         ungrab_keyboard(): void;
-        /**
-         * Removes a mapped modifier from the given keysym.
-         * @param keysym the XKB keysym to unmap.
-         */
-        unmap_keysym_modifier(keysym: number): void;
         /**
          * Removes a mapped modifier from the given keycode.
          * @param keycode the keycode to unmap.
@@ -4760,69 +4315,9 @@ export namespace Atspi {
         unmap_modifier(keycode: number): void;
     }
 
-    namespace DeviceA11yManager {
-        // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {
-            'notify::app-id': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends Device.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class DeviceA11yManager extends Device {
-        static $gtype: GObject.GType<DeviceA11yManager>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: DeviceA11yManager.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<DeviceA11yManager.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static try_new(): DeviceA11yManager;
-
-        static try_new_full(app_id?: string | null): DeviceA11yManager;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof DeviceA11yManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceA11yManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceA11yManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceA11yManager.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof DeviceA11yManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceA11yManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-    }
-
     namespace DeviceLegacy {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {
-            'notify::app-id': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends Device.SignalSignatures {}
 
         // Constructor properties interface
 
@@ -4851,8 +4346,6 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceLegacy;
-
-        static new_full(app_id?: string | null): DeviceLegacy;
 
         // Signals
 
@@ -4911,7 +4404,7 @@ export namespace Atspi {
 
         _init(...args: any[]): void;
 
-        static ['new'](callback?: DeviceListenerCB | null): DeviceListener;
+        static ['new'](callback: DeviceListenerCB): DeviceListener;
 
         // Signals
 
@@ -4946,7 +4439,7 @@ export namespace Atspi {
 
         /**
          * Adds an in-process callback function to an existing {@link Atspi.DeviceListener}.
-         * @param callback an   {@link Atspi.DeviceListenerCB} function pointer.
+         * @param callback an {@link Atspi.DeviceListenerCB} function pointer.
          */
         add_callback(callback: DeviceListenerCB): void;
         /**
@@ -4959,9 +4452,7 @@ export namespace Atspi {
 
     namespace DeviceX11 {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {
-            'notify::app-id': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends Device.SignalSignatures {}
 
         // Constructor properties interface
 
@@ -4990,8 +4481,6 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceX11;
-
-        static new_full(app_id?: string | null): DeviceX11;
 
         // Signals
 
@@ -5025,13 +4514,6 @@ export namespace Atspi {
     }
 
     /**
-     * A generic interface implemented by objects for the receipt of event
-     * notifications.
-     *
-     * A generic interface implemented by objects for the receipt of event
-     * notifications. atspi-event-listener is the interface via which clients of
-     * the atspi-registry receive notification of changes to an application's user
-     * interface and content.
      * @gir-type Class
      */
     class EventListener extends GObject.Object {
@@ -5085,35 +4567,35 @@ export namespace Atspi {
 
         /**
          * Deregisters an {@link Atspi.EventListenerCB} from the registry, for a specific
-         * event type.
-         * @param callback the {@link Atspi.EventListenerCB}   registered against an event type.
-         * @param event_type a string specifying the event type for which this   listener is to be deregistered.
+         *             event type.
+         * @param callback the {@link Atspi.EventListenerCB} registered against an            event type.
+         * @param event_type a string specifying the event type for which this             listener is to be deregistered.
          */
         static deregister_from_callback(callback: EventListenerCB, event_type: string): boolean;
         /**
          * Registers an {@link Atspi.EventListenerCB} against an `event_type`.
-         * @param callback the   {@link Atspi.EventListenerCB} to be registered against an event type.
-         * @param event_type a character string indicating the type of events for which    notification is requested.  See `atspi_event_listener_register()`    for a description of the format.
+         * @param callback the {@link Atspi.EventListenerCB} to be registered against an event type.
+         * @param event_type a character string indicating the type of events for which            notification is requested.  See `atspi_event_listener_register` for a description of the format.
          */
         static register_from_callback(callback: EventListenerCB, event_type: string): boolean;
         /**
-         * @param callback an   {@link Atspi.EventListenerCB} function pointer.
+         * @param callback an {@link Atspi.EventListenerCB} function pointer.
          * @param event_type
          * @param properties
          */
         static register_from_callback_full(
-            callback: EventListenerCB,
+            callback: EventListenerCB | null,
             event_type: string,
             properties: string[],
         ): boolean;
         /**
-         * @param callback an   {@link Atspi.EventListenerCB} function pointer.
+         * @param callback an {@link Atspi.EventListenerCB} function pointer.
          * @param event_type
          * @param properties
          * @param app
          */
         static register_from_callback_with_app(
-            callback: EventListenerCB,
+            callback: EventListenerCB | null,
             event_type: string,
             properties: string[],
             app?: Accessible | null,
@@ -5138,7 +4620,6 @@ export namespace Atspi {
          *            object:property-change
          *            object:property-change:accessible-name
          *            object:property-change:accessible-description
-         *            object:property-change:accessible-help-text
          *            object:property-change:accessible-parent
          *            object:property-change:accessible-value
          *            object:property-change:accessible-role
@@ -5166,7 +4647,6 @@ export namespace Atspi {
          *            object:column-deleted
          *            object:model-changed
          *            object:active-descendant-changed
-         *            object:announcement
          *
          *  (screen reader events)
          *             screen-reader:region-changed
@@ -5244,16 +4724,6 @@ export namespace Atspi {
     }
 
     /**
-     * Instances of atspi-hyperlink are the means by which end users
-     * and clients interact with linked content.
-     *
-     *  Instances of atspi-hyperlink are returned by
-     * atspi-hypertext objects, and are the means by
-     * which end users and clients interact with linked,
-     * and in some cases embedded, content. These instances
-     * may have multiple "anchors", where an anchor corresponds to a
-     * reference to a particular resource with a corresponding resource
-     * identified (URI).
      * @gir-type Class
      */
     class Hyperlink extends Object {
@@ -5353,8 +4823,6 @@ export namespace Atspi {
     }
 
     /**
-     * An interface that allows the definition of match rules
-     * for accessible objects.
      * @gir-type Class
      */
     class MatchRule extends GObject.Object {
@@ -5387,13 +4855,13 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](
-            states: StateSet | null,
+            states: StateSet,
             statematchtype: CollectionMatchType,
-            attributes: GLib.HashTable<string, string> | null,
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
             attributematchtype: CollectionMatchType,
-            roles: Role[] | null,
+            roles: Role[],
             rolematchtype: CollectionMatchType,
-            interfaces: string[] | null,
+            interfaces: string[],
             interfacematchtype: CollectionMatchType,
             invert: boolean,
         ): MatchRule;
@@ -5487,12 +4955,6 @@ export namespace Atspi {
     }
 
     /**
-     * An interface via which non-hierarchical relationships
-     * are indicated.
-     *
-     * An interface via which non-hierarchical relationships
-     * are indicated. An instance of this interface represents
-     * a "one-to-many" correspondence.
      * @gir-type Class
      */
     class Relation extends GObject.Object {
@@ -5571,8 +5033,6 @@ export namespace Atspi {
     }
 
     /**
-     * The atspi-stateset objects implement wrappers around a
-     * bitmap of accessible states.
      * @gir-type Class
      */
     class StateSet extends GObject.Object {
@@ -5692,10 +5152,6 @@ export namespace Atspi {
      * @gir-type Alias
      */
     type ApplicationClass = typeof Application;
-    /**
-     * @gir-type Alias
-     */
-    type DeviceA11yManagerClass = typeof DeviceA11yManager;
     /**
      * @gir-type Alias
      */
@@ -5964,41 +5420,6 @@ export namespace Atspi {
         );
     }
 
-    /**
-     * This structure represents a single  text selection within a document. This
-     * selection is defined by two points in the content, where each one is defined
-     * by an AtkObject supporting the AtkText interface and a character offset
-     * relative to it.
-     *
-     * The end object must appear after the start object in the accessibility tree,
-     * i.e. the end object must be reachable from the start object by navigating
-     * forward (next, first child etc).
-     *
-     * This struct also contains a `start_is_active` boolean, to communicate if the
-     * start of the selection is the active point or not.
-     *
-     * The active point corresponds to the user's focus or point of interest. The
-     * user moves the active point to expand or collapse the range. The anchor
-     * point is the other point of the range and typically remains constant. In
-     * most cases, anchor is the start of the range and active is the end. However,
-     * when selecting backwards (e.g. pressing shift+left arrow in a text field),
-     * the start of the range is the active point, as the user moves this to
-     * manipulate the selection.
-     * @gir-type Struct
-     * @since 2.52
-     */
-    class TextSelection {
-        static $gtype: GObject.GType<TextSelection>;
-
-        // Fields
-
-        start_object: Accessible;
-        start_offset: number;
-        end_object: Accessible;
-        end_offset: number;
-        start_is_active: boolean;
-    }
-
     namespace Action {
         // Constructor properties interface
 
@@ -6104,12 +5525,6 @@ export namespace Atspi {
         prototype: Collection;
     }
     /**
-     * An interface designed to allow accessibles which satisfy a set of
-     * criteria to be returned.
-     *
-     * An interface designed to allow accessibles which satisfy a set of
-     * criteria to be returned. This interface can be used to avoid iteration
-     * or client-side search of the object tree.
      * @gir-type Interface
      */
     interface Collection extends GObject.Object {
@@ -6125,7 +5540,7 @@ export namespace Atspi {
          * @param rule An {@link Atspi.MatchRule} describing the match criteria.
          * @param sortby An {@link Atspi.CollectionSortOrder} specifying the way the results are to          be sorted.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of `TRUE`) or only the direct children (on case of `FALSE`).
+         * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule.
          */
         get_matches(
@@ -6142,7 +5557,7 @@ export namespace Atspi {
          * @param sortby An {@link Atspi.CollectionSortOrder} specifying the way the results are to          be sorted.
          * @param tree An {@link Atspi.CollectionTreeTraversalType} specifying restrictions on          the objects to be traversed.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of `TRUE`) or only the direct children (on case of `FALSE`).
+         * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule that preceed          `current_object`.
          */
         get_matches_from(
@@ -6162,7 +5577,7 @@ export namespace Atspi {
          * @param tree An {@link Atspi.CollectionTreeTraversalType} specifying restrictions on          the objects to be traversed.
          * @param limit_scope If `TRUE`, only descendants of `current_object`'s parent          will be returned. Otherwise (if `FALSE`), any accessible may be          returned if it would preceed `current_object` in a flattened          hierarchy.
          * @param count The maximum number of results to return, or 0 for no limit.
-         * @param traverse Whether to traverse the accessible subtree (in case         of `TRUE`) or only the direct children (on case of `FALSE`).
+         * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule after          `current_object`.
          */
         get_matches_to(
@@ -6196,17 +5611,6 @@ export namespace Atspi {
         prototype: Component;
     }
     /**
-     * An interface implemented by objects which have onscreen visual
-     * representations.
-     *
-     * The Component interface is implemented by objects which occupy on-screen
-     * space, e.g. objects which have onscreen visual representations. The methods
-     * in Component allow clients to identify where the objects lie in the onscreen
-     * coordinate system, their relative size, stacking order, and position. It
-     * also provides a mechanism whereby keyboard focus may be transferred to
-     * specific user interface elements programmatically.  This is a 2D API.
-     * Coordinates of 3D objects are projected into the 2-dimensional screen view
-     * for purposes of this interface.
      * @gir-type Interface
      */
     interface Component extends GObject.Object {
@@ -6292,8 +5696,8 @@ export namespace Atspi {
         scroll_to_point(coords: CoordType | null, x: number, y: number): boolean;
         /**
          * Moves and resizes the specified component.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
@@ -6302,14 +5706,14 @@ export namespace Atspi {
         set_extents(x: number, y: number, width: number, height: number, ctype: CoordType | null): boolean;
         /**
          * Moves the component to the specified position.
-         * @param x the new horizontal position to which the component should be moved.
-         * @param y the new vertical position to which the component should be moved.
+         * @param x the new vertical position to which the component should be moved.
+         * @param y the new horizontal position to which the component should be moved.
          * @param ctype the coordinate system in which the position is specified.         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns `TRUE` if successful; `FALSE` otherwise.
          */
         set_position(x: number, y: number, ctype: CoordType | null): boolean;
         /**
-         * Resizes the specified component to the given pixel dimensions.
+         * Resizes the specified component to the given coordinates.
          * @param width the width to which the component should be resized.
          * @param height the height to which the component should be resized.
          * @returns `TRUE` if successful; `FALSE` otherwise.
@@ -6377,21 +5781,6 @@ export namespace Atspi {
          * @returns a `gint` indicating the page count of an `AccessibleDocument` object.
          */
         get_page_count(): number;
-        /**
-         * Returns an array of AtspiTextSelections within this document.
-         * @returns a GArray of AtspiTextSelection structures representing the selection.
-         */
-        get_text_selections(): TextSelection[];
-        /**
-         * Makes 1 or more selections within this document denoted by the given
-         * array of AtspiTextSelections. Any existing physical selection (inside or
-         * outside this document) is replaced by the new selections. All objects within
-         * the given selection ranges must be descendants of this document. Otherwise
-         * FALSE will be returned.
-         * @param selections a GArray of AtspiTextSelections              to be selected.
-         * @returns TRUE if the selection was made successfully; FALSE otherwise.
-         */
-        set_text_selections(selections: TextSelection[]): boolean;
     }
 
     export const Document: DocumentNamespace & {
@@ -6486,14 +5875,6 @@ export namespace Atspi {
         prototype: Hypertext;
     }
     /**
-     * An interface used for objects which implement linking between
-     * multiple resource locations.
-     *
-     * An interface used for objects which implement linking between
-     * multiple resource or content locations, or multiple 'markers'
-     * within a single document. A hypertext instance is associated
-     * with one or more hyperlinks which are associated with particular
-     * offsets within the hypertext's content.
      * @gir-type Interface
      */
     interface Hypertext extends GObject.Object {
@@ -6592,14 +5973,6 @@ export namespace Atspi {
         prototype: Selection;
     }
     /**
-     * An interface which indicates that an object exposes a 'selection' model,
-     * allowing the selection of one or more of its children.
-     *
-     * An interface which indicates that an object exposes a 'selection'
-     * model, allowing the selection of one or more of its children.
-     * Read-only Selection instances are possible, in which case the
-     * interface is used to programmatically determine the selected-ness
-     * of its children.
      * @gir-type Interface
      */
     interface Selection extends GObject.Object {
@@ -6623,11 +5996,11 @@ export namespace Atspi {
         deselect_child(child_index: number): boolean;
         /**
          * Removes a child from the selected children list of an {@link Atspi.Selection}.
-         *          Note that `selected_child_index` is the index in the
-         *          selected-children list, not the index in the parent container.
-         *          `selected_child_index` in this method and `child_index` in
-         *          `atspi_selection_select_child` are asymmetric.
-         * @param selected_child_index a `gint` indicating which of the selected children              of the {@link Atspi.Accessible} is to be deselected.
+         *          Note that `child_index` is the index in the selected-children list,
+         *          not the index in the parent container.  `selectedChildIndex` in this
+         *          method, and `child_index` in `atspi_selection_select_child`
+         *          are asymmetric.
+         * @param selected_child_index a `gint` indicating which of the selected children              of the {@link Atspi.Accessible} is to be selected.
          * @returns `TRUE` if the child was successfully deselected, `FALSE` otherwise.
          */
         deselect_selected_child(selected_child_index: number): boolean;
@@ -6690,17 +6063,6 @@ export namespace Atspi {
         prototype: Table;
     }
     /**
-     * An interface used by containers whose data is arranged in a tabular form.
-     *
-     * An interface used by containers whose contained data is arranged
-     * in a tabular (i.e. row-column) form. Tables may resemble
-     * a two-dimensional grid, as in a spreadsheet, or may feature objects
-     * which span multiple rows and/or columns, but whose bounds are
-     * aligned on a row/column matrix. Objects within tables are children
-     * of the table object, and they may be referenced either via a child
-     * index or via a row/column pair. Table 'cells' may implement other
-     * interfaces, such as Text, Action, Image, and Component, and should do
-     * so as appropriate to their onscreen presentation and/or behavior.
      * @gir-type Interface
      */
     interface Table extends GObject.Object {
@@ -6998,15 +6360,6 @@ export namespace Atspi {
         prototype: Text;
     }
     /**
-     * An interface implemented by objects which place textual
-     * information onscreen.
-     *
-     * The text interface should be implemented by objects which place textual
-     * information onscreen as character strings or glyphs. The text interface
-     * allows access to textual content including display attributes and
-     * semantic hints associated with runs of text, and to bounding
-     * information for glyphs and substrings. It also allows portions of text to
-     * be selected, if the objects StateSet includes STATE_SELECTABLE_TEXT.
      * @gir-type Interface
      */
     interface Text extends GObject.Object {
@@ -7038,6 +6391,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an {@link Atspi.Text}
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a `gint` indicating the offset from which the attribute        search is based.
          * @returns a {@link GLib.HashTable} describing the attributes at the given character offset.
          */
@@ -7200,6 +6554,7 @@ export namespace Atspi {
          * Gets the attributes applied to a range of text from an {@link Atspi.Text}
          * object. The text attributes correspond to CSS attributes
          * where possible.
+         * <em>DEPRECATED</em>
          * @param offset a `gint` indicating the offset from which the attribute        search is based.
          * @returns a {@link GLib.HashTable} describing the attributes at the given character offset.
          */
@@ -7275,13 +6630,6 @@ export namespace Atspi {
         prototype: Value;
     }
     /**
-     * An interface supporting a one-dimensional scalar
-     * to be modified, or which reflects its value.
-     *
-     * An interface supporting a one-dimensional scalar
-     * to be modified, or which reflects its value. If
-     * STATE_EDITABLE is not present, the value is
-     * treated as "read only".
      * @gir-type Interface
      */
     interface Value extends GObject.Object {

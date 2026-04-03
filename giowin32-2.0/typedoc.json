@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["./giowin32-2.0.d.ts"],
+    "readme": "./README.md",
+    "name": "GioWin32-2.0",
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
+}
+

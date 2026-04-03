@@ -811,7 +811,7 @@ export namespace Farstream {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -851,7 +851,7 @@ export namespace Farstream {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -931,7 +931,7 @@ export namespace Farstream {
         ref(...args: never[]): any;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1374,16 +1374,6 @@ export namespace Farstream {
          */
         static list_available(type_suffix: string): string[];
         /**
-         * Register a staticly linked transmitter. This function should strictly be
-         * used by plugins own register function. To register a static plugin:
-         *   extern fs_plugin_<name>_<type>_register_pluing (void);
-         *   fs_plugin_<name>_<type>_register_pluing ();
-         * @param name The name of the plugin to register
-         * @param type_suffix The type of plugin to register (normally "transmitter")
-         * @param type
-         */
-        static register_static(name: string, type_suffix: string, type: GObject.GType): void;
-        /**
          * Calls the `complete_interface_info` function from the
          * {@link GObject.TypePluginClass} of `plugin`. There should be no need to use this
          * function outside of the GObject type system itself.
@@ -1519,7 +1509,7 @@ export namespace Farstream {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1574,7 +1564,7 @@ export namespace Farstream {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1649,7 +1639,7 @@ export namespace Farstream {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2449,7 +2439,6 @@ export namespace Farstream {
             'notify::negotiated-codecs': (pspec: GObject.ParamSpec) => void;
             'notify::participant': (pspec: GObject.ParamSpec) => void;
             'notify::remote-codecs': (pspec: GObject.ParamSpec) => void;
-            'notify::require-encryption': (pspec: GObject.ParamSpec) => void;
             'notify::session': (pspec: GObject.ParamSpec) => void;
         }
 
@@ -2466,8 +2455,6 @@ export namespace Farstream {
             participant: Participant;
             remote_codecs: Codec[];
             remoteCodecs: Codec[];
-            require_encryption: boolean;
-            requireEncryption: boolean;
             session: Session;
         }
     }
@@ -2560,18 +2547,6 @@ export namespace Farstream {
          * @read-only
          */
         get remoteCodecs(): Codec[];
-        /**
-         * If set to TRUE, only encrypted content will be accepted on this
-         * stream.
-         */
-        get require_encryption(): boolean;
-        set require_encryption(val: boolean);
-        /**
-         * If set to TRUE, only encrypted content will be accepted on this
-         * stream.
-         */
-        get requireEncryption(): boolean;
-        set requireEncryption(val: boolean);
         /**
          * The {@link Farstream.Session} for this stream. This property is a construct param and
          * is read-only construction.
@@ -2844,7 +2819,7 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            'known-source-packet-received': (arg0: number, arg1: any | null) => void;
+            'known-source-packet-received': (arg0: number, arg1: any) => void;
             /**
              * This signal is emitted when all local candidates have been
              * prepared, an ICE implementation would send its SDP offer or answer.

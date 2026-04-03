@@ -209,7 +209,7 @@ export namespace Gdk {
         /**
          * crossing because of a device switch (i.e.
          *   a mouse taking control of the pointer after a touch device), this event
-         *   is synthetic as the pointer didn’t leave the surface.
+         *   is synthetic as the pointer didn&#x2019;t leave the surface.
          */
         DEVICE_SWITCH,
     }
@@ -705,9 +705,28 @@ export namespace Gdk {
      * `CAIRO_FORMAT_ARGB32` is represented by different `GdkMemoryFormats`
      * on architectures with different endiannesses.
      *
-     * Its naming is modelled after
-     * [VkFormat](https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFormat)
-     * for details).
+     * # A note on naming
+     *
+     * The format names are roughly modelled after
+     * [VkFormat](https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFormat).
+     * A name follows `GDK_MEMORY_<CHANNELS>_<DATA_TYPE>_<SUBSAMPLING> <PREMULTIPLIED>`
+     * where CHANNELS describe how the RGBA channels are layed out in memory, with an
+     * X denoting padding. DATA_TYPE is unsigned normalized integer if not present, or
+     * otherwise FLOAT. The optional SUBSAMPLING defines the subsampling method used.
+     * The optional ENDIAN term describes the endianness if it is not
+     * host-endian. Finally, an optional PREMULTIPLIED term indicates that the color
+     * channels are premultiplied with the alpha value, if it is omitted, the data is
+     * not premultiplied or there is no alpha channel.
+     *
+     * The CHANNELS are given as a list of planes seperated by underscores where
+     * each plane is split into multiple elements describing one or more bytes of memory.
+     * Each element is given as the list of channels folowed by the amount of bits taken
+     * up.
+     *
+     * So the fictional format `RGB565_A8_PREMULTIPLIED` would describe a format with 2
+     * planes where the first plane is an unsigned 16 bit integer containing the RGB
+     * channels with 5, 6, and 5 bits respectively while the 2nd plane contains the
+     * alpha channel as an unisnged 8bit integer.
      * @gir-type Enum
      */
     enum MemoryFormat {
@@ -1364,6 +1383,48 @@ export namespace Gdk {
          * Commonly known by the fourcc "S416".
          */
         G16_B16_R16_444,
+        /**
+         * 4 bytes per pixel
+         *
+         * Bits 31..30 contain the alpha channel, 29..20 red, 19..10 green
+         * and 9..0 blue.
+         *
+         * The color values are premultiplied with the alpha value.
+         */
+        ARGB2101010_PREMULTIPLIED,
+        /**
+         * 4 bytes per pixel
+         *
+         * Bits 31..30 contain the alpha channel, 29..20 red, 19..10 green
+         * and 9..0 blue.
+         */
+        ARGB2101010,
+        /**
+         * 4 bytes per pixel
+         *
+         * Bits 31..30 are padding, bits 29..20 contain red, 19..10 green
+         * and 9..0 blue.
+         *
+         * The format is opaque.
+         */
+        XRGB2101010,
+        ABGR2101010_PREMULTIPLIED,
+        /**
+         * 4 bytes per pixel
+         *
+         * Bits 31..30 contain the alpha channel, 29..20 blue, 19..10 green
+         * and 9..0 red.
+         */
+        ABGR2101010,
+        /**
+         * 4 bytes per pixel
+         *
+         * Bits 31..30 are padding, bits 29..20 contain blue, 19..10 green
+         * and 9..0 red.
+         *
+         * The format is opaque.
+         */
+        XBGR2101010,
         /**
          * The number of formats. This value will change as
          *   more formats get added, so do not rely on its concrete integer.
@@ -4648,7 +4709,7 @@ export namespace Gdk {
      *
      * The names are the same as those in the
      * `gdk/gdkkeysyms.h` header file
-     * but without the leading “GDK_KEY_”.
+     * but without the leading &#x201C;GDK_KEY_&#x201D;.
      * @param keyval_name a key name
      * @returns the corresponding key value, or `GDK_KEY_VoidSymbol`   if the key name is not a valid key
      */
@@ -4670,7 +4731,7 @@ export namespace Gdk {
      *
      * The names are the same as those in the
      * `gdk/gdkkeysyms.h` header file
-     * but without the leading “GDK_KEY_”.
+     * but without the leading &#x201C;GDK_KEY_&#x201D;.
      * @param keyval a key value
      * @returns a string containing the name   of the key
      */
@@ -5437,7 +5498,7 @@ export namespace Gdk {
          *
          * This only works when running under a window manager that
          * supports multiple workspaces, as described in the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec).
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/).
          * Specifically this sets the `_NET_WM_DESKTOP` property described
          * in that spec.
          *
@@ -6555,7 +6616,7 @@ export namespace Gdk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6610,7 +6671,7 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6685,7 +6746,7 @@ export namespace Gdk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7455,7 +7516,7 @@ export namespace Gdk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7510,7 +7571,7 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7585,7 +7646,7 @@ export namespace Gdk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9091,7 +9152,7 @@ export namespace Gdk {
          * alpha channel.
          *
          * Even if a `true` is returned, it is possible that the
-         * surface’s alpha channel won’t be honored when displaying the
+         * surface&#x2019;s alpha channel won&#x2019;t be honored when displaying the
          * surface on the screen: in particular, for X an appropriate
          * windowing manager and compositing manager must be running to
          * provide appropriate display. Use {@link Gdk.Display.is_composited}
@@ -9907,7 +9968,7 @@ export namespace Gdk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9962,7 +10023,7 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -10037,7 +10098,7 @@ export namespace Gdk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10320,8 +10381,10 @@ export namespace Gdk {
      * multiple planes, by specifying offsets from the beginning of the data.
      *
      * DMA buffers are exposed to user-space as file descriptors allowing to pass them
-     * between processes. If a DMA buffer has multiple planes, there is one file
-     * descriptor per plane.
+     * between processes. If a DMA buffer has multiple planes, more than one file
+     * descriptor may be present, up to the number of planes. If the number of file
+     * descriptors is less than the number of planes, the remaining ones should be set to
+     * -1.
      *
      * The format of the data (for graphics data, essentially its colorspace) is described
      * by a 32-bit integer. These format identifiers are defined in the header file `drm_fourcc.h`
@@ -10530,7 +10593,7 @@ export namespace Gdk {
          */
         get_display(): Display;
         /**
-         * Gets the file descriptor for a plane.
+         * Gets the file descriptor for a plane or -1 if none.
          * @param plane the plane to get the fd for
          * @returns the file descriptor
          */
@@ -10613,7 +10676,7 @@ export namespace Gdk {
          */
         set_display(display: Display): void;
         /**
-         * Sets the file descriptor for a plane.
+         * Sets the file descriptor for a plane or to -1 to unset it.
          * @param plane the plane to set the fd for
          * @param fd the file descriptor
          */
@@ -11760,7 +11823,7 @@ export namespace Gdk {
      * as `g_get_monotonic_time()`. The frame time does not advance during
      * the time a frame is being painted, and outside of a frame, an attempt
      * is made so that all calls to {@link Gdk.FrameClock.get_frame_time} that
-     * are called at a “similar” time get the same value. This means that
+     * are called at a &#x201C;similar&#x201D; time get the same value. This means that
      * if different animations are timed by looking at the difference in
      * time between an initial value from {@link Gdk.FrameClock.get_frame_time}
      * and the value inside the `Gdk.FrameClock::update` signal of the clock,
@@ -11844,10 +11907,10 @@ export namespace Gdk {
         /**
          * Gets the time that should currently be used for animations.
          *
-         * Inside the processing of a frame, it’s the time used to compute the
+         * Inside the processing of a frame, it&#x2019;s the time used to compute the
          * animation position of everything in a frame. Outside of a frame, it's
-         * the time of the conceptual “previous frame,” which may be either
-         * the actual previous frame time, or if that’s too old, an updated
+         * the time of the conceptual &#x201C;previous frame,&#x201D; which may be either
+         * the actual previous frame time, or if that&#x2019;s too old, an updated
          * time.
          * @returns a timestamp in microseconds, in the timescale of  of `g_get_monotonic_time()`.
          */
@@ -12768,7 +12831,7 @@ export namespace Gdk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -12823,7 +12886,7 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -12898,7 +12961,7 @@ export namespace Gdk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14137,7 +14200,7 @@ export namespace Gdk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14192,7 +14255,7 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -14267,7 +14330,7 @@ export namespace Gdk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15026,8 +15089,8 @@ export namespace Gdk {
          * Retrieves the size and position of the monitor within the
          * display coordinate space.
          *
-         * The returned geometry is in  ”application pixels”, not in
-         * ”device pixels” (see {@link Gdk.Monitor.get_scale}).
+         * The returned geometry is in  &#x201D;application pixels&#x201D;, not in
+         * &#x201D;device pixels&#x201D; (see {@link Gdk.Monitor.get_scale}).
          */
         get_geometry(): Rectangle;
         /**
@@ -15064,7 +15127,7 @@ export namespace Gdk {
          * to device pixels.
          *
          * This can be used if you want to create pixel based data for a
-         * particular monitor, but most of the time you’re drawing to a surface
+         * particular monitor, but most of the time you&#x2019;re drawing to a surface
          * where it is better to use {@link Gdk.Surface.get_scale} instead.
          * @returns the scale
          */
@@ -15077,7 +15140,7 @@ export namespace Gdk {
          * it can be a higher value (often 2).
          *
          * This can be used if you want to create pixel based data for a
-         * particular monitor, but most of the time you’re drawing to a surface
+         * particular monitor, but most of the time you&#x2019;re drawing to a surface
          * where it is better to use {@link Gdk.Surface.get_scale_factor} instead.
          * @returns the scale factor
          */
@@ -15520,8 +15583,8 @@ export namespace Gdk {
              * Emitted when the size of `surface` is changed, or when relayout should
              * be performed.
              *
-             * Surface size is reported in ”application pixels”, not
-             * ”device pixels” (see `gdk_surface_get_scale_factor()`).
+             * Surface size is reported in &#x201D;application pixels&#x201D;, not
+             * &#x201D;device pixels&#x201D; (see `gdk_surface_get_scale_factor()`).
              * @signal
              * @run-first
              */
@@ -15567,7 +15630,7 @@ export namespace Gdk {
     /**
      * Represents a rectangular region on the screen.
      *
-     * It’s a low-level object, used to implement high-level objects
+     * It&#x2019;s a low-level object, used to implement high-level objects
      * such as [GtkWindow](../gtk4/class.Window.html).
      *
      * The surfaces you see in practice are either {@link Gdk.Toplevel} or
@@ -15717,7 +15780,7 @@ export namespace Gdk {
          * have transparency, black otherwise.)
          *
          * This function always returns a valid pointer, but it will return a
-         * pointer to a “nil” surface if `other` is already in an error state
+         * pointer to a &#x201C;nil&#x201D; surface if `other` is already in an error state
          * or any other error occurs.
          * @param content the content for the new surface
          * @param width width of the new surface
@@ -15735,7 +15798,7 @@ export namespace Gdk {
          * decrements `surface`'s reference count.
          *
          * The window system resources for all children of `surface` are also
-         * destroyed, but the children’s reference counts are not decremented.
+         * destroyed, but the children&#x2019;s reference counts are not decremented.
          *
          * Note that a surface will not be destroyed automatically when its
          * reference count reaches zero. You must call this function yourself
@@ -15790,8 +15853,8 @@ export namespace Gdk {
         /**
          * Returns the height of the given `surface`.
          *
-         * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * Surface size is reported in &#x201D;application pixels&#x201D;, not
+         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
          * @returns The height of `surface`
          */
         get_height(): number;
@@ -15836,8 +15899,8 @@ export namespace Gdk {
         /**
          * Returns the width of the given `surface`.
          *
-         * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * Surface size is reported in &#x201D;application pixels&#x201D;, not
+         * &#x201D;device pixels&#x201D; (see {@link Gdk.Surface.get_scale_factor}).
          * @returns The width of `surface`
          */
         get_width(): number;
@@ -15846,7 +15909,7 @@ export namespace Gdk {
          *
          * For toplevel surfaces, withdraws them, so they will no longer be
          * known to the window manager; for all surfaces, unmaps them, so
-         * they won’t be displayed. Normally done automatically as
+         * they won&#x2019;t be displayed. Normally done automatically as
          * part of [gtk_widget_hide()](../gtk4/method.Widget.hide.html).
          */
         hide(): void;
@@ -15904,7 +15967,7 @@ export namespace Gdk {
          * An input region is typically used with RGBA surfaces. The alpha
          * channel of the surface defines which pixels are invisible and
          * allows for nicely antialiased borders, and the input region
-         * controls where the surface is “clickable”.
+         * controls where the surface is &#x201C;clickable&#x201D;.
          *
          * Use {@link Gdk.Display.supports_input_shapes} to find out if
          * a particular backend supports input regions.
@@ -16626,7 +16689,7 @@ export namespace Gdk {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -16681,7 +16744,7 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -16756,7 +16819,7 @@ export namespace Gdk {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17690,13 +17753,13 @@ export namespace Gdk {
     }
 
     /**
-     * Holds timing information for a single frame of the application’s displays.
+     * Holds timing information for a single frame of the application&#x2019;s displays.
      *
      * To retrieve {@link Gdk.FrameTimings} objects, use {@link Gdk.FrameClock.get_timings}
      * or {@link Gdk.FrameClock.get_current_timings}. The information in
      * {@link Gdk.FrameTimings} is useful for precise synchronization of video with
      * the event or audio streams, and for measuring quality metrics for the
-     * application’s display, such as latency and jitter.
+     * application&#x2019;s display, such as latency and jitter.
      * @gir-type Struct
      */
     abstract class FrameTimings {
@@ -17762,8 +17825,8 @@ export namespace Gdk {
          * Gets the natural interval between presentation times for
          * the display that this frame was displayed on.
          *
-         * Frame presentation usually happens during the “vertical
-         * blanking interval”.
+         * Frame presentation usually happens during the &#x201C;vertical
+         * blanking interval&#x201D;.
          * @returns the refresh interval of the display, in microseconds,   or 0 if the refresh interval is not available.   See {@link Gdk.FrameTimings.get_complete}.
          */
         get_refresh_interval(): number;
@@ -17974,10 +18037,10 @@ export namespace Gdk {
     }
 
     /**
-     * Represents a color, in a way that is compatible with cairo’s notion of color.
+     * Represents a color, in a way that is compatible with cairo&#x2019;s notion of color.
      *
-     * {@link Gdk.RGBA} is a convenient way to pass colors around. It’s based on
-     * cairo’s way to deal with colors and mirrors its behavior. All values
+     * {@link Gdk.RGBA} is a convenient way to pass colors around. It&#x2019;s based on
+     * cairo&#x2019;s way to deal with colors and mirrors its behavior. All values
      * are in the range from 0.0 to 1.0 inclusive. So the color
      * (0.0, 0.0, 0.0, 0.0) represents transparent black and
      * (1.0, 1.0, 1.0, 1.0) is opaque white. Other values will
@@ -18051,22 +18114,22 @@ export namespace Gdk {
          * The string can be either one of:
          *
          * - A standard name (Taken from the CSS specification).
-         * - A hexadecimal value in the form “\#rgb”, “\#rrggbb”,
-         *   “\#rrrgggbbb” or ”\#rrrrggggbbbb”
-         * - A hexadecimal value in the form “\#rgba”, “\#rrggbbaa”,
-         *   or ”\#rrrrggggbbbbaaaa”
-         * - A RGB color in the form “rgb(r,g,b)” (In this case the color
+         * - A hexadecimal value in the form &#x201C;\#rgb&#x201D;, &#x201C;\#rrggbb&#x201D;,
+         *   &#x201C;\#rrrgggbbb&#x201D; or &#x201D;\#rrrrggggbbbb&#x201D;
+         * - A hexadecimal value in the form &#x201C;\#rgba&#x201D;, &#x201C;\#rrggbbaa&#x201D;,
+         *   or &#x201D;\#rrrrggggbbbbaaaa&#x201D;
+         * - A RGB color in the form &#x201C;rgb(r,g,b)&#x201D; (In this case the color
          *   will have full opacity)
-         * - A RGBA color in the form “rgba(r,g,b,a)”
-         * - A HSL color in the form “hsl(h,s,l)”
-         * - A HSLA color in the form “hsla(h,s,l,a)”
+         * - A RGBA color in the form &#x201C;rgba(r,g,b,a)&#x201D;
+         * - A HSL color in the form &#x201C;hsl(h,s,l)&#x201D;
+         * - A HSLA color in the form &#x201C;hsla(h,s,l,a)&#x201D;
          *
-         * Where “r”, “g”, “b” and “a” are respectively the red, green,
-         * blue and alpha color values. In the last two cases, “r”, “g”,
-         * and “b” are either integers in the range 0 to 255 or percentage
+         * Where &#x201C;r&#x201D;, &#x201C;g&#x201D;, &#x201C;b&#x201D; and &#x201C;a&#x201D; are respectively the red, green,
+         * blue and alpha color values. In the last two cases, &#x201C;r&#x201D;, &#x201C;g&#x201D;,
+         * and &#x201C;b&#x201D; are either integers in the range 0 to 255 or percentage
          * values in the range 0% to 100%, and a is a floating point value
-         * in the range 0 to 1. The range for “h” is 0 to 360, and
-         * “s”, “l” can be either numbers in the range 0 to 100 or
+         * in the range 0 to 1. The range for &#x201C;h&#x201D; is 0 to 360, and
+         * &#x201C;s&#x201D;, &#x201C;l&#x201D; can be either numbers in the range 0 to 100 or
          * percentages.
          * @param spec the string specifying the color
          * @returns `true` if the parsing succeeded
@@ -18078,17 +18141,17 @@ export namespace Gdk {
         print(string: GLib.String): GLib.String;
         /**
          * Returns a textual specification of `rgba` in the form
-         * `rgb(r,g,b)` or `rgba(r,g,b,a)`, where “r”, “g”, “b” and
-         * “a” represent the red, green, blue and alpha values
-         * respectively. “r”, “g”, and “b” are represented as integers
-         * in the range 0 to 255, and “a” is represented as a floating
+         * `rgb(r,g,b)` or `rgba(r,g,b,a)`, where &#x201C;r&#x201D;, &#x201C;g&#x201D;, &#x201C;b&#x201D; and
+         * &#x201C;a&#x201D; represent the red, green, blue and alpha values
+         * respectively. &#x201C;r&#x201D;, &#x201C;g&#x201D;, and &#x201C;b&#x201D; are represented as integers
+         * in the range 0 to 255, and &#x201C;a&#x201D; is represented as a floating
          * point value in the range 0 to 1.
          *
          * These string forms are string forms that are supported by
          * the CSS3 colors module, and can be parsed by {@link Gdk.RGBA.parse}.
          *
          * Note that this string representation may lose some precision,
-         * since “r”, “g” and “b” are represented as 8-bit integers. If
+         * since &#x201C;r&#x201D;, &#x201C;g&#x201D; and &#x201C;b&#x201D; are represented as 8-bit integers. If
          * this is a concern, you should use a different representation.
          * @returns A newly allocated text string
          */
@@ -18098,7 +18161,7 @@ export namespace Gdk {
     /**
      * Represents a rectangle.
      *
-     * {@link Gdk.Rectangle} is identical to `cairo_rectangle_t`. Together with Cairo’s
+     * {@link Gdk.Rectangle} is identical to `cairo_rectangle_t`. Together with Cairo&#x2019;s
      * `cairo_region_t` data type, these are the central types for representing
      * sets of pixels.
      *
@@ -18153,7 +18216,7 @@ export namespace Gdk {
          * Calculates the intersection of two rectangles.
          *
          * It is allowed for `dest` to be the same as either `src1` or `src2`.
-         * If the rectangles do not intersect, `dest`’s width and height is set
+         * If the rectangles do not intersect, `dest`&#x2019;s width and height is set
          * to 0 and its x and y values are undefined. If you are only interested
          * in whether the rectangles intersect, but not in the intersecting area
          * itself, pass `null` for `dest`.
@@ -19118,7 +19181,7 @@ export namespace Gdk {
         /**
          * Begins an interactive resize operation.
          *
-         * You might use this function to implement a “window resize grip.”
+         * You might use this function to implement a &#x201C;window resize grip.&#x201D;
          * @param edge the edge or corner from which the drag is started
          * @param device the device used for the operation
          * @param button the button being used to drag, or 0 for a keyboard-initiated drag
@@ -19296,7 +19359,7 @@ export namespace Gdk {
          * on `parent` and keep `surface` above `parent`.
          *
          * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
-         * if you’re using [GtkWindow](../gtk4/class.Window.html).
+         * if you&#x2019;re using [GtkWindow](../gtk4/class.Window.html).
          * @param parent another toplevel {@link Gdk.Surface}
          */
         set_transient_for(parent: Surface): void;

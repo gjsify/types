@@ -34,17 +34,6 @@ export namespace GstGLEGL {
      */
     function egl_get_error_string(err: number): string;
     /**
-     * Checks if the given `context` can emulate `format` using a limited subset of
-     * RGB texture formats. Such `format` is then suitable for importing using
-     * `gst_egl_image_from_dmabuf()` even when GL supports the video format as
-     * external-only or not at all.
-     * @param context a {@link GstGL.GLContext} (must be an EGL context)
-     * @param format a {@link GstVideo.VideoFormat}
-     * @returns `TRUE` if `format` can be emulated
-     * @since 1.26
-     */
-    function egl_image_can_emulate(context: GstGL.GLContext, format: GstVideo.VideoFormat | null): boolean;
-    /**
      * Creates an EGL image that imports the dmabuf FD. The dmabuf data
      * is passed as RGBA data. Shaders later take this "RGBA" data and
      * convert it from its true format (described by in_info) to actual
@@ -121,7 +110,6 @@ export namespace GstGLEGL {
      * Another notable difference to `gst_egl_image_from_dmabuf()` is that this
      * function creates one EGL image for all planes, not one for a single plane.
      * @param context a {@link GstGL.GLContext} (must be an EGL context)
-     * @param n_planes number of planes (obtained from a {@link GstVideo.VideoMeta})
      * @param fd Array of DMABuf file descriptors
      * @param offset Array of offsets, relative to the DMABuf
      * @param in_info_dma the {@link GstVideo.VideoInfoDmaDrm}
@@ -131,11 +119,34 @@ export namespace GstGLEGL {
      */
     function egl_image_from_dmabuf_direct_target_with_dma_drm(
         context: GstGL.GLContext,
-        n_planes: number,
         fd: number,
         offset: number,
         in_info_dma: GstVideo.VideoInfoDmaDrm,
         target: GstGL.GLTextureTarget | null,
+    ): EGLImage | null;
+    /**
+     * Creates an EGL image that imports the dmabuf FD. The dmabuf data
+     * is passed as RGBA data. Shaders later take this "RGBA" data and
+     * convert it from its true format (described by in_info) to actual
+     * RGBA output. For example, with I420, three EGL images are created,
+     * one for each `plane`, each EGL image with a single-channel R format.
+     * With NV12, two EGL images are created, one with R format, one
+     * with RG format etc. User can specify the modifier in `in_info_dma`
+     * for non-linear dmabuf.
+     * @param context a {@link GstGL.GLContext} (must be an EGL context)
+     * @param dmabuf the DMA-Buf file descriptor
+     * @param in_info_dma the {@link GstVideo.VideoInfoDmaDrm} in `dmabuf`
+     * @param plane the plane in `in_info` to create and {@link GstGLEGL.EGLImage} for
+     * @param offset the byte-offset in the data
+     * @returns a {@link GstGLEGL.EGLImage} wrapping `dmabuf` or `null` on failure
+     * @since 1.24
+     */
+    function egl_image_from_dmabuf_with_dma_drm(
+        context: GstGL.GLContext,
+        dmabuf: number,
+        in_info_dma: GstVideo.VideoInfoDmaDrm,
+        plane: number,
+        offset: number,
     ): EGLImage | null;
     /**
      * @param context a {@link GstGL.GLContext} (must be an EGL context)
@@ -199,8 +210,6 @@ export namespace GstGLEGL {
 
         static ['new'](): GLDisplayEGL;
 
-        static new_surfaceless(): GLDisplayEGL;
-
         static new_with_egl_display(display?: any | null): GLDisplayEGL;
 
         // Signals
@@ -231,43 +240,17 @@ export namespace GstGLEGL {
          *
          * This function will return the same value for multiple calls with the same
          * `display`.
-         *
-         * The returned {@link GstGLEGL.GLDisplayEGL} will *not* be marked as foreign and will free
-         * some display global EGL resources on finalization. If an external API/user
-         * will be also handling the lifetime of the `EGLDisplay`, you should mark the
-         * returned {@link GstGLEGL.GLDisplayEGL} as foreign by calling `gst_gl_display_egl_set_foreign()`.
          * @param display an existing {@link GstGL.GLDisplay}
          */
         static from_gl_display(display: GstGL.GLDisplay): GLDisplayEGL | null;
         /**
          * Attempts to create a new `EGLDisplay` from `display`.  If `type` is
-         * {@link GstGL.GLDisplayType.ANY} or {@link GstGL.GLDisplayType.EGL_SURFACELESS}, then
-         * `display` must be 0. `type` must not be {@link GstGL.GLDisplayType.NONE}.
+         * {@link GstGL.GLDisplayType.ANY}, then `display` must be 0. `type` must not be
+         * {@link GstGL.GLDisplayType.NONE}.
          * @param type a {@link GstGL.GLDisplayType}
          * @param display pointer to a display (or 0)
          */
         static get_from_native(type: GstGL.GLDisplayType, display: never): any | null;
-
-        // Methods
-
-        /**
-         * Configure whether or not this EGL display is foreign and is managed by an
-         * external application/library.
-         *
-         * A display marked as foreign will not have display global resources freed when
-         * this display is finalized. As such, any external API using the same
-         * `EGLDisplay` must keep the `EGLDisplay` alive while GStreamer is using any
-         * EGL or GL resources associated with that `EGLDisplay`.  The reverse is also
-         * true and a foreign {@link GstGLEGL.GLDisplayEGL} must not be used after the associated
-         * `EGLDisplay` has been destroyed externally with `eglTerminate()`.
-         *
-         * A non-foreign {@link GstGLEGL.GLDisplayEGL} will destroy the associated `EGLDisplay` on
-         * finalization. This can also be useful when a user would like GStreamer to
-         * assume ownership of the `EGLDisplay` after calling e.g.
-         * `gst_gl_display_egl_new_with_egl_display()`.
-         * @param foreign whether `display_egl` should be marked as containing a foreign           `EGLDisplay`
-         */
-        set_foreign(foreign: boolean): void;
     }
 
     namespace GLDisplayEGLDevice {
@@ -429,15 +412,6 @@ export namespace GstGLEGL {
         // Static methods
 
         /**
-         * Checks if the given `context` can emulate `format` using a limited subset of
-         * RGB texture formats. Such `format` is then suitable for importing using
-         * `gst_egl_image_from_dmabuf()` even when GL supports the video format as
-         * external-only or not at all.
-         * @param context a {@link GstGL.GLContext} (must be an EGL context)
-         * @param format a {@link GstVideo.VideoFormat}
-         */
-        static can_emulate(context: GstGL.GLContext, format: GstVideo.VideoFormat): boolean;
-        /**
          * Creates an EGL image that imports the dmabuf FD. The dmabuf data
          * is passed as RGBA data. Shaders later take this "RGBA" data and
          * convert it from its true format (described by in_info) to actual
@@ -510,7 +484,6 @@ export namespace GstGLEGL {
          * Another notable difference to `gst_egl_image_from_dmabuf()` is that this
          * function creates one EGL image for all planes, not one for a single plane.
          * @param context a {@link GstGL.GLContext} (must be an EGL context)
-         * @param n_planes number of planes (obtained from a {@link GstVideo.VideoMeta})
          * @param fd Array of DMABuf file descriptors
          * @param offset Array of offsets, relative to the DMABuf
          * @param in_info_dma the {@link GstVideo.VideoInfoDmaDrm}
@@ -518,11 +491,32 @@ export namespace GstGLEGL {
          */
         static from_dmabuf_direct_target_with_dma_drm(
             context: GstGL.GLContext,
-            n_planes: number,
             fd: number,
             offset: number,
             in_info_dma: GstVideo.VideoInfoDmaDrm,
             target: GstGL.GLTextureTarget,
+        ): EGLImage | null;
+        /**
+         * Creates an EGL image that imports the dmabuf FD. The dmabuf data
+         * is passed as RGBA data. Shaders later take this "RGBA" data and
+         * convert it from its true format (described by in_info) to actual
+         * RGBA output. For example, with I420, three EGL images are created,
+         * one for each `plane`, each EGL image with a single-channel R format.
+         * With NV12, two EGL images are created, one with R format, one
+         * with RG format etc. User can specify the modifier in `in_info_dma`
+         * for non-linear dmabuf.
+         * @param context a {@link GstGL.GLContext} (must be an EGL context)
+         * @param dmabuf the DMA-Buf file descriptor
+         * @param in_info_dma the {@link GstVideo.VideoInfoDmaDrm} in `dmabuf`
+         * @param plane the plane in `in_info` to create and {@link GstGLEGL.EGLImage} for
+         * @param offset the byte-offset in the data
+         */
+        static from_dmabuf_with_dma_drm(
+            context: GstGL.GLContext,
+            dmabuf: number,
+            in_info_dma: GstVideo.VideoInfoDmaDrm,
+            plane: number,
+            offset: number,
         ): EGLImage | null;
         /**
          * @param context a {@link GstGL.GLContext} (must be an EGL context)

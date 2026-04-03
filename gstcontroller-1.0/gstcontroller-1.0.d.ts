@@ -641,23 +641,16 @@ export namespace GstController {
          */
         find_control_point_iter(timestamp: Gst.ClockTime): GLib.SequenceIter | null;
         /**
-         * Returns a read-only copy of the list of {@link GstController.ControlPoint} for the given property.
+         * Returns a read-only copy of the list of {@link Gst.TimedValue} for the given property.
          * Free the list after done with it.
          * @returns a copy of the list, or `null` if the property isn't handled by the controller
          */
-        get_all(): ControlPoint[];
+        get_all(): Gst.TimedValue[];
         /**
          * Get the number of control points that are set.
          * @returns the number of control points that are set.
          */
         get_count(): number;
-        /**
-         * Returns an array of {@link Gst.TimedValue} representing the control points
-         * that have been set on this control source. To modify the value of a
-         * control point, use `gst_timed_value_control_source_set`.
-         * @returns an array of control points, or `null` if no control points are set.
-         */
-        list_control_points(): Gst.TimedValue[] | null;
         /**
          * Set the value of given controller-handled property at a certain time.
          * @param timestamp the time the control-change is scheduled for

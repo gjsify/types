@@ -37,8 +37,8 @@
       "@girs/peas-1.0": [
             "../peas-1.0/index.d.ts"
       ],
-      "@girs/girepository-3.0": [
-            "../girepository-3.0/index.d.ts"
+      "@girs/girepository-2.0": [
+            "../girepository-2.0/index.d.ts"
       ],
       "@girs/json-1.0": [
             "../json-1.0/index.d.ts"

@@ -1029,8 +1029,6 @@ export namespace GooCanvas {
          */
         vfunc_create_item(model: CanvasItemModel): CanvasItem;
         /**
-         * signal emitted when a new canvas item has been created.
-         *  Applications can connect to this to setup signal handlers for the new item.
          * @param item
          * @param model
          * @virtual
@@ -1271,7 +1269,7 @@ export namespace GooCanvas {
         pointer_grab(
             item: CanvasItem,
             event_mask: Gdk.EventMask | null,
-            cursor: Gdk.Cursor,
+            cursor: Gdk.Cursor | null,
             time: number,
         ): Gdk.GrabStatus;
         /**
@@ -1614,7 +1612,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1669,7 +1667,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1744,7 +1742,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2628,48 +2626,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -2695,8 +2685,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -2806,7 +2794,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -2824,28 +2811,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -2873,7 +2856,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -2897,8 +2879,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -2914,7 +2894,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -3078,7 +3057,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3133,7 +3112,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3208,7 +3187,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3827,38 +3806,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -3870,8 +3843,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -3920,7 +3891,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -4056,7 +4026,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4111,7 +4081,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4186,7 +4156,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5230,48 +5200,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -5297,8 +5259,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -5408,7 +5368,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -5426,28 +5385,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -5475,7 +5430,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -5499,8 +5453,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -5516,7 +5468,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -5680,7 +5631,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5735,7 +5686,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5810,7 +5761,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6621,38 +6572,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -6664,8 +6609,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -6714,7 +6657,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -6850,7 +6792,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6905,7 +6847,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6980,7 +6922,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7787,48 +7729,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -7854,8 +7788,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -7965,7 +7897,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -7983,28 +7914,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -8032,7 +7959,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -8056,8 +7982,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -8073,7 +7997,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -8237,7 +8160,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8292,7 +8215,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8367,7 +8290,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8960,38 +8883,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -9003,8 +8920,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -9053,7 +8968,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -9189,7 +9103,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9244,7 +9158,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9319,7 +9233,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10142,48 +10056,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -10209,8 +10115,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -10320,7 +10224,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -10338,28 +10241,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -10387,7 +10286,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -10411,8 +10309,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -10428,7 +10324,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -10592,7 +10487,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -10647,7 +10542,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -10722,7 +10617,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11336,38 +11231,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -11379,8 +11268,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -11429,7 +11316,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -11565,7 +11451,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -11620,7 +11506,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -11695,7 +11581,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12476,38 +12362,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -12519,8 +12399,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -12569,7 +12447,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -12705,7 +12582,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -12760,7 +12637,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -12835,7 +12712,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -13347,19 +13224,11 @@ export namespace GooCanvas {
         // Virtual methods
 
         /**
-         * simple subclasses that draw basic shapes and paths only
-         *  need to override this one method. It creates the path for the item.
-         *  All updating, painting and hit-testing is provided automatically by the
-         *  {@link GooCanvas.CanvasItemSimple} class. (This method is used by the builtin
-         *  {@link GooCanvas.CanvasEllipse}, {@link GooCanvas.CanvasRect} and {@link GooCanvas.CanvasPath} items.)
-         *  More complicated subclasses must override `simple_update`, `simple_paint` and
-         *  `simple_is_item_at` instead.
          * @param cr
          * @virtual
          */
         vfunc_simple_create_path(cr: cairo.Context): void;
         /**
-         * subclasses should override this to do hit-testing.
          * @param x
          * @param y
          * @param cr
@@ -13368,15 +13237,12 @@ export namespace GooCanvas {
          */
         vfunc_simple_is_item_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean): boolean;
         /**
-         * subclasses should override this to paint their item.
          * @param cr
          * @param bounds
          * @virtual
          */
         vfunc_simple_paint(cr: cairo.Context, bounds: CanvasBounds): void;
         /**
-         * subclasses should override this to calculate their new
-         *  bounds, in user space.
          * @param cr
          * @virtual
          */
@@ -13915,48 +13781,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -13982,8 +13840,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -14093,7 +13949,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -14111,28 +13966,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -14160,7 +14011,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -14184,8 +14034,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -14201,7 +14049,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -14365,7 +14212,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14420,7 +14267,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -14495,7 +14342,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15306,48 +15153,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -15373,8 +15212,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -15484,7 +15321,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -15502,28 +15338,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -15551,7 +15383,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -15575,8 +15406,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -15592,7 +15421,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -15756,7 +15584,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -15811,7 +15639,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -15886,7 +15714,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16484,38 +16312,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -16527,8 +16349,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -16577,7 +16397,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -16713,7 +16532,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -16768,7 +16587,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -16843,7 +16662,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17688,48 +17507,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -17755,8 +17566,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -17866,7 +17675,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -17884,28 +17692,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -17933,7 +17737,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -17957,8 +17760,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -17974,7 +17775,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -18138,7 +17938,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18193,7 +17993,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18268,7 +18068,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -18905,38 +18705,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -18948,8 +18742,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -18998,7 +18790,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -19134,7 +18925,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -19189,7 +18980,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -19264,7 +19055,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20075,48 +19866,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -20142,8 +19925,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -20253,7 +20034,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -20271,28 +20051,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -20320,7 +20096,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -20344,8 +20119,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -20361,7 +20134,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -20525,7 +20297,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -20580,7 +20352,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -20655,7 +20427,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -21256,38 +21028,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -21299,8 +21065,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -21349,7 +21113,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -21485,7 +21248,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -21540,7 +21303,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -21615,7 +21378,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -22234,7 +21997,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -22289,7 +22052,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22364,7 +22127,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -22852,7 +22615,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -22907,7 +22670,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22982,7 +22745,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -23821,48 +23584,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -23888,8 +23643,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -23999,7 +23752,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -24017,28 +23769,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -24066,7 +23814,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -24090,8 +23837,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -24107,7 +23852,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -24271,7 +24015,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -24326,7 +24070,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -24401,7 +24145,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -25015,38 +24759,32 @@ export namespace GooCanvas {
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
         /**
-         * signal emitted when the model's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when the model has changed.
          * @param recompute_bounds
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
         /**
-         * signal emitted when a child is added.
          * @param child_num
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
         /**
-         * signal emitted when a child is moved in the stacking order.
          * @param old_child_num
          * @param new_child_num
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
         /**
-         * signal emitted when a child property has changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when a child is removed.
          * @param child_num
          * @virtual
          */
@@ -25058,8 +24796,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
         /**
-         * gets a child property of a given child model,
-         *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
          * @param child
          * @param property_id
          * @param value
@@ -25108,7 +24844,6 @@ export namespace GooCanvas {
          */
         vfunc_remove_child(child_num: number): void;
         /**
-         * sets a child property for a given child model.
          * @param child
          * @param property_id
          * @param value
@@ -25244,7 +24979,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -25299,7 +25034,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -25374,7 +25109,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -26189,48 +25924,40 @@ export namespace GooCanvas {
             y_offset: number,
         ): void;
         /**
-         * signal emitted when the item's animation has finished.
          * @param stopped
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
         /**
-         * signal emitted when a mouse button is pressed within
-         *  the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a mouse button is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
         /**
-         * signal emitted when a child property is changed.
          * @param pspec
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
         /**
-         * signal emitted when the mouse enters the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the item receices the keyboard focus.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
         /**
-         * signal emitted when the item loses the keyboard focus.
          * @param target
          * @param event
          * @virtual
@@ -26256,8 +25983,6 @@ export namespace GooCanvas {
          */
         vfunc_get_child(child_num: number): CanvasItem;
         /**
-         * gets a child property of a given child item,
-         *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
          * @param child
          * @param property_id
          * @param value
@@ -26367,7 +26092,6 @@ export namespace GooCanvas {
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
         /**
-         * signal emitted when a grab that the item has is lost.
          * @param target
          * @param event
          * @virtual
@@ -26385,28 +26109,24 @@ export namespace GooCanvas {
          */
         vfunc_is_visible(): boolean;
         /**
-         * signal emitted when a key is pressed.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when a key is released.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
         /**
-         * signal emitted when the mouse leaves the item.
          * @param target
          * @param event
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
         /**
-         * signal emitted when the mouse moves within the item.
          * @param target
          * @param event
          * @virtual
@@ -26434,7 +26154,6 @@ export namespace GooCanvas {
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
         /**
-         * signal emitted to query the tooltip of an item.
          * @param x
          * @param y
          * @param keyboard_tooltip
@@ -26458,8 +26177,6 @@ export namespace GooCanvas {
          */
         vfunc_request_update(): void;
         /**
-         * signal emitted when the mouse wheel is activated within
-         * the item.
          * @param target
          * @param event
          * @virtual
@@ -26475,7 +26192,6 @@ export namespace GooCanvas {
          */
         vfunc_set_canvas(canvas: Canvas): void;
         /**
-         * sets a child property for a given child item.
          * @param child
          * @param property_id
          * @param value
@@ -26639,7 +26355,7 @@ export namespace GooCanvas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -26694,7 +26410,7 @@ export namespace GooCanvas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -26769,7 +26485,7 @@ export namespace GooCanvas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -27612,48 +27328,40 @@ export namespace GooCanvas {
                 y_offset: number,
             ): void;
             /**
-             * signal emitted when the item's animation has finished.
              * @param stopped
              * @virtual
              */
             vfunc_animation_finished(stopped: boolean): void;
             /**
-             * signal emitted when a mouse button is pressed within
-             *  the item.
              * @param target
              * @param event
              * @virtual
              */
             vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
             /**
-             * signal emitted when a mouse button is released.
              * @param target
              * @param event
              * @virtual
              */
             vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
             /**
-             * signal emitted when a child property is changed.
              * @param pspec
              * @virtual
              */
             vfunc_child_notify(pspec: GObject.ParamSpec): void;
             /**
-             * signal emitted when the mouse enters the item.
              * @param target
              * @param event
              * @virtual
              */
             vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
             /**
-             * signal emitted when the item receices the keyboard focus.
              * @param target
              * @param event
              * @virtual
              */
             vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
             /**
-             * signal emitted when the item loses the keyboard focus.
              * @param target
              * @param event
              * @virtual
@@ -27679,8 +27387,6 @@ export namespace GooCanvas {
              */
             vfunc_get_child(child_num: number): CanvasItem;
             /**
-             * gets a child property of a given child item,
-             *  e.g. the "row" or "column" property of an item in a {@link GooCanvas.CanvasTable}.
              * @param child
              * @param property_id
              * @param value
@@ -27790,7 +27496,6 @@ export namespace GooCanvas {
              */
             vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
             /**
-             * signal emitted when a grab that the item has is lost.
              * @param target
              * @param event
              * @virtual
@@ -27808,28 +27513,24 @@ export namespace GooCanvas {
              */
             vfunc_is_visible(): boolean;
             /**
-             * signal emitted when a key is pressed.
              * @param target
              * @param event
              * @virtual
              */
             vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
             /**
-             * signal emitted when a key is released.
              * @param target
              * @param event
              * @virtual
              */
             vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
             /**
-             * signal emitted when the mouse leaves the item.
              * @param target
              * @param event
              * @virtual
              */
             vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
             /**
-             * signal emitted when the mouse moves within the item.
              * @param target
              * @param event
              * @virtual
@@ -27857,7 +27558,6 @@ export namespace GooCanvas {
              */
             vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
             /**
-             * signal emitted to query the tooltip of an item.
              * @param x
              * @param y
              * @param keyboard_tooltip
@@ -27881,8 +27581,6 @@ export namespace GooCanvas {
              */
             vfunc_request_update(): void;
             /**
-             * signal emitted when the mouse wheel is activated within
-             * the item.
              * @param target
              * @param event
              * @virtual
@@ -27898,7 +27596,6 @@ export namespace GooCanvas {
              */
             vfunc_set_canvas(canvas: Canvas): void;
             /**
-             * sets a child property for a given child item.
              * @param child
              * @param property_id
              * @param value
@@ -28460,38 +28157,32 @@ export namespace GooCanvas {
              */
             vfunc_add_child(child: CanvasItemModel, position: number): void;
             /**
-             * signal emitted when the model's animation has finished.
              * @param stopped
              * @virtual
              */
             vfunc_animation_finished(stopped: boolean): void;
             /**
-             * signal emitted when the model has changed.
              * @param recompute_bounds
              * @virtual
              */
             vfunc_changed(recompute_bounds: boolean): void;
             /**
-             * signal emitted when a child is added.
              * @param child_num
              * @virtual
              */
             vfunc_child_added(child_num: number): void;
             /**
-             * signal emitted when a child is moved in the stacking order.
              * @param old_child_num
              * @param new_child_num
              * @virtual
              */
             vfunc_child_moved(old_child_num: number, new_child_num: number): void;
             /**
-             * signal emitted when a child property has changed.
              * @param pspec
              * @virtual
              */
             vfunc_child_notify(pspec: GObject.ParamSpec): void;
             /**
-             * signal emitted when a child is removed.
              * @param child_num
              * @virtual
              */
@@ -28503,8 +28194,6 @@ export namespace GooCanvas {
              */
             vfunc_get_child(child_num: number): CanvasItemModel;
             /**
-             * gets a child property of a given child model,
-             *  e.g. the "row" or "column" property of a model in a {@link GooCanvas.CanvasTableModel}.
              * @param child
              * @param property_id
              * @param value
@@ -28553,7 +28242,6 @@ export namespace GooCanvas {
              */
             vfunc_remove_child(child_num: number): void;
             /**
-             * sets a child property for a given child model.
              * @param child
              * @param property_id
              * @param value

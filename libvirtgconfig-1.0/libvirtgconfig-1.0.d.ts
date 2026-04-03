@@ -22,28 +22,6 @@ export namespace LibvirtGConfig {
     /**
      * @gir-type Enum
      */
-    export namespace DomainAudioBackend {
-        export const $gtype: GObject.GType<DomainAudioBackend>;
-    }
-
-    /**
-     * @gir-type Enum
-     */
-    enum DomainAudioBackend {
-        NONE,
-        ALSA,
-        COREAUDIO,
-        JACK,
-        OSS,
-        PULSEAUDIO,
-        SDL,
-        SPICE,
-        FILE,
-    }
-
-    /**
-     * @gir-type Enum
-     */
     export namespace DomainChannelTargetType {
         export const $gtype: GObject.GType<DomainChannelTargetType>;
     }
@@ -1715,7 +1693,7 @@ export namespace LibvirtGConfig {
          * Sets the current amount of RAM allocated to `domain` in kilobytes (i.e.
          * blocks of 1024 bytes). This can be set to less than the maximum domain
          * memory to allow to balloon the guest memory on the fly. Be aware that
-         * libvirt will set it automatically if it's not explicitly set, which means
+         * libvirt will set it automatically if it's not explictly set, which means
          * you may need to set this value in addition to 'memory' if you want to
          * change the available domain memory after creation.
          * @param memory The current amount of RAM in kilobytes.
@@ -2008,79 +1986,6 @@ export namespace LibvirtGConfig {
          * @param port
          */
         set_port(port: string): void;
-    }
-
-    namespace DomainAudio {
-        // Signal signatures
-        interface SignalSignatures extends DomainDevice.SignalSignatures {
-            'notify::node': (pspec: GObject.ParamSpec) => void;
-            'notify::schema': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends DomainDevice.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class DomainAudio extends DomainDevice {
-        static $gtype: GObject.GType<DomainAudio>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: DomainAudio.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<DomainAudio.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): DomainAudio;
-
-        static new_from_xml(xml: string): DomainAudio;
-        // Conflicted with LibvirtGConfig.Object.new_from_xml
-
-        static new_from_xml(...args: never[]): any;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof DomainAudio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DomainAudio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DomainAudio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DomainAudio.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof DomainAudio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DomainAudio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * @param backend
-         */
-        set_backend(backend: DomainAudioBackend | null): void;
-        /**
-         * @param server_name
-         */
-        set_server_name(server_name: string): void;
     }
 
     namespace DomainCapabilities {
@@ -3663,80 +3568,6 @@ export namespace LibvirtGConfig {
         emit(signal: string, ...args: any[]): void;
     }
 
-    namespace DomainGraphicsDBus {
-        // Signal signatures
-        interface SignalSignatures extends DomainGraphics.SignalSignatures {
-            'notify::node': (pspec: GObject.ParamSpec) => void;
-            'notify::schema': (pspec: GObject.ParamSpec) => void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends DomainGraphics.ConstructorProps {}
-    }
-
-    /**
-     * @gir-type Class
-     */
-    class DomainGraphicsDBus extends DomainGraphics {
-        static $gtype: GObject.GType<DomainGraphicsDBus>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: DomainGraphicsDBus.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<DomainGraphicsDBus.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): DomainGraphicsDBus;
-
-        static new_from_xml(xml: string): DomainGraphicsDBus;
-        // Conflicted with LibvirtGConfig.Object.new_from_xml
-
-        static new_from_xml(...args: never[]): any;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof DomainGraphicsDBus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DomainGraphicsDBus.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DomainGraphicsDBus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DomainGraphicsDBus.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof DomainGraphicsDBus.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DomainGraphicsDBus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        get_address(): string;
-        /**
-         * @param address
-         */
-        set_address(address: string): void;
-        /**
-         * @param gl
-         */
-        set_gl(gl: boolean): void;
-    }
-
     namespace DomainGraphicsDesktop {
         // Signal signatures
         interface SignalSignatures extends DomainGraphics.SignalSignatures {
@@ -5000,11 +4831,6 @@ export namespace LibvirtGConfig {
          * @param enable
          */
         enable_boot_menu(enable: boolean): void;
-        /**
-         * @param name
-         * @param enable
-         */
-        enable_firmware_feature(name: string, enable: boolean): void;
         get_arch(): string;
         /**
          * Gets the list of devices attached to `os`. The returned list should be
@@ -7553,17 +7379,6 @@ export namespace LibvirtGConfig {
     /**
      * @gir-type Alias
      */
-    type DomainAudioClass = typeof DomainAudio;
-    /**
-     * @gir-type Struct
-     */
-    abstract class DomainAudioPrivate {
-        static $gtype: GObject.GType<DomainAudioPrivate>;
-    }
-
-    /**
-     * @gir-type Alias
-     */
     type DomainCapabilitiesClass = typeof DomainCapabilities;
     /**
      * @gir-type Alias
@@ -7789,17 +7604,6 @@ export namespace LibvirtGConfig {
      * @gir-type Alias
      */
     type DomainGraphicsClass = typeof DomainGraphics;
-    /**
-     * @gir-type Alias
-     */
-    type DomainGraphicsDBusClass = typeof DomainGraphicsDBus;
-    /**
-     * @gir-type Struct
-     */
-    abstract class DomainGraphicsDBusPrivate {
-        static $gtype: GObject.GType<DomainGraphicsDBusPrivate>;
-    }
-
     /**
      * @gir-type Alias
      */

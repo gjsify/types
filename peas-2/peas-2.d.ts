@@ -278,11 +278,9 @@ export namespace Peas {
          * Enable a loader, enables a loader for plugins.
          *
          * The C plugin loader is always enabled. The other plugin
-         * loaders are: "gjs", "lua5.1", and "python".
+         * loaders are: gjs, lua5.1, python and python3.
          *
-         * Note that the "python" loader is Python 3 only.
-         *
-         * For instance, the following code will enable Python 3 plugins
+         * For instance, the following code will enable Python 2 plugins
          * to be loaded:
          *
          * ```c
@@ -308,9 +306,6 @@ export namespace Peas {
         /**
          * Gets the {@link PluginInfo} corresponding with `plugin_name`,
          * or `null` if `plugin_name` was not found.
-         *
-         * `plugin_name` should be the value from the "Module=" line of your
-         * `*.plugin` manifest.
          * @param plugin_name A plugin name.
          * @returns the {@link Peas.PluginInfo} corresponding with   a given plugin module name.
          */
@@ -555,7 +550,7 @@ export namespace Peas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -610,7 +605,7 @@ export namespace Peas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -685,7 +680,7 @@ export namespace Peas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1405,7 +1400,7 @@ export namespace Peas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1460,7 +1455,7 @@ export namespace Peas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1535,7 +1530,7 @@ export namespace Peas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2020,7 +2015,7 @@ export namespace Peas {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2075,7 +2070,7 @@ export namespace Peas {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2150,7 +2145,7 @@ export namespace Peas {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2434,7 +2429,7 @@ export namespace Peas {
      * Authors=Steve Frécinaux &lt;code@istique.net&gt;
      * Copyright=Copyright © 2009-10 Steve Frécinaux
      * Website=https://wiki.gnome.org/Projects/Libpeas
-     * Help=https://gitlab.gnome.org/GNOME/libpeas
+     * Help=http://library.gnome.org/devel/libpeas/stable/
      * Hidden=false
      * ```
      * @gir-type Class

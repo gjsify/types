@@ -1,7 +1,7 @@
 {
     "name": "@girs/gdata-0.0",
-    "version": "0.18.1-4.0.0-beta.44",
-    "description": "GJS TypeScript type definitions for GData-0.0, generated from library version 0.18.1",
+    "version": "0.19.0-4.0.0-rc.1",
+    "description": "GJS TypeScript type definitions for GData-0.0, generated from library version 0.19.0",
     "type": "module",
     "module": "gdata-0.0.js",
     "main": "gdata-0.0.js",
@@ -31,15 +31,15 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.44",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-beta.44",
-      "@girs/soup-2.4": "2.74.3-4.0.0-beta.44",
-      "@girs/gio-2.0": "2.88.0-4.0.0-beta.44",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.44",
-      "@girs/glib-2.0": "2.88.0-4.0.0-beta.44",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.44",
-      "@girs/json-1.0": "1.10.8-4.0.0-beta.44",
-      "@girs/goa-1.0": "3.58.0-4.0.0-beta.44"    },
+      "@girs/gjs": "4.0.0-rc.1",
+      "@girs/libxml2-2.0": "2.0.0-4.0.0-rc.1",
+      "@girs/soup-2.4": "2.74.3-4.0.0-rc.1",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.1",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.1",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.1",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.1",
+      "@girs/json-1.0": "1.10.8-4.0.0-rc.1",
+      "@girs/goa-1.0": "3.58.0-4.0.0-rc.1"    },
     "devDependencies": {
       "typescript": "*"
     },

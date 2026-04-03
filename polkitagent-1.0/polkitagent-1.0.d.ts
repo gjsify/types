@@ -485,26 +485,11 @@ export namespace PolkitAgent {
 
     namespace TextListener {
         // Signal signatures
-        interface SignalSignatures extends Listener.SignalSignatures {
-            /**
-             * @signal
-             * @run-last
-             */
-            'tty-attrs-changed': (arg0: boolean) => void;
-            'notify::delay': (pspec: GObject.ParamSpec) => void;
-            'notify::use-alternate-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::use-color': (pspec: GObject.ParamSpec) => void;
-        }
+        interface SignalSignatures extends Listener.SignalSignatures {}
 
         // Constructor properties interface
 
-        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {
-            delay: number;
-            use_alternate_buffer: boolean;
-            useAlternateBuffer: boolean;
-            use_color: boolean;
-            useColor: boolean;
-        }
+        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -514,29 +499,6 @@ export namespace PolkitAgent {
      */
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
-
-        // Properties
-
-        /**
-         * @construct-only
-         */
-        get delay(): number;
-        /**
-         * @construct-only
-         */
-        get use_alternate_buffer(): boolean;
-        /**
-         * @construct-only
-         */
-        get useAlternateBuffer(): boolean;
-        /**
-         * @construct-only
-         */
-        get use_color(): boolean;
-        /**
-         * @construct-only
-         */
-        get useColor(): boolean;
 
         /**
          * Compile-time signal type information.
@@ -758,7 +720,7 @@ export namespace PolkitAgent {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -813,7 +775,7 @@ export namespace PolkitAgent {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -888,7 +850,7 @@ export namespace PolkitAgent {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

@@ -573,7 +573,7 @@ export namespace GioUnix {
          * Gets the keywords from the desktop file.
          * @returns The value of the   [`Keywords` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-keywords)
          */
-        get_keywords(): string[] | null;
+        get_keywords(): string[];
         /**
          * Looks up a localized string value in the keyfile backing `info`
          * translated to the current locale.
@@ -631,7 +631,7 @@ export namespace GioUnix {
          * @param key the key to look up
          * @returns a `NULL`-terminated string array or `NULL` if the specified   key cannot be found. The array should be freed with {@link GLib.strfreev}.
          */
-        get_string_list(key: string): string[] | null;
+        get_string_list(key: string): string[];
         /**
          * Returns whether `key` exists in the `Desktop Entry` group
          * of the keyfile backing `info`.
@@ -826,7 +826,7 @@ export namespace GioUnix {
          * the application.
          * @returns a list of content types.
          */
-        get_supported_types(): string[] | null;
+        get_supported_types(): string[];
         /**
          * Launches the application. Passes `files` to the launched application
          * as arguments, using the optional `context` to get information
@@ -1077,7 +1077,7 @@ export namespace GioUnix {
          * the application.
          * @virtual
          */
-        vfunc_get_supported_types(): string[] | null;
+        vfunc_get_supported_types(): string[];
         /**
          * Launches the application. Passes `files` to the launched application
          * as arguments, using the optional `context` to get information
@@ -1294,7 +1294,7 @@ export namespace GioUnix {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1349,7 +1349,7 @@ export namespace GioUnix {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1424,7 +1424,7 @@ export namespace GioUnix {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2896,7 +2896,7 @@ export namespace GioUnix {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2951,7 +2951,7 @@ export namespace GioUnix {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3026,7 +3026,7 @@ export namespace GioUnix {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4959,7 +4959,7 @@ export namespace GioUnix {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5014,7 +5014,7 @@ export namespace GioUnix {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5089,7 +5089,7 @@ export namespace GioUnix {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

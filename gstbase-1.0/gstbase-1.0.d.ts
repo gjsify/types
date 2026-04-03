@@ -46,10 +46,6 @@ export namespace GstBase {
          * selected by the `start-time` property.
          */
         SET,
-        /**
-         * Start at the current running time when reaching {@link Gst.State.PLAYING}.
-         */
-        NOW,
     }
 
     const BASE_PARSE_FLAG_DRAINING: number;
@@ -880,14 +876,6 @@ export namespace GstBase {
          * The caller needs to explicitly set or unset flags that should be set or
          * unset.
          *
-         * Likewise, no assumptions should be made about timestamps and offset of the
-         * returned buffer. The caller should use `gst_adapter_prev_pts()`,
-         * `gst_adapter_prev_dts()`, and `gst_adapter_prev_offset()` to obtain the relevant
-         * information.
-         *
-         * The returned buffer might not be writable, use `gst_buffer_make_writable()`
-         * if you need to change e.g. flags or timestamps.
-         *
          * Since 1.6 this will also copy over all GstMeta of the input buffers except
          * for meta with the {@link Gst.MetaFlags.POOLED} flag or with the "memory" tag.
          *
@@ -1167,28 +1155,19 @@ export namespace GstBase {
          */
         vfunc_aggregate(timeout: boolean): Gst.FlowReturn;
         /**
-         * Called when a buffer is received on a sink pad, the task of
-         * clipping it and translating it to the current segment falls
-         * on the subclass. The function should use the segment of data
-         * and the negotiated media type on the pad to perform
-         * clipping of input buffer. This function takes ownership of
-         * buf and should output a buffer or return NULL in
-         * if the buffer should be dropped.
-         * @param aggregator_pad a {@link GstBase.AggregatorPad}
-         * @param buf a {@link Gst.Buffer}
+         * Optional.
+         *                  Called when a buffer is received on a sink pad, the task of
+         *                  clipping it and translating it to the current segment falls
+         *                  on the subclass. The function should use the segment of data
+         *                  and the negotiated media type on the pad to perform
+         *                  clipping of input buffer. This function takes ownership of
+         *                  buf and should output a buffer or return NULL in
+         *                  if the buffer should be dropped.
+         * @param aggregator_pad
+         * @param buf
          * @virtual
          */
-        vfunc_clip(aggregator_pad: AggregatorPad, buf: Gst.Buffer): Gst.Buffer | null;
-        /**
-         * Called when a new pad needs to be created. Allows subclass that
-         * don't have a single sink pad template to provide a pad based
-         * on the provided information.
-         * @param templ the pad template to use
-         * @param req_name requested pad name
-         * @param caps caps for the pad
-         * @virtual
-         */
-        vfunc_create_new_pad(templ: Gst.PadTemplate, req_name?: string | null, caps?: Gst.Caps | null): AggregatorPad;
+        vfunc_clip(aggregator_pad: AggregatorPad, buf: Gst.Buffer): Gst.Buffer;
         /**
          * Optional.
          *                     Allows the subclass to influence the allocation choices.
@@ -1216,10 +1195,11 @@ export namespace GstBase {
          */
         vfunc_finish_buffer_list(bufferlist: Gst.BufferList): Gst.FlowReturn;
         /**
-         * Fixate and return the src pad caps provided. The function takes
-         * ownership of `caps` and returns a fixated version of
-         * `caps`. `caps` is not guaranteed to be writable.
-         * @param caps a {@link Gst.Caps} to fixate
+         * Optional.
+         *                   Fixate and return the src pad caps provided.  The function takes
+         *                   ownership of `caps` and returns a fixated version of
+         *                   `caps`. `caps` is not guaranteed to be writable.
+         * @param caps
          * @virtual
          */
         vfunc_fixate_src_caps(caps: Gst.Caps): Gst.Caps;
@@ -1260,7 +1240,7 @@ export namespace GstBase {
          * to produce the next output buffer. This should only be called from
          * a {@link GstBase.Aggregator.SignalSignatures.samples_selected | GstBase.Aggregator::samples-selected} handler, and can be used to precisely
          * control aggregating parameters for a given set of input samples.
-         * @param aggregator_pad a {@link GstBase.AggregatorPad}
+         * @param aggregator_pad
          * @virtual
          */
         vfunc_peek_next_sample(aggregator_pad: AggregatorPad): Gst.Sample | null;
@@ -1274,18 +1254,20 @@ export namespace GstBase {
          */
         vfunc_propose_allocation(pad: AggregatorPad, decide_query: Gst.Query, query: Gst.Query): boolean;
         /**
-         * Called when an event is received on a sink pad, the subclass
-         * should always chain up.
-         * @param aggregator_pad a {@link GstBase.AggregatorPad}
-         * @param event a {@link Gst.Event}
+         * Optional.
+         *                  Called when an event is received on a sink pad, the subclass
+         *                  should always chain up.
+         * @param aggregator_pad
+         * @param event
          * @virtual
          */
         vfunc_sink_event(aggregator_pad: AggregatorPad, event: Gst.Event): boolean;
         /**
-         * Called when an event is received on a sink pad before queueing up
-         * serialized events. The subclass should always chain up (Since: 1.18).
-         * @param aggregator_pad a {@link GstBase.AggregatorPad}
-         * @param event a {@link Gst.Event}
+         * Optional.
+         *                        Called when an event is received on a sink pad before queueing up
+         *                        serialized events. The subclass should always chain up (Since: 1.18).
+         * @param aggregator_pad
+         * @param event
          * @virtual
          */
         vfunc_sink_event_pre_queue(aggregator_pad: AggregatorPad, event: Gst.Event): Gst.FlowReturn;
@@ -1317,9 +1299,10 @@ export namespace GstBase {
          */
         vfunc_src_activate(mode: Gst.PadMode, active: boolean): boolean;
         /**
-         * Called when an event is received on the src pad, the subclass
-         * should always chain up.
-         * @param event a {@link Gst.Event}
+         * Optional.
+         *                  Called when an event is received on the src pad, the subclass
+         *                  should always chain up.
+         * @param event
          * @virtual
          */
         vfunc_src_event(event: Gst.Event): boolean;
@@ -1347,7 +1330,7 @@ export namespace GstBase {
          */
         vfunc_stop(): boolean;
         /**
-         * @param caps the new source pad {@link Gst.Caps}
+         * @param caps
          * @virtual
          */
         vfunc_update_src_caps(caps: Gst.Caps): [Gst.FlowReturn, Gst.Caps | null];
@@ -1506,9 +1489,6 @@ export namespace GstBase {
              * @run-first
              */
             'buffer-consumed': (arg0: Gst.Buffer) => void;
-            'notify::current-level-buffers': (pspec: GObject.ParamSpec) => void;
-            'notify::current-level-bytes': (pspec: GObject.ParamSpec) => void;
-            'notify::current-level-time': (pspec: GObject.ParamSpec) => void;
             'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
             'notify::direction': (pspec: GObject.ParamSpec) => void;
@@ -1521,12 +1501,6 @@ export namespace GstBase {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Pad.ConstructorProps {
-            current_level_buffers: number;
-            currentLevelBuffers: number;
-            current_level_bytes: number;
-            currentLevelBytes: number;
-            current_level_time: number;
-            currentLevelTime: number;
             emit_signals: boolean;
             emitSignals: boolean;
         }
@@ -1544,42 +1518,6 @@ export namespace GstBase {
 
         // Properties
 
-        /**
-         * The number of currently queued buffers inside this pad
-         * @since 1.28
-         * @read-only
-         */
-        get current_level_buffers(): number;
-        /**
-         * The number of currently queued buffers inside this pad
-         * @since 1.28
-         * @read-only
-         */
-        get currentLevelBuffers(): number;
-        /**
-         * The number of currently queued bytes inside this pad
-         * @since 1.28
-         * @read-only
-         */
-        get current_level_bytes(): number;
-        /**
-         * The number of currently queued bytes inside this pad
-         * @since 1.28
-         * @read-only
-         */
-        get currentLevelBytes(): number;
-        /**
-         * The amount of currently queued time inside this pad
-         * @since 1.28
-         * @read-only
-         */
-        get current_level_time(): number;
-        /**
-         * The amount of currently queued time inside this pad
-         * @since 1.28
-         * @read-only
-         */
-        get currentLevelTime(): number;
         /**
          * Enables the emission of signals such as {@link GstBase.AggregatorPad.SignalSignatures.buffer_consumed | GstBase.AggregatorPad::buffer-consumed}
          * @since 1.16
@@ -1687,7 +1625,6 @@ export namespace GstBase {
     namespace BaseParse {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::disable-clip': (pspec: GObject.ParamSpec) => void;
             'notify::disable-passthrough': (pspec: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
             'notify::parent': (pspec: GObject.ParamSpec) => void;
@@ -1696,8 +1633,6 @@ export namespace GstBase {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
-            disable_clip: boolean;
-            disableClip: boolean;
             disable_passthrough: boolean;
             disablePassthrough: boolean;
         }
@@ -1846,18 +1781,6 @@ export namespace GstBase {
 
         // Properties
 
-        /**
-         * Disable dropping buffers that are out of segment
-         * @since 1.28
-         */
-        get disable_clip(): boolean;
-        set disable_clip(val: boolean);
-        /**
-         * Disable dropping buffers that are out of segment
-         * @since 1.28
-         */
-        get disableClip(): boolean;
-        set disableClip(val: boolean);
         /**
          * If set to `true`, baseparse will unconditionally force parsing of the
          * incoming data. This can be required in the rare cases where the incoming
@@ -5579,7 +5502,7 @@ export namespace GstBase {
          * Free-function: g_free
          * @returns the current data. `g_free()` after usage.
          */
-        free_and_get_data(): Uint8Array;
+        free_and_get_data(): number;
         /**
          * Returns the remaining size of data that can still be written. If
          * -1 is returned the remaining size is only limited by system resources.
