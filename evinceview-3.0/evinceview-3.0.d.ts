@@ -1372,7 +1372,7 @@ export namespace EvinceView {
         text_layout: EvinceDocument.Rectangle;
         text_layout_length: number;
         text_log_attrs: Pango.LogAttr;
-        text_log_attrs_length: number;
+        text_log_attrs_length: bigint | number;
 
         // Constructors
 
@@ -2203,7 +2203,7 @@ export namespace EvinceView {
          * you have to use `ev_document_model_set_max_scale()` too.
          * @param cache_size size in bytes
          */
-        set_page_cache_size(cache_size: number): void;
+        set_page_cache_size(cache_size: bigint | number): void;
         show_cursor(): void;
         /**
          * @returns whether the document supports caret navigation

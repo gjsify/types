@@ -5554,7 +5554,7 @@ export namespace Dee {
          * Sets sequence number of this {@link Dee.SerializableModel}.
          * @param seqnum Sequence number
          */
-        set_seqnum(seqnum: number): void;
+        set_seqnum(seqnum: bigint | number): void;
         /**
          * Like `dee_model_append()` but intended for language bindings or
          * situations where you work with models on a meta level and may not have
@@ -6929,13 +6929,13 @@ export namespace Dee {
              * @signal
              * @run-last
              */
-            'begin-transaction': (arg0: number, arg1: number) => void;
+            'begin-transaction': (arg0: bigint | number, arg1: bigint | number) => void;
             /**
              * Emitted right after a remote transaction has been committed to the model.
              * @signal
              * @run-last
              */
-            'end-transaction': (arg0: number, arg1: number) => void;
+            'end-transaction': (arg0: bigint | number, arg1: bigint | number) => void;
             'notify::access-mode': (pspec: GObject.ParamSpec) => void;
             'notify::flush-mode': (pspec: GObject.ParamSpec) => void;
             'notify::peer': (pspec: GObject.ParamSpec) => void;

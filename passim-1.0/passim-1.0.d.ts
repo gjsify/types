@@ -378,7 +378,7 @@ export namespace Passim {
          * Sets the item flags.
          * @param flags item flags, e.g. `PASSIM_ITEM_FLAG_NEXT_REBOOT`
          */
-        set_flags(flags: number): void;
+        set_flags(flags: bigint | number): void;
         /**
          * Sets the file hash.
          * @param hash the hash, typically in SHA-256 lowercase form
@@ -403,7 +403,7 @@ export namespace Passim {
          * Sets the size of the file in bytes.
          * @param size the share limit, or 0
          */
-        set_size(size: number): void;
+        set_size(size: bigint | number): void;
         /**
          * Sets the input stream stream for the item.
          *
@@ -435,7 +435,7 @@ export namespace Passim {
      * Flags used to represent item attributes
      * @gir-type Alias
      */
-    type ItemFlags = number;
+    type ItemFlags = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

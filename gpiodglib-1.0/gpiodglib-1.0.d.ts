@@ -1071,14 +1071,14 @@ export namespace Gpiodglib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             event_type: EdgeEventType;
             eventType: EdgeEventType;
-            global_seqno: number;
-            globalSeqno: number;
+            global_seqno: bigint | number;
+            globalSeqno: bigint | number;
             line_offset: number;
             lineOffset: number;
-            line_seqno: number;
-            lineSeqno: number;
-            timestamp_ns: number;
-            timestampNs: number;
+            line_seqno: bigint | number;
+            lineSeqno: bigint | number;
+            timestamp_ns: bigint | number;
+            timestampNs: bigint | number;
         }
     }
 
@@ -1228,8 +1228,8 @@ export namespace Gpiodglib {
             eventType: InfoEventType;
             line_info: LineInfo;
             lineInfo: LineInfo;
-            timestamp_ns: number;
-            timestampNs: number;
+            timestamp_ns: bigint | number;
+            timestampNs: bigint | number;
         }
     }
 
@@ -1466,8 +1466,8 @@ export namespace Gpiodglib {
             activeLow: boolean;
             bias: LineBias;
             consumer: string;
-            debounce_period_us: number;
-            debouncePeriodUs: number;
+            debounce_period_us: bigint | number;
+            debouncePeriodUs: bigint | number;
             debounced: boolean;
             direction: LineDirection;
             drive: LineDrive;
@@ -1867,8 +1867,8 @@ export namespace Gpiodglib {
             active_low: boolean;
             activeLow: boolean;
             bias: LineBias;
-            debounce_period_us: number;
-            debouncePeriodUs: number;
+            debounce_period_us: bigint | number;
+            debouncePeriodUs: bigint | number;
             direction: LineDirection;
             drive: LineDrive;
             edge_detection: LineEdge;
@@ -1909,12 +1909,12 @@ export namespace Gpiodglib {
          * Line debounce period (expressed in microseconds).
          */
         get debounce_period_us(): number;
-        set debounce_period_us(val: number);
+        set debounce_period_us(val: bigint | number);
         /**
          * Line debounce period (expressed in microseconds).
          */
         get debouncePeriodUs(): number;
-        set debouncePeriodUs(val: number);
+        set debouncePeriodUs(val: bigint | number);
         /**
          * Line direction setting.
          */

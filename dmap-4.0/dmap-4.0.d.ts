@@ -696,7 +696,7 @@ export namespace Dmap {
              * @signal
              * @run-last
              */
-            connecting: (arg0: number, arg1: number) => void;
+            connecting: (arg0: bigint | number, arg1: number) => void;
             /**
              * @signal
              * @run-last
@@ -1958,7 +1958,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -1978,7 +1978,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -2010,7 +2010,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -2030,7 +2030,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2773,7 +2773,7 @@ export namespace Dmap {
             bitrate: number;
             disc: number;
             duration: number;
-            filesize: number;
+            filesize: bigint | number;
             firstseen: number;
             format: string;
             has_video: boolean;
@@ -2784,7 +2784,7 @@ export namespace Dmap {
             mtime: number;
             rating: number;
             songalbum: string;
-            songalbumid: number;
+            songalbumid: bigint | number;
             songartist: string;
             songgenre: string;
             sort_album: string;
@@ -2823,7 +2823,7 @@ export namespace Dmap {
         get duration(): number;
         set duration(val: number);
         get filesize(): number;
-        set filesize(val: number);
+        set filesize(val: bigint | number);
         get firstseen(): number;
         set firstseen(val: number);
         get format(): string;
@@ -2845,7 +2845,7 @@ export namespace Dmap {
         get songalbum(): string;
         set songalbum(val: string);
         get songalbumid(): number;
-        set songalbumid(val: number);
+        set songalbumid(val: bigint | number);
         get songartist(): string;
         set songartist(val: string);
         get songgenre(): string;
@@ -3080,13 +3080,13 @@ export namespace Dmap {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             play_state: ControlPlayState;
             playState: ControlPlayState;
-            playing_time: number;
-            playingTime: number;
+            playing_time: bigint | number;
+            playingTime: bigint | number;
             repeat_state: ControlRepeatState;
             repeatState: ControlRepeatState;
             shuffle_state: boolean;
             shuffleState: boolean;
-            volume: number;
+            volume: bigint | number;
         }
     }
 
@@ -3105,9 +3105,9 @@ export namespace Dmap {
         get playState(): ControlPlayState;
         set playState(val: ControlPlayState);
         get playing_time(): number;
-        set playing_time(val: number);
+        set playing_time(val: bigint | number);
         get playingTime(): number;
-        set playingTime(val: number);
+        set playingTime(val: bigint | number);
         get repeat_state(): ControlRepeatState;
         set repeat_state(val: ControlRepeatState);
         get repeatState(): ControlRepeatState;
@@ -3117,7 +3117,7 @@ export namespace Dmap {
         get shuffleState(): boolean;
         set shuffleState(val: boolean);
         get volume(): number;
-        set volume(val: number);
+        set volume(val: bigint | number);
 
         // Methods
 
@@ -3449,7 +3449,7 @@ export namespace Dmap {
     /**
      * @gir-type Alias
      */
-    type Bits = number;
+    type Bits = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

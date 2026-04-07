@@ -548,7 +548,12 @@ export namespace Libmsi {
          * @param cancellable optional GCancellable object, `null` to ignore
          * @returns `true` on success
          */
-        set_stream(field: number, input: Gio.InputStream, count: number, cancellable?: Gio.Cancellable | null): boolean;
+        set_stream(
+            field: number,
+            input: Gio.InputStream,
+            count: bigint | number,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Set the %field value to %val string.
          * @param field a field identifier
@@ -676,7 +681,7 @@ export namespace Libmsi {
          * @param value a value
          * @returns `true` on success
          */
-        set_filetime(prop: Property | null, value: number): boolean;
+        set_filetime(prop: Property | null, value: bigint | number): boolean;
         /**
          * Set integer property `prop`.
          * @param prop a {@link Libmsi.Property} to set

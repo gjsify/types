@@ -234,7 +234,7 @@ export namespace Govf {
          * @param length size of the OVF data
          * @returns `true` if the operation succeeded
          */
-        load_from_data(data: string, length: number): boolean;
+        load_from_data(data: string, length: bigint | number): boolean;
         /**
          * Loads an OVF package from an uncompressed .ovf file.
          * @param filename an .ovf file name

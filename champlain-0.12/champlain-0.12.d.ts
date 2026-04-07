@@ -13557,7 +13557,7 @@ export namespace Champlain {
          * @param size size of the contents in bytes
          * @virtual
          */
-        vfunc_store_tile(tile: Tile, contents: string, size: number): void;
+        vfunc_store_tile(tile: Tile, contents: string, size: bigint | number): void;
 
         // Methods
 
@@ -13583,7 +13583,7 @@ export namespace Champlain {
          * @param contents the tile contents that should be stored
          * @param size size of the contents in bytes
          */
-        store_tile(tile: Tile, contents: string, size: number): void;
+        store_tile(tile: Tile, contents: string, size: bigint | number): void;
     }
 
     namespace TileSource {

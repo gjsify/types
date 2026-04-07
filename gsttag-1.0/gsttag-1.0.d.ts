@@ -1618,7 +1618,7 @@ export namespace GstTag {
          */
         query_convert(
             src_format: Gst.Format | null,
-            src_val: number,
+            src_val: bigint | number,
             dest_format: Gst.Format | null,
         ): [boolean, number];
         /**
@@ -1684,7 +1684,7 @@ export namespace GstTag {
         /**
          * @param watch_id watch id to remove
          */
-        remove_property_notify_watch(watch_id: number): void;
+        remove_property_notify_watch(watch_id: bigint | number): void;
         /**
          * Retrieves a request pad from the element according to the provided template.
          * Pad templates can be looked up using
@@ -1734,9 +1734,9 @@ export namespace GstTag {
             format: Gst.Format | null,
             flags: Gst.SeekFlags | null,
             start_type: Gst.SeekType | null,
-            start: number,
+            start: bigint | number,
             stop_type: Gst.SeekType | null,
-            stop: number,
+            stop: bigint | number,
         ): boolean;
         /**
          * Simple API to perform a seek on the given element, meaning it just seeks
@@ -1758,7 +1758,7 @@ export namespace GstTag {
          * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
          * @returns `true` if the seek operation succeeded. Flushing seeks will trigger a preroll, which will emit {@link Gst.MessageType.ASYNC_DONE}.
          */
-        seek_simple(format: Gst.Format | null, seek_flags: Gst.SeekFlags | null, seek_pos: number): boolean;
+        seek_simple(format: Gst.Format | null, seek_flags: Gst.SeekFlags | null, seek_pos: bigint | number): boolean;
         /**
          * Sends an event to an element. If the element doesn't implement an
          * event handler, the event will be pushed on a random linked sink pad for

@@ -626,7 +626,7 @@ export namespace Template {
 
         static new_stmt_list(stmts: Expr[]): Expr;
 
-        static new_string(value: string, length: number): Expr;
+        static new_string(value: string, length: bigint | number): Expr;
 
         static new_symbol_assign(symbol: string, right: Expr): Expr;
 

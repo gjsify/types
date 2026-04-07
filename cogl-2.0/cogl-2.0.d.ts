@@ -1798,8 +1798,8 @@ export namespace Cogl {
      */
     function buffer_map_range(
         buffer: Buffer,
-        offset: number,
-        size: number,
+        offset: bigint | number,
+        size: bigint | number,
         access: BufferAccess | null,
         hints: BufferMapHint | null,
     ): any | null;
@@ -1814,7 +1814,7 @@ export namespace Cogl {
      * @returns `true` is the operation succeeded, `false` otherwise
      * @since 1.2
      */
-    function buffer_set_data(buffer: Buffer, offset: number, data: any | null, size: number): Bool;
+    function buffer_set_data(buffer: Buffer, offset: bigint | number, data: any | null, size: bigint | number): Bool;
     /**
      * Sets the update hint on a buffer. See {@link Cogl.BufferUpdateHint} for a description
      * of the available hints.
@@ -2395,7 +2395,12 @@ export namespace Cogl {
      * @returns A "poll fd state age" that changes whenever the set               of poll_fds has changed. If this API is being used to               integrate with another system mainloop api then               knowing if the set of file descriptors and events has               really changed can help avoid redundant work               depending the api. The age isn't guaranteed to change               when the timeout changes.
      * @since 1.16
      */
-    function poll_renderer_get_info(renderer: Renderer, poll_fds: PollFD, n_poll_fds: number, timeout: number): number;
+    function poll_renderer_get_info(
+        renderer: Renderer,
+        poll_fds: PollFD,
+        n_poll_fds: number,
+        timeout: bigint | number,
+    ): number;
     /**
      * Restores the previously active {@link Cogl.GLES2Context} if there
      * were nested calls to `cogl_push_gles2_context()` or otherwise
@@ -3300,8 +3305,8 @@ export namespace Cogl {
         static ['new'](
             attribute_buffer: AttributeBuffer,
             name: string,
-            stride: number,
-            offset: number,
+            stride: bigint | number,
+            offset: bigint | number,
             components: number,
             type: AttributeType,
         ): Attribute;
@@ -3405,7 +3410,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static new_with_size(context: Context, bytes: number): AttributeBuffer;
+        static new_with_size(context: Context, bytes: bigint | number): AttributeBuffer;
 
         // Signals
 
@@ -3851,7 +3856,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Context, bytes: number): IndexBuffer;
+        static ['new'](context: Context, bytes: bigint | number): IndexBuffer;
 
         // Signals
 
@@ -3892,7 +3897,7 @@ export namespace Cogl {
 
         static ['new'](context: Context, type: IndicesType, indices_data: any | null, n_indices: number): Indices;
 
-        static new_for_buffer(type: IndicesType, buffer: IndexBuffer, offset: number): Indices;
+        static new_for_buffer(type: IndicesType, buffer: IndexBuffer, offset: bigint | number): Indices;
 
         // Signals
 
@@ -3922,7 +3927,7 @@ export namespace Cogl {
         /**
          * @param offset
          */
-        set_offset(offset: number): void;
+        set_offset(offset: bigint | number): void;
     }
 
     namespace MatrixStack {
@@ -4609,7 +4614,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: number, color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
          * that includes the color buffer then the specified `color` is used.
@@ -4619,7 +4624,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: number, red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
         /**
          * Declares that the specified `buffers` no longer need to be referenced
          * by any further rendering commands. This can be an important
@@ -4639,7 +4644,7 @@ export namespace Cogl {
          * a `CoglOffscreen` framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: number): void;
+        discard_buffers(buffers: bigint | number): void;
         /**
          * First defines a geometry primitive by grouping a set of vertex `attributes`;
          * specifying a `first_vertex`; a number of vertices (`n_vertices`) and
@@ -6515,7 +6520,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Context, size: number, data?: any | null): PixelBuffer;
+        static ['new'](context: Context, size: bigint | number, data?: any | null): PixelBuffer;
 
         // Signals
 
@@ -8501,16 +8506,7 @@ export namespace Cogl {
         // Fields
 
         name: string;
-        instance_count: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                name: string;
-                instance_count: number;
-            }>,
-        );
+        instance_count: bigint | number;
     }
 
     /**
@@ -8874,29 +8870,6 @@ export namespace Cogl {
         zw: number;
         ww: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                xx: number;
-                yx: number;
-                zx: number;
-                wx: number;
-                xy: number;
-                yy: number;
-                zy: number;
-                wy: number;
-                xz: number;
-                yz: number;
-                zz: number;
-                wz: number;
-                xw: number;
-                yw: number;
-                zw: number;
-                ww: number;
-            }>,
-        );
-
         // Static methods
 
         /**
@@ -9133,9 +9106,9 @@ export namespace Cogl {
          */
         project_points(
             n_components: number,
-            stride_in: number,
+            stride_in: bigint | number,
             points_in: any | null,
-            stride_out: number,
+            stride_out: bigint | number,
             points_out: any | null,
             n_points: number,
         ): void;
@@ -9224,9 +9197,9 @@ export namespace Cogl {
          */
         transform_points(
             n_components: number,
-            stride_in: number,
+            stride_in: bigint | number,
             points_in: any | null,
-            stride_out: number,
+            stride_out: bigint | number,
             points_out: any | null,
             n_points: number,
         ): void;
@@ -10201,7 +10174,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: number, color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
          * that includes the color buffer then the specified `color` is used.
@@ -10211,7 +10184,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: number, red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
         /**
          * Declares that the specified `buffers` no longer need to be referenced
          * by any further rendering commands. This can be an important
@@ -10231,7 +10204,7 @@ export namespace Cogl {
          * a `CoglOffscreen` framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: number): void;
+        discard_buffers(buffers: bigint | number): void;
         /**
          * First defines a geometry primitive by grouping a set of vertex `attributes`;
          * specifying a `first_vertex`; a number of vertices (`n_vertices`) and

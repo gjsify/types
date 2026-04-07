@@ -760,8 +760,8 @@ export namespace Xdp {
                 arg4: number,
                 arg5: number,
                 arg6: string,
-                arg7: number,
-                arg8: number,
+                arg7: bigint | number,
+                arg8: bigint | number,
             ) => void;
             /**
              * Emitted when a non-exported action is activated on a notification.

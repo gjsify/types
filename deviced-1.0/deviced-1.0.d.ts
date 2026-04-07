@@ -72,8 +72,8 @@ export namespace Deviced {
             commit_id: string;
             commitId: string;
             id: string;
-            installed_size: number;
-            installedSize: number;
+            installed_size: bigint | number;
+            installedSize: bigint | number;
             name: string;
             provider: string;
         }
@@ -94,9 +94,9 @@ export namespace Deviced {
         get id(): string;
         set id(val: string);
         get installed_size(): number;
-        set installed_size(val: number);
+        set installed_size(val: bigint | number);
         get installedSize(): number;
-        set installedSize(val: number);
+        set installedSize(val: bigint | number);
         get name(): string;
         set name(val: string);
         get provider(): string;

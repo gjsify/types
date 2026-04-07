@@ -956,11 +956,11 @@ export namespace Secret {
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {
-            created: number;
+            created: bigint | number;
             flags: CollectionFlags;
             label: string;
             locked: boolean;
-            modified: number;
+            modified: bigint | number;
             service: Service;
         }
     }
@@ -990,7 +990,7 @@ export namespace Secret {
          * collection was created.
          */
         get created(): number;
-        set created(val: number);
+        set created(val: bigint | number);
         /**
          * A set of flags describing which parts of the secret collection have
          * been initialized.
@@ -1019,7 +1019,7 @@ export namespace Secret {
          * collection was last modified.
          */
         get modified(): number;
-        set modified(val: number);
+        set modified(val: bigint | number);
         /**
          * The {@link Service} object that this collection is associated with and
          * uses to interact with the actual D-Bus Secret Service.
@@ -2924,7 +2924,7 @@ export namespace Secret {
          * @category Inherited from Secret.Retrievable
          */
         get attributes(): GLib.HashTable<string, string>;
-        set attributes(val: GLib.HashTable<string, string>);
+        set attributes(val: { [key: string]: any } | GLib.HashTable<string, string>);
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * item was created.
@@ -2932,7 +2932,7 @@ export namespace Secret {
          * @category Inherited from Secret.Retrievable
          */
         get created(): number;
-        set created(val: number);
+        set created(val: bigint | number);
         /**
          * The human readable label for the item.
          * @since 0.19.0
@@ -2947,7 +2947,7 @@ export namespace Secret {
          * @category Inherited from Secret.Retrievable
          */
         get modified(): number;
-        set modified(val: number);
+        set modified(val: bigint | number);
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -7202,11 +7202,11 @@ export namespace Secret {
 
         // Constructors
 
-        constructor(secret: string, length: number, content_type: string);
+        constructor(secret: string, length: bigint | number, content_type: string);
 
-        static ['new'](secret: string, length: number, content_type: string): Value;
+        static ['new'](secret: string, length: bigint | number, content_type: string): Value;
 
-        static new_full(secret: string, length: number, content_type: string): Value;
+        static new_full(secret: string, length: bigint | number, content_type: string): Value;
 
         // Methods
 
@@ -7253,7 +7253,7 @@ export namespace Secret {
          * @param length the length of the secret
          * @returns a new password string stored in nonpageable memory   which must be freed with {@link password_free} when done
          */
-        unref_to_password(length: number): [string, number];
+        unref_to_password(length: bigint | number): [string, number];
     }
 
     namespace Backend {
@@ -7457,10 +7457,10 @@ export namespace Secret {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: GLib.HashTable<string, string>;
-            created: number;
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>;
+            created: bigint | number;
             label: string;
-            modified: number;
+            modified: bigint | number;
         }
     }
 
@@ -7491,14 +7491,14 @@ export namespace Secret {
          * @since 0.19.0
          */
         get attributes(): GLib.HashTable<string, string>;
-        set attributes(val: GLib.HashTable<string, string>);
+        set attributes(val: { [key: string]: any } | GLib.HashTable<string, string>);
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * item was created.
          * @since 0.19.0
          */
         get created(): number;
-        set created(val: number);
+        set created(val: bigint | number);
         /**
          * The human readable label for the item.
          * @since 0.19.0
@@ -7511,7 +7511,7 @@ export namespace Secret {
          * @since 0.19.0
          */
         get modified(): number;
-        set modified(val: number);
+        set modified(val: bigint | number);
 
         // Methods
 

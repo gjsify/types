@@ -1565,13 +1565,13 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface AttributesManagerFunc {
-        (att_name: string, value: GObject.Value | any, data?: any | null): void;
+        (att_name: string, value: unknown, data?: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface AttributesManagerSignal<A = GObject.Object> {
-        (obj: A, att_name: string, value: GObject.Value | any, data?: any | null): void;
+        (obj: A, att_name: string, value: unknown, data?: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -1603,7 +1603,7 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface SqlRenderingValue {
-        (value: GObject.Value | any, context: SqlRenderingContext): string;
+        (value: unknown, context: SqlRenderingContext): string;
     }
     /**
      * @gir-type Callback
@@ -1620,7 +1620,7 @@ export namespace Gda {
             instance: any | null,
             signame: string,
             n_param_values: number,
-            param_values: GObject.Value | any,
+            param_values: unknown,
             gda_reserved?: any | null,
             data?: any | null,
         ): void;
@@ -2068,7 +2068,7 @@ export namespace Gda {
          * @param size maximum number of bytes to read.
          * @virtual
          */
-        vfunc_read(blob: Blob, offset: number, size: number): number;
+        vfunc_read(blob: Blob, offset: bigint | number, size: bigint | number): number;
         /**
          * Writes a chunk of bytes from a `blob` to the BLOB accessible through `op`, `blob` is unchanged after
          * this call.
@@ -2079,7 +2079,7 @@ export namespace Gda {
          * @param offset offset to write from the start of the blob (starts at 0)
          * @virtual
          */
-        vfunc_write(blob: Blob, offset: number): number;
+        vfunc_write(blob: Blob, offset: bigint | number): number;
         /**
          * Writes the whole contents of `blob` into the blob manipulated by `op`. If necessary the resulting
          * blob is truncated from its previous length.
@@ -2101,7 +2101,7 @@ export namespace Gda {
          * @param size maximum number of bytes to read.
          * @returns the number of bytes actually read. In case of error, -1 is returned and the provider should have added an error to the connection.
          */
-        read(blob: Blob, offset: number, size: number): number;
+        read(blob: Blob, offset: bigint | number, size: bigint | number): number;
         /**
          * Reads the whole contents of the blob manipulated by `op` into `blob`
          * @param blob a {@link Gda.Blob} to read data to
@@ -2118,7 +2118,7 @@ export namespace Gda {
          * @param offset offset to write from the start of the blob (starts at 0)
          * @returns the number of bytes written. In case of error, -1 is returned and the provider should have added an error to the connection.
          */
-        write(blob: Blob, offset: number): number;
+        write(blob: Blob, offset: bigint | number): number;
         /**
          * Writes the whole contents of `blob` into the blob manipulated by `op`. If necessary the resulting
          * blob is truncated from its previous length.
@@ -4145,7 +4145,7 @@ export namespace Gda {
          * This function should not be called directly
          * @param code a code.
          */
-        set_code(code: number): void;
+        set_code(code: bigint | number): void;
         /**
          * Sets `event`'s `description`. This function should not be called directly.
          * @param description a description, or `null` (to unset current description if any)
@@ -23477,7 +23477,12 @@ export namespace Gda {
          * thread and this signal has not been handled in the user thread).
          * @param id a handler ID, as returned by `gda_thread_wrapper_connect_raw()`
          */
-        disconnect(id: number): void;
+        disconnect(id: bigint | number): void;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.disconnect
+        disconnect(...args: never[]): any;
         /**
          * Make `wrapper` execute the `func` function with the `arg` argument (along with a {@link GLib.Error} which is not `error`)
          * in the sub thread managed by `wrapper`. To execute a function which does not return anything,
@@ -23577,7 +23582,7 @@ export namespace Gda {
          * was called.
          * @param id a signal ID
          */
-        steal_signal(id: number): void;
+        steal_signal(id: bigint | number): void;
         /**
          * Does the opposite of `gda_thread_wrapper_get_io_channel()`
          */
@@ -24926,16 +24931,7 @@ export namespace Gda {
         // Fields
 
         data: Uint8Array;
-        binary_length: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                data: Uint8Array;
-                binary_length: number;
-            }>,
-        );
+        binary_length: bigint | number;
 
         // Static methods
 
@@ -24981,7 +24977,6 @@ export namespace Gda {
 
         // Fields
 
-        data: Binary;
         op: BlobOp;
 
         // Static methods
@@ -25611,16 +25606,16 @@ export namespace Gda {
         // Fields
 
         number: string;
-        precision: number;
-        width: number;
+        precision: bigint | number;
+        width: bigint | number;
 
         // Constructors
 
         constructor(
             properties?: Partial<{
                 number: string;
-                precision: number;
-                width: number;
+                precision: bigint | number;
+                width: bigint | number;
             }>,
         );
 
@@ -25670,12 +25665,12 @@ export namespace Gda {
          * Sets the precision of a {@link Gda.Numeric}.
          * @param precision a `glong`
          */
-        set_precision(precision: number): void;
+        set_precision(precision: bigint | number): void;
         /**
          * Sets the width of a {@link Gda.Numeric}. (Not yet implemented).
          * @param width a `glong`
          */
-        set_width(width: number): void;
+        set_width(width: bigint | number): void;
     }
 
     /**
@@ -26255,20 +26250,8 @@ export namespace Gda {
         hour: number;
         minute: number;
         second: number;
-        fraction: number;
-        timezone: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                hour: number;
-                minute: number;
-                second: number;
-                fraction: number;
-                timezone: number;
-            }>,
-        );
+        fraction: bigint | number;
+        timezone: bigint | number;
 
         // Static methods
 
@@ -26291,7 +26274,7 @@ export namespace Gda {
          * Note: the resulting will always be a valid time.
          * @param ntz a new timezone to use, in seconds added to GMT
          */
-        change_timezone(ntz: number): void;
+        change_timezone(ntz: bigint | number): void;
         /**
          * @returns `TRUE` if {@link Gda.Time} is valid; `false` otherwise.
          */
@@ -26313,23 +26296,8 @@ export namespace Gda {
         hour: number;
         minute: number;
         second: number;
-        fraction: number;
-        timezone: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                year: number;
-                month: number;
-                day: number;
-                hour: number;
-                minute: number;
-                second: number;
-                fraction: number;
-                timezone: number;
-            }>,
-        );
+        fraction: bigint | number;
+        timezone: bigint | number;
 
         // Static methods
 
@@ -26350,7 +26318,7 @@ export namespace Gda {
          * Note: the resulting will always be a valid time.
          * @param ntz a new timezone to use, in seconds added to GMT
          */
-        change_timezone(ntz: number): void;
+        change_timezone(ntz: bigint | number): void;
         /**
          * @returns `TRUE` if {@link Gda.Timestamp} is valid; `false` otherwise.
          */

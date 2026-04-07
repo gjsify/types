@@ -1512,7 +1512,7 @@ export namespace GstMpegts {
      * @param buf_len Size of `buffer`
      * @returns an array of the parsed descriptors or `null` if there was an error. Release with `g_array_unref` when done with it.
      */
-    function parse_descriptors(buffer: number, buf_len: number): Descriptor[];
+    function parse_descriptors(buffer: number, buf_len: bigint | number): Descriptor[];
     /**
      * Allocates a new {@link GLib.PtrArray} for {@link GstMpegts.PatProgram}. The array can be filled
      * and then converted to a PAT section with `gst_mpegts_section_from_pat()`.
@@ -3173,13 +3173,13 @@ export namespace GstMpegts {
 
         encrypted_packet: boolean;
         encryption_algorithm: number;
-        pts_adjustment: number;
+        pts_adjustment: bigint | number;
         cw_index: number;
         tier: number;
         splice_command_length: number;
         splice_command_type: SCTESpliceCommandType;
         splice_time_specified: boolean;
-        splice_time: number;
+        splice_time: bigint | number;
         splices: any[];
         descriptors: any[];
         fully_parsed: boolean;
@@ -3191,13 +3191,13 @@ export namespace GstMpegts {
             properties?: Partial<{
                 encrypted_packet: boolean;
                 encryption_algorithm: number;
-                pts_adjustment: number;
+                pts_adjustment: bigint | number;
                 cw_index: number;
                 tier: number;
                 splice_command_length: number;
                 splice_command_type: SCTESpliceCommandType;
                 splice_time_specified: boolean;
-                splice_time: number;
+                splice_time: bigint | number;
                 splices: any[];
                 descriptors: any[];
                 fully_parsed: boolean;
@@ -3220,19 +3220,12 @@ export namespace GstMpegts {
 
         tag: number;
         splice_time_specified: boolean;
-        splice_time: number;
+        splice_time: bigint | number;
         utc_splice_time: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                tag: number;
-                splice_time_specified: boolean;
-                splice_time: number;
-                utc_splice_time: number;
-            }>,
-        );
+        constructor(tag: number);
 
         static ['new'](tag: number): SCTESpliceComponent;
     }
@@ -3253,11 +3246,11 @@ export namespace GstMpegts {
         duration_flag: boolean;
         splice_immediate_flag: boolean;
         program_splice_time_specified: boolean;
-        program_splice_time: number;
+        program_splice_time: bigint | number;
         utc_splice_time: number;
         components: any[];
         break_duration_auto_return: boolean;
-        break_duration: number;
+        break_duration: bigint | number;
         unique_program_id: number;
         avail_num: number;
         avails_expected: number;
@@ -3274,11 +3267,11 @@ export namespace GstMpegts {
                 duration_flag: boolean;
                 splice_immediate_flag: boolean;
                 program_splice_time_specified: boolean;
-                program_splice_time: number;
+                program_splice_time: bigint | number;
                 utc_splice_time: number;
                 components: any[];
                 break_duration_auto_return: boolean;
-                break_duration: number;
+                break_duration: bigint | number;
                 unique_program_id: number;
                 avail_num: number;
                 avails_expected: number;

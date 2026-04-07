@@ -716,7 +716,7 @@ export namespace Cogl {
      * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
      * @deprecated since 1.16: Use `cogl_framebuffer_clear()` api instead
      */
-    function clear(color: Color, buffers: number): void;
+    function clear(color: Color, buffers: bigint | number): void;
     /**
      * @param name
      * @param ext
@@ -3553,9 +3553,9 @@ export namespace Cogl {
          */
         project_points(
             n_components: number,
-            stride_in: number,
+            stride_in: bigint | number,
             points_in: any | null,
-            stride_out: number,
+            stride_out: bigint | number,
             points_out: any | null,
             n_points: number,
         ): void;
@@ -3644,9 +3644,9 @@ export namespace Cogl {
          */
         transform_points(
             n_components: number,
-            stride_in: number,
+            stride_in: bigint | number,
             points_in: any | null,
-            stride_out: number,
+            stride_out: bigint | number,
             points_out: any | null,
             n_points: number,
         ): void;

@@ -275,8 +275,8 @@ export namespace ArrowFlight {
             privateKey: string;
             tls_root_certificates: string;
             tlsRootCertificates: string;
-            write_size_limit_bytes: number;
-            writeSizeLimitBytes: number;
+            write_size_limit_bytes: bigint | number;
+            writeSizeLimitBytes: bigint | number;
         }
     }
 
@@ -361,7 +361,7 @@ export namespace ArrowFlight {
          * @since 14.0.0
          */
         get write_size_limit_bytes(): number;
-        set write_size_limit_bytes(val: number);
+        set write_size_limit_bytes(val: bigint | number);
         /**
          * A soft limit on the number of bytes to write in a single batch
          * when sending Arrow data to a server.
@@ -371,7 +371,7 @@ export namespace ArrowFlight {
          * @since 14.0.0
          */
         get writeSizeLimitBytes(): number;
-        set writeSizeLimitBytes(val: number);
+        set writeSizeLimitBytes(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -484,7 +484,7 @@ export namespace ArrowFlight {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            expression: GLib.Bytes;
+            expression: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -501,7 +501,7 @@ export namespace ArrowFlight {
          * @since 5.0.0
          */
         get expression(): GLib.Bytes;
-        set expression(val: GLib.Bytes);
+        set expression(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.
@@ -883,8 +883,8 @@ export namespace ArrowFlight {
             schema: Arrow.Schema,
             descriptor: Descriptor,
             endpoints: Endpoint[],
-            total_records: number,
-            total_bytes: number,
+            total_records: bigint | number,
+            total_bytes: bigint | number,
         ): Info;
 
         // Signals
@@ -2746,7 +2746,7 @@ export namespace ArrowFlight {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: GLib.Bytes;
+            data: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -2764,7 +2764,7 @@ export namespace ArrowFlight {
          * @since 5.0.0
          */
         get data(): GLib.Bytes;
-        set data(val: GLib.Bytes);
+        set data(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.

@@ -338,7 +338,7 @@ export namespace Gwebgl {
          * @param type
          * @param offset
          */
-        drawElements(mode: number, count: number, type: number, offset: number): void;
+        drawElements(mode: number, count: number, type: number, offset: bigint | number): void;
         /**
          * @param mode
          * @param count
@@ -346,7 +346,13 @@ export namespace Gwebgl {
          * @param offset
          * @param instancecount
          */
-        _drawElementsInstanced(mode: number, count: number, type: number, offset: number, instancecount: number): void;
+        _drawElementsInstanced(
+            mode: number,
+            count: number,
+            type: number,
+            offset: bigint | number,
+            instancecount: number,
+        ): void;
         /**
          * @param cap
          */
@@ -809,7 +815,7 @@ export namespace Gwebgl {
             type: number,
             _normalized: boolean,
             stride: number,
-            offset: number,
+            offset: bigint | number,
         ): void;
         /**
          * @param x
@@ -833,13 +839,13 @@ export namespace Gwebgl {
          * @param size
          * @param usage
          */
-        bufferDataSizeOnly(target: number, size: number, usage: number): void;
+        bufferDataSizeOnly(target: number, size: bigint | number, usage: number): void;
         /**
          * @param target
          * @param offset
          * @param variant
          */
-        bufferSubData(target: number, offset: number, variant: GLib.Variant): void;
+        bufferSubData(target: number, offset: bigint | number, variant: GLib.Variant): void;
         /**
          * @param target
          * @param level
@@ -1416,13 +1422,13 @@ export namespace Gwebgl {
          * @param flags
          * @param timeout
          */
-        clientWaitSync(syncId: number, flags: number, timeout: number): number;
+        clientWaitSync(syncId: number, flags: number, timeout: bigint | number): number;
         /**
          * @param syncId
          * @param flags
          * @param timeout
          */
-        waitSync(syncId: number, flags: number, timeout: number): void;
+        waitSync(syncId: number, flags: number, timeout: bigint | number): void;
         /**
          * @param syncId
          * @param pname
@@ -1473,7 +1479,13 @@ export namespace Gwebgl {
          * @param offset
          * @param size
          */
-        bindBufferRange(target: number, index: number, buffer: number, offset: number, size: number): void;
+        bindBufferRange(
+            target: number,
+            index: number,
+            buffer: number,
+            offset: bigint | number,
+            size: bigint | number,
+        ): void;
         /**
          * @param readTarget
          * @param writeTarget
@@ -1484,16 +1496,16 @@ export namespace Gwebgl {
         copyBufferSubData(
             readTarget: number,
             writeTarget: number,
-            readOffset: number,
-            writeOffset: number,
-            size: number,
+            readOffset: bigint | number,
+            writeOffset: bigint | number,
+            size: bigint | number,
         ): void;
         /**
          * @param target
          * @param srcByteOffset
          * @param length
          */
-        getBufferSubData(target: number, srcByteOffset: number, length: number): Uint8Array;
+        getBufferSubData(target: number, srcByteOffset: bigint | number, length: number): Uint8Array;
         /**
          * @param target
          * @param level
@@ -1684,7 +1696,13 @@ export namespace Gwebgl {
          * @param offset
          * @param instanceCount
          */
-        drawElementsInstanced(mode: number, count: number, type: number, offset: number, instanceCount: number): void;
+        drawElementsInstanced(
+            mode: number,
+            count: number,
+            type: number,
+            offset: bigint | number,
+            instanceCount: number,
+        ): void;
         /**
          * @param index
          * @param divisor
@@ -1697,7 +1715,7 @@ export namespace Gwebgl {
          * @param stride
          * @param offset
          */
-        vertexAttribIPointer(index: number, size: number, type: number, stride: number, offset: number): void;
+        vertexAttribIPointer(index: number, size: number, type: number, stride: number, offset: bigint | number): void;
         /**
          * @param buffers
          */
@@ -1710,7 +1728,14 @@ export namespace Gwebgl {
          * @param type
          * @param offset
          */
-        drawRangeElements(mode: number, start: number, end: number, count: number, type: number, offset: number): void;
+        drawRangeElements(
+            mode: number,
+            start: number,
+            end: number,
+            count: number,
+            type: number,
+            offset: bigint | number,
+        ): void;
         /**
          * @param srcX0
          * @param srcY0

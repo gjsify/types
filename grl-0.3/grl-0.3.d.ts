@@ -964,7 +964,7 @@ export namespace Grl {
          * @param size pointer to size of data
          * @returns the binary API key, size will reflect the size of the buffer
          */
-        get_api_key_blob(size: number): number;
+        get_api_key_blob(size: bigint | number): number;
         /**
          * @returns the webservice API passphrase
          */
@@ -984,7 +984,7 @@ export namespace Grl {
          * @param size place for size of value
          * @returns `param` value
          */
-        get_binary(param: string, size?: number | null): number;
+        get_binary(param: string, size?: (bigint | number) | null): number;
         /**
          * @param param a boolean type parameter
          * @returns `param` value
@@ -1047,7 +1047,7 @@ export namespace Grl {
          * @param blob the binary API key blob
          * @param size the size of the blob
          */
-        set_api_key_blob(blob: number, size: number): void;
+        set_api_key_blob(blob: number, size: bigint | number): void;
         /**
          * Set the webservice passphrase in the configuration
          * @param secret the webservice passphrase
@@ -1070,7 +1070,7 @@ export namespace Grl {
          * @param blob a base64 encoded binary value
          * @param size size of `value`
          */
-        set_binary(param: string, blob: number, size: number): void;
+        set_binary(param: string, blob: number, size: bigint | number): void;
         /**
          * Set `param` `value`.
          * @param param a boolean type parameter
@@ -1178,7 +1178,7 @@ export namespace Grl {
          * @param buf the buffer containing the new value
          * @param size size of buffer
          */
-        add_binary(key: KeyID, buf: number, size: number): void;
+        add_binary(key: KeyID, buf: number, size: bigint | number): void;
         /**
          * Appends a new boxed value for `key` in `data`.
          * @param key key to append
@@ -1216,7 +1216,7 @@ export namespace Grl {
          * @param key key to append
          * @param intvalue the new value
          */
-        add_int64(key: KeyID, intvalue: number): void;
+        add_int64(key: KeyID, intvalue: bigint | number): void;
         /**
          * Adds a new set of values into `data`.
          *
@@ -1383,7 +1383,7 @@ export namespace Grl {
          * @param buf buffer holding the data
          * @param size size of the buffer
          */
-        set_binary(key: KeyID, buf: number, size: number): void;
+        set_binary(key: KeyID, buf: number, size: bigint | number): void;
         /**
          * Sets the first boolean value associated with `key` in `data`. If `key` already
          * has a first value, old value is replaced by the new one.
@@ -1433,7 +1433,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param intvalue the new value
          */
-        set_int64(key: KeyID, intvalue: number): void;
+        set_int64(key: KeyID, intvalue: bigint | number): void;
         /**
          * Updates the values at position `index` in `data` with values in `relkeys`.
          *
@@ -1607,7 +1607,7 @@ export namespace Grl {
          * @param thumbnail a buffer containing the thumbnail for `media`
          * @param size size of buffer
          */
-        add_thumbnail_binary(thumbnail: number, size: number): void;
+        add_thumbnail_binary(thumbnail: number, size: bigint | number): void;
         /**
          * Sets all the keys related with the URL of a media resource and adds it to
          * `media` (useful for resources with more than one URL).
@@ -1950,13 +1950,13 @@ export namespace Grl {
          * @param size pointer to storing the thumbnail buffer size
          * @returns the media's thumbnail data and set size to the thumbnail buffer size
          */
-        get_thumbnail_binary(size: number): number;
+        get_thumbnail_binary(size: bigint | number): number;
         /**
          * @param size pointer to store the thumbnail buffer size
          * @param index element to retrieve
          * @returns the n-th media's thumbnail binary and sets size to the thumbnail buffer size.
          */
-        get_thumbnail_binary_nth(size: number, index: number): number;
+        get_thumbnail_binary_nth(size: bigint | number, index: number): number;
         /**
          * @param index element to retrieve
          * @returns the n-th media's thumbnail.
@@ -2290,7 +2290,7 @@ export namespace Grl {
          * Set the size of the media
          * @param size the size in bytes
          */
-        set_size(size: number): void;
+        set_size(size: bigint | number): void;
         /**
          * Set the media's source
          * @param source the source
@@ -2311,7 +2311,7 @@ export namespace Grl {
          * @param thumbnail thumbnail buffer
          * @param size thumbnail buffer size
          */
-        set_thumbnail_binary(thumbnail: number, size: number): void;
+        set_thumbnail_binary(thumbnail: number, size: bigint | number): void;
         /**
          * Set the media's title
          * @param title the title
@@ -3059,7 +3059,7 @@ export namespace Grl {
          * @param buf buffer holding the relkeys
          * @param size size of the buffer
          */
-        set_binary(key: KeyID, buf: number, size: number): void;
+        set_binary(key: KeyID, buf: number, size: bigint | number): void;
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as a boolean-type key. Old value is replaced by the new one.
@@ -3109,7 +3109,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param intvalue the new value
          */
-        set_int64(key: KeyID, intvalue: number): void;
+        set_int64(key: KeyID, intvalue: bigint | number): void;
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as a strying-type key. Old value is freed and the new one is set.

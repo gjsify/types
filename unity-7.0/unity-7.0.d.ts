@@ -702,7 +702,7 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Dee.Serializable.ConstructorProps {
             app_uri: string;
             appUri: string;
-            count: number;
+            count: bigint | number;
             count_visible: boolean;
             countVisible: boolean;
             progress: number;
@@ -726,7 +726,7 @@ export namespace Unity {
         get appUri(): string;
         set appUri(val: string);
         get count(): number;
-        set count(val: number);
+        set count(val: bigint | number);
         get count_visible(): boolean;
         set count_visible(val: boolean);
         get countVisible(): boolean;
@@ -804,7 +804,7 @@ export namespace Unity {
         /**
          * @param value
          */
-        set_count(value: number): void;
+        set_count(value: bigint | number): void;
         get_count_visible(): boolean;
         /**
          * @param value
@@ -2975,7 +2975,7 @@ export namespace Unity {
             searchString: string;
             search_type: SearchType;
             searchType: SearchType;
-            hints: GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
             results_model: Dee.SerializableModel;
             resultsModel: Dee.SerializableModel;
             owner: DeprecatedScopeBase;
@@ -3880,7 +3880,7 @@ export namespace Unity {
             iconHint: Gio.Icon;
             layout_hint: LayoutHint;
             layoutHint: LayoutHint;
-            hints: GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
         }
     }
 
@@ -5343,7 +5343,7 @@ export namespace Unity {
             actionType: number;
             scope_result: ScopeResult;
             scopeResult: ScopeResult;
-            hints: GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
         }
     }
 
@@ -5372,7 +5372,7 @@ export namespace Unity {
         get scopeResult(): ScopeResult;
         set scopeResult(val: ScopeResult);
         get hints(): GLib.HashTable<string, GLib.Variant>;
-        set hints(val: GLib.HashTable<string, GLib.Variant>);
+        set hints(val: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
 
         /**
          * Compile-time signal type information.

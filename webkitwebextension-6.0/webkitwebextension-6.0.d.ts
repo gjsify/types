@@ -1081,8 +1081,8 @@ export namespace WebKitWebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            content_length: number;
-            contentLength: number;
+            content_length: bigint | number;
+            contentLength: bigint | number;
             http_headers: Soup.MessageHeaders;
             httpHeaders: Soup.MessageHeaders;
             mime_type: string;
@@ -1611,7 +1611,7 @@ export namespace WebKitWebExtension {
          * @param page_id the identifier of the {@link WebKitWebExtension.WebPage} to get
          * @returns the {@link WebKitWebExtension.WebPage} for the given `page_id`, or `null` if the    identifier doesn't correspond to an existing web page.
          */
-        get_page(page_id: number): WebPage;
+        get_page(page_id: bigint | number): WebPage;
         /**
          * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
          *

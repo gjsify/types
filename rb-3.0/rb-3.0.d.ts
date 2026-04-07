@@ -1098,7 +1098,7 @@ export namespace RB {
      * @param bytes_needed number of bytes to check for
      * @returns `true` if enough space is available.
      */
-    function check_dir_has_space(dir: Gio.File, bytes_needed: number): boolean;
+    function check_dir_has_space(dir: Gio.File, bytes_needed: bigint | number): boolean;
     /**
      * Checks that the filesystem holding `uri` has at least `bytes_needed`
      * bytes available.
@@ -1106,7 +1106,7 @@ export namespace RB {
      * @param bytes_needed number of bytes to check for
      * @returns `true` if enough space is available.
      */
-    function check_dir_has_space_uri(uri: string, bytes_needed: number): boolean;
+    function check_dir_has_space_uri(uri: string, bytes_needed: bigint | number): boolean;
     /**
      * A row separator function to use for GtkComboBox widgets.
      * It expects the model to contain a string in its first column,
@@ -1881,7 +1881,7 @@ export namespace RB {
      * @gir-type Callback
      */
     interface ChunkLoaderCallback {
-        (loader: ChunkLoader, data: GLib.Bytes | Uint8Array, total: number): void;
+        (loader: ChunkLoader, data: GLib.Bytes, total: number): void;
     }
     /**
      * @gir-type Callback
@@ -1893,7 +1893,7 @@ export namespace RB {
      * @gir-type Callback
      */
     interface ExtDBRequestCallback {
-        (key: ExtDBKey, store_key: ExtDBKey, filename: string, data: GObject.Value | any): void;
+        (key: ExtDBKey, store_key: ExtDBKey, filename: string, data: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -4739,7 +4739,7 @@ export namespace RB {
          * @param uri the uri to load
          * @param chunk_size maximum chunk size
          */
-        start(uri: string, chunk_size: number): void;
+        start(uri: string, chunk_size: bigint | number): void;
     }
 
     namespace DisplayPage {
@@ -8949,7 +8949,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            request: (arg0: ExtDBKey, arg1: number) => boolean | void;
+            request: (arg0: ExtDBKey, arg1: bigint | number) => boolean | void;
             /**
              * Emitted when a metadata item needs to be written to a local file.
              * This only needs to be used for metadata that needs to be encoded
@@ -9046,7 +9046,7 @@ export namespace RB {
          * @param last_time
          * @virtual
          */
-        vfunc_request(key: ExtDBKey, last_time: number): boolean;
+        vfunc_request(key: ExtDBKey, last_time: bigint | number): boolean;
         /**
          * @param data
          * @virtual
@@ -9249,7 +9249,7 @@ export namespace RB {
          * something tricky happens.
          * @param duration length of fade in milliseconds
          */
-        start(duration: number): void;
+        start(duration: bigint | number): void;
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -13136,10 +13136,10 @@ export namespace RB {
             description: string,
             guid: string,
             img: string,
-            date: number,
-            duration: number,
-            position: number,
-            filesize: number,
+            date: bigint | number,
+            duration: bigint | number,
+            position: bigint | number,
+            filesize: bigint | number,
         ): RhythmDBEntry;
         /**
          * @param entry
@@ -15281,8 +15281,8 @@ export namespace RB {
          */
         static compute_status_normal(
             n_songs: number,
-            duration: number,
-            size: number,
+            duration: bigint | number,
+            size: bigint | number,
             singular: string,
             plural: string,
         ): string;
@@ -16047,7 +16047,7 @@ export namespace RB {
          * @param prefix a cache key prefix to scan
          * @param max_age maximum age of missing entries to keep
          */
-        purge_metadata_cache(prefix: string, max_age: number): void;
+        purge_metadata_cache(prefix: string, max_age: bigint | number): void;
     }
 
     namespace RhythmDBImportJob {
@@ -21685,7 +21685,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'elapsed-nano-changed': (arg0: number) => void;
+            'elapsed-nano-changed': (arg0: bigint | number) => void;
             /**
              * Emitted when playback either stops or starts.
              * @signal
@@ -21932,7 +21932,7 @@ export namespace RB {
          * @param elapsed
          * @virtual
          */
-        vfunc_elapsed_nano_changed(elapsed: number): void;
+        vfunc_elapsed_nano_changed(elapsed: bigint | number): void;
         /**
          * @param playing
          * @virtual
@@ -27547,7 +27547,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'track-done': (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: string, arg4: any | null) => void;
+            'track-done': (
+                arg0: RhythmDBEntry,
+                arg1: string,
+                arg2: bigint | number,
+                arg3: string,
+                arg4: any | null,
+            ) => void;
             /**
              * Emitted when a track transfer is finishing, allowing signal handlers
              * to perform any post-processing required.  The signal is emitted on the
@@ -27561,7 +27567,7 @@ export namespace RB {
                 arg0: Gio.Task,
                 arg1: RhythmDBEntry,
                 arg2: string,
-                arg3: number,
+                arg3: bigint | number,
                 arg4: string,
             ) => void;
             /**
@@ -27784,7 +27790,7 @@ export namespace RB {
         vfunc_track_done(
             entry: RhythmDBEntry,
             dest: string,
-            dest_size: number,
+            dest_size: bigint | number,
             mediatype: string,
             error: GLib.Error,
         ): void;
@@ -27800,7 +27806,7 @@ export namespace RB {
             task: Gio.Task,
             entry: RhythmDBEntry,
             dest: string,
-            dest_size: number,
+            dest_size: bigint | number,
             mediatype: string,
         ): void;
         /**
@@ -29465,7 +29471,7 @@ export namespace RB {
         author: string;
         contact: string;
         img: string;
-        pub_date: number;
+        pub_date: bigint | number;
         copyright: string;
         is_opml: boolean;
         posts: any[];
@@ -29487,25 +29493,9 @@ export namespace RB {
         author: string;
         guid: string;
         img: string;
-        pub_date: number;
-        duration: number;
-        filesize: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                title: string;
-                url: string;
-                description: string;
-                author: string;
-                guid: string;
-                img: string;
-                pub_date: number;
-                duration: number;
-                filesize: number;
-            }>,
-        );
+        pub_date: bigint | number;
+        duration: bigint | number;
+        filesize: bigint | number;
     }
 
     /**
@@ -30171,7 +30161,7 @@ export namespace RB {
              * @param error
              * @virtual
              */
-            vfunc_completed(dest_size: number, mediatype: string, error: GLib.Error): void;
+            vfunc_completed(dest_size: bigint | number, mediatype: string, error: GLib.Error): void;
             /**
              * Initiates encoding, transcoding to the specified profile if specified.
              *
@@ -30375,7 +30365,7 @@ export namespace RB {
              * @param crossfade requested crossfade duration (nanoseconds)
              * @virtual
              */
-            vfunc_play(play_type: PlayerPlayType, crossfade: number): boolean;
+            vfunc_play(play_type: PlayerPlayType, crossfade: bigint | number): boolean;
             /**
              * Determines whether the player is currently playing a stream.
              * A stream is playing if it's not paused or being faded out.
@@ -30405,7 +30395,7 @@ export namespace RB {
              * @param newtime seek target position in seconds
              * @virtual
              */
-            vfunc_set_time(newtime: number): void;
+            vfunc_set_time(newtime: bigint | number): void;
             /**
              * Adjusts the output volume level.  This affects all streams.
              * The player may use a hardware volume control to implement
@@ -30420,7 +30410,7 @@ export namespace RB {
              * @param duration
              * @virtual
              */
-            vfunc_tick(stream_data: any | null, elapsed: number, duration: number): void;
+            vfunc_tick(stream_data: any | null, elapsed: bigint | number, duration: bigint | number): void;
             /**
              * @param volume
              * @virtual
@@ -30561,7 +30551,7 @@ export namespace RB {
          * @param crossfade requested crossfade duration (nanoseconds)
          * @returns `true` if playback started successfully
          */
-        play(play_type: PlayerPlayType | null, crossfade: number): boolean;
+        play(play_type: PlayerPlayType | null, crossfade: bigint | number): boolean;
         /**
          * Determines whether the player is currently playing a stream.
          * A stream is playing if it's not paused or being faded out.
@@ -30579,7 +30569,7 @@ export namespace RB {
          * The seek may take place asynchronously.
          * @param newtime seek target position in seconds
          */
-        set_time(newtime: number): void;
+        set_time(newtime: bigint | number): void;
         /**
          * Adjusts the output volume level.  This affects all streams.
          * The player may use a hardware volume control to implement
@@ -30932,7 +30922,12 @@ export namespace RB {
              * @param media_type
              * @virtual
              */
-            vfunc_track_added(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): boolean;
+            vfunc_track_added(
+                entry: RhythmDBEntry,
+                uri: string,
+                dest_size: bigint | number,
+                media_type: string,
+            ): boolean;
             /**
              * Performs any preparation necessary before starting the transfer.
              * This is called on a task thread, so no UI interaction is possible.
@@ -30951,7 +30946,7 @@ export namespace RB {
              * @param media_type the media type of the destination file
              * @virtual
              */
-            vfunc_track_upload(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): void;
+            vfunc_track_upload(entry: RhythmDBEntry, uri: string, dest_size: bigint | number, media_type: string): void;
         }
 
         // Constructor properties interface
@@ -31056,7 +31051,7 @@ export namespace RB {
          * @param filesize size of the destination file
          * @param media_type media type of the destination file
          */
-        track_added(entry: RhythmDBEntry, uri: string, filesize: number, media_type: string): void;
+        track_added(entry: RhythmDBEntry, uri: string, filesize: bigint | number, media_type: string): void;
         /**
          * Performs any preparation necessary before starting the transfer.
          * This is called on a task thread, so no UI interaction is possible.
@@ -31073,7 +31068,7 @@ export namespace RB {
          * @param dest_size the size of the destination file
          * @param media_type the media type of the destination file
          */
-        track_upload(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): void;
+        track_upload(entry: RhythmDBEntry, uri: string, dest_size: bigint | number, media_type: string): void;
         /**
          * Starts tranferring `entries` to the target.  This returns the
          * {@link RB.TrackTransferBatch} that it starts, so the caller can track

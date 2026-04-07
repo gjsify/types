@@ -1130,15 +1130,15 @@ export namespace LibvirtGConfig {
         /**
          * @param cores
          */
-        set_cores(cores: number): void;
+        set_cores(cores: bigint | number): void;
         /**
          * @param sockets
          */
-        set_sockets(sockets: number): void;
+        set_sockets(sockets: bigint | number): void;
         /**
          * @param threads
          */
-        set_threads(threads: number): void;
+        set_threads(threads: bigint | number): void;
     }
 
     namespace CapabilitiesGuest {
@@ -1549,15 +1549,15 @@ export namespace LibvirtGConfig {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            current_memory: number;
-            currentMemory: number;
+            current_memory: bigint | number;
+            currentMemory: bigint | number;
             description: string;
             features: string[];
-            memory: number;
+            memory: bigint | number;
             name: string;
             title: string;
             uuid: string;
-            vcpu: number;
+            vcpu: bigint | number;
         }
     }
 
@@ -1570,15 +1570,15 @@ export namespace LibvirtGConfig {
         // Properties
 
         get current_memory(): number;
-        set current_memory(val: number);
+        set current_memory(val: bigint | number);
         get currentMemory(): number;
-        set currentMemory(val: number);
+        set currentMemory(val: bigint | number);
         get description(): string;
         set description(val: string);
         get features(): string[];
         set features(val: string[]);
         get memory(): number;
-        set memory(val: number);
+        set memory(val: bigint | number);
         get name(): string;
         set name(val: string);
         get title(): string;
@@ -1586,7 +1586,7 @@ export namespace LibvirtGConfig {
         get uuid(): string;
         set uuid(val: string);
         get vcpu(): number;
-        set vcpu(val: number);
+        set vcpu(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1698,7 +1698,7 @@ export namespace LibvirtGConfig {
          * change the available domain memory after creation.
          * @param memory The current amount of RAM in kilobytes.
          */
-        set_current_memory(memory: number): void;
+        set_current_memory(memory: bigint | number): void;
         /**
          * @param xml
          * @param ns
@@ -1733,7 +1733,7 @@ export namespace LibvirtGConfig {
          * blocks of 1024 bytes).
          * @param memory The maximum amount of RAM in kilobytes.
          */
-        set_memory(memory: number): void;
+        set_memory(memory: bigint | number): void;
         /**
          * @param name
          */
@@ -1763,7 +1763,7 @@ export namespace LibvirtGConfig {
         /**
          * @param vcpu_count
          */
-        set_vcpus(vcpu_count: number): void;
+        set_vcpus(vcpu_count: bigint | number): void;
         /**
          * @param type
          */
@@ -3494,7 +3494,7 @@ export namespace LibvirtGConfig {
         /**
          * @param bytes
          */
-        set_ram_usage(bytes: number): void;
+        set_ram_usage(bytes: bigint | number): void;
         /**
          * @param readonly
          */
@@ -6724,15 +6724,15 @@ export namespace LibvirtGConfig {
         /**
          * @param allocation
          */
-        set_allocation(allocation: number): void;
+        set_allocation(allocation: bigint | number): void;
         /**
          * @param available
          */
-        set_available(available: number): void;
+        set_available(available: bigint | number): void;
         /**
          * @param capacity
          */
-        set_capacity(capacity: number): void;
+        set_capacity(capacity: bigint | number): void;
         /**
          * @param name
          */
@@ -7047,7 +7047,7 @@ export namespace LibvirtGConfig {
         /**
          * @param allocation
          */
-        set_allocation(allocation: number): void;
+        set_allocation(allocation: bigint | number): void;
         /**
          * @param backing_store
          */
@@ -7055,7 +7055,7 @@ export namespace LibvirtGConfig {
         /**
          * @param capacity
          */
-        set_capacity(capacity: number): void;
+        set_capacity(capacity: bigint | number): void;
         /**
          * @param name
          */
@@ -7211,7 +7211,7 @@ export namespace LibvirtGConfig {
         /**
          * @param features
          */
-        set_features(features: number): void;
+        set_features(features: bigint | number): void;
         /**
          * @param format
          */

@@ -1473,7 +1473,7 @@ export namespace Meta {
      * @param src
      * @param n
      */
-    function g_utf8_strndup(src: string, n: number): string;
+    function g_utf8_strndup(src: string, n: bigint | number): string;
     /**
      * Accessor for the singleton MetaBackend.
      * @returns The only {@link Meta.Backend} there is.
@@ -6222,7 +6222,7 @@ export namespace Meta {
          * end up in a new window.
          * @param serial the serial to ignore
          */
-        add_ignored_crossing_serial(serial: number): void;
+        add_ignored_crossing_serial(serial: bigint | number): void;
         /**
          * Add a keybinding at runtime. The key `name` in `schema` needs to be of
          * type `G_VARIANT_TYPE_STRING_ARRAY`, with each string describing a
@@ -6262,7 +6262,7 @@ export namespace Meta {
             pointer_already_grabbed: boolean,
             frame_action: boolean,
             button: number,
-            modmask: number,
+            modmask: bigint | number,
             timestamp: number,
             root_x: number,
             root_y: number,
@@ -6318,7 +6318,7 @@ export namespace Meta {
          * @param mask Event mask
          * @returns The action that should be taken for the given key, or {@link Meta.KeyBindingAction.NONE}.
          */
-        get_keybinding_action(keycode: number, mask: number): number;
+        get_keybinding_action(keycode: number, mask: bigint | number): number;
         /**
          * @returns Timestamp of the last user interaction event with a window
          */
@@ -6628,7 +6628,7 @@ export namespace Meta {
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `meta_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `meta_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: number, callback?: IdleMonitorWatchFunc | null): number;
+        add_idle_watch(interval_msec: bigint | number, callback?: IdleMonitorWatchFunc | null): number;
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `meta_idle_monitor_add_idle_watch()`, has triggered.

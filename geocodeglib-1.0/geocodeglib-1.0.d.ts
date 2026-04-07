@@ -648,7 +648,7 @@ export namespace GeocodeGlib {
             description: string;
             latitude: number;
             longitude: number;
-            timestamp: number;
+            timestamp: bigint | number;
         }
     }
 

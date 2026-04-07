@@ -2217,7 +2217,7 @@ export namespace Vips {
      *     {@link tracked_get_mem}.
      * @param max_mem maximum amount of tracked memory we use
      */
-    function cache_set_max_mem(max_mem: number): void;
+    function cache_set_max_mem(max_mem: bigint | number): void;
     /**
      * Handy for debugging. Print operation cache actions to stdout as we run.
      *
@@ -3086,7 +3086,7 @@ export namespace Vips {
      * @param data
      * @param data_length
      */
-    function icc_is_compatible_profile(image: Image, data: any | null, data_length: number): boolean;
+    function icc_is_compatible_profile(image: Image, data: any | null, data_length: bigint | number): boolean;
     /**
      * VIPS can optionally be built without the ICC library. Use this function to
      * test for its availability.
@@ -3153,7 +3153,7 @@ export namespace Vips {
      * @param size number of bytes to allocate
      * @returns a pointer to the allocated memory.
      */
-    function malloc(object: Object | null, size: number): any | null;
+    function malloc(object: Object | null, size: bigint | number): any | null;
     /**
      * @param a
      * @param b
@@ -3191,7 +3191,7 @@ export namespace Vips {
      *     `VIPS_PIPE_READ_LIMIT`.
      * @param limit maximum number of bytes to buffer from a pipe
      */
-    function pipe_read_limit_set(limit: number): void;
+    function pipe_read_limit_set(limit: bigint | number): void;
     /**
      * If set, vips will record profiling information, and dump it on program
      * exit. These profiles can be analysed with the `vipsprofile` program.
@@ -3426,7 +3426,7 @@ export namespace Vips {
      * @param align specifies the alignment
      * @returns a pointer to the allocated memory, or `NULL` on error.
      */
-    function tracked_aligned_alloc(size: number, align: number): any | null;
+    function tracked_aligned_alloc(size: bigint | number, align: bigint | number): any | null;
     /**
      * Only use it to free memory that was
      * previously allocated with {@link tracked_aligned_alloc}
@@ -3499,7 +3499,7 @@ export namespace Vips {
      * @param size number of bytes to allocate
      * @returns a pointer to the allocated memory, or `NULL` on error.
      */
-    function tracked_malloc(size: number): any | null;
+    function tracked_malloc(size: bigint | number): any | null;
     /**
      * Exactly as [`open()`](man:open(2)), but the number of files currently open via
      * {@link tracked_open} is available via {@link tracked_get_files}. This is used
@@ -3628,7 +3628,7 @@ export namespace Vips {
      * @param type the type of each element
      * @param sizeof_type the sizeof each element
      */
-    function value_set_array(n: number, type: GObject.GType, sizeof_type: number): unknown;
+    function value_set_array(n: number, type: GObject.GType, sizeof_type: bigint | number): unknown;
     /**
      * Set `value` to hold a copy of `array`. Pass in the array length in `n`.
      *
@@ -3718,7 +3718,7 @@ export namespace Vips {
      * This can also be set using the `VIPS_VECTOR` environment variable.
      * @param disabled_targets A bitfield of targets to disable at runtime.
      */
-    function vector_disable_targets(disabled_targets: number): void;
+    function vector_disable_targets(disabled_targets: bigint | number): void;
     /**
      * Gets a bitfield of builtin targets that libvips was built with.
      * @returns a bitfield of builtin targets.
@@ -3740,7 +3740,7 @@ export namespace Vips {
      * @param target A specific target to describe.
      * @returns a string describing the target.
      */
-    function vector_target_name(target: number): string;
+    function vector_target_name(target: bigint | number): string;
     /**
      * Get the major, minor or micro library version, with `flag` values 0, 1 and
      * 2.
@@ -3804,7 +3804,7 @@ export namespace Vips {
      * @gir-type Callback
      */
     interface ImageMapFn {
-        (image: Image, name: string, value: GObject.Value | any, a?: any | null): any | null;
+        (image: Image, name: string, value: unknown, a?: any | null): any | null;
     }
     /**
      * @gir-type Callback
@@ -5078,7 +5078,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -5098,7 +5098,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -5130,7 +5130,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -5150,7 +5150,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5701,8 +5701,8 @@ export namespace Vips {
             interpretation: Interpretation;
             kill: boolean;
             mode: string;
-            sizeof_header: number;
-            sizeofHeader: number;
+            sizeof_header: bigint | number;
+            sizeofHeader: bigint | number;
             width: number;
             xoffset: number;
             xres: number;
@@ -5799,9 +5799,9 @@ export namespace Vips {
         get mode(): string;
         set mode(val: string);
         get sizeof_header(): number;
-        set sizeof_header(val: number);
+        set sizeof_header(val: bigint | number);
         get sizeofHeader(): number;
-        set sizeofHeader(val: number);
+        set sizeofHeader(val: bigint | number);
         get width(): number;
         set width(val: number);
         get xoffset(): number;
@@ -5834,7 +5834,13 @@ export namespace Vips {
 
         static new_from_file_RW(filename: string): Image;
 
-        static new_from_file_raw(filename: string, xsize: number, ysize: number, bands: number, offset: number): Image;
+        static new_from_file_raw(
+            filename: string,
+            xsize: number,
+            ysize: number,
+            bands: number,
+            offset: bigint | number,
+        ): Image;
 
         static new_from_image(image: Image, c: number[]): Image;
 
@@ -6025,7 +6031,7 @@ export namespace Vips {
         /**
          * @param processed
          */
-        ['eval'](processed: number): void;
+        ['eval'](processed: bigint | number): void;
         /**
          * Loaders can call this on the image they are making if they see a read error
          * from the load library. It signals "invalidate" on the load operation and
@@ -7224,7 +7230,7 @@ export namespace Vips {
         argument_table: ArgumentTable;
         close: boolean;
         postclose: boolean;
-        local_memory: number;
+        local_memory: bigint | number;
 
         // Constructors
 
@@ -7787,7 +7793,7 @@ export namespace Vips {
          * @param len
          * @returns A copy of the pixel data.
          */
-        fetch(left: number, top: number, width: number, height: number, len: number): Pel;
+        fetch(left: number, top: number, width: number, height: number, len: bigint | number): Pel;
         /**
          * @returns Height of the pixels held in region.
          */
@@ -8140,7 +8146,7 @@ export namespace Vips {
         parent_object: Connection;
         have_tested_seek: boolean;
         is_pipe: boolean;
-        read_position: number;
+        read_position: bigint | number;
 
         // Constructors
 
@@ -8154,7 +8160,7 @@ export namespace Vips {
 
         static new_from_file(filename: string): Source;
 
-        static new_from_memory(data: any | null, length: number): Source;
+        static new_from_memory(data: any | null, length: bigint | number): Source;
 
         static new_from_options(options: string): Source;
 
@@ -8193,7 +8199,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @virtual
          */
-        vfunc_read(buffer: any | null, length: number): number;
+        vfunc_read(buffer: any | null, length: bigint | number): number;
         /**
          * Move the file read position. You can't call this after pixel decode starts.
          * The arguments are exactly as [`lseek()`](man:lseek(2)).
@@ -8201,7 +8207,7 @@ export namespace Vips {
          * @param whence seek relative to this point
          * @virtual
          */
-        vfunc_seek(offset: number, whence: number): number;
+        vfunc_seek(offset: bigint | number, whence: number): number;
 
         // Methods
 
@@ -8251,7 +8257,7 @@ export namespace Vips {
          * @param length return the file length here, or `NULL`
          * @returns a pointer to the start of the file contents, or `NULL` on error.
          */
-        map(length: number): any | null;
+        map(length: bigint | number): any | null;
         /**
          * Just like {@link Source.map}, but return a {@link Blob} containing the
          * pointer. `source` will stay alive as long as the result is alive.
@@ -8277,7 +8283,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @returns the number of bytes read, 0 on end of file, -1 on error.
          */
-        read(buffer: any | null, length: number): number;
+        read(buffer: any | null, length: bigint | number): number;
         /**
          * Rewind the source to the start.
          *
@@ -8298,14 +8304,14 @@ export namespace Vips {
          * @param whence seek relative to this point
          * @returns the new file position, or -1 on error.
          */
-        seek(offset: number, whence: number): number;
+        seek(offset: bigint | number, whence: number): number;
         /**
          * Return a pointer to the first few bytes of the file. If the file is too
          * short, return `NULL`.
          * @param length number of bytes to sniff
          * @returns a pointer to the bytes at the start of the file, or `NULL` on error.
          */
-        sniff(length: number): number;
+        sniff(length: bigint | number): number;
         /**
          * Attempt to sniff at most `length` bytes from the start of the source. A
          * pointer to the bytes is returned in `data`. The number of bytes actually
@@ -8315,7 +8321,7 @@ export namespace Vips {
          * @param length max number of bytes to read
          * @returns number of bytes read, or -1 on error.
          */
-        sniff_at_most(data: number, length: number): number;
+        sniff_at_most(data: number, length: bigint | number): number;
         /**
          * Restore the source after minimisation. This is called at the start
          * of every source method, so loaders should not usually need this.
@@ -8335,7 +8341,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: any | null, arg1: number) => number;
+            read: (arg0: any | null, arg1: bigint | number) => bigint | number;
             /**
              * This signal is emitted to seek the source. The handler should
              * change the source position appropriately.
@@ -8344,7 +8350,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            seek: (arg0: number, arg1: number) => number;
+            seek: (arg0: bigint | number, arg1: number) => bigint | number;
             'notify::blob': (pspec: GObject.ParamSpec) => void;
             'notify::descriptor': (pspec: GObject.ParamSpec) => void;
             'notify::filename': (pspec: GObject.ParamSpec) => void;
@@ -8415,13 +8421,13 @@ export namespace Vips {
          * @param length
          * @virtual
          */
-        vfunc_read(buffer: any | null, length: number): number;
+        vfunc_read(buffer: any | null, length: bigint | number): number;
         /**
          * @param offset
          * @param whence
          * @virtual
          */
-        vfunc_seek(offset: number, whence: number): number;
+        vfunc_seek(offset: bigint | number, whence: number): number;
     }
 
     namespace SourceGInputStream {
@@ -8604,7 +8610,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @virtual
          */
-        vfunc_read(buffer: any | null, length: number): number;
+        vfunc_read(buffer: any | null, length: bigint | number): number;
         /**
          * Seek the target. This behaves exactly as [`lseek()`](man:lseek(2)).
          *
@@ -8614,13 +8620,13 @@ export namespace Vips {
          * @param whence seek relative to beginning, offset, or end
          * @virtual
          */
-        vfunc_seek(offset: number, whence: number): number;
+        vfunc_seek(offset: bigint | number, whence: number): number;
         /**
          * @param data
          * @param length
          * @virtual
          */
-        vfunc_write(data: any | null, length: number): number;
+        vfunc_write(data: any | null, length: bigint | number): number;
 
         // Methods
 
@@ -8652,7 +8658,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @returns the number of bytes read, 0 on end of file, -1 on error.
          */
-        read(buffer: any | null, length: number): number;
+        read(buffer: any | null, length: bigint | number): number;
         /**
          * Seek the target. This behaves exactly as [`lseek()`](man:lseek(2)).
          *
@@ -8662,7 +8668,7 @@ export namespace Vips {
          * @param whence seek relative to beginning, offset, or end
          * @returns the new offset, -1 on error.
          */
-        seek(offset: number, whence: number): number;
+        seek(offset: bigint | number, whence: number): number;
         /**
          * Memory targets only (see {@link Target.new_to_memory}). Steal all data
          * written to the target so far, and call {@link Target.end}.
@@ -8690,7 +8696,7 @@ export namespace Vips {
          * @param length length of `data` in bytes
          * @returns 0 on success, -1 on error.
          */
-        write(data: any | null, length: number): number;
+        write(data: any | null, length: bigint | number): number;
         /**
          * Write `str` to `target`, but escape stuff that xml hates in text. Our
          * argument string is utf-8.
@@ -8735,7 +8741,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: any | null, arg1: number) => number;
+            read: (arg0: any | null, arg1: bigint | number) => bigint | number;
             /**
              * This signal is emitted to seek the target. The handler should
              * change the target position appropriately.
@@ -8744,13 +8750,13 @@ export namespace Vips {
              * @signal
              * @action
              */
-            seek: (arg0: number, arg1: number) => number;
+            seek: (arg0: bigint | number, arg1: number) => bigint | number;
             /**
              * This signal is emitted to write bytes to the target.
              * @signal
              * @action
              */
-            write: (arg0: any | null, arg1: number) => number;
+            write: (arg0: any | null, arg1: bigint | number) => bigint | number;
             'notify::blob': (pspec: GObject.ParamSpec) => void;
             'notify::memory': (pspec: GObject.ParamSpec) => void;
             'notify::descriptor': (pspec: GObject.ParamSpec) => void;
@@ -8830,19 +8836,19 @@ export namespace Vips {
          * @param length
          * @virtual
          */
-        vfunc_read(buffer: any | null, length: number): number;
+        vfunc_read(buffer: any | null, length: bigint | number): number;
         /**
          * @param offset
          * @param whence
          * @virtual
          */
-        vfunc_seek(offset: number, whence: number): number;
+        vfunc_seek(offset: bigint | number, whence: number): number;
         /**
          * @param data
          * @param length
          * @virtual
          */
-        vfunc_write(data: any | null, length: number): number;
+        vfunc_write(data: any | null, length: bigint | number): number;
     }
 
     namespace ThreadState {
@@ -8939,7 +8945,7 @@ export namespace Vips {
         // Fields
 
         data: any;
-        length: number;
+        length: bigint | number;
         n: number;
 
         // Constructors
@@ -8948,7 +8954,7 @@ export namespace Vips {
 
         static ['new'](free_fn?: CallbackFn | null): Area;
 
-        static new_array(type: GObject.GType, sizeof_type: number, n: number): Area;
+        static new_array(type: GObject.GType, sizeof_type: bigint | number, n: number): Area;
 
         static new_array_object(n: number): Area;
 
@@ -9028,8 +9034,8 @@ export namespace Vips {
 
         object: Object;
         assigned: boolean;
-        close_id: number;
-        invalidate_id: number;
+        close_id: bigint | number;
+        invalidate_id: bigint | number;
     }
 
     /**
@@ -9205,7 +9211,7 @@ export namespace Vips {
          * @param n the number of bytes
          * @returns `FALSE` on overflow, `TRUE` otherwise.
          */
-        append_size(n: number): boolean;
+        append_size(n: bigint | number): boolean;
         /**
          * Append a single character `ch` to `buf`.
          * @param ch the character to append to the buffer
@@ -9352,10 +9358,6 @@ export namespace Vips {
     class Dbuf {
         static $gtype: GObject.GType<Dbuf>;
 
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
-
         // Methods
 
         /**
@@ -9363,7 +9365,7 @@ export namespace Vips {
          * @param size the size to allocate
          * @returns `FALSE` on out of memory, `TRUE` otherwise.
          */
-        allocate(size: number): boolean;
+        allocate(size: bigint | number): boolean;
         /**
          * Destroy `dbuf`. This frees any allocated memory. Useful for dbufs on the
          * stack.
@@ -9379,7 +9381,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns start of write area.
          */
-        get_write(size?: number | null): number;
+        get_write(size?: (bigint | number) | null): number;
         /**
          * Initialize `dbuf`. You can also just init to zero, eg.
          * `VipsDbuf buf = {0};`.
@@ -9392,7 +9394,7 @@ export namespace Vips {
          * @param size the minimum size
          * @returns `FALSE` on out of memory, `TRUE` otherwise.
          */
-        minimum_size(size: number): boolean;
+        minimum_size(size: bigint | number): boolean;
         /**
          * Up to `size` bytes are read from the buffer and copied to `data`. The number
          * of bytes transferred is returned.
@@ -9400,7 +9402,7 @@ export namespace Vips {
          * @param size read up to this many bytes
          * @returns the number of bytes transferred.
          */
-        read(data: number, size: number): number;
+        read(data: number, size: bigint | number): number;
         /**
          * Reset the buffer to empty. No memory is freed, just the data size and
          * write point are reset.
@@ -9422,7 +9424,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns The pointer held by `dbuf`.
          */
-        steal(size?: number | null): number;
+        steal(size?: (bigint | number) | null): number;
         /**
          * Return a pointer to `dbuf`'s internal data.
          *
@@ -9431,7 +9433,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns The pointer held by `dbuf`.
          */
-        string(size?: number | null): number;
+        string(size?: (bigint | number) | null): number;
         /**
          * @returns the current write point
          */
@@ -9446,7 +9448,7 @@ export namespace Vips {
          * @param size the size of the len to write
          * @returns `FALSE` on out of memory, `TRUE` otherwise.
          */
-        write(data: number, size: number): boolean;
+        write(data: number, size: bigint | number): boolean;
         /**
          * Write `str` to `dbuf`, but escape stuff that xml hates in text. Our
          * argument string is utf-8.
@@ -9506,8 +9508,8 @@ export namespace Vips {
 
         run: number;
         eta: number;
-        tpels: number;
-        npels: number;
+        tpels: bigint | number;
+        npels: bigint | number;
         percent: number;
 
         // Static methods
@@ -9666,7 +9668,7 @@ export namespace Vips {
         /**
          * @param timeout
          */
-        down_timeout(timeout: number): number;
+        down_timeout(timeout: bigint | number): number;
         /**
          * @param n
          */

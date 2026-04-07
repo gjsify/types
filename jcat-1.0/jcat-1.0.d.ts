@@ -333,7 +333,7 @@ export namespace Jcat {
          * Sets the creation timestamp for the blob.
          * @param timestamp UTC timestamp
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
         /**
          * Converts the {@link Jcat.Blob} to a string.
          * @returns string
@@ -1131,7 +1131,7 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             authority: string;
             engine: Engine;
-            timestamp: number;
+            timestamp: bigint | number;
         }
     }
 
@@ -1150,7 +1150,7 @@ export namespace Jcat {
          */
         get engine(): Engine;
         get timestamp(): number;
-        set timestamp(val: number);
+        set timestamp(val: bigint | number);
 
         /**
          * Compile-time signal type information.

@@ -6759,9 +6759,9 @@ export namespace Gimp {
         name: string,
         nick: string,
         blurb: string,
-        minimum: number,
-        maximum: number,
-        default_value: number,
+        minimum: bigint | number,
+        maximum: bigint | number,
+        default_value: bigint | number,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
@@ -10221,7 +10221,7 @@ export namespace Gimp {
             src_pixels: any | null,
             dest_format: Babl.Object,
             dest_pixels: any | null,
-            length: number,
+            length: bigint | number,
         ): void;
     }
 
@@ -18246,7 +18246,7 @@ export namespace Gimp {
          * nice human-readable string please use `g_format_size()`.
          * @param memsize memory size in bytes
          */
-        static serialize(memsize: number): string;
+        static serialize(memsize: bigint | number): string;
     }
 
     namespace Metadata {
@@ -20018,7 +20018,7 @@ export namespace Gimp {
          * @param num_bytes The byte-size of `colormap`.
          * @returns `true` on success.
          */
-        set_colormap(format: Babl.Object, colormap: number, num_bytes: number): boolean;
+        set_colormap(format: Babl.Object, colormap: number, num_bytes: bigint | number): boolean;
         /**
          * Sets the number of columns used to display the palette
          *
@@ -28558,18 +28558,12 @@ export namespace Gimp {
         // Fields
 
         data: Uint8Array;
-        length: number;
+        length: bigint | number;
         static_data: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                data: Uint8Array;
-                length: number;
-                static_data: boolean;
-            }>,
-        );
+        constructor(data: Uint8Array | string, static_data: boolean);
 
         static ['new'](data: Uint8Array | string, static_data: boolean): Array;
 
@@ -29419,7 +29413,7 @@ export namespace Gimp {
          * @param flag a parasite flag
          * @returns `true` if `parasite` has `flag` set, `false` otherwise.
          */
-        has_flag(flag: number): boolean;
+        has_flag(flag: bigint | number): boolean;
         /**
          * @returns `true` if `parasite` is persistent, `false` otherwise.
          */

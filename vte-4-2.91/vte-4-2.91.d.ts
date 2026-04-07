@@ -2444,10 +2444,10 @@ export namespace Vte {
          * @returns a newly allocated text string, or `null`.
          */
         get_text_range(
-            start_row: number,
-            start_col: number,
-            end_row: number,
-            end_col: number,
+            start_row: bigint | number,
+            start_col: bigint | number,
+            end_row: bigint | number,
+            end_col: bigint | number,
             is_selected?: SelectionFunc | null,
         ): [string | null, CharAttributes[] | null];
         /**
@@ -2504,7 +2504,7 @@ export namespace Vte {
          * @param row the text row
          * @returns a newly allocated string which matches one of the previously   set regular expressions
          */
-        match_check(column: number, row: number): [string | null, number];
+        match_check(column: bigint | number, row: bigint | number): [string | null, number];
         /**
          * Removes the regular expression which is associated with the given `tag` from
          * the list of expressions which the terminal will highlight when the user
@@ -2861,14 +2861,14 @@ export namespace Vte {
          * No scrollback is allowed on the alternate screen buffer.
          * @param lines the length of the history buffer
          */
-        set_scrollback_lines(lines: number): void;
+        set_scrollback_lines(lines: bigint | number): void;
         /**
          * Attempts to change the terminal's size in terms of rows and columns.  If
          * the attempt succeeds, the widget will resize itself to the proper size.
          * @param columns the desired number of columns
          * @param rows the desired number of rows
          */
-        set_size(columns: number, rows: number): void;
+        set_size(columns: bigint | number, rows: bigint | number): void;
         /**
          * Controls whether or not the terminal will allow blinking text.
          * @param text_blink_mode the {@link Vte.TextBlinkMode} to use
@@ -3974,10 +3974,6 @@ export namespace Vte {
      */
     class CharAttributes {
         static $gtype: GObject.GType<CharAttributes>;
-
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
     }
 
     /**
@@ -3992,11 +3988,11 @@ export namespace Vte {
 
         // Constructors
 
-        constructor(pattern: string, pattern_length: number, flags: number);
+        constructor(pattern: string, pattern_length: bigint | number, flags: number);
 
-        static new_for_match(pattern: string, pattern_length: number, flags: number): Regex;
+        static new_for_match(pattern: string, pattern_length: bigint | number, flags: number): Regex;
 
-        static new_for_search(pattern: string, pattern_length: number, flags: number): Regex;
+        static new_for_search(pattern: string, pattern_length: bigint | number, flags: number): Regex;
 
         // Methods
 

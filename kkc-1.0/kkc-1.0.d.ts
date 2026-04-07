@@ -2259,7 +2259,7 @@ export namespace Kkc {
      * @gir-type Callback
      */
     interface GetTime {
-        (): number;
+        (): bigint | number;
     }
     /**
      * @gir-type Flags
@@ -5630,9 +5630,9 @@ export namespace Kkc {
         get_time_func: GetTime;
         get_time_func_target: any;
         get_time_func_target_destroy_notify: GLib.DestroyNotify;
-        timeout: number;
-        overlap: number;
-        maxwait: number;
+        timeout: bigint | number;
+        overlap: bigint | number;
+        maxwait: bigint | number;
 
         // Constructors
 

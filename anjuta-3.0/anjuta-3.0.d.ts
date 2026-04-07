@@ -445,14 +445,24 @@ export namespace Anjuta {
      * @param encoding
      * @param new_len
      */
-    function convert_from_utf8(content: string, len: number, encoding: Encoding, new_len: number): string;
+    function convert_from_utf8(
+        content: string,
+        len: bigint | number,
+        encoding: Encoding,
+        new_len: bigint | number,
+    ): string;
     /**
      * @param content
      * @param len
      * @param encoding
      * @param new_len
      */
-    function convert_to_utf8(content: string, len: number, encoding: Encoding, new_len: number): string;
+    function convert_to_utf8(
+        content: string,
+        len: bigint | number,
+        encoding: Encoding,
+        new_len: bigint | number,
+    ): string;
     function encoding_get_current(): Encoding;
     /**
      * @param charset
@@ -735,7 +745,7 @@ export namespace Anjuta {
      * @gir-type Callback
      */
     interface PluginValueAdded {
-        (plugin: Plugin, name: string, value: GObject.Value | any): void;
+        (plugin: Plugin, name: string, value: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -24852,7 +24862,7 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            'child-exited': (arg0: number, arg1: number, arg2: number) => void;
+            'child-exited': (arg0: number, arg1: number, arg2: bigint | number) => void;
         }
 
         // Constructor properties interface
@@ -24917,7 +24927,7 @@ export namespace Anjuta {
          * @param time_taken_in_seconds
          * @virtual
          */
-        vfunc_child_exited(child_pid: number, exit_status: number, time_taken_in_seconds: number): void;
+        vfunc_child_exited(child_pid: number, exit_status: number, time_taken_in_seconds: bigint | number): void;
 
         // Methods
 
@@ -36843,12 +36853,12 @@ export namespace Anjuta {
         /**
          * @param length
          */
-        set_length(length: number): void;
+        set_length(length: bigint | number): void;
         /**
          * @param value
          * @param length
          */
-        set_string(value: string, length: number): void;
+        set_string(value: string, length: bigint | number): void;
         /**
          * @param type
          */
@@ -36927,7 +36937,7 @@ export namespace Anjuta {
          * @param max_size the size of the buffer.
          * @returns The number of characters written in the buffer.
          */
-        read(buffer: string, max_size: number): number;
+        read(buffer: string, max_size: bigint | number): number;
     }
 
     /**

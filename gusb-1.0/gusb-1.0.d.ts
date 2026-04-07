@@ -1178,7 +1178,7 @@ export namespace GUsb {
             data: Uint8Array | string,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        ): globalThis.Promise<bigint | number>;
         /**
          * Do an async bulk transfer
          * @param endpoint the address of a valid endpoint to communicate with
@@ -1208,7 +1208,7 @@ export namespace GUsb {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
@@ -1279,7 +1279,7 @@ export namespace GUsb {
             data: Uint8Array | string,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        ): globalThis.Promise<bigint | number>;
         /**
          * Do an async control transfer
          * @param direction
@@ -1329,7 +1329,7 @@ export namespace GUsb {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
@@ -1536,7 +1536,7 @@ export namespace GUsb {
          * @param length size of the request data buffer
          * @returns a possibly UTF-16 string, or NULL on error.
          */
-        get_string_descriptor_bytes_full(desc_index: number, langid: number, length: number): GLib.Bytes;
+        get_string_descriptor_bytes_full(desc_index: number, langid: number, length: bigint | number): GLib.Bytes;
         /**
          * Gets all the tags.
          * @returns string tags
@@ -1586,7 +1586,7 @@ export namespace GUsb {
             data: Uint8Array | string,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        ): globalThis.Promise<bigint | number>;
         /**
          * Do an async interrupt transfer
          * @param endpoint the address of a valid endpoint to communicate with
@@ -1616,7 +1616,7 @@ export namespace GUsb {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}

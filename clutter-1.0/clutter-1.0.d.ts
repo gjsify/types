@@ -7838,7 +7838,7 @@ export namespace Clutter {
      * @gir-type Callback
      */
     interface ModelSortFunc {
-        (model: Model, a: GObject.Value | any, b: GObject.Value | any): number;
+        (model: Model, a: unknown, b: unknown): number;
     }
     /**
      * @gir-type Callback
@@ -7850,7 +7850,7 @@ export namespace Clutter {
      * @gir-type Callback
      */
     interface ProgressFunc {
-        (a: GObject.Value | any, b: GObject.Value | any, progress: number, retval: GObject.Value | any): boolean;
+        (a: unknown, b: unknown, progress: number, retval: unknown): boolean;
     }
     /**
      * @gir-type Callback
@@ -12077,7 +12077,7 @@ export namespace Clutter {
          * @returns a {@link Clutter.Animation} object. The object is    owned by the {@link Clutter.Actor} and should not be unreferenced with    `g_object_unref()`
          */
         animate_with_timelinev(
-            mode: number,
+            mode: bigint | number,
             timeline: Timeline,
             properties: string[],
             values: (GObject.Value | any)[],
@@ -12098,7 +12098,12 @@ export namespace Clutter {
          * @param values a vector containing the    property values to set
          * @returns a {@link Clutter.Animation} object. The object is   owned by the {@link Clutter.Actor} and should not be unreferenced with   `g_object_unref()`
          */
-        animatev(mode: number, duration: number, properties: string[], values: (GObject.Value | any)[]): Animation;
+        animatev(
+            mode: bigint | number,
+            duration: number,
+            properties: string[],
+            values: (GObject.Value | any)[],
+        ): Animation;
         /**
          * Transforms `point` in coordinates relative to the actor into
          * ancestor-relative coordinates using the relevant transform
@@ -15463,7 +15468,7 @@ export namespace Clutter {
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Scriptable.ConstructorProps {
             alpha: number;
-            mode: number;
+            mode: bigint | number;
             timeline: Timeline;
         }
     }
@@ -15502,7 +15507,7 @@ export namespace Clutter {
          * @deprecated since 1.12: Use {@link Clutter.Timeline.progress_mode}
          */
         get mode(): number;
-        set mode(val: number);
+        set mode(val: bigint | number);
         /**
          * A {@link Clutter.Timeline} instance used to drive the alpha function.
          * @since 0.2
@@ -15528,7 +15533,7 @@ export namespace Clutter {
 
         static ['new'](): Alpha;
 
-        static new_full(timeline: Timeline, mode: number): Alpha;
+        static new_full(timeline: Timeline, mode: bigint | number): Alpha;
 
         static new_with_func(timeline: Timeline, func: AlphaFunc): Alpha;
 
@@ -15604,7 +15609,7 @@ export namespace Clutter {
          * using the value returned by `clutter_alpha_register_func()`.
          * @param mode a {@link Clutter.AnimationMode}
          */
-        set_mode(mode: number): void;
+        set_mode(mode: bigint | number): void;
         /**
          * Binds `alpha` to `timeline`.
          * @param timeline A {@link Clutter.Timeline}
@@ -16167,7 +16172,7 @@ export namespace Clutter {
             alpha: Alpha;
             duration: number;
             loop: boolean;
-            mode: number;
+            mode: bigint | number;
             object: GObject.Object;
             timeline: Timeline;
         }
@@ -16214,7 +16219,7 @@ export namespace Clutter {
          * @deprecated since 1.12: Use {@link Clutter.PropertyTransition} instead
          */
         get mode(): number;
-        set mode(val: number);
+        set mode(val: bigint | number);
         /**
          * The {@link GObject.Object} to which the animation applies.
          * @since 1.0
@@ -16404,7 +16409,7 @@ export namespace Clutter {
          * This function will also set {@link Clutter.Animation.alpha} if needed.
          * @param mode an animation mode logical id
          */
-        set_mode(mode: number): void;
+        set_mode(mode: bigint | number): void;
         /**
          * Attaches `animation` to `object`. The {@link Clutter.Animation} will take a
          * reference on `object`.
@@ -24304,8 +24309,8 @@ export namespace Clutter {
         interface ConstructorProps extends LayoutManager.ConstructorProps {
             easing_duration: number;
             easingDuration: number;
-            easing_mode: number;
-            easingMode: number;
+            easing_mode: bigint | number;
+            easingMode: bigint | number;
             homogeneous: boolean;
             orientation: Orientation;
             pack_start: boolean;
@@ -24362,7 +24367,7 @@ export namespace Clutter {
          * @deprecated since 1.12: The {@link Clutter.BoxLayout} will honour the easing state of   the children when allocating them.
          */
         get easing_mode(): number;
-        set easing_mode(val: number);
+        set easing_mode(val: bigint | number);
         /**
          * The easing mode for the animations, in case
          * {@link Clutter.BoxLayout.use_animations} is set to `true`.
@@ -24377,7 +24382,7 @@ export namespace Clutter {
          * @deprecated since 1.12: The {@link Clutter.BoxLayout} will honour the easing state of   the children when allocating them.
          */
         get easingMode(): number;
-        set easingMode(val: number);
+        set easingMode(val: bigint | number);
         /**
          * Whether the {@link Clutter.BoxLayout} should arrange its children
          * homogeneously, i.e. all children get the same size
@@ -24573,7 +24578,7 @@ export namespace Clutter {
          * properties.
          * @param mode an easing mode, either from {@link Clutter.AnimationMode} or a logical id   from `clutter_alpha_register_func()`
          */
-        set_easing_mode(mode: number): void;
+        set_easing_mode(mode: bigint | number): void;
         /**
          * Sets whether `actor` should expand inside `layout`
          * @param actor a {@link Clutter.Actor} child of `layout`
@@ -32097,8 +32102,8 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Scriptable.ConstructorProps {
-            final: GObject.Value;
-            initial: GObject.Value;
+            final: GObject.Value | any;
+            initial: GObject.Value | any;
             value_type: GObject.GTypeInput;
             valueType: GObject.GTypeInput;
         }
@@ -32119,14 +32124,14 @@ export namespace Clutter {
          * The final value of the interval.
          * @since 1.12
          */
-        get final(): GObject.Value;
-        set final(val: GObject.Value);
+        get final(): unknown;
+        set final(val: GObject.Value | any);
         /**
          * The initial value of the interval.
          * @since 1.12
          */
-        get initial(): GObject.Value;
-        set initial(val: GObject.Value);
+        get initial(): unknown;
+        set initial(val: GObject.Value | any);
         /**
          * The type of the values in the interval.
          * @since 1.0
@@ -33489,7 +33494,7 @@ export namespace Clutter {
          * @param mode the easing mode of the animation
          * @virtual
          */
-        vfunc_begin_animation(duration: number, mode: number): Alpha;
+        vfunc_begin_animation(duration: number, mode: bigint | number): Alpha;
         /**
          * Ends an animation started by `clutter_layout_manager_begin_animation()`
          *
@@ -33573,7 +33578,7 @@ export namespace Clutter {
          * @param mode the easing mode of the animation
          * @returns The {@link Clutter.Alpha} created by the   layout manager; the returned instance is owned by the layout   manager and should not be unreferenced
          */
-        begin_animation(duration: number, mode: number): Alpha;
+        begin_animation(duration: number, mode: bigint | number): Alpha;
         /**
          * Gets a property on the {@link Clutter.LayoutMeta} created by `manager` and
          * attached to a child of `container`
@@ -38356,7 +38361,7 @@ export namespace Clutter {
          * @param id_ the id of the timeline
          * @returns the requested timeline, or `null`. This   function does not increase the reference count on the returned   {@link Clutter.Timeline}
          */
-        get_timeline(id_: number): Timeline;
+        get_timeline(id_: bigint | number): Timeline;
         /**
          * Query state of a {@link Clutter.Score} instance.
          * @returns `true` if score is currently playing
@@ -38377,7 +38382,7 @@ export namespace Clutter {
          * as well.
          * @param id_ the id of the timeline to remove
          */
-        remove(id_: number): void;
+        remove(id_: bigint | number): void;
         /**
          * Removes all the timelines inside `score`.
          */
@@ -38626,7 +38631,7 @@ export namespace Clutter {
          * @param length the length of the buffer, or -1 if `data` is a NUL-terminated   buffer
          * @returns on error, zero is returned and `error` is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with `clutter_script_unmerge_objects()`.
          */
-        load_from_data(data: string, length: number): number;
+        load_from_data(data: string, length: bigint | number): number;
         /**
          * Loads the definitions from `filename` into `script` and merges with
          * the currently loaded ones, if any.
@@ -40250,7 +40255,7 @@ export namespace Clutter {
          * @param data GLSL source code.
          * @param length length of source buffer (currently ignored)
          */
-        set_fragment_source(data: string, length: number): void;
+        set_fragment_source(data: string, length: bigint | number): void;
         /**
          * Enables a shader. This function will attempt to compile and link
          * the shader, if it isn't already.
@@ -40273,7 +40278,7 @@ export namespace Clutter {
          * @param data GLSL source code.
          * @param length length of source buffer (currently ignored)
          */
-        set_vertex_source(data: string, length: number): void;
+        set_vertex_source(data: string, length: bigint | number): void;
     }
 
     namespace ShaderEffect {
@@ -42924,8 +42929,8 @@ export namespace Clutter {
             columnSpacing: number;
             easing_duration: number;
             easingDuration: number;
-            easing_mode: number;
-            easingMode: number;
+            easing_mode: bigint | number;
+            easingMode: bigint | number;
             row_spacing: number;
             rowSpacing: number;
             use_animations: boolean;
@@ -42993,7 +42998,7 @@ export namespace Clutter {
          * @deprecated since 1.12: {@link Clutter.TableLayout} will honour the easing state   of the children when allocating them
          */
         get easing_mode(): number;
-        set easing_mode(val: number);
+        set easing_mode(val: bigint | number);
         /**
          * The easing mode for the animations, in case
          * {@link Clutter.TableLayout.use_animations} is set to `true`.
@@ -43008,7 +43013,7 @@ export namespace Clutter {
          * @deprecated since 1.12: {@link Clutter.TableLayout} will honour the easing state   of the children when allocating them
          */
         get easingMode(): number;
-        set easingMode(val: number);
+        set easingMode(val: bigint | number);
         /**
          * The spacing between rows of the {@link Clutter.TableLayout}, in pixels
          * @since 1.4
@@ -43192,7 +43197,7 @@ export namespace Clutter {
          * animations
          * @param mode an easing mode, either from {@link Clutter.AnimationMode} or a logical id   from `clutter_alpha_register_func()`
          */
-        set_easing_mode(mode: number): void;
+        set_easing_mode(mode: bigint | number): void;
         /**
          * Sets the horizontal and vertical expand policies for `actor`
          * inside `layout`
@@ -44027,7 +44032,7 @@ export namespace Clutter {
          * @param start_pos starting position
          * @param end_pos ending position
          */
-        delete_text(start_pos: number, end_pos: number): void;
+        delete_text(start_pos: bigint | number, end_pos: bigint | number): void;
         /**
          * Retrieves whether a {@link Clutter.Text} is activatable or not.
          * @returns `true` if the actor is activatable
@@ -44054,7 +44059,7 @@ export namespace Clutter {
          * @param end_pos end of text, in characters
          * @returns a newly allocated string with the contents of   the text actor between the specified positions. Use `g_free()`   to free the resources when done
          */
-        get_chars(start_pos: number, end_pos: number): string;
+        get_chars(start_pos: bigint | number, end_pos: bigint | number): string;
         /**
          * Retrieves the text color as set by `clutter_text_set_color()`.
          */
@@ -44218,7 +44223,7 @@ export namespace Clutter {
          * @param text the text to be inserted
          * @param position the position of the insertion, or -1
          */
-        insert_text(text: string, position: number): void;
+        insert_text(text: string, position: bigint | number): void;
         /**
          * Inserts `wc` at the current cursor position of a
          * {@link Clutter.Text} actor.
@@ -44452,7 +44457,7 @@ export namespace Clutter {
          * @param start_pos start of the selection, in characters
          * @param end_pos end of the selection, in characters
          */
-        set_selection(start_pos: number, end_pos: number): void;
+        set_selection(start_pos: bigint | number, end_pos: bigint | number): void;
         /**
          * Sets the other end of the selection, starting from the current
          * cursor position.
@@ -45504,7 +45509,7 @@ export namespace Clutter {
 
         static ['new'](): TextBuffer;
 
-        static new_with_text(text: string | null, text_len: number): TextBuffer;
+        static new_with_text(text: string | null, text_len: bigint | number): TextBuffer;
 
         // Signals
 
@@ -45558,7 +45563,7 @@ export namespace Clutter {
          * @param n_bytes
          * @virtual
          */
-        vfunc_get_text(n_bytes: number): string;
+        vfunc_get_text(n_bytes: bigint | number): string;
         /**
          * Inserts `n_chars` characters of `chars` into the contents of the
          * buffer, at position `position`.

@@ -448,7 +448,7 @@ export namespace Shell {
      * @gir-type Callback
      */
     interface PerfReplayFunction {
-        (time: number, name: string, signature: string, arg: GObject.Value | any): void;
+        (time: number, name: string, signature: string, arg: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -4221,7 +4221,7 @@ export namespace Shell {
          * @param name name of the event
          * @param arg the argument
          */
-        event_x(name: string, arg: number): void;
+        event_x(name: string, arg: bigint | number): void;
         /**
          * Replays the log by calling the given function for each event
          * in the log.
@@ -4244,7 +4244,7 @@ export namespace Shell {
          * @param name name of the statistic
          * @param value new value for the statistic
          */
-        update_statistic_x(name: string, value: number): void;
+        update_statistic_x(name: string, value: bigint | number): void;
     }
 
     namespace PolkitAuthenticationAgent {

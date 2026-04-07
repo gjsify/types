@@ -443,7 +443,11 @@ export namespace Gegl {
      * @param thread_cost the cost of using each additional thread, relative               to the cost of processing a single data element
      * @param func the function to call
      */
-    function parallel_distribute_range(size: number, thread_cost: number, func: ParallelDistributeRangeFunc): void;
+    function parallel_distribute_range(
+        size: bigint | number,
+        thread_cost: number,
+        func: ParallelDistributeRangeFunc,
+    ): void;
     /**
      * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.AudioFragment} property.
      * @param name canonical name of the property specified
@@ -1569,8 +1573,8 @@ export namespace Gegl {
             swap_compression: string;
             swapCompression: string;
             threads: number;
-            tile_cache_size: number;
-            tileCacheSize: number;
+            tile_cache_size: bigint | number;
+            tileCacheSize: bigint | number;
             tile_height: number;
             tileHeight: number;
             tile_width: number;
@@ -1615,9 +1619,9 @@ export namespace Gegl {
         get threads(): number;
         set threads(val: number);
         get tile_cache_size(): number;
-        set tile_cache_size(val: number);
+        set tile_cache_size(val: bigint | number);
         get tileCacheSize(): number;
-        set tileCacheSize(val: number);
+        set tileCacheSize(val: bigint | number);
         get tile_height(): number;
         set tile_height(val: number);
         get tileHeight(): number;
@@ -4826,44 +4830,44 @@ export namespace Gegl {
             activeThreads: number;
             assigned_threads: number;
             assignedThreads: number;
-            scratch_total: number;
-            scratchTotal: number;
+            scratch_total: bigint | number;
+            scratchTotal: bigint | number;
             swap_busy: boolean;
             swapBusy: boolean;
-            swap_file_size: number;
-            swapFileSize: number;
+            swap_file_size: bigint | number;
+            swapFileSize: bigint | number;
             swap_queue_full: boolean;
             swapQueueFull: boolean;
             swap_queue_stalls: number;
             swapQueueStalls: number;
-            swap_queued_total: number;
-            swapQueuedTotal: number;
-            swap_read_total: number;
-            swapReadTotal: number;
+            swap_queued_total: bigint | number;
+            swapQueuedTotal: bigint | number;
+            swap_read_total: bigint | number;
+            swapReadTotal: bigint | number;
             swap_reading: boolean;
             swapReading: boolean;
-            swap_total: number;
-            swapTotal: number;
-            swap_total_uncompressed: number;
-            swapTotalUncompressed: number;
-            swap_write_total: number;
-            swapWriteTotal: number;
+            swap_total: bigint | number;
+            swapTotal: bigint | number;
+            swap_total_uncompressed: bigint | number;
+            swapTotalUncompressed: bigint | number;
+            swap_write_total: bigint | number;
+            swapWriteTotal: bigint | number;
             swap_writing: boolean;
             swapWriting: boolean;
-            tile_alloc_total: number;
-            tileAllocTotal: number;
+            tile_alloc_total: bigint | number;
+            tileAllocTotal: bigint | number;
             tile_cache_hits: number;
             tileCacheHits: number;
             tile_cache_misses: number;
             tileCacheMisses: number;
-            tile_cache_total: number;
-            tileCacheTotal: number;
-            tile_cache_total_max: number;
-            tileCacheTotalMax: number;
-            tile_cache_total_uncompressed: number;
-            tileCacheTotalUncompressed: number;
-            zoom_total: number;
-            zoomTotal: number;
+            tile_cache_total: bigint | number;
+            tileCacheTotal: bigint | number;
+            tile_cache_total_max: bigint | number;
+            tileCacheTotalMax: bigint | number;
+            tile_cache_total_uncompressed: bigint | number;
+            tileCacheTotalUncompressed: bigint | number;
+            zoom_total: bigint | number;
+            zoomTotal: bigint | number;
         }
     }
 
@@ -5313,7 +5317,7 @@ export namespace Gegl {
          * @param z
          * @param damage
          */
-        damage_tile(x: number, y: number, z: number, damage: number): void;
+        damage_tile(x: number, y: number, z: number, damage: bigint | number): void;
         lock(): void;
         /**
          * @param source

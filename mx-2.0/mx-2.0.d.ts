@@ -1439,14 +1439,14 @@ export namespace Mx {
              * @since 1.2
              * @run-last
              */
-            'actor-added': (arg0: number, arg1: Clutter.Actor, arg2: Clutter.Actor) => void;
+            'actor-added': (arg0: bigint | number, arg1: Clutter.Actor, arg2: Clutter.Actor) => void;
             /**
              * Emitted when an actor creation operation has completed.
              * @signal
              * @since 1.2
              * @run-last
              */
-            'actor-created': (arg0: number, arg1: Clutter.Actor) => void;
+            'actor-created': (arg0: bigint | number, arg1: Clutter.Actor) => void;
             /**
              * Emitted when all queued operations involving `actor` have completed.
              * @signal
@@ -1460,28 +1460,28 @@ export namespace Mx {
              * @since 1.2
              * @run-last
              */
-            'actor-removed': (arg0: number, arg1: Clutter.Actor, arg2: Clutter.Actor) => void;
+            'actor-removed': (arg0: bigint | number, arg1: Clutter.Actor, arg2: Clutter.Actor) => void;
             /**
              * Emitted when an operation has been cancelled.
              * @signal
              * @since 1.2
              * @run-last
              */
-            'operation-cancelled': (arg0: number) => void;
+            'operation-cancelled': (arg0: bigint | number) => void;
             /**
              * Emitted when an operation has completed successfully.
              * @signal
              * @since 1.2
              * @run-last
              */
-            'operation-completed': (arg0: number) => void;
+            'operation-completed': (arg0: bigint | number) => void;
             /**
              * Emitted when an operation has failed.
              * @signal
              * @since 1.2
              * @run-last
              */
-            'operation-failed': (arg0: number, arg1: GLib.Error) => void;
+            'operation-failed': (arg0: bigint | number, arg1: GLib.Error) => void;
             'notify::n-operations': (pspec: GObject.ParamSpec) => void;
             'notify::stage': (pspec: GObject.ParamSpec) => void;
             'notify::time-slice': (pspec: GObject.ParamSpec) => void;
@@ -1581,13 +1581,13 @@ export namespace Mx {
          * @param actor
          * @virtual
          */
-        vfunc_actor_added(id: number, container: Clutter.Actor, actor: Clutter.Actor): void;
+        vfunc_actor_added(id: bigint | number, container: Clutter.Actor, actor: Clutter.Actor): void;
         /**
          * @param id
          * @param actor
          * @virtual
          */
-        vfunc_actor_created(id: number, actor: Clutter.Actor): void;
+        vfunc_actor_created(id: bigint | number, actor: Clutter.Actor): void;
         /**
          * @param actor
          * @virtual
@@ -1599,23 +1599,23 @@ export namespace Mx {
          * @param actor
          * @virtual
          */
-        vfunc_actor_removed(id: number, container: Clutter.Actor, actor: Clutter.Actor): void;
+        vfunc_actor_removed(id: bigint | number, container: Clutter.Actor, actor: Clutter.Actor): void;
         /**
          * @param id
          * @virtual
          */
-        vfunc_operation_cancelled(id: number): void;
+        vfunc_operation_cancelled(id: bigint | number): void;
         /**
          * @param id
          * @virtual
          */
-        vfunc_operation_completed(id: number): void;
+        vfunc_operation_completed(id: bigint | number): void;
         /**
          * @param id
          * @param error
          * @virtual
          */
-        vfunc_operation_failed(id: number, error: GLib.Error): void;
+        vfunc_operation_failed(id: bigint | number, error: GLib.Error): void;
 
         // Methods
 
@@ -1636,7 +1636,7 @@ export namespace Mx {
          * is cancelled.
          * @param id An operation ID
          */
-        cancel_operation(id: number): void;
+        cancel_operation(id: bigint | number): void;
         /**
          * Cancels all operations associated with the given actor.
          * @param actor A {@link Clutter.Actor}
@@ -1897,7 +1897,7 @@ export namespace Mx {
          * @param duration duration in milliseconds
          * @param mode A {@link Clutter.AnimationMode}
          */
-        interpolate(value: number, duration: number, mode: number): void;
+        interpolate(value: number, duration: number, mode: bigint | number): void;
         /**
          * Interpolate the value of {@link Mx.Adjustment.value} to a new value calculated from
          * `offset`.
@@ -1905,7 +1905,7 @@ export namespace Mx {
          * @param duration duration in milliseconds
          * @param mode A {@link Clutter.AnimationMode}
          */
-        interpolate_relative(offset: number, duration: number, mode: number): void;
+        interpolate_relative(offset: number, duration: number, mode: bigint | number): void;
         /**
          * Set the value of the {@link Mx.Adjustment.clamp_value} property.
          * @param clamp a `gboolean`
@@ -13660,7 +13660,7 @@ export namespace Mx {
          * @param duration duration of the animation in milliseconds
          * @param scale_mode The {@link Mx.ImageScaleMode} to set
          */
-        animate_scale_mode(mode: number, duration: number, scale_mode: ImageScaleMode | null): void;
+        animate_scale_mode(mode: bigint | number, duration: number, scale_mode: ImageScaleMode | null): void;
         /**
          * Clear the current image and set a blank, transparent image.
          * @returns static void
@@ -15314,8 +15314,8 @@ export namespace Mx {
             accelerationFactor: number;
             clamp_duration: number;
             clampDuration: number;
-            clamp_mode: number;
-            clampMode: number;
+            clamp_mode: bigint | number;
+            clampMode: bigint | number;
             clamp_to_center: boolean;
             clampToCenter: boolean;
             deceleration: number;
@@ -15363,9 +15363,9 @@ export namespace Mx {
         get clampDuration(): number;
         set clampDuration(val: number);
         get clamp_mode(): number;
-        set clamp_mode(val: number);
+        set clamp_mode(val: bigint | number);
         get clampMode(): number;
-        set clampMode(val: number);
+        set clampMode(val: bigint | number);
         get clamp_to_center(): boolean;
         set clamp_to_center(val: boolean);
         get clampToCenter(): boolean;
@@ -15519,7 +15519,7 @@ export namespace Mx {
          * Animation mode to use for the adjustment clamp animation.
          * @param clamp_mode Clamp mode
          */
-        set_clamp_mode(clamp_mode: number): void;
+        set_clamp_mode(clamp_mode: bigint | number): void;
         /**
          * Set whether to clamp to step increments based on the center of the page.
          * @param clamp_to_center Clamp to center

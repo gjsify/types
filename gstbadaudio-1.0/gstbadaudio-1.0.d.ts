@@ -246,13 +246,13 @@ export namespace GstBadAudio {
         element: Gst.Element;
         sinkpad: Gst.Pad;
         srcpad: Gst.Pad;
-        upstream_size: number;
+        upstream_size: bigint | number;
         loaded_mode: boolean;
         input_data_adapter: GstBase.Adapter;
         subsong_duration: Gst.ClockTime;
         output_format_changed: boolean;
-        cur_pos_in_samples: number;
-        num_decoded_samples: number;
+        cur_pos_in_samples: bigint | number;
+        num_decoded_samples: bigint | number;
         discont: boolean;
         allocator: Gst.Allocator;
 
@@ -412,7 +412,7 @@ export namespace GstBadAudio {
          * @param size Size of the output buffer, in bytes
          * @returns Newly allocated output buffer, or NULL if allocation failed
          */
-        allocate_output_buffer(size: number): Gst.Buffer | null;
+        allocate_output_buffer(size: bigint | number): Gst.Buffer | null;
         /**
          * Gets sample format, sample rate, channel count from the allowed srcpad caps.
          *
@@ -587,7 +587,7 @@ export namespace GstBadAudio {
          * that at least this many samples are available.
          * @param to_flush the number of samples to flush
          */
-        flush(to_flush: number): void;
+        flush(to_flush: bigint | number): void;
         /**
          * Returns a {@link Gst.Buffer} containing the first `nsamples` of the `adapter`, but
          * does not flush them from the adapter.
@@ -605,7 +605,7 @@ export namespace GstBadAudio {
          * @param flags hint the intended use of the returned buffer
          * @returns a {@link Gst.Buffer} containing the first     `nsamples` of the adapter, or `null` if `nsamples` samples are not     available. `gst_buffer_unref()` when no longer needed.
          */
-        get_buffer(nsamples: number, flags: Gst.MapFlags | null): Gst.Buffer | null;
+        get_buffer(nsamples: bigint | number, flags: Gst.MapFlags | null): Gst.Buffer | null;
         /**
          * Get the offset that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
          * flag, or GST_BUFFER_OFFSET_NONE.
@@ -674,7 +674,7 @@ export namespace GstBadAudio {
          * @param flags hint the intended use of the returned buffer
          * @returns a {@link Gst.Buffer} containing the first     `nsamples` of the adapter, or `null` if `nsamples` samples are not     available. `gst_buffer_unref()` when no longer needed.
          */
-        take_buffer(nsamples: number, flags: Gst.MapFlags | null): Gst.Buffer | null;
+        take_buffer(nsamples: bigint | number, flags: Gst.MapFlags | null): Gst.Buffer | null;
     }
 
     /**

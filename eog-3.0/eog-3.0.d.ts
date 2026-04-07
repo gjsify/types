@@ -9694,8 +9694,8 @@ export namespace Eog {
             convertSpaces: boolean;
             counter_n_digits: number;
             counterNDigits: number;
-            counter_start: number;
-            counterStart: number;
+            counter_start: bigint | number;
+            counterStart: bigint | number;
             n_images: number;
             nImages: number;
             space_character: number;
@@ -9720,9 +9720,9 @@ export namespace Eog {
         get counterNDigits(): number;
         set counterNDigits(val: number);
         get counter_start(): number;
-        set counter_start(val: number);
+        set counter_start(val: bigint | number);
         get counterStart(): number;
-        set counterStart(val: number);
+        set counterStart(val: bigint | number);
         /**
          * @write-only
          */
@@ -9789,7 +9789,7 @@ export namespace Eog {
             format_str: string,
             img: Image,
             format: GdkPixbuf.PixbufFormat,
-            counter: number,
+            counter: bigint | number,
             n_images: number,
             convert_spaces: boolean,
             space_char: string,

@@ -98,7 +98,7 @@ export namespace GstNet {
      * @returns `true` if the GStreamer PTP clock subsystem could be initialized.
      * @since 1.6
      */
-    function ptp_init(clock_id: number, interfaces?: string[] | null): boolean;
+    function ptp_init(clock_id: bigint | number, interfaces?: string[] | null): boolean;
     /**
      * Check if the GStreamer PTP clock subsystem is initialized.
      * @returns `true` if the GStreamer PTP clock subsystem is initialized.
@@ -126,7 +126,7 @@ export namespace GstNet {
      * @param id Callback id to remove
      * @since 1.6
      */
-    function ptp_statistics_callback_remove(id: number): void;
+    function ptp_statistics_callback_remove(id: bigint | number): void;
     /**
      * @gir-type Callback
      */
@@ -156,18 +156,18 @@ export namespace GstNet {
 
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {
             address: string;
-            base_time: number;
-            baseTime: number;
+            base_time: bigint | number;
+            baseTime: bigint | number;
             bus: Gst.Bus;
             internal_clock: Gst.Clock;
             internalClock: Gst.Clock;
-            minimum_update_interval: number;
-            minimumUpdateInterval: number;
+            minimum_update_interval: bigint | number;
+            minimumUpdateInterval: bigint | number;
             port: number;
             qos_dscp: number;
             qosDscp: number;
-            round_trip_limit: number;
-            roundTripLimit: number;
+            round_trip_limit: bigint | number;
+            roundTripLimit: bigint | number;
         }
     }
 
@@ -222,9 +222,9 @@ export namespace GstNet {
          */
         get internalClock(): Gst.Clock;
         get minimum_update_interval(): number;
-        set minimum_update_interval(val: number);
+        set minimum_update_interval(val: bigint | number);
         get minimumUpdateInterval(): number;
-        set minimumUpdateInterval(val: number);
+        set minimumUpdateInterval(val: bigint | number);
         get port(): number;
         set port(val: number);
         get qos_dscp(): number;
@@ -232,9 +232,9 @@ export namespace GstNet {
         get qosDscp(): number;
         set qosDscp(val: number);
         get round_trip_limit(): number;
-        set round_trip_limit(val: number);
+        set round_trip_limit(val: bigint | number);
         get roundTripLimit(): number;
-        set roundTripLimit(val: number);
+        set roundTripLimit(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1020,12 +1020,12 @@ export namespace GstNet {
 
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {
             domain: number;
-            grandmaster_clock_id: number;
-            grandmasterClockId: number;
+            grandmaster_clock_id: bigint | number;
+            grandmasterClockId: bigint | number;
             internal_clock: Gst.Clock;
             internalClock: Gst.Clock;
-            master_clock_id: number;
-            masterClockId: number;
+            master_clock_id: bigint | number;
+            masterClockId: bigint | number;
         }
     }
 
@@ -1195,12 +1195,7 @@ export namespace GstNet {
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                local_time: Gst.ClockTime;
-                remote_time: Gst.ClockTime;
-            }>,
-        );
+        constructor(buffer?: Uint8Array | null);
 
         static ['new'](buffer?: Uint8Array | null): NetTimePacket;
 

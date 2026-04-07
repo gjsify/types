@@ -1459,7 +1459,7 @@ export namespace Fwupd {
      * @since 2.0.0
      * @deprecated since 2.1.1
      */
-    function codec_json_append_int(json_obj: JsonObject, key: string, value: number): void;
+    function codec_json_append_int(json_obj: JsonObject, key: string, value: bigint | number): void;
     /**
      * Appends a key and string hash map to a JSON object.
      *
@@ -1512,7 +1512,7 @@ export namespace Fwupd {
      * @param value guint64
      * @since 2.0.0
      */
-    function codec_string_append_hex(str: GLib.String, idt: number, key: string, value: number): void;
+    function codec_string_append_hex(str: GLib.String, idt: number, key: string, value: bigint | number): void;
     /**
      * Appends a key and unsigned integer to a string.
      * @param str a {@link GLib.String}
@@ -1521,7 +1521,7 @@ export namespace Fwupd {
      * @param value guint64
      * @since 2.0.0
      */
-    function codec_string_append_int(str: GLib.String, idt: number, key: string, value: number): void;
+    function codec_string_append_int(str: GLib.String, idt: number, key: string, value: bigint | number): void;
     /**
      * Appends a key and size in bytes to a string.
      * @param str a {@link GLib.String}
@@ -1530,7 +1530,7 @@ export namespace Fwupd {
      * @param value guint64
      * @since 2.0.0
      */
-    function codec_string_append_size(str: GLib.String, idt: number, key: string, value: number): void;
+    function codec_string_append_size(str: GLib.String, idt: number, key: string, value: bigint | number): void;
     /**
      * Appends a key and time value to a string.
      * @param str a {@link GLib.String}
@@ -1539,7 +1539,7 @@ export namespace Fwupd {
      * @param value guint64 UNIX time
      * @since 2.0.0
      */
-    function codec_string_append_time(str: GLib.String, idt: number, key: string, value: number): void;
+    function codec_string_append_time(str: GLib.String, idt: number, key: string, value: bigint | number): void;
     /**
      * Convert the error to a {@link Fwupd.Error}, if required.
      * @since 2.0.0
@@ -1601,7 +1601,7 @@ export namespace Fwupd {
      * @returns a new GUID, or `null` for internal error
      * @since 1.2.5
      */
-    function guid_hash_data(data: number, datasz: number, flags: GuidFlags | null): string;
+    function guid_hash_data(data: number, datasz: bigint | number, flags: GuidFlags | null): string;
     /**
      * Returns a GUID for a given string. This uses a hash and so even small
      * differences in the `str` will produce radically different return values.
@@ -2703,7 +2703,7 @@ export namespace Fwupd {
          * length for string attributes.
          * @param val a guint64 value to set bound to
          */
-        set_lower_bound(val: number): void;
+        set_lower_bound(val: bigint | number): void;
         /**
          * Sets the attribute name provided by a kernel driver.
          * @param name the attribute name
@@ -2724,13 +2724,13 @@ export namespace Fwupd {
          * Sets the scalar increment used for BIOS integer attributes.
          * @param val a guint64 value to set increment to
          */
-        set_scalar_increment(val: number): void;
+        set_scalar_increment(val: bigint | number): void;
         /**
          * Sets the upper bound used for BIOS integer attributes or max
          * length for string attributes.
          * @param val a guint64 value to set bound to
          */
-        set_upper_bound(val: number): void;
+        set_upper_bound(val: bigint | number): void;
         /**
          * Writes a new value into the setting if it is different from the current value.
          *
@@ -6526,13 +6526,13 @@ export namespace Fwupd {
             batteryLevel: number;
             battery_threshold: number;
             batteryThreshold: number;
-            flags: number;
+            flags: bigint | number;
             id: string;
             parent: Device;
             percentage: number;
-            problems: number;
-            request_flags: number;
-            requestFlags: number;
+            problems: bigint | number;
+            request_flags: bigint | number;
+            requestFlags: bigint | number;
             status: number;
             update_error: string;
             updateError: string;
@@ -6585,7 +6585,7 @@ export namespace Fwupd {
          * @since 0.9.3
          */
         get flags(): number;
-        set flags(val: number);
+        set flags(val: bigint | number);
         /**
          * The device ID.
          * @since 2.0.0
@@ -6609,19 +6609,19 @@ export namespace Fwupd {
          * @since 1.8.1
          */
         get problems(): number;
-        set problems(val: number);
+        set problems(val: bigint | number);
         /**
          * The device request flags.
          * @since 1.9.10
          */
         get request_flags(): number;
-        set request_flags(val: number);
+        set request_flags(val: bigint | number);
         /**
          * The device request flags.
          * @since 1.9.10
          */
         get requestFlags(): number;
-        set requestFlags(val: number);
+        set requestFlags(val: bigint | number);
         /**
          * The current device status.
          * @since 1.4.0
@@ -7181,12 +7181,12 @@ export namespace Fwupd {
          * Sets when the device was created.
          * @param created the UNIX time
          */
-        set_created(created: number): void;
+        set_created(created: bigint | number): void;
         /**
          * Sets device flags.
          * @param flags device flags, e.g. {@link Fwupd.DeviceFlags.REQUIRE_AC}
          */
-        set_flags(flags: number): void;
+        set_flags(flags: bigint | number): void;
         /**
          * Sets the number of flash cycles left on the device
          * @param flashes_left the description
@@ -7206,7 +7206,7 @@ export namespace Fwupd {
          * Sets when the device was modified.
          * @param modified the UNIX time
          */
-        set_modified(modified: number): void;
+        set_modified(modified: bigint | number): void;
         /**
          * Sets the device name.
          * @param name the device name, e.g. `ColorHug2`
@@ -7236,12 +7236,12 @@ export namespace Fwupd {
          * Sets device problems.
          * @param problems device problems, e.g. {@link Fwupd.DeviceProblem.SYSTEM_POWER_TOO_LOW}
          */
-        set_problems(problems: number): void;
+        set_problems(problems: bigint | number): void;
         /**
          * Sets device request flags.
          * @param request_flags device request flags, e.g. `FWUPD_DEVICE_REQUEST_FLAG_REQUIRE_AC`
          */
-        set_request_flags(request_flags: number): void;
+        set_request_flags(request_flags: bigint | number): void;
         /**
          * Sets the serial number for the device.
          * @param serial the device serial number
@@ -7286,12 +7286,12 @@ export namespace Fwupd {
          * Sets the raw bootloader version number from the hardware before converted to a string.
          * @param version_bootloader_raw the raw hardware version
          */
-        set_version_bootloader_raw(version_bootloader_raw: number): void;
+        set_version_bootloader_raw(version_bootloader_raw: bigint | number): void;
         /**
          * Sets the date when the firmware was built.
          * @param version_build_date the UNIX time
          */
-        set_version_build_date(version_build_date: number): void;
+        set_version_build_date(version_build_date: bigint | number): void;
         /**
          * Sets the version format.
          * @param version_format the version format, e.g. {@link Fwupd.VersionFormat.NUMBER}
@@ -7306,12 +7306,12 @@ export namespace Fwupd {
          * Sets the raw lowest version number from the hardware before converted to a string.
          * @param version_lowest_raw the raw hardware version
          */
-        set_version_lowest_raw(version_lowest_raw: number): void;
+        set_version_lowest_raw(version_lowest_raw: bigint | number): void;
         /**
          * Sets the raw version number from the hardware before converted to a string.
          * @param version_raw the raw hardware version
          */
-        set_version_raw(version_raw: number): void;
+        set_version_raw(version_raw: bigint | number): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string, appending it to `str`.
          * @param idt the indent
@@ -7949,7 +7949,7 @@ export namespace Fwupd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Codec.ConstructorProps {
-            flags: number;
+            flags: bigint | number;
             name: string;
         }
     }
@@ -7970,7 +7970,7 @@ export namespace Fwupd {
          * @since 1.5.0
          */
         get flags(): number;
-        set flags(val: number);
+        set flags(val: bigint | number);
         /**
          * The plugin name.
          * @since 1.5.0
@@ -8061,7 +8061,7 @@ export namespace Fwupd {
          * Sets the plugin flags.
          * @param flags plugin flags, e.g. {@link Fwupd.PluginFlags.CAPSULES_UNSUPPORTED}
          */
-        set_flags(flags: number): void;
+        set_flags(flags: bigint | number): void;
         /**
          * Sets the plugin name.
          * @param name the plugin name, e.g. `bios`
@@ -8988,7 +8988,7 @@ export namespace Fwupd {
          * Sets when the update was created.
          * @param created UTC timestamp in UNIX format
          */
-        set_created(created: number): void;
+        set_created(created: bigint | number): void;
         /**
          * Sets the update description.
          * @param description the update description in AppStream markup format
@@ -9068,7 +9068,7 @@ export namespace Fwupd {
          * Sets the update size.
          * @param size the update size in bytes
          */
-        set_size(size: number): void;
+        set_size(size: bigint | number): void;
         /**
          * Sets the URL of the source code used to build this release.
          * @param source_url the URL
@@ -9665,7 +9665,7 @@ export namespace Fwupd {
             automatic_security_reports: boolean;
             automaticSecurityReports: boolean;
             enabled: boolean;
-            flags: number;
+            flags: bigint | number;
             id: string;
         }
     }
@@ -9733,7 +9733,7 @@ export namespace Fwupd {
          * @since 1.9.4
          */
         get flags(): number;
-        set flags(val: number);
+        set flags(val: bigint | number);
         /**
          * The remote ID.
          * @since 0.9.3
@@ -10044,7 +10044,7 @@ export namespace Fwupd {
          * Sets the remote modification time.
          * @param mtime a UNIX timestamp
          */
-        set_mtime(mtime: number): void;
+        set_mtime(mtime: bigint | number): void;
         /**
          * Sets any remotes that should be ordered after this one.
          * @param ids optional remote IDs
@@ -10074,7 +10074,7 @@ export namespace Fwupd {
          * Sets the remote refresh interval in seconds.
          * @param refresh_interval value in seconds
          */
-        set_refresh_interval(refresh_interval: number): void;
+        set_refresh_interval(refresh_interval: bigint | number): void;
         /**
          * Sets the directory to store remote data
          * @param directory Remotes directory
@@ -10650,7 +10650,7 @@ export namespace Fwupd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Codec.ConstructorProps {
-            flags: number;
+            flags: bigint | number;
         }
     }
 
@@ -10672,7 +10672,7 @@ export namespace Fwupd {
          * @since 1.9.1
          */
         get flags(): number;
-        set flags(val: number);
+        set flags(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -10815,7 +10815,7 @@ export namespace Fwupd {
          * Sets when the report was created.
          * @param created UTC timestamp in UNIX format
          */
-        set_created(created: number): void;
+        set_created(created: bigint | number): void;
         /**
          * Sets the name of the device the update was performed on.
          * @param device_name the name, e.g. `LENOVO ThinkPad P1 Gen 3`
@@ -10840,7 +10840,7 @@ export namespace Fwupd {
          * Sets the report flags.
          * @param flags report flags, e.g. {@link Fwupd.ReportFlags.FROM_OEM}
          */
-        set_flags(flags: number): void;
+        set_flags(flags: bigint | number): void;
         /**
          * Sets the remote ID.
          * @param remote_id the remote, e.g. `lvfs`
@@ -11426,7 +11426,7 @@ export namespace Fwupd {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Codec.ConstructorProps {
             device_id: string;
             deviceId: string;
-            flags: number;
+            flags: bigint | number;
             id: string;
             image: string;
             kind: number;
@@ -11462,7 +11462,7 @@ export namespace Fwupd {
          * @since 1.8.6
          */
         get flags(): number;
-        set flags(val: number);
+        set flags(val: bigint | number);
         /**
          * The request identifier.
          * @since 1.6.2
@@ -11618,7 +11618,7 @@ export namespace Fwupd {
          * Sets when the request was created.
          * @param created the UNIX time
          */
-        set_created(created: number): void;
+        set_created(created: bigint | number): void;
         /**
          * Sets the device_id that created the request.
          * @param device_id the device_id, e.g. `colorhug`
@@ -12474,7 +12474,7 @@ export namespace Fwupd {
          * Sets when the attribute was created.
          * @param created the UNIX time
          */
-        set_created(created: number): void;
+        set_created(created: bigint | number): void;
         /**
          * Sets the attribute description.
          * @param description the attribute description
@@ -13249,7 +13249,7 @@ export namespace Fwupd {
          * @param key dictionary key
          * @param value integer
          */
-        add_integer(key: string, value: number): void;
+        add_integer(key: string, value: bigint | number): void;
         /**
          * Adds a node to the JSON object. If the node already exists the old one is replaced.
          * @param key dictionary key
@@ -13309,7 +13309,7 @@ export namespace Fwupd {
          * @param value_default value to return if `key` is not found, typically 0 or `G_MAXINT64`
          * @returns `true` if `value` was parsed as an integer
          */
-        get_integer_with_default(key: string, value_default: number): [boolean, number];
+        get_integer_with_default(key: string, value_default: bigint | number): [boolean, number];
         /**
          * Gets the size of the JSON object.
          * @returns number of key-values added
@@ -13481,7 +13481,7 @@ export namespace Fwupd {
          * @param key a string
          * @param value guint64
          */
-        json_append_int(json_obj: JsonObject, key: string, value: number): void;
+        json_append_int(json_obj: JsonObject, key: string, value: bigint | number): void;
         /**
          * Appends a key and string hash map to a JSON object.
          *
@@ -13527,7 +13527,7 @@ export namespace Fwupd {
          * @param key a string to append
          * @param value guint64
          */
-        string_append_hex(str: GLib.String, idt: number, key: string, value: number): void;
+        string_append_hex(str: GLib.String, idt: number, key: string, value: bigint | number): void;
         /**
          * Appends a key and unsigned integer to a string.
          * @param str a {@link GLib.String}
@@ -13535,7 +13535,7 @@ export namespace Fwupd {
          * @param key a string to append
          * @param value guint64
          */
-        string_append_int(str: GLib.String, idt: number, key: string, value: number): void;
+        string_append_int(str: GLib.String, idt: number, key: string, value: bigint | number): void;
         /**
          * Appends a key and size in bytes to a string.
          * @param str a {@link GLib.String}
@@ -13543,7 +13543,7 @@ export namespace Fwupd {
          * @param key a string to append
          * @param value guint64
          */
-        string_append_size(str: GLib.String, idt: number, key: string, value: number): void;
+        string_append_size(str: GLib.String, idt: number, key: string, value: bigint | number): void;
         /**
          * Appends a key and time value to a string.
          * @param str a {@link GLib.String}
@@ -13551,7 +13551,7 @@ export namespace Fwupd {
          * @param key a string to append
          * @param value guint64 UNIX time
          */
-        string_append_time(str: GLib.String, idt: number, key: string, value: number): void;
+        string_append_time(str: GLib.String, idt: number, key: string, value: bigint | number): void;
     }
     /**
      * A codec that can serialize and deserialize objects to formats such as text, JSON or {@link GLib.Variant}.

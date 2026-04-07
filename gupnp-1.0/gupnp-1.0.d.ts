@@ -199,7 +199,7 @@ export namespace GUPnP {
      * @gir-type Callback
      */
     interface ServiceProxyNotifyCallback {
-        (proxy: ServiceProxy, variable: string, value: GObject.Value | any): void;
+        (proxy: ServiceProxy, variable: string, value: unknown): void;
     }
     /**
      * @gir-type Alias

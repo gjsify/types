@@ -332,7 +332,7 @@ export namespace Farstream {
      * @param element The {@link Gst.Element}
      * @param bitrate The bitrate in bits/sec
      */
-    function utils_set_bitrate(element: Gst.Element, bitrate: number): void;
+    function utils_set_bitrate(element: Gst.Element, bitrate: bigint | number): void;
     /**
      * @gir-type Alias
      */

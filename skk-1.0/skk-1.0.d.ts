@@ -2192,7 +2192,7 @@ export namespace Skk {
      * @gir-type Callback
      */
     interface GetTime {
-        (): number;
+        (): bigint | number;
     }
     /**
      * @gir-type Flags
@@ -3554,9 +3554,9 @@ export namespace Skk {
         get_time_func: GetTime;
         get_time_func_target: any;
         get_time_func_target_destroy_notify: GLib.DestroyNotify;
-        timeout: number;
-        overlap: number;
-        maxwait: number;
+        timeout: bigint | number;
+        overlap: bigint | number;
+        maxwait: bigint | number;
         special_doubles: string[];
         special_doubles_length1: number;
 

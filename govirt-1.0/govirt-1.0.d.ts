@@ -2123,7 +2123,7 @@ export namespace GoVirt {
             resourceType: GObject.GTypeInput;
             resource_xml_name: string;
             resourceXmlName: string;
-            resources: GLib.HashTable<any, any>;
+            resources: { [key: string]: any } | GLib.HashTable<any, any>;
         }
     }
 
@@ -2164,7 +2164,7 @@ export namespace GoVirt {
          */
         set resourceXmlName(val: string);
         get resources(): GLib.HashTable<any, any>;
-        set resources(val: GLib.HashTable<any, any>);
+        set resources(val: { [key: string]: any } | GLib.HashTable<any, any>);
 
         /**
          * Compile-time signal type information.
@@ -4113,8 +4113,8 @@ export namespace GoVirt {
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
             admin: boolean;
-            ca_cert: Uint8Array;
-            caCert: Uint8Array;
+            ca_cert: Uint8Array | string;
+            caCert: Uint8Array | string;
             session_id: string;
             sessionId: string;
             sso_token: string;
@@ -4144,13 +4144,13 @@ export namespace GoVirt {
          * REST API communication with the oVirt instance
          */
         get ca_cert(): Uint8Array;
-        set ca_cert(val: Uint8Array);
+        set ca_cert(val: Uint8Array | string);
         /**
          * Path to a file containing the CA certificates to use for the HTTPS
          * REST API communication with the oVirt instance
          */
         get caCert(): Uint8Array;
-        set caCert(val: Uint8Array);
+        set caCert(val: Uint8Array | string);
         /**
          * jsessionid cookie value. This allows to use the REST API without
          * authenticating first. This was used by oVirt 3.6 and is now replaced
@@ -5091,8 +5091,8 @@ export namespace GoVirt {
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, Gio.Initable.ConstructorProps {
-            available: number;
-            committed: number;
+            available: bigint | number;
+            committed: bigint | number;
             data_center_href: string;
             dataCenterHref: string;
             data_center_id: string;
@@ -5100,7 +5100,7 @@ export namespace GoVirt {
             data_center_ids: string[];
             dataCenterIds: string[];
             master: boolean;
-            used: number;
+            used: bigint | number;
         }
     }
 
@@ -5113,9 +5113,9 @@ export namespace GoVirt {
         // Properties
 
         get available(): number;
-        set available(val: number);
+        set available(val: bigint | number);
         get committed(): number;
-        set committed(val: number);
+        set committed(val: bigint | number);
         get data_center_href(): string;
         set data_center_href(val: string);
         get dataCenterHref(): string;
@@ -5131,7 +5131,7 @@ export namespace GoVirt {
         get master(): boolean;
         set master(val: boolean);
         get used(): number;
-        set used(val: number);
+        set used(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -6534,8 +6534,8 @@ export namespace GoVirt {
             address: string;
             allow_override: boolean;
             allowOverride: boolean;
-            ca_cert: Uint8Array;
-            caCert: Uint8Array;
+            ca_cert: Uint8Array | string;
+            caCert: Uint8Array | string;
             expiry: number;
             host_subject: string;
             hostSubject: string;
@@ -6566,9 +6566,9 @@ export namespace GoVirt {
         get allowOverride(): boolean;
         set allowOverride(val: boolean);
         get ca_cert(): Uint8Array;
-        set ca_cert(val: Uint8Array);
+        set ca_cert(val: Uint8Array | string);
         get caCert(): Uint8Array;
-        set caCert(val: Uint8Array);
+        set caCert(val: Uint8Array | string);
         get expiry(): number;
         set expiry(val: number);
         get host_subject(): string;

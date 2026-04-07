@@ -2142,7 +2142,7 @@ export namespace HarfBuzz {
      * @returns A pointer to the allocated memory.
      * @since 11.0.0
      */
-    function calloc(nmemb: number, size: number): any | null;
+    function calloc(nmemb: bigint | number, size: bigint | number): any | null;
     /**
      * Fetches the alpha channel of the given `color`.
      * @param color an {@link HarfBuzz.color_t} we are interested in its channels.
@@ -4108,7 +4108,7 @@ export namespace HarfBuzz {
      * @returns A pointer to the allocated memory.
      * @since 11.0.0
      */
-    function malloc(size: number): any | null;
+    function malloc(size: bigint | number): any | null;
     /**
      * Tests whether memory allocation for a set was successful.
      * @param map A map
@@ -6003,7 +6003,7 @@ export namespace HarfBuzz {
      * @returns A pointer to the reallocated memory.
      * @since 11.0.0
      */
-    function realloc(ptr: any | null, size: number): any | null;
+    function realloc(ptr: any | null, size: bigint | number): any | null;
     /**
      * Converts an ISO 15924 script tag to a corresponding {@link HarfBuzz.script_t}.
      * @param tag an {@link HarfBuzz.tag_t} representing an ISO 15924 tag.

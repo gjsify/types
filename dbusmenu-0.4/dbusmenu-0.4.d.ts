@@ -991,7 +991,7 @@ export namespace Dbusmenu {
          * @param nelements The number of elements in the byte array.
          * @returns A boolean representing if the property value was set.
          */
-        property_set_byte_array(property: string, value: number, nelements: number): boolean;
+        property_set_byte_array(property: string, value: number, nelements: bigint | number): boolean;
         /**
          * Takes a boolean `value` and sets it on `property` as a
          * property on `mi`.  If a property already exists by that name,

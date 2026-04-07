@@ -1911,7 +1911,7 @@ export namespace LibvirtGObject {
          * @param flags flags, currently unused. Pass '0'.
          * @returns TRUE if size was successfully changed, FALSE otherwise.
          */
-        resize(size: number, flags: number): boolean;
+        resize(size: bigint | number, flags: number): boolean;
     }
 
     namespace DomainInterface {
@@ -3086,7 +3086,7 @@ export namespace LibvirtGObject {
          * @param flags extra flags, not used yet, pass 0
          * @returns `TRUE` of success, `FALSE` otherwise
          */
-        download(stream: Stream, offset: number, length: number, flags: number): boolean;
+        download(stream: Stream, offset: bigint | number, length: bigint | number, flags: number): boolean;
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
@@ -3104,7 +3104,7 @@ export namespace LibvirtGObject {
          * @param flags the flags
          * @returns `TRUE` success, `FALSE` otherwise
          */
-        resize(capacity: number, flags: StorageVolResizeFlags | null): boolean;
+        resize(capacity: bigint | number, flags: StorageVolResizeFlags | null): boolean;
         /**
          * @param stream stream to use as input
          * @param offset position in `vol` to start to write to
@@ -3112,7 +3112,7 @@ export namespace LibvirtGObject {
          * @param flags the flags, not set yet, pass 0
          * @returns `TRUE` of success, `FALSE` otherwise
          */
-        upload(stream: Stream, offset: number, length: number, flags: number): boolean;
+        upload(stream: Stream, offset: bigint | number, length: bigint | number, flags: number): boolean;
     }
 
     namespace Stream {
@@ -3229,7 +3229,7 @@ export namespace LibvirtGObject {
          * @param cancellable a %GCancellable or `null`
          * @returns Number of bytes written.
          */
-        send(buffer: string, size: number, cancellable?: Gio.Cancellable | null): number;
+        send(buffer: string, size: bigint | number, cancellable?: Gio.Cancellable | null): number;
         /**
          * Send the entire data stream, sending the data to the
          * requested data source. This is simply a convenient alternative
@@ -3286,23 +3286,11 @@ export namespace LibvirtGObject {
 
         // Fields
 
-        rd_req: number;
-        rd_bytes: number;
-        wr_req: number;
-        wr_bytes: number;
-        errs: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                rd_req: number;
-                rd_bytes: number;
-                wr_req: number;
-                wr_bytes: number;
-                errs: number;
-            }>,
-        );
+        rd_req: bigint | number;
+        rd_bytes: bigint | number;
+        wr_req: bigint | number;
+        wr_bytes: bigint | number;
+        errs: bigint | number;
     }
 
     /**
@@ -3314,10 +3302,10 @@ export namespace LibvirtGObject {
         // Fields
 
         state: DomainState;
-        maxMem: number;
-        memory: number;
+        maxMem: bigint | number;
+        memory: bigint | number;
         nrVirtCpu: number;
-        cpuTime: number;
+        cpuTime: bigint | number;
     }
 
     /**
@@ -3339,29 +3327,14 @@ export namespace LibvirtGObject {
 
         // Fields
 
-        rx_bytes: number;
-        rx_packets: number;
-        rx_errs: number;
-        rx_drop: number;
-        tx_bytes: number;
-        tx_packets: number;
-        tx_errs: number;
-        tx_drop: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                rx_bytes: number;
-                rx_packets: number;
-                rx_errs: number;
-                rx_drop: number;
-                tx_bytes: number;
-                tx_packets: number;
-                tx_errs: number;
-                tx_drop: number;
-            }>,
-        );
+        rx_bytes: bigint | number;
+        rx_packets: bigint | number;
+        rx_errs: bigint | number;
+        rx_drop: bigint | number;
+        tx_bytes: bigint | number;
+        tx_packets: bigint | number;
+        tx_errs: bigint | number;
+        tx_drop: bigint | number;
     }
 
     /**
@@ -3457,28 +3430,13 @@ export namespace LibvirtGObject {
         // Fields
 
         model: number[];
-        memory: number;
+        memory: bigint | number;
         cpus: number;
         mhz: number;
         nodes: number;
         sockets: number;
         cores: number;
         threads: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                model: number[];
-                memory: number;
-                cpus: number;
-                mhz: number;
-                nodes: number;
-                sockets: number;
-                cores: number;
-                threads: number;
-            }>,
-        );
     }
 
     /**
@@ -3505,9 +3463,9 @@ export namespace LibvirtGObject {
         // Fields
 
         state: StoragePoolState;
-        capacity: number;
-        allocation: number;
-        available: number;
+        capacity: bigint | number;
+        allocation: bigint | number;
+        available: bigint | number;
     }
 
     /**
@@ -3530,8 +3488,8 @@ export namespace LibvirtGObject {
         // Fields
 
         type: StorageVolType;
-        capacity: number;
-        allocation: number;
+        capacity: bigint | number;
+        allocation: bigint | number;
     }
 
     /**

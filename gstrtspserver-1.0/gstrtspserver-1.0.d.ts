@@ -1703,12 +1703,12 @@ export namespace GstRtspServer {
          * @param position
          * @virtual
          */
-        vfunc_query_position(position: number): boolean;
+        vfunc_query_position(position: bigint | number): boolean;
         /**
          * @param stop
          * @virtual
          */
-        vfunc_query_stop(stop: number): boolean;
+        vfunc_query_stop(stop: bigint | number): boolean;
         /**
          * @param stream
          * @virtual
@@ -3728,7 +3728,7 @@ export namespace GstRtspServer {
          * @param now the current monotonic time
          * @returns `true` if `session` timed out
          */
-        is_expired_usec(now: number): boolean;
+        is_expired_usec(now: bigint | number): boolean;
         /**
          * Manage the media object `obj` in `sess`. `path` will be used to retrieve this
          * media from the session with `gst_rtsp_session_get_media()`.
@@ -3750,7 +3750,7 @@ export namespace GstRtspServer {
          * @param now the current monotonic time
          * @returns the amount of milliseconds since the session will time out.
          */
-        next_timeout_usec(now: number): number;
+        next_timeout_usec(now: bigint | number): number;
         /**
          * Prevent `session` from expiring.
          */

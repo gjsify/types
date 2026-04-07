@@ -12985,7 +12985,7 @@ export namespace Atk {
      * See `atk_object_ref_state_set` and `atk_object_notify_state_change`
      * @gir-type Alias
      */
-    type State = number;
+    type State = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

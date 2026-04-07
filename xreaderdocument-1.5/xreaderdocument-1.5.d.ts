@@ -759,7 +759,7 @@ export namespace XreaderDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: number): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1042,7 +1042,7 @@ export namespace XreaderDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: number): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1332,7 +1332,7 @@ export namespace XreaderDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: number): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1618,7 +1618,7 @@ export namespace XreaderDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: number): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1715,7 +1715,7 @@ export namespace XreaderDocument {
             description: string,
             mtime: GLib.DateTime,
             ctime: GLib.DateTime,
-            size: number,
+            size: bigint | number,
             data?: any | null,
         ): Attachment;
 

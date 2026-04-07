@@ -1369,7 +1369,7 @@ export namespace ColorHug {
      * @returns `true` if the command was executed successfully.
      * @since 1.2.3
      */
-    function device_check_firmware(device: GUsb.Device, data: number, data_len: number): boolean;
+    function device_check_firmware(device: GUsb.Device, data: number, data_len: bigint | number): boolean;
     /**
      * @param device
      * @since 1.2.11
@@ -1541,7 +1541,7 @@ export namespace ColorHug {
      * @returns A {@link ColorHug.DeviceMode}
      * @since 1.2.3
      */
-    function device_mode_from_firmware(data: number, data_len: number): DeviceMode;
+    function device_mode_from_firmware(data: number, data_len: bigint | number): DeviceMode;
     /**
      * @param device_mode
      * @since 0.1.29
@@ -1744,9 +1744,9 @@ export namespace ColorHug {
         device: GUsb.Device,
         cmd: number,
         buffer_in: number,
-        buffer_in_len: number,
+        buffer_in_len: bigint | number,
         buffer_out: number,
-        buffer_out_len: number,
+        buffer_out_len: bigint | number,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -1764,9 +1764,9 @@ export namespace ColorHug {
         device: GUsb.Device,
         cmd: number,
         buffer_in: number,
-        buffer_in_len: number,
+        buffer_in_len: bigint | number,
         buffer_out: number,
-        buffer_out_len: number,
+        buffer_out_len: bigint | number,
         cancellable?: Gio.Cancellable | null,
     ): globalThis.Promise<boolean>;
     /**
@@ -1785,9 +1785,9 @@ export namespace ColorHug {
         device: GUsb.Device,
         cmd: number,
         buffer_in: number,
-        buffer_in_len: number,
+        buffer_in_len: bigint | number,
         buffer_out: number,
-        buffer_out_len: number,
+        buffer_out_len: bigint | number,
         cancellable: Gio.Cancellable | null,
         callback: Gio.AsyncReadyCallback<GUsb.Device> | null,
     ): void;
@@ -1807,9 +1807,9 @@ export namespace ColorHug {
         device: GUsb.Device,
         cmd: number,
         buffer_in: number,
-        buffer_in_len: number,
+        buffer_in_len: bigint | number,
         buffer_out: number,
-        buffer_out_len: number,
+        buffer_out_len: bigint | number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<GUsb.Device> | null,
     ): globalThis.Promise<boolean> | void;
@@ -2005,9 +2005,9 @@ export namespace ColorHug {
             device: GUsb.Device,
             cmd: number,
             buffer_in: number,
-            buffer_in_len: number,
+            buffer_in_len: bigint | number,
             buffer_out: number,
-            buffer_out_len: number,
+            buffer_out_len: bigint | number,
         ): void;
         /**
          * Boots the device from bootloader to firmware mode.
@@ -2032,7 +2032,7 @@ export namespace ColorHug {
          * @param address The device EEPROM address
          * @param len The length of `data`
          */
-        erase_flash(device: GUsb.Device, address: number, len: number): void;
+        erase_flash(device: GUsb.Device, address: number, len: bigint | number): void;
         /**
          * Gets the ADC Vref- calibration value.
          *
@@ -2274,7 +2274,7 @@ export namespace ColorHug {
          * @param data Firmware binary data
          * @param len Size of `data`
          */
-        read_firmware(device: GUsb.Device, data: number, len: number): void;
+        read_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
         /**
          * Read flash code from the device.
          *
@@ -2284,7 +2284,7 @@ export namespace ColorHug {
          * @param data Binary data
          * @param len The length of `data`
          */
-        read_flash(device: GUsb.Device, address: number, data: number, len: number): void;
+        read_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
         /**
          * Reads binary data from the SRAM.
          *
@@ -2294,7 +2294,7 @@ export namespace ColorHug {
          * @param data The binary data
          * @param len Size of `data`
          */
-        read_sram(device: GUsb.Device, address: number, data: number, len: number): void;
+        read_sram(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
         /**
          * Resets the device back to bootloader mode.
          *
@@ -2524,7 +2524,7 @@ export namespace ColorHug {
          * @param data Firmware binary data
          * @param len Size of `data`
          */
-        verify_firmware(device: GUsb.Device, data: number, len: number): void;
+        verify_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
         /**
          * Verify flash code from the device.
          *
@@ -2534,7 +2534,7 @@ export namespace ColorHug {
          * @param data Binary data
          * @param len The length of `data`
          */
-        verify_flash(device: GUsb.Device, address: number, data: number, len: number): void;
+        verify_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
         /**
          * Writes values to the firmware to be set at device startup.
          *
@@ -2551,7 +2551,7 @@ export namespace ColorHug {
          * @param data Firmware binary data
          * @param len Size of `data`
          */
-        write_firmware(device: GUsb.Device, data: number, len: number): void;
+        write_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
         /**
          * Write flash code to the device.
          *
@@ -2561,7 +2561,7 @@ export namespace ColorHug {
          * @param data Binary data
          * @param len The length of `data`
          */
-        write_flash(device: GUsb.Device, address: number, data: number, len: number): void;
+        write_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
         /**
          * Writes binary data to the SRAM.
          *
@@ -2571,7 +2571,7 @@ export namespace ColorHug {
          * @param data The binary data
          * @param len Size of `data`
          */
-        write_sram(device: GUsb.Device, address: number, data: number, len: number): void;
+        write_sram(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
     }
 
     /**

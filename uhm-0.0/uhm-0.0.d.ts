@@ -406,7 +406,7 @@ export namespace Uhm {
          * It is an error to call this function with an invalid `filter_id`.
          * @param filter_id filter ID returned by the filter addition function
          */
-        compare_messages_remove_filter(filter_id: number): void;
+        compare_messages_remove_filter(filter_id: bigint | number): void;
         /**
          * Convenience function to finish logging to or reading from a trace file previously passed to `uhm_server_start_trace()` or
          * `uhm_server_start_trace_full()`.
@@ -531,7 +531,7 @@ export namespace Uhm {
          * @param message_chunk single line of a message which was received
          * @param message_chunk_length length of `message_chunk` in bytes
          */
-        received_message_chunk(message_chunk: string, message_chunk_length: number): void;
+        received_message_chunk(message_chunk: string, message_chunk_length: bigint | number): void;
         /**
          * Convenience version of `uhm_server_received_message_chunk()` which takes the
          * message `direction` and `data` separately, as provided by libsoup in a
@@ -564,7 +564,7 @@ export namespace Uhm {
          * @param data single line of a message which was received
          * @param data_length length of `data` in bytes
          */
-        received_message_chunk_with_direction(direction: number, data: string, data_length: number): void;
+        received_message_chunk_with_direction(direction: number, data: string, data_length: bigint | number): void;
         /**
          * Runs the mock server, binding to a loopback TCP/IP interface and preparing a HTTPS server which is ready to accept requests.
          * The TCP/IP address and port number are chosen randomly out of the loopback addresses, and are exposed as {@link Uhm.Server.address} and {@link Uhm.Server.port}

@@ -5078,7 +5078,7 @@ export namespace GstValidate {
         query_func: Gst.PadQueryFunction;
         activatemode_func: Gst.PadActivateModeFunction;
         get_range_func: Gst.PadGetRangeFunction;
-        pad_probe_id: number;
+        pad_probe_id: bigint | number;
 
         // Constructors
 
@@ -7193,7 +7193,7 @@ export namespace GstValidate {
 
         duration: Gst.ClockTime;
         is_image: boolean;
-        file_size: number;
+        file_size: bigint | number;
         seekable: boolean;
         playback_error: string;
         reverse_playback_error: string;
@@ -7222,7 +7222,7 @@ export namespace GstValidate {
         /**
          * @param length
          */
-        to_string(length: number): string;
+        to_string(length: bigint | number): string;
     }
 
     /**

@@ -350,7 +350,7 @@ export namespace Libxfce4ui {
         accel_path: string,
         data: any | null,
         entries: GtkActionEntry,
-        entry_count: number,
+        entry_count: bigint | number,
     ): boolean;
     /**
      * Creates an Xfce-styled frame. The frame is a {@link Gtk.Frame}, without
@@ -400,7 +400,7 @@ export namespace Libxfce4ui {
         accel_group: Gtk.AccelGroup,
         data: any | null,
         entries: GtkActionEntry,
-        entry_count: number,
+        entry_count: bigint | number,
     ): boolean;
     /**
      * Convenience method to create a deprecated {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.

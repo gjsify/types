@@ -1859,13 +1859,13 @@ export namespace Vte {
          * @param text data to send to the child
          * @param length length of `text` in bytes, or -1 if `text` is NUL-terminated
          */
-        feed_child(text: string, length: number): void;
+        feed_child(text: string, length: bigint | number): void;
         /**
          * Sends a block of binary data to the child.
          * @param data data to send to the child
          * @param length length of `data`
          */
-        feed_child_binary(data: string, length: number): void;
+        feed_child_binary(data: string, length: bigint | number): void;
         /**
          * Starts the specified command under a newly-allocated controlling
          * pseudo-terminal.  The `argv` and `envv` lists should be `null`-terminated.
@@ -2047,10 +2047,10 @@ export namespace Vte {
          * @returns a newly allocated text string, or `null`.
          */
         get_text_range(
-            start_row: number,
-            start_col: number,
-            end_row: number,
-            end_col: number,
+            start_row: bigint | number,
+            start_col: bigint | number,
+            end_row: bigint | number,
+            end_col: bigint | number,
             is_selected: SelectionFunc,
         ): [string, CharAttributes[]];
         /**
@@ -2100,7 +2100,7 @@ export namespace Vte {
          * @param row the text row
          * @returns a newly allocated string which matches one of the previously   set regular expressions
          */
-        match_check(column: number, row: number): [string, number];
+        match_check(column: bigint | number, row: bigint | number): [string, number];
         /**
          * Clears the list of regular expressions the terminal uses to highlight text
          * when the user moves the mouse cursor.
@@ -2433,14 +2433,14 @@ export namespace Vte {
          * allowed on the alternate screen buffer.
          * @param lines the length of the history buffer
          */
-        set_scrollback_lines(lines: number): void;
+        set_scrollback_lines(lines: bigint | number): void;
         /**
          * Attempts to change the terminal's size in terms of rows and columns.  If
          * the attempt succeeds, the widget will resize itself to the proper size.
          * @param columns the desired number of columns
          * @param rows the desired number of rows
          */
-        set_size(columns: number, rows: number): void;
+        set_size(columns: bigint | number, rows: bigint | number): void;
         /**
          * Controls whether or not the terminal will present a visible bell to the
          * user when the child outputs the "bl" sequence.  The terminal
@@ -3140,10 +3140,6 @@ export namespace Vte {
      */
     class CharAttributes {
         static $gtype: GObject.GType<CharAttributes>;
-
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
     }
 
     /**

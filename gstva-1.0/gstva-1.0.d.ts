@@ -191,7 +191,7 @@ export namespace GstVa {
         drm_info: GstVideo.VideoInfoDmaDrm,
         mem: Gst.Memory[],
         fds: never[],
-        offset: number[],
+        offset: (bigint | number)[],
         usage_hint: number,
     ): boolean;
     /**

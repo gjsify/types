@@ -1361,32 +1361,13 @@ export namespace IAnjuta {
         file: string;
         line: number;
         'function': string;
-        address: number;
+        address: bigint | number;
         enable: boolean;
         ignore: number;
         times: number;
         condition: string;
         temporary: boolean;
         pending: boolean;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                type: number;
-                id: number;
-                file: string;
-                line: number;
-                function: string;
-                address: number;
-                enable: boolean;
-                ignore: number;
-                times: number;
-                condition: string;
-                temporary: boolean;
-                pending: boolean;
-            }>,
-        );
     }
 
     /**
@@ -1405,22 +1386,7 @@ export namespace IAnjuta {
         line: number;
         'function': string;
         library: string;
-        address: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                thread: number;
-                level: number;
-                args: string;
-                file: string;
-                line: number;
-                function: string;
-                library: string;
-                address: number;
-            }>,
-        );
+        address: bigint | number;
     }
 
     /**
@@ -1436,19 +1402,9 @@ export namespace IAnjuta {
 
         // Fields
 
-        address: number;
+        address: bigint | number;
         label: string;
         text: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                address: number;
-                label: string;
-                text: string;
-            }>,
-        );
     }
 
     /**
@@ -1461,16 +1417,6 @@ export namespace IAnjuta {
         // Fields
 
         size: number;
-        data: DebuggerInstructionALine[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                size: number;
-                data: DebuggerInstructionALine[];
-            }>,
-        );
     }
 
     /**
@@ -1485,19 +1431,9 @@ export namespace IAnjuta {
 
         // Fields
 
-        address: number;
+        address: bigint | number;
         length: number;
         data: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                address: number;
-                length: number;
-                data: string;
-            }>,
-        );
     }
 
     /**
@@ -2051,7 +1987,7 @@ export namespace IAnjuta {
              * @param line
              * @virtual
              */
-            vfunc_location_changed(address: number, uri: string, line: number): void;
+            vfunc_location_changed(address: bigint | number, uri: string, line: number): void;
             /**
              * @virtual
              */
@@ -2068,7 +2004,7 @@ export namespace IAnjuta {
              * @param line
              * @virtual
              */
-            vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void;
+            vfunc_program_moved(pid: number, tid: number, address: bigint | number, file: string, line: number): void;
             /**
              * @virtual
              */
@@ -2264,7 +2200,7 @@ export namespace IAnjuta {
              * @param line
              * @virtual
              */
-            vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void;
+            vfunc_program_moved(pid: number, tid: number, address: bigint | number, file: string, line: number): void;
             /**
              * @virtual
              */
@@ -2604,13 +2540,13 @@ export namespace IAnjuta {
              * @param address Run from this addresss
              * @virtual
              */
-            vfunc_run_from_address(address: number): boolean;
+            vfunc_run_from_address(address: bigint | number): boolean;
             /**
              * Start the program until it reachs the address address
              * @param address Run to this addresss
              * @virtual
              */
-            vfunc_run_to_address(address: number): boolean;
+            vfunc_run_to_address(address: bigint | number): boolean;
             /**
              * Execute one assembler instruction in the program.
              * @virtual
@@ -2646,13 +2582,13 @@ export namespace IAnjuta {
          * @param address Run from this addresss
          * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
          */
-        run_from_address(address: number): boolean;
+        run_from_address(address: bigint | number): boolean;
         /**
          * Start the program until it reachs the address address
          * @param address Run to this addresss
          * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
          */
-        run_to_address(address: number): boolean;
+        run_to_address(address: bigint | number): boolean;
         /**
          * Execute one assembler instruction in the program.
          * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.

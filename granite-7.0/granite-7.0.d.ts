@@ -388,19 +388,22 @@ export namespace Granite {
     /**
      * @param count
      */
-    function services_application_set_badge(count: number): globalThis.Promise<boolean>;
-    /**
-     * @param count
-     * @param _callback_
-     */
-    function services_application_set_badge(count: number, _callback_: Gio.AsyncReadyCallback<number> | null): void;
+    function services_application_set_badge(count: bigint | number): globalThis.Promise<boolean>;
     /**
      * @param count
      * @param _callback_
      */
     function services_application_set_badge(
-        count: number,
-        _callback_?: Gio.AsyncReadyCallback<number> | null,
+        count: bigint | number,
+        _callback_: Gio.AsyncReadyCallback<bigint | number> | null,
+    ): void;
+    /**
+     * @param count
+     * @param _callback_
+     */
+    function services_application_set_badge(
+        count: bigint | number,
+        _callback_?: Gio.AsyncReadyCallback<bigint | number> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param _res_

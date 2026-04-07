@@ -1568,7 +1568,7 @@ export namespace LibvirtSandbox {
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMount.ConstructorProps {
-            usage: number;
+            usage: bigint | number;
         }
     }
 
@@ -1600,7 +1600,7 @@ export namespace LibvirtSandbox {
 
         _init(...args: any[]): void;
 
-        static ['new'](targetdir: string, usage: number): ConfigMountRam;
+        static ['new'](targetdir: string, usage: bigint | number): ConfigMountRam;
 
         // Signals
 
@@ -1634,7 +1634,7 @@ export namespace LibvirtSandbox {
          * Sets the memory usage limit for the RAM filesystem in Kibibytes
          * @param usage the memory usage limit in KiB
          */
-        set_usage(usage: number): void;
+        set_usage(usage: bigint | number): void;
     }
 
     namespace ConfigNetwork {

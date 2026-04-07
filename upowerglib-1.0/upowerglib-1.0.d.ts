@@ -1184,12 +1184,12 @@ export namespace UPowerGlib {
             state: number;
             technology: number;
             temperature: number;
-            time_to_empty: number;
-            timeToEmpty: number;
-            time_to_full: number;
-            timeToFull: number;
-            update_time: number;
-            updateTime: number;
+            time_to_empty: bigint | number;
+            timeToEmpty: bigint | number;
+            time_to_full: bigint | number;
+            timeToFull: bigint | number;
+            update_time: bigint | number;
+            updateTime: bigint | number;
             vendor: string;
             voltage: number;
             voltage_max_design: number;
@@ -1520,37 +1520,37 @@ export namespace UPowerGlib {
          * @since 0.9.0
          */
         get time_to_empty(): number;
-        set time_to_empty(val: number);
+        set time_to_empty(val: bigint | number);
         /**
          * The amount of time until the device is empty.
          * @since 0.9.0
          */
         get timeToEmpty(): number;
-        set timeToEmpty(val: number);
+        set timeToEmpty(val: bigint | number);
         /**
          * The amount of time until the device is fully charged.
          * @since 0.9.0
          */
         get time_to_full(): number;
-        set time_to_full(val: number);
+        set time_to_full(val: bigint | number);
         /**
          * The amount of time until the device is fully charged.
          * @since 0.9.0
          */
         get timeToFull(): number;
-        set timeToFull(val: number);
+        set timeToFull(val: bigint | number);
         /**
          * The last time the device was updated.
          * @since 0.9.0
          */
         get update_time(): number;
-        set update_time(val: number);
+        set update_time(val: bigint | number);
         /**
          * The last time the device was updated.
          * @since 0.9.0
          */
         get updateTime(): number;
-        set updateTime(val: number);
+        set updateTime(val: bigint | number);
         /**
          * The vendor of the device.
          * @since 0.9.0

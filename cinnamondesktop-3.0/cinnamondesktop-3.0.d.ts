@@ -133,7 +133,7 @@ export namespace CinnamonDesktop {
      * @returns TRUE if the thumbnail has the right `uri` and `mtime`
      * @since 2.2
      */
-    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: number): boolean;
+    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: bigint | number): boolean;
     /**
      * Calculates the MD5 checksum of the uri. This can be useful
      * if you want to manually handle thumbnail files.
@@ -802,7 +802,7 @@ export namespace CinnamonDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
          */
-        can_thumbnail(uri: string, mime_type: string, mtime: number): boolean;
+        can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
         /**
          * Creates a failed thumbnail for the file so that we don't try
          * to re-thumbnail the file later.
@@ -811,7 +811,7 @@ export namespace CinnamonDesktop {
          * @param uri the uri of a file
          * @param mtime the modification time of the file
          */
-        create_failed_thumbnail(uri: string, mtime: number): void;
+        create_failed_thumbnail(uri: string, mtime: bigint | number): void;
         /**
          * Tries to generate a thumbnail for the specified file. If it succeeds
          * it returns a pixbuf that can be used as a thumbnail.
@@ -832,7 +832,7 @@ export namespace CinnamonDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
          */
-        has_valid_failed_thumbnail(uri: string, mtime: number): boolean;
+        has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
         /**
          * Tries to locate an existing thumbnail for the file specified.
          *
@@ -841,7 +841,7 @@ export namespace CinnamonDesktop {
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
          */
-        lookup(uri: string, mtime: number): string;
+        lookup(uri: string, mtime: bigint | number): string;
         /**
          * Saves `thumbnail` at the right place. If the save fails a
          * failed thumbnail is written.
@@ -851,7 +851,7 @@ export namespace CinnamonDesktop {
          * @param uri the uri of a file
          * @param original_mtime the modification time of the original file
          */
-        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: number): void;
+        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number): void;
     }
 
     namespace IdleMonitor {
@@ -914,7 +914,7 @@ export namespace CinnamonDesktop {
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `gnome_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `gnome_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: number, callback?: IdleMonitorWatchFunc | null): number;
+        add_idle_watch(interval_msec: bigint | number, callback?: IdleMonitorWatchFunc | null): number;
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `gnome_idle_monitor_add_idle_watch()`, has triggered.
@@ -3197,7 +3197,7 @@ export namespace CinnamonDesktop {
         /**
          * @param size
          */
-        get_edid_data(size: number): number;
+        get_edid_data(size: bigint | number): number;
         get_id(): number;
         get_ids_from_edid(): [string, string, string];
         get_is_primary(): boolean;

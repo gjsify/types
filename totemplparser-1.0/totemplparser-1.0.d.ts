@@ -405,7 +405,7 @@ export namespace TotemPlParser {
          * @param len the length of data to check
          * @param debug `true` if debug statements should be printed
          */
-        static can_parse_from_data(data: string, len: number, debug: boolean): boolean;
+        static can_parse_from_data(data: string, len: bigint | number, debug: boolean): boolean;
         /**
          * Checks if the file can be parsed. Files can be parsed if:
          * <itemizedlist>

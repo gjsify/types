@@ -190,7 +190,7 @@ export namespace GPaste {
      * @param variant
      * @param len
      */
-    function util_get_dbus_au_result(variant: GLib.Variant, len: number): number;
+    function util_get_dbus_au_result(variant: GLib.Variant, len: bigint | number): number;
     /**
      * Get the "(ss)" GVariant as an item
      * @param variant a {@link GLib.Variant}
@@ -394,7 +394,7 @@ export namespace GPaste {
              * @signal
              * @run-last
              */
-            update: (arg0: UpdateAction, arg1: UpdateTarget, arg2: number) => void;
+            update: (arg0: UpdateAction, arg1: UpdateTarget, arg2: bigint | number) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
             'notify::g-connection': (pspec: GObject.ParamSpec) => void;
             'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
@@ -756,20 +756,20 @@ export namespace GPaste {
          * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
          */
-        get_element_at_index(index: number): globalThis.Promise<ClientItem>;
+        get_element_at_index(index: bigint | number): globalThis.Promise<ClientItem>;
         /**
          * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
-        get_element_at_index(index: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        get_element_at_index(index: bigint | number, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_element_at_index(
-            index: number,
+            index: bigint | number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ClientItem> | void;
         /**
@@ -783,7 +783,7 @@ export namespace GPaste {
          * @param index the index of the element we want to get
          * @returns a new {@link GPaste.ClientItem}
          */
-        get_element_at_index_sync(index: number): ClientItem;
+        get_element_at_index_sync(index: bigint | number): ClientItem;
         /**
          * Get an item from the `GPasteDaemon`
          * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
@@ -909,7 +909,7 @@ export namespace GPaste {
          * Get the history isize from the `GPasteDaemon`
          * @param name the name of the history
          */
-        get_history_size(name: string): globalThis.Promise<number>;
+        get_history_size(name: string): globalThis.Promise<bigint | number>;
         /**
          * Get the history isize from the `GPasteDaemon`
          * @param name the name of the history
@@ -924,7 +924,7 @@ export namespace GPaste {
         get_history_size(
             name: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Get the history size from the `GPasteDaemon`
          * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
@@ -4441,7 +4441,7 @@ export namespace GPaste {
          * Change the "element-size" setting
          * @param value the maximum displayed size of an item
          */
-        set_element_size(value: number): void;
+        set_element_size(value: bigint | number): void;
         /**
          * Change the "empty-history-confirmation" setting
          * @param value whether to prompt for confirmation when emptying a history
@@ -4481,27 +4481,27 @@ export namespace GPaste {
          * Change the "max-displayed-history-size" setting
          * @param value the maximum number of items to display
          */
-        set_max_displayed_history_size(value: number): void;
+        set_max_displayed_history_size(value: bigint | number): void;
         /**
          * Change the "max-history-size" setting
          * @param value the maximum number of items the history can contain
          */
-        set_max_history_size(value: number): void;
+        set_max_history_size(value: bigint | number): void;
         /**
          * Change the "max-memory-usage" setting
          * @param value the maximum amount of memory we can use
          */
-        set_max_memory_usage(value: number): void;
+        set_max_memory_usage(value: bigint | number): void;
         /**
          * Change the "max-text-item-size" setting
          * @param value the maximum size for a textual item to be handled
          */
-        set_max_text_item_size(value: number): void;
+        set_max_text_item_size(value: bigint | number): void;
         /**
          * Change the "min-text-item-size" setting
          * @param value the minimum size for a textual item to be handled
          */
-        set_min_text_item_size(value: number): void;
+        set_min_text_item_size(value: bigint | number): void;
         /**
          * Change the "open-centered" setting
          * @param value the new history name

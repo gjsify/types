@@ -100,8 +100,8 @@ export namespace Gfls {
      */
     function input_stream_read_async(
         input_stream: Gio.InputStream,
-        expected_size: number,
-        max_size: number,
+        expected_size: bigint | number,
+        max_size: bigint | number,
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
     ): globalThis.Promise<GLib.Bytes>;
@@ -127,8 +127,8 @@ export namespace Gfls {
      */
     function input_stream_read_async(
         input_stream: Gio.InputStream,
-        expected_size: number,
-        max_size: number,
+        expected_size: bigint | number,
+        max_size: bigint | number,
         io_priority: number,
         cancellable: Gio.Cancellable | null,
         callback: Gio.AsyncReadyCallback<Gio.InputStream> | null,
@@ -155,8 +155,8 @@ export namespace Gfls {
      */
     function input_stream_read_async(
         input_stream: Gio.InputStream,
-        expected_size: number,
-        max_size: number,
+        expected_size: bigint | number,
+        max_size: bigint | number,
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Gio.InputStream> | null,
@@ -200,7 +200,7 @@ export namespace Gfls {
      */
     function loader_basic_load_async(
         file: Gio.File,
-        max_size: number,
+        max_size: bigint | number,
         max_n_bytes_per_line: number,
         io_priority: number,
         cancellable?: Gio.Cancellable | null,
@@ -223,7 +223,7 @@ export namespace Gfls {
      */
     function loader_basic_load_async(
         file: Gio.File,
-        max_size: number,
+        max_size: bigint | number,
         max_n_bytes_per_line: number,
         io_priority: number,
         cancellable: Gio.Cancellable | null,
@@ -247,7 +247,7 @@ export namespace Gfls {
      */
     function loader_basic_load_async(
         file: Gio.File,
-        max_size: number,
+        max_size: bigint | number,
         max_n_bytes_per_line: number,
         io_priority: number,
         cancellable?: Gio.Cancellable | null,

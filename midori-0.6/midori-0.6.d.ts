@@ -1848,10 +1848,10 @@ export namespace Midori {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             database: Database;
-            id: number;
+            id: bigint | number;
             uri: string;
             title: string;
-            date: number;
+            date: bigint | number;
         }
     }
 
@@ -1866,13 +1866,13 @@ export namespace Midori {
         get database(): Database;
         set database(val: Database);
         get id(): number;
-        set id(val: number);
+        set id(val: bigint | number);
         get uri(): string;
         set uri(val: string);
         get title(): string;
         set title(val: string);
         get date(): number;
-        set date(val: number);
+        set date(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1889,7 +1889,7 @@ export namespace Midori {
 
         _init(...args: any[]): void;
 
-        static ['new'](uri: string, title: string | null, date: number): DatabaseItem;
+        static ['new'](uri: string, title: string | null, date: bigint | number): DatabaseItem;
 
         // Signals
 
@@ -1936,7 +1936,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_id(value: number): void;
+        set_id(value: bigint | number): void;
         get_uri(): string;
         /**
          * @param value
@@ -1951,7 +1951,7 @@ export namespace Midori {
         /**
          * @param value
          */
-        set_date(value: number): void;
+        set_date(value: bigint | number): void;
     }
 
     namespace Database {
@@ -1980,8 +1980,8 @@ export namespace Midori {
             readonly: boolean;
             first_use: boolean;
             firstUse: boolean;
-            last_row_id: number;
-            lastRowId: number;
+            last_row_id: bigint | number;
+            lastRowId: bigint | number;
             errmsg: string;
         }
     }
@@ -2102,7 +2102,7 @@ export namespace Midori {
          */
         vfunc_query(
             filter: string | null,
-            max_items: number,
+            max_items: bigint | number,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2220,7 +2220,7 @@ export namespace Midori {
          */
         query(
             filter: string | null,
-            max_items: number,
+            max_items: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<DatabaseItem[] | null>;
         /**
@@ -2231,7 +2231,7 @@ export namespace Midori {
          */
         query(
             filter: string | null,
-            max_items: number,
+            max_items: bigint | number,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2243,7 +2243,7 @@ export namespace Midori {
          */
         query(
             filter: string | null,
-            max_items: number,
+            max_items: bigint | number,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<DatabaseItem[] | null> | void;

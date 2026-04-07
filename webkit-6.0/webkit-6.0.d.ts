@@ -4581,7 +4581,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'received-data': (arg0: number) => void;
+            'received-data': (arg0: bigint | number) => void;
             'notify::allow-overwrite': (pspec: GObject.ParamSpec) => void;
             'notify::destination': (pspec: GObject.ParamSpec) => void;
             'notify::estimated-progress': (pspec: GObject.ParamSpec) => void;
@@ -7727,7 +7727,7 @@ export namespace WebKit {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             body: string;
-            id: number;
+            id: bigint | number;
             tag: string;
             title: string;
         }
@@ -11507,8 +11507,8 @@ export namespace WebKit {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            content_length: number;
-            contentLength: number;
+            content_length: bigint | number;
+            contentLength: bigint | number;
             http_headers: Soup.MessageHeaders;
             httpHeaders: Soup.MessageHeaders;
             mime_type: string;
@@ -11742,7 +11742,7 @@ export namespace WebKit {
          * @param stream_length the length of the stream or -1 if not known
          * @param content_type the content type of the stream or `null` if not known
          */
-        finish(stream: Gio.InputStream, stream_length: number, content_type?: string | null): void;
+        finish(stream: Gio.InputStream, stream_length: bigint | number, content_type?: string | null): void;
         /**
          * Finish a {@link WebKit.URISchemeRequest} with a {@link GLib.Error}.
          * @param error a {@link GLib.Error} that will be passed to the {@link WebKit.WebView}
@@ -11801,8 +11801,8 @@ export namespace WebKit {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             stream: Gio.InputStream;
-            stream_length: number;
-            streamLength: number;
+            stream_length: bigint | number;
+            streamLength: bigint | number;
         }
     }
 
@@ -11837,13 +11837,13 @@ export namespace WebKit {
          * @since 2.36
          * @construct-only
          */
-        set stream_length(val: number);
+        set stream_length(val: bigint | number);
         /**
          * The input stream length in bytes, `-1` for unknown length.
          * @since 2.36
          * @construct-only
          */
-        set streamLength(val: number);
+        set streamLength(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -11860,7 +11860,7 @@ export namespace WebKit {
 
         _init(...args: any[]): void;
 
-        static ['new'](input_stream: Gio.InputStream, stream_length: number): URISchemeResponse;
+        static ['new'](input_stream: Gio.InputStream, stream_length: bigint | number): URISchemeResponse;
 
         // Signals
 
@@ -15774,8 +15774,8 @@ export namespace WebKit {
             microphoneCaptureState: MediaCaptureState;
             network_session: NetworkSession;
             networkSession: NetworkSession;
-            page_id: number;
-            pageId: number;
+            page_id: bigint | number;
+            pageId: bigint | number;
             related_view: WebView;
             relatedView: WebView;
             settings: Settings;
@@ -16492,7 +16492,7 @@ export namespace WebKit {
          */
         call_async_javascript_function(
             body: string,
-            length: number,
+            length: bigint | number,
             _arguments?: GLib.Variant | null,
             world_name?: string | null,
             source_uri?: string | null,
@@ -16567,7 +16567,7 @@ export namespace WebKit {
          */
         call_async_javascript_function(
             body: string,
-            length: number,
+            length: bigint | number,
             _arguments: GLib.Variant | null,
             world_name: string | null,
             source_uri: string | null,
@@ -16643,7 +16643,7 @@ export namespace WebKit {
          */
         call_async_javascript_function(
             body: string,
-            length: number,
+            length: bigint | number,
             _arguments?: GLib.Variant | null,
             world_name?: string | null,
             source_uri?: string | null,
@@ -16784,7 +16784,7 @@ export namespace WebKit {
          */
         evaluate_javascript(
             script: string,
-            length: number,
+            length: bigint | number,
             world_name?: string | null,
             source_uri?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -16853,7 +16853,7 @@ export namespace WebKit {
          */
         evaluate_javascript(
             script: string,
-            length: number,
+            length: bigint | number,
             world_name: string | null,
             source_uri: string | null,
             cancellable: Gio.Cancellable | null,
@@ -16923,7 +16923,7 @@ export namespace WebKit {
          */
         evaluate_javascript(
             script: string,
-            length: number,
+            length: bigint | number,
             world_name?: string | null,
             source_uri?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -20972,7 +20972,7 @@ export namespace WebKit {
          * @param minor the minor version number
          * @param micro the micro version number
          */
-        set_version(major: number, minor: number, micro: number): void;
+        set_version(major: bigint | number, minor: bigint | number, micro: bigint | number): void;
         /**
          * Atomically decrements the reference count of `info` by one.
          *
@@ -21238,7 +21238,7 @@ export namespace WebKit {
          * @param index index of the feature
          * @returns The feature at `index`.
          */
-        get(index: number): Feature;
+        get(index: bigint | number): Feature;
         /**
          * Gets the number of elements in the feature list.
          * @returns number of elements. Since 2.42
@@ -21338,7 +21338,7 @@ export namespace WebKit {
          * By default it's the time when the `position` was created.
          * @param timestamp timestamp in seconds since the epoch, or 0 to use current time
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
     }
 
     /**

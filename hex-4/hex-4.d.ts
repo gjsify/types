@@ -261,7 +261,7 @@ export namespace Hex {
          * @param pos offset position of the {@link Hex.Document} data to compare with `what`
          * @returns 0 if the comparison is an exact match; otherwise, a non-zero   value comparable to `strcmp()`.
          */
-        compare_data(what: Uint8Array | string, pos: number): number;
+        compare_data(what: Uint8Array | string, pos: bigint | number): number;
         /**
          * Full version of {@link Hex.Document.compare_data} to allow data
          * comparisons broader than byte-for-byte matches only. However, it is
@@ -271,14 +271,14 @@ export namespace Hex {
          * @param pos offset position of the {@link Hex.Document} data to compare with the   string contained in the `find_data` structure
          * @returns 0 if the comparison is an exact match; otherwise, a non-zero   value is returned.
          */
-        compare_data_full(find_data: DocumentFindData, pos: number): number;
+        compare_data_full(find_data: DocumentFindData, pos: bigint | number): number;
         /**
          * Delete data at `offset` of `length` within the buffer.
          * @param offset offset in bytes within the payload
          * @param len length in bytes of the data to be set
          * @param undoable whether the operation should be undoable
          */
-        delete_data(offset: number, len: number, undoable: boolean): void;
+        delete_data(offset: bigint | number, len: bigint | number, undoable: boolean): void;
         /**
          * Export the {@link Hex.Document} to HTML.
          * @param html_path path to the directory in which the HTML file will be saved
@@ -293,8 +293,8 @@ export namespace Hex {
         export_html(
             html_path: string,
             base_name: string,
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             cpl: number,
             lpp: number,
             cpw: number,
@@ -310,7 +310,7 @@ export namespace Hex {
          * @param what a pointer to the data to   search within the {@link Hex.Document}
          * @returns `true` if `what` was found by the requested operation; `false`   otherwise.
          */
-        find_backward(start: number, what: Uint8Array | string): [boolean, number];
+        find_backward(start: bigint | number, what: Uint8Array | string): [boolean, number];
         /**
          * Non-blocking version of {@link Hex.Document.find_backward}. This is the
          * function that should generally be used by a GUI client to find a string
@@ -323,7 +323,7 @@ export namespace Hex {
          * @param callback function to be called when the operation is   complete
          */
         find_backward_async(
-            start: number,
+            start: bigint | number,
             what: Uint8Array | string,
             found_msg: string,
             not_found_msg: string,
@@ -371,7 +371,7 @@ export namespace Hex {
          * @param what a pointer to the data to   search within the {@link Hex.Document}
          * @returns `true` if `what` was found by the requested operation; `false`   otherwise.
          */
-        find_forward(start: number, what: Uint8Array | string): [boolean, number];
+        find_forward(start: bigint | number, what: Uint8Array | string): [boolean, number];
         /**
          * Non-blocking version of {@link Hex.Document.find_forward}. This is the
          * function that should generally be used by a GUI client to find a string
@@ -384,7 +384,7 @@ export namespace Hex {
          * @param callback function to be called when the operation is   complete
          */
         find_forward_async(
-            start: number,
+            start: bigint | number,
             what: Uint8Array | string,
             found_msg: string,
             not_found_msg: string,
@@ -503,7 +503,7 @@ export namespace Hex {
          * @param insert `true` if the operation should be insert mode, `false` if in   overwrite mode
          * @param undoable whether the operation should be undoable
          */
-        set_byte(val: number, offset: number, insert: boolean, undoable: boolean): void;
+        set_byte(val: number, offset: bigint | number, insert: boolean, undoable: boolean): void;
         /**
          * A convenience wrapper for {@link Hex.Buffer.set_data}. See the
          * description of that method for details.
@@ -512,7 +512,7 @@ export namespace Hex {
          * @param data a pointer to the data being   provided
          * @param undoable whether the operation should be undoable
          */
-        set_data(offset: number, rep_len: number, data: Uint8Array | string, undoable: boolean): void;
+        set_data(offset: bigint | number, rep_len: bigint | number, data: Uint8Array | string, undoable: boolean): void;
         /**
          * @param args
          */
@@ -537,7 +537,13 @@ export namespace Hex {
          * @param insert `true` if the operation should be insert mode, `false` if in   overwrite mode
          * @param undoable whether the operation should be undoable
          */
-        set_nibble(val: number, offset: number, lower_nibble: boolean, insert: boolean, undoable: boolean): void;
+        set_nibble(
+            val: number,
+            offset: bigint | number,
+            lower_nibble: boolean,
+            insert: boolean,
+            undoable: boolean,
+        ): void;
         /**
          * Perform an undo operation.
          * @returns `true` if the operation was successful; `false` otherwise.
@@ -840,7 +846,7 @@ export namespace Hex {
          * @param color A custom color to set for the mark, or `NULL` to use the   default
          * @returns A pointer to a {@link Hex.WidgetMark} object, owned by the {@link Hex.Widget}.
          */
-        add_mark(start: number, end: number, color?: Gdk.RGBA | null): WidgetMark;
+        add_mark(start: bigint | number, end: bigint | number, color?: Gdk.RGBA | null): WidgetMark;
         /**
          * Clear the selection (if any). Any autohighlights will remain intact.
          */
@@ -876,7 +882,7 @@ export namespace Hex {
          * Get the value of the byte at requested offset position.
          * @param offset index of the requested byte within the whole of the buffer
          */
-        get_byte(offset: number): number;
+        get_byte(offset: bigint | number): number;
         /**
          * Get the cursor position.
          * @returns the cursor position, as index within the whole of the buffer
@@ -954,7 +960,7 @@ export namespace Hex {
          * Move cursor to `index`.
          * @param index where the cursor should be moved to, as offset by byte within   the buffer
          */
-        set_cursor(index: number): void;
+        set_cursor(index: bigint | number): void;
         /**
          * @param args
          */
@@ -965,7 +971,7 @@ export namespace Hex {
          * @param col_x column to which the cursor should be moved
          * @param line_y line to which the cursor should be moved, by absolute value, within   the whole buffer (not just the currently visible part)
          */
-        set_cursor_by_row_and_col(col_x: number, line_y: number): void;
+        set_cursor_by_row_and_col(col_x: number, line_y: bigint | number): void;
         /**
          * Set whether ASCII control characters are shown in the ASCII display.
          * @param display Whether ASCII control characters should be displayed
@@ -1008,7 +1014,7 @@ export namespace Hex {
          * @param start starting offset by byte within the buffer
          * @param end ending offset by byte within the buffer
          */
-        set_selection(start: number, end: number): void;
+        set_selection(start: bigint | number, end: bigint | number): void;
         /**
          * Set whether the ASCII column of the widget should be shown.
          * @param show `true` if the ASCII column should be shown, `false` if it should   be hidden
@@ -1924,9 +1930,9 @@ export namespace Hex {
 
         // Fields
 
-        start: number;
-        end: number;
-        rep_len: number;
+        start: bigint | number;
+        end: bigint | number;
+        rep_len: bigint | number;
         lower_nibble: boolean;
         insert: boolean;
         type: ChangeType;
@@ -1950,12 +1956,12 @@ export namespace Hex {
         // Fields
 
         found: boolean;
-        start: number;
+        start: bigint | number;
         what: Uint8Array;
-        len: number;
+        len: bigint | number;
         flags: SearchFlags;
-        offset: number;
-        found_len: number;
+        offset: bigint | number;
+        found_len: bigint | number;
         found_msg: string;
         not_found_msg: string;
 
@@ -1964,12 +1970,12 @@ export namespace Hex {
         constructor(
             properties?: Partial<{
                 found: boolean;
-                start: number;
+                start: bigint | number;
                 what: Uint8Array;
-                len: number;
+                len: bigint | number;
                 flags: SearchFlags;
-                offset: number;
-                found_len: number;
+                offset: bigint | number;
+                found_len: bigint | number;
                 found_msg: string;
                 not_found_msg: string;
             }>,
@@ -2017,14 +2023,14 @@ export namespace Hex {
              * @param offset offset position of the data being requested within the payload
              * @virtual
              */
-            vfunc_get_byte(offset: number): number;
+            vfunc_get_byte(offset: bigint | number): number;
             /**
              * Get data of a particular size at a particular offset within the buffer.
              * @param offset offset position of the data being requested within the payload
              * @param len size in bytes of the requested data
              * @virtual
              */
-            vfunc_get_data(offset: number, len: number): string;
+            vfunc_get_data(offset: bigint | number, len: bigint | number): string;
             /**
              * Get the size of the payload of the buffer, in bytes.
              * @virtual
@@ -2069,7 +2075,7 @@ export namespace Hex {
              * @param data a pointer to   the data being provided
              * @virtual
              */
-            vfunc_set_data(offset: number, rep_len: number, data: Uint8Array | string): boolean;
+            vfunc_set_data(offset: bigint | number, rep_len: bigint | number, data: Uint8Array | string): boolean;
             /**
              * Set the {@link Gio.File} to be utilized by the buffer. Once it has been set,
              * you can read it into the buffer with {@link Hex.Buffer.read} or
@@ -2185,14 +2191,14 @@ export namespace Hex {
          * @param offset offset position of the data being requested within the payload
          * @returns the 8-bit character located at `offset` within the payload, or '\0'
          */
-        get_byte(offset: number): number;
+        get_byte(offset: bigint | number): number;
         /**
          * Get data of a particular size at a particular offset within the buffer.
          * @param offset offset position of the data being requested within the payload
          * @param len size in bytes of the requested data
          * @returns a pointer to the data requested, to be freed with `g_free()`.
          */
-        get_data(offset: number, len: number): string;
+        get_data(offset: bigint | number, len: bigint | number): string;
         /**
          * @param args
          */
@@ -2254,7 +2260,7 @@ export namespace Hex {
          * @param data a pointer to   the data being provided
          * @returns `true` if the operation was successful; `false` otherwise.
          */
-        set_data(offset: number, rep_len: number, data: Uint8Array | string): boolean;
+        set_data(offset: bigint | number, rep_len: bigint | number, data: Uint8Array | string): boolean;
         /**
          * @param args
          */

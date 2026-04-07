@@ -3346,14 +3346,14 @@ export namespace Gcr {
          * @param n_peer
          * @virtual
          */
-        vfunc_derive_transport_key(peer: number, n_peer: number): boolean;
+        vfunc_derive_transport_key(peer: number, n_peer: bigint | number): boolean;
         /**
          * @param scheme
          * @param public_key
          * @param n_public_key
          * @virtual
          */
-        vfunc_generate_exchange_key(scheme: string, public_key: number, n_public_key: number): boolean;
+        vfunc_generate_exchange_key(scheme: string, public_key: number, n_public_key: bigint | number): boolean;
 
         // Methods
 
@@ -3406,7 +3406,7 @@ export namespace Gcr {
          * @param secret_len length of `secret`, or -1 if null terminated
          * @returns a newly allocated string to be sent to the other     side of the secret exchange
          */
-        send(secret: string | null, secret_len: number): string;
+        send(secret: string | null, secret_len: bigint | number): string;
     }
 
     namespace SimpleCertificate {

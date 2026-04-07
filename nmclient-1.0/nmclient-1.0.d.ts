@@ -1182,11 +1182,7 @@ export namespace NMClient {
      * @gir-type Callback
      */
     interface RemoteConnectionGetSecretsFunc {
-        (
-            connection: RemoteConnection,
-            secrets: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>,
-            error: GLib.Error,
-        ): void;
+        (connection: RemoteConnection, secrets: GLib.HashTable<string, GLib.HashTable>, error: GLib.Error): void;
     }
     /**
      * @gir-type Callback
@@ -1225,7 +1221,7 @@ export namespace NMClient {
         (
             agent: SecretAgent,
             connection: NetworkManager.Connection,
-            secrets: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>,
+            secrets: GLib.HashTable<string, GLib.HashTable>,
             error: GLib.Error,
         ): void;
     }
@@ -4725,7 +4721,7 @@ export namespace NMClient {
 
         interface ConstructorProps
             extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            options: GLib.HashTable<string, GObject.Value>;
+            options: { [key: string]: any } | GLib.HashTable<string, GObject.Value>;
         }
     }
 
@@ -5543,7 +5539,7 @@ export namespace NMClient {
 
         interface ConstructorProps
             extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            options: GLib.HashTable<string, GObject.Value>;
+            options: { [key: string]: any } | GLib.HashTable<string, GObject.Value>;
         }
     }
 

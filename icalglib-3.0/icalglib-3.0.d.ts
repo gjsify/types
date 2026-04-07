@@ -1038,7 +1038,7 @@ export namespace ICalGLib {
      * @returns The newly created buffer with the target size.
      * @since 1.0
      */
-    function memory_new_buffer(size: number): any | null;
+    function memory_new_buffer(size: bigint | number): any | null;
     /**
      * Resizes the buffer to the target size.
      * @param buf The buffer needs to be resized
@@ -1046,7 +1046,7 @@ export namespace ICalGLib {
      * @returns The buffer after being resized.
      * @since 1.0
      */
-    function memory_resize_buffer(buf: any | null, size: number): any | null;
+    function memory_resize_buffer(buf: any | null, size: bigint | number): any | null;
     /**
      * A wrapper around strdup. Partly to trap calls to strdup, partly because in -ansi, gcc on Red Hat claims
      * that strdup is undeclared.
@@ -1061,7 +1061,7 @@ export namespace ICalGLib {
      * @returns The newly created buffer
      * @since 1.0
      */
-    function memory_tmp_buffer(size: number): any | null;
+    function memory_tmp_buffer(size: bigint | number): any | null;
     /**
      * Like strdup, but the buffer is on the ring.
      * @param str The string to be copied
@@ -1086,7 +1086,7 @@ export namespace ICalGLib {
      * @returns If successful, return the array. NULL if failed.
      * @since 1.0
      */
-    function recur_expand_recurrence(rule: string, start: number, count: number): number[];
+    function recur_expand_recurrence(rule: string, start: bigint | number, count: number): number[];
     /**
      * Returns the code for a request status.
      * @param stat The {@link ICalGLib.RequestStatus} to be queried
@@ -5493,7 +5493,7 @@ export namespace ICalGLib {
 
         static new_from_string(str: string): Time;
 
-        static new_from_timet_with_zone(v: number, is_date: number, zone?: Timezone | null): Time;
+        static new_from_timet_with_zone(v: bigint | number, is_date: number, zone?: Timezone | null): Time;
 
         static new_null_date(): Time;
 
@@ -5834,7 +5834,7 @@ export namespace ICalGLib {
 
         static ['new'](dtstart: Time, dtend: Time, is_busy: number): TimeSpan;
 
-        static new_timet(start: number, end: number, is_busy: boolean): TimeSpan;
+        static new_timet(start: bigint | number, end: bigint | number, is_busy: boolean): TimeSpan;
 
         // Signals
 
@@ -5895,7 +5895,7 @@ export namespace ICalGLib {
          * Sets the end of {@link ICalGLib.TimeSpan}.
          * @param end The end
          */
-        set_end(end: number): void;
+        set_end(end: bigint | number): void;
         /**
          * Sets the is_busy of {@link ICalGLib.TimeSpan}.
          * @param is_busy The is_busy
@@ -5905,7 +5905,7 @@ export namespace ICalGLib {
          * Sets the start of {@link ICalGLib.TimeSpan}.
          * @param start The start
          */
-        set_start(start: number): void;
+        set_start(start: bigint | number): void;
     }
 
     namespace Timezone {

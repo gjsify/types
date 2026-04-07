@@ -1283,10 +1283,6 @@ export namespace GnomeRR {
      */
     class CTM {
         static $gtype: GObject.GType<CTM>;
-
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
     }
 
     /**
@@ -1389,7 +1385,7 @@ export namespace GnomeRR {
         /**
          * @param size
          */
-        get_edid_data(size: number): number;
+        get_edid_data(size: bigint | number): number;
         get_id(): number;
         /**
          * Retrieves the model identifiers from the EDID of the given output.

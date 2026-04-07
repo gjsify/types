@@ -101,7 +101,7 @@ export namespace TelepathyLogger {
         interface ConstructorProps extends Event.ConstructorProps {
             detailed_end_reason: string;
             detailedEndReason: string;
-            duration: number;
+            duration: bigint | number;
             end_actor: Entity;
             endActor: Entity;
             end_reason: number;
@@ -341,7 +341,7 @@ export namespace TelepathyLogger {
             channelPath: string;
             receiver: Entity;
             sender: Entity;
-            timestamp: number;
+            timestamp: bigint | number;
         }
     }
 
@@ -942,8 +942,8 @@ export namespace TelepathyLogger {
         // Constructor properties interface
 
         interface ConstructorProps extends Event.ConstructorProps {
-            edit_timestamp: number;
-            editTimestamp: number;
+            edit_timestamp: bigint | number;
+            editTimestamp: bigint | number;
             message: string;
             message_token: string;
             messageToken: string;

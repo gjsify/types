@@ -101,13 +101,13 @@ export namespace Gom {
      * @gir-type Callback
      */
     interface ResourceFromBytesFunc {
-        (bytes: GLib.Bytes | Uint8Array, value: GObject.Value | any): void;
+        (bytes: GLib.Bytes, value: unknown): void;
     }
     /**
      * @gir-type Callback
      */
     interface ResourceToBytesFunc {
-        (value: GObject.Value | any): GLib.Bytes;
+        (value: unknown): GLib.Bytes;
     }
     namespace Adapter {
         // Signal signatures
@@ -346,7 +346,7 @@ export namespace Gom {
          * @param param
          * @param value
          */
-        set_param_int64(param: number, value: number): void;
+        set_param_int64(param: number, value: bigint | number): void;
         /**
          * @param param
          * @param value
@@ -361,7 +361,7 @@ export namespace Gom {
          * @param param
          * @param value
          */
-        set_param_uint64(param: number, value: number): void;
+        set_param_uint64(param: number, value: bigint | number): void;
         /**
          * @param sql
          */

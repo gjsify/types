@@ -4383,7 +4383,7 @@ export namespace Gst {
     function util_array_binary_search(
         array: any | null,
         num_elements: number,
-        element_size: number,
+        element_size: bigint | number,
         search_func: GLib.CompareDataFunc,
         mode: SearchMode | null,
         search_data?: any | null,
@@ -4467,10 +4467,10 @@ export namespace Gst {
      * @since 1.26
      */
     function util_fraction_multiply_int64(
-        a_n: number,
-        a_d: number,
-        b_n: number,
-        b_d: number,
+        a_n: bigint | number,
+        a_d: bigint | number,
+        b_n: bigint | number,
+        b_d: bigint | number,
     ): [boolean, number, number];
     /**
      * Transforms a fraction to a `gdouble`.
@@ -4513,7 +4513,7 @@ export namespace Gst {
      * @param b Second value as `gint64`
      * @returns Greatest common divisor of `a` and `b`
      */
-    function util_greatest_common_divisor_int64(a: number, b: number): number;
+    function util_greatest_common_divisor_int64(a: bigint | number, b: bigint | number): number;
     /**
      * Return a constantly incrementing group id.
      *
@@ -4528,7 +4528,7 @@ export namespace Gst {
      * @param value The `guint64` value to convert to double
      * @returns `value` casted to `gdouble`
      */
-    function util_guint64_to_gdouble(value: number): number;
+    function util_guint64_to_gdouble(value: bigint | number): number;
     /**
      * Compare two sequence numbers, handling wraparound.
      *
@@ -4613,7 +4613,7 @@ export namespace Gst {
      * @param denom the denominator of the scale ratio
      * @returns `val` * `num` / `denom`.  In the case of an overflow, this function returns G_MAXUINT64.  If the result is not exactly representable as an integer it is truncated.  See also `gst_util_uint64_scale_round()`, `gst_util_uint64_scale_ceil()`, `gst_util_uint64_scale_int()`, `gst_util_uint64_scale_int_round()`, `gst_util_uint64_scale_int_ceil()`.
      */
-    function util_uint64_scale(val: number, num: number, denom: number): number;
+    function util_uint64_scale(val: bigint | number, num: bigint | number, denom: bigint | number): number;
     /**
      * Scale `val` by the rational number `num` / `denom`, avoiding overflows and
      * underflows and without loss of precision.
@@ -4625,7 +4625,7 @@ export namespace Gst {
      * @param denom the denominator of the scale ratio
      * @returns `val` * `num` / `denom`.  In the case of an overflow, this function returns G_MAXUINT64.  If the result is not exactly representable as an integer, it is rounded up.  See also `gst_util_uint64_scale()`, `gst_util_uint64_scale_round()`, `gst_util_uint64_scale_int()`, `gst_util_uint64_scale_int_round()`, `gst_util_uint64_scale_int_ceil()`.
      */
-    function util_uint64_scale_ceil(val: number, num: number, denom: number): number;
+    function util_uint64_scale_ceil(val: bigint | number, num: bigint | number, denom: bigint | number): number;
     /**
      * Scale `val` by the rational number `num` / `denom`, avoiding overflows and
      * underflows and without loss of precision.  `num` must be non-negative and
@@ -4635,7 +4635,7 @@ export namespace Gst {
      * @param denom denominator of the scale factor.
      * @returns `val` * `num` / `denom`.  In the case of an overflow, this function returns G_MAXUINT64.  If the result is not exactly representable as an integer, it is truncated.  See also `gst_util_uint64_scale_int_round()`, `gst_util_uint64_scale_int_ceil()`, `gst_util_uint64_scale()`, `gst_util_uint64_scale_round()`, `gst_util_uint64_scale_ceil()`.
      */
-    function util_uint64_scale_int(val: number, num: number, denom: number): number;
+    function util_uint64_scale_int(val: bigint | number, num: number, denom: number): number;
     /**
      * Scale `val` by the rational number `num` / `denom`, avoiding overflows and
      * underflows and without loss of precision.  `num` must be non-negative and
@@ -4645,7 +4645,7 @@ export namespace Gst {
      * @param denom denominator of the scale factor.
      * @returns `val` * `num` / `denom`.  In the case of an overflow, this function returns G_MAXUINT64.  If the result is not exactly representable as an integer, it is rounded up.  See also `gst_util_uint64_scale_int()`, `gst_util_uint64_scale_int_round()`, `gst_util_uint64_scale()`, `gst_util_uint64_scale_round()`, `gst_util_uint64_scale_ceil()`.
      */
-    function util_uint64_scale_int_ceil(val: number, num: number, denom: number): number;
+    function util_uint64_scale_int_ceil(val: bigint | number, num: number, denom: number): number;
     /**
      * Scale `val` by the rational number `num` / `denom`, avoiding overflows and
      * underflows and without loss of precision.  `num` must be non-negative and
@@ -4655,7 +4655,7 @@ export namespace Gst {
      * @param denom denominator of the scale factor.
      * @returns `val` * `num` / `denom`.  In the case of an overflow, this function returns G_MAXUINT64.  If the result is not exactly representable as an integer, it is rounded to the nearest integer (half-way cases are rounded up).  See also `gst_util_uint64_scale_int()`, `gst_util_uint64_scale_int_ceil()`, `gst_util_uint64_scale()`, `gst_util_uint64_scale_round()`, `gst_util_uint64_scale_ceil()`.
      */
-    function util_uint64_scale_int_round(val: number, num: number, denom: number): number;
+    function util_uint64_scale_int_round(val: bigint | number, num: number, denom: number): number;
     /**
      * Scale `val` by the rational number `num` / `denom`, avoiding overflows and
      * underflows and without loss of precision.
@@ -4667,7 +4667,7 @@ export namespace Gst {
      * @param denom the denominator of the scale ratio
      * @returns `val` * `num` / `denom`.  In the case of an overflow, this function returns G_MAXUINT64.  If the result is not exactly representable as an integer, it is rounded to the nearest integer (half-way cases are rounded up).  See also `gst_util_uint64_scale()`, `gst_util_uint64_scale_ceil()`, `gst_util_uint64_scale_int()`, `gst_util_uint64_scale_int_round()`, `gst_util_uint64_scale_int_ceil()`.
      */
-    function util_uint64_scale_round(val: number, num: number, denom: number): number;
+    function util_uint64_scale_round(val: bigint | number, num: bigint | number, denom: bigint | number): number;
     /**
      * Determines if `value1` and `value2` can be compared.
      * @param value1 a value to compare
@@ -4941,7 +4941,7 @@ export namespace Gst {
      * @param value a GValue initialized to #GST_TYPE_BITMASK
      * @param bitmask the bitmask
      */
-    function value_set_bitmask(value: GObject.Value | any, bitmask: number): void;
+    function value_set_bitmask(value: GObject.Value | any, bitmask: bigint | number): void;
     /**
      * Sets the contents of `value` to `caps`. A reference to the
      * provided `caps` will be taken by the `value`.
@@ -5014,7 +5014,7 @@ export namespace Gst {
      * @param start the start of the range
      * @param end the end of the range
      */
-    function value_set_int64_range(value: GObject.Value | any, start: number, end: number): void;
+    function value_set_int64_range(value: GObject.Value | any, start: bigint | number, end: bigint | number): void;
     /**
      * Sets `value` to the range specified by `start`, `end` and `step`.
      * @param value a GValue initialized to GST_TYPE_INT64_RANGE
@@ -5022,7 +5022,12 @@ export namespace Gst {
      * @param end the end of the range
      * @param step the step of the range
      */
-    function value_set_int64_range_step(value: GObject.Value | any, start: number, end: number, step: number): void;
+    function value_set_int64_range_step(
+        value: GObject.Value | any,
+        start: bigint | number,
+        end: bigint | number,
+        step: bigint | number,
+    ): void;
     /**
      * Sets `value` to the range specified by `start` and `end`.
      * @param value a GValue initialized to GST_TYPE_INT_RANGE
@@ -5136,7 +5141,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface ControlBindingConvert {
-        (binding: ControlBinding, src_value: number, dest_value: GObject.Value | any): void;
+        (binding: ControlBinding, src_value: number, dest_value: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -5184,13 +5189,13 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface IteratorFoldFunction {
-        (item: GObject.Value | any, ret: GObject.Value | any): boolean;
+        (item: unknown, ret: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface IteratorForeachFunction {
-        (item: GObject.Value | any): void;
+        (item: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -5202,13 +5207,13 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface IteratorItemFunction {
-        (it: Iterator, item: GObject.Value | any): IteratorItem;
+        (it: Iterator, item: unknown): IteratorItem;
     }
     /**
      * @gir-type Callback
      */
     interface IteratorNextFunction {
-        (it: Iterator, result: GObject.Value | any): IteratorResult;
+        (it: Iterator, result: unknown): IteratorResult;
     }
     /**
      * @gir-type Callback
@@ -5456,37 +5461,37 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface StructureFilterMapFunc {
-        (field_id: GLib.Quark, value: GObject.Value | any): boolean;
+        (field_id: GLib.Quark, value: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface StructureFilterMapIdStrFunc {
-        (fieldname: IdStr, value: GObject.Value | any): boolean;
+        (fieldname: IdStr, value: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface StructureForeachFunc {
-        (field_id: GLib.Quark, value: GObject.Value | any): boolean;
+        (field_id: GLib.Quark, value: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface StructureForeachIdStrFunc {
-        (fieldname: IdStr, value: GObject.Value | any): boolean;
+        (fieldname: IdStr, value: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface StructureMapFunc {
-        (field_id: GLib.Quark, value: GObject.Value | any): boolean;
+        (field_id: GLib.Quark, value: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface StructureMapIdStrFunc {
-        (fieldname: IdStr, value: GObject.Value | any): boolean;
+        (fieldname: IdStr, value: unknown): boolean;
     }
     /**
      * @gir-type Callback
@@ -5498,7 +5503,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface TagMergeFunc {
-        (dest: GObject.Value | any, src: GObject.Value | any): void;
+        (dest: unknown, src: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -5528,31 +5533,31 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface ValueCompareFunc {
-        (value1: GObject.Value | any, value2: GObject.Value | any): number;
+        (value1: unknown, value2: unknown): number;
     }
     /**
      * @gir-type Callback
      */
     interface ValueDeserializeFunc {
-        (dest: GObject.Value | any, s: string): boolean;
+        (dest: unknown, s: string): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface ValueDeserializeWithPSpecFunc {
-        (dest: GObject.Value | any, s: string, pspec: GObject.ParamSpec): boolean;
+        (dest: unknown, s: string, pspec: GObject.ParamSpec): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface ValueHashFunc {
-        (value: GObject.Value | any): boolean;
+        (value: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface ValueSerializeFunc {
-        (value1: GObject.Value | any): string;
+        (value1: unknown): string;
     }
     /**
      * @gir-type Flags
@@ -7579,7 +7584,7 @@ export namespace Gst {
          * @param params optional parameters
          * @virtual
          */
-        vfunc_alloc(size: number, params?: AllocationParams | null): Memory | null;
+        vfunc_alloc(size: bigint | number, params?: AllocationParams | null): Memory | null;
         /**
          * Free `memory` that was previously allocated with `gst_allocator_alloc()`.
          * @param memory the memory to free
@@ -7609,7 +7614,7 @@ export namespace Gst {
          * @param params optional parameters
          * @returns a new {@link Gst.Memory}.
          */
-        alloc(size: number, params?: AllocationParams | null): Memory | null;
+        alloc(size: bigint | number, params?: AllocationParams | null): Memory | null;
         /**
          * Free `memory` that was previously allocated with `gst_allocator_alloc()`.
          * @param memory the memory to free
@@ -9552,7 +9557,7 @@ export namespace Gst {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            timeout: number;
+            timeout: bigint | number;
             window_size: number;
             windowSize: number;
             window_threshold: number;
@@ -9641,7 +9646,7 @@ export namespace Gst {
         // Properties
 
         get timeout(): number;
-        set timeout(val: number);
+        set timeout(val: bigint | number);
         get window_size(): number;
         set window_size(val: number);
         get windowSize(): number;
@@ -12169,7 +12174,11 @@ export namespace Gst {
          * @param dest_format the {@link Gst.Format} to convert to.
          * @returns `true` if the query could be performed.
          */
-        query_convert(src_format: Format | null, src_val: number, dest_format: Format | null): [boolean, number];
+        query_convert(
+            src_format: Format | null,
+            src_val: bigint | number,
+            dest_format: Format | null,
+        ): [boolean, number];
         /**
          * Queries an element (usually top-level pipeline or playbin element) for the
          * total stream duration in nanoseconds. This query will only work once the
@@ -12233,7 +12242,7 @@ export namespace Gst {
         /**
          * @param watch_id watch id to remove
          */
-        remove_property_notify_watch(watch_id: number): void;
+        remove_property_notify_watch(watch_id: bigint | number): void;
         /**
          * Retrieves a request pad from the element according to the provided template.
          * Pad templates can be looked up using
@@ -12283,9 +12292,9 @@ export namespace Gst {
             format: Format | null,
             flags: SeekFlags | null,
             start_type: SeekType | null,
-            start: number,
+            start: bigint | number,
             stop_type: SeekType | null,
-            stop: number,
+            stop: bigint | number,
         ): boolean;
         /**
          * Simple API to perform a seek on the given element, meaning it just seeks
@@ -12307,7 +12316,7 @@ export namespace Gst {
          * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
          * @returns `true` if the seek operation succeeded. Flushing seeks will trigger a preroll, which will emit {@link Gst.MessageType.ASYNC_DONE}.
          */
-        seek_simple(format: Format | null, seek_flags: SeekFlags | null, seek_pos: number): boolean;
+        seek_simple(format: Format | null, seek_flags: SeekFlags | null, seek_pos: bigint | number): boolean;
         /**
          * Sends an event to an element. If the element doesn't implement an
          * event handler, the event will be pushed on a random linked sink pad for
@@ -13548,7 +13557,7 @@ export namespace Gst {
         interface ConstructorProps extends Object.ConstructorProps {
             caps: Caps;
             direction: PadDirection;
-            offset: number;
+            offset: bigint | number;
             template: PadTemplate;
         }
     }
@@ -13633,7 +13642,7 @@ export namespace Gst {
          * @since 1.6
          */
         get offset(): number;
-        set offset(val: number);
+        set offset(val: bigint | number);
         get template(): PadTemplate;
         set template(val: PadTemplate);
 
@@ -13925,7 +13934,7 @@ export namespace Gst {
          * @param size The length of the buffer
          * @returns a {@link Gst.FlowReturn} from the pad. MT safe.
          */
-        get_range(offset: number, size: number): [FlowReturn, Buffer];
+        get_range(offset: bigint | number, size: number): [FlowReturn, Buffer];
         /**
          * If there is a single internal link of the given pad, this function will
          * return it. Otherwise, it will return NULL.
@@ -14122,7 +14131,11 @@ export namespace Gst {
          * @param dest_format the {@link Gst.Format} to convert to.
          * @returns `true` if the query could be performed.
          */
-        peer_query_convert(src_format: Format | null, src_val: number, dest_format: Format | null): [boolean, number];
+        peer_query_convert(
+            src_format: Format | null,
+            src_val: bigint | number,
+            dest_format: Format | null,
+        ): [boolean, number];
         /**
          * Queries the peer pad of a given sink pad for the total stream duration.
          * @param format the {@link Gst.Format} requested
@@ -14187,7 +14200,7 @@ export namespace Gst {
          * @param size The length of the buffer
          * @returns a {@link Gst.FlowReturn} from the peer pad. MT safe.
          */
-        pull_range(offset: number, size: number): [FlowReturn, Buffer];
+        pull_range(offset: bigint | number, size: number): [FlowReturn, Buffer];
         /**
          * Pushes a buffer to the peer of `pad`.
          *
@@ -14281,7 +14294,11 @@ export namespace Gst {
          * @param dest_format the {@link Gst.Format} to convert to.
          * @returns `true` if the query could be performed.
          */
-        query_convert(src_format: Format | null, src_val: number, dest_format: Format | null): [boolean, number];
+        query_convert(
+            src_format: Format | null,
+            src_val: bigint | number,
+            dest_format: Format | null,
+        ): [boolean, number];
         /**
          * Invokes the default query handler for the given pad.
          * The query is sent to all pads internally linked to `pad`. Note that
@@ -14311,7 +14328,7 @@ export namespace Gst {
          * MT safe.
          * @param id the probe id to remove
          */
-        remove_probe(id: number): void;
+        remove_probe(id: bigint | number): void;
         /**
          * Sends the event to the pad. This function can be used
          * by applications to send events in the pipeline.
@@ -14430,7 +14447,7 @@ export namespace Gst {
          * source pads.
          * @param offset the offset
          */
-        set_offset(offset: number): void;
+        set_offset(offset: bigint | number): void;
         /**
          * Set the given query function for the pad.
          * @param query the {@link Gst.PadQueryFunction} to set.
@@ -14741,8 +14758,8 @@ export namespace Gst {
         interface ConstructorProps extends Bin.ConstructorProps, ChildProxy.ConstructorProps {
             auto_flush_bus: boolean;
             autoFlushBus: boolean;
-            delay: number;
-            latency: number;
+            delay: bigint | number;
+            latency: bigint | number;
         }
     }
 
@@ -14823,13 +14840,13 @@ export namespace Gst {
          * see `gst_pipeline_set_delay()` for more information on this option.
          */
         get delay(): number;
-        set delay(val: number);
+        set delay(val: bigint | number);
         /**
          * Latency to configure on the pipeline. See `gst_pipeline_set_latency()`.
          * @since 1.6
          */
         get latency(): number;
-        set latency(val: number);
+        set latency(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -16070,7 +16087,7 @@ export namespace Gst {
          * @param offset The start offset of the buffer
          * @param size The length of the buffer
          */
-        static getrange_default(pad: Pad, parent: Object, offset: number, size: number): [FlowReturn, Buffer];
+        static getrange_default(pad: Pad, parent: Object, offset: bigint | number, size: number): [FlowReturn, Buffer];
         /**
          * Invoke the default iterate internal links function of the proxy pad.
          * @param pad the {@link Gst.Pad} to get the internal links of.
@@ -17889,18 +17906,18 @@ export namespace Gst {
         // Fields
 
         flags: MemoryFlags;
-        align: number;
-        prefix: number;
-        padding: number;
+        align: bigint | number;
+        prefix: bigint | number;
+        padding: bigint | number;
 
         // Constructors
 
         constructor(
             properties?: Partial<{
                 flags: MemoryFlags;
-                align: number;
-                prefix: number;
-                padding: number;
+                align: bigint | number;
+                prefix: bigint | number;
+                padding: bigint | number;
             }>,
         );
 
@@ -18092,8 +18109,8 @@ export namespace Gst {
         pts: ClockTime;
         dts: ClockTime;
         duration: ClockTime;
-        offset: number;
-        offset_end: number;
+        offset: bigint | number;
+        offset_end: bigint | number;
 
         // Constructors
 
@@ -18103,14 +18120,18 @@ export namespace Gst {
                 pts: ClockTime;
                 dts: ClockTime;
                 duration: ClockTime;
-                offset: number;
-                offset_end: number;
+                offset: bigint | number;
+                offset_end: bigint | number;
             }>,
         );
 
         static ['new'](): Buffer;
 
-        static new_allocate(allocator: Allocator | null, size: number, params?: AllocationParams | null): Buffer;
+        static new_allocate(
+            allocator: Allocator | null,
+            size: bigint | number,
+            params?: AllocationParams | null,
+        ): Buffer;
 
         static new_memdup(data: Uint8Array | string): Buffer;
 
@@ -18121,8 +18142,8 @@ export namespace Gst {
         static new_wrapped_full(
             flags: MemoryFlags,
             data: Uint8Array | string,
-            maxsize: number,
-            offset: number,
+            maxsize: bigint | number,
+            offset: bigint | number,
             notify?: GLib.DestroyNotify | null,
         ): Buffer;
 
@@ -18205,7 +18226,7 @@ export namespace Gst {
          * @param size the size or -1 of `buf2`
          * @returns the new {@link Gst.Buffer} that contains the memory     of the two source buffers.
          */
-        append_region(buf2: Buffer, offset: number, size: number): Buffer;
+        append_region(buf2: Buffer, offset: bigint | number, size: bigint | number): Buffer;
         /**
          * Creates a copy of the given buffer. This will only copy the buffer's
          * data to a newly allocated memory if needed (if the type of memory
@@ -18234,7 +18255,7 @@ export namespace Gst {
          * @param size total size to copy. If -1, all data is copied.
          * @returns `true` if the copying succeeded, `false` otherwise.
          */
-        copy_into(src: Buffer, flags: BufferCopyFlags | null, offset: number, size: number): boolean;
+        copy_into(src: Buffer, flags: BufferCopyFlags | null, offset: bigint | number, size: bigint | number): boolean;
         /**
          * Creates a sub-buffer from `parent` at `offset` and `size`.
          * This sub-buffer uses the actual memory space of the parent buffer.
@@ -18249,27 +18270,27 @@ export namespace Gst {
          * @param size the size of the new {@link Gst.Buffer} sub-buffer, in bytes. If -1, all        data is copied.
          * @returns the new {@link Gst.Buffer} or `null` if copying     failed.
          */
-        copy_region(flags: BufferCopyFlags | null, offset: number, size: number): Buffer | null;
+        copy_region(flags: BufferCopyFlags | null, offset: bigint | number, size: bigint | number): Buffer | null;
         /**
          * Copies `size` bytes starting from `offset` in `buffer` to `dest`.
          * @param offset the offset to extract
          * @returns The amount of bytes extracted. This value can be lower than `size`    when `buffer` did not contain enough data.
          */
-        extract(offset: number): [number, Uint8Array];
+        extract(offset: bigint | number): [number, Uint8Array];
         /**
          * Extracts a copy of at most `size` bytes the data at `offset` into
          * newly-allocated memory. `dest` must be freed using `g_free()` when done.
          * @param offset the offset to extract
          * @param size the size to extract
          */
-        extract_dup(offset: number, size: number): Uint8Array;
+        extract_dup(offset: bigint | number, size: bigint | number): Uint8Array;
         /**
          * Copies `size` bytes from `src` to `buffer` at `offset`.
          * @param offset the offset to fill
          * @param src the source address
          * @returns The amount of bytes copied. This value can be lower than `size`    when `buffer` did not contain enough data.
          */
-        fill(offset: number, src: Uint8Array | string): number;
+        fill(offset: bigint | number, src: Uint8Array | string): number;
         /**
          * Finds the memory blocks that span `size` bytes starting from `offset`
          * in `buffer`.
@@ -18285,7 +18306,7 @@ export namespace Gst {
          * @param size a size
          * @returns `true` when `size` bytes starting from `offset` could be found in `buffer` and `idx`, `length` and `skip` will be filled.
          */
-        find_memory(offset: number, size: number): [boolean, number, number, number];
+        find_memory(offset: bigint | number, size: bigint | number): [boolean, number, number, number];
         /**
          * Calls `func` with `user_data` for each meta in `buffer`.
          *
@@ -18464,7 +18485,7 @@ export namespace Gst {
          * @param mem the memory to compare
          * @returns 0 if the memory is equal.
          */
-        memcmp(offset: number, mem: Uint8Array | string): number;
+        memcmp(offset: bigint | number, mem: Uint8Array | string): number;
         /**
          * Fills `buf` with `size` bytes with `val` starting from `offset`.
          * @param offset the offset in `buffer`
@@ -18472,7 +18493,7 @@ export namespace Gst {
          * @param size the size to set
          * @returns The amount of bytes filled. This value can be lower than `size`    when `buffer` did not contain enough data.
          */
-        memset(offset: number, val: number, size: number): number;
+        memset(offset: bigint | number, val: number, size: bigint | number): number;
         /**
          * Gets the amount of memory blocks that this buffer has. This amount is never
          * larger than what `gst_buffer_get_max_memory()` returns.
@@ -18558,7 +18579,7 @@ export namespace Gst {
          * @param offset the offset adjustment
          * @param size the new size or -1 to just adjust the offset
          */
-        resize(offset: number, size: number): void;
+        resize(offset: bigint | number, size: bigint | number): void;
         /**
          * Sets the total size of the `length` memory blocks starting at `idx` in
          * `buffer`
@@ -18568,7 +18589,7 @@ export namespace Gst {
          * @param size the new size or -1 to just adjust the offset
          * @returns `true` if resizing succeeded, `false` otherwise.
          */
-        resize_range(idx: number, length: number, offset: number, size: number): boolean;
+        resize_range(idx: number, length: number, offset: bigint | number, size: bigint | number): boolean;
         /**
          * Sets one or more buffer flags on a buffer.
          * @param flags the {@link Gst.BufferFlags} to set.
@@ -18579,7 +18600,7 @@ export namespace Gst {
          * Sets the total size of the memory blocks in `buffer`.
          * @param size the new size
          */
-        set_size(size: number): void;
+        set_size(size: bigint | number): void;
         /**
          * Releases the memory previously mapped with `gst_buffer_map()`.
          * @param info a {@link Gst.MapInfo}
@@ -18764,8 +18785,8 @@ export namespace Gst {
         // Fields
 
         format: Format;
-        start: number;
-        stop: number;
+        start: bigint | number;
+        stop: bigint | number;
         flags: BufferPoolAcquireFlags;
     }
 
@@ -18808,16 +18829,7 @@ export namespace Gst {
         // Fields
 
         data: number;
-        len: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                data: number;
-                len: number;
-            }>,
-        );
+        len: bigint | number;
     }
 
     /**
@@ -19685,13 +19697,13 @@ export namespace Gst {
 
         static new_from_iso8601_string(string: string): DateTime;
 
-        static new_from_unix_epoch_local_time(secs: number): DateTime;
+        static new_from_unix_epoch_local_time(secs: bigint | number): DateTime;
 
-        static new_from_unix_epoch_local_time_usecs(usecs: number): DateTime;
+        static new_from_unix_epoch_local_time_usecs(usecs: bigint | number): DateTime;
 
-        static new_from_unix_epoch_utc(secs: number): DateTime;
+        static new_from_unix_epoch_utc(secs: bigint | number): DateTime;
 
-        static new_from_unix_epoch_utc_usecs(usecs: number): DateTime;
+        static new_from_unix_epoch_utc_usecs(usecs: bigint | number): DateTime;
 
         static new_local_time(
             year: number,
@@ -19988,7 +20000,7 @@ export namespace Gst {
         // Fields
 
         type: EventType;
-        timestamp: number;
+        timestamp: bigint | number;
         seqnum: number;
 
         // Constructors
@@ -19997,12 +20009,17 @@ export namespace Gst {
             properties?: Partial<{
                 mini_object: MiniObject;
                 type: EventType;
-                timestamp: number;
+                timestamp: bigint | number;
                 seqnum: number;
             }>,
         );
 
-        static new_buffer_size(format: Format, minsize: number, maxsize: number, async: boolean): Event;
+        static new_buffer_size(
+            format: Format,
+            minsize: bigint | number,
+            maxsize: bigint | number,
+            async: boolean,
+        ): Event;
 
         static new_caps(caps: Caps): Event;
 
@@ -20039,20 +20056,26 @@ export namespace Gst {
             format: Format,
             flags: SeekFlags,
             start_type: SeekType,
-            start: number,
+            start: bigint | number,
             stop_type: SeekType,
-            stop: number,
+            stop: bigint | number,
         ): Event;
 
         static new_segment(segment: Segment): Event;
 
-        static new_segment_done(format: Format, position: number): Event;
+        static new_segment_done(format: Format, position: bigint | number): Event;
 
         static new_select_streams(streams: string[]): Event;
 
         static new_sink_message(name: string, msg: Message): Event;
 
-        static new_step(format: Format, amount: number, rate: number, flush: boolean, intermediate: boolean): Event;
+        static new_step(
+            format: Format,
+            amount: bigint | number,
+            rate: number,
+            flush: boolean,
+            intermediate: boolean,
+        ): Event;
 
         static new_stream_collection(collection: StreamCollection): Event;
 
@@ -20294,7 +20317,7 @@ export namespace Gst {
          * MT safe.
          * @param offset A the new running time offset
          */
-        set_running_time_offset(offset: number): void;
+        set_running_time_offset(offset: bigint | number): void;
         /**
          * Sets a trickmode interval on a (writable) seek event. Elements
          * that support TRICKMODE_KEY_UNITS seeks SHOULD use this as the minimal
@@ -20442,7 +20465,7 @@ export namespace Gst {
          * @param len Length of `s2`.
          * @returns `true` if `s1` and `s2` are equal.
          */
-        is_equal_to_str_with_len(s2: string, len: number): boolean;
+        is_equal_to_str_with_len(s2: string, len: bigint | number): boolean;
         /**
          * Moves `s` into `d` and resets `s`.
          * @param s The source %GstIdStr
@@ -20468,14 +20491,14 @@ export namespace Gst {
          * @param value A string
          * @param len Length of the string
          */
-        set_static_str_with_len(value: string, len: number): void;
+        set_static_str_with_len(value: string, len: bigint | number): void;
         /**
          * Sets `s` to the string `value` of length `len`. `value` does not have to be
          * NUL-terminated and `len` should not include the NUL-terminator.
          * @param value A string
          * @param len Length of the string
          */
-        set_with_len(value: string, len: number): void;
+        set_with_len(value: string, len: bigint | number): void;
     }
 
     /**
@@ -20756,8 +20779,8 @@ export namespace Gst {
 
         flags: MapFlags;
         data: Uint8Array;
-        size: number;
-        maxsize: number;
+        size: bigint | number;
+        maxsize: bigint | number;
         user_data: any[];
 
         // Methods
@@ -20821,26 +20844,26 @@ export namespace Gst {
         // Fields
 
         allocator: Allocator;
-        maxsize: number;
-        align: number;
-        offset: number;
-        size: number;
+        maxsize: bigint | number;
+        align: bigint | number;
+        offset: bigint | number;
+        size: bigint | number;
 
         // Constructors
 
         constructor(
             flags: MemoryFlags,
             data: Uint8Array | string,
-            maxsize: number,
-            offset: number,
+            maxsize: bigint | number,
+            offset: bigint | number,
             notify?: GLib.DestroyNotify | null,
         );
 
         static new_wrapped(
             flags: MemoryFlags,
             data: Uint8Array | string,
-            maxsize: number,
-            offset: number,
+            maxsize: bigint | number,
+            offset: bigint | number,
             notify?: GLib.DestroyNotify | null,
         ): Memory;
 
@@ -20854,7 +20877,7 @@ export namespace Gst {
          * @param size size to copy, or -1 to copy to the end of the memory region
          * @returns a new copy of `mem` if the copy succeeded, `null` otherwise.
          */
-        copy(offset: number, size: number): Memory | null;
+        copy(offset: bigint | number, size: bigint | number): Memory | null;
         /**
          * Get the current `size`, `offset` and `maxsize` of `mem`.
          * @returns the current size of `mem`
@@ -20939,7 +20962,7 @@ export namespace Gst {
          * @param offset a new offset
          * @param size a new size
          */
-        resize(offset: number, size: number): void;
+        resize(offset: bigint | number, size: bigint | number): void;
         /**
          * Return a shared copy of `size` bytes from `mem` starting from `offset`. No
          * memory copy is performed and the memory region is simply shared. The result
@@ -20949,7 +20972,7 @@ export namespace Gst {
          * @param size size to share, or -1 to share to the end of the memory region
          * @returns a new {@link Gst.Memory}.
          */
-        share(offset: number, size: number): Memory;
+        share(offset: bigint | number, size: bigint | number): Memory;
         /**
          * Release the memory obtained with `gst_memory_map()`
          * @param info a {@link Gst.MapInfo}
@@ -20987,7 +21010,7 @@ export namespace Gst {
         // Fields
 
         type: MessageType;
-        timestamp: number;
+        timestamp: bigint | number;
         src: Object;
         seqnum: number;
 
@@ -21058,10 +21081,10 @@ export namespace Gst {
         static new_qos(
             src: Object | null,
             live: boolean,
-            running_time: number,
-            stream_time: number,
-            timestamp: number,
-            duration: number,
+            running_time: bigint | number,
+            stream_time: bigint | number,
+            timestamp: bigint | number,
+            duration: bigint | number,
         ): Message;
 
         static new_redirect(
@@ -21075,9 +21098,9 @@ export namespace Gst {
 
         static new_reset_time(src: Object | null, running_time: ClockTime): Message;
 
-        static new_segment_done(src: Object | null, format: Format, position: number): Message;
+        static new_segment_done(src: Object | null, format: Format, position: bigint | number): Message;
 
-        static new_segment_start(src: Object | null, format: Format, position: number): Message;
+        static new_segment_start(src: Object | null, format: Format, position: bigint | number): Message;
 
         static new_state_changed(src: Object | null, oldstate: State, newstate: State, pending: State): Message;
 
@@ -21086,11 +21109,11 @@ export namespace Gst {
         static new_step_done(
             src: Object | null,
             format: Format,
-            amount: number,
+            amount: bigint | number,
             rate: number,
             flush: boolean,
             intermediate: boolean,
-            duration: number,
+            duration: bigint | number,
             eos: boolean,
         ): Message;
 
@@ -21098,7 +21121,7 @@ export namespace Gst {
             src: Object | null,
             active: boolean,
             format: Format,
-            amount: number,
+            amount: bigint | number,
             rate: number,
             flush: boolean,
             intermediate: boolean,
@@ -21406,7 +21429,7 @@ export namespace Gst {
          * Returned pointers are valid for as long as this message exists.
          * @param entry_index index of the entry to parse
          */
-        parse_redirect_entry(entry_index: number): [string, TagList | null, Structure | null];
+        parse_redirect_entry(entry_index: bigint | number): [string, TagList | null, Structure | null];
         /**
          * Extract the requested state from the request_state message.
          *
@@ -21556,7 +21579,12 @@ export namespace Gst {
          * @param avg_out the average output rate
          * @param buffering_left amount of buffering time left in milliseconds
          */
-        set_buffering_stats(mode: BufferingMode | null, avg_in: number, avg_out: number, buffering_left: number): void;
+        set_buffering_stats(
+            mode: BufferingMode | null,
+            avg_in: number,
+            avg_out: number,
+            buffering_left: bigint | number,
+        ): void;
         /**
          * Add `details` to `message`. Will fail if the message already has details set on
          * it or if it is not writable.
@@ -21588,7 +21616,7 @@ export namespace Gst {
          * @param processed Total number of units correctly processed since the last state change to READY or a flushing operation.
          * @param dropped Total number of units dropped since the last state change to READY or a flushing operation.
          */
-        set_qos_stats(format: Format | null, processed: number, dropped: number): void;
+        set_qos_stats(format: Format | null, processed: bigint | number, dropped: bigint | number): void;
         /**
          * Set the QoS values that have been calculated/analysed from the QoS data
          *
@@ -21597,7 +21625,7 @@ export namespace Gst {
          * @param proportion Long term prediction of the ideal rate relative to normal rate to get optimal quality.
          * @param quality An element dependent integer value that specifies the current quality level of the element. The default maximum quality is 1000000.
          */
-        set_qos_values(jitter: number, proportion: number, quality: number): void;
+        set_qos_values(jitter: bigint | number, proportion: number, quality: number): void;
         /**
          * Set the sequence number of a message.
          *
@@ -21833,7 +21861,7 @@ export namespace Gst {
 
         api: GObject.GType;
         type: GObject.GType;
-        size: number;
+        size: bigint | number;
         init_func: MetaInitFunction;
         free_func: MetaFreeFunction;
         transform_func: MetaTransformFunction;
@@ -21868,18 +21896,8 @@ export namespace Gst {
         // Fields
 
         region: boolean;
-        offset: number;
-        size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                region: boolean;
-                offset: number;
-                size: number;
-            }>,
-        );
+        offset: bigint | number;
+        size: bigint | number;
     }
 
     /**
@@ -22075,9 +22093,9 @@ export namespace Gst {
         // Fields
 
         type: PadProbeType;
-        id: number;
+        id: bigint | number;
         data: any;
-        offset: number;
+        offset: bigint | number;
         size: number;
 
         // Methods
@@ -22706,7 +22724,7 @@ export namespace Gst {
 
         static new_context(context_type: string): Query;
 
-        static new_convert(src_format: Format, value: number, dest_format: Format): Query;
+        static new_convert(src_format: Format, value: bigint | number, dest_format: Format): Query;
 
         static new_custom(type: QueryType, structure?: Structure | null): Query;
 
@@ -22772,7 +22790,7 @@ export namespace Gst {
          * @param stop stop position of the range
          * @returns a `gboolean` indicating if the range was added or not.
          */
-        add_buffering_range(start: number, stop: number): boolean;
+        add_buffering_range(start: bigint | number, stop: bigint | number): boolean;
         /**
          * Add `mode` as one of the supported scheduling modes to `query`.
          * @param mode a {@link Gst.PadMode}
@@ -23080,7 +23098,12 @@ export namespace Gst {
          * @param stop the stop to set
          * @param estimated_total estimated total amount of download time remaining in     milliseconds
          */
-        set_buffering_range(format: Format | null, start: number, stop: number, estimated_total: number): void;
+        set_buffering_range(
+            format: Format | null,
+            start: bigint | number,
+            stop: bigint | number,
+            estimated_total: bigint | number,
+        ): void;
         /**
          * Configures the buffering stats values in `query`.
          * @param mode a buffering mode
@@ -23088,7 +23111,12 @@ export namespace Gst {
          * @param avg_out the average output rate
          * @param buffering_left amount of buffering time left in milliseconds
          */
-        set_buffering_stats(mode: BufferingMode | null, avg_in: number, avg_out: number, buffering_left: number): void;
+        set_buffering_stats(
+            mode: BufferingMode | null,
+            avg_in: number,
+            avg_out: number,
+            buffering_left: bigint | number,
+        ): void;
         /**
          * Set the `caps` result in `query`.
          * @param caps A pointer to the caps
@@ -23106,13 +23134,18 @@ export namespace Gst {
          * @param dest_format the destination {@link Gst.Format}
          * @param dest_value the destination value
          */
-        set_convert(src_format: Format | null, src_value: number, dest_format: Format | null, dest_value: number): void;
+        set_convert(
+            src_format: Format | null,
+            src_value: bigint | number,
+            dest_format: Format | null,
+            dest_value: bigint | number,
+        ): void;
         /**
          * Answer a duration query by setting the requested value in the given format.
          * @param format the {@link Gst.Format} for the duration
          * @param duration the duration of the stream
          */
-        set_duration(format: Format | null, duration: number): void;
+        set_duration(format: Format | null, duration: bigint | number): void;
         /**
          * Set the formats query result fields in `query`. The number of formats passed
          * in the `formats` array must be equal to `n_formats`.
@@ -23154,7 +23187,7 @@ export namespace Gst {
          * @param format the requested {@link Gst.Format}
          * @param cur the position to set
          */
-        set_position(format: Format | null, cur: number): void;
+        set_position(format: Format | null, cur: bigint | number): void;
         /**
          * Set the scheduling properties.
          * @param flags {@link Gst.SchedulingFlags}
@@ -23170,7 +23203,12 @@ export namespace Gst {
          * @param segment_start the segment_start to set
          * @param segment_end the segment_end to set
          */
-        set_seeking(format: Format | null, seekable: boolean, segment_start: number, segment_end: number): void;
+        set_seeking(
+            format: Format | null,
+            seekable: boolean,
+            segment_start: bigint | number,
+            segment_end: bigint | number,
+        ): void;
         /**
          * Answer a segment query by setting the requested values. The normal
          * playback segment of a pipeline is 0 to duration at the default rate of
@@ -23188,7 +23226,12 @@ export namespace Gst {
          * @param start_value the start value
          * @param stop_value the stop value
          */
-        set_segment(rate: number, format: Format | null, start_value: number, stop_value: number): void;
+        set_segment(
+            rate: number,
+            format: Format | null,
+            start_value: bigint | number,
+            stop_value: bigint | number,
+        ): void;
         /**
          * Set the results of a selectable query. If the element answering the query can
          * handle stream selection, `selectable` should be set to `true`.
@@ -23455,13 +23498,13 @@ export namespace Gst {
         rate: number;
         applied_rate: number;
         format: Format;
-        base: number;
-        offset: number;
-        start: number;
-        stop: number;
-        time: number;
-        position: number;
-        duration: number;
+        base: bigint | number;
+        offset: bigint | number;
+        start: bigint | number;
+        stop: bigint | number;
+        time: bigint | number;
+        position: bigint | number;
+        duration: bigint | number;
 
         // Constructors
 
@@ -23471,13 +23514,13 @@ export namespace Gst {
                 rate: number;
                 applied_rate: number;
                 format: Format;
-                base: number;
-                offset: number;
-                start: number;
-                stop: number;
-                time: number;
-                position: number;
-                duration: number;
+                base: bigint | number;
+                offset: bigint | number;
+                start: bigint | number;
+                stop: bigint | number;
+                time: bigint | number;
+                position: bigint | number;
+                duration: bigint | number;
             }>,
         );
 
@@ -23504,7 +23547,7 @@ export namespace Gst {
          * @param stop the stop position in the segment
          * @returns `true` if the given `start` and `stop` times fall partially or     completely in `segment`, `false` if the values are completely outside     of the segment.
          */
-        clip(format: Format | null, start: number, stop: number): [boolean, number, number];
+        clip(format: Format | null, start: bigint | number, stop: bigint | number): [boolean, number, number];
         /**
          * Create a copy of given `segment`.
          *
@@ -23559,9 +23602,9 @@ export namespace Gst {
             format: Format | null,
             flags: SeekFlags | null,
             start_type: SeekType | null,
-            start: number,
+            start: bigint | number,
             stop_type: SeekType | null,
-            stop: number,
+            stop: bigint | number,
         ): [boolean, boolean];
         /**
          * Free the allocated segment `segment`.
@@ -23590,7 +23633,7 @@ export namespace Gst {
          * @param offset the offset to apply in the segment
          * @returns `true` if the segment could be updated successfully. If `false` is returned, `offset` is not in `segment`.
          */
-        offset_running_time(format: Format | null, offset: number): boolean;
+        offset_running_time(format: Format | null, offset: bigint | number): boolean;
         /**
          * Convert `running_time` into a position in the segment so that
          * `gst_segment_to_running_time()` with that position returns `running_time`.
@@ -23598,7 +23641,7 @@ export namespace Gst {
          * @param running_time the running_time in the segment
          * @returns the position in the segment for `running_time`. This function returns -1 when `running_time` is -1 or when it is not inside `segment`.
          */
-        position_from_running_time(format: Format | null, running_time: number): number;
+        position_from_running_time(format: Format | null, running_time: bigint | number): number;
         /**
          * Translate `running_time` to the segment position using the currently configured
          * segment. Compared to `gst_segment_position_from_running_time()` this function can
@@ -23620,7 +23663,7 @@ export namespace Gst {
          * @param running_time the running-time
          * @returns a 1 or -1 on success, 0 on failure.
          */
-        position_from_running_time_full(format: Format | null, running_time: number): [number, number];
+        position_from_running_time_full(format: Format | null, running_time: bigint | number): [number, number];
         /**
          * Convert `stream_time` into a position in the segment so that
          * `gst_segment_to_stream_time()` with that position returns `stream_time`.
@@ -23628,7 +23671,7 @@ export namespace Gst {
          * @param stream_time the stream_time in the segment
          * @returns the position in the segment for `stream_time`. This function returns -1 when `stream_time` is -1 or when it is not inside `segment`.
          */
-        position_from_stream_time(format: Format | null, stream_time: number): number;
+        position_from_stream_time(format: Format | null, stream_time: bigint | number): number;
         /**
          * Translate `stream_time` to the segment position using the currently configured
          * segment. Compared to `gst_segment_position_from_stream_time()` this function can
@@ -23649,7 +23692,7 @@ export namespace Gst {
          * @param stream_time the stream-time
          * @returns a 1 or -1 on success, 0 on failure.
          */
-        position_from_stream_time_full(format: Format | null, stream_time: number): [number, number];
+        position_from_stream_time_full(format: Format | null, stream_time: bigint | number): [number, number];
         /**
          * Adjust the start/stop and base values of `segment` such that the next valid
          * buffer will be one with `running_time`.
@@ -23657,7 +23700,7 @@ export namespace Gst {
          * @param running_time the running_time in the segment
          * @returns `true` if the segment could be updated successfully. If `false` is returned, `running_time` is -1 or not in `segment`.
          */
-        set_running_time(format: Format | null, running_time: number): boolean;
+        set_running_time(format: Format | null, running_time: bigint | number): boolean;
         /**
          * Convert `running_time` into a position in the segment so that
          * `gst_segment_to_running_time()` with that position returns `running_time`.
@@ -23665,7 +23708,7 @@ export namespace Gst {
          * @param running_time the running_time in the segment
          * @returns the position in the segment for `running_time`. This function returns -1 when `running_time` is -1 or when it is not inside `segment`.
          */
-        to_position(format: Format | null, running_time: number): number;
+        to_position(format: Format | null, running_time: bigint | number): number;
         /**
          * Translate `position` to the total running time using the currently configured
          * segment. Position is a value between `segment` start and stop time.
@@ -23680,7 +23723,7 @@ export namespace Gst {
          * @param position the position in the segment
          * @returns the position as the total running time or -1 when an invalid position was given.
          */
-        to_running_time(format: Format | null, position: number): number;
+        to_running_time(format: Format | null, position: bigint | number): number;
         /**
          * Translate `position` to the total running time using the currently configured
          * segment. Compared to `gst_segment_to_running_time()` this function can return
@@ -23701,7 +23744,7 @@ export namespace Gst {
          * @param position the position in the segment
          * @returns a 1 or -1 on success, 0 on failure.
          */
-        to_running_time_full(format: Format | null, position: number): [number, number];
+        to_running_time_full(format: Format | null, position: bigint | number): [number, number];
         /**
          * Translate `position` to stream time using the currently configured
          * segment. The `position` value must be between `segment` start and
@@ -23717,7 +23760,7 @@ export namespace Gst {
          * @param position the position in the segment
          * @returns the position in stream_time or -1 when an invalid position was given.
          */
-        to_stream_time(format: Format | null, position: number): number;
+        to_stream_time(format: Format | null, position: bigint | number): number;
         /**
          * Translate `position` to the total stream time using the currently configured
          * segment. Compared to `gst_segment_to_stream_time()` this function can return
@@ -23738,7 +23781,7 @@ export namespace Gst {
          * @param position the position in the segment
          * @returns a 1 or -1 on success, 0 on failure.
          */
-        to_stream_time_full(format: Format | null, position: number): [number, number];
+        to_stream_time_full(format: Format | null, position: bigint | number): [number, number];
     }
 
     /**
@@ -25028,15 +25071,6 @@ export namespace Gst {
 
         timestamp: ClockTime;
         value: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                timestamp: ClockTime;
-                value: number;
-            }>,
-        );
     }
 
     /**
@@ -25224,7 +25258,7 @@ export namespace Gst {
          * @param start start value to set.
          * @param stop stop value to set.
          */
-        set_start_stop_times(start: number, stop: number): void;
+        set_start_stop_times(start: bigint | number, stop: bigint | number): void;
         /**
          * Set a {@link Gst.TagList} with tags for the complete `entry`.
          * @param tags A {@link Gst.TagList} or `null`
@@ -25313,7 +25347,7 @@ export namespace Gst {
          * @param offset The offset
          * @returns the     requested data, or `null` if that data is not available.
          */
-        peek(offset: number): Uint8Array | null;
+        peek(offset: bigint | number): Uint8Array | null;
         /**
          * If a {@link Gst.TypeFindFunction} calls this function it suggests the caps with the
          * given probability. A {@link Gst.TypeFindFunction} may supply different suggestions
@@ -26361,17 +26395,17 @@ export namespace Gst {
      * A datatype to hold a time, measured in nanoseconds.
      * @gir-type Alias
      */
-    type ClockTime = number;
+    type ClockTime = bigint | number;
     /**
      * A datatype to hold a time difference, measured in nanoseconds.
      * @gir-type Alias
      */
-    type ClockTimeDiff = number;
+    type ClockTimeDiff = bigint | number;
     /**
      * A type defining the type of an element factory.
      * @gir-type Alias
      */
-    type ElementFactoryListType = number;
+    type ElementFactoryListType = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

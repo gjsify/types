@@ -2636,7 +2636,7 @@ export namespace Tsparql {
          * @param property_uri a string identifying the property to modify
          * @param value the property object
          */
-        add_int64(property_uri: string, value: number): void;
+        add_int64(property_uri: string, value: bigint | number): void;
         /**
          * Adds a resource property as a {@link Tsparql.Resource}. Previous values for the same property are kept.
          *
@@ -2902,7 +2902,7 @@ export namespace Tsparql {
          * @param property_uri a string identifying the property to modify
          * @param value the property object
          */
-        set_int64(property_uri: string, value: number): void;
+        set_int64(property_uri: string, value: bigint | number): void;
         /**
          * Sets a resource property as a {@link Tsparql.Resource}. Replaces any previous value.
          *
@@ -4223,7 +4223,7 @@ export namespace Tsparql {
          * @param name variable name
          * @param value value
          */
-        bind_int(name: string, value: number): void;
+        bind_int(name: string, value: bigint | number): void;
         /**
          * Binds the `value` to the parameterized variable given by `name`, tagged
          * with the language defined by `langtag`. The language tag should follow

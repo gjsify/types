@@ -514,7 +514,7 @@ export namespace EvinceDocument {
      * @param size
      * @param info
      */
-    function xmp_parse(xmp: string, size: number, info: DocumentInfo): boolean;
+    function xmp_parse(xmp: string, size: bigint | number, info: DocumentInfo): boolean;
     /**
      * @gir-type Flags
      */
@@ -863,7 +863,7 @@ export namespace EvinceDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time_t(utime: number): boolean;
+        set_modified_from_time_t(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1155,7 +1155,7 @@ export namespace EvinceDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time_t(utime: number): boolean;
+        set_modified_from_time_t(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1454,7 +1454,7 @@ export namespace EvinceDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time_t(utime: number): boolean;
+        set_modified_from_time_t(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1749,7 +1749,7 @@ export namespace EvinceDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time_t(utime: number): boolean;
+        set_modified_from_time_t(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1780,10 +1780,10 @@ export namespace EvinceDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ctime: number;
+            ctime: bigint | number;
             data: any;
             description: string;
-            mtime: number;
+            mtime: bigint | number;
             name: string;
             size: number;
         }
@@ -1800,7 +1800,7 @@ export namespace EvinceDocument {
         /**
          * @construct-only
          */
-        set ctime(val: number);
+        set ctime(val: bigint | number);
         /**
          * @construct-only
          */
@@ -1812,7 +1812,7 @@ export namespace EvinceDocument {
         /**
          * @construct-only
          */
-        set mtime(val: number);
+        set mtime(val: bigint | number);
         /**
          * @construct-only
          */
@@ -1846,7 +1846,7 @@ export namespace EvinceDocument {
             description: string,
             mtime: GLib.Time,
             ctime: GLib.Time,
-            size: number,
+            size: bigint | number,
             data?: any | null,
         ): Attachment;
 
@@ -3838,7 +3838,7 @@ export namespace EvinceDocument {
          * @param xmp
          * @param size
          */
-        set_from_xmp(xmp: string, size: number): boolean;
+        set_from_xmp(xmp: string, size: bigint | number): boolean;
         /**
          * @param datetime
          */

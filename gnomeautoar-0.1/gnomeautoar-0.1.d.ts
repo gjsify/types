@@ -340,7 +340,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            progress: (arg0: number, arg1: number) => void;
+            progress: (arg0: bigint | number, arg1: number) => void;
             'notify::completed-files': (pspec: GObject.ParamSpec) => void;
             'notify::completed-size': (pspec: GObject.ParamSpec) => void;
             'notify::create-top-level-directory': (pspec: GObject.ParamSpec) => void;
@@ -357,18 +357,18 @@ export namespace GnomeAutoar {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed_files: number;
             completedFiles: number;
-            completed_size: number;
-            completedSize: number;
+            completed_size: bigint | number;
+            completedSize: bigint | number;
             create_top_level_directory: boolean;
             createTopLevelDirectory: boolean;
             files: number;
-            notify_interval: number;
-            notifyInterval: number;
+            notify_interval: bigint | number;
+            notifyInterval: bigint | number;
             output_file: Gio.File;
             outputFile: Gio.File;
             output_is_dest: boolean;
             outputIsDest: boolean;
-            size: number;
+            size: bigint | number;
             source_files: any;
             sourceFiles: any;
         }
@@ -407,9 +407,9 @@ export namespace GnomeAutoar {
          */
         get files(): number;
         get notify_interval(): number;
-        set notify_interval(val: number);
+        set notify_interval(val: bigint | number);
         get notifyInterval(): number;
-        set notifyInterval(val: number);
+        set notifyInterval(val: bigint | number);
         /**
          * @construct-only
          */
@@ -554,7 +554,7 @@ export namespace GnomeAutoar {
          * interval to 0, so you will receive every progress update.
          * @param notify_interval the minimal interval in microseconds
          */
-        set_notify_interval(notify_interval: number): void;
+        set_notify_interval(notify_interval: bigint | number): void;
         /**
          * By default {@link GnomeAutoar.Compressor.output_is_dest} is set to `false`, which means
          * the new archive will be created as a regular file under
@@ -635,7 +635,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            progress: (arg0: number, arg1: number) => void;
+            progress: (arg0: bigint | number, arg1: number) => void;
             /**
              * This signal is emitted when the archive extracting job needs a
              * passphrase.
@@ -666,12 +666,12 @@ export namespace GnomeAutoar {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed_files: number;
             completedFiles: number;
-            completed_size: number;
-            completedSize: number;
+            completed_size: bigint | number;
+            completedSize: bigint | number;
             delete_after_extraction: boolean;
             deleteAfterExtraction: boolean;
-            notify_interval: number;
-            notifyInterval: number;
+            notify_interval: bigint | number;
+            notifyInterval: bigint | number;
             output_file: Gio.File;
             outputFile: Gio.File;
             output_is_dest: boolean;
@@ -680,8 +680,8 @@ export namespace GnomeAutoar {
             sourceFile: Gio.File;
             total_files: number;
             totalFiles: number;
-            total_size: number;
-            totalSize: number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -714,9 +714,9 @@ export namespace GnomeAutoar {
         get deleteAfterExtraction(): boolean;
         set deleteAfterExtraction(val: boolean);
         get notify_interval(): number;
-        set notify_interval(val: number);
+        set notify_interval(val: bigint | number);
         get notifyInterval(): number;
-        set notifyInterval(val: number);
+        set notifyInterval(val: bigint | number);
         /**
          * @construct-only
          */
@@ -863,7 +863,7 @@ export namespace GnomeAutoar {
          * to 0, so you will receive every progress update.
          * @param notify_interval the minimal interval in microseconds
          */
-        set_notify_interval(notify_interval: number): void;
+        set_notify_interval(notify_interval: bigint | number): void;
         /**
          * By default {@link GnomeAutoar.Extractor.output_is_dest} is set to `false`, which means
          * only one file or directory will be created in {@link GnomeAutoar.Extractor.output_file}.

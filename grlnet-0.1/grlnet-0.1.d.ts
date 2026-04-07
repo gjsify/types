@@ -163,7 +163,7 @@ export namespace GrlNet {
          * @param length The length of the contents or `null` if it is not needed
          * @returns `true` if the request was successfull. If `false` an error occurred.
          */
-        request_finish(result: Gio.AsyncResult, content: string, length: number): boolean;
+        request_finish(result: Gio.AsyncResult, content: string, length: bigint | number): boolean;
         /**
          * Sets if cache must be used. Note that this will only work if caching is
          * supporting.  If sets `true`, a new cache will be created. If sets to `false`,

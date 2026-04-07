@@ -508,7 +508,7 @@ export namespace GMime {
      * @param inlen input buffer length
      * @returns the charset name best suited for the input text or `null` if it is US-ASCII safe.
      */
-    function charset_best(inbuf: string, inlen: number): string;
+    function charset_best(inbuf: string, inlen: bigint | number): string;
     /**
      * Attempts to find a canonical charset name for `charset`.
      *
@@ -601,7 +601,7 @@ export namespace GMime {
      */
     function encoding_base64_decode_step(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         save: number,
@@ -619,7 +619,7 @@ export namespace GMime {
      */
     function encoding_base64_encode_close(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         save: number,
@@ -638,7 +638,7 @@ export namespace GMime {
      */
     function encoding_base64_encode_step(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         save: number,
@@ -655,7 +655,7 @@ export namespace GMime {
      */
     function encoding_quoted_decode_step(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         save: number,
@@ -673,7 +673,7 @@ export namespace GMime {
      */
     function encoding_quoted_encode_close(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         save: number,
@@ -691,7 +691,7 @@ export namespace GMime {
      */
     function encoding_quoted_encode_step(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         save: number,
@@ -707,7 +707,13 @@ export namespace GMime {
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes decoded.
      */
-    function encoding_uudecode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
+    function encoding_uudecode_step(
+        inbuf: number,
+        inlen: bigint | number,
+        outbuf: number,
+        state: number,
+        save: number,
+    ): number;
     /**
      * Uuencodes a chunk of data. Call this when finished encoding data
      * with `g_mime_encoding_uuencode_step()` to flush off the last little bit.
@@ -721,7 +727,7 @@ export namespace GMime {
      */
     function encoding_uuencode_close(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         uubuf: number,
         state: number,
@@ -742,7 +748,7 @@ export namespace GMime {
      */
     function encoding_uuencode_step(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         uubuf: number,
         state: number,
@@ -768,7 +774,7 @@ export namespace GMime {
      * @param n number of bytes to convert
      * @returns a new string buffer containing the first `n` bytes of `str` converted to UTF-8.
      */
-    function iconv_locale_to_utf8_length(str: string, n: number): string;
+    function iconv_locale_to_utf8_length(str: string, n: bigint | number): string;
     /**
      * Frees internal iconv caches created in `g_mime_iconv_init()`.
      *
@@ -789,7 +795,7 @@ export namespace GMime {
      * @param n number of bytes to convert
      * @returns a new string buffer containing the first `n` bytes of `str` converted to the user's locale charset.
      */
-    function iconv_utf8_to_locale_length(str: string, n: number): string;
+    function iconv_utf8_to_locale_length(str: string, n: bigint | number): string;
     /**
      * Initializes GMime.
      *
@@ -844,7 +850,7 @@ export namespace GMime {
      * @param len text length
      * @returns a {@link GMime.ContentEncoding} that is determined to be the best encoding type for the specified block of text. ("best" in this particular case means smallest output size)
      */
-    function utils_best_encoding(text: number, len: number): ContentEncoding;
+    function utils_best_encoding(text: number, len: bigint | number): ContentEncoding;
     /**
      * Attempts to convert text in an unknown 8bit/multibyte charset into
      * UTF-8 by finding the charset which will convert the most bytes into
@@ -919,7 +925,7 @@ export namespace GMime {
      * @param tz_offset Timezone offset
      * @returns a valid string representation of the date.
      */
-    function utils_header_format_date(date: number, tz_offset: number): string;
+    function utils_header_format_date(date: bigint | number, tz_offset: number): string;
     /**
      * Quotes `string` as needed according to the rules in rfc2045.
      * @param str input string
@@ -939,7 +945,7 @@ export namespace GMime {
      * @param len text length
      * @returns `true` if the text contains 8bit characters or `false` otherwise.
      */
-    function utils_text_is_8bit(text: number, len: number): boolean;
+    function utils_text_is_8bit(text: number, len: bigint | number): boolean;
     /**
      * Unquotes and unescapes a string.
      * @param str input string
@@ -971,7 +977,7 @@ export namespace GMime {
      */
     function ydecode_step(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         pcrc: number,
@@ -996,7 +1002,7 @@ export namespace GMime {
      */
     function yencode_close(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         pcrc: number,
@@ -1022,7 +1028,7 @@ export namespace GMime {
      */
     function yencode_step(
         inbuf: number,
-        inlen: number,
+        inlen: bigint | number,
         outbuf: number,
         state: number,
         pcrc: number,
@@ -1038,7 +1044,7 @@ export namespace GMime {
      * @gir-type Callback
      */
     interface HeaderWriter {
-        (stream: Stream, name: string, value: string): number;
+        (stream: Stream, name: string, value: string): bigint | number;
     }
     /**
      * @gir-type Callback
@@ -1140,8 +1146,8 @@ export namespace GMime {
         issuer_serial: string;
         issuer_name: string;
         fingerprint: string;
-        created: number;
-        expires: number;
+        created: bigint | number;
+        expires: bigint | number;
         keyid: string;
         email: string;
         name: string;
@@ -1236,7 +1242,7 @@ export namespace GMime {
          * Set the creation date of the certificate's key.
          * @param created creation date
          */
-        set_created(created: number): void;
+        set_created(created: bigint | number): void;
         /**
          * Set the digest algorithm used by the certificate.
          * @param algo a {@link GMime.DigestAlgo}
@@ -1251,7 +1257,7 @@ export namespace GMime {
          * Set the expiration date of the certificate's key.
          * @param expires expiration date
          */
-        set_expires(expires: number): void;
+        set_expires(expires: bigint | number): void;
         /**
          * Set the certificate's key fingerprint.
          * @param fingerprint fingerprint string
@@ -2265,11 +2271,11 @@ export namespace GMime {
         outreal: Uint8Array;
         outbuf: string;
         outptr: string;
-        outsize: number;
-        outpre: number;
+        outsize: bigint | number;
+        outpre: bigint | number;
         backbuf: string;
-        backsize: number;
-        backlen: number;
+        backsize: bigint | number;
+        backlen: bigint | number;
 
         // Constructors
 
@@ -2306,7 +2312,7 @@ export namespace GMime {
          * @param prespace prespace buffer length
          * @virtual
          */
-        vfunc_complete(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
+        vfunc_complete(inbuf: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
         /**
          * Copies `filter` into a new GMimeFilter object.
          * @virtual
@@ -2318,7 +2324,7 @@ export namespace GMime {
          * @param prespace prespace buffer length
          * @virtual
          */
-        vfunc_filter(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
+        vfunc_filter(inbuf: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
         /**
          * Resets the filter.
          * @virtual
@@ -2338,7 +2344,7 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param prespace prespace buffer length
          */
-        complete(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
+        complete(inbuf: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
         /**
          * Copies `filter` into a new GMimeFilter object.
          * @returns a duplicate of `filter`.
@@ -2349,7 +2355,7 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param prespace prespace buffer length
          */
-        filter(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
+        filter(inbuf: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
         /**
          * Resets the filter.
          */
@@ -2359,7 +2365,7 @@ export namespace GMime {
          * @param size requested size for the output buffer
          * @param keep `true` if existing data in the output buffer should be kept
          */
-        set_size(size: number, keep: boolean): void;
+        set_size(size: bigint | number, keep: boolean): void;
     }
 
     namespace FilterBasic {
@@ -3341,7 +3347,7 @@ export namespace GMime {
          * @param out
          * @virtual
          */
-        vfunc_to_string(flags: number, linelen: number, out: GLib.String): void;
+        vfunc_to_string(flags: number, linelen: bigint | number, out: GLib.String): void;
 
         // Methods
 
@@ -3715,7 +3721,7 @@ export namespace GMime {
         reply_to: string;
         subject: string;
         from: string;
-        date: number;
+        date: bigint | number;
         tz_offset: number;
 
         // Constructors
@@ -3828,13 +3834,13 @@ export namespace GMime {
          * @param nparts number of parts
          * @returns an array of {@link GMime.Message} objects and sets `nparts` to the number of messages returned or `null` on fail.
          */
-        partial_split_message(max_size: number, nparts: number): Message;
+        partial_split_message(max_size: bigint | number, nparts: bigint | number): Message;
         /**
          * Sets the Date header on a MIME Message.
          * @param date a date to be used in the Date header
          * @param tz_offset timezone offset (in +/- hours)
          */
-        set_date(date: number, tz_offset: number): void;
+        set_date(date: bigint | number, tz_offset: number): void;
         /**
          * Sets the sent-date of the message.
          * @param str a date string
@@ -4028,7 +4034,7 @@ export namespace GMime {
          * @param partials an array of message/partial mime parts
          * @param num the number of elements in `partials`
          */
-        static reconstruct_message(partials: MessagePartial, num: number): Message;
+        static reconstruct_message(partials: MessagePartial, num: bigint | number): Message;
 
         // Methods
 
@@ -5251,8 +5257,8 @@ export namespace GMime {
         status: SignatureStatus;
         errors: SignatureError;
         cert: Certificate;
-        created: number;
-        expires: number;
+        created: bigint | number;
+        expires: bigint | number;
 
         // Constructors
 
@@ -5321,7 +5327,7 @@ export namespace GMime {
          * Set the creation date of the signature.
          * @param created creation date
          */
-        set_created(created: number): void;
+        set_created(created: bigint | number): void;
         /**
          * Set the errors on the signature.
          * @param errors a {@link GMime.SignatureError}
@@ -5331,7 +5337,7 @@ export namespace GMime {
          * Set the expiration date of the signature.
          * @param expires expiration date
          */
-        set_expires(expires: number): void;
+        set_expires(expires: bigint | number): void;
         /**
          * Set the status on the signature.
          * @param status a {@link GMime.SignatureStatus}
@@ -5569,14 +5575,14 @@ export namespace GMime {
          * @param whence seek directive
          * @virtual
          */
-        vfunc_seek(offset: number, whence: SeekWhence): number;
+        vfunc_seek(offset: bigint | number, whence: SeekWhence): number;
         /**
          * Creates a new substream of `stream` with bounds `start` and `end`.
          * @param start start boundary
          * @param end end boundary
          * @virtual
          */
-        vfunc_substream(start: number, end: number): Stream;
+        vfunc_substream(start: bigint | number, end: bigint | number): Stream;
         /**
          * Gets the current offset within the stream.
          * @virtual
@@ -5588,7 +5594,7 @@ export namespace GMime {
          * @param len buffer length
          * @virtual
          */
-        vfunc_write(buf: string, len: number): number;
+        vfunc_write(buf: string, len: bigint | number): number;
 
         // Methods
 
@@ -5602,7 +5608,7 @@ export namespace GMime {
          * @param max max length of a line
          * @returns the number of characters read into `buf` on success or %-1 on fail.
          */
-        buffer_gets(buf: string, max: number): number;
+        buffer_gets(buf: string, max: bigint | number): number;
         /**
          * Reads a single line into `buffer`.
          * @param buffer output buffer
@@ -5618,7 +5624,7 @@ export namespace GMime {
          * @param start start boundary
          * @param end end boundary
          */
-        construct(start: number, end: number): void;
+        construct(start: bigint | number, end: bigint | number): void;
         /**
          * Tests the end-of-stream indicator for `stream`.
          * @returns `true` on EOS or `false` otherwise.
@@ -5662,20 +5668,20 @@ export namespace GMime {
          * @param whence seek directive
          * @returns the resultant position on success or %-1 on fail.
          */
-        seek(offset: number, whence: SeekWhence | null): number;
+        seek(offset: bigint | number, whence: SeekWhence | null): number;
         /**
          * Set the bounds on a stream.
          * @param start start boundary
          * @param end end boundary
          */
-        set_bounds(start: number, end: number): void;
+        set_bounds(start: bigint | number, end: bigint | number): void;
         /**
          * Creates a new substream of `stream` with bounds `start` and `end`.
          * @param start start boundary
          * @param end end boundary
          * @returns a substream of `stream` with bounds `start` and `end`.
          */
-        substream(start: number, end: number): Stream;
+        substream(start: bigint | number, end: bigint | number): Stream;
         /**
          * Gets the current offset within the stream.
          * @returns the current position within the stream or %-1 on fail.
@@ -5687,7 +5693,7 @@ export namespace GMime {
          * @param len buffer length
          * @returns the number of bytes written or %-1 on fail.
          */
-        write(buf: string, len: number): number;
+        write(buf: string, len: bigint | number): number;
         /**
          * Writes `string` to `stream`.
          * @param str string to write
@@ -5706,7 +5712,7 @@ export namespace GMime {
          * @param count number of vector elements
          * @returns the number of bytes written or %-1 on fail.
          */
-        writev(vector: StreamIOVector, count: number): number;
+        writev(vector: StreamIOVector, count: bigint | number): number;
     }
 
     namespace StreamBuffer {
@@ -5742,7 +5748,7 @@ export namespace GMime {
         buffer: string;
         bufptr: string;
         bufend: string;
-        buflen: number;
+        buflen: bigint | number;
 
         // Constructors
 
@@ -5885,7 +5891,7 @@ export namespace GMime {
 
         static new_for_path(path: string, mode: string): StreamFile;
 
-        static new_with_bounds(fp: any | null, start: number, end: number): StreamFile;
+        static new_with_bounds(fp: any | null, start: bigint | number, end: bigint | number): StreamFile;
 
         // Signals
 
@@ -6046,7 +6052,7 @@ export namespace GMime {
 
         static new_for_path(path: string, flags: number, mode: number): StreamFs;
 
-        static new_with_bounds(fd: number, start: number, end: number): StreamFs;
+        static new_with_bounds(fd: number, start: bigint | number, end: bigint | number): StreamFs;
 
         // Signals
 
@@ -6130,7 +6136,7 @@ export namespace GMime {
 
         static ['new'](file: Gio.File): StreamGIO;
 
-        static new_with_bounds(file: Gio.File, start: number, end: number): StreamGIO;
+        static new_with_bounds(file: Gio.File, start: bigint | number, end: bigint | number): StreamGIO;
 
         // Signals
 
@@ -6298,7 +6304,7 @@ export namespace GMime {
         eos: boolean | any;
         fd: number;
         map: string;
-        maplen: number;
+        maplen: bigint | number;
 
         // Constructors
 
@@ -6308,7 +6314,13 @@ export namespace GMime {
 
         static ['new'](fd: number, prot: number, flags: number): StreamMmap;
 
-        static new_with_bounds(fd: number, prot: number, flags: number, start: number, end: number): StreamMmap;
+        static new_with_bounds(
+            fd: number,
+            prot: number,
+            flags: number,
+            start: bigint | number,
+            end: bigint | number,
+        ): StreamMmap;
 
         // Signals
 
@@ -6360,8 +6372,8 @@ export namespace GMime {
         // Fields
 
         parent_object: Stream;
-        written: number;
-        newlines: number;
+        written: bigint | number;
+        newlines: bigint | number;
 
         // Constructors
 
@@ -6509,7 +6521,7 @@ export namespace GMime {
          * @param inbuf a UTF-8 text buffer
          * @param inlen input buffer length
          */
-        static best(inbuf: string, inlen: number): string;
+        static best(inbuf: string, inlen: bigint | number): string;
         /**
          * Attempts to find a canonical charset name for `charset`.
          *
@@ -6578,7 +6590,7 @@ export namespace GMime {
          * @param len length of `text`
          * @returns `true` if it is safe to encode `text` into `charset` or `false` otherwise.
          */
-        can_encode(charset: string, text: string, len: number): boolean;
+        can_encode(charset: string, text: string, len: bigint | number): boolean;
         /**
          * Initializes a charset mask structure.
          */
@@ -6591,7 +6603,7 @@ export namespace GMime {
          * @param inbuf input text buffer (must be in UTF-8)
          * @param inlen input buffer length
          */
-        step(inbuf: string, inlen: number): void;
+        step(inbuf: string, inlen: bigint | number): void;
     }
 
     /**
@@ -6639,7 +6651,13 @@ export namespace GMime {
          * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been decoded
          */
-        static base64_decode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
+        static base64_decode_step(
+            inbuf: number,
+            inlen: bigint | number,
+            outbuf: number,
+            state: number,
+            save: number,
+        ): number;
         /**
          * Base64 encodes the input stream to the output stream. Call this
          * when finished encoding data with `g_mime_encoding_base64_encode_step()`
@@ -6650,7 +6668,13 @@ export namespace GMime {
          * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
-        static base64_encode_close(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
+        static base64_encode_close(
+            inbuf: number,
+            inlen: bigint | number,
+            outbuf: number,
+            state: number,
+            save: number,
+        ): number;
         /**
          * Base64 encodes a chunk of data. Performs an 'encode step', only
          * encodes blocks of 3 characters to the output at a time, saves
@@ -6662,7 +6686,13 @@ export namespace GMime {
          * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
-        static base64_encode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
+        static base64_encode_step(
+            inbuf: number,
+            inlen: bigint | number,
+            outbuf: number,
+            state: number,
+            save: number,
+        ): number;
         /**
          * Decodes a block of quoted-printable encoded data. Performs a
          * 'decode step' on a chunk of QP encoded data.
@@ -6672,7 +6702,13 @@ export namespace GMime {
          * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been decoded
          */
-        static quoted_decode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
+        static quoted_decode_step(
+            inbuf: number,
+            inlen: bigint | number,
+            outbuf: number,
+            state: number,
+            save: number,
+        ): number;
         /**
          * Quoted-printable encodes a block of text. Call this when finished
          * encoding data with `g_mime_encoding_quoted_encode_step()` to flush off
@@ -6683,7 +6719,13 @@ export namespace GMime {
          * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
-        static quoted_encode_close(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
+        static quoted_encode_close(
+            inbuf: number,
+            inlen: bigint | number,
+            outbuf: number,
+            state: number,
+            save: number,
+        ): number;
         /**
          * Quoted-printable encodes a block of text. Performs an 'encode
          * step', saves left-over state in state and save (initialise to -1 on
@@ -6694,7 +6736,13 @@ export namespace GMime {
          * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
-        static quoted_encode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
+        static quoted_encode_step(
+            inbuf: number,
+            inlen: bigint | number,
+            outbuf: number,
+            state: number,
+            save: number,
+        ): number;
         /**
          * Uudecodes a chunk of data. Performs a 'decode step' on a chunk of
          * uuencoded data. Assumes the "begin mode filename" line has
@@ -6705,7 +6753,13 @@ export namespace GMime {
          * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been decoded
          */
-        static uudecode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
+        static uudecode_step(
+            inbuf: number,
+            inlen: bigint | number,
+            outbuf: number,
+            state: number,
+            save: number,
+        ): number;
         /**
          * Uuencodes a chunk of data. Call this when finished encoding data
          * with `g_mime_encoding_uuencode_step()` to flush off the last little bit.
@@ -6718,7 +6772,7 @@ export namespace GMime {
          */
         static uuencode_close(
             inbuf: number,
-            inlen: number,
+            inlen: bigint | number,
             outbuf: number,
             uubuf: number,
             state: number,
@@ -6738,7 +6792,7 @@ export namespace GMime {
          */
         static uuencode_step(
             inbuf: number,
-            inlen: number,
+            inlen: bigint | number,
             outbuf: number,
             uubuf: number,
             state: number,
@@ -6755,7 +6809,7 @@ export namespace GMime {
          * @param outbuf an output buffer
          * @returns the number of bytes written to `outbuf`.
          */
-        flush(inbuf: string, inlen: number, outbuf: string): number;
+        flush(inbuf: string, inlen: bigint | number, outbuf: string): number;
         /**
          * Initializes a {@link GMime.Encoding} state machine for decoding from
          * `encoding`.
@@ -6774,7 +6828,7 @@ export namespace GMime {
          * @param inlen an input length
          * @returns the maximum number of bytes needed to encode or decode a buffer of `inlen` bytes.
          */
-        outlen(inlen: number): number;
+        outlen(inlen: bigint | number): number;
         /**
          * Resets the state of the {@link GMime.Encoding}.
          */
@@ -6791,7 +6845,7 @@ export namespace GMime {
          * @param outbuf an output buffer
          * @returns the number of bytes written to `outbuf`.
          */
-        step(inbuf: string, inlen: number, outbuf: string): number;
+        step(inbuf: string, inlen: bigint | number, outbuf: string): number;
     }
 
     /**
@@ -7323,16 +7377,7 @@ export namespace GMime {
         // Fields
 
         data: any;
-        len: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                data: any;
-                len: number;
-            }>,
-        );
+        len: bigint | number;
     }
 
     /**

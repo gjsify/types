@@ -1546,7 +1546,7 @@ export namespace Zpj {
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveEntry.ConstructorProps {
-            size: number;
+            size: bigint | number;
         }
     }
 
@@ -1773,7 +1773,7 @@ export namespace Zpj {
 
         interface ConstructorProps extends SkydriveFile.ConstructorProps {
             bitrate: number;
-            duration: number;
+            duration: bigint | number;
             height: number;
             width: number;
         }

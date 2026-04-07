@@ -9735,9 +9735,9 @@ export namespace Gitg {
         // Fields
 
         type: PatchSetType;
-        old_offset: number;
-        new_offset: number;
-        length: number;
+        old_offset: bigint | number;
+        new_offset: bigint | number;
+        length: bigint | number;
     }
 
     /**

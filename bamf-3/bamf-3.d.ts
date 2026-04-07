@@ -462,7 +462,7 @@ export namespace Bamf {
             is_foreground_tab: boolean;
             isForegroundTab: boolean;
             location: string;
-            xid: number;
+            xid: bigint | number;
         }
     }
 

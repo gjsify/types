@@ -491,7 +491,7 @@ export namespace OSTree {
     function content_stream_parse(
         compressed: boolean,
         input: Gio.InputStream,
-        input_length: number,
+        input_length: bigint | number,
         trusted: boolean,
         cancellable?: Gio.Cancellable | null,
     ): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
@@ -906,7 +906,7 @@ export namespace OSTree {
          * @param key
          * @param value
          */
-        set_uint64(key: string, value: number): void;
+        set_uint64(key: string, value: bigint | number): void;
     }
 
     namespace BootconfigParser {
@@ -3088,7 +3088,7 @@ export namespace OSTree {
             body: string | null,
             metadata: GLib.Variant | null,
             root: RepoFile,
-            time: number,
+            time: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string];
         /**
@@ -3110,7 +3110,7 @@ export namespace OSTree {
         write_content(
             expected_checksum: string | null,
             object_input: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, Uint8Array | null];
         /**
@@ -3124,7 +3124,7 @@ export namespace OSTree {
         write_content_async(
             expected_checksum: string | null,
             object: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
@@ -3139,7 +3139,7 @@ export namespace OSTree {
         write_content_async(
             expected_checksum: string | null,
             object: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3155,7 +3155,7 @@ export namespace OSTree {
         write_content_async(
             expected_checksum: string | null,
             object: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
@@ -3178,7 +3178,7 @@ export namespace OSTree {
         write_content_trusted(
             checksum: string,
             object_input: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3293,7 +3293,7 @@ export namespace OSTree {
             objtype: ObjectType | null,
             checksum: string,
             object_input: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -6170,7 +6170,7 @@ export namespace OSTree {
          */
         set_attribute_int64(
             attribute: string,
-            value: number,
+            value: bigint | number,
             flags: Gio.FileQueryInfoFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -6227,7 +6227,7 @@ export namespace OSTree {
          */
         set_attribute_uint64(
             attribute: string,
-            value: number,
+            value: bigint | number,
             flags: Gio.FileQueryInfoFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -10923,27 +10923,11 @@ export namespace OSTree {
         metadata_objects_written: number;
         content_objects_total: number;
         content_objects_written: number;
-        content_bytes_written: number;
-        padding1: number;
-        padding2: number;
-        padding3: number;
-        padding4: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                metadata_objects_total: number;
-                metadata_objects_written: number;
-                content_objects_total: number;
-                content_objects_written: number;
-                content_bytes_written: number;
-                padding1: number;
-                padding2: number;
-                padding3: number;
-                padding4: number;
-            }>,
-        );
+        content_bytes_written: bigint | number;
+        padding1: bigint | number;
+        padding2: bigint | number;
+        padding3: bigint | number;
+        padding4: bigint | number;
     }
 
     /**
@@ -10957,7 +10941,7 @@ export namespace OSTree {
         crcmatches: number;
         bufmatches: number;
         total: number;
-        match_size: number;
+        match_size: bigint | number;
         matches: any[];
     }
 

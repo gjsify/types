@@ -1590,7 +1590,7 @@ export namespace Gst {
     function util_array_binary_search(
         array: any,
         num_elements: number,
-        element_size: number,
+        element_size: bigint | number,
         search_func: GLib.CompareDataFunc,
         mode: SearchMode | null,
         search_data: any,
@@ -2090,7 +2090,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface IteratorFoldFunction {
-        (item: any, ret: GObject.Value | any): boolean;
+        (item: any, ret: unknown): boolean;
     }
     /**
      * @gir-type Callback
@@ -2291,13 +2291,13 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface StructureForeachFunc {
-        (field_id: GLib.Quark, value: GObject.Value | any): boolean;
+        (field_id: GLib.Quark, value: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface StructureMapFunc {
-        (field_id: GLib.Quark, value: GObject.Value | any): boolean;
+        (field_id: GLib.Quark, value: unknown): boolean;
     }
     /**
      * @gir-type Callback
@@ -2309,7 +2309,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface TagMergeFunc {
-        (dest: GObject.Value | any, src: GObject.Value | any): void;
+        (dest: unknown, src: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -2339,37 +2339,37 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface ValueCompareFunc {
-        (value1: GObject.Value | any, value2: GObject.Value | any): number;
+        (value1: unknown, value2: unknown): number;
     }
     /**
      * @gir-type Callback
      */
     interface ValueDeserializeFunc {
-        (dest: GObject.Value | any, s: string): boolean;
+        (dest: unknown, s: string): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface ValueIntersectFunc {
-        (dest: GObject.Value | any, value1: GObject.Value | any, value2: GObject.Value | any): boolean;
+        (dest: unknown, value1: unknown, value2: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface ValueSerializeFunc {
-        (value1: GObject.Value | any): string;
+        (value1: unknown): string;
     }
     /**
      * @gir-type Callback
      */
     interface ValueSubtractFunc {
-        (dest: GObject.Value | any, minuend: GObject.Value | any, subtrahend: GObject.Value | any): boolean;
+        (dest: unknown, minuend: unknown, subtrahend: unknown): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface ValueUnionFunc {
-        (dest: GObject.Value | any, value1: GObject.Value | any, value2: GObject.Value | any): boolean;
+        (dest: unknown, value1: unknown, value2: unknown): boolean;
     }
     /**
      * @gir-type Alias
@@ -3265,7 +3265,7 @@ export namespace Gst {
         // Constructor properties interface
 
         interface ConstructorProps extends Element.ConstructorProps {
-            blocksize: number;
+            blocksize: bigint | number;
             do_timestamp: boolean;
             doTimestamp: boolean;
             num_buffers: number;
@@ -3284,7 +3284,7 @@ export namespace Gst {
         // Properties
 
         get blocksize(): number;
-        set blocksize(val: number);
+        set blocksize(val: bigint | number);
         get do_timestamp(): boolean;
         set do_timestamp(val: boolean);
         get doTimestamp(): boolean;
@@ -3456,7 +3456,7 @@ export namespace Gst {
         /**
          * @param blocksize
          */
-        set_blocksize(blocksize: number): void;
+        set_blocksize(blocksize: bigint | number): void;
         get_blocksize(): number;
         /**
          * @param timestamp
@@ -7138,7 +7138,7 @@ export namespace Gst {
         flags: number;
         filename: string;
         basename: string;
-        file_size: number;
+        file_size: bigint | number;
         file_mtime: number;
         registered: boolean;
 

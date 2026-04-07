@@ -906,7 +906,7 @@ export namespace Ide {
      */
     function uri_parse_params(
         params: string,
-        length: number,
+        length: bigint | number,
         separator: number,
         case_insensitive: boolean,
     ): GLib.HashTable<string, string>;
@@ -2912,7 +2912,7 @@ export namespace Ide {
          * Sets the maximum file size in bytes, that will be loaded by the {@link Ide.BufferManager}.
          * @param max_file_size The maximum file size in bytes, or zero for no limit.
          */
-        set_max_file_size(max_file_size: number): void;
+        set_max_file_size(max_file_size: bigint | number): void;
         /**
          * Gets the type of the items in `list`.
          *
@@ -3513,8 +3513,8 @@ export namespace Ide {
             lastBuildTime: GLib.DateTime;
             message: string;
             pipeline: BuildPipeline;
-            running_time: number;
-            runningTime: number;
+            running_time: bigint | number;
+            runningTime: bigint | number;
         }
     }
 
@@ -6024,7 +6024,7 @@ export namespace Ide {
          * @param message
          * @param message_len
          */
-        log(stream: BuildLogStream | null, message: string, message_len: number): void;
+        log(stream: BuildLogStream | null, message: string, message_len: bigint | number): void;
         /**
          * This function will begin logging `subprocess` by reading from the
          * stdout and stderr streams of the subprocess. You must have created
@@ -8312,7 +8312,7 @@ export namespace Ide {
          * @param key
          * @param value
          */
-        set_internal_int64(key: string, value: number): void;
+        set_internal_int64(key: string, value: bigint | number): void;
         /**
          * Sets the value for `key` to `instance`.
          * @param key the key to set
@@ -13686,7 +13686,7 @@ export namespace Ide {
          * @param data
          * @param length
          */
-        load_from_data(data: string, length: number): boolean;
+        load_from_data(data: string, length: bigint | number): boolean;
         /**
          * @param file
          * @param cancellable
@@ -45230,7 +45230,11 @@ export namespace Ide {
          * @param total_num_bytes
          * @param user_data
          */
-        static file_progress_callback(current_num_bytes: number, total_num_bytes: number, user_data?: any | null): void;
+        static file_progress_callback(
+            current_num_bytes: bigint | number,
+            total_num_bytes: bigint | number,
+            user_data?: any | null,
+        ): void;
         /**
          * @param status
          * @param progress
@@ -49560,7 +49564,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            'count-set': (arg0: SearchProvider, arg1: number) => void;
+            'count-set': (arg0: SearchProvider, arg1: bigint | number) => void;
             /**
              * @signal
              * @run-last
@@ -49633,7 +49637,7 @@ export namespace Ide {
          * @param search_terms
          * @param max_results
          */
-        execute(search_terms: string, max_results: number): void;
+        execute(search_terms: string, max_results: bigint | number): void;
         get_max_results(): number;
         /**
          * Retrieve the list of providers for the search context.
@@ -49653,7 +49657,7 @@ export namespace Ide {
          * @param provider
          * @param count
          */
-        set_provider_count(provider: SearchProvider, count: number): void;
+        set_provider_count(provider: SearchProvider, count: bigint | number): void;
     }
 
     namespace SearchEngine {
@@ -68847,7 +68851,7 @@ export namespace Ide {
          * @param index
          * @returns An {@link Ide.Diagnostic}.
          */
-        index(index: number): Diagnostic;
+        index(index: bigint | number): Diagnostic;
         /**
          * Copies the contents of `other` into `self`.
          *
@@ -69072,18 +69076,8 @@ export namespace Ide {
         // Fields
 
         contents: string;
-        length: number;
-        pos: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                contents: string;
-                length: number;
-                pos: number;
-            }>,
-        );
+        length: bigint | number;
+        pos: bigint | number;
 
         // Methods
 
@@ -69091,7 +69085,7 @@ export namespace Ide {
          * @param contents
          * @param length
          */
-        init(contents: string, length: number): void;
+        init(contents: string, length: bigint | number): void;
         /**
          * Moves forward to the beginning of the next line in the buffer. No changes to the buffer
          * are made, and the result is a pointer within the string passed as `contents` in
@@ -69100,7 +69094,7 @@ export namespace Ide {
          * @param length a location for the length of the line in bytes.
          * @returns The beginning of the line within the buffer.
          */
-        next(length: number): string;
+        next(length: bigint | number): string;
     }
 
     /**
@@ -69283,8 +69277,8 @@ export namespace Ide {
 
         context: SearchContext;
         provider: SearchProvider;
-        max_results: number;
-        count: number;
+        max_results: bigint | number;
+        count: bigint | number;
 
         // Methods
 
@@ -69298,7 +69292,7 @@ export namespace Ide {
          * @param provider
          * @param max_results
          */
-        init(context: SearchContext, provider: SearchProvider, max_results: number): void;
+        init(context: SearchContext, provider: SearchProvider, max_results: bigint | number): void;
         /**
          * @param result
          */
@@ -69675,7 +69669,7 @@ export namespace Ide {
          */
         static parse_params(
             params: string,
-            length: number,
+            length: bigint | number,
             separator: number,
             case_insensitive: boolean,
         ): GLib.HashTable<string, string>;
@@ -72231,7 +72225,7 @@ export namespace Ide {
             vfunc_populate(
                 context: SearchContext,
                 search_terms: string,
-                max_results: number,
+                max_results: bigint | number,
                 cancellable?: Gio.Cancellable | null,
             ): void;
         }
@@ -72274,7 +72268,7 @@ export namespace Ide {
         populate(
             context: SearchContext,
             search_terms: string,
-            max_results: number,
+            max_results: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): void;
     }

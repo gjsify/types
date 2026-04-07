@@ -96,7 +96,7 @@ export namespace GstController {
      * @gir-type Callback
      */
     interface DirectControlBindingConvertGValue {
-        (self: DirectControlBinding, src_value: number, dest_value: GObject.Value | any): void;
+        (self: DirectControlBinding, src_value: number, dest_value: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -382,7 +382,7 @@ export namespace GstController {
             amplitude: number;
             frequency: number;
             offset: number;
-            timeshift: number;
+            timeshift: bigint | number;
             waveform: LFOWaveform;
         }
     }
@@ -428,7 +428,7 @@ export namespace GstController {
          * "(GST_SECOND / frequency) - n".
          */
         get timeshift(): number;
-        set timeshift(val: number);
+        set timeshift(val: bigint | number);
         /**
          * Specifies the waveform that should be used for this {@link GstController.LFOControlSource}.
          */
@@ -693,7 +693,7 @@ export namespace GstController {
         // Constructor properties interface
 
         interface ConstructorProps extends TimedValueControlSource.ConstructorProps {
-            tolerance: number;
+            tolerance: bigint | number;
         }
     }
 
@@ -714,7 +714,7 @@ export namespace GstController {
         // Properties
 
         get tolerance(): number;
-        set tolerance(val: number);
+        set tolerance(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -774,15 +774,6 @@ export namespace GstController {
 
         timestamp: Gst.ClockTime;
         value: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                timestamp: Gst.ClockTime;
-                value: number;
-            }>,
-        );
 
         // Methods
 

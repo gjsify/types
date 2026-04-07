@@ -5162,8 +5162,8 @@ export namespace Gdk {
         window: Window,
         property: Atom,
         type: Atom,
-        offset: number,
-        length: number,
+        offset: bigint | number,
+        length: bigint | number,
         pdelete: number,
     ): [boolean, Atom, number, Uint8Array];
     /**
@@ -7538,9 +7538,9 @@ export namespace Gdk {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             axes: AxisFlags;
-            hardware_id: number;
-            hardwareId: number;
-            serial: number;
+            hardware_id: bigint | number;
+            hardwareId: bigint | number;
+            serial: bigint | number;
             tool_type: DeviceToolType;
             toolType: DeviceToolType;
         }
@@ -8748,7 +8748,7 @@ export namespace Gdk {
          * interval after the last presentation time, and later than `base_time`.
          * @param base_time base time for determining a presentaton time
          */
-        get_refresh_info(base_time: number): [number, number];
+        get_refresh_info(base_time: bigint | number): [number, number];
         /**
          * Retrieves a {@link Gdk.FrameTimings} object holding timing information
          * for the current frame or a recent frame. The {@link Gdk.FrameTimings}
@@ -8756,7 +8756,7 @@ export namespace Gdk {
          * @param frame_counter the frame counter value identifying the frame to  be received.
          * @returns the {@link Gdk.FrameTimings} object for  the specified frame, or `null` if it is not available. See  `gdk_frame_clock_get_history_start()`.
          */
-        get_timings(frame_counter: number): FrameTimings | null;
+        get_timings(frame_counter: bigint | number): FrameTimings | null;
         /**
          * Asks the frame clock to run a particular phase. The signal
          * corresponding the requested phase will be emitted the next

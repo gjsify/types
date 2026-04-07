@@ -85,7 +85,7 @@ export namespace MediaArt {
      * @returns `true` if conversion was successful, otherwise `false` is returned if `error` is set.
      * @since 0.1.0
      */
-    function buffer_to_jpeg(buffer: number, len: number, buffer_mime: string, target: string): boolean;
+    function buffer_to_jpeg(buffer: number, len: bigint | number, buffer_mime: string, target: string): boolean;
     /**
      * @returns A {@link GLib.Quark} representing the type of {@link GLib.Error} for {@link MediaArt.Process} failures.
      * @since 0.2.0

@@ -483,7 +483,7 @@ export namespace Ags {
      * @param byte_order reverse order
      * @since 3.0.0
      */
-    function buffer_util_char_buffer_write_s64(cbuffer: number, value: number, byte_order: number): void;
+    function buffer_util_char_buffer_write_s64(cbuffer: number, value: bigint | number, byte_order: number): void;
     /**
      * Write a gint8 quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -547,7 +547,7 @@ export namespace Ags {
      * @returns the guchar buffer
      * @since 3.0.0
      */
-    function buffer_util_s64_to_char_buffer(buffer: number, buffer_length: number): number;
+    function buffer_util_s64_to_char_buffer(buffer: bigint | number, buffer_length: number): number;
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gint8 buffer
@@ -3927,7 +3927,7 @@ export namespace Ags {
 
         gobject: GObject.Object;
         authentication: any[];
-        session_timeout: number;
+        session_timeout: bigint | number;
 
         // Constructors
 
@@ -4360,7 +4360,7 @@ export namespace Ags {
          * @param buffer the data buffer
          * @param buffer_length the size of the buffer
          */
-        load_from_data(buffer: string, buffer_length: number): void;
+        load_from_data(buffer: string, buffer_length: bigint | number): void;
         /**
          * Load configuration from `filename`.
          * @param filename the configuration file
@@ -4382,7 +4382,7 @@ export namespace Ags {
          * @param buffer the data buffer
          * @param buffer_length the size of the buffer
          */
-        to_data(buffer: string, buffer_length: number): void;
+        to_data(buffer: string, buffer_length: bigint | number): void;
     }
 
     namespace Controller {
@@ -8437,7 +8437,7 @@ export namespace Ags {
         thread: Thread;
         flags: number;
         safe_data: any;
-        handler: number;
+        handler: bigint | number;
 
         // Constructors
 
@@ -12960,8 +12960,8 @@ export namespace Ags {
         uuid: UUID;
         current_sync_tic: number;
         tic_delay: number;
-        last_run_start: number;
-        last_run_end: number;
+        last_run_start: bigint | number;
+        last_run_end: bigint | number;
         start_queue: any[];
 
         // Constructors
@@ -14776,7 +14776,7 @@ export namespace Ags {
          * Set AGS offset as unsigned 64 bit integer.
          * @param ags_offset the AGS offset
          */
-        set_ags_offset(ags_offset: number): void;
+        set_ags_offset(ags_offset: bigint | number): void;
         /**
          * Set `flags` of `timestamp`.
          * @param flags the flags
@@ -14786,7 +14786,7 @@ export namespace Ags {
          * Set unix time.
          * @param unix_time the unix time value
          */
-        set_unix_time(unix_time: number): void;
+        set_unix_time(unix_time: bigint | number): void;
         /**
          * Test `flags` to be set.
          * @param flags the flags
@@ -18851,7 +18851,7 @@ export namespace Ags {
          * @param value the gint64 value
          * @param byte_order reverse order
          */
-        static char_buffer_write_s64(cbuffer: number, value: number, byte_order: number): void;
+        static char_buffer_write_s64(cbuffer: number, value: bigint | number, byte_order: number): void;
         /**
          * Write a gint8 quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -18900,7 +18900,7 @@ export namespace Ags {
          * @param buffer the gint64 buffer
          * @param buffer_length the buffer length
          */
-        static s64_to_char_buffer(buffer: number, buffer_length: number): number;
+        static s64_to_char_buffer(buffer: bigint | number, buffer_length: number): number;
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint8 buffer
@@ -19246,7 +19246,7 @@ export namespace Ags {
          * @param value the value
          * @returns the newly allocated string
          */
-        put_int64(value: number): string;
+        put_int64(value: bigint | number): string;
         /**
          * Put `str` to string.
          * @param str the string
@@ -19265,7 +19265,7 @@ export namespace Ags {
          * @param value the value
          * @returns the newly allocated string
          */
-        put_uint64(value: number): string;
+        put_uint64(value: bigint | number): string;
         /**
          * @param file_version
          */
@@ -21651,7 +21651,7 @@ export namespace Ags {
              * @param whence the direction, see {@link Ags.SeekType}-enum
              * @virtual
              */
-            vfunc_seek(offset: number, whence: number): void;
+            vfunc_seek(offset: bigint | number, whence: number): void;
         }
 
         // Constructor properties interface
@@ -21674,7 +21674,7 @@ export namespace Ags {
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: number, whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
     }
 
     export const Seekable: SeekableNamespace & {
@@ -22834,19 +22834,19 @@ export namespace Ags {
              * @param midi_duration the duration
              * @virtual
              */
-            vfunc_change_midi_duration(midi_duration: number): void;
+            vfunc_change_midi_duration(midi_duration: bigint | number): void;
             /**
              * Change notation duration.
              * @param notation_duration the duration
              * @virtual
              */
-            vfunc_change_notation_duration(notation_duration: number): void;
+            vfunc_change_notation_duration(notation_duration: bigint | number): void;
             /**
              * Change sequencer duration.
              * @param sequencer_duration the duration
              * @virtual
              */
-            vfunc_change_sequencer_duration(sequencer_duration: number): void;
+            vfunc_change_sequencer_duration(sequencer_duration: bigint | number): void;
             /**
              * Change tact.
              * @param new_tact the new tact
@@ -22859,7 +22859,7 @@ export namespace Ags {
              * @param wave_duration the duration
              * @virtual
              */
-            vfunc_change_wave_duration(wave_duration: number): void;
+            vfunc_change_wave_duration(wave_duration: bigint | number): void;
             /**
              * Get bpm.
              * @virtual
@@ -22917,17 +22917,17 @@ export namespace Ags {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: number): void;
+        change_midi_duration(midi_duration: bigint | number): void;
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: number): void;
+        change_notation_duration(notation_duration: bigint | number): void;
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: number): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
         /**
          * Change tact.
          * @param new_tact the new tact
@@ -22938,7 +22938,7 @@ export namespace Ags {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: number): void;
+        change_wave_duration(wave_duration: bigint | number): void;
         /**
          * Get bpm.
          * @returns the bpm

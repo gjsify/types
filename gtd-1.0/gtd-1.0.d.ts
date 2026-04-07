@@ -7586,7 +7586,7 @@ export namespace Gtd {
             dueDate: GLib.DateTime;
             important: boolean;
             list: TaskList;
-            position: number;
+            position: bigint | number;
             title: string;
         }
     }
@@ -7616,7 +7616,7 @@ export namespace Gtd {
         get list(): TaskList;
         set list(val: TaskList);
         get position(): number;
-        set position(val: number);
+        set position(val: bigint | number);
         get title(): string;
         set title(val: string);
 
@@ -7749,7 +7749,7 @@ export namespace Gtd {
          * @param position the priority of `task`, or -1
          * @virtual
          */
-        vfunc_set_position(position: number): void;
+        vfunc_set_position(position: bigint | number): void;
         /**
          * Updates the title of `task`. The string is stripped off of
          * leading spaces.
@@ -7871,7 +7871,7 @@ export namespace Gtd {
          * the same position value.
          * @param position the priority of `task`, or -1
          */
-        set_position(position: number): void;
+        set_position(position: bigint | number): void;
         /**
          * Updates the title of `task`. The string is stripped off of
          * leading spaces.

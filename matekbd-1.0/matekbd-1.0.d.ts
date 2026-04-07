@@ -1423,7 +1423,7 @@ export namespace Matekbd {
         layout_names_as_group_names: boolean;
         load_extra_items: boolean;
         settings: Gio.Settings;
-        config_listener_id: number;
+        config_listener_id: bigint | number;
         engine: Xkl.Engine;
 
         // Methods
@@ -1480,7 +1480,7 @@ export namespace Matekbd {
         settings: Gio.Settings;
         image_filenames: any[];
         icon_theme: Gtk.IconTheme;
-        config_listener_id: number;
+        config_listener_id: bigint | number;
         engine: Xkl.Engine;
 
         // Methods
@@ -1530,7 +1530,7 @@ export namespace Matekbd {
         layouts_variants: string;
         options: string;
         settings: Gio.Settings;
-        config_listener_id: number;
+        config_listener_id: bigint | number;
         engine: Xkl.Engine;
 
         // Static methods

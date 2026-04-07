@@ -235,11 +235,11 @@ export namespace RygelRendererGst {
         /**
          * @param time
          */
-        seek(time: number): boolean;
+        seek(time: bigint | number): boolean;
         /**
          * @param bytes
          */
-        seek_bytes(bytes: number): boolean;
+        seek_bytes(bytes: bigint | number): boolean;
         get_protocols(): string[];
         get_mime_types(): string[];
         /**
@@ -300,12 +300,12 @@ export namespace RygelRendererGst {
          * @param time
          * @virtual
          */
-        vfunc_seek(time: number): boolean;
+        vfunc_seek(time: bigint | number): boolean;
         /**
          * @param bytes
          * @virtual
          */
-        vfunc_seek_bytes(bytes: number): boolean;
+        vfunc_seek_bytes(bytes: bigint | number): boolean;
         /**
          * @virtual
          */

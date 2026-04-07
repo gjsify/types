@@ -1606,11 +1606,11 @@ export namespace Libxfce4windowing {
          * @param seat
          * @param event_timestamp
          */
-        activate(seat: Seat, event_timestamp: number): boolean;
+        activate(seat: Seat, event_timestamp: bigint | number): boolean;
         /**
          * @param event_timestamp
          */
-        close(event_timestamp: number): boolean;
+        close(event_timestamp: bigint | number): boolean;
         /**
          * Fetches `window`'s application.
          * @returns An {@link Libxfce4windowing.Application} instance, with a reference owned by `window`.

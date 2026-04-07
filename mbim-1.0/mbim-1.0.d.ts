@@ -8052,30 +8052,14 @@ export namespace Mbim {
         // Fields
 
         provider_id: string;
-        nci: number;
+        nci: bigint | number;
         physical_cell_id: number;
         nrarfcn: number;
         tac: number;
         rsrp: number;
         rsrq: number;
         sinr: number;
-        timing_advance: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                provider_id: string;
-                nci: number;
-                physical_cell_id: number;
-                nrarfcn: number;
-                tac: number;
-                rsrp: number;
-                rsrq: number;
-                sinr: number;
-                timing_advance: number;
-            }>,
-        );
+        timing_advance: bigint | number;
 
         // Static methods
 
@@ -8403,28 +8387,13 @@ export namespace Mbim {
         // Fields
 
         serving_cell_info: number;
-        center_frequency: number;
+        center_frequency: bigint | number;
         bandwidth: number;
         rsrp: number;
         rsrq: number;
         sinr: number;
         rssi: number;
         connection_status: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                serving_cell_info: number;
-                center_frequency: number;
-                bandwidth: number;
-                rsrp: number;
-                rsrq: number;
-                sinr: number;
-                rssi: number;
-                connection_status: number;
-            }>,
-        );
 
         // Static methods
 

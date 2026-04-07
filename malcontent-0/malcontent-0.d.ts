@@ -249,7 +249,7 @@ export namespace Malcontent {
      * @returns true if `domain_name` is a valid domain_name, false otherwise
      * @since 0.14.0
      */
-    function web_filter_validate_domain_name_len(domain_name: string, max_len: number): boolean;
+    function web_filter_validate_domain_name_len(domain_name: string, max_len: bigint | number): boolean;
     /**
      * Validate a potential filter list ID.
      *
@@ -285,7 +285,7 @@ export namespace Malcontent {
      * @returns true if `hostname` is a valid hostname, false otherwise
      * @since 0.14.0
      */
-    function web_filter_validate_hostname_len(hostname: string, max_len: number): boolean;
+    function web_filter_validate_hostname_len(hostname: string, max_len: bigint | number): boolean;
     /**
      * @gir-type Flags
      */
@@ -350,7 +350,7 @@ export namespace Malcontent {
              * @since 0.3.0
              * @run-last
              */
-            'app-filter-changed': (arg0: number) => void;
+            'app-filter-changed': (arg0: bigint | number) => void;
             /**
              * Emitted when the session limits stored for a user change.
              *
@@ -360,7 +360,7 @@ export namespace Malcontent {
              * @since 0.14.0
              * @run-last
              */
-            'session-limits-changed': (arg0: number) => void;
+            'session-limits-changed': (arg0: bigint | number) => void;
             /**
              * Emitted when the web filter stored for a user changes.
              *
@@ -370,7 +370,7 @@ export namespace Malcontent {
              * @since 0.14.0
              * @run-last
              */
-            'web-filter-changed': (arg0: number) => void;
+            'web-filter-changed': (arg0: bigint | number) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 
@@ -924,8 +924,8 @@ export namespace Malcontent {
             icon_path: string;
             iconPath: string;
             locale: string;
-            login_time: number;
-            loginTime: number;
+            login_time: bigint | number;
+            loginTime: bigint | number;
             real_name: string;
             realName: string;
             uid: number;
@@ -1863,7 +1863,10 @@ export namespace Malcontent {
          * @param active_session_time_today_secs total time the user has spent in an active   session so far today, in seconds
          * @returns true if the user this `limits` corresponds to is allowed to be in   an active session at the given time; false otherwise
          */
-        check_time_remaining(now_dt: GLib.DateTime, active_session_time_today_secs: number): [boolean, number, boolean];
+        check_time_remaining(
+            now_dt: GLib.DateTime,
+            active_session_time_today_secs: bigint | number,
+        ): [boolean, number, boolean];
         /**
          * Check whether session limits configurations `a` and `b` are equal.
          * @param b a session limits configuration
@@ -2129,7 +2132,7 @@ export namespace Malcontent {
          * @param domain_name a potential domain_name
          * @param max_len length (in bytes) to check, or until the first nul byte is reached
          */
-        static validate_domain_name_len(domain_name: string, max_len: number): boolean;
+        static validate_domain_name_len(domain_name: string, max_len: bigint | number): boolean;
         /**
          * Validate a potential filter list ID.
          *
@@ -2159,7 +2162,7 @@ export namespace Malcontent {
          * @param hostname a potential hostname
          * @param max_len length (in bytes) to check, or until the first nul byte is reached
          */
-        static validate_hostname_len(hostname: string, max_len: number): boolean;
+        static validate_hostname_len(hostname: string, max_len: bigint | number): boolean;
 
         // Methods
 

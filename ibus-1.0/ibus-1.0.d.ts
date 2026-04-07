@@ -11839,7 +11839,7 @@ export namespace IBus {
         // Fields
 
         path: string;
-        mtime: number;
+        mtime: bigint | number;
         is_dir: boolean;
         is_exist: boolean;
 
@@ -14683,7 +14683,7 @@ export namespace IBus {
             sameScreen: boolean;
             send_event: number;
             sendEvent: number;
-            serial: number;
+            serial: bigint | number;
             state: number;
             string: string;
             subwindow: number;

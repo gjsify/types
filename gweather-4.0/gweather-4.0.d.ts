@@ -819,7 +819,7 @@ export namespace GWeather {
         /**
          * @param phases
          */
-        get_upcoming_moonphases(phases: number): boolean;
+        get_upcoming_moonphases(phases: bigint | number): boolean;
         get_update(): string;
         /**
          * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}

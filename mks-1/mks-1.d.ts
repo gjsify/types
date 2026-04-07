@@ -2839,7 +2839,7 @@ export namespace Mks {
          */
         send_event(
             kind: TouchEventKind | null,
-            num_slot: number,
+            num_slot: bigint | number,
             x: number,
             y: number,
             cancellable?: Gio.Cancellable | null,
@@ -2855,7 +2855,7 @@ export namespace Mks {
          */
         send_event(
             kind: TouchEventKind | null,
-            num_slot: number,
+            num_slot: bigint | number,
             x: number,
             y: number,
             cancellable: Gio.Cancellable | null,
@@ -2872,7 +2872,7 @@ export namespace Mks {
          */
         send_event(
             kind: TouchEventKind | null,
-            num_slot: number,
+            num_slot: bigint | number,
             x: number,
             y: number,
             cancellable?: Gio.Cancellable | null,
@@ -2895,7 +2895,7 @@ export namespace Mks {
          */
         send_event_sync(
             kind: TouchEventKind | null,
-            num_slot: number,
+            num_slot: bigint | number,
             x: number,
             y: number,
             cancellable?: Gio.Cancellable | null,

@@ -7513,7 +7513,7 @@ export namespace Handy {
          * @param widget a child of `self`
          * @param duration animation duration, in milliseconds
          */
-        scroll_to_full(widget: Gtk.Widget, duration: number): void;
+        scroll_to_full(widget: Gtk.Widget, duration: bigint | number): void;
         /**
          * Sets whether to allow swiping for more than one page at a time.
          * @param allow_long_swipes whether to allow long swipes
@@ -8055,7 +8055,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        emit_child_switched(index: number, duration: number): void;
+        emit_child_switched(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @returns the cancel progress, unitless
@@ -8110,7 +8110,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        switch_child(index: number, duration: number): void;
+        switch_child(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @virtual
@@ -8167,7 +8167,7 @@ export namespace Handy {
          * @param duration animation duration, in milliseconds
          * @virtual
          */
-        vfunc_switch_child(index: number, duration: number): void;
+        vfunc_switch_child(index: number, duration: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -19821,7 +19821,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        emit_child_switched(index: number, duration: number): void;
+        emit_child_switched(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @returns the cancel progress, unitless
@@ -19876,7 +19876,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        switch_child(index: number, duration: number): void;
+        switch_child(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @virtual
@@ -19933,7 +19933,7 @@ export namespace Handy {
          * @param duration animation duration, in milliseconds
          * @virtual
          */
-        vfunc_switch_child(index: number, duration: number): void;
+        vfunc_switch_child(index: number, duration: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -29900,7 +29900,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        emit_child_switched(index: number, duration: number): void;
+        emit_child_switched(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @returns the cancel progress, unitless
@@ -29955,7 +29955,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        switch_child(index: number, duration: number): void;
+        switch_child(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @virtual
@@ -30012,7 +30012,7 @@ export namespace Handy {
          * @param duration animation duration, in milliseconds
          * @virtual
          */
-        vfunc_switch_child(index: number, duration: number): void;
+        vfunc_switch_child(index: number, duration: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -37653,7 +37653,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        emit_child_switched(index: number, duration: number): void;
+        emit_child_switched(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @returns the cancel progress, unitless
@@ -37708,7 +37708,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        switch_child(index: number, duration: number): void;
+        switch_child(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @virtual
@@ -37765,7 +37765,7 @@ export namespace Handy {
          * @param duration animation duration, in milliseconds
          * @virtual
          */
-        vfunc_switch_child(index: number, duration: number): void;
+        vfunc_switch_child(index: number, duration: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -51685,7 +51685,7 @@ export namespace Handy {
              * @since 1.0
              * @run-first
              */
-            'end-swipe': (arg0: number, arg1: number) => void;
+            'end-swipe': (arg0: bigint | number, arg1: number) => void;
             /**
              * This signal is emitted every time the progress value changes.
              * @signal
@@ -55315,7 +55315,7 @@ export namespace Handy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            value: GObject.Value;
+            value: GObject.Value | any;
         }
     }
 
@@ -55337,7 +55337,7 @@ export namespace Handy {
          * @since 1.0
          * @construct-only
          */
-        get value(): GObject.Value;
+        get value(): unknown;
 
         /**
          * Compile-time signal type information.
@@ -58873,7 +58873,7 @@ export namespace Handy {
              * @param duration animation duration, in milliseconds
              * @virtual
              */
-            vfunc_switch_child(index: number, duration: number): void;
+            vfunc_switch_child(index: number, duration: bigint | number): void;
         }
 
         // Constructor properties interface
@@ -58907,7 +58907,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        emit_child_switched(index: number, duration: number): void;
+        emit_child_switched(index: number, duration: bigint | number): void;
         /**
          * Gets the progress `self` will snap back to after the gesture is canceled.
          * @returns the cancel progress, unitless
@@ -58962,7 +58962,7 @@ export namespace Handy {
          * @param index the index of the child to switch to
          * @param duration animation duration, in milliseconds
          */
-        switch_child(index: number, duration: number): void;
+        switch_child(index: number, duration: bigint | number): void;
     }
 
     export const Swipeable: SwipeableNamespace & {

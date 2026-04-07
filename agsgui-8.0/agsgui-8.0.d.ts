@@ -8645,7 +8645,7 @@ export namespace AgsGui {
         flags: FileEntryFlags;
         key_mask: FileEntryKeyMask;
         current_keyval: number;
-        keyval_timestamp: number;
+        keyval_timestamp: bigint | number;
         im_context: Gtk.IMContext;
         cursor_position: number;
         max_filename_length: number;
@@ -10999,7 +10999,7 @@ export namespace AgsGui {
 
         widget: Gtk.Widget;
         orientation: Gtk.Orientation;
-        animation_time: number;
+        animation_time: bigint | number;
 
         // Constructors
 
@@ -15226,7 +15226,7 @@ export namespace AgsGui {
 
         widget: Gtk.Widget;
         active: boolean;
-        animation_time: number;
+        animation_time: bigint | number;
 
         // Constructors
 

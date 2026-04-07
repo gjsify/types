@@ -155,7 +155,7 @@ export namespace Playerctl {
              * @signal
              * @run-first
              */
-            seeked: (arg0: number) => void;
+            seeked: (arg0: bigint | number) => void;
             /**
              * Emitted when the shuffle status changes.
              * @signal
@@ -475,7 +475,7 @@ export namespace Playerctl {
             playerInstance: string;
             player_name: string;
             playerName: string;
-            position: number;
+            position: bigint | number;
             shuffle: boolean;
             source: Source;
             status: string;
@@ -706,7 +706,7 @@ export namespace Playerctl {
          * Command the player to seek forward by offset given in microseconds.
          * @param offset the offset to seek forward to in microseconds
          */
-        seek(offset: number): void;
+        seek(offset: bigint | number): void;
         /**
          * Set the loop status of the player. Can be set to either None, Track, or Playlist.
          * @param status the requested {@link Playerctl.LoopStatus} to set the player to
@@ -716,7 +716,7 @@ export namespace Playerctl {
          * Sets the absolute position of the current track to the given position in microseconds.
          * @param position The absolute position in the track to set as the position
          */
-        set_position(position: number): void;
+        set_position(position: bigint | number): void;
         /**
          * Request to set the shuffle state of the player, either on or off.
          * @param shuffle whether to enable shuffle

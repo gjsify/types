@@ -1377,7 +1377,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -1397,7 +1397,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -1429,7 +1429,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -1449,7 +1449,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2157,16 +2157,7 @@ export namespace Jsonrpc {
         // Fields
 
         magic: MessageMagic;
-        valptr: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                magic: MessageMagic;
-                valptr: number;
-            }>,
-        );
+        valptr: bigint | number;
     }
 
     /**
@@ -2324,16 +2315,7 @@ export namespace Jsonrpc {
         // Fields
 
         magic: MessageMagic;
-        val: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                magic: MessageMagic;
-                val: number;
-            }>,
-        );
+        val: bigint | number;
     }
 
     /**

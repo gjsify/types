@@ -1406,7 +1406,7 @@ export namespace Rest {
          * @param len the length of `data`, or -1 if `data` is a nul-terminated string
          * @returns a new {@link Rest.XmlNode}, or `null` if the XML was invalid.
          */
-        parse_from_data(data: string, len: number): XmlNode;
+        parse_from_data(data: string, len: bigint | number): XmlNode;
     }
 
     /**

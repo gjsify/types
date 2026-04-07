@@ -1737,7 +1737,7 @@ export namespace GData {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
-            edited: number;
+            edited: bigint | number;
             key: string;
             role: string;
             scope_type: string;
@@ -3443,7 +3443,7 @@ export namespace GData {
         interface ConstructorProps extends Entry.ConstructorProps {
             anyone_can_add_self: boolean;
             anyoneCanAddSelf: boolean;
-            edited: number;
+            edited: bigint | number;
             guests_can_invite_others: boolean;
             guestsCanInviteOthers: boolean;
             guests_can_modify: boolean;
@@ -3956,10 +3956,10 @@ export namespace GData {
             showDeleted: boolean;
             single_events: boolean;
             singleEvents: boolean;
-            start_max: number;
-            startMax: number;
-            start_min: number;
-            startMin: number;
+            start_max: bigint | number;
+            startMax: bigint | number;
+            start_min: bigint | number;
+            startMin: bigint | number;
             timezone: string;
         }
     }
@@ -4044,7 +4044,7 @@ export namespace GData {
          * If not specified, the default {@link GData.CalendarQuery.start_max} is <literal>2031-01-01</literal>.
          */
         get start_max(): number;
-        set start_max(val: number);
+        set start_max(val: bigint | number);
         /**
          * Together with {@link GData.CalendarQuery.start_min}, creates a timespan such that only events within the timespan are returned
          *
@@ -4054,7 +4054,7 @@ export namespace GData {
          * If not specified, the default {@link GData.CalendarQuery.start_max} is <literal>2031-01-01</literal>.
          */
         get startMax(): number;
-        set startMax(val: number);
+        set startMax(val: bigint | number);
         /**
          * Together with {@link GData.CalendarQuery.start_max}, creates a timespan such that only events within the timespan are returned.
          *
@@ -4064,7 +4064,7 @@ export namespace GData {
          * If not specified, the default {@link GData.CalendarQuery.start_min} is <literal>1970-01-01</literal>.
          */
         get start_min(): number;
-        set start_min(val: number);
+        set start_min(val: bigint | number);
         /**
          * Together with {@link GData.CalendarQuery.start_max}, creates a timespan such that only events within the timespan are returned.
          *
@@ -4074,7 +4074,7 @@ export namespace GData {
          * If not specified, the default {@link GData.CalendarQuery.start_min} is <literal>1970-01-01</literal>.
          */
         get startMin(): number;
-        set startMin(val: number);
+        set startMin(val: bigint | number);
         /**
          * The current timezone. If this is not specified, all times are returned in UTC.
          * @since 0.2.0
@@ -4099,7 +4099,10 @@ export namespace GData {
 
         static ['new'](q?: string | null): CalendarQuery;
 
-        static new_with_limits(q: string | null, start_min: number, start_max: number): CalendarQuery;
+        static new_with_limits(q: string | null, start_min: bigint | number, start_max: bigint | number): CalendarQuery;
+        // Conflicted with GData.Query.new_with_limits
+
+        static new_with_limits(...args: never[]): any;
 
         // Signals
 
@@ -4195,7 +4198,7 @@ export namespace GData {
          * Set `start_max` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param start_max a new maximum start time (in seconds since the UNIX epoch), or <code class="literal">-1</code>
          */
-        set_start_max(start_max: number): void;
+        set_start_max(start_max: bigint | number): void;
         /**
          * Sets the {@link GData.CalendarQuery.start_min} property of the {@link GData.CalendarQuery}
          * to the new time/date, `start_min`.
@@ -4203,7 +4206,7 @@ export namespace GData {
          * Set `start_min` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param start_min a new minimum start time (in seconds since the UNIX epoch), or <code class="literal">-1</code>
          */
-        set_start_min(start_min: number): void;
+        set_start_min(start_min: bigint | number): void;
         /**
          * Sets the {@link GData.CalendarQuery.timezone} property of the {@link GData.CalendarQuery} to the new timezone string, `timezone`.
          *
@@ -6784,20 +6787,20 @@ export namespace GData {
         interface ConstructorProps extends Entry.ConstructorProps, AccessHandler.ConstructorProps {
             can_edit: boolean;
             canEdit: boolean;
-            file_size: number;
-            fileSize: number;
+            file_size: bigint | number;
+            fileSize: bigint | number;
             is_deleted: boolean;
             isDeleted: boolean;
             last_modified_by: Author;
             lastModifiedBy: Author;
-            last_viewed: number;
-            lastViewed: number;
-            quota_used: number;
-            quotaUsed: number;
+            last_viewed: bigint | number;
+            lastViewed: bigint | number;
+            quota_used: bigint | number;
+            quotaUsed: bigint | number;
             resource_id: string;
             resourceId: string;
-            shared_with_me_date: number;
-            sharedWithMeDate: number;
+            shared_with_me_date: bigint | number;
+            sharedWithMeDate: bigint | number;
             writers_can_invite: boolean;
             writersCanInvite: boolean;
         }
@@ -7840,10 +7843,10 @@ export namespace GData {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
-            quota_total: number;
-            quotaTotal: number;
-            quota_used: number;
-            quotaUsed: number;
+            quota_total: bigint | number;
+            quotaTotal: bigint | number;
+            quota_used: bigint | number;
+            quotaUsed: bigint | number;
         }
     }
 
@@ -9894,7 +9897,7 @@ export namespace GData {
             document: DocumentsDocument,
             slug: string,
             content_type: string,
-            content_length: number,
+            content_length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): UploadStream;
         /**
@@ -9970,7 +9973,7 @@ export namespace GData {
             document: DocumentsDocument | null,
             slug: string,
             content_type: string,
-            content_length: number,
+            content_length: bigint | number,
             query?: DocumentsUploadQuery | null,
             cancellable?: Gio.Cancellable | null,
         ): UploadStream;
@@ -11402,8 +11405,8 @@ export namespace GData {
             authorization_domain: AuthorizationDomain;
             authorizationDomain: AuthorizationDomain;
             cancellable: Gio.Cancellable;
-            content_length: number;
-            contentLength: number;
+            content_length: bigint | number;
+            contentLength: bigint | number;
             content_type: string;
             contentType: string;
             download_uri: string;
@@ -11622,7 +11625,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -11642,7 +11645,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -11674,7 +11677,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -11694,7 +11697,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12172,11 +12175,11 @@ export namespace GData {
             id: string;
             is_inserted: boolean;
             isInserted: boolean;
-            published: number;
+            published: bigint | number;
             rights: string;
             summary: string;
             title: string;
-            updated: number;
+            updated: bigint | number;
         }
     }
 
@@ -12502,7 +12505,7 @@ export namespace GData {
             title: string;
             total_results: number;
             totalResults: number;
-            updated: number;
+            updated: bigint | number;
         }
     }
 
@@ -20152,8 +20155,8 @@ export namespace GData {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
-            absolute_time: number;
-            absoluteTime: number;
+            absolute_time: bigint | number;
+            absoluteTime: bigint | number;
             is_absolute_time: boolean;
             isAbsoluteTime: boolean;
             method: string;
@@ -20180,7 +20183,7 @@ export namespace GData {
          * @since 0.4.0
          */
         get absolute_time(): number;
-        set absolute_time(val: number);
+        set absolute_time(val: bigint | number);
         /**
          * Absolute time at which the reminder should be issued.
          *
@@ -20189,7 +20192,7 @@ export namespace GData {
          * @since 0.4.0
          */
         get absoluteTime(): number;
-        set absoluteTime(val: number);
+        set absoluteTime(val: bigint | number);
         /**
          * Whether the reminder is specified as an absolute or relative time.
          *
@@ -20251,7 +20254,7 @@ export namespace GData {
 
         _init(...args: any[]): void;
 
-        static ['new'](method: string | null, absolute_time: number, relative_time: number): GDReminder;
+        static ['new'](method: string | null, absolute_time: bigint | number, relative_time: number): GDReminder;
 
         // Signals
 
@@ -20297,7 +20300,7 @@ export namespace GData {
          * Set `absolute_time` to <code class="literal">-1</code> to unset the property.
          * @param absolute_time the new absolute time, or <code class="literal">-1</code>
          */
-        set_absolute_time(absolute_time: number): void;
+        set_absolute_time(absolute_time: bigint | number): void;
         /**
          * Sets the {@link GData.GDReminder.method} property to `method`.
          *
@@ -20793,12 +20796,12 @@ export namespace GData {
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
-            end_time: number;
-            endTime: number;
+            end_time: bigint | number;
+            endTime: bigint | number;
             is_date: boolean;
             isDate: boolean;
-            start_time: number;
-            startTime: number;
+            start_time: bigint | number;
+            startTime: bigint | number;
             value_string: string;
             valueString: string;
         }
@@ -20822,7 +20825,7 @@ export namespace GData {
          * @since 0.4.0
          */
         get end_time(): number;
-        set end_time(val: number);
+        set end_time(val: bigint | number);
         /**
          * The title of a person within the when.
          *
@@ -20831,7 +20834,7 @@ export namespace GData {
          * @since 0.4.0
          */
         get endTime(): number;
-        set endTime(val: number);
+        set endTime(val: bigint | number);
         /**
          * A programmatic value that identifies the type of when.
          *
@@ -20858,7 +20861,7 @@ export namespace GData {
          * @since 0.4.0
          */
         get start_time(): number;
-        set start_time(val: number);
+        set start_time(val: bigint | number);
         /**
          * The name of the when.
          *
@@ -20867,7 +20870,7 @@ export namespace GData {
          * @since 0.4.0
          */
         get startTime(): number;
-        set startTime(val: number);
+        set startTime(val: bigint | number);
         /**
          * A simple string value used to name this when. It allows UIs to display a label such as "Work", "Volunteer",
          * "Professional Society", etc.
@@ -20904,7 +20907,7 @@ export namespace GData {
 
         _init(...args: any[]): void;
 
-        static ['new'](start_time: number, end_time: number, is_date: boolean): GDWhen;
+        static ['new'](start_time: bigint | number, end_time: bigint | number, is_date: boolean): GDWhen;
 
         // Signals
 
@@ -20964,7 +20967,7 @@ export namespace GData {
          * Set `end_time` to <code class="literal">-1</code> to unset the property.
          * @param end_time the new end time, or <code class="literal">-1</code>
          */
-        set_end_time(end_time: number): void;
+        set_end_time(end_time: bigint | number): void;
         /**
          * Sets the {@link GData.GDWhen.is_date} property to `is_date`.
          * @param is_date `true` if {@link GData.GDWhen.start_time} and {@link GData.GDWhen.end_time} should be dates rather than times, `false` otherwise
@@ -20974,7 +20977,7 @@ export namespace GData {
          * Sets the {@link GData.GDWhen.start_time} property to `start_time`.
          * @param start_time the new start time
          */
-        set_start_time(start_time: number): void;
+        set_start_time(start_time: bigint | number): void;
         /**
          * Sets the {@link GData.GDWhen.value_string} property to `value_string`.
          *
@@ -24877,9 +24880,9 @@ export namespace GData {
         interface ConstructorProps extends Parsable.ConstructorProps {
             content_type: string;
             contentType: string;
-            duration: number;
+            duration: bigint | number;
             expression: MediaExpression;
-            filesize: number;
+            filesize: bigint | number;
             height: number;
             is_default: boolean;
             isDefault: boolean;
@@ -25204,7 +25207,7 @@ export namespace GData {
 
         interface ConstructorProps extends Parsable.ConstructorProps {
             height: number;
-            time: number;
+            time: bigint | number;
             uri: string;
             width: number;
         }
@@ -26597,11 +26600,11 @@ export namespace GData {
         interface ConstructorProps extends Entry.ConstructorProps {
             album_id: string;
             albumId: string;
-            bytes_used: number;
-            bytesUsed: number;
+            bytes_used: bigint | number;
+            bytesUsed: bigint | number;
             comment_count: number;
             commentCount: number;
-            edited: number;
+            edited: bigint | number;
             is_commenting_enabled: boolean;
             isCommentingEnabled: boolean;
             latitude: number;
@@ -26613,7 +26616,7 @@ export namespace GData {
             num_photos_remaining: number;
             numPhotosRemaining: number;
             tags: string[];
-            timestamp: number;
+            timestamp: bigint | number;
             user: string;
             visibility: PicasaWebVisibility;
         }
@@ -26795,7 +26798,7 @@ export namespace GData {
          * @since 0.4.0
          */
         get timestamp(): number;
-        set timestamp(val: number);
+        set timestamp(val: bigint | number);
         /**
          * The username of the album owner.
          *
@@ -26971,7 +26974,7 @@ export namespace GData {
          * Set `timestamp` to <code class="literal">-1</code> to unset the property.
          * @param timestamp a UNIX timestamp, or <code class="literal">-1</code>
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
         /**
          * Sets the {@link GData.PicasaWebAlbum.visibility} property to `visibility`.
          * @param visibility the new album visibility level
@@ -27173,7 +27176,7 @@ export namespace GData {
             commentCount: number;
             credit: string;
             distance: number;
-            edited: number;
+            edited: bigint | number;
             exposure: number;
             file_id: string;
             fileId: string;
@@ -27186,15 +27189,15 @@ export namespace GData {
             imageUniqueId: string;
             is_commenting_enabled: boolean;
             isCommentingEnabled: boolean;
-            iso: number;
+            iso: bigint | number;
             latitude: number;
             longitude: number;
             make: string;
             model: string;
             rotation: number;
-            size: number;
+            size: bigint | number;
             tags: string[];
-            timestamp: number;
+            timestamp: bigint | number;
             version: string;
             video_status: string;
             videoStatus: string;
@@ -27481,7 +27484,7 @@ export namespace GData {
          * @since 0.4.0
          */
         get timestamp(): number;
-        set timestamp(val: number);
+        set timestamp(val: bigint | number);
         /**
          * The version number of the file. Version numbers are based on modification time, so they don't increment linearly.
          *
@@ -27756,7 +27759,7 @@ export namespace GData {
          * `timestamp` is <code class="literal">-1</code>, the property will be unset.
          * @param timestamp a UNIX timestamp, or <code class="literal">-1</code>
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
         /**
          * The content of the entry. This is mutually exclusive with {@link GData.Entry.content}.
          *
@@ -28775,10 +28778,10 @@ export namespace GData {
             max_photos_per_album: number;
             maxPhotosPerAlbum: number;
             nickname: string;
-            quota_current: number;
-            quotaCurrent: number;
-            quota_limit: number;
-            quotaLimit: number;
+            quota_current: bigint | number;
+            quotaCurrent: bigint | number;
+            quota_limit: bigint | number;
+            quotaLimit: bigint | number;
             thumbnail_uri: string;
             thumbnailUri: string;
             user: string;
@@ -28980,17 +28983,17 @@ export namespace GData {
             isStrict: boolean;
             max_results: number;
             maxResults: number;
-            published_max: number;
-            publishedMax: number;
-            published_min: number;
-            publishedMin: number;
+            published_max: bigint | number;
+            publishedMax: bigint | number;
+            published_min: bigint | number;
+            publishedMin: bigint | number;
             q: string;
             start_index: number;
             startIndex: number;
-            updated_max: number;
-            updatedMax: number;
-            updated_min: number;
-            updatedMin: number;
+            updated_max: bigint | number;
+            updatedMax: bigint | number;
+            updated_min: bigint | number;
+            updatedMin: bigint | number;
         }
     }
 
@@ -29076,22 +29079,22 @@ export namespace GData {
          * Upper bound on the entry publish date, exclusive.
          */
         get published_max(): number;
-        set published_max(val: number);
+        set published_max(val: bigint | number);
         /**
          * Upper bound on the entry publish date, exclusive.
          */
         get publishedMax(): number;
-        set publishedMax(val: number);
+        set publishedMax(val: bigint | number);
         /**
          * Lower bound on the entry publish date, inclusive.
          */
         get published_min(): number;
-        set published_min(val: number);
+        set published_min(val: bigint | number);
         /**
          * Lower bound on the entry publish date, inclusive.
          */
         get publishedMin(): number;
-        set publishedMin(val: number);
+        set publishedMin(val: bigint | number);
         /**
          * A full-text query string.
          *
@@ -29131,22 +29134,22 @@ export namespace GData {
          * Upper bound on the entry update date, exclusive.
          */
         get updated_max(): number;
-        set updated_max(val: number);
+        set updated_max(val: bigint | number);
         /**
          * Upper bound on the entry update date, exclusive.
          */
         get updatedMax(): number;
-        set updatedMax(val: number);
+        set updatedMax(val: bigint | number);
         /**
          * Lower bound on the entry update date, inclusive.
          */
         get updated_min(): number;
-        set updated_min(val: number);
+        set updated_min(val: bigint | number);
         /**
          * Lower bound on the entry update date, inclusive.
          */
         get updatedMin(): number;
-        set updatedMin(val: number);
+        set updatedMin(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -29316,14 +29319,14 @@ export namespace GData {
          * Set `published_max` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param published_max the new maximum publish time, or <code class="literal">-1</code>
          */
-        set_published_max(published_max: number): void;
+        set_published_max(published_max: bigint | number): void;
         /**
          * Sets the {@link GData.Query.published_min} property of the {@link GData.Query} to the new minimum publish time, `published_min`.
          *
          * Set `published_min` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param published_min the new minimum publish time, or <code class="literal">-1</code>
          */
-        set_published_min(published_min: number): void;
+        set_published_min(published_min: bigint | number): void;
         /**
          * Sets the {@link GData.Query.q} property of the {@link GData.Query} to the new query string, `q`.
          *
@@ -29344,14 +29347,14 @@ export namespace GData {
          * Set `updated_max` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param updated_max the new maximum update time, or <code class="literal">-1</code>
          */
-        set_updated_max(updated_max: number): void;
+        set_updated_max(updated_max: bigint | number): void;
         /**
          * Sets the {@link GData.Query.updated_min} property of the {@link GData.Query} to the new minimum update time, `updated_min`.
          *
          * Set `updated_min` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param updated_min the new minimum update time, or <code class="literal">-1</code>
          */
-        set_updated_min(updated_min: number): void;
+        set_updated_min(updated_min: bigint | number): void;
     }
 
     namespace Service {
@@ -30074,14 +30077,14 @@ export namespace GData {
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
-            completed_max: number;
-            completedMax: number;
-            completed_min: number;
-            completedMin: number;
-            due_max: number;
-            dueMax: number;
-            due_min: number;
-            dueMin: number;
+            completed_max: bigint | number;
+            completedMax: bigint | number;
+            completed_min: bigint | number;
+            completedMin: bigint | number;
+            due_max: bigint | number;
+            dueMax: bigint | number;
+            due_min: bigint | number;
+            dueMin: bigint | number;
             show_completed: boolean;
             showCompleted: boolean;
             show_deleted: boolean;
@@ -30107,56 +30110,56 @@ export namespace GData {
          * @since 0.15.0
          */
         get completed_max(): number;
-        set completed_max(val: number);
+        set completed_max(val: bigint | number);
         /**
          * Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          * @since 0.15.0
          */
         get completedMax(): number;
-        set completedMax(val: number);
+        set completedMax(val: bigint | number);
         /**
          * Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          * @since 0.15.0
          */
         get completed_min(): number;
-        set completed_min(val: number);
+        set completed_min(val: bigint | number);
         /**
          * Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          * @since 0.15.0
          */
         get completedMin(): number;
-        set completedMin(val: number);
+        set completedMin(val: bigint | number);
         /**
          * Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          * @since 0.15.0
          */
         get due_max(): number;
-        set due_max(val: number);
+        set due_max(val: bigint | number);
         /**
          * Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          * @since 0.15.0
          */
         get dueMax(): number;
-        set dueMax(val: number);
+        set dueMax(val: bigint | number);
         /**
          * Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          * @since 0.15.0
          */
         get due_min(): number;
-        set due_min(val: number);
+        set due_min(val: bigint | number);
         /**
          * Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional.
          * The default is not to filter by completion date.
          * @since 0.15.0
          */
         get dueMin(): number;
-        set dueMin(val: number);
+        set dueMin(val: bigint | number);
         /**
          * Flag indicating whether completed tasks are returned in the result. Optional. The default is `false`.
          * @since 0.15.0
@@ -30276,7 +30279,7 @@ export namespace GData {
          * Set `completed_max` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param completed_max upper bound for a task's completion date by UNIX timestamp, or  <code class="literal">-1</code>
          */
-        set_completed_max(completed_max: number): void;
+        set_completed_max(completed_max: bigint | number): void;
         /**
          * Sets the {@link GData.TasksQuery.completed_min} property of the {@link GData.TasksQuery}
          * to the new time/date, `completed_min`.
@@ -30284,7 +30287,7 @@ export namespace GData {
          * Set `completed_min` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param completed_min lower bound for a task's completion date by UNIX timestamp, or  <code class="literal">-1</code>
          */
-        set_completed_min(completed_min: number): void;
+        set_completed_min(completed_min: bigint | number): void;
         /**
          * Sets the {@link GData.TasksQuery.due_max} property of the {@link GData.TasksQuery}
          * to the new time/date, `due_max`.
@@ -30292,7 +30295,7 @@ export namespace GData {
          * Set `due_max` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param due_max upper bound for a task's due date by UNIX timestamp, or  <code class="literal">-1</code>
          */
-        set_due_max(due_max: number): void;
+        set_due_max(due_max: bigint | number): void;
         /**
          * Sets the {@link GData.TasksQuery.due_min} property of the {@link GData.TasksQuery}
          * to the new time/date, `due_min`.
@@ -30300,7 +30303,7 @@ export namespace GData {
          * Set `due_min` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param due_min lower bound for a task's due date by UNIX timestamp, or  <code class="literal">-1</code>
          */
-        set_due_min(due_min: number): void;
+        set_due_min(due_min: bigint | number): void;
         /**
          * Sets the {@link GData.TasksQuery.show_completed} property of the {@link GData.TasksQuery}.
          * @param show_completed `true` to show completed tasks, `false` otherwise
@@ -30659,8 +30662,8 @@ export namespace GData {
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
-            completed: number;
-            due: number;
+            completed: bigint | number;
+            due: bigint | number;
             is_deleted: boolean;
             isDeleted: boolean;
             is_hidden: boolean;
@@ -30691,7 +30694,7 @@ export namespace GData {
          * @since 0.15.0
          */
         get completed(): number;
-        set completed(val: number);
+        set completed(val: bigint | number);
         /**
          * Due date of the task (as a RFC 3339 timestamp; seconds since the UNIX
          * epoch).
@@ -30701,7 +30704,7 @@ export namespace GData {
          * @since 0.15.0
          */
         get due(): number;
-        set due(val: number);
+        set due(val: bigint | number);
         /**
          * Flag indicating whether the task has been deleted. The default is `false`.
          * @since 0.15.0
@@ -30839,14 +30842,14 @@ export namespace GData {
          * Set `completed` to <code class="literal">-1</code> to unset the property in the completion time of the task
          * @param completed completion time of the task, or <code class="literal">-1</code>
          */
-        set_completed(completed: number): void;
+        set_completed(completed: bigint | number): void;
         /**
          * Sets the {@link GData.TasksTask.due} property of the {@link GData.TasksTask} to the new due time of the task, `due`.
          *
          * Set `due` to <code class="literal">-1</code> to unset the property in the due time of the task
          * @param due due time of the task, or <code class="literal">-1</code>
          */
-        set_due(due: number): void;
+        set_due(due: bigint | number): void;
         /**
          * Sets the {@link GData.TasksTask.is_deleted} property to `deleted`.
          * @param deleted `true` if task is deleted, `false` otherwise
@@ -30966,8 +30969,8 @@ export namespace GData {
             authorization_domain: AuthorizationDomain;
             authorizationDomain: AuthorizationDomain;
             cancellable: Gio.Cancellable;
-            content_length: number;
-            contentLength: number;
+            content_length: bigint | number;
+            contentLength: bigint | number;
             content_type: string;
             contentType: string;
             entry: Entry;
@@ -31118,7 +31121,7 @@ export namespace GData {
             entry: Entry | null,
             slug: string,
             content_type: string,
-            content_length: number,
+            content_length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): UploadStream;
 
@@ -33399,9 +33402,9 @@ export namespace GData {
             playerUri: string;
             rating_count: number;
             ratingCount: number;
-            recorded: number;
+            recorded: bigint | number;
             state: YouTubeState;
-            uploaded: number;
+            uploaded: bigint | number;
             view_count: number;
             viewCount: number;
         }
@@ -33596,7 +33599,7 @@ export namespace GData {
          * @since 0.3.0
          */
         get recorded(): number;
-        set recorded(val: number);
+        set recorded(val: bigint | number);
         /**
          * Information describing the state of the video. If this is non-`null`, the video is not playable.
          * It points to a {@link GData.YouTubeState}.
@@ -33861,7 +33864,7 @@ export namespace GData {
          * Set `recorded` to <code class="literal">-1</code> to unset the video's recorded time.
          * @param recorded the video's new recorded time, or <code class="literal">-1</code>
          */
-        set_recorded(recorded: number): void;
+        set_recorded(recorded: bigint | number): void;
         /**
          * The content of the entry. This is mutually exclusive with {@link GData.Entry.content}.
          *

@@ -505,7 +505,7 @@ export namespace GtkSource {
      * @param handler_id the handler id
      * @since 5.2
      */
-    function scheduler_remove(handler_id: number): void;
+    function scheduler_remove(handler_id: bigint | number): void;
     /**
      * Use this function to escape the following characters: `\n`, `\r`, `\t` and `\`.
      *
@@ -23928,7 +23928,7 @@ export namespace GtkSource {
          * @param range the range to set the selection to
          * @virtual
          */
-        vfunc_set_selection(i: number, range: Gtk.AccessibleTextRange): boolean;
+        vfunc_set_selection(i: bigint | number, range: Gtk.AccessibleTextRange): boolean;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable.

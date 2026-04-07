@@ -2131,7 +2131,7 @@ export namespace Shumate {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed: boolean;
-            data: GLib.Bytes;
+            data: GLib.Bytes | Uint8Array;
             error: GLib.Error;
             x: number;
             y: number;

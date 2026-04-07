@@ -3267,8 +3267,8 @@ export namespace GtkSource {
             input_stream: Gio.InputStream;
             inputStream: Gio.InputStream;
             location: Gio.File;
-            max_size: number;
-            maxSize: number;
+            max_size: bigint | number;
+            maxSize: bigint | number;
         }
     }
 
@@ -3326,7 +3326,7 @@ export namespace GtkSource {
          * @since 299.6
          */
         get max_size(): number;
-        set max_size(val: number);
+        set max_size(val: bigint | number);
         /**
          * The maximum number of bytes to read.
          *
@@ -3335,7 +3335,7 @@ export namespace GtkSource {
          * @since 299.6
          */
         get maxSize(): number;
-        set maxSize(val: number);
+        set maxSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -3489,7 +3489,7 @@ export namespace GtkSource {
          * Sets the {@link GtkSource.FileLoader.max_size} property.
          * @param max_size the new value.
          */
-        set_max_size(max_size: number): void;
+        set_max_size(max_size: bigint | number): void;
     }
 
     namespace FileSaver {

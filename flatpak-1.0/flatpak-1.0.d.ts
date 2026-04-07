@@ -1572,8 +1572,8 @@ export namespace Flatpak {
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
-            appdata_content_rating: GLib.HashTable<any, any>;
-            appdataContentRating: GLib.HashTable<any, any>;
+            appdata_content_rating: { [key: string]: any } | GLib.HashTable<any, any>;
+            appdataContentRating: { [key: string]: any } | GLib.HashTable<any, any>;
             appdata_content_rating_type: string;
             appdataContentRatingType: string;
             appdata_license: string;
@@ -1590,8 +1590,8 @@ export namespace Flatpak {
             endOfLife: string;
             end_of_life_rebase: string;
             endOfLifeRebase: string;
-            installed_size: number;
-            installedSize: number;
+            installed_size: bigint | number;
+            installedSize: bigint | number;
             is_current: boolean;
             isCurrent: boolean;
             latest_commit: string;
@@ -1678,9 +1678,9 @@ export namespace Flatpak {
          */
         get endOfLifeRebase(): string;
         get installed_size(): number;
-        set installed_size(val: number);
+        set installed_size(val: bigint | number);
         get installedSize(): number;
-        set installedSize(val: number);
+        set installedSize(val: bigint | number);
         get is_current(): boolean;
         set is_current(val: boolean);
         get isCurrent(): boolean;
@@ -2573,15 +2573,15 @@ export namespace Flatpak {
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
-            download_size: number;
-            downloadSize: number;
+            download_size: bigint | number;
+            downloadSize: bigint | number;
             end_of_life: string;
             endOfLife: string;
             end_of_life_rebase: string;
             endOfLifeRebase: string;
-            installed_size: number;
-            installedSize: number;
-            metadata: GLib.Bytes;
+            installed_size: bigint | number;
+            installedSize: bigint | number;
+            metadata: GLib.Bytes | Uint8Array;
             remote_name: string;
             remoteName: string;
         }

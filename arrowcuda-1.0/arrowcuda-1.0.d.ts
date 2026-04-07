@@ -55,7 +55,7 @@ export namespace ArrowCUDA {
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Context, size: number): Buffer;
+        static ['new'](context: Context, size: bigint | number): Buffer;
         // Conflicted with Arrow.Buffer.new
 
         static ['new'](...args: never[]): any;
@@ -97,7 +97,7 @@ export namespace ArrowCUDA {
          * @param size The size of memory on GPU device to be copied in bytes.
          * @returns A {@link GLib.Bytes} that have copied memory on CPU   host on success, `null` on error.
          */
-        copy_to_host(position: number, size: number): GLib.Bytes;
+        copy_to_host(position: bigint | number, size: bigint | number): GLib.Bytes;
         /**
          * @returns A newly created   {@link ArrowCUDA.IPCMemoryHandle} to handle the exported buffer on   success, `null` on error
          */
@@ -694,7 +694,7 @@ export namespace ArrowCUDA {
          * @param size A size of CPU buffer in bytes.
          * @returns `true` on success, `false` if there was an error. Sets CPU buffer size. to limit `cudaMemcpy()` calls. If CPU buffer size is `0`, buffering is disabled. The default is `0`.
          */
-        set_buffer_size(size: number): boolean;
+        set_buffer_size(size: bigint | number): boolean;
         /**
          * @returns `true` on success, `false` if there was an error.
          */
@@ -1343,7 +1343,7 @@ export namespace ArrowCUDA {
 
         _init(...args: any[]): void;
 
-        static ['new'](gpu_number: number, size: number): HostBuffer;
+        static ['new'](gpu_number: number, size: bigint | number): HostBuffer;
         // Conflicted with Arrow.MutableBuffer.new
 
         static ['new'](...args: never[]): any;

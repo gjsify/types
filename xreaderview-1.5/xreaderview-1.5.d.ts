@@ -1691,7 +1691,7 @@ export namespace XreaderView {
          * you have to use `ev_document_model_set_max_scale()` too.
          * @param cache_size
          */
-        set_page_cache_size(cache_size: number): void;
+        set_page_cache_size(cache_size: bigint | number): void;
         show_cursor(): void;
         zoom_in(): void;
         zoom_out(): void;

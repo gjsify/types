@@ -225,7 +225,7 @@ export namespace Pluma {
      * @param text
      * @param length
      */
-    function utils_escape_underscores(text: string, length: number): string;
+    function utils_escape_underscores(text: string, length: bigint | number): string;
     /**
      * Return `true` if the specified gfile has a parent (is not the root), `false`
      * otherwise
@@ -1137,7 +1137,7 @@ export namespace Pluma {
              * @signal
              * @run-last
              */
-            loading: (arg0: number, arg1: number) => void;
+            loading: (arg0: bigint | number, arg1: bigint | number) => void;
             /**
              * The "save" signal is emitted when the document is saved.
              * @signal
@@ -1153,7 +1153,7 @@ export namespace Pluma {
              * @signal
              * @run-last
              */
-            saving: (arg0: number, arg1: number) => void;
+            saving: (arg0: bigint | number, arg1: bigint | number) => void;
             /**
              * @signal
              * @run-last
@@ -1340,7 +1340,7 @@ export namespace Pluma {
          * @param total_size
          * @virtual
          */
-        vfunc_loading(size: number, total_size: number): void;
+        vfunc_loading(size: bigint | number, total_size: bigint | number): void;
         /**
          * @param uri
          * @param encoding
@@ -1358,7 +1358,7 @@ export namespace Pluma {
          * @param total_size
          * @virtual
          */
-        vfunc_saving(size: number, total_size: number): void;
+        vfunc_saving(size: bigint | number, total_size: bigint | number): void;
         /**
          * @param start
          * @param end

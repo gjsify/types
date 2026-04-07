@@ -519,8 +519,8 @@ export namespace FPrint {
             driver: string;
             finger_status: FingerStatusFlags;
             fingerStatus: FingerStatusFlags;
-            fpi_driver_data: number;
-            fpiDriverData: number;
+            fpi_driver_data: bigint | number;
+            fpiDriverData: bigint | number;
             fpi_environ: string;
             fpiEnviron: string;
             fpi_udev_data_hidraw: string;
@@ -571,11 +571,11 @@ export namespace FPrint {
         /**
          * @construct-only
          */
-        set fpi_driver_data(val: number);
+        set fpi_driver_data(val: bigint | number);
         /**
          * @construct-only
          */
-        set fpiDriverData(val: number);
+        set fpiDriverData(val: bigint | number);
         /**
          * @construct-only
          */

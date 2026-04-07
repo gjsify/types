@@ -976,7 +976,7 @@ export namespace GSignond {
          * @param value value to set
          * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
-        set_int64(key: string, value: number): boolean;
+        set_int64(key: string, value: bigint | number): boolean;
         /**
          * Sets or replaces a string value in the dictionary.
          * @param key key to set
@@ -997,7 +997,7 @@ export namespace GSignond {
          * @param value value to set
          * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
-        set_uint64(key: string, value: number): boolean;
+        set_uint64(key: string, value: bigint | number): boolean;
         /**
          * Converts the {@link GSignond.Dictionary} to a {@link GLib.Variant}. The result can be serialized
          * or put into another {@link GSignond.Dictionary} using `gsignond_dictionary_set()`.

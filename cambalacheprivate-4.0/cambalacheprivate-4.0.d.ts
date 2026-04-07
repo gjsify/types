@@ -1195,19 +1195,9 @@ export namespace CambalachePrivate {
 
         // Fields
 
-        bytes: number;
-        lines: number;
-        line_chars: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                bytes: number;
-                lines: number;
-                line_chars: number;
-            }>,
-        );
+        bytes: bigint | number;
+        lines: bigint | number;
+        line_chars: bigint | number;
     }
 
     /**

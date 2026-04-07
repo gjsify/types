@@ -8709,9 +8709,9 @@ export namespace Gdk {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             axes: AxisFlags;
-            hardware_id: number;
-            hardwareId: number;
-            serial: number;
+            hardware_id: bigint | number;
+            hardwareId: bigint | number;
+            serial: bigint | number;
             tool_type: DeviceToolType;
             toolType: DeviceToolType;
         }
@@ -10345,7 +10345,7 @@ export namespace Gdk {
             display: Display;
             fourcc: number;
             height: number;
-            modifier: number;
+            modifier: bigint | number;
             n_planes: number;
             nPlanes: number;
             premultiplied: boolean;
@@ -10459,7 +10459,7 @@ export namespace Gdk {
          * @since 4.14
          */
         get modifier(): number;
-        set modifier(val: number);
+        set modifier(val: bigint | number);
         /**
          * The number of planes of the texture.
          *
@@ -10701,7 +10701,7 @@ export namespace Gdk {
          * Sets the modifier.
          * @param modifier the modifier value
          */
-        set_modifier(modifier: number): void;
+        set_modifier(modifier: bigint | number): void;
         /**
          * Sets the number of planes of the texture.
          * @param n_planes the number of planes
@@ -11937,7 +11937,7 @@ export namespace Gdk {
          * interval after the last presentation time, and later than `base_time`.
          * @param base_time base time for determining a presentaton time
          */
-        get_refresh_info(base_time: number): [number, number];
+        get_refresh_info(base_time: bigint | number): [number, number];
         /**
          * Retrieves a {@link Gdk.FrameTimings} object holding timing information
          * for the current frame or a recent frame.
@@ -11948,7 +11948,7 @@ export namespace Gdk {
          * @param frame_counter the frame counter value identifying the frame to  be received
          * @returns the {@link Gdk.FrameTimings} object   for the specified frame, or `null` if it is not available
          */
-        get_timings(frame_counter: number): FrameTimings | null;
+        get_timings(frame_counter: bigint | number): FrameTimings | null;
         /**
          * Asks the frame clock to run a particular phase.
          *
@@ -13731,7 +13731,7 @@ export namespace Gdk {
             height: number,
             format: MemoryFormat,
             bytes: GLib.Bytes | Uint8Array,
-            stride: number,
+            stride: bigint | number,
         ): MemoryTexture;
 
         // Signals
@@ -14570,12 +14570,12 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            bytes: GLib.Bytes;
+            bytes: GLib.Bytes | Uint8Array;
             color_state: ColorState;
             colorState: ColorState;
             format: MemoryFormat;
             height: number;
-            stride: number;
+            stride: bigint | number;
             update_region: cairo.Region;
             updateRegion: cairo.Region;
             update_texture: Texture;
@@ -14609,7 +14609,7 @@ export namespace Gdk {
          * @since 4.16
          */
         get bytes(): GLib.Bytes;
-        set bytes(val: GLib.Bytes);
+        set bytes(val: GLib.Bytes | Uint8Array);
         /**
          * The colorstate describing the data.
          * @since 4.16
@@ -14642,7 +14642,7 @@ export namespace Gdk {
          * @since 4.16
          */
         get stride(): number;
-        set stride(val: number);
+        set stride(val: bigint | number);
         /**
          * The update region for {@link Gdk.MemoryTextureBuilder.update_texture}.
          * @since 4.16
@@ -14819,20 +14819,20 @@ export namespace Gdk {
          * @param plane a plane
          * @param offset the texture's offset for `plane`
          */
-        set_offset(plane: number, offset: number): void;
+        set_offset(plane: number, offset: bigint | number): void;
         /**
          * Sets the rowstride of the bytes used.
          *
          * The rowstride must be set before calling {@link Gdk.MemoryTextureBuilder.build}.
          * @param stride the stride or 0 to unset
          */
-        set_stride(stride: number): void;
+        set_stride(stride: bigint | number): void;
         /**
          * Sets the stride of the texture for `plane`.
          * @param plane a plane
          * @param stride the texture's stride for `plane`
          */
-        set_stride_for_plane(plane: number, stride: number): void;
+        set_stride_for_plane(plane: number, stride: bigint | number): void;
         /**
          * Sets the region to be updated by this texture.
          *
@@ -16160,7 +16160,7 @@ export namespace Gdk {
          * @param data pointer to enough memory to be filled with the   downloaded data of `texture`
          * @param stride rowstride in bytes
          */
-        download(data: Uint8Array | string, stride: number): void;
+        download(data: Uint8Array | string, stride: bigint | number): void;
         /**
          * Returns the color state associated with the texture.
          * @returns the color state of the {@link Gdk.Texture}
@@ -17638,7 +17638,7 @@ export namespace Gdk {
          * @param modifier a format modifier
          * @returns `TRUE` if the format specified by the arguments   is part of `formats`
          */
-        contains(fourcc: number, modifier: number): boolean;
+        contains(fourcc: number, modifier: bigint | number): boolean;
         /**
          * Returns whether `formats1` and `formats2` contain the
          * same dmabuf formats, in the same order.
@@ -17651,7 +17651,7 @@ export namespace Gdk {
          * that is contained in `formats`.
          * @param idx the index of the format to return
          */
-        get_format(idx: number): [number, number];
+        get_format(idx: bigint | number): [number, number];
         /**
          * Returns the number of formats that the `formats` object
          * contains.
@@ -18311,7 +18311,7 @@ export namespace Gdk {
          * @param data pointer to enough memory to be filled with the   downloaded data of the texture
          * @param stride rowstride in bytes
          */
-        download_into(data: Uint8Array | string, stride: number): void;
+        download_into(data: Uint8Array | string, stride: bigint | number): void;
         /**
          * Frees the given downloader and all its associated resources.
          */

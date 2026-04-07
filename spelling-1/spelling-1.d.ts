@@ -136,7 +136,7 @@ export namespace Spelling {
          * @param word_len length of the word, in bytes
          * @returns `true` if the dictionary contains the word
          */
-        check_word(word: string, word_len: number): boolean;
+        check_word(word: string, word_len: bigint | number): boolean;
         /**
          * Gets the extra word characters of the active dictionary.
          * @returns extra word characters
@@ -250,7 +250,7 @@ export namespace Spelling {
          * @param word_len length of the word, in bytes
          * @returns `true` if the dictionary contains the word
          */
-        contains_word(word: string, word_len: number): boolean;
+        contains_word(word: string, word_len: bigint | number): boolean;
         /**
          * Gets the language code of the dictionary, or `null` if undefined.
          * @returns the language code of the dictionary
@@ -272,7 +272,7 @@ export namespace Spelling {
          * @param word_len the length of `word`, or -1 if `word` is zero-terminated
          * @returns A list of possible corrections, or `null`.
          */
-        list_corrections(word: string, word_len: number): string[] | null;
+        list_corrections(word: string, word_len: bigint | number): string[] | null;
     }
 
     namespace Language {

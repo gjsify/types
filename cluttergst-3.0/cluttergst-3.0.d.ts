@@ -3551,7 +3551,7 @@ export namespace ClutterGst {
          * Sets the buffer duration to be used when buffering network streams.
          * @param duration The new duration
          */
-        set_buffer_duration(duration: number): void;
+        set_buffer_duration(duration: bigint | number): void;
         /**
          * Sets the buffer size to be used when buffering network streams.
          * @param size The new size

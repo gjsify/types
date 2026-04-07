@@ -6507,7 +6507,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends DomEventInit.ConstructorProps {
-            detail: GObject.Value;
+            detail: GObject.Value | any;
         }
     }
 
@@ -6519,8 +6519,8 @@ export namespace GXml {
 
         // Properties
 
-        get detail(): GObject.Value;
-        set detail(val: GObject.Value);
+        get detail(): unknown;
+        set detail(val: GObject.Value | any);
 
         /**
          * Compile-time signal type information.
@@ -9705,7 +9705,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends Event.ConstructorProps {
-            detail: GObject.Value;
+            detail: GObject.Value | any;
         }
     }
 
@@ -9720,7 +9720,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get detail(): GObject.Value;
+        get detail(): unknown;
 
         /**
          * Compile-time signal type information.
@@ -39360,7 +39360,7 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            detail: GObject.Value;
+            detail: GObject.Value | any;
         }
     }
 
@@ -39377,7 +39377,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get detail(): GObject.Value;
+        get detail(): unknown;
 
         // Methods
 
@@ -42657,7 +42657,7 @@ export namespace GXml {
             indent: boolean;
             cancellable: Gio.Cancellable;
             node: DomNode;
-            types: GLib.HashTable<GObject.GType, GLib.HashTable>;
+            types: { [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>;
         }
     }
 

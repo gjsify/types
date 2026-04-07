@@ -1618,9 +1618,9 @@ export namespace Cogl {
     function graphene_matrix_project_points(
         matrix: Graphene.Matrix,
         n_components: number,
-        stride_in: number,
+        stride_in: bigint | number,
         points_in: any | null,
-        stride_out: number,
+        stride_out: bigint | number,
         points_out: any | null,
         n_points: number,
     ): void;
@@ -1671,9 +1671,9 @@ export namespace Cogl {
     function graphene_matrix_transform_points(
         matrix: Graphene.Matrix,
         n_components: number,
-        stride_in: number,
+        stride_in: bigint | number,
         points_in: any | null,
-        stride_out: number,
+        stride_out: bigint | number,
         points_out: any | null,
         n_points: number,
     ): void;
@@ -1807,7 +1807,12 @@ export namespace Cogl {
      * @param timeout A return location for the maximum length of time to wait           in microseconds, or -1 to wait indefinitely.
      * @returns A "poll fd state age" that changes whenever the set               of poll_fds has changed. If this API is being used to               integrate with another system mainloop api then               knowing if the set of file descriptors and events has               really changed can help avoid redundant work               depending the api. The age isn't guaranteed to change               when the timeout changes.
      */
-    function poll_renderer_get_info(renderer: Renderer, poll_fds: PollFD, n_poll_fds: number, timeout: number): number;
+    function poll_renderer_get_info(
+        renderer: Renderer,
+        poll_fds: PollFD,
+        n_poll_fds: number,
+        timeout: bigint | number,
+    ): number;
     /**
      * @param data
      */
@@ -2143,8 +2148,8 @@ export namespace Cogl {
         static ['new'](
             attribute_buffer: AttributeBuffer,
             name: string,
-            stride: number,
-            offset: number,
+            stride: bigint | number,
+            offset: bigint | number,
             components: number,
             type: AttributeType,
         ): Attribute;
@@ -2271,7 +2276,7 @@ export namespace Cogl {
 
         static ['new'](context: Context, data: Uint8Array | string): AttributeBuffer;
 
-        static new_with_size(context: Context, bytes: number): AttributeBuffer;
+        static new_with_size(context: Context, bytes: bigint | number): AttributeBuffer;
 
         // Signals
 
@@ -2413,7 +2418,7 @@ export namespace Cogl {
             context: Context;
             default_target: BufferBindTarget;
             defaultTarget: BufferBindTarget;
-            size: number;
+            size: bigint | number;
             update_hint: BufferUpdateHint;
             updateHint: BufferUpdateHint;
         }
@@ -2459,7 +2464,7 @@ export namespace Cogl {
         /**
          * @construct-only
          */
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * @write-only
          */
@@ -2559,7 +2564,12 @@ export namespace Cogl {
          * @param hints A mask of {@link Cogl.BufferMapHint}s that tell Cogl how   the data will be modified once mapped.
          * @returns A pointer to the mapped memory or        `null` is the call fails
          */
-        map_range(offset: number, size: number, access: BufferAccess | null, hints: BufferMapHint | null): any | null;
+        map_range(
+            offset: bigint | number,
+            size: bigint | number,
+            access: BufferAccess | null,
+            hints: BufferMapHint | null,
+        ): any | null;
         /**
          * Updates part of the buffer with new data from `data`. Where to put this new
          * data is controlled by `offset` and `offset` + `data` should be less than the
@@ -2569,7 +2579,7 @@ export namespace Cogl {
          * @param size number of bytes to copy
          * @returns `true` is the operation succeeded, `false` otherwise
          */
-        set_data(offset: number, data: Uint8Array | string, size: number): boolean;
+        set_data(offset: bigint | number, data: Uint8Array | string, size: bigint | number): boolean;
         /**
          * @param args
          */
@@ -3090,7 +3100,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: number, color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
          * that includes the color buffer then the specified `color` is used.
@@ -3100,7 +3110,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: number, red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
         /**
          * Declares that the specified `buffers` no longer need to be referenced
          * by any further rendering commands. This can be an important
@@ -3120,7 +3130,7 @@ export namespace Cogl {
          * a {@link Cogl.Offscreen} framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: number): void;
+        discard_buffers(buffers: bigint | number): void;
         /**
          * Draws a textured rectangle to `framebuffer` with the given `pipeline`
          * state with the top left corner positioned at (`x_1`, `y_1`) and the
@@ -3842,7 +3852,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Context, bytes: number): IndexBuffer;
+        static ['new'](context: Context, bytes: bigint | number): IndexBuffer;
 
         // Signals
 
@@ -3952,7 +3962,7 @@ export namespace Cogl {
 
         static ['new'](context: Context, type: IndicesType, indices_data: any | null, n_indices: number): Indices;
 
-        static new_for_buffer(type: IndicesType, buffer: IndexBuffer, offset: number): Indices;
+        static new_for_buffer(type: IndicesType, buffer: IndexBuffer, offset: bigint | number): Indices;
 
         // Signals
 
@@ -3986,7 +3996,7 @@ export namespace Cogl {
         /**
          * @param offset
          */
-        set_offset(offset: number): void;
+        set_offset(offset: bigint | number): void;
     }
 
     namespace MatrixStack {

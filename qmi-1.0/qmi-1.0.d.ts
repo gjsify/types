@@ -12640,7 +12640,7 @@ export namespace Qmi {
      * @returns `true` if the TLV is successfully added, otherwise `false` is returned and `error` is set.
      * @since 1.0
      */
-    function message_add_raw_tlv(self: Message, type: number, raw: number, length: number): boolean;
+    function message_add_raw_tlv(self: Message, type: number, raw: number, length: bigint | number): boolean;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageAtrSendOutput} out of it.
      * The operation fails if the message is of the wrong type.
@@ -13347,7 +13347,7 @@ export namespace Qmi {
         line_prefix: string,
         type: number,
         raw: number,
-        raw_length: number,
+        raw_length: bigint | number,
     ): string;
     /**
      * Gets the transaction ID of the message.
@@ -14181,8 +14181,8 @@ export namespace Qmi {
      */
     function message_tlv_read_fixed_size_string(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         string_length: number,
     ): [boolean, number, string];
     /**
@@ -14200,8 +14200,8 @@ export namespace Qmi {
      */
     function message_tlv_read_gdouble(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         endian: Endian | null,
     ): [boolean, number, number];
     /**
@@ -14219,8 +14219,8 @@ export namespace Qmi {
      */
     function message_tlv_read_gfloat_endian(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         endian: Endian | null,
     ): [boolean, number, number];
     /**
@@ -14238,8 +14238,8 @@ export namespace Qmi {
      */
     function message_tlv_read_gint16(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         endian: Endian | null,
     ): [boolean, number, number];
     /**
@@ -14257,8 +14257,8 @@ export namespace Qmi {
      */
     function message_tlv_read_gint32(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         endian: Endian | null,
     ): [boolean, number, number];
     /**
@@ -14276,8 +14276,8 @@ export namespace Qmi {
      */
     function message_tlv_read_gint64(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         endian: Endian | null,
     ): [boolean, number, number];
     /**
@@ -14292,7 +14292,11 @@ export namespace Qmi {
      * @returns `true` if the variable is successfully read, otherwise `false` is returned and `error` is set.
      * @since 1.12
      */
-    function message_tlv_read_gint8(self: Message, tlv_offset: number, offset: number): [boolean, number, number];
+    function message_tlv_read_gint8(
+        self: Message,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
+    ): [boolean, number, number];
     /**
      * Reads an unsigned 16-bit integer from the TLV, in host byte order.
      *
@@ -14308,8 +14312,8 @@ export namespace Qmi {
      */
     function message_tlv_read_guint16(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         endian: Endian | null,
     ): [boolean, number, number];
     /**
@@ -14327,8 +14331,8 @@ export namespace Qmi {
      */
     function message_tlv_read_guint32(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         endian: Endian | null,
     ): [boolean, number, number];
     /**
@@ -14346,8 +14350,8 @@ export namespace Qmi {
      */
     function message_tlv_read_guint64(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         endian: Endian | null,
     ): [boolean, number, number];
     /**
@@ -14362,7 +14366,11 @@ export namespace Qmi {
      * @returns `true` if the variable is successfully read, otherwise `false` is returned and `error` is set.
      * @since 1.12
      */
-    function message_tlv_read_guint8(self: Message, tlv_offset: number, offset: number): [boolean, number, number];
+    function message_tlv_read_guint8(
+        self: Message,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
+    ): [boolean, number, number];
     /**
      * Starts reading a given TLV from the {@link Qmi.Message}.
      * @param self a {@link Qmi.Message}.
@@ -14376,7 +14384,11 @@ export namespace Qmi {
      * @param tlv_offset
      * @param offset
      */
-    function message_tlv_read_remaining_size(self: Message, tlv_offset: number, offset: number): number;
+    function message_tlv_read_remaining_size(
+        self: Message,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
+    ): number;
     /**
      * Reads a `b_bytes`-sized integer from the TLV, in host byte order.
      *
@@ -14393,8 +14405,8 @@ export namespace Qmi {
      */
     function message_tlv_read_sized_guint(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         n_bytes: number,
         endian: Endian | null,
     ): [boolean, number, number];
@@ -14419,8 +14431,8 @@ export namespace Qmi {
      */
     function message_tlv_read_string(
         self: Message,
-        tlv_offset: number,
-        offset: number,
+        tlv_offset: bigint | number,
+        offset: bigint | number,
         n_size_prefix_bytes: number,
         max_size: number,
     ): [boolean, number, string];
@@ -14434,7 +14446,7 @@ export namespace Qmi {
      * @returns `true` if the TLV is successfully completed, otherwise `false` is returned and `error` is set.
      * @since 1.12
      */
-    function message_tlv_write_complete(self: Message, tlv_offset: number): boolean;
+    function message_tlv_write_complete(self: Message, tlv_offset: bigint | number): boolean;
     /**
      * Appends a signed 16-bit integer to the TLV being built. The number to be
      * written is expected to be given in host endianness, and this method takes
@@ -14467,7 +14479,7 @@ export namespace Qmi {
      * @returns `true` if the variable is successfully added, otherwise `false` is returned and `error` is set.
      * @since 1.12
      */
-    function message_tlv_write_gint64(self: Message, endian: Endian | null, _in: number): boolean;
+    function message_tlv_write_gint64(self: Message, endian: Endian | null, _in: bigint | number): boolean;
     /**
      * Appends a signed byte variable to the TLV being built.
      * @param self a {@link Qmi.Message}.
@@ -14508,7 +14520,7 @@ export namespace Qmi {
      * @returns `true` if the variable is successfully added, otherwise `false` is returned and `error` is set.
      * @since 1.12
      */
-    function message_tlv_write_guint64(self: Message, endian: Endian | null, _in: number): boolean;
+    function message_tlv_write_guint64(self: Message, endian: Endian | null, _in: bigint | number): boolean;
     /**
      * Appends an unsigned byte to the TLV being built.
      * @param self a {@link Qmi.Message}.
@@ -14537,7 +14549,7 @@ export namespace Qmi {
      * @param tlv_offset offset that was returned by `qmi_message_tlv_write_init()`.
      * @since 1.12
      */
-    function message_tlv_write_reset(self: Message, tlv_offset: number): void;
+    function message_tlv_write_reset(self: Message, tlv_offset: bigint | number): void;
     /**
      * Appends a `n_bytes`-sized unsigned integer to the TLV being built. The number
      * to be written is expected to be given in host endianness, and this method
@@ -14552,7 +14564,12 @@ export namespace Qmi {
      * @returns `true` if the variable is successfully added, otherwise `false` is returned and `error` is set.
      * @since 1.12
      */
-    function message_tlv_write_sized_guint(self: Message, n_bytes: number, endian: Endian | null, _in: number): boolean;
+    function message_tlv_write_sized_guint(
+        self: Message,
+        n_bytes: number,
+        endian: Endian | null,
+        _in: bigint | number,
+    ): boolean;
     /**
      * Appends a string to the TLV being built.
      *
@@ -14568,7 +14585,7 @@ export namespace Qmi {
         self: Message,
         n_size_prefix_bytes: number,
         _in: string,
-        in_length: number,
+        in_length: bigint | number,
     ): boolean;
     /**
      * Parses a {@link Qmi.Message} and builds a {@link Qmi.MessageUimChangePinOutput} out of it.
@@ -43169,7 +43186,7 @@ export namespace Qmi {
          * @param value_time_value a `guint64`.
          * @returns `true` if `value` was successfully set, `false` otherwise.
          */
-        set_time_value(value_time_value: number): boolean;
+        set_time_value(value_time_value: bigint | number): boolean;
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
@@ -47200,7 +47217,7 @@ export namespace Qmi {
         pilot_strength: number;
         latitude: number;
         longitude: number;
-        gps_time_in_milliseconds: number;
+        gps_time_in_milliseconds: bigint | number;
     }
 
     /**
@@ -50546,10 +50563,10 @@ export namespace Qmi {
          * @returns `true` if `value` was successfully set, `false` otherwise.
          */
         set_extended_lte_band_preference(
-            value_extended_lte_band_preference_mask_low: number,
-            value_extended_lte_band_preference_mask_mid_low: number,
-            value_extended_lte_band_preference_mask_mid_high: number,
-            value_extended_lte_band_preference_mask_high: number,
+            value_extended_lte_band_preference_mask_low: bigint | number,
+            value_extended_lte_band_preference_mask_mid_low: bigint | number,
+            value_extended_lte_band_preference_mask_mid_high: bigint | number,
+            value_extended_lte_band_preference_mask_high: bigint | number,
         ): boolean;
         /**
          * Set the 'GSM WCDMA Acquisition Order Preference' field in the message.
@@ -50610,14 +50627,14 @@ export namespace Qmi {
          * @returns `true` if `value` was successfully set, `false` otherwise.
          */
         set_nr5g_nsa_band_preference(
-            value_nr5g_nsa_band_preference_mask_0: number,
-            value_nr5g_nsa_band_preference_mask_1: number,
-            value_nr5g_nsa_band_preference_mask_2: number,
-            value_nr5g_nsa_band_preference_mask_3: number,
-            value_nr5g_nsa_band_preference_mask_4: number,
-            value_nr5g_nsa_band_preference_mask_5: number,
-            value_nr5g_nsa_band_preference_mask_6: number,
-            value_nr5g_nsa_band_preference_mask_7: number,
+            value_nr5g_nsa_band_preference_mask_0: bigint | number,
+            value_nr5g_nsa_band_preference_mask_1: bigint | number,
+            value_nr5g_nsa_band_preference_mask_2: bigint | number,
+            value_nr5g_nsa_band_preference_mask_3: bigint | number,
+            value_nr5g_nsa_band_preference_mask_4: bigint | number,
+            value_nr5g_nsa_band_preference_mask_5: bigint | number,
+            value_nr5g_nsa_band_preference_mask_6: bigint | number,
+            value_nr5g_nsa_band_preference_mask_7: bigint | number,
         ): boolean;
         /**
          * Set the 'NR5G SA Band Preference' field in the message.
@@ -50632,14 +50649,14 @@ export namespace Qmi {
          * @returns `true` if `value` was successfully set, `false` otherwise.
          */
         set_nr5g_sa_band_preference(
-            value_nr5g_sa_band_preference_mask_0: number,
-            value_nr5g_sa_band_preference_mask_1: number,
-            value_nr5g_sa_band_preference_mask_2: number,
-            value_nr5g_sa_band_preference_mask_3: number,
-            value_nr5g_sa_band_preference_mask_4: number,
-            value_nr5g_sa_band_preference_mask_5: number,
-            value_nr5g_sa_band_preference_mask_6: number,
-            value_nr5g_sa_band_preference_mask_7: number,
+            value_nr5g_sa_band_preference_mask_0: bigint | number,
+            value_nr5g_sa_band_preference_mask_1: bigint | number,
+            value_nr5g_sa_band_preference_mask_2: bigint | number,
+            value_nr5g_sa_band_preference_mask_3: bigint | number,
+            value_nr5g_sa_band_preference_mask_4: bigint | number,
+            value_nr5g_sa_band_preference_mask_5: bigint | number,
+            value_nr5g_sa_band_preference_mask_6: bigint | number,
+            value_nr5g_sa_band_preference_mask_7: bigint | number,
         ): boolean;
         /**
          * Set the 'Roaming Preference' field in the message.
@@ -53824,20 +53841,8 @@ export namespace Qmi {
         bearer_id: number;
         tx_packets: number;
         tx_packets_dropped: number;
-        tx_bytes: number;
-        tx_bytes_dropped: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                bearer_id: number;
-                tx_packets: number;
-                tx_packets_dropped: number;
-                tx_bytes: number;
-                tx_bytes_dropped: number;
-            }>,
-        );
+        tx_bytes: bigint | number;
+        tx_bytes_dropped: bigint | number;
     }
 
     /**

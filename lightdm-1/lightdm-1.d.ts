@@ -1208,7 +1208,7 @@ export namespace LightDM {
             real_name: string;
             realName: string;
             session: string;
-            uid: number;
+            uid: bigint | number;
         }
     }
 

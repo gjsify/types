@@ -196,7 +196,7 @@ export namespace GjsPrivate {
      * @gir-type Callback
      */
     interface BindingTransformFunc {
-        (binding: GObject.Binding, from_value: GObject.Value | any): boolean;
+        (binding: GObject.Binding, from_value: unknown): boolean;
     }
     /**
      * @gir-type Callback

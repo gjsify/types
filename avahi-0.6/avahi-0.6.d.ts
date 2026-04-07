@@ -350,7 +350,7 @@ export namespace Avahi {
             type: number,
             ttl: number,
             rdata: any | null,
-            size: number,
+            size: bigint | number,
         ): boolean;
         /**
          * @param _interface
@@ -372,7 +372,7 @@ export namespace Avahi {
             type: number,
             ttl: number,
             rdata: any | null,
-            size: number,
+            size: bigint | number,
         ): boolean;
         /**
          * @param client
@@ -827,7 +827,7 @@ export namespace Avahi {
          * @param value
          * @param size
          */
-        set_arbitrary(key: string, value: number, size: number): boolean;
+        set_arbitrary(key: string, value: number, size: bigint | number): boolean;
         thaw(): boolean;
     }
 

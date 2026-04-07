@@ -2005,7 +2005,7 @@ export namespace Ggit {
          * @param total_steps
          * @virtual
          */
-        vfunc_progress(path: string, completed_steps: number, total_steps: number): void;
+        vfunc_progress(path: string, completed_steps: bigint | number, total_steps: bigint | number): void;
 
         // Methods
 
@@ -2778,7 +2778,7 @@ export namespace Ggit {
          * @param value the new value.
          * @returns `true` if the value was successfully set, `false` otherwise.
          */
-        set_int64(name: string, value: number): boolean;
+        set_int64(name: string, value: bigint | number): boolean;
         /**
          * Set a new string value of a configuration.
          * @param name the name of the configuration value.
@@ -4875,7 +4875,7 @@ export namespace Ggit {
          * @param index the index.
          * @returns a {@link Ggit.DiffDelta} or `null`.
          */
-        get_delta(index: number): DiffDelta | null;
+        get_delta(index: bigint | number): DiffDelta | null;
         /**
          * Get the number of deltas in the diff.
          * @returns the number of deltas.
@@ -5048,7 +5048,7 @@ export namespace Ggit {
          * Set the find options rename limit.
          * @param limit the limit.
          */
-        set_rename_limit(limit: number): void;
+        set_rename_limit(limit: bigint | number): void;
         /**
          * Set the find options rename threshold.
          * @param threshold the threshold.
@@ -5075,11 +5075,11 @@ export namespace Ggit {
             body: string;
             flags: DiffFormatEmailFlags;
             id: OId;
-            patch_number: number;
-            patchNumber: number;
+            patch_number: bigint | number;
+            patchNumber: bigint | number;
             summary: string;
-            total_patches: number;
-            totalPatches: number;
+            total_patches: bigint | number;
+            totalPatches: bigint | number;
         }
     }
 
@@ -5100,15 +5100,15 @@ export namespace Ggit {
         get id(): OId;
         set id(val: OId);
         get patch_number(): number;
-        set patch_number(val: number);
+        set patch_number(val: bigint | number);
         get patchNumber(): number;
-        set patchNumber(val: number);
+        set patchNumber(val: bigint | number);
         get summary(): string;
         set summary(val: string);
         get total_patches(): number;
-        set total_patches(val: number);
+        set total_patches(val: bigint | number);
         get totalPatches(): number;
-        set totalPatches(val: number);
+        set totalPatches(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -5211,7 +5211,7 @@ export namespace Ggit {
          * Set the patch number.
          * @param number the patch number.
          */
-        set_patch_number(number: number): void;
+        set_patch_number(number: bigint | number): void;
         /**
          * Set the summary.
          * @param summary the summary.
@@ -5221,7 +5221,7 @@ export namespace Ggit {
          * Set the total number of patches.
          * @param patches the total number of patches.
          */
-        set_total_patches(patches: number): void;
+        set_total_patches(patches: bigint | number): void;
     }
 
     namespace DiffOptions {
@@ -6684,7 +6684,7 @@ export namespace Ggit {
          * @param idx The index of the rebase operation to retrieve.
          * @returns The rebase operation or `null` if `idx` was out of bounds.
          */
-        get_operation_by_index(idx: number): RebaseOperation | null;
+        get_operation_by_index(idx: bigint | number): RebaseOperation | null;
         /**
          * Gets the count of rebase operations that are to be applied.
          * @returns the count of rebase operations that are to be applied.
@@ -7712,7 +7712,7 @@ export namespace Ggit {
          * Removes a single stashed state from the stash list.
          * @param index the position within the stash list. 0 points to the. most recent stashed state.
          */
-        drop_stash(index: number): void;
+        drop_stash(index: bigint | number): void;
         /**
          * Get a branch enumerator to enumerate over all branches of the specified
          * `list_type` in `repository`.
@@ -10252,7 +10252,7 @@ export namespace Ggit {
          * @param size location to return size of byte data.
          * @returns a pointer to the binary data, or `null`.
          */
-        get_data(size?: number | null): number;
+        get_data(size?: (bigint | number) | null): number;
         /**
          * Gets the length of the binary data after inflation.
          * @returns the length of the binary data after inflation.
@@ -10584,7 +10584,7 @@ export namespace Ggit {
          * @param idx the index of the entry.
          * @returns a {@link Ggit.IndexEntry} or `null` if out of bounds.
          */
-        get_by_index(idx: number): IndexEntry | null;
+        get_by_index(idx: bigint | number): IndexEntry | null;
         /**
          * Get a {@link Ggit.IndexEntry} by index. Note that the returned {@link Ggit.IndexEntry} is
          * _only_ valid as long as:
@@ -10753,7 +10753,7 @@ export namespace Ggit {
          * Set the file size of the index entry.
          * @param file_size the file size.
          */
-        set_file_size(file_size: number): void;
+        set_file_size(file_size: bigint | number): void;
         /**
          * Set the flags of the index entry.
          * @param flags the flags.
@@ -11082,7 +11082,7 @@ export namespace Ggit {
             diff_options?: DiffOptions | null,
         ): Patch;
 
-        static new_from_diff(diff: Diff, idx: number): Patch;
+        static new_from_diff(diff: Diff, idx: bigint | number): Patch;
 
         // Methods
 
@@ -11096,7 +11096,7 @@ export namespace Ggit {
          * @param idx the hunk index.
          * @returns a new {@link Ggit.DiffHunk} or `null` on error.
          */
-        get_hunk(idx: number): DiffHunk | null;
+        get_hunk(idx: bigint | number): DiffHunk | null;
         /**
          * Get the line statistics of the patch.
          * @returns `true` if successfull, `false` otherwise.
@@ -11112,7 +11112,7 @@ export namespace Ggit {
          * @param hunk the hunk index.
          * @returns the number of lines.
          */
-        get_num_lines_in_hunk(hunk: number): number;
+        get_num_lines_in_hunk(hunk: bigint | number): number;
         /**
          * Atomically increments the reference count of `patch` by one.
          * This function is MT-safe and may be called from any thread.

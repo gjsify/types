@@ -607,19 +607,9 @@ export namespace cairo {
 
         // Fields
 
-        index: number;
+        index: bigint | number;
         x: number;
         y: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                index: number;
-                x: number;
-                y: number;
-            }>,
-        );
     }
 
     /**

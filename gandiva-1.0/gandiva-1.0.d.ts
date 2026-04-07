@@ -1101,7 +1101,7 @@ export namespace Gandiva {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): Int64LiteralNode;
+        static ['new'](value: bigint | number): Int64LiteralNode;
 
         // Signals
 
@@ -1844,7 +1844,7 @@ export namespace Gandiva {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): UInt64LiteralNode;
+        static ['new'](value: bigint | number): UInt64LiteralNode;
 
         // Signals
 

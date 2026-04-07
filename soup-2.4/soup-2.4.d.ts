@@ -11408,14 +11408,14 @@ export namespace Soup {
             reasonPhrase: string;
             request_body: MessageBody;
             requestBody: MessageBody;
-            request_body_data: GLib.Bytes;
-            requestBodyData: GLib.Bytes;
+            request_body_data: GLib.Bytes | Uint8Array;
+            requestBodyData: GLib.Bytes | Uint8Array;
             request_headers: MessageHeaders;
             requestHeaders: MessageHeaders;
             response_body: MessageBody;
             responseBody: MessageBody;
-            response_body_data: GLib.Bytes;
-            responseBodyData: GLib.Bytes;
+            response_body_data: GLib.Bytes | Uint8Array;
+            responseBodyData: GLib.Bytes | Uint8Array;
             response_headers: MessageHeaders;
             responseHeaders: MessageHeaders;
             server_side: boolean;
@@ -12388,7 +12388,7 @@ export namespace Soup {
         read_all_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): [globalThis.Promise<number>, Uint8Array];
+        ): [globalThis.Promise<bigint | number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
@@ -12428,7 +12428,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [globalThis.Promise<number> | void, Uint8Array];
+        ): [globalThis.Promise<bigint | number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * {@link InputStream.read_all_async}.
@@ -12470,7 +12470,10 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
+        read_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+        ): [globalThis.Promise<bigint | number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -12536,7 +12539,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [globalThis.Promise<number> | void, Uint8Array];
+        ): [globalThis.Promise<bigint | number> | void, Uint8Array];
         /**
          * Like `g_input_stream_read()`, this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -12565,7 +12568,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a new {@link GLib.Bytes}, or `null` on error
          */
-        read_bytes(count: number, cancellable?: Gio.Cancellable | null): GLib.Bytes;
+        read_bytes(count: bigint | number, cancellable?: Gio.Cancellable | null): GLib.Bytes;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
          * new {@link GLib.Bytes}. When the operation is finished `callback` will be
@@ -12592,7 +12595,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         read_bytes_async(
-            count: number,
+            count: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes>;
@@ -12623,7 +12626,7 @@ export namespace Soup {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         read_bytes_async(
-            count: number,
+            count: bigint | number,
             io_priority: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -12655,7 +12658,7 @@ export namespace Soup {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         read_bytes_async(
-            count: number,
+            count: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -12698,7 +12701,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Number of bytes skipped, or -1 on error
          */
-        skip(count: number, cancellable?: Gio.Cancellable | null): number;
+        skip(count: bigint | number, cancellable?: Gio.Cancellable | null): number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -12728,10 +12731,10 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         skip_async(
-            count: number,
+            count: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        ): globalThis.Promise<bigint | number>;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -12762,7 +12765,7 @@ export namespace Soup {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         skip_async(
-            count: number,
+            count: bigint | number,
             io_priority: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -12797,11 +12800,11 @@ export namespace Soup {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         skip_async(
-            count: number,
+            count: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a {@link Gio.AsyncResult}.
@@ -12886,7 +12889,7 @@ export namespace Soup {
          * @param cancellable
          * @virtual
          */
-        vfunc_read_fn(buffer: any | null, count: number, cancellable?: Gio.Cancellable | null): number;
+        vfunc_read_fn(buffer: any | null, count: bigint | number, cancellable?: Gio.Cancellable | null): number;
         /**
          * Tries to skip `count` bytes from the stream. Will block during the operation.
          *
@@ -12906,7 +12909,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): number;
+        vfunc_skip(count: bigint | number, cancellable?: Gio.Cancellable | null): number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -12938,7 +12941,7 @@ export namespace Soup {
          * @virtual
          */
         vfunc_skip_async(
-            count: number,
+            count: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -19546,7 +19549,7 @@ export namespace Soup {
         read_until(
             buffer: Uint8Array | string,
             boundary: any | null,
-            boundary_len: number,
+            boundary_len: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [SocketIOStatus, number, boolean];
         /**
@@ -20188,8 +20191,8 @@ export namespace Soup {
             ioStream: Gio.IOStream;
             keepalive_interval: number;
             keepaliveInterval: number;
-            max_incoming_payload_size: number;
-            maxIncomingPayloadSize: number;
+            max_incoming_payload_size: bigint | number;
+            maxIncomingPayloadSize: bigint | number;
             origin: string;
             protocol: string;
             state: WebsocketState;
@@ -20265,14 +20268,14 @@ export namespace Soup {
          * @since 2.56
          */
         get max_incoming_payload_size(): number;
-        set max_incoming_payload_size(val: number);
+        set max_incoming_payload_size(val: bigint | number);
         /**
          * The maximum payload size for incoming packets the protocol expects
          * or 0 to not limit it.
          * @since 2.56
          */
         get maxIncomingPayloadSize(): number;
-        set maxIncomingPayloadSize(val: number);
+        set maxIncomingPayloadSize(val: bigint | number);
         /**
          * The client's Origin.
          * @since 2.50
@@ -20512,7 +20515,7 @@ export namespace Soup {
          * does not limit the outgoing packet size.
          * @param max_incoming_payload_size the maximum payload size
          */
-        set_max_incoming_payload_size(max_incoming_payload_size: number): void;
+        set_max_incoming_payload_size(max_incoming_payload_size: bigint | number): void;
     }
 
     namespace WebsocketExtension {
@@ -21345,16 +21348,11 @@ export namespace Soup {
         // Fields
 
         data: any;
-        length: number;
+        length: bigint | number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                data: any;
-                length: number;
-            }>,
-        );
+        constructor(use: MemoryUse, data: Uint8Array | string);
 
         static ['new'](use: MemoryUse, data: Uint8Array | string): Buffer;
 
@@ -21412,7 +21410,7 @@ export namespace Soup {
          * @param length number of bytes to copy from `parent`
          * @returns the new {@link Soup.Buffer}.
          */
-        new_subbuffer(offset: number, length: number): Buffer;
+        new_subbuffer(offset: bigint | number, length: bigint | number): Buffer;
     }
 
     /**
@@ -21834,7 +21832,7 @@ export namespace Soup {
 
         static new_from_string(date_string: string): Date;
 
-        static new_from_time_t(when: number): Date;
+        static new_from_time_t(when: bigint | number): Date;
 
         // Methods
 
@@ -21961,25 +21959,24 @@ export namespace Soup {
         // Fields
 
         domain: string;
-        max_age: number;
+        max_age: bigint | number;
         expires: Date;
         include_subdomains: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                domain: string;
-                max_age: number;
-                include_subdomains: boolean;
-            }>,
-        );
+        constructor(domain: string, max_age: bigint | number, include_subdomains: boolean);
 
-        static ['new'](domain: string, max_age: number, include_subdomains: boolean): HSTSPolicy;
+        static ['new'](domain: string, max_age: bigint | number, include_subdomains: boolean): HSTSPolicy;
 
         static new_from_response(msg: Message): HSTSPolicy;
 
-        static new_full(domain: string, max_age: number, expires: Date, include_subdomains: boolean): HSTSPolicy;
+        static new_full(
+            domain: string,
+            max_age: bigint | number,
+            expires: Date,
+            include_subdomains: boolean,
+        ): HSTSPolicy;
 
         static new_session_policy(domain: string, include_subdomains: boolean): HSTSPolicy;
 
@@ -22050,14 +22047,14 @@ export namespace Soup {
         // Fields
 
         data: string;
-        length: number;
+        length: bigint | number;
 
         // Constructors
 
         constructor(
             properties?: Partial<{
                 data: string;
-                length: number;
+                length: bigint | number;
             }>,
         );
 
@@ -22130,7 +22127,7 @@ export namespace Soup {
          * @param offset an offset
          * @returns a {@link Soup.Buffer}, or `null`.
          */
-        get_chunk(offset: number): Buffer | null;
+        get_chunk(offset: bigint | number): Buffer | null;
         /**
          * Handles the {@link Soup.MessageBody} part of receiving a chunk of data from
          * the network. Normally this means appending `chunk` to `body`, exactly
@@ -22395,7 +22392,7 @@ export namespace Soup {
          * @param total_length the total_length of the response body
          * @returns `true` if `hdrs` contained a syntactically-valid "Range" header, `false` otherwise (in which case `range` and `length` will not be set).
          */
-        get_ranges(total_length: number): [boolean, Range[]];
+        get_ranges(total_length: bigint | number): [boolean, Range[]];
         /**
          * Checks whether the list-valued header `name` is present in `hdrs`,
          * and contains a case-insensitive match for `token`.
@@ -22455,7 +22452,7 @@ export namespace Soup {
          * memory by filling in a response body which won't actually be sent.
          * @param content_length the message body length
          */
-        set_content_length(content_length: number): void;
+        set_content_length(content_length: bigint | number): void;
         /**
          * Sets `hdrs`'s Content-Range header according to the given values.
          * (Note that `total_length` is the total length of the entire resource
@@ -22470,7 +22467,7 @@ export namespace Soup {
          * @param end the end of the range
          * @param total_length the total length of the resource, or -1 if unknown
          */
-        set_content_range(start: number, end: number, total_length: number): void;
+        set_content_range(start: bigint | number, end: bigint | number, total_length: bigint | number): void;
         /**
          * Sets the "Content-Type" header in `hdrs` to `content_type`,
          * optionally with additional parameters specified in `params`.
@@ -22508,7 +22505,7 @@ export namespace Soup {
          * @param start the start of the range to request
          * @param end the end of the range to request
          */
-        set_range(start: number, end: number): void;
+        set_range(start: bigint | number, end: bigint | number): void;
         /**
          * Sets `hdrs`'s Range header to request the indicated ranges. (If you
          * only want to request a single range, you can use
@@ -22698,17 +22695,8 @@ export namespace Soup {
 
         // Fields
 
-        start: number;
-        end: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                start: number;
-                end: number;
-            }>,
-        );
+        start: bigint | number;
+        end: bigint | number;
     }
 
     /**

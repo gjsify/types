@@ -1003,7 +1003,7 @@ export namespace Tracker {
          * @param property_uri a string identifying the property to modify
          * @param value the property object
          */
-        add_int64(property_uri: string, value: number): void;
+        add_int64(property_uri: string, value: bigint | number): void;
         /**
          * Adds a resource object to a multi-valued property. This
          * function produces similar RDF to `tracker_resource_add_uri()`,
@@ -1177,7 +1177,7 @@ export namespace Tracker {
          * @param property_uri a string identifying the property to modify
          * @param value the property object
          */
-        set_int64(property_uri: string, value: number): void;
+        set_int64(property_uri: string, value: bigint | number): void;
         /**
          * Sets a single-valued resource object as a {@link Tracker.Resource}. This
          * function produces similar RDF to `tracker_resource_set_uri()`,
@@ -1351,11 +1351,11 @@ export namespace Tracker {
         /**
          * @param literal
          */
-        object_int64(literal: number): void;
+        object_int64(literal: bigint | number): void;
         /**
          * @param literal
          */
-        object_date(literal: number): number;
+        object_date(literal: bigint | number): number;
         /**
          * @param literal
          */
@@ -2135,7 +2135,7 @@ export namespace Tracker {
          * @param value
          * @virtual
          */
-        vfunc_bind_int(name: string, value: number): void;
+        vfunc_bind_int(name: string, value: bigint | number): void;
         /**
          * @param name
          * @param value
@@ -2180,7 +2180,7 @@ export namespace Tracker {
          * @param name
          * @param value
          */
-        bind_int(name: string, value: number): void;
+        bind_int(name: string, value: bigint | number): void;
         /**
          * @param name
          * @param value

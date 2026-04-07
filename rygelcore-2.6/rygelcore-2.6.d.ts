@@ -5699,7 +5699,7 @@ export namespace RygelCore {
         mime_type: string;
         uri: string;
         file_extension: string;
-        size: number;
+        size: bigint | number;
         width: number;
         height: number;
         depth: number;

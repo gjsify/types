@@ -173,10 +173,10 @@ export namespace Bump {
         interface ConstructorProps
             extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
             active: boolean;
-            time_acquired: number;
-            timeAcquired: number;
-            time_released: number;
-            timeReleased: number;
+            time_acquired: bigint | number;
+            timeAcquired: bigint | number;
+            time_released: bigint | number;
+            timeReleased: bigint | number;
             duration_held: GLib.TimeSpan;
             durationHeld: GLib.TimeSpan;
         }
@@ -195,13 +195,13 @@ export namespace Bump {
          */
         get active(): boolean;
         get time_acquired(): number;
-        set time_acquired(val: number);
+        set time_acquired(val: bigint | number);
         get timeAcquired(): number;
-        set timeAcquired(val: number);
+        set timeAcquired(val: bigint | number);
         get time_released(): number;
-        set time_released(val: number);
+        set time_released(val: bigint | number);
         get timeReleased(): number;
-        set timeReleased(val: number);
+        set timeReleased(val: bigint | number);
         /**
          * @read-only
          */

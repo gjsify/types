@@ -699,7 +699,7 @@ export namespace Guestfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            size: number;
+            size: bigint | number;
         }
     }
 
@@ -716,7 +716,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -982,7 +982,7 @@ export namespace Guestfs {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             repair: Tristate;
-            superblock: number;
+            superblock: bigint | number;
         }
     }
 
@@ -1004,7 +1004,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get superblock(): number;
-        set superblock(val: number);
+        set superblock(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1281,10 +1281,10 @@ export namespace Guestfs {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             append: Tristate;
-            destoffset: number;
-            size: number;
+            destoffset: bigint | number;
+            size: bigint | number;
             sparse: Tristate;
-            srcoffset: number;
+            srcoffset: bigint | number;
         }
     }
 
@@ -1306,12 +1306,12 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get destoffset(): number;
-        set destoffset(val: number);
+        set destoffset(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * A boolean.
          */
@@ -1321,7 +1321,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get srcoffset(): number;
-        set srcoffset(val: number);
+        set srcoffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1376,10 +1376,10 @@ export namespace Guestfs {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             append: Tristate;
-            destoffset: number;
-            size: number;
+            destoffset: bigint | number;
+            size: bigint | number;
             sparse: Tristate;
-            srcoffset: number;
+            srcoffset: bigint | number;
         }
     }
 
@@ -1401,12 +1401,12 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get destoffset(): number;
-        set destoffset(val: number);
+        set destoffset(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * A boolean.
          */
@@ -1416,7 +1416,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get srcoffset(): number;
-        set srcoffset(val: number);
+        set srcoffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1471,10 +1471,10 @@ export namespace Guestfs {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             append: Tristate;
-            destoffset: number;
-            size: number;
+            destoffset: bigint | number;
+            size: bigint | number;
             sparse: Tristate;
-            srcoffset: number;
+            srcoffset: bigint | number;
         }
     }
 
@@ -1496,12 +1496,12 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get destoffset(): number;
-        set destoffset(val: number);
+        set destoffset(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * A boolean.
          */
@@ -1511,7 +1511,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get srcoffset(): number;
-        set srcoffset(val: number);
+        set srcoffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1566,10 +1566,10 @@ export namespace Guestfs {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             append: Tristate;
-            destoffset: number;
-            size: number;
+            destoffset: bigint | number;
+            size: bigint | number;
             sparse: Tristate;
-            srcoffset: number;
+            srcoffset: bigint | number;
         }
     }
 
@@ -1591,12 +1591,12 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get destoffset(): number;
-        set destoffset(val: number);
+        set destoffset(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * A boolean.
          */
@@ -1606,7 +1606,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get srcoffset(): number;
-        set srcoffset(val: number);
+        set srcoffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1961,9 +1961,9 @@ export namespace Guestfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            length: number;
-            minimumfreeextent: number;
-            offset: number;
+            length: bigint | number;
+            minimumfreeextent: bigint | number;
+            offset: bigint | number;
         }
     }
 
@@ -1980,17 +1980,17 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get length(): number;
-        set length(val: number);
+        set length(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get minimumfreeextent(): number;
-        set minimumfreeextent(val: number);
+        set minimumfreeextent(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get offset(): number;
-        set offset(val: number);
+        set offset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2362,7 +2362,7 @@ export namespace Guestfs {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             obool: Tristate;
             oint: number;
-            oint64: number;
+            oint64: bigint | number;
             ostring: string;
         }
     }
@@ -2390,7 +2390,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get oint64(): number;
-        set oint64(val: number);
+        set oint64(val: bigint | number);
         /**
          * A string.
          */
@@ -3423,9 +3423,9 @@ export namespace Guestfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            chunk: number;
+            chunk: bigint | number;
             level: string;
-            missingbitmap: number;
+            missingbitmap: bigint | number;
             nrdevices: number;
             spare: number;
         }
@@ -3444,7 +3444,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get chunk(): number;
-        set chunk(val: number);
+        set chunk(val: bigint | number);
         /**
          * A string.
          */
@@ -3454,7 +3454,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get missingbitmap(): number;
-        set missingbitmap(val: number);
+        set missingbitmap(val: bigint | number);
         /**
          * A 32-bit integer.
          */
@@ -3551,39 +3551,39 @@ export namespace Guestfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            blockscount: number;
-            blocksize: number;
-            blockspergroup: number;
-            bytesperinode: number;
+            blockscount: bigint | number;
+            blocksize: bigint | number;
+            blockspergroup: bigint | number;
+            bytesperinode: bigint | number;
             creatoros: string;
             discard: Tristate;
             extent: Tristate;
             filetype: Tristate;
             flexbg: Tristate;
             forcecreate: Tristate;
-            fragsize: number;
+            fragsize: bigint | number;
             fstype: string;
             hasjournal: Tristate;
-            inodesize: number;
+            inodesize: bigint | number;
             journaldev: Tristate;
             journaldevice: string;
-            journalsize: number;
+            journalsize: bigint | number;
             label: string;
             largefile: Tristate;
             lastmounteddir: string;
             lazyitableinit: Tristate;
             lazyjournalinit: Tristate;
-            maxonlineresize: number;
+            maxonlineresize: bigint | number;
             mmpupdateinterval: number;
-            numberofgroups: number;
-            numberofinodes: number;
+            numberofgroups: bigint | number;
+            numberofinodes: bigint | number;
             quota: Tristate;
             quotatype: Tristate;
             reservedblockspercentage: number;
             resizeinode: Tristate;
             sparsesuper: Tristate;
-            stridesize: number;
-            stripewidth: number;
+            stridesize: bigint | number;
+            stripewidth: bigint | number;
             testfs: Tristate;
             uninitbg: Tristate;
             usagetype: string;
@@ -3605,22 +3605,22 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get blockscount(): number;
-        set blockscount(val: number);
+        set blockscount(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get blocksize(): number;
-        set blocksize(val: number);
+        set blocksize(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get blockspergroup(): number;
-        set blockspergroup(val: number);
+        set blockspergroup(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get bytesperinode(): number;
-        set bytesperinode(val: number);
+        set bytesperinode(val: bigint | number);
         /**
          * A string.
          */
@@ -3655,7 +3655,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get fragsize(): number;
-        set fragsize(val: number);
+        set fragsize(val: bigint | number);
         /**
          * A string.
          */
@@ -3670,7 +3670,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get inodesize(): number;
-        set inodesize(val: number);
+        set inodesize(val: bigint | number);
         /**
          * A boolean.
          */
@@ -3685,7 +3685,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get journalsize(): number;
-        set journalsize(val: number);
+        set journalsize(val: bigint | number);
         /**
          * A string.
          */
@@ -3715,7 +3715,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get maxonlineresize(): number;
-        set maxonlineresize(val: number);
+        set maxonlineresize(val: bigint | number);
         /**
          * A 32-bit integer.
          */
@@ -3725,12 +3725,12 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get numberofgroups(): number;
-        set numberofgroups(val: number);
+        set numberofgroups(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get numberofinodes(): number;
-        set numberofinodes(val: number);
+        set numberofinodes(val: bigint | number);
         /**
          * A boolean.
          */
@@ -3760,12 +3760,12 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get stridesize(): number;
-        set stridesize(val: number);
+        set stridesize(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get stripewidth(): number;
-        set stripewidth(val: number);
+        set stripewidth(val: bigint | number);
         /**
          * A boolean.
          */
@@ -3942,8 +3942,8 @@ export namespace Guestfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            allocstart: number;
-            bytecount: number;
+            allocstart: bigint | number;
+            bytecount: bigint | number;
             datatype: string;
             label: string;
             leafsize: number;
@@ -3966,12 +3966,12 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get allocstart(): number;
-        set allocstart(val: number);
+        set allocstart(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get bytecount(): number;
-        set bytecount(val: number);
+        set bytecount(val: bigint | number);
         /**
          * A string.
          */
@@ -4416,7 +4416,7 @@ export namespace Guestfs {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             force: Tristate;
-            size: number;
+            size: bigint | number;
         }
     }
 
@@ -4438,7 +4438,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -5555,7 +5555,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddDriveScratch containing optional arguments
          * @returns true on success, false on error
          */
-        add_drive_scratch(size: number, optargs?: AddDriveScratch | null): boolean;
+        add_drive_scratch(size: bigint | number, optargs?: AddDriveScratch | null): boolean;
         /**
          * add a drive specifying the QEMU block emulation to use
          *
@@ -6334,7 +6334,7 @@ export namespace Guestfs {
          * @param size
          * @returns true on success, false on error
          */
-        btrfs_qgroup_limit(subvolume: string, size: number): boolean;
+        btrfs_qgroup_limit(subvolume: string, size: bigint | number): boolean;
         /**
          * remove a qgroup from its parent qgroup
          *
@@ -6550,7 +6550,7 @@ export namespace Guestfs {
          * @param fs
          * @returns true on success, false on error
          */
-        btrfs_subvolume_set_default(id: number, fs: string): boolean;
+        btrfs_subvolume_set_default(id: bigint | number, fs: string): boolean;
         /**
          * return detailed information of the subvolume
          *
@@ -7120,7 +7120,7 @@ export namespace Guestfs {
          * @param size
          * @returns true on success, false on error
          */
-        copy_size(src: string, dest: string, size: number): boolean;
+        copy_size(src: string, dest: string, size: bigint | number): boolean;
         /**
          * copy a file
          *
@@ -7317,7 +7317,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsDiskCreate containing optional arguments
          * @returns true on success, false on error
          */
-        disk_create(filename: string, format: string, size: number, optargs?: DiskCreate | null): boolean;
+        disk_create(filename: string, format: string, size: bigint | number, optargs?: DiskCreate | null): boolean;
         /**
          * detect the disk format of a disk image
          *
@@ -7414,8 +7414,8 @@ export namespace Guestfs {
          */
         download_blocks(
             device: string,
-            start: number,
-            stop: number,
+            start: bigint | number,
+            stop: bigint | number,
             filename: string,
             optargs?: DownloadBlocks | null,
             cancellable?: Gio.Cancellable | null,
@@ -7438,7 +7438,12 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        download_inode(device: string, inode: number, filename: string, cancellable?: Gio.Cancellable | null): boolean;
+        download_inode(
+            device: string,
+            inode: bigint | number,
+            filename: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * download a file to the local machine with offset and size
          *
@@ -7463,8 +7468,8 @@ export namespace Guestfs {
         download_offset(
             remotefilename: string,
             filename: string,
-            offset: number,
-            size: number,
+            offset: bigint | number,
+            size: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -7664,7 +7669,7 @@ export namespace Guestfs {
          * @param len
          * @returns true on success, false on error
          */
-        fallocate64(path: string, len: number): boolean;
+        fallocate64(path: string, len: bigint | number): boolean;
         /**
          * test availability of some parts of the API
          *
@@ -8052,7 +8057,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns an array of TSKDirent objects, or NULL on error
          */
-        find_inode(device: string, inode: number, cancellable?: Gio.Cancellable | null): TSKDirent[];
+        find_inode(device: string, inode: bigint | number, cancellable?: Gio.Cancellable | null): TSKDirent[];
         /**
          * find a filesystem by label
          *
@@ -8752,7 +8757,7 @@ export namespace Guestfs {
          * @param name
          * @returns the returned value, or -1 on error
          */
-        hivex_node_add_child(parent: number, name: string): number;
+        hivex_node_add_child(parent: bigint | number, name: string): number;
         /**
          * return list of nodes which are subkeys of node
          *
@@ -8765,7 +8770,7 @@ export namespace Guestfs {
          * @param nodeh
          * @returns an array of HivexNode objects, or NULL on error
          */
-        hivex_node_children(nodeh: number): HivexNode[];
+        hivex_node_children(nodeh: bigint | number): HivexNode[];
         /**
          * delete a node (recursively)
          *
@@ -8778,7 +8783,7 @@ export namespace Guestfs {
          * @param nodeh
          * @returns true on success, false on error
          */
-        hivex_node_delete_child(nodeh: number): boolean;
+        hivex_node_delete_child(nodeh: bigint | number): boolean;
         /**
          * return the named child of node
          *
@@ -8793,7 +8798,7 @@ export namespace Guestfs {
          * @param name
          * @returns the returned value, or -1 on error
          */
-        hivex_node_get_child(nodeh: number, name: string): number;
+        hivex_node_get_child(nodeh: bigint | number, name: string): number;
         /**
          * return the named value
          *
@@ -8808,7 +8813,7 @@ export namespace Guestfs {
          * @param key
          * @returns the returned value, or -1 on error
          */
-        hivex_node_get_value(nodeh: number, key: string): number;
+        hivex_node_get_value(nodeh: bigint | number, key: string): number;
         /**
          * return the name of the node
          *
@@ -8821,7 +8826,7 @@ export namespace Guestfs {
          * @param nodeh
          * @returns the returned string, or NULL on error
          */
-        hivex_node_name(nodeh: number): string;
+        hivex_node_name(nodeh: bigint | number): string;
         /**
          * return the parent of node
          *
@@ -8834,7 +8839,7 @@ export namespace Guestfs {
          * @param nodeh
          * @returns the returned value, or -1 on error
          */
-        hivex_node_parent(nodeh: number): number;
+        hivex_node_parent(nodeh: bigint | number): number;
         /**
          * set or replace a single value in a node
          *
@@ -8851,7 +8856,12 @@ export namespace Guestfs {
          * @param val an array of binary data
          * @returns true on success, false on error
          */
-        hivex_node_set_value(nodeh: number, key: string, t: number, val: Uint8Array | string): boolean;
+        hivex_node_set_value(
+            nodeh: bigint | number,
+            key: string,
+            t: bigint | number,
+            val: Uint8Array | string,
+        ): boolean;
         /**
          * return list of values attached to node
          *
@@ -8864,7 +8874,7 @@ export namespace Guestfs {
          * @param nodeh
          * @returns an array of HivexValue objects, or NULL on error
          */
-        hivex_node_values(nodeh: number): HivexValue[];
+        hivex_node_values(nodeh: bigint | number): HivexValue[];
         /**
          * open a Windows Registry hive file
          *
@@ -8905,7 +8915,7 @@ export namespace Guestfs {
          * @param valueh
          * @returns the returned string, or NULL on error
          */
-        hivex_value_key(valueh: number): string;
+        hivex_value_key(valueh: bigint | number): string;
         /**
          * return the data field as a UTF-8 string
          *
@@ -8923,7 +8933,7 @@ export namespace Guestfs {
          * @param valueh
          * @returns the returned string, or NULL on error
          */
-        hivex_value_string(valueh: number): string;
+        hivex_value_string(valueh: bigint | number): string;
         /**
          * return the data type from the (key, datatype, data) tuple
          *
@@ -8936,7 +8946,7 @@ export namespace Guestfs {
          * @param valueh
          * @returns the returned value, or -1 on error
          */
-        hivex_value_type(valueh: number): number;
+        hivex_value_type(valueh: bigint | number): number;
         /**
          * return the data field as a UTF-8 string
          *
@@ -8954,7 +8964,7 @@ export namespace Guestfs {
          * @param valueh
          * @returns the returned string, or NULL on error
          */
-        hivex_value_utf8(valueh: number): string;
+        hivex_value_utf8(valueh: bigint | number): string;
         /**
          * return the data field from the (key, datatype, data) tuple
          *
@@ -8969,7 +8979,7 @@ export namespace Guestfs {
          * @param valueh
          * @returns an array of binary data, or NULL on error
          */
-        hivex_value_value(valueh: number): Uint8Array;
+        hivex_value_value(valueh: bigint | number): Uint8Array;
         /**
          * list the contents of a single file in an initrd
          *
@@ -9945,7 +9955,7 @@ export namespace Guestfs {
             strlist: string[],
             b: boolean,
             integer: number,
-            integer64: number,
+            integer64: bigint | number,
             filein: string,
             fileout: string,
             bufferin: Uint8Array | string,
@@ -10640,7 +10650,7 @@ export namespace Guestfs {
          * @param threshold
          * @returns true on success, false on error
          */
-        journal_set_data_threshold(threshold: number): boolean;
+        journal_set_data_threshold(threshold: bigint | number): boolean;
         /**
          * skip forwards or backwards in the journal
          *
@@ -10657,7 +10667,7 @@ export namespace Guestfs {
          * @param skip
          * @returns the returned value, or -1 on error
          */
-        journal_skip(skip: number): number;
+        journal_skip(skip: bigint | number): number;
         /**
          * kill the hypervisor
          *
@@ -12437,7 +12447,12 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        ntfscat_i(device: string, inode: number, filename: string, cancellable?: Gio.Cancellable | null): boolean;
+        ntfscat_i(
+            device: string,
+            inode: bigint | number,
+            filename: string,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * restore NTFS from backup file
          *
@@ -12548,7 +12563,7 @@ export namespace Guestfs {
          * @param size
          * @returns true on success, false on error
          */
-        ntfsresize_size(device: string, size: number): boolean;
+        ntfsresize_size(device: string, size: bigint | number): boolean;
         /**
          * parse the environment and set handle flags accordingly
          *
@@ -12601,7 +12616,7 @@ export namespace Guestfs {
          * @param endsect
          * @returns true on success, false on error
          */
-        part_add(device: string, prlogex: string, startsect: number, endsect: number): boolean;
+        part_add(device: string, prlogex: string, startsect: bigint | number, endsect: bigint | number): boolean;
         /**
          * delete a partition
          *
@@ -12851,7 +12866,7 @@ export namespace Guestfs {
          * @param endsect
          * @returns true on success, false on error
          */
-        part_resize(device: string, partnum: number, endsect: number): boolean;
+        part_resize(device: string, partnum: number, endsect: bigint | number): boolean;
         /**
          * make a partition bootable
          *
@@ -12913,7 +12928,7 @@ export namespace Guestfs {
          * @param attributes
          * @returns true on success, false on error
          */
-        part_set_gpt_attributes(device: string, partnum: number, attributes: number): boolean;
+        part_set_gpt_attributes(device: string, partnum: number, attributes: bigint | number): boolean;
         /**
          * set the GUID of a GPT partition
          *
@@ -13035,7 +13050,7 @@ export namespace Guestfs {
          * @param offset
          * @returns an array of binary data, or NULL on error
          */
-        pread(path: string, count: number, offset: number): Uint8Array;
+        pread(path: string, count: number, offset: bigint | number): Uint8Array;
         /**
          * read part of a device
          *
@@ -13051,7 +13066,7 @@ export namespace Guestfs {
          * @param offset
          * @returns an array of binary data, or NULL on error
          */
-        pread_device(device: string, count: number, offset: number): Uint8Array;
+        pread_device(device: string, count: number, offset: bigint | number): Uint8Array;
         /**
          * generate a new random UUID for a physical volume
          *
@@ -13125,7 +13140,7 @@ export namespace Guestfs {
          * @param size
          * @returns true on success, false on error
          */
-        pvresize_size(device: string, size: number): boolean;
+        pvresize_size(device: string, size: bigint | number): boolean;
         /**
          * list the LVM physical volumes (PVs)
          *
@@ -13179,7 +13194,7 @@ export namespace Guestfs {
          * @param offset
          * @returns the returned value, or -1 on error
          */
-        pwrite(path: string, content: Uint8Array | string, offset: number): number;
+        pwrite(path: string, content: Uint8Array | string, offset: bigint | number): number;
         /**
          * write to part of a device
          *
@@ -13197,7 +13212,7 @@ export namespace Guestfs {
          * @param offset
          * @returns the returned value, or -1 on error
          */
-        pwrite_device(device: string, content: Uint8Array | string, offset: number): number;
+        pwrite_device(device: string, content: Uint8Array | string, offset: bigint | number): number;
         /**
          * read a file
          *
@@ -13401,7 +13416,7 @@ export namespace Guestfs {
          * @param size
          * @returns true on success, false on error
          */
-        resize2fs_size(device: string, size: number): boolean;
+        resize2fs_size(device: string, size: bigint | number): boolean;
         /**
          * remove a file
          *
@@ -13774,7 +13789,7 @@ export namespace Guestfs {
          * @param generation
          * @returns true on success, false on error
          */
-        set_e2generation(file: string, generation: number): boolean;
+        set_e2generation(file: string, generation: bigint | number): boolean;
         /**
          * set the ext2/3/4 filesystem label
          *
@@ -14709,7 +14724,7 @@ export namespace Guestfs {
          * @param size
          * @returns true on success, false on error
          */
-        truncate_size(path: string, size: number): boolean;
+        truncate_size(path: string, size: bigint | number): boolean;
         /**
          * adjust ext2/ext3/ext4 filesystem parameters
          *
@@ -14908,7 +14923,7 @@ export namespace Guestfs {
         upload_offset(
             filename: string,
             remotefilename: string,
-            offset: number,
+            offset: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -14968,7 +14983,13 @@ export namespace Guestfs {
          * @param mtnsecs
          * @returns true on success, false on error
          */
-        utimens(path: string, atsecs: number, atnsecs: number, mtsecs: number, mtnsecs: number): boolean;
+        utimens(
+            path: string,
+            atsecs: bigint | number,
+            atnsecs: bigint | number,
+            mtsecs: bigint | number,
+            mtnsecs: bigint | number,
+        ): boolean;
         /**
          * appliance kernel version
          *
@@ -15950,14 +15971,14 @@ export namespace Guestfs {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             errorbehavior: string;
             force: Tristate;
-            group: number;
+            group: bigint | number;
             intervalbetweenchecks: number;
             lastmounteddirectory: string;
             maxmountcount: number;
             mountcount: number;
-            reservedblockscount: number;
+            reservedblockscount: bigint | number;
             reservedblockspercentage: number;
-            user: number;
+            user: bigint | number;
         }
     }
 
@@ -15984,7 +16005,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get group(): number;
-        set group(val: number);
+        set group(val: bigint | number);
         /**
          * A 32-bit integer.
          */
@@ -16009,7 +16030,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get reservedblockscount(): number;
-        set reservedblockscount(val: number);
+        set reservedblockscount(val: bigint | number);
         /**
          * A 32-bit integer.
          */
@@ -16019,7 +16040,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get user(): number;
-        set user(val: number);
+        set user(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -16327,13 +16348,13 @@ export namespace Guestfs {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             datasec: Tristate;
-            datasize: number;
+            datasize: bigint | number;
             logsec: Tristate;
-            logsize: number;
+            logsize: bigint | number;
             maxpct: number;
-            rtextsize: number;
+            rtextsize: bigint | number;
             rtsec: Tristate;
-            rtsize: number;
+            rtsize: bigint | number;
         }
     }
 
@@ -16355,7 +16376,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get datasize(): number;
-        set datasize(val: number);
+        set datasize(val: bigint | number);
         /**
          * A boolean.
          */
@@ -16365,7 +16386,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get logsize(): number;
-        set logsize(val: number);
+        set logsize(val: bigint | number);
         /**
          * A 32-bit integer.
          */
@@ -16375,7 +16396,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get rtextsize(): number;
-        set rtextsize(val: number);
+        set rtextsize(val: bigint | number);
         /**
          * A boolean.
          */
@@ -16385,7 +16406,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get rtsize(): number;
-        set rtsize(val: number);
+        set rtsize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -16444,13 +16465,13 @@ export namespace Guestfs {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            agstride: number;
-            bhashsize: number;
+            agstride: bigint | number;
+            bhashsize: bigint | number;
             forcegeometry: Tristate;
             forcelogzero: Tristate;
-            ihashsize: number;
+            ihashsize: bigint | number;
             logdev: string;
-            maxmem: number;
+            maxmem: bigint | number;
             nomodify: Tristate;
             noprefetch: Tristate;
             rtdev: string;
@@ -16470,12 +16491,12 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get agstride(): number;
-        set agstride(val: number);
+        set agstride(val: bigint | number);
         /**
          * A 64-bit integer.
          */
         get bhashsize(): number;
-        set bhashsize(val: number);
+        set bhashsize(val: bigint | number);
         /**
          * A boolean.
          */
@@ -16490,7 +16511,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get ihashsize(): number;
-        set ihashsize(val: number);
+        set ihashsize(val: bigint | number);
         /**
          * A string.
          */
@@ -16500,7 +16521,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get maxmem(): number;
-        set maxmem(val: number);
+        set maxmem(val: bigint | number);
         /**
          * A boolean.
          */
@@ -16712,22 +16733,10 @@ export namespace Guestfs {
         // Fields
 
         btrfsbalance_status: string;
-        btrfsbalance_total: number;
-        btrfsbalance_balanced: number;
-        btrfsbalance_considered: number;
-        btrfsbalance_left: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                btrfsbalance_status: string;
-                btrfsbalance_total: number;
-                btrfsbalance_balanced: number;
-                btrfsbalance_considered: number;
-                btrfsbalance_left: number;
-            }>,
-        );
+        btrfsbalance_total: bigint | number;
+        btrfsbalance_balanced: bigint | number;
+        btrfsbalance_considered: bigint | number;
+        btrfsbalance_left: bigint | number;
     }
 
     /**
@@ -16772,18 +16781,8 @@ export namespace Guestfs {
         // Fields
 
         btrfsqgroup_id: string;
-        btrfsqgroup_rfer: number;
-        btrfsqgroup_excl: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                btrfsqgroup_id: string;
-                btrfsqgroup_rfer: number;
-                btrfsqgroup_excl: number;
-            }>,
-        );
+        btrfsqgroup_rfer: bigint | number;
+        btrfsqgroup_excl: bigint | number;
     }
 
     /**
@@ -16794,43 +16793,21 @@ export namespace Guestfs {
 
         // Fields
 
-        btrfsscrub_data_extents_scrubbed: number;
-        btrfsscrub_tree_extents_scrubbed: number;
-        btrfsscrub_data_bytes_scrubbed: number;
-        btrfsscrub_tree_bytes_scrubbed: number;
-        btrfsscrub_read_errors: number;
-        btrfsscrub_csum_errors: number;
-        btrfsscrub_verify_errors: number;
-        btrfsscrub_no_csum: number;
-        btrfsscrub_csum_discards: number;
-        btrfsscrub_super_errors: number;
-        btrfsscrub_malloc_errors: number;
-        btrfsscrub_uncorrectable_errors: number;
-        btrfsscrub_unverified_errors: number;
-        btrfsscrub_corrected_errors: number;
-        btrfsscrub_last_physical: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                btrfsscrub_data_extents_scrubbed: number;
-                btrfsscrub_tree_extents_scrubbed: number;
-                btrfsscrub_data_bytes_scrubbed: number;
-                btrfsscrub_tree_bytes_scrubbed: number;
-                btrfsscrub_read_errors: number;
-                btrfsscrub_csum_errors: number;
-                btrfsscrub_verify_errors: number;
-                btrfsscrub_no_csum: number;
-                btrfsscrub_csum_discards: number;
-                btrfsscrub_super_errors: number;
-                btrfsscrub_malloc_errors: number;
-                btrfsscrub_uncorrectable_errors: number;
-                btrfsscrub_unverified_errors: number;
-                btrfsscrub_corrected_errors: number;
-                btrfsscrub_last_physical: number;
-            }>,
-        );
+        btrfsscrub_data_extents_scrubbed: bigint | number;
+        btrfsscrub_tree_extents_scrubbed: bigint | number;
+        btrfsscrub_data_bytes_scrubbed: bigint | number;
+        btrfsscrub_tree_bytes_scrubbed: bigint | number;
+        btrfsscrub_read_errors: bigint | number;
+        btrfsscrub_csum_errors: bigint | number;
+        btrfsscrub_verify_errors: bigint | number;
+        btrfsscrub_no_csum: bigint | number;
+        btrfsscrub_csum_discards: bigint | number;
+        btrfsscrub_super_errors: bigint | number;
+        btrfsscrub_malloc_errors: bigint | number;
+        btrfsscrub_uncorrectable_errors: bigint | number;
+        btrfsscrub_unverified_errors: bigint | number;
+        btrfsscrub_corrected_errors: bigint | number;
+        btrfsscrub_last_physical: bigint | number;
     }
 
     /**
@@ -16841,19 +16818,9 @@ export namespace Guestfs {
 
         // Fields
 
-        btrfssubvolume_id: number;
-        btrfssubvolume_top_level_id: number;
+        btrfssubvolume_id: bigint | number;
+        btrfssubvolume_top_level_id: bigint | number;
         btrfssubvolume_path: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                btrfssubvolume_id: number;
-                btrfssubvolume_top_level_id: number;
-                btrfssubvolume_path: string;
-            }>,
-        );
     }
 
     /**
@@ -16985,19 +16952,9 @@ export namespace Guestfs {
 
         // Fields
 
-        ino: number;
+        ino: bigint | number;
         ftyp: number;
         name: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                ino: number;
-                ftyp: number;
-                name: string;
-            }>,
-        );
     }
 
     /**
@@ -17074,15 +17031,7 @@ export namespace Guestfs {
 
         // Fields
 
-        hivex_node_h: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                hivex_node_h: number;
-            }>,
-        );
+        hivex_node_h: bigint | number;
     }
 
     /**
@@ -17104,15 +17053,7 @@ export namespace Guestfs {
 
         // Fields
 
-        hivex_value_h: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                hivex_value_h: number;
-            }>,
-        );
+        hivex_value_h: bigint | number;
     }
 
     /**
@@ -17123,21 +17064,10 @@ export namespace Guestfs {
 
         // Fields
 
-        in_wd: number;
+        in_wd: bigint | number;
         in_mask: number;
         in_cookie: number;
         in_name: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                in_wd: number;
-                in_mask: number;
-                in_cookie: number;
-                in_name: string;
-            }>,
-        );
     }
 
     /**
@@ -17161,34 +17091,10 @@ export namespace Guestfs {
         iso_copyright_file_id: string;
         iso_abstract_file_id: string;
         iso_bibliographic_file_id: string;
-        iso_volume_creation_t: number;
-        iso_volume_modification_t: number;
-        iso_volume_expiration_t: number;
-        iso_volume_effective_t: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                iso_system_id: string;
-                iso_volume_id: string;
-                iso_volume_space_size: number;
-                iso_volume_set_size: number;
-                iso_volume_sequence_number: number;
-                iso_logical_block_size: number;
-                iso_volume_set_id: string;
-                iso_publisher_id: string;
-                iso_data_preparer_id: string;
-                iso_application_id: string;
-                iso_copyright_file_id: string;
-                iso_abstract_file_id: string;
-                iso_bibliographic_file_id: string;
-                iso_volume_creation_t: number;
-                iso_volume_modification_t: number;
-                iso_volume_expiration_t: number;
-                iso_volume_effective_t: number;
-            }>,
-        );
+        iso_volume_creation_t: bigint | number;
+        iso_volume_modification_t: bigint | number;
+        iso_volume_expiration_t: bigint | number;
+        iso_volume_effective_t: bigint | number;
     }
 
     /**
@@ -17333,12 +17239,12 @@ export namespace Guestfs {
         lv_name: string;
         lv_uuid: number[];
         lv_attr: string;
-        lv_major: number;
-        lv_minor: number;
-        lv_kernel_major: number;
-        lv_kernel_minor: number;
-        lv_size: number;
-        seg_count: number;
+        lv_major: bigint | number;
+        lv_minor: bigint | number;
+        lv_kernel_major: bigint | number;
+        lv_kernel_minor: bigint | number;
+        lv_size: bigint | number;
+        seg_count: bigint | number;
         origin: string;
         snap_percent: number;
         copy_percent: number;
@@ -17346,29 +17252,6 @@ export namespace Guestfs {
         lv_tags: string;
         mirror_log: string;
         modules: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                lv_name: string;
-                lv_uuid: number[];
-                lv_attr: string;
-                lv_major: number;
-                lv_minor: number;
-                lv_kernel_major: number;
-                lv_kernel_minor: number;
-                lv_size: number;
-                seg_count: number;
-                origin: string;
-                snap_percent: number;
-                copy_percent: number;
-                move_pv: string;
-                lv_tags: string;
-                mirror_log: string;
-                modules: string;
-            }>,
-        );
     }
 
     /**
@@ -17537,38 +17420,17 @@ export namespace Guestfs {
         pv_name: string;
         pv_uuid: number[];
         pv_fmt: string;
-        pv_size: number;
-        dev_size: number;
-        pv_free: number;
-        pv_used: number;
+        pv_size: bigint | number;
+        dev_size: bigint | number;
+        pv_free: bigint | number;
+        pv_used: bigint | number;
         pv_attr: string;
-        pv_pe_count: number;
-        pv_pe_alloc_count: number;
+        pv_pe_count: bigint | number;
+        pv_pe_alloc_count: bigint | number;
         pv_tags: string;
-        pe_start: number;
-        pv_mda_count: number;
-        pv_mda_free: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                pv_name: string;
-                pv_uuid: number[];
-                pv_fmt: string;
-                pv_size: number;
-                dev_size: number;
-                pv_free: number;
-                pv_used: number;
-                pv_attr: string;
-                pv_pe_count: number;
-                pv_pe_alloc_count: number;
-                pv_tags: string;
-                pe_start: number;
-                pv_mda_count: number;
-                pv_mda_free: number;
-            }>,
-        );
+        pe_start: bigint | number;
+        pv_mda_count: bigint | number;
+        pv_mda_free: bigint | number;
     }
 
     /**
@@ -17580,20 +17442,9 @@ export namespace Guestfs {
         // Fields
 
         part_num: number;
-        part_start: number;
-        part_end: number;
-        part_size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                part_num: number;
-                part_start: number;
-                part_end: number;
-                part_size: number;
-            }>,
-        );
+        part_start: bigint | number;
+        part_end: bigint | number;
+        part_size: bigint | number;
     }
 
     /**
@@ -17666,8 +17517,8 @@ export namespace Guestfs {
         event: SessionEvent;
         flags: number;
         buf: Uint8Array;
-        array: number[];
-        array_len: number;
+        array: (bigint | number)[];
+        array_len: bigint | number;
     }
 
     /**
@@ -17696,39 +17547,19 @@ export namespace Guestfs {
 
         // Fields
 
-        dev: number;
-        ino: number;
-        mode: number;
-        nlink: number;
-        uid: number;
-        gid: number;
-        rdev: number;
-        size: number;
-        blksize: number;
-        blocks: number;
-        atime: number;
-        mtime: number;
-        ctime: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                dev: number;
-                ino: number;
-                mode: number;
-                nlink: number;
-                uid: number;
-                gid: number;
-                rdev: number;
-                size: number;
-                blksize: number;
-                blocks: number;
-                atime: number;
-                mtime: number;
-                ctime: number;
-            }>,
-        );
+        dev: bigint | number;
+        ino: bigint | number;
+        mode: bigint | number;
+        nlink: bigint | number;
+        uid: bigint | number;
+        gid: bigint | number;
+        rdev: bigint | number;
+        size: bigint | number;
+        blksize: bigint | number;
+        blocks: bigint | number;
+        atime: bigint | number;
+        mtime: bigint | number;
+        ctime: bigint | number;
     }
 
     /**
@@ -17739,57 +17570,28 @@ export namespace Guestfs {
 
         // Fields
 
-        st_dev: number;
-        st_ino: number;
-        st_mode: number;
-        st_nlink: number;
-        st_uid: number;
-        st_gid: number;
-        st_rdev: number;
-        st_size: number;
-        st_blksize: number;
-        st_blocks: number;
-        st_atime_sec: number;
-        st_atime_nsec: number;
-        st_mtime_sec: number;
-        st_mtime_nsec: number;
-        st_ctime_sec: number;
-        st_ctime_nsec: number;
-        st_spare1: number;
-        st_spare2: number;
-        st_spare3: number;
-        st_spare4: number;
-        st_spare5: number;
-        st_spare6: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                st_dev: number;
-                st_ino: number;
-                st_mode: number;
-                st_nlink: number;
-                st_uid: number;
-                st_gid: number;
-                st_rdev: number;
-                st_size: number;
-                st_blksize: number;
-                st_blocks: number;
-                st_atime_sec: number;
-                st_atime_nsec: number;
-                st_mtime_sec: number;
-                st_mtime_nsec: number;
-                st_ctime_sec: number;
-                st_ctime_nsec: number;
-                st_spare1: number;
-                st_spare2: number;
-                st_spare3: number;
-                st_spare4: number;
-                st_spare5: number;
-                st_spare6: number;
-            }>,
-        );
+        st_dev: bigint | number;
+        st_ino: bigint | number;
+        st_mode: bigint | number;
+        st_nlink: bigint | number;
+        st_uid: bigint | number;
+        st_gid: bigint | number;
+        st_rdev: bigint | number;
+        st_size: bigint | number;
+        st_blksize: bigint | number;
+        st_blocks: bigint | number;
+        st_atime_sec: bigint | number;
+        st_atime_nsec: bigint | number;
+        st_mtime_sec: bigint | number;
+        st_mtime_nsec: bigint | number;
+        st_ctime_sec: bigint | number;
+        st_ctime_nsec: bigint | number;
+        st_spare1: bigint | number;
+        st_spare2: bigint | number;
+        st_spare3: bigint | number;
+        st_spare4: bigint | number;
+        st_spare5: bigint | number;
+        st_spare6: bigint | number;
     }
 
     /**
@@ -17800,35 +17602,17 @@ export namespace Guestfs {
 
         // Fields
 
-        bsize: number;
-        frsize: number;
-        blocks: number;
-        bfree: number;
-        bavail: number;
-        files: number;
-        ffree: number;
-        favail: number;
-        fsid: number;
-        flag: number;
-        namemax: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                bsize: number;
-                frsize: number;
-                blocks: number;
-                bfree: number;
-                bavail: number;
-                files: number;
-                ffree: number;
-                favail: number;
-                fsid: number;
-                flag: number;
-                namemax: number;
-            }>,
-        );
+        bsize: bigint | number;
+        frsize: bigint | number;
+        blocks: bigint | number;
+        bfree: bigint | number;
+        bavail: bigint | number;
+        files: bigint | number;
+        ffree: bigint | number;
+        favail: bigint | number;
+        fsid: bigint | number;
+        flag: bigint | number;
+        namemax: bigint | number;
     }
 
     /**
@@ -17850,45 +17634,22 @@ export namespace Guestfs {
 
         // Fields
 
-        tsk_inode: number;
+        tsk_inode: bigint | number;
         tsk_type: number;
-        tsk_size: number;
+        tsk_size: bigint | number;
         tsk_name: string;
         tsk_flags: number;
-        tsk_atime_sec: number;
-        tsk_atime_nsec: number;
-        tsk_mtime_sec: number;
-        tsk_mtime_nsec: number;
-        tsk_ctime_sec: number;
-        tsk_ctime_nsec: number;
-        tsk_crtime_sec: number;
-        tsk_crtime_nsec: number;
-        tsk_nlink: number;
+        tsk_atime_sec: bigint | number;
+        tsk_atime_nsec: bigint | number;
+        tsk_mtime_sec: bigint | number;
+        tsk_mtime_nsec: bigint | number;
+        tsk_ctime_sec: bigint | number;
+        tsk_ctime_nsec: bigint | number;
+        tsk_crtime_sec: bigint | number;
+        tsk_crtime_nsec: bigint | number;
+        tsk_nlink: bigint | number;
         tsk_link: string;
-        tsk_spare1: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                tsk_inode: number;
-                tsk_type: number;
-                tsk_size: number;
-                tsk_name: string;
-                tsk_flags: number;
-                tsk_atime_sec: number;
-                tsk_atime_nsec: number;
-                tsk_mtime_sec: number;
-                tsk_mtime_nsec: number;
-                tsk_ctime_sec: number;
-                tsk_ctime_nsec: number;
-                tsk_crtime_sec: number;
-                tsk_crtime_nsec: number;
-                tsk_nlink: number;
-                tsk_link: string;
-                tsk_spare1: number;
-            }>,
-        );
+        tsk_spare1: bigint | number;
     }
 
     /**
@@ -17983,47 +17744,21 @@ export namespace Guestfs {
         vg_uuid: number[];
         vg_fmt: string;
         vg_attr: string;
-        vg_size: number;
-        vg_free: number;
+        vg_size: bigint | number;
+        vg_free: bigint | number;
         vg_sysid: string;
-        vg_extent_size: number;
-        vg_extent_count: number;
-        vg_free_count: number;
-        max_lv: number;
-        max_pv: number;
-        pv_count: number;
-        lv_count: number;
-        snap_count: number;
-        vg_seqno: number;
+        vg_extent_size: bigint | number;
+        vg_extent_count: bigint | number;
+        vg_free_count: bigint | number;
+        max_lv: bigint | number;
+        max_pv: bigint | number;
+        pv_count: bigint | number;
+        lv_count: bigint | number;
+        snap_count: bigint | number;
+        vg_seqno: bigint | number;
         vg_tags: string;
-        vg_mda_count: number;
-        vg_mda_free: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                vg_name: string;
-                vg_uuid: number[];
-                vg_fmt: string;
-                vg_attr: string;
-                vg_size: number;
-                vg_free: number;
-                vg_sysid: string;
-                vg_extent_size: number;
-                vg_extent_count: number;
-                vg_free_count: number;
-                max_lv: number;
-                max_pv: number;
-                pv_count: number;
-                lv_count: number;
-                snap_count: number;
-                vg_seqno: number;
-                vg_tags: string;
-                vg_mda_count: number;
-                vg_mda_free: number;
-            }>,
-        );
+        vg_mda_count: bigint | number;
+        vg_mda_free: bigint | number;
     }
 
     /**
@@ -18034,21 +17769,10 @@ export namespace Guestfs {
 
         // Fields
 
-        major: number;
-        minor: number;
-        release: number;
+        major: bigint | number;
+        minor: bigint | number;
+        release: bigint | number;
         extra: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                major: number;
-                minor: number;
-                release: number;
-                extra: string;
-            }>,
-        );
     }
 
     /**
@@ -18087,7 +17811,7 @@ export namespace Guestfs {
         xfs_sectsize: number;
         xfs_attr: number;
         xfs_blocksize: number;
-        xfs_datablocks: number;
+        xfs_datablocks: bigint | number;
         xfs_imaxpct: number;
         xfs_sunit: number;
         xfs_swidth: number;
@@ -18103,40 +17827,8 @@ export namespace Guestfs {
         xfs_lazycount: number;
         xfs_rtname: string;
         xfs_rtextsize: number;
-        xfs_rtblocks: number;
-        xfs_rtextents: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                xfs_mntpoint: string;
-                xfs_inodesize: number;
-                xfs_agcount: number;
-                xfs_agsize: number;
-                xfs_sectsize: number;
-                xfs_attr: number;
-                xfs_blocksize: number;
-                xfs_datablocks: number;
-                xfs_imaxpct: number;
-                xfs_sunit: number;
-                xfs_swidth: number;
-                xfs_dirversion: number;
-                xfs_dirblocksize: number;
-                xfs_cimode: number;
-                xfs_logname: string;
-                xfs_logblocksize: number;
-                xfs_logblocks: number;
-                xfs_logversion: number;
-                xfs_logsectsize: number;
-                xfs_logsunit: number;
-                xfs_lazycount: number;
-                xfs_rtname: string;
-                xfs_rtextsize: number;
-                xfs_rtblocks: number;
-                xfs_rtextents: number;
-            }>,
-        );
+        xfs_rtblocks: bigint | number;
+        xfs_rtextents: bigint | number;
     }
 
     /**

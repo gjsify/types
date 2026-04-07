@@ -125,7 +125,7 @@ export namespace Gm {
      */
     function timeout_add_seconds_once(
         priority: number,
-        seconds: number,
+        seconds: bigint | number,
         _function: GLib.SourceOnceFunc,
         notify?: GLib.DestroyNotify | null,
     ): number;
@@ -154,7 +154,7 @@ export namespace Gm {
      */
     function wakeup_timeout_add_seconds_once(
         priority: number,
-        seconds: number,
+        seconds: bigint | number,
         _function: GLib.SourceOnceFunc,
         notify?: GLib.DestroyNotify | null,
     ): number;

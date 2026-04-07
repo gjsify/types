@@ -6718,7 +6718,7 @@ export namespace Ipuz {
             publisher: string;
             puzzle_kind: PuzzleKind;
             puzzleKind: PuzzleKind;
-            styles: GLib.HashTable<any, any>;
+            styles: { [key: string]: any } | GLib.HashTable<any, any>;
             title: string;
             uniqueid: string;
             url: string;
@@ -7095,7 +7095,7 @@ export namespace Ipuz {
 
         _init(...args: any[]): void;
 
-        static new_from_data(data: string, size: number): Puzzle;
+        static new_from_data(data: string, size: bigint | number): Puzzle;
 
         static new_from_file(filename: string): Puzzle;
 
@@ -8210,7 +8210,7 @@ export namespace Ipuz {
          * @param index the index of the coord to return
          * @returns `TRUE` if the index is present, `FALSE` if it is out of bounds.
          */
-        index(index: number): [boolean, CellCoord | null];
+        index(index: bigint | number): [boolean, CellCoord | null];
         /**
          * @returns the length of `self`.
          */

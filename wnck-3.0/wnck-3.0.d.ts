@@ -344,7 +344,7 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application with process ID `pid`.
      * @since 2.6
      */
-    function pid_read_resource_usage(gdk_display: Gdk.Display, pid: number, usage: ResourceUsage): void;
+    function pid_read_resource_usage(gdk_display: Gdk.Display, pid: bigint | number, usage: ResourceUsage): void;
     /**
      * Sets the role of the libwnck user.
      *
@@ -367,14 +367,14 @@ export namespace Wnck {
      * @param size the default size for windows and application standard icons.
      * @since 2.4.6
      */
-    function set_default_icon_size(size: number): void;
+    function set_default_icon_size(size: bigint | number): void;
     /**
      * The default main icon size is `WNCK_DEFAULT_MINI_ICON_SIZE`. This function
      * allows to change this value.
      * @param size the default size for windows and application mini icons.
      * @since 2.4.6
      */
-    function set_default_mini_icon_size(size: number): void;
+    function set_default_mini_icon_size(size: bigint | number): void;
     /**
      * Makes libwnck stop listening to events and tear down all resources from
      * libwnck. This should be done if you are not going to need the state change
@@ -402,7 +402,7 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application owning the X window ID `xid`.
      * @since 2.6
      */
-    function xid_read_resource_usage(gdk_display: Gdk.Display, xid: number, usage: ResourceUsage): void;
+    function xid_read_resource_usage(gdk_display: Gdk.Display, xid: bigint | number, usage: ResourceUsage): void;
     /**
      * @gir-type Flags
      */
@@ -1253,7 +1253,7 @@ export namespace Wnck {
          * as X window ID.
          * @param xwindow the X window ID of a group leader.
          */
-        static get(xwindow: number): Application;
+        static get(xwindow: bigint | number): Application;
 
         // Virtual methods
 
@@ -1539,7 +1539,7 @@ export namespace Wnck {
          * @param xwindow the X window ID of a group leader.
          * @returns the {@link Wnck.Application} corresponding to `xwindow`, or `null` if there no such {@link Wnck.Application} could be found. The returned {@link Wnck.Application} is owned by libwnck and must not be referenced or unreferenced.
          */
-        get_application(xwindow: number): Application;
+        get_application(xwindow: bigint | number): Application;
         /**
          * Gets the {@link Wnck.ClassGroup} corresponding to `id`.
          * @param id identifier name of the sought resource class.
@@ -1566,7 +1566,7 @@ export namespace Wnck {
          * @param root_window_id an X window ID.
          * @returns the {@link Wnck.Screen} for the root window at `root_window_id`, or `null`. The returned {@link Wnck.Screen} is owned by {@link Wnck.Handle} and must not be referenced or unreferenced.
          */
-        get_screen_for_root(root_window_id: number): Screen;
+        get_screen_for_root(root_window_id: bigint | number): Screen;
         /**
          * Gets a preexisting {@link Wnck.Window} for the X window `xwindow`. This will not
          * create a {@link Wnck.Window} if none exists. The function is robust against bogus
@@ -1574,19 +1574,19 @@ export namespace Wnck {
          * @param xwindow an X window ID.
          * @returns the {@link Wnck.Window} for `xwindow`. The returned {@link Wnck.Window} is owned by libwnck and must not be referenced or unreferenced.
          */
-        get_window(xwindow: number): Window;
+        get_window(xwindow: bigint | number): Window;
         /**
          * The default main icon size is `WNCK_DEFAULT_ICON_SIZE`. This function allows
          * to change this value.
          * @param icon_size the default size for windows and application standard icons.
          */
-        set_default_icon_size(icon_size: number): void;
+        set_default_icon_size(icon_size: bigint | number): void;
         /**
          * The default main icon size is `WNCK_DEFAULT_MINI_ICON_SIZE`. This function
          * allows to change this value.
          * @param icon_size the default size for windows and application mini icons.
          */
-        set_default_mini_icon_size(icon_size: number): void;
+        set_default_mini_icon_size(icon_size: bigint | number): void;
     }
 
     namespace ImageMenuItem {
@@ -7505,7 +7505,7 @@ export namespace Wnck {
          * sought {@link Wnck.Screen} before, and returns `null`.
          * @param root_window_id an X window ID.
          */
-        static get_for_root(root_window_id: number): Screen;
+        static get_for_root(root_window_id: bigint | number): Screen;
 
         // Virtual methods
 
@@ -9112,7 +9112,7 @@ export namespace Wnck {
          * window IDs.
          * @param xwindow an X window ID.
          */
-        static get(xwindow: number): Window;
+        static get(xwindow: bigint | number): Window;
 
         // Virtual methods
 
@@ -9918,8 +9918,8 @@ export namespace Wnck {
 
         // Fields
 
-        total_bytes_estimate: number;
-        pixmap_bytes: number;
+        total_bytes_estimate: bigint | number;
+        pixmap_bytes: bigint | number;
         n_pixmaps: number;
         n_windows: number;
         n_gcs: number;
@@ -9930,25 +9930,6 @@ export namespace Wnck {
         n_passive_grabs: number;
         n_cursors: number;
         n_other: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                total_bytes_estimate: number;
-                pixmap_bytes: number;
-                n_pixmaps: number;
-                n_windows: number;
-                n_gcs: number;
-                n_pictures: number;
-                n_glyphsets: number;
-                n_fonts: number;
-                n_colormap_entries: number;
-                n_passive_grabs: number;
-                n_cursors: number;
-                n_other: number;
-            }>,
-        );
     }
 
     /**

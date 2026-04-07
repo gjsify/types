@@ -2036,7 +2036,7 @@ export namespace Atspi {
      * @returns `true` if successful, otherwise `false`.
      */
     function generate_keyboard_event(
-        keyval: number,
+        keyval: bigint | number,
         keystring: string | null,
         synth_type: KeySynthType | null,
     ): boolean;
@@ -2052,7 +2052,7 @@ export namespace Atspi {
      * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
      * @returns `true` if successful, otherwise `false`.
      */
-    function generate_mouse_event(x: number, y: number, name: string): boolean;
+    function generate_mouse_event(x: bigint | number, y: bigint | number, name: string): boolean;
     /**
      * Gets the virtual desktop indicated by index `i`.
      * NOTE: currently multiple virtual desktops are not implemented;
@@ -5050,7 +5050,7 @@ export namespace Atspi {
         // Fields
 
         accessible: any;
-        states: number;
+        states: bigint | number;
 
         // Constructors
 

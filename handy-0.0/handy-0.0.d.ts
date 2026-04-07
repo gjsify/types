@@ -331,7 +331,7 @@ export namespace Handy {
      * @param len the new size of the string
      * @returns `string`
      */
-    function string_utf8_truncate(string: GLib.String, len: number): GLib.String;
+    function string_utf8_truncate(string: GLib.String, len: bigint | number): GLib.String;
     /**
      * @gir-type Callback
      */
@@ -29899,13 +29899,13 @@ export namespace Handy {
          * @param to
          * @virtual
          */
-        vfunc_end_swipe(duration: number, to: number): void;
+        vfunc_end_swipe(duration: bigint | number, to: number): void;
         /**
          * @param index
          * @param duration
          * @virtual
          */
-        vfunc_switch_child(index: number, duration: number): void;
+        vfunc_switch_child(index: number, duration: bigint | number): void;
         /**
          * @param value
          * @virtual
@@ -34286,7 +34286,7 @@ export namespace Handy {
          * @param widget a child of `self`
          * @param duration animation duration in milliseconds
          */
-        scroll_to_full(widget: Gtk.Widget, duration: number): void;
+        scroll_to_full(widget: Gtk.Widget, duration: bigint | number): void;
         /**
          * Sets whether `self` can be dragged with mouse pointer. If `allow_mouse_drag`
          * is `false`, dragging is only available on touch.
@@ -34834,13 +34834,13 @@ export namespace Handy {
          * @param to
          * @virtual
          */
-        vfunc_end_swipe(duration: number, to: number): void;
+        vfunc_end_swipe(duration: bigint | number, to: number): void;
         /**
          * @param index
          * @param duration
          * @virtual
          */
-        vfunc_switch_child(index: number, duration: number): void;
+        vfunc_switch_child(index: number, duration: bigint | number): void;
         /**
          * @param value
          * @virtual
@@ -48166,7 +48166,7 @@ export namespace Handy {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            value: GObject.Value;
+            value: GObject.Value | any;
         }
     }
 
@@ -48181,7 +48181,7 @@ export namespace Handy {
         /**
          * @construct-only
          */
-        get value(): GObject.Value;
+        get value(): unknown;
 
         /**
          * Compile-time signal type information.
@@ -49695,13 +49695,13 @@ export namespace Handy {
              * @param to
              * @virtual
              */
-            vfunc_end_swipe(duration: number, to: number): void;
+            vfunc_end_swipe(duration: bigint | number, to: number): void;
             /**
              * @param index
              * @param duration
              * @virtual
              */
-            vfunc_switch_child(index: number, duration: number): void;
+            vfunc_switch_child(index: number, duration: bigint | number): void;
             /**
              * @param value
              * @virtual

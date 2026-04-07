@@ -2200,7 +2200,7 @@ export namespace Nice {
          * @param timeout A pointer to be filled with the new timeout.
          * @returns `true` if `timeout` was filled, `false` if the socket is closed and ready to be destroyed. <para> See also: `pseudo_tcp_socket_notify_clock()` </para>
          */
-        get_next_clock(timeout: number): boolean;
+        get_next_clock(timeout: bigint | number): boolean;
         /**
          * Gets whether the socket is closed, with the shutdown handshake completed,
          * and both peers no longer able to read or write data to the connection.
@@ -2261,7 +2261,7 @@ export namespace Nice {
          * @param len The length of `buffer`
          * @returns The number of bytes received or -1 in case of error <para> See also: `pseudo_tcp_socket_get_error()` </para>
          */
-        recv(buffer: string, len: number): number;
+        recv(buffer: string, len: bigint | number): number;
         /**
          * Send data on the socket.
          *
@@ -2500,9 +2500,8 @@ export namespace Nice {
 
         // Fields
 
-        buffers: Gio.InputVector[];
         n_buffers: number;
-        length: number;
+        length: bigint | number;
     }
 
     /**
@@ -2527,17 +2526,7 @@ export namespace Nice {
 
         // Fields
 
-        buffers: Gio.OutputVector[];
         n_buffers: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                buffers: Gio.OutputVector[];
-                n_buffers: number;
-            }>,
-        );
     }
 
     /**

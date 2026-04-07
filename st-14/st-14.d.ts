@@ -347,7 +347,7 @@ export namespace St {
      * @gir-type Callback
      */
     interface ClipboardContentCallbackFunc {
-        (clipboard: Clipboard, bytes: GLib.Bytes | Uint8Array): void;
+        (clipboard: Clipboard, bytes: GLib.Bytes): void;
     }
     /**
      * @gir-type Callback

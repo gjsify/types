@@ -187,7 +187,7 @@ export namespace Libxfce4util {
      * @param directory name of directory to check for localized variant of.
      * @returns pointer to `buffer` or `null` on error.
      */
-    function get_dir_localized_r(buffer: string, length: number, directory: string): string;
+    function get_dir_localized_r(buffer: string, length: bigint | number, directory: string): string;
     /**
      * Checks if theres a version of `filename` which is localized to the current
      * locale. This is done by appending the full locale name to `filename`, separated
@@ -207,7 +207,7 @@ export namespace Libxfce4util {
      * @param filename name of a file to look for a localized version.
      * @returns pointer to `buffer` or `null` on error.
      */
-    function get_file_localized_r(buffer: string, length: number, filename: string): string;
+    function get_file_localized_r(buffer: string, length: bigint | number, filename: string): string;
     /**
      * Similar to `g_get_home_dir()` in functionality but will never return NULL.
      * While `g_get_home_dir()` may return NULL under certain circumstances, this
@@ -245,7 +245,7 @@ export namespace Libxfce4util {
      */
     function get_path_localized(
         dst: string,
-        size: number,
+        size: bigint | number,
         paths: string,
         filename: string,
         test: GLib.FileTest | null,
@@ -295,7 +295,7 @@ export namespace Libxfce4util {
      * @returns `true` on success, else `false`.
      * @since 4.2
      */
-    function mkdirhier(whole_path: string, mode: number): boolean;
+    function mkdirhier(whole_path: string, mode: bigint | number): boolean;
     /**
      * Initializes the POSIX signal handler system.  Must be called
      * before setting any POSIX signal handlers.
@@ -514,7 +514,7 @@ export namespace Libxfce4util {
      * @returns pointer to `str` or `null` on error.
      * @since 4.2
      */
-    function utf8_remove_controls(str: string, max_len: number, end: string): string;
+    function utf8_remove_controls(str: string, max_len: bigint | number, end: string): string;
     /**
      * Duplicates the `src` string up to `max_len` characters
      * (note that characters does not mean bytes with UTF-8).
@@ -526,7 +526,7 @@ export namespace Libxfce4util {
      * @returns pointer to the newly allocated string.
      * @since 4.3
      */
-    function utf8_strndup(src: string, max_len: number): string;
+    function utf8_strndup(src: string, max_len: bigint | number): string;
     /**
      * Queries the version string of the installed Xfce desktop environment.
      * @returns the overall version information of the installed Xfce desktop.

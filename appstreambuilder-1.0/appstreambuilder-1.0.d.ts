@@ -845,7 +845,7 @@ export namespace AppStreamBuilder {
     /**
      * @gir-type Alias
      */
-    type PackageEnsureFlags = number;
+    type PackageEnsureFlags = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

@@ -3819,7 +3819,7 @@ export namespace FoundryGtk {
          * @param iter
          * @param offset
          */
-        get_iter_at_offset(iter: Foundry.TextIter, offset: number): void;
+        get_iter_at_offset(iter: Foundry.TextIter, offset: bigint | number): void;
         /**
          * @param args
          */
@@ -5731,7 +5731,7 @@ export namespace FoundryGtk {
          * @param range the range to set the selection to
          * @virtual
          */
-        vfunc_set_selection(i: number, range: Gtk.AccessibleTextRange): boolean;
+        vfunc_set_selection(i: bigint | number, range: Gtk.AccessibleTextRange): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *

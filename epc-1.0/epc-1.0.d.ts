@@ -597,7 +597,7 @@ export namespace Epc {
          * @param data
          * @param length
          */
-        add(key: string, data: any, length: number): void;
+        add(key: string, data: any, length: bigint | number): void;
         /**
          * @param key
          * @param label
@@ -845,11 +845,11 @@ export namespace Epc {
 
         // Constructors
 
-        constructor(type: string, data: any, length: number);
+        constructor(type: string, data: any, length: bigint | number);
 
-        static ['new'](type: string, data: any, length: number): Contents;
+        static ['new'](type: string, data: any, length: bigint | number): Contents;
 
-        static new_dup(type: string, data: any, length: number): Contents;
+        static new_dup(type: string, data: any, length: bigint | number): Contents;
 
         static stream_new(type: string, callback: ContentsReadFunc): Contents;
 

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/clutter-18)
 
 
-GJS TypeScript type definitions for Clutter-18, generated from library version 18.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.44.
+GJS TypeScript type definitions for Clutter-18, generated from library version 18.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-rc.1.
 
 ## Install
 

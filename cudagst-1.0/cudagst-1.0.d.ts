@@ -265,9 +265,9 @@ export namespace CudaGst {
 
         // Fields
 
-        Width: number;
-        Height: number;
-        Depth: number;
+        Width: bigint | number;
+        Height: bigint | number;
+        Depth: bigint | number;
         Format: array_format;
         NumChannels: number;
         Flags: number;
@@ -316,22 +316,22 @@ export namespace CudaGst {
 
         // Fields
 
-        srcXInBytes: number;
-        srcY: number;
+        srcXInBytes: bigint | number;
+        srcY: bigint | number;
         srcMemoryType: memorytype;
         srcHost: any;
         srcDevice: deviceptr;
         srcArray: array;
-        srcPitch: number;
-        dstXInBytes: number;
-        dstY: number;
+        srcPitch: bigint | number;
+        dstXInBytes: bigint | number;
+        dstY: bigint | number;
         dstMemoryType: memorytype;
         dstHost: any;
         dstDevice: deviceptr;
         dstArray: array;
-        dstPitch: number;
-        WidthInBytes: number;
-        Height: number;
+        dstPitch: bigint | number;
+        WidthInBytes: bigint | number;
+        Height: bigint | number;
     }
 
     /**
@@ -355,9 +355,9 @@ export namespace CudaGst {
         // Fields
 
         format: resourceViewFormat;
-        width: number;
-        height: number;
-        depth: number;
+        width: bigint | number;
+        height: bigint | number;
+        depth: bigint | number;
         firstMipmapLevel: number;
         lastMipmapLevel: number;
         firstLayer: number;
@@ -496,7 +496,7 @@ export namespace CudaGst {
         allocType: memAllocationType;
         handleTypes: memAllocationHandleType;
         win32SecurityAttributes: any;
-        maxSize: number;
+        maxSize: bigint | number;
         reserved: Uint8Array;
     }
 
@@ -555,7 +555,7 @@ export namespace CudaGst {
     /**
      * @gir-type Alias
      */
-    type texObject = number;
+    type texObject = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

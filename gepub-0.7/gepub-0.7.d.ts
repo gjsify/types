@@ -1660,17 +1660,7 @@ export namespace Gepub {
 
         label: string;
         content: string;
-        playorder: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                content: string;
-                playorder: number;
-            }>,
-        );
+        playorder: bigint | number;
     }
 
     /**

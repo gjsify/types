@@ -5175,7 +5175,7 @@ export namespace Clutter {
      * @gir-type Callback
      */
     interface ProgressFunc {
-        (a: GObject.Value | any, b: GObject.Value | any, progress: number, retval: GObject.Value | any): boolean;
+        (a: unknown, b: unknown, progress: number, retval: unknown): boolean;
     }
     /**
      * @gir-type Callback
@@ -18695,8 +18695,8 @@ export namespace Clutter {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             axes: InputAxisFlags;
-            id: number;
-            serial: number;
+            id: bigint | number;
+            serial: bigint | number;
             type: InputDeviceToolType;
         }
     }
@@ -19072,7 +19072,7 @@ export namespace Clutter {
          * @param time_
          * @param press
          */
-        forward_key(keyval: number, keycode: number, state: number, time_: number, press: boolean): void;
+        forward_key(keyval: number, keycode: number, state: number, time_: bigint | number, press: boolean): void;
         /**
          * @param event
          * @param filtered
@@ -19102,8 +19102,8 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Scriptable.ConstructorProps {
-            final: GObject.Value;
-            initial: GObject.Value;
+            final: GObject.Value | any;
+            initial: GObject.Value | any;
             value_type: GObject.GTypeInput;
             valueType: GObject.GTypeInput;
         }
@@ -19124,14 +19124,14 @@ export namespace Clutter {
          * The final value of the interval.
          * @since 1.12
          */
-        get final(): GObject.Value;
-        set final(val: GObject.Value);
+        get final(): unknown;
+        set final(val: GObject.Value | any);
         /**
          * The initial value of the interval.
          * @since 1.12
          */
-        get initial(): GObject.Value;
-        set initial(val: GObject.Value);
+        get initial(): unknown;
+        set initial(val: GObject.Value | any);
         /**
          * The type of the values in the interval.
          * @since 1.0
@@ -22768,7 +22768,7 @@ export namespace Clutter {
          * @param length the length of the buffer, or -1 if `data` is a NUL-terminated   buffer
          * @returns on error, zero is returned and `error` is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with `clutter_script_unmerge_objects()`.
          */
-        load_from_data(data: string, length: number): number;
+        load_from_data(data: string, length: bigint | number): number;
         /**
          * Loads the definitions from `filename` into `script` and merges with
          * the currently loaded ones, if any.
@@ -27294,7 +27294,7 @@ export namespace Clutter {
          * @param start_pos starting position
          * @param end_pos ending position
          */
-        delete_text(start_pos: number, end_pos: number): void;
+        delete_text(start_pos: bigint | number, end_pos: bigint | number): void;
         /**
          * Retrieves whether a {@link Clutter.Text} is activatable or not.
          * @returns `true` if the actor is activatable
@@ -27321,7 +27321,7 @@ export namespace Clutter {
          * @param end_pos end of text, in characters
          * @returns a newly allocated string with the contents of   the text actor between the specified positions. Use `g_free()`   to free the resources when done
          */
-        get_chars(start_pos: number, end_pos: number): string;
+        get_chars(start_pos: bigint | number, end_pos: bigint | number): string;
         /**
          * Retrieves the text color as set by `clutter_text_set_color()`.
          */
@@ -27488,7 +27488,7 @@ export namespace Clutter {
          * @param text the text to be inserted
          * @param position the position of the insertion, or -1
          */
-        insert_text(text: string, position: number): void;
+        insert_text(text: string, position: bigint | number): void;
         /**
          * Inserts `wc` at the current cursor position of a
          * {@link Clutter.Text} actor.
@@ -27730,7 +27730,7 @@ export namespace Clutter {
          * @param start_pos start of the selection, in characters
          * @param end_pos end of the selection, in characters
          */
-        set_selection(start_pos: number, end_pos: number): void;
+        set_selection(start_pos: bigint | number, end_pos: bigint | number): void;
         /**
          * Sets the other end of the selection, starting from the current
          * cursor position.
@@ -28698,7 +28698,7 @@ export namespace Clutter {
 
         static ['new'](): TextBuffer;
 
-        static new_with_text(text: string | null, text_len: number): TextBuffer;
+        static new_with_text(text: string | null, text_len: bigint | number): TextBuffer;
 
         // Signals
 
@@ -28752,7 +28752,7 @@ export namespace Clutter {
          * @param n_bytes
          * @virtual
          */
-        vfunc_get_text(n_bytes: number): string;
+        vfunc_get_text(n_bytes: bigint | number): string;
         /**
          * Inserts `n_chars` characters of `chars` into the contents of the
          * buffer, at position `position`.
@@ -31705,42 +31705,46 @@ export namespace Clutter {
          * @param y
          * @virtual
          */
-        vfunc_notify_absolute_motion(time_us: number, x: number, y: number): void;
+        vfunc_notify_absolute_motion(time_us: bigint | number, x: number, y: number): void;
         /**
          * @param time_us
          * @param button
          * @param button_state
          * @virtual
          */
-        vfunc_notify_button(time_us: number, button: number, button_state: ButtonState): void;
+        vfunc_notify_button(time_us: bigint | number, button: number, button_state: ButtonState): void;
         /**
          * @param time_us
          * @param direction
          * @param scroll_source
          * @virtual
          */
-        vfunc_notify_discrete_scroll(time_us: number, direction: ScrollDirection, scroll_source: ScrollSource): void;
+        vfunc_notify_discrete_scroll(
+            time_us: bigint | number,
+            direction: ScrollDirection,
+            scroll_source: ScrollSource,
+        ): void;
         /**
          * @param time_us
          * @param key
          * @param key_state
          * @virtual
          */
-        vfunc_notify_key(time_us: number, key: number, key_state: KeyState): void;
+        vfunc_notify_key(time_us: bigint | number, key: number, key_state: KeyState): void;
         /**
          * @param time_us
          * @param keyval
          * @param key_state
          * @virtual
          */
-        vfunc_notify_keyval(time_us: number, keyval: number, key_state: KeyState): void;
+        vfunc_notify_keyval(time_us: bigint | number, keyval: number, key_state: KeyState): void;
         /**
          * @param time_us
          * @param dx
          * @param dy
          * @virtual
          */
-        vfunc_notify_relative_motion(time_us: number, dx: number, dy: number): void;
+        vfunc_notify_relative_motion(time_us: bigint | number, dx: number, dy: number): void;
         /**
          * @param time_us
          * @param dx
@@ -31750,7 +31754,7 @@ export namespace Clutter {
          * @virtual
          */
         vfunc_notify_scroll_continuous(
-            time_us: number,
+            time_us: bigint | number,
             dx: number,
             dy: number,
             scroll_source: ScrollSource,
@@ -31763,7 +31767,7 @@ export namespace Clutter {
          * @param y
          * @virtual
          */
-        vfunc_notify_touch_down(time_us: number, slot: number, x: number, y: number): void;
+        vfunc_notify_touch_down(time_us: bigint | number, slot: number, x: number, y: number): void;
         /**
          * @param time_us
          * @param slot
@@ -31771,13 +31775,13 @@ export namespace Clutter {
          * @param y
          * @virtual
          */
-        vfunc_notify_touch_motion(time_us: number, slot: number, x: number, y: number): void;
+        vfunc_notify_touch_motion(time_us: bigint | number, slot: number, x: number, y: number): void;
         /**
          * @param time_us
          * @param slot
          * @virtual
          */
-        vfunc_notify_touch_up(time_us: number, slot: number): void;
+        vfunc_notify_touch_up(time_us: bigint | number, slot: number): void;
 
         // Methods
 
@@ -31787,20 +31791,20 @@ export namespace Clutter {
          * @param x
          * @param y
          */
-        notify_absolute_motion(time_us: number, x: number, y: number): void;
+        notify_absolute_motion(time_us: bigint | number, x: number, y: number): void;
         /**
          * @param time_us
          * @param button
          * @param button_state
          */
-        notify_button(time_us: number, button: number, button_state: ButtonState | null): void;
+        notify_button(time_us: bigint | number, button: number, button_state: ButtonState | null): void;
         /**
          * @param time_us
          * @param direction
          * @param scroll_source
          */
         notify_discrete_scroll(
-            time_us: number,
+            time_us: bigint | number,
             direction: ScrollDirection | null,
             scroll_source: ScrollSource | null,
         ): void;
@@ -31809,19 +31813,19 @@ export namespace Clutter {
          * @param key
          * @param key_state
          */
-        notify_key(time_us: number, key: number, key_state: KeyState | null): void;
+        notify_key(time_us: bigint | number, key: number, key_state: KeyState | null): void;
         /**
          * @param time_us
          * @param keyval
          * @param key_state
          */
-        notify_keyval(time_us: number, keyval: number, key_state: KeyState | null): void;
+        notify_keyval(time_us: bigint | number, keyval: number, key_state: KeyState | null): void;
         /**
          * @param time_us
          * @param dx
          * @param dy
          */
-        notify_relative_motion(time_us: number, dx: number, dy: number): void;
+        notify_relative_motion(time_us: bigint | number, dx: number, dy: number): void;
         /**
          * @param time_us
          * @param dx
@@ -31830,7 +31834,7 @@ export namespace Clutter {
          * @param finish_flags
          */
         notify_scroll_continuous(
-            time_us: number,
+            time_us: bigint | number,
             dx: number,
             dy: number,
             scroll_source: ScrollSource | null,
@@ -31842,19 +31846,19 @@ export namespace Clutter {
          * @param x
          * @param y
          */
-        notify_touch_down(time_us: number, slot: number, x: number, y: number): void;
+        notify_touch_down(time_us: bigint | number, slot: number, x: number, y: number): void;
         /**
          * @param time_us
          * @param slot
          * @param x
          * @param y
          */
-        notify_touch_motion(time_us: number, slot: number, x: number, y: number): void;
+        notify_touch_motion(time_us: bigint | number, slot: number, x: number, y: number): void;
         /**
          * @param time_us
          * @param slot
          */
-        notify_touch_up(time_us: number, slot: number): void;
+        notify_touch_up(time_us: bigint | number, slot: number): void;
     }
 
     namespace ZoomAction {
@@ -32981,7 +32985,7 @@ export namespace Clutter {
         modifier_state: ModifierType;
         axes: number;
         device: InputDevice;
-        time_us: number;
+        time_us: bigint | number;
         dx: number;
         dy: number;
         dx_unaccel: number;

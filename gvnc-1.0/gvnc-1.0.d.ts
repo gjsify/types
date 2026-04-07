@@ -1861,7 +1861,7 @@ export namespace GVnc {
          * @param data
          * @param length
          */
-        client_cut_text(data: any | null, length: number): boolean;
+        client_cut_text(data: any | null, length: bigint | number): boolean;
         /**
          * Request that the server send a framebuffer update when the
          * region positioned at (`x`, `y`) wth size (`width`, `height`)

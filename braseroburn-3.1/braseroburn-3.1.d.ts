@@ -331,7 +331,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            'progress-changed': (arg0: number, arg1: number, arg2: number) => void;
+            'progress-changed': (arg0: number, arg1: number, arg2: bigint | number) => void;
             /**
              * @signal
              * @run-last
@@ -456,7 +456,11 @@ export namespace BraseroBurn {
          * @param time_remaining
          * @virtual
          */
-        vfunc_progress_changed(overall_progress: number, action_progress: number, time_remaining: number): void;
+        vfunc_progress_changed(
+            overall_progress: number,
+            action_progress: number,
+            time_remaining: bigint | number,
+        ): void;
         /**
          * @virtual
          */
@@ -1777,7 +1781,7 @@ export namespace BraseroBurn {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             flags: number;
-            speed: number;
+            speed: bigint | number;
             tmpdir: string;
         }
     }
@@ -1793,7 +1797,7 @@ export namespace BraseroBurn {
         get flags(): number;
         set flags(val: number);
         get speed(): number;
-        set speed(val: number);
+        set speed(val: bigint | number);
         get tmpdir(): string;
         set tmpdir(val: string);
 
@@ -1976,7 +1980,7 @@ export namespace BraseroBurn {
          * @param bytes a `goffset` or NULL
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful BRASERO_BURN_NOT_READY if `track` needs more time for processing the size BRASERO_BURN_ERR if something is wrong or if it is empty
          */
-        get_size(blocks: number, bytes: number): BurnResult;
+        get_size(blocks: bigint | number, bytes: bigint | number): BurnResult;
         /**
          * Sets `status` to reflect whether `session` is ready to be used.
          * @param status a `BraseroTrackStatus`
@@ -2075,7 +2079,7 @@ export namespace BraseroBurn {
          * @param rate a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful; BRASERO_BURN_ERR otherwise.
          */
-        set_rate(rate: number): BurnResult;
+        set_rate(rate: bigint | number): BurnResult;
         /**
          * For the following functions:
          * brasero_burn_session_supported ()
@@ -3720,7 +3724,7 @@ export namespace BraseroBurn {
          * @param block_size
          * @virtual
          */
-        vfunc_get_size(blocks: number, block_size: number): BurnResult;
+        vfunc_get_size(blocks: bigint | number, block_size: bigint | number): BurnResult;
         /**
          * Sets `status` to reflect whether `track` is ready to be used
          * @param status a `BraseroTrackStatus`
@@ -3756,7 +3760,7 @@ export namespace BraseroBurn {
          * @param bytes a `goffset` or NULL
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful BRASERO_BURN_NOT_READY if `track` needs more time for processing the size BRASERO_BURN_ERR if something is wrong or if it is empty
          */
-        get_size(blocks: number, bytes: number): BurnResult;
+        get_size(blocks: bigint | number, bytes: bigint | number): BurnResult;
         /**
          * Sets `status` to reflect whether `track` is ready to be used
          * @param status a `BraseroTrackStatus`
@@ -3980,13 +3984,13 @@ export namespace BraseroBurn {
          * @param blocks a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        set_data_blocks(blocks: number): BurnResult;
+        set_data_blocks(blocks: bigint | number): BurnResult;
         /**
          * Sets the number of files (not directories) in `track`.
          * @param number a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        set_file_num(number: number): BurnResult;
+        set_file_num(number: bigint | number): BurnResult;
         /**
          * Sets the lists of grafts points (`grafts`) and excluded
          * URIs (`unreadable`) to be used to create an image.
@@ -4219,7 +4223,7 @@ export namespace BraseroBurn {
          * @param new_track a {@link BraseroBurn.TrackData}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
-        span(sectors: number, new_track: TrackData): BurnResult;
+        span(sectors: bigint | number, new_track: TrackData): BurnResult;
         /**
          * Checks whether some files were not included during calls to brasero_track_data_cfg_span ().
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
@@ -4241,7 +4245,7 @@ export namespace BraseroBurn {
          * @param sectors a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
-        span_possible(sectors: number): BurnResult;
+        span_possible(sectors: bigint | number): BurnResult;
         /**
          * Resets the list of files that were included after calls to brasero_track_data_cfg_span ().
          */
@@ -5478,7 +5482,7 @@ export namespace BraseroBurn {
          * @param blocks a `goffset`
          * @virtual
          */
-        vfunc_set_block_num(blocks: number): BurnResult;
+        vfunc_set_block_num(blocks: bigint | number): BurnResult;
         /**
          * Sets the image source path (and its toc if need be)
          * as well as its format.
@@ -5523,7 +5527,7 @@ export namespace BraseroBurn {
          * @param blocks a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
-        set_block_num(blocks: number): BurnResult;
+        set_block_num(blocks: bigint | number): BurnResult;
         /**
          * Sets the image source path (and its toc if need be)
          * as well as its format.
@@ -5676,7 +5680,7 @@ export namespace BraseroBurn {
          * @param gap a `gint64` or -1 to ignore
          * @virtual
          */
-        vfunc_set_boundaries(start: number, end: number, gap: number): BurnResult;
+        vfunc_set_boundaries(start: bigint | number, end: bigint | number, gap: bigint | number): BurnResult;
         /**
          * Sets the format of the stream.
          * @param format a {@link BraseroBurn.StreamFormat}
@@ -5717,7 +5721,7 @@ export namespace BraseroBurn {
          * @param length a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if `length` was set.
          */
-        get_length(length: number): BurnResult;
+        get_length(length: bigint | number): BurnResult;
         /**
          * This function returns the path or the URI (if `uri` is TRUE)
          * of the stream (song or video file).
@@ -5740,7 +5744,7 @@ export namespace BraseroBurn {
          * @param gap a `gint64` or -1 to ignore
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
-        set_boundaries(start: number, end: number, gap: number): BurnResult;
+        set_boundaries(start: bigint | number, end: bigint | number, gap: bigint | number): BurnResult;
         /**
          * Sets the format of the stream.
          * @param format a {@link BraseroBurn.StreamFormat}

@@ -1502,7 +1502,7 @@ export namespace EDataServer {
      * @param value a Task::completed property value, as Unix time
      * @since 3.46
      */
-    function gdata_task_add_completed(builder: Json.Builder, value: number): void;
+    function gdata_task_add_completed(builder: Json.Builder, value: bigint | number): void;
     /**
      * Adds a Task::due property `value` into the `builder`, which
      * should have started an object member.
@@ -1513,7 +1513,7 @@ export namespace EDataServer {
      * @param value a Task::due property value, as Unix time
      * @since 3.46
      */
-    function gdata_task_add_due(builder: Json.Builder, value: number): void;
+    function gdata_task_add_due(builder: Json.Builder, value: bigint | number): void;
     /**
      * Adds a Task::id property `value` into the `builder`, which
      * should have started an object member.
@@ -1732,7 +1732,7 @@ export namespace EDataServer {
      * @param tm The #tm to store the result in.
      * @param offset The #int to store the offset in.
      */
-    function localtime_with_offset(tt: number, tm: any | null, offset: number): void;
+    function localtime_with_offset(tt: bigint | number, tm: any | null, offset: number): void;
     /**
      * Like mktime(3), but assumes UTC instead of local timezone.
      * @param tm The #tm to convert to a calendar time representation.
@@ -1752,7 +1752,10 @@ export namespace EDataServer {
      * @returns processed `compile_value`, saved into *out_glob_buff
      * @since 3.46
      */
-    function oauth2_service_util_compile_value(compile_value: string, out_glob_buff_size: number): [string, string];
+    function oauth2_service_util_compile_value(
+        compile_value: string,
+        out_glob_buff_size: bigint | number,
+    ): [string, string];
     /**
      * Extracts either an authorization code from a 'code' argument of the `in_uri`,
      * or an error code from an 'error' argument of the `in_uri` and an error description
@@ -1886,7 +1889,7 @@ export namespace EDataServer {
      * @param tm The time value to format.
      * @returns The number of characters placed in `s`.
      */
-    function strftime(string: string, max: number, fmt: string, tm?: any | null): number;
+    function strftime(string: string, max: bigint | number, fmt: string, tm?: any | null): number;
     /**
      * Creates a string representation of the time value `date_tm` and
      * stores it in `buffer`.  `buffer_size` should be at least 64 to be
@@ -2067,7 +2070,7 @@ export namespace EDataServer {
      * @param tm The time value to format.
      * @returns The number of characters placed in `s`.
      */
-    function utf8_strftime(string: string, max: number, fmt: string, tm?: any | null): number;
+    function utf8_strftime(string: string, max: bigint | number, fmt: string, tm?: any | null): number;
     /**
      * Checks whether the `collection_source` can be used as a credential source
      * for the `child_source`. The relationship is not tested in the function.
@@ -2405,7 +2408,7 @@ export namespace EDataServer {
      * @returns a newly-allocated string
      * @since 3.6
      */
-    function util_utf8_data_make_valid(data: string | null, data_bytes: number): string;
+    function util_utf8_data_make_valid(data: string | null, data_bytes: bigint | number): string;
     /**
      * Converts the `text` into a decomposed variant and strips it, which
      * allows also cheap case insensitive comparision afterwards. This
@@ -9715,7 +9718,7 @@ export namespace EDataServer {
             message: Soup.Message,
             content_type: string | null,
             input_stream: Gio.InputStream,
-            length: number,
+            length: bigint | number,
         ): void;
         /**
          * Sets the request body of the `message` from the `data` of the `length`, with optional
@@ -9735,7 +9738,7 @@ export namespace EDataServer {
             create_copy: boolean,
             content_type: string | null,
             data: any | null,
-            length: number,
+            length: bigint | number,
             free_func?: GLib.DestroyNotify | null,
         ): void;
         /**
@@ -9758,7 +9761,7 @@ export namespace EDataServer {
          * @param bytes_length how many bytes had been read; ignored when `read_bytes` is `null`
          * @returns Whether succeeded, aka `true`, when no error recognized    and `false` otherwise.
          */
-        check_result(message: Soup.Message, read_bytes: any | null, bytes_length: number): boolean;
+        check_result(message: Soup.Message, read_bytes: any | null, bytes_length: bigint | number): boolean;
         /**
          * @returns A copy of the credentials being    previously set with `e_soup_session_set_credentials()`, or `null` when    none are set. Free the returned pointer with `e_named_parameters_free()`,    when no longer needed.
          */
@@ -11048,7 +11051,7 @@ export namespace EDataServer {
         mail_signature_load(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<[string, number]>;
+        ): globalThis.Promise<[string, bigint | number]>;
         /**
          * Asynchronously loads a signature from the signature file for `source`,
          * which is given by `e_source_mail_signature_get_file()`.
@@ -11088,7 +11091,7 @@ export namespace EDataServer {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[string, number]> | void;
+        ): globalThis.Promise<[string, bigint | number]> | void;
         /**
          * Finishes an operation started with `e_source_mail_signature_load()`.  The
          * signature file contents are placed in `contents`, and `length` is set to
@@ -11127,7 +11130,7 @@ export namespace EDataServer {
          */
         mail_signature_replace(
             contents: string,
-            length: number,
+            length: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
@@ -11147,7 +11150,7 @@ export namespace EDataServer {
          */
         mail_signature_replace(
             contents: string,
-            length: number,
+            length: bigint | number,
             io_priority: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -11168,7 +11171,7 @@ export namespace EDataServer {
          */
         mail_signature_replace(
             contents: string,
-            length: number,
+            length: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -11188,7 +11191,11 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        mail_signature_replace_sync(contents: string, length: number, cancellable?: Gio.Cancellable | null): boolean;
+        mail_signature_replace_sync(
+            contents: string,
+            length: bigint | number,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Asynchronously replaces the signature file for `source` with a symbolic
          * link to `symlink_target`, which should be an executable file that prints
@@ -21983,7 +21990,7 @@ export namespace EDataServer {
         post_sync(
             uri: string | null,
             data: string,
-            data_length: number,
+            data_length: bigint | number,
             in_content_type: string | null,
             in_headers: Soup.MessageHeaders | null,
             cancellable?: Gio.Cancellable | null,
@@ -22094,7 +22101,7 @@ export namespace EDataServer {
             content_type: string,
             in_headers: Soup.MessageHeaders | null,
             bytes: string,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string, string, Soup.MessageHeaders | null];
         /**
@@ -22143,7 +22150,7 @@ export namespace EDataServer {
             content_type: string,
             in_headers: Soup.MessageHeaders | null,
             stream: Gio.InputStream,
-            stream_length: number,
+            stream_length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string, string, Soup.MessageHeaders | null];
         /**
@@ -22415,7 +22422,7 @@ export namespace EDataServer {
          * @param name name of the attribute
          * @param value integer value of the attribute
          */
-        add_attribute_int(ns_href: string | null, name: string, value: number): void;
+        add_attribute_int(ns_href: string | null, name: string, value: bigint | number): void;
         /**
          * Adds a new attribute with a time_t value in ISO 8601 format to the current element.
          * The format is "YYYY-MM-DDTHH:MM:SSZ".
@@ -22426,7 +22433,7 @@ export namespace EDataServer {
          * @param name name of the attribute
          * @param value time_t value of the attribute
          */
-        add_attribute_time(ns_href: string | null, name: string, value: number): void;
+        add_attribute_time(ns_href: string | null, name: string, value: bigint | number): void;
         /**
          * Adds a new attribute with a time_t value in iCalendar format to the current element.
          * The format is "YYYYMMDDTHHMMSSZ".
@@ -22437,7 +22444,7 @@ export namespace EDataServer {
          * @param name name of the attribute
          * @param value time_t value of the attribute
          */
-        add_attribute_time_ical(ns_href: string | null, name: string, value: number): void;
+        add_attribute_time_ical(ns_href: string | null, name: string, value: bigint | number): void;
         /**
          * Adds an empty element, which is an element with no attribute and no value.
          *
@@ -22509,7 +22516,7 @@ export namespace EDataServer {
          * Writes `value` as content of the current element.
          * @param value value to write as the content
          */
-        write_int(value: number): void;
+        write_int(value: bigint | number): void;
         /**
          * Writes `value` as content of the current element.
          * @param value value to write as the content
@@ -22520,7 +22527,7 @@ export namespace EDataServer {
          * The format is "YYYY-MM-DDTHH:MM:SSZ".
          * @param value value to write as the content
          */
-        write_time(value: number): void;
+        write_time(value: bigint | number): void;
     }
 
     /**
@@ -22804,7 +22811,7 @@ export namespace EDataServer {
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
          */
-        set_completed_max(value: number): void;
+        set_completed_max(value: bigint | number): void;
         /**
          * Sets lower bound for a task's completion date, as a Unix date/time, to filter by.
          * The default is not to filter by completion date.
@@ -22812,7 +22819,7 @@ export namespace EDataServer {
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
          */
-        set_completed_min(value: number): void;
+        set_completed_min(value: bigint | number): void;
         /**
          * Sets upper bound for a task's due date, as a Unix date/time, to filter by.
          * The default is not to filter by due date.
@@ -22820,7 +22827,7 @@ export namespace EDataServer {
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
          */
-        set_due_max(value: number): void;
+        set_due_max(value: bigint | number): void;
         /**
          * Sets lower bound for a task's due date, as a Unix date/time, to filter by.
          * The default is not to filter by due date.
@@ -22828,7 +22835,7 @@ export namespace EDataServer {
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
          */
-        set_due_min(value: number): void;
+        set_due_min(value: bigint | number): void;
         /**
          * Sets max results to be returned in one call.
          *
@@ -22869,7 +22876,7 @@ export namespace EDataServer {
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
          */
-        set_updated_min(value: number): void;
+        set_updated_min(value: bigint | number): void;
         /**
          * Converts the `self` into a string, which can be used as a URI query. The returned
          * string should be freed with `g_free()`, when no longer needed.
@@ -23804,9 +23811,9 @@ export namespace EDataServer {
         etag: string;
         display_name: string;
         content_type: string;
-        content_length: number;
-        creation_date: number;
-        last_modified: number;
+        content_length: bigint | number;
+        creation_date: bigint | number;
+        last_modified: bigint | number;
         description: string;
         color: string;
         order: number;
@@ -23820,9 +23827,9 @@ export namespace EDataServer {
             etag: string | null,
             display_name: string | null,
             content_type: string | null,
-            content_length: number,
-            creation_date: number,
-            last_modified: number,
+            content_length: bigint | number,
+            creation_date: bigint | number,
+            last_modified: bigint | number,
             description: string | null,
             color: string | null,
             order: number,
@@ -23835,9 +23842,9 @@ export namespace EDataServer {
             etag: string | null,
             display_name: string | null,
             content_type: string | null,
-            content_length: number,
-            creation_date: number,
-            last_modified: number,
+            content_length: bigint | number,
+            creation_date: bigint | number,
+            last_modified: bigint | number,
             description: string | null,
             color: string | null,
             order: number,
@@ -24197,7 +24204,7 @@ export namespace EDataServer {
          * @param compile_value a value provided in the compile time
          * @param out_glob_buff_size size of the `out_glob_buff`
          */
-        util_compile_value(compile_value: string, out_glob_buff_size: number): [string, string];
+        util_compile_value(compile_value: string, out_glob_buff_size: bigint | number): [string, string];
         /**
          * Extracts either an authorization code from a 'code' argument of the `in_uri`,
          * or an error code from an 'error' argument of the `in_uri` and an error description

@@ -208,7 +208,7 @@ export namespace RygelServer {
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps {
-            duration: number;
+            duration: bigint | number;
             bitrate: number;
             sample_freq: number;
             sampleFreq: number;
@@ -228,7 +228,7 @@ export namespace RygelServer {
         // Properties
 
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         get bitrate(): number;
         set bitrate(val: number);
         get sample_freq(): number;
@@ -288,7 +288,7 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_duration(value: number): void;
+        set_duration(value: bigint | number): void;
         get_bitrate(): number;
         /**
          * @param value
@@ -420,7 +420,7 @@ export namespace RygelServer {
         set dlnaProfile(val: string);
         /** @category Inherited from RygelServer.MediaFileItem */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /** @category Inherited from RygelServer.MediaFileItem */
         get place_holder(): boolean;
         set place_holder(val: boolean);
@@ -520,7 +520,7 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_size(value: number): void;
+        set_size(value: bigint | number): void;
         get_place_holder(): boolean;
         /**
          * @param value
@@ -1404,7 +1404,7 @@ export namespace RygelServer {
         mime_type: string;
         caption_type: string;
         file_extension: string;
-        size: number;
+        size: bigint | number;
 
         // Constructors
 
@@ -1661,7 +1661,7 @@ export namespace RygelServer {
         set dlnaProfile(val: string);
         /** @category Inherited from RygelServer.MediaFileItem */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /** @category Inherited from RygelServer.MediaFileItem */
         get place_holder(): boolean;
         set place_holder(val: boolean);
@@ -1761,7 +1761,7 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_size(value: number): void;
+        set_size(value: bigint | number): void;
         get_place_holder(): boolean;
         /**
          * @param value
@@ -1889,8 +1889,8 @@ export namespace RygelServer {
         // Fields
 
         update_id: number;
-        storage_used: number;
-        total_deleted_child_count: number;
+        storage_used: bigint | number;
+        total_deleted_child_count: bigint | number;
 
         // Constructors
 
@@ -2182,7 +2182,7 @@ export namespace RygelServer {
             mimeType: string;
             dlna_profile: string;
             dlnaProfile: string;
-            size: number;
+            size: bigint | number;
             place_holder: boolean;
             placeHolder: boolean;
         }
@@ -2205,7 +2205,7 @@ export namespace RygelServer {
         get dlnaProfile(): string;
         set dlnaProfile(val: string);
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         get place_holder(): boolean;
         set place_holder(val: boolean);
         get placeHolder(): boolean;
@@ -2316,7 +2316,7 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_size(value: number): void;
+        set_size(value: bigint | number): void;
         get_place_holder(): boolean;
         /**
          * @param value
@@ -2352,7 +2352,7 @@ export namespace RygelServer {
             upnpClass: string;
             date: string;
             creator: string;
-            modified: number;
+            modified: bigint | number;
             object_update_id: number;
             objectUpdateId: number;
             artist: string;
@@ -2389,7 +2389,7 @@ export namespace RygelServer {
         get creator(): string;
         set creator(val: string);
         get modified(): number;
-        set modified(val: number);
+        set modified(val: bigint | number);
         get object_update_id(): number;
         set object_update_id(val: number);
         get objectUpdateId(): number;
@@ -2619,7 +2619,7 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_modified(value: number): void;
+        set_modified(value: bigint | number): void;
         get_object_update_id(): number;
         /**
          * @param value
@@ -2685,10 +2685,10 @@ export namespace RygelServer {
             import_uri: string;
             importUri: string;
             extension: string;
-            size: number;
-            cleartext_size: number;
-            cleartextSize: number;
-            duration: number;
+            size: bigint | number;
+            cleartext_size: bigint | number;
+            cleartextSize: bigint | number;
+            duration: bigint | number;
             bitrate: number;
             bits_per_sample: number;
             bitsPerSample: number;
@@ -2732,13 +2732,13 @@ export namespace RygelServer {
         get extension(): string;
         set extension(val: string);
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         get cleartext_size(): number;
-        set cleartext_size(val: number);
+        set cleartext_size(val: bigint | number);
         get cleartextSize(): number;
-        set cleartextSize(val: number);
+        set cleartextSize(val: bigint | number);
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         get bitrate(): number;
         set bitrate(val: number);
         get bits_per_sample(): number;
@@ -2872,11 +2872,11 @@ export namespace RygelServer {
         /**
          * @param flags
          */
-        is_dlna_protocol_flag_set(flags: number): boolean;
+        is_dlna_protocol_flag_set(flags: bigint | number): boolean;
         /**
          * @param flags
          */
-        is_dlna_operation_mode_set(flags: number): boolean;
+        is_dlna_operation_mode_set(flags: bigint | number): boolean;
         to_string(): string;
         get_uri(): string;
         /**
@@ -2897,17 +2897,17 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_size(value: number): void;
+        set_size(value: bigint | number): void;
         get_cleartext_size(): number;
         /**
          * @param value
          */
-        set_cleartext_size(value: number): void;
+        set_cleartext_size(value: bigint | number): void;
         get_duration(): number;
         /**
          * @param value
          */
-        set_duration(value: number): void;
+        set_duration(value: bigint | number): void;
         get_bitrate(): number;
         /**
          * @param value
@@ -3593,14 +3593,14 @@ export namespace RygelServer {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
-            start_byte: number;
-            startByte: number;
-            end_byte: number;
-            endByte: number;
-            range_length: number;
-            rangeLength: number;
-            total_size: number;
-            totalSize: number;
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -3613,21 +3613,21 @@ export namespace RygelServer {
         // Properties
 
         get start_byte(): number;
-        set start_byte(val: number);
+        set start_byte(val: bigint | number);
         get startByte(): number;
-        set startByte(val: number);
+        set startByte(val: bigint | number);
         get end_byte(): number;
-        set end_byte(val: number);
+        set end_byte(val: bigint | number);
         get endByte(): number;
-        set endByte(val: number);
+        set endByte(val: bigint | number);
         get range_length(): number;
-        set range_length(val: number);
+        set range_length(val: bigint | number);
         get rangeLength(): number;
-        set rangeLength(val: number);
+        set rangeLength(val: bigint | number);
         get total_size(): number;
-        set total_size(val: number);
+        set total_size(val: bigint | number);
         get totalSize(): number;
-        set totalSize(val: number);
+        set totalSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -3687,18 +3687,18 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_start_byte(value: number): void;
+        set_start_byte(value: bigint | number): void;
         get_end_byte(): number;
         /**
          * @param value
          */
-        set_end_byte(value: number): void;
+        set_end_byte(value: bigint | number): void;
         get_range_length(): number;
         get_total_size(): number;
         /**
          * @param value
          */
-        set_total_size(value: number): void;
+        set_total_size(value: bigint | number): void;
     }
 
     namespace HTTPByteSeekResponse {
@@ -3713,14 +3713,14 @@ export namespace RygelServer {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
-            start_byte: number;
-            startByte: number;
-            end_byte: number;
-            endByte: number;
-            range_length: number;
-            rangeLength: number;
-            total_size: number;
-            totalSize: number;
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -3733,21 +3733,21 @@ export namespace RygelServer {
         // Properties
 
         get start_byte(): number;
-        set start_byte(val: number);
+        set start_byte(val: bigint | number);
         get startByte(): number;
-        set startByte(val: number);
+        set startByte(val: bigint | number);
         get end_byte(): number;
-        set end_byte(val: number);
+        set end_byte(val: bigint | number);
         get endByte(): number;
-        set endByte(val: number);
+        set endByte(val: bigint | number);
         get range_length(): number;
-        set range_length(val: number);
+        set range_length(val: bigint | number);
         get rangeLength(): number;
-        set rangeLength(val: number);
+        set rangeLength(val: bigint | number);
         get total_size(): number;
-        set total_size(val: number);
+        set total_size(val: bigint | number);
         get totalSize(): number;
-        set totalSize(val: number);
+        set totalSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -3764,7 +3764,11 @@ export namespace RygelServer {
 
         _init(...args: any[]): void;
 
-        static ['new'](start_byte: number, end_byte: number, total_size: number): HTTPByteSeekResponse;
+        static ['new'](
+            start_byte: bigint | number,
+            end_byte: bigint | number,
+            total_size: bigint | number,
+        ): HTTPByteSeekResponse;
 
         static from_request(request: HTTPByteSeekRequest): HTTPByteSeekResponse;
 
@@ -3797,18 +3801,18 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_start_byte(value: number): void;
+        set_start_byte(value: bigint | number): void;
         get_end_byte(): number;
         /**
          * @param value
          */
-        set_end_byte(value: number): void;
+        set_end_byte(value: bigint | number): void;
         get_range_length(): number;
         get_total_size(): number;
         /**
          * @param value
          */
-        set_total_size(value: number): void;
+        set_total_size(value: bigint | number): void;
     }
 
     namespace HTTPGetHandler {
@@ -6042,10 +6046,10 @@ export namespace RygelServer {
 
         // Fields
 
-        start_time: number;
-        end_time: number;
-        range_duration: number;
-        total_duration: number;
+        start_time: bigint | number;
+        end_time: bigint | number;
+        range_duration: bigint | number;
+        total_duration: bigint | number;
 
         // Constructors
 
@@ -6109,22 +6113,22 @@ export namespace RygelServer {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
-            start_time: number;
-            startTime: number;
-            end_time: number;
-            endTime: number;
-            range_duration: number;
-            rangeDuration: number;
-            total_duration: number;
-            totalDuration: number;
-            start_byte: number;
-            startByte: number;
-            end_byte: number;
-            endByte: number;
-            response_length: number;
-            responseLength: number;
-            total_size: number;
-            totalSize: number;
+            start_time: bigint | number;
+            startTime: bigint | number;
+            end_time: bigint | number;
+            endTime: bigint | number;
+            range_duration: bigint | number;
+            rangeDuration: bigint | number;
+            total_duration: bigint | number;
+            totalDuration: bigint | number;
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            response_length: bigint | number;
+            responseLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -6137,37 +6141,37 @@ export namespace RygelServer {
         // Properties
 
         get start_time(): number;
-        set start_time(val: number);
+        set start_time(val: bigint | number);
         get startTime(): number;
-        set startTime(val: number);
+        set startTime(val: bigint | number);
         get end_time(): number;
-        set end_time(val: number);
+        set end_time(val: bigint | number);
         get endTime(): number;
-        set endTime(val: number);
+        set endTime(val: bigint | number);
         get range_duration(): number;
-        set range_duration(val: number);
+        set range_duration(val: bigint | number);
         get rangeDuration(): number;
-        set rangeDuration(val: number);
+        set rangeDuration(val: bigint | number);
         get total_duration(): number;
-        set total_duration(val: number);
+        set total_duration(val: bigint | number);
         get totalDuration(): number;
-        set totalDuration(val: number);
+        set totalDuration(val: bigint | number);
         get start_byte(): number;
-        set start_byte(val: number);
+        set start_byte(val: bigint | number);
         get startByte(): number;
-        set startByte(val: number);
+        set startByte(val: bigint | number);
         get end_byte(): number;
-        set end_byte(val: number);
+        set end_byte(val: bigint | number);
         get endByte(): number;
-        set endByte(val: number);
+        set endByte(val: bigint | number);
         get response_length(): number;
-        set response_length(val: number);
+        set response_length(val: bigint | number);
         get responseLength(): number;
-        set responseLength(val: number);
+        set responseLength(val: bigint | number);
         get total_size(): number;
-        set total_size(val: number);
+        set total_size(val: bigint | number);
         get totalSize(): number;
-        set totalSize(val: number);
+        set totalSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -6185,27 +6189,34 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](
-            start_time: number,
-            end_time: number,
-            total_duration: number,
-            start_byte: number,
-            end_byte: number,
-            total_size: number,
+            start_time: bigint | number,
+            end_time: bigint | number,
+            total_duration: bigint | number,
+            start_byte: bigint | number,
+            end_byte: bigint | number,
+            total_size: bigint | number,
         ): HTTPTimeSeekResponse;
 
-        static time_only(start_time: number, end_time: number, total_duration: number): HTTPTimeSeekResponse;
+        static time_only(
+            start_time: bigint | number,
+            end_time: bigint | number,
+            total_duration: bigint | number,
+        ): HTTPTimeSeekResponse;
 
         static with_length(
-            start_time: number,
-            end_time: number,
-            total_duration: number,
-            start_byte: number,
-            end_byte: number,
-            total_size: number,
-            response_length: number,
+            start_time: bigint | number,
+            end_time: bigint | number,
+            total_duration: bigint | number,
+            start_byte: bigint | number,
+            end_byte: bigint | number,
+            total_size: bigint | number,
+            response_length: bigint | number,
         ): HTTPTimeSeekResponse;
 
-        static from_request(time_seek_request: HTTPTimeSeekRequest, total_duration: number): HTTPTimeSeekResponse;
+        static from_request(
+            time_seek_request: HTTPTimeSeekRequest,
+            total_duration: bigint | number,
+        ): HTTPTimeSeekResponse;
 
         // Signals
 
@@ -6542,14 +6553,14 @@ export namespace RygelServer {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
-            start_byte: number;
-            startByte: number;
-            end_byte: number;
-            endByte: number;
-            range_length: number;
-            rangeLength: number;
-            total_size: number;
-            totalSize: number;
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -6562,21 +6573,21 @@ export namespace RygelServer {
         // Properties
 
         get start_byte(): number;
-        set start_byte(val: number);
+        set start_byte(val: bigint | number);
         get startByte(): number;
-        set startByte(val: number);
+        set startByte(val: bigint | number);
         get end_byte(): number;
-        set end_byte(val: number);
+        set end_byte(val: bigint | number);
         get endByte(): number;
-        set endByte(val: number);
+        set endByte(val: bigint | number);
         get range_length(): number;
-        set range_length(val: number);
+        set range_length(val: bigint | number);
         get rangeLength(): number;
-        set rangeLength(val: number);
+        set rangeLength(val: bigint | number);
         get total_size(): number;
-        set total_size(val: number);
+        set total_size(val: bigint | number);
         get totalSize(): number;
-        set totalSize(val: number);
+        set totalSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -6651,16 +6662,16 @@ export namespace RygelServer {
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
-            start_byte: number;
-            startByte: number;
-            end_byte: number;
-            endByte: number;
-            range_length: number;
-            rangeLength: number;
-            total_size: number;
-            totalSize: number;
-            encrypted_length: number;
-            encryptedLength: number;
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
+            encrypted_length: bigint | number;
+            encryptedLength: bigint | number;
         }
     }
 
@@ -6673,25 +6684,25 @@ export namespace RygelServer {
         // Properties
 
         get start_byte(): number;
-        set start_byte(val: number);
+        set start_byte(val: bigint | number);
         get startByte(): number;
-        set startByte(val: number);
+        set startByte(val: bigint | number);
         get end_byte(): number;
-        set end_byte(val: number);
+        set end_byte(val: bigint | number);
         get endByte(): number;
-        set endByte(val: number);
+        set endByte(val: bigint | number);
         get range_length(): number;
-        set range_length(val: number);
+        set range_length(val: bigint | number);
         get rangeLength(): number;
-        set rangeLength(val: number);
+        set rangeLength(val: bigint | number);
         get total_size(): number;
-        set total_size(val: number);
+        set total_size(val: bigint | number);
         get totalSize(): number;
-        set totalSize(val: number);
+        set totalSize(val: bigint | number);
         get encrypted_length(): number;
-        set encrypted_length(val: number);
+        set encrypted_length(val: bigint | number);
         get encryptedLength(): number;
-        set encryptedLength(val: number);
+        set encryptedLength(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -6709,13 +6720,13 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](
-            start_byte: number,
-            end_byte: number,
-            total_size: number,
-            encrypted_length: number,
+            start_byte: bigint | number,
+            end_byte: bigint | number,
+            total_size: bigint | number,
+            encrypted_length: bigint | number,
         ): DTCPCleartextResponse;
 
-        static from_request(request: DTCPCleartextRequest, encrypted_length: number): DTCPCleartextResponse;
+        static from_request(request: DTCPCleartextRequest, encrypted_length: bigint | number): DTCPCleartextResponse;
 
         // Signals
 
@@ -6750,7 +6761,7 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_encrypted_length(value: number): void;
+        set_encrypted_length(value: bigint | number): void;
     }
 
     namespace DLNAAvailableSeekRangeRequest {
@@ -6834,16 +6845,16 @@ export namespace RygelServer {
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
             mode: number;
-            start_time: number;
-            startTime: number;
-            end_time: number;
-            endTime: number;
-            start_byte: number;
-            startByte: number;
-            end_byte: number;
-            endByte: number;
-            range_length: number;
-            rangeLength: number;
+            start_time: bigint | number;
+            startTime: bigint | number;
+            end_time: bigint | number;
+            endTime: bigint | number;
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
         }
     }
 
@@ -6858,25 +6869,25 @@ export namespace RygelServer {
         get mode(): number;
         set mode(val: number);
         get start_time(): number;
-        set start_time(val: number);
+        set start_time(val: bigint | number);
         get startTime(): number;
-        set startTime(val: number);
+        set startTime(val: bigint | number);
         get end_time(): number;
-        set end_time(val: number);
+        set end_time(val: bigint | number);
         get endTime(): number;
-        set endTime(val: number);
+        set endTime(val: bigint | number);
         get start_byte(): number;
-        set start_byte(val: number);
+        set start_byte(val: bigint | number);
         get startByte(): number;
-        set startByte(val: number);
+        set startByte(val: bigint | number);
         get end_byte(): number;
-        set end_byte(val: number);
+        set end_byte(val: bigint | number);
         get endByte(): number;
-        set endByte(val: number);
+        set endByte(val: bigint | number);
         get range_length(): number;
-        set range_length(val: number);
+        set range_length(val: bigint | number);
         get rangeLength(): number;
-        set rangeLength(val: number);
+        set rangeLength(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -6895,13 +6906,17 @@ export namespace RygelServer {
 
         static ['new'](
             mode: number,
-            start_time: number,
-            end_time: number,
-            start_byte: number,
-            end_byte: number,
+            start_time: bigint | number,
+            end_time: bigint | number,
+            start_byte: bigint | number,
+            end_byte: bigint | number,
         ): DLNAAvailableSeekRangeResponse;
 
-        static time_only(mode: number, start_time: number, end_time: number): DLNAAvailableSeekRangeResponse;
+        static time_only(
+            mode: number,
+            start_time: bigint | number,
+            end_time: bigint | number,
+        ): DLNAAvailableSeekRangeResponse;
 
         // Signals
 

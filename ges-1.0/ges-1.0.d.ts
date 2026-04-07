@@ -1033,7 +1033,7 @@ export namespace GES {
         (
             effect: BaseEffect,
             time: Gst.ClockTime,
-            time_property_values: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
+            time_property_values: GLib.HashTable<string, GObject.Value>,
         ): Gst.ClockTime;
     }
     /**
@@ -1082,7 +1082,7 @@ export namespace GES {
      * @gir-type Callback
      */
     interface MetaForeachFunc {
-        (container: MetaContainer, key: string, value: GObject.Value | any): void;
+        (container: MetaContainer, key: string, value: unknown): void;
     }
     /**
      * @gir-type Flags
@@ -1891,7 +1891,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -1927,7 +1927,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -2003,7 +2003,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -2044,7 +2044,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -4149,7 +4149,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -4185,7 +4185,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -4261,7 +4261,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -4302,7 +4302,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7613,8 +7613,8 @@ export namespace GES {
 
         interface ConstructorProps
             extends Container.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-            duration_limit: number;
-            durationLimit: number;
+            duration_limit: bigint | number;
+            durationLimit: bigint | number;
             layer: Layer;
             supported_formats: TrackType;
             supportedFormats: TrackType;
@@ -8237,7 +8237,7 @@ export namespace GES {
          * @param position The timeline position at which to perform the split
          * @returns The newly created clip resulting from the splitting `clip`, or `null` if `clip` can't be split.
          */
-        split(position: number): Clip | null;
+        split(position: bigint | number): Clip | null;
         /**
          * Splits a clip at the given timeline position into two clips. The clip
          * must already have a {@link GES.Clip.layer}.
@@ -8269,7 +8269,7 @@ export namespace GES {
          * @param position The timeline position at which to perform the split, between the start and end of the clip
          * @returns The newly created clip resulting from the splitting `clip`, or `null` if `clip` can't be split.
          */
-        split_full(position: number): Clip | null;
+        split_full(position: bigint | number): Clip | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -9053,7 +9053,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -9089,7 +9089,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -9165,7 +9165,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -9206,7 +9206,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -10229,7 +10229,7 @@ export namespace GES {
             new_layer_priority: number,
             mode: EditMode,
             edge: Edge,
-            position: number,
+            position: bigint | number,
         ): boolean;
         /**
          * Virtual method to remove a child
@@ -10285,8 +10285,13 @@ export namespace GES {
             new_layer_priority: number,
             mode: EditMode | null,
             edge: Edge | null,
-            position: number,
+            position: bigint | number,
         ): boolean;
+        /**
+         * @param args
+         */
+        // Conflicted with GES.TimelineElement.edit
+        edit(...args: never[]): any;
         /**
          * Get the list of timeline elements contained in the container. If
          * `recursive` is `true`, and the container contains other containers as
@@ -10597,7 +10602,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -10633,7 +10638,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -10709,7 +10714,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -10750,7 +10755,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -11234,7 +11239,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            timeout: number;
+            timeout: bigint | number;
             use_cache: boolean;
             useCache: boolean;
         }
@@ -11254,7 +11259,7 @@ export namespace GES {
          * @since 1.24
          */
         get timeout(): number;
-        set timeout(val: number);
+        set timeout(val: bigint | number);
         get use_cache(): boolean;
         set use_cache(val: boolean);
         get useCache(): boolean;
@@ -13387,13 +13392,13 @@ export namespace GES {
 
         interface ConstructorProps
             extends Container.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-            duration: number;
-            in_point: number;
-            inPoint: number;
-            max_duration: number;
-            maxDuration: number;
+            duration: bigint | number;
+            in_point: bigint | number;
+            inPoint: bigint | number;
+            max_duration: bigint | number;
+            maxDuration: bigint | number;
             priority: number;
-            start: number;
+            start: bigint | number;
         }
     }
 
@@ -13447,31 +13452,31 @@ export namespace GES {
          * its children.
          */
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         /**
          * An overwrite of the {@link GES.TimelineElement.in_point} property. This has
          * no meaning for a group and should not be set.
          */
         get in_point(): number;
-        set in_point(val: number);
+        set in_point(val: bigint | number);
         /**
          * An overwrite of the {@link GES.TimelineElement.in_point} property. This has
          * no meaning for a group and should not be set.
          */
         get inPoint(): number;
-        set inPoint(val: number);
+        set inPoint(val: bigint | number);
         /**
          * An overwrite of the {@link GES.TimelineElement.max_duration} property. This
          * has no meaning for a group and should not be set.
          */
         get max_duration(): number;
-        set max_duration(val: number);
+        set max_duration(val: bigint | number);
         /**
          * An overwrite of the {@link GES.TimelineElement.max_duration} property. This
          * has no meaning for a group and should not be set.
          */
         get maxDuration(): number;
-        set maxDuration(val: number);
+        set maxDuration(val: bigint | number);
         /**
          * An overwrite of the {@link GES.TimelineElement.priority} property.
          * Setting {@link GES.TimelineElement} priorities is deprecated as all priority
@@ -13485,7 +13490,7 @@ export namespace GES {
          * amongst its children.
          */
         get start(): number;
-        set start(val: number);
+        set start(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -15084,7 +15089,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -15120,7 +15125,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -15196,7 +15201,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -15237,7 +15242,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15698,7 +15703,7 @@ export namespace GES {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MetaContainer.ConstructorProps {
-            position: number;
+            position: bigint | number;
         }
     }
 
@@ -15971,7 +15976,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -16007,7 +16012,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -16083,7 +16088,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -16124,7 +16129,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -16585,14 +16590,14 @@ export namespace GES {
              * @since 1.18
              * @run-first
              */
-            'marker-added': (arg0: number, arg1: Marker) => void;
+            'marker-added': (arg0: bigint | number, arg1: Marker) => void;
             /**
              * Will be emitted after the marker was moved to.
              * @signal
              * @since 1.18
              * @run-first
              */
-            'marker-moved': (arg0: number, arg1: number, arg2: Marker) => void;
+            'marker-moved': (arg0: bigint | number, arg1: bigint | number, arg2: Marker) => void;
             /**
              * Will be emitted after the marker was removed the marker-list.
              * @signal
@@ -20258,7 +20263,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -20294,7 +20299,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -20370,7 +20375,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -20411,7 +20416,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -24902,7 +24907,7 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            'snapping-ended': (arg0: TrackElement, arg1: TrackElement, arg2: number) => void;
+            'snapping-ended': (arg0: TrackElement, arg1: TrackElement, arg2: bigint | number) => void;
             /**
              * Will be emitted whenever an element's movement invokes a snapping
              * event during an edit (usually of one of its ancestors) because its
@@ -24916,7 +24921,7 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            'snapping-started': (arg0: TrackElement, arg1: TrackElement, arg2: number) => void;
+            'snapping-started': (arg0: TrackElement, arg1: TrackElement, arg2: bigint | number) => void;
             /**
              * Will be emitted after the track is added to the timeline.
              *
@@ -24953,9 +24958,9 @@ export namespace GES {
                 Gst.ChildProxy.ConstructorProps {
             auto_transition: boolean;
             autoTransition: boolean;
-            duration: number;
-            snapping_distance: number;
-            snappingDistance: number;
+            duration: bigint | number;
+            snapping_distance: bigint | number;
+            snappingDistance: bigint | number;
         }
     }
 
@@ -25102,7 +25107,7 @@ export namespace GES {
          * snap during an edit. 0 means no snapping.
          */
         get snapping_distance(): number;
-        set snapping_distance(val: number);
+        set snapping_distance(val: bigint | number);
         /**
          * The distance (in nanoseconds) at which a {@link GES.TimelineElement} being
          * moved within the timeline should snap one of its {@link GES.Source}-s with
@@ -25110,7 +25115,7 @@ export namespace GES {
          * snap during an edit. 0 means no snapping.
          */
         get snappingDistance(): number;
-        set snappingDistance(val: number);
+        set snappingDistance(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -25727,7 +25732,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -25763,7 +25768,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -25839,7 +25844,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -25880,7 +25885,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
          * @param child the newly added child
@@ -26562,16 +26567,16 @@ export namespace GES {
                 GObject.InitiallyUnowned.ConstructorProps,
                 Extractable.ConstructorProps,
                 MetaContainer.ConstructorProps {
-            duration: number;
-            in_point: number;
-            inPoint: number;
-            max_duration: number;
-            maxDuration: number;
+            duration: bigint | number;
+            in_point: bigint | number;
+            inPoint: bigint | number;
+            max_duration: bigint | number;
+            maxDuration: bigint | number;
             name: string;
             parent: TimelineElement;
             priority: number;
             serialize: boolean;
-            start: number;
+            start: bigint | number;
             timeline: Timeline;
         }
     }
@@ -26674,7 +26679,7 @@ export namespace GES {
          * should be applied to any source content.
          */
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         /**
          * The initial offset to use internally when outputting content (in
          * nanoseconds, but in the time coordinates of the internal content).
@@ -26691,7 +26696,7 @@ export namespace GES {
          * as 0.
          */
         get in_point(): number;
-        set in_point(val: number);
+        set in_point(val: bigint | number);
         /**
          * The initial offset to use internally when outputting content (in
          * nanoseconds, but in the time coordinates of the internal content).
@@ -26708,7 +26713,7 @@ export namespace GES {
          * as 0.
          */
         get inPoint(): number;
-        set inPoint(val: number);
+        set inPoint(val: bigint | number);
         /**
          * The full duration of internal content that is available (a time
          * difference in nanoseconds using the time coordinates of the internal
@@ -26726,7 +26731,7 @@ export namespace GES {
          * indefinite, this should be kept as #GST_CLOCK_TIME_NONE.
          */
         get max_duration(): number;
-        set max_duration(val: number);
+        set max_duration(val: bigint | number);
         /**
          * The full duration of internal content that is available (a time
          * difference in nanoseconds using the time coordinates of the internal
@@ -26744,7 +26749,7 @@ export namespace GES {
          * indefinite, this should be kept as #GST_CLOCK_TIME_NONE.
          */
         get maxDuration(): number;
-        set maxDuration(val: number);
+        set maxDuration(val: bigint | number);
         /**
          * The name of the element. This should be unique within its timeline.
          */
@@ -26775,7 +26780,7 @@ export namespace GES {
          * to any source content.
          */
         get start(): number;
-        set start(val: number);
+        set start(val: bigint | number);
         /**
          * The timeline that the element lies within.
          */
@@ -26884,7 +26889,7 @@ export namespace GES {
          * @param start The new start time of `self` in ripple mode
          * @virtual
          */
-        vfunc_ripple(start: number): boolean;
+        vfunc_ripple(start: bigint | number): boolean;
         /**
          * Edits the end time of an element within its timeline in ripple mode.
          * See `ges_timeline_element_edit()` with #GES_EDIT_MODE_RIPPLE and
@@ -26892,7 +26897,7 @@ export namespace GES {
          * @param end The new end time of `self` in ripple mode
          * @virtual
          */
-        vfunc_ripple_end(end: number): boolean;
+        vfunc_ripple_end(end: bigint | number): boolean;
         /**
          * Edits the end time of an element within its timeline in roll mode.
          * See `ges_timeline_element_edit()` with #GES_EDIT_MODE_ROLL and
@@ -26900,7 +26905,7 @@ export namespace GES {
          * @param end The new end time of `self` in roll mode
          * @virtual
          */
-        vfunc_roll_end(end: number): boolean;
+        vfunc_roll_end(end: bigint | number): boolean;
         /**
          * Edits the start time of an element within its timeline in roll mode.
          * See `ges_timeline_element_edit()` with #GES_EDIT_MODE_ROLL and
@@ -26908,7 +26913,7 @@ export namespace GES {
          * @param start The new start time of `self` in roll mode
          * @virtual
          */
-        vfunc_roll_start(start: number): boolean;
+        vfunc_roll_start(start: bigint | number): boolean;
         /**
          * Method for setting the child property given by
          * `pspec` on `child` to `value`. Default implementation will use
@@ -27009,7 +27014,7 @@ export namespace GES {
          * @param start The new start time of `self` in trim mode
          * @virtual
          */
-        vfunc_trim(start: number): boolean;
+        vfunc_trim(start: bigint | number): boolean;
 
         // Methods
 
@@ -27058,10 +27063,10 @@ export namespace GES {
          */
         edit(
             layers: Layer[] | null,
-            new_layer_priority: number,
+            new_layer_priority: bigint | number,
             mode: EditMode | null,
             edge: Edge | null,
-            position: number,
+            position: bigint | number,
         ): boolean;
         /**
          * Edits the element within its timeline by adjusting its
@@ -27092,7 +27097,12 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of `self` (in nanoseconds) in the timeline coordinates
          * @returns `true` if the edit of `self` completed, `false` on failure.
          */
-        edit_full(new_layer_priority: number, mode: EditMode | null, edge: Edge | null, position: number): boolean;
+        edit_full(
+            new_layer_priority: bigint | number,
+            mode: EditMode | null,
+            edge: Edge | null,
+            position: bigint | number,
+        ): boolean;
         /**
          * Gets the property of a child of the element.
          *
@@ -27715,7 +27725,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -27751,7 +27761,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -27827,7 +27837,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -27868,7 +27878,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -29642,7 +29652,7 @@ export namespace GES {
         interface ConstructorProps
             extends Gst.Bin.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {
             caps: Gst.Caps;
-            duration: number;
+            duration: bigint | number;
             id: string;
             mixing: boolean;
             restriction_caps: Gst.Caps;
@@ -30150,7 +30160,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -30186,7 +30196,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -30262,7 +30272,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -30303,7 +30313,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
          * @param child the newly added child
@@ -31174,7 +31184,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of `object` (in nanoseconds)
          * @returns `true` if the edit of `object` completed, `false` on failure.
          */
-        edit(layers: Layer[] | null, mode: EditMode | null, edge: Edge | null, position: number): boolean;
+        edit(layers: Layer[] | null, mode: EditMode | null, edge: Edge | null, position: bigint | number): boolean;
         /**
          * @param args
          */
@@ -31598,7 +31608,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -31634,7 +31644,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -31710,7 +31720,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -31751,7 +31761,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -32518,7 +32528,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -32554,7 +32564,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -32630,7 +32640,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -32671,7 +32681,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -35073,7 +35083,7 @@ export namespace GES {
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
-            duration: number;
+            duration: bigint | number;
             is_nested_timeline: boolean;
             isNestedTimeline: boolean;
         }
@@ -35091,7 +35101,7 @@ export namespace GES {
          * The duration (in nanoseconds) of the media file
          */
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         /**
          * The duration (in nanoseconds) of the media file
          * @since 1.18
@@ -37983,7 +37993,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -38019,7 +38029,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -38095,7 +38105,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -38136,7 +38146,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -40752,7 +40762,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_int64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given string value, and registers the field to only hold a string
@@ -40788,7 +40798,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: number): boolean;
+        register_meta_uint64(flags: MetaFlag | null, meta_item: string, value: bigint | number): boolean;
         /**
          * Registers a static metadata field on the container to only hold the
          * specified type. After calling this, setting a value under this field
@@ -40864,7 +40874,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: number): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
         /**
          * Sets the value of the specified field of the meta container to the
          * given marker list value.
@@ -40905,7 +40915,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: number): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
     }
 
     export const MetaContainer: MetaContainerNamespace & {
@@ -40916,7 +40926,7 @@ export namespace GES {
      * A datatype to hold a frame number.
      * @gir-type Alias
      */
-    type FrameNumber = number;
+    type FrameNumber = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

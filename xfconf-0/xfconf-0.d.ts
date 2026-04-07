@@ -190,7 +190,7 @@ export namespace Xfconf {
      * ID number.  See `xfconf_g_property_bind()`.
      * @param id A binding ID number.
      */
-    function property_unbind(id: number): void;
+    function property_unbind(id: bigint | number): void;
     /**
      * Unbinds all Xfconf channel bindings (see `xfconf_g_property_bind()`)
      * to `object`.  If `object` is an {@link Xfconf.Channel}, it will unbind all
@@ -524,7 +524,7 @@ export namespace Xfconf {
          * @param default_value A fallback value.
          * @returns The uint64 value, or, if `property` is not in `channel` or if its type does not match,          `default_value` is returned.
          */
-        get_uint64(property: string, default_value: number): number;
+        get_uint64(property: string, default_value: bigint | number): number;
         /**
          * Checks to see if `property` exists on `channel`.
          * @param property A property name.
@@ -659,7 +659,7 @@ export namespace Xfconf {
          * @param value The value to set.
          * @returns `true` on success, `false` if an error occured.
          */
-        set_uint64(property: string, value: number): boolean;
+        set_uint64(property: string, value: bigint | number): boolean;
     }
 
     namespace Int16 {

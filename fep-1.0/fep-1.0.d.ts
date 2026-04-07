@@ -246,7 +246,7 @@ export namespace Fep {
          * @param data data to be sent
          * @param length length of `data`
          */
-        send_data(data: string, length: number): void;
+        send_data(data: string, length: bigint | number): void;
         /**
          * Request to send `data` to the child process of the FEP server.
          * `text` will be converted from UTF-8 to the local encoding in the
@@ -851,7 +851,7 @@ export namespace Fep {
         keyval: number;
         modifiers: number;
         source: string;
-        source_length: number;
+        source_length: bigint | number;
     }
 
     /**

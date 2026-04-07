@@ -904,28 +904,13 @@ export namespace GstDxva {
         // Fields
 
         picture_params: any;
-        picture_params_size: number;
+        picture_params_size: bigint | number;
         slice_control: any;
-        slice_control_size: number;
+        slice_control_size: bigint | number;
         bitstream: any;
-        bitstream_size: number;
+        bitstream_size: bigint | number;
         inverse_quantization_matrix: any;
-        inverse_quantization_matrix_size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                picture_params: any;
-                picture_params_size: number;
-                slice_control: any;
-                slice_control_size: number;
-                bitstream: any;
-                bitstream_size: number;
-                inverse_quantization_matrix: any;
-                inverse_quantization_matrix_size: number;
-            }>,
-        );
+        inverse_quantization_matrix_size: bigint | number;
     }
 
     /**

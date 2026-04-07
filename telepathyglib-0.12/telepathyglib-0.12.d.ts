@@ -3059,7 +3059,7 @@ export namespace TelepathyGLib {
      * @param offset the offset within `cls` of a TpDBusPropertiesMixinClass structure
      * @since 0.7.3
      */
-    function dbus_properties_mixin_class_init(cls: typeof GObject.Object, offset: number): void;
+    function dbus_properties_mixin_class_init(cls: typeof GObject.Object, offset: bigint | number): void;
     /**
      * Get all the properties of a particular interface. This implementation
      * never returns an error: it will return an empty map if the interface
@@ -3553,7 +3553,7 @@ export namespace TelepathyGLib {
      * @returns `true` if it would be appropriate to present a window
      * @since 0.11.13
      */
-    function user_action_time_should_present(user_action_time: number): [boolean, number];
+    function user_action_time_should_present(user_action_time: bigint | number): [boolean, number];
     /**
      * Validate that the provided string is valid UTF8. If not,
      * replace all invalid bytes with unicode replacement
@@ -3666,7 +3666,7 @@ export namespace TelepathyGLib {
             connection: Connection,
             contacts: Contact[],
             requested_ids: string[],
-            failed_id_errors: { [key: string]: any } | GLib.HashTable<string, GLib.Error>,
+            failed_id_errors: GLib.HashTable<string, GLib.Error>,
             error: GLib.Error,
             weak_object: A,
         ): void;
@@ -3743,13 +3743,13 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface DBusPropertiesMixinGetter<A = GObject.Object> {
-        (object: A, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value | any, getter_data?: any | null): void;
+        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, getter_data?: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface DBusPropertiesMixinSetter<A = GObject.Object> {
-        (object: A, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value | any, setter_data?: any | null): boolean;
+        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, setter_data?: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -4554,8 +4554,8 @@ export namespace TelepathyGLib {
             connection: Connection;
             connection_error: string;
             connectionError: string;
-            connection_error_details: GLib.HashTable<any, any>;
-            connectionErrorDetails: GLib.HashTable<any, any>;
+            connection_error_details: { [key: string]: any } | GLib.HashTable<any, any>;
+            connectionErrorDetails: { [key: string]: any } | GLib.HashTable<any, any>;
             connection_manager: string;
             connectionManager: string;
             connection_status: number;
@@ -4588,8 +4588,8 @@ export namespace TelepathyGLib {
             requested_status_message: string;
             requestedStatusMessage: string;
             service: string;
-            storage_identifier: GObject.Value;
-            storageIdentifier: GObject.Value;
+            storage_identifier: GObject.Value | any;
+            storageIdentifier: GObject.Value | any;
             storage_identifier_variant: GLib.Variant;
             storageIdentifierVariant: GLib.Variant;
             storage_provider: string;
@@ -5396,7 +5396,7 @@ export namespace TelepathyGLib {
          * @since 0.13.2
          * @read-only
          */
-        get storage_identifier(): GObject.Value;
+        get storage_identifier(): unknown;
         /**
          * The storage identifier for this account.
          *
@@ -5412,7 +5412,7 @@ export namespace TelepathyGLib {
          * @since 0.13.2
          * @read-only
          */
-        get storageIdentifier(): GObject.Value;
+        get storageIdentifier(): unknown;
         /**
          * Provider-specific information used to identify this
          * account. Use `g_variant_get_type()` to check that the type
@@ -6598,7 +6598,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            're-handled': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
             'notify::channel-request': (pspec: GObject.ParamSpec) => void;
             'notify::request-vardict': (pspec: GObject.ParamSpec) => void;
@@ -6625,7 +6625,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled::account': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            're-handled::account': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              *
@@ -6648,7 +6648,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled::channel-request': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            're-handled::channel-request': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              *
@@ -6671,7 +6671,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled::request-vardict': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            're-handled::request-vardict': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              *
@@ -6694,8 +6694,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled::user-action-time': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
-            [key: `re-handled::${string}`]: (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            're-handled::user-action-time': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
+            [key: `re-handled::${string}`]: (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
         }
 
         // Constructor properties interface
@@ -6706,8 +6706,8 @@ export namespace TelepathyGLib {
             channelRequest: ChannelRequest;
             request_vardict: GLib.Variant;
             requestVardict: GLib.Variant;
-            user_action_time: number;
-            userActionTime: number;
+            user_action_time: bigint | number;
+            userActionTime: bigint | number;
         }
     }
 
@@ -6861,28 +6861,40 @@ export namespace TelepathyGLib {
         static ['new'](
             account: Account,
             request: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            user_action_time: number,
+            user_action_time: bigint | number,
         ): AccountChannelRequest;
 
-        static new_audio_call(account: Account, user_action_time: number): AccountChannelRequest;
+        static new_audio_call(account: Account, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_audio_video_call(account: Account, user_action_time: number): AccountChannelRequest;
+        static new_audio_video_call(account: Account, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_dbus_tube(account: Account, service_name: string, user_action_time: number): AccountChannelRequest;
+        static new_dbus_tube(
+            account: Account,
+            service_name: string,
+            user_action_time: bigint | number,
+        ): AccountChannelRequest;
 
         static new_file_transfer(
             account: Account,
             filename: string,
             mime_type: string | null,
-            size: number,
-            user_action_time: number,
+            size: bigint | number,
+            user_action_time: bigint | number,
         ): AccountChannelRequest;
 
-        static new_stream_tube(account: Account, service: string, user_action_time: number): AccountChannelRequest;
+        static new_stream_tube(
+            account: Account,
+            service: string,
+            user_action_time: bigint | number,
+        ): AccountChannelRequest;
 
-        static new_text(account: Account, user_action_time: number): AccountChannelRequest;
+        static new_text(account: Account, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_vardict(account: Account, request: GLib.Variant, user_action_time: number): AccountChannelRequest;
+        static new_vardict(
+            account: Account,
+            request: GLib.Variant,
+            user_action_time: bigint | number,
+        ): AccountChannelRequest;
 
         // Signals
 
@@ -7496,7 +7508,7 @@ export namespace TelepathyGLib {
          * channel.
          * @param offset the offset into the file at which the transfer will start
          */
-        set_file_transfer_initial_offset(offset: number): void;
+        set_file_transfer_initial_offset(offset: bigint | number): void;
         /**
          * Configure this channel request to accompany the file transfer with
          * the given modification timestamp for the file.
@@ -7511,7 +7523,7 @@ export namespace TelepathyGLib {
          * channel.
          * @param timestamp the modification timestamp of the file, in seconds since the  Unix epoch (the beginning of 1970 in the UTC time zone), as returned  by `g_date_time_to_unix()`
          */
-        set_file_transfer_timestamp(timestamp: number): void;
+        set_file_transfer_timestamp(timestamp: bigint | number): void;
         /**
          * Configure this channel request to provide other local Telepathy
          * components with the URI of the file being sent. Unlike most
@@ -9742,7 +9754,7 @@ export namespace TelepathyGLib {
             connection: Connection,
             channels: Channel[],
             requests_satisfied: ChannelRequest[],
-            user_action_time: number,
+            user_action_time: bigint | number,
             context: HandleChannelsContext,
         ): void;
         /**
@@ -9923,7 +9935,7 @@ export namespace TelepathyGLib {
          */
         delegate_channels_async(
             channels: Channel[],
-            user_action_time: number,
+            user_action_time: bigint | number,
             preferred_handler: string,
         ): globalThis.Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]>;
         /**
@@ -9938,7 +9950,7 @@ export namespace TelepathyGLib {
          */
         delegate_channels_async(
             channels: Channel[],
-            user_action_time: number,
+            user_action_time: bigint | number,
             preferred_handler: string,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -9954,7 +9966,7 @@ export namespace TelepathyGLib {
          */
         delegate_channels_async(
             channels: Channel[],
-            user_action_time: number,
+            user_action_time: bigint | number,
             preferred_handler: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]> | void;
@@ -11206,8 +11218,8 @@ export namespace TelepathyGLib {
             mutable_contents: boolean;
             mutableContents: boolean;
             state: number;
-            state_details: GLib.HashTable<any, any>;
-            stateDetails: GLib.HashTable<any, any>;
+            state_details: { [key: string]: any } | GLib.HashTable<any, any>;
+            stateDetails: { [key: string]: any } | GLib.HashTable<any, any>;
             state_reason: CallStateReason;
             stateReason: CallStateReason;
         }
@@ -15517,7 +15529,7 @@ export namespace TelepathyGLib {
          * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or `null` if the client has no preferred channel handler
          * @param user_action_time the time at which user action occurred, or one of the  special values `TP_USER_ACTION_TIME_NOT_USER_ACTION` or  `TP_USER_ACTION_TIME_CURRENT_TIME`
          */
-        handle_with_time_async(handler: string | null, user_action_time: number): globalThis.Promise<boolean>;
+        handle_with_time_async(handler: string | null, user_action_time: bigint | number): globalThis.Promise<boolean>;
         /**
          * A variant of `tp_channel_dispatch_operation_handle_with_async()`
          * allowing the approver to pass an user action time.
@@ -15539,7 +15551,7 @@ export namespace TelepathyGLib {
          */
         handle_with_time_async(
             handler: string | null,
-            user_action_time: number,
+            user_action_time: bigint | number,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -15563,7 +15575,7 @@ export namespace TelepathyGLib {
          */
         handle_with_time_async(
             handler: string | null,
-            user_action_time: number,
+            user_action_time: bigint | number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -15745,7 +15757,7 @@ export namespace TelepathyGLib {
          * @param channel a {@link TelepathyGLib.Channel}
          * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
          */
-        present_channel_async(channel: Channel, user_action_time: number): globalThis.Promise<boolean>;
+        present_channel_async(channel: Channel, user_action_time: bigint | number): globalThis.Promise<boolean>;
         /**
          * Asynchronously calls PresentChannel on the ChannelDispatcher to ask
          * to the handler of `channel` to re-present it to the user.
@@ -15757,7 +15769,7 @@ export namespace TelepathyGLib {
          */
         present_channel_async(
             channel: Channel,
-            user_action_time: number,
+            user_action_time: bigint | number,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -15771,7 +15783,7 @@ export namespace TelepathyGLib {
          */
         present_channel_async(
             channel: Channel,
-            user_action_time: number,
+            user_action_time: bigint | number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -16113,8 +16125,8 @@ export namespace TelepathyGLib {
             immutablePropertiesVardict: GLib.Variant;
             preferred_handler: string;
             preferredHandler: string;
-            user_action_time: number;
-            userActionTime: number;
+            user_action_time: bigint | number;
+            userActionTime: bigint | number;
         }
     }
 
@@ -21985,16 +21997,16 @@ export namespace TelepathyGLib {
             description: string;
             file: Gio.File;
             filename: string;
-            initial_offset: number;
-            initialOffset: number;
+            initial_offset: bigint | number;
+            initialOffset: bigint | number;
             mime_type: string;
             mimeType: string;
             service_name: string;
             serviceName: string;
-            size: number;
+            size: bigint | number;
             state: number;
-            transferred_bytes: number;
-            transferredBytes: number;
+            transferred_bytes: bigint | number;
+            transferredBytes: bigint | number;
         }
     }
 
@@ -22243,7 +22255,7 @@ export namespace TelepathyGLib {
          * @param file a {@link Gio.File} where the file should be saved
          * @param offset Offset from the start of `file` where transfer begins
          */
-        accept_file_async(file: Gio.File, offset: number): globalThis.Promise<boolean>;
+        accept_file_async(file: Gio.File, offset: bigint | number): globalThis.Promise<boolean>;
         /**
          * Accept an incoming file transfer in the
          * {@link TelepathyGLib.FileTransferState.PENDING} state. Once the accept has been
@@ -22254,7 +22266,7 @@ export namespace TelepathyGLib {
          * @param offset Offset from the start of `file` where transfer begins
          * @param callback a callback to call when the transfer has been accepted
          */
-        accept_file_async(file: Gio.File, offset: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        accept_file_async(file: Gio.File, offset: bigint | number, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Accept an incoming file transfer in the
          * {@link TelepathyGLib.FileTransferState.PENDING} state. Once the accept has been
@@ -22267,7 +22279,7 @@ export namespace TelepathyGLib {
          */
         accept_file_async(
             file: Gio.File,
-            offset: number,
+            offset: bigint | number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
@@ -22454,8 +22466,8 @@ export namespace TelepathyGLib {
             connection: Connection;
             requests_satisfied: any[];
             requestsSatisfied: any[];
-            user_action_time: number;
-            userActionTime: number;
+            user_action_time: bigint | number;
+            userActionTime: bigint | number;
         }
     }
 
@@ -22879,7 +22891,7 @@ export namespace TelepathyGLib {
          * @param key a key in the mapping representing the part
          * @param i an integer value
          */
-        set_int64(part: number, key: string, i: number): void;
+        set_int64(part: number, key: string, i: bigint | number): void;
         /**
          * Set `key` in part `part` of `self` to have `s` as a string value.
          * @param part a part number, which must be strictly less than the number  returned by `tp_message_count_parts()`
@@ -22900,7 +22912,7 @@ export namespace TelepathyGLib {
          * @param key a key in the mapping representing the part
          * @param u an unsigned integer value
          */
-        set_uint64(part: number, key: string, u: number): void;
+        set_uint64(part: number, key: string, u: bigint | number): void;
         /**
          * Set `key` in part `part` of `self` to have `value` as its value.
          *
@@ -28267,7 +28279,7 @@ export namespace TelepathyGLib {
          * @param cls a subclass of {@link GObject.ObjectClass}
          * @param offset the offset within `cls` of a TpDBusPropertiesMixinClass structure
          */
-        static init(cls: typeof GObject.Object, offset: number): void;
+        static init(cls: typeof GObject.Object, offset: bigint | number): void;
     }
 
     /**

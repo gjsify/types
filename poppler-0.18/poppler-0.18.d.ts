@@ -1550,7 +1550,7 @@ export namespace Poppler {
      * @returns `TRUE`, if `timet` was set
      * @since 0.12
      */
-    function date_parse(date: string, timet: number): boolean;
+    function date_parse(date: string, timet: bigint | number): boolean;
     function error_quark(): GLib.Quark;
     /**
      * Get all available signing certificate information
@@ -1624,13 +1624,13 @@ export namespace Poppler {
      * @gir-type Callback
      */
     interface AttachmentSaveFunc {
-        (buf: Uint8Array | string): boolean;
+        (buf: Uint8Array): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface MediaSaveFunc {
-        (buf: Uint8Array | string): boolean;
+        (buf: Uint8Array): boolean;
     }
     /**
      * @gir-type Callback
@@ -3212,10 +3212,9 @@ export namespace Poppler {
 
         name: string;
         description: string;
-        size: number;
+        size: bigint | number;
         mtime: GLib.Time;
         ctime: GLib.Time;
-        checksum: GLib.String;
 
         // Constructors
 
@@ -3631,7 +3630,7 @@ export namespace Poppler {
 
         static new_from_stream(
             stream: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             password?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): Document;
@@ -3954,7 +3953,7 @@ export namespace Poppler {
          * entry is removed from the document's Info dictionary.
          * @param creation_date A new creation date
          */
-        set_creation_date(creation_date: number): void;
+        set_creation_date(creation_date: bigint | number): void;
         /**
          * Sets the document's creation date. If `creation_datetime` is `null`,
          * CreationDate entry is removed from the document's Info dictionary.
@@ -3978,7 +3977,7 @@ export namespace Poppler {
          * entry is removed from the document's Info dictionary.
          * @param modification_date A new modification date
          */
-        set_modification_date(modification_date: number): void;
+        set_modification_date(modification_date: bigint | number): void;
         /**
          * Sets the document's modification date. If `modification_datetime` is `null`,
          * ModDate entry is removed from the document's Info dictionary.
@@ -6519,9 +6518,9 @@ export namespace Poppler {
 
         // Constructors
 
-        constructor(points: Point, n_points: number);
+        constructor(points: Point, n_points: bigint | number);
 
-        static new_from_array(points: Point, n_points: number): Path;
+        static new_from_array(points: Point, n_points: bigint | number): Path;
 
         // Methods
 

@@ -94,7 +94,7 @@ export namespace Plasma {
          * @param options The option for creating an object.
          * @returns A newly created {@link Plasma.CreatedObject}   on success, `null` on error.
          */
-        create(id: ObjectID, data_size: number, options?: ClientCreateOptions | null): CreatedObject | null;
+        create(id: ObjectID, data_size: bigint | number, options?: ClientCreateOptions | null): CreatedObject | null;
         /**
          * @returns `true` on success, `false` if there was an error.
          */
@@ -109,7 +109,7 @@ export namespace Plasma {
          * @param timeout_ms The timeout in milliseconds. -1 means no timeout.
          * @returns A found {@link Plasma.ReferredObject}   on success, `null` on error.
          */
-        refer_object(id: ObjectID, timeout_ms: number): ReferredObject | null;
+        refer_object(id: ObjectID, timeout_ms: bigint | number): ReferredObject | null;
     }
 
     namespace ClientCreateOptions {

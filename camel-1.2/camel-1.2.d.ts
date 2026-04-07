@@ -1478,7 +1478,7 @@ export namespace Camel {
      * @param len total-len to decode.
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_fixed_string(_in: any | null, str: string, len: number): number;
+    function file_util_decode_fixed_string(_in: any | null, str: string, len: bigint | number): number;
     /**
      * Decode a gint64 type.
      * @param _in file to read from
@@ -1486,21 +1486,21 @@ export namespace Camel {
      * @returns 0 on success, -1 on failure.
      * @since 3.50
      */
-    function file_util_decode_gint64(_in: any | null, dest: number): number;
+    function file_util_decode_gint64(_in: any | null, dest: bigint | number): number;
     /**
      * Decode an gsize type.
      * @param _in file to read from
      * @param dest pointer to a variable to put the value in
      * @returns 0 on success, -1 on failure.
      */
-    function file_util_decode_gsize(_in: any | null, dest: number): number;
+    function file_util_decode_gsize(_in: any | null, dest: bigint | number): number;
     /**
      * Decode an off_t type.
      * @param _in file to read from
      * @param dest pointer to a variable to put the value in
      * @returns 0 on success, -1 on failure.
      */
-    function file_util_decode_off_t(_in: any | null, dest: number): number;
+    function file_util_decode_off_t(_in: any | null, dest: bigint | number): number;
     /**
      * Decode a normal string from the input file.
      * @param _in file to read from
@@ -1514,7 +1514,7 @@ export namespace Camel {
      * @param dest pointer to a variable to store the value in
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_time_t(_in: any | null, dest: number): number;
+    function file_util_decode_time_t(_in: any | null, dest: bigint | number): number;
     /**
      * Retrieve an encoded uint32 from a file.
      * @param _in file to read from
@@ -1539,7 +1539,7 @@ export namespace Camel {
      * @param len total-len of str to store
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_fixed_string(out: any | null, str: string, len: number): number;
+    function file_util_encode_fixed_string(out: any | null, str: string, len: bigint | number): number;
     /**
      * Encode a gint64 type.
      * @param out file to output to
@@ -1547,21 +1547,21 @@ export namespace Camel {
      * @returns 0 on success, -1 on error.
      * @since 3.50
      */
-    function file_util_encode_gint64(out: any | null, value: number): number;
+    function file_util_encode_gint64(out: any | null, value: bigint | number): number;
     /**
      * Encode an gsize type.
      * @param out file to output to
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_gsize(out: any | null, value: number): number;
+    function file_util_encode_gsize(out: any | null, value: bigint | number): number;
     /**
      * Encode an off_t type.
      * @param out file to output to
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_off_t(out: any | null, value: number): number;
+    function file_util_encode_off_t(out: any | null, value: bigint | number): number;
     /**
      * Encode a normal string and save it in the output file.
      * @param out file to output to
@@ -1575,7 +1575,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_time_t(out: any | null, value: number): number;
+    function file_util_encode_time_t(out: any | null, value: bigint | number): number;
     /**
      * Utility function to save an uint32 to a file.
      * @param out file to output to
@@ -1650,7 +1650,7 @@ export namespace Camel {
      * @param _in
      * @param headerlen
      */
-    function header_address_fold(_in: string, headerlen: number): string;
+    function header_address_fold(_in: string, headerlen: bigint | number): string;
     /**
      * TODO: Document me.
      * @param addrlistp a NULL-terminated list of {@link Camel.HeaderAddress} objects
@@ -1722,7 +1722,7 @@ export namespace Camel {
      * @param _in
      * @param headerlen
      */
-    function header_fold(_in: string, headerlen: number): string;
+    function header_fold(_in: string, headerlen: bigint | number): string;
     /**
      * Decodes a header which contains rfc2047 encoded-word tokens that
      * may or may not be within a comment.
@@ -1738,7 +1738,7 @@ export namespace Camel {
      * @param tz_offset Timezone offset
      * @returns a valid string representation of the date.
      */
-    function header_format_date(date: number, tz_offset: number): string;
+    function header_format_date(date: bigint | number, tz_offset: number): string;
     /**
      * @param _in
      */
@@ -1871,7 +1871,7 @@ export namespace Camel {
      * @param tm the #tm to store the result in
      * @param offset the `gint` to store the offset in
      */
-    function localtime_with_offset(tt: number, tm: any | null, offset: number): void;
+    function localtime_with_offset(tt: bigint | number, tm: any | null, offset: number): void;
     /**
      * Create an exclusive lock using .lock semantics.
      * All locks are equivalent to write locks (exclusive).
@@ -2125,7 +2125,7 @@ export namespace Camel {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns number of bytes read or -1 on fail. On failure, errno will be set appropriately.
      */
-    function read(fd: number, buf: string, n: number, cancellable?: Gio.Cancellable | null): number;
+    function read(fd: number, buf: string, n: bigint | number, cancellable?: Gio.Cancellable | null): number;
     /**
      * @param header
      * @param match
@@ -2288,7 +2288,7 @@ export namespace Camel {
      * @returns `src_time` modified by the given parameters as date, with    the time part being beginning of the day.
      * @since 3.24
      */
-    function time_value_apply(src_time: number, unit: TimeUnit | null, value: number): number;
+    function time_value_apply(src_time: bigint | number, unit: TimeUnit | null, value: number): number;
     /**
      * @param string
      */
@@ -2446,7 +2446,7 @@ export namespace Camel {
      * @returns Valid UTF-8 string, with replaced incorrect letters.    Free it with `g_free()`, when no longer needed.
      * @since 3.34
      */
-    function utf8_make_valid_len(text: string, text_len: number): string;
+    function utf8_make_valid_len(text: string, text_len: bigint | number): string;
     /**
      * Output a 32 bit unicode character as UTF-8 octets.  At most 4 octets will
      * be written to `ptr`. The `ptr` will be advanced to the next character position.
@@ -2479,7 +2479,7 @@ export namespace Camel {
      * @returns The read number, or the `default_value`, if the `bdata_ptr` doesn't    point to a number.
      * @since 3.24
      */
-    function util_bdata_get_number(bdata_ptr: string, default_value: number): number;
+    function util_bdata_get_number(bdata_ptr: string, default_value: bigint | number): number;
     /**
      * Reads a string data from the `bdata_ptr` and moves the `bdata_ptr`
      * after that string. If the string cannot be read, then the `default_value`
@@ -2499,7 +2499,7 @@ export namespace Camel {
      * @param value a value to store
      * @since 3.24
      */
-    function util_bdata_put_number(bdata_str: GLib.String, value: number): void;
+    function util_bdata_put_number(bdata_str: GLib.String, value: bigint | number): void;
     /**
      * Puts the string `value` at the end of the `bdata_str`. In case the `bdata_str`
      * is not empty a space is added before the string `value`. The stored value
@@ -2655,7 +2655,7 @@ export namespace Camel {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns number of bytes written or -1 on fail. On failure, errno will be set appropriately.
      */
-    function write(fd: number, buf: string, n: number, cancellable?: Gio.Cancellable | null): number;
+    function write(fd: number, buf: string, n: bigint | number, cancellable?: Gio.Cancellable | null): number;
     /**
      * Performs a 'decode step' on a chunk of yEncoded data of length
      * `inlen` pointed to by `in` and writes to `out`. Assumes the =ybegin
@@ -3633,7 +3633,7 @@ export namespace Camel {
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, flags: number, version: string, block_size: number): BlockFile;
+        static ['new'](path: string, flags: number, version: string, block_size: bigint | number): BlockFile;
 
         // Signals
 
@@ -4825,7 +4825,7 @@ export namespace Camel {
          * age acts as a hard limit on cache entries.
          * @param when Timeout for access, or -1 to disable access expiry.
          */
-        set_expire_access(when: number): void;
+        set_expire_access(when: bigint | number): void;
         /**
          * Set the cache expiration policy for aged entries.
          *
@@ -4838,7 +4838,7 @@ export namespace Camel {
          * age acts as a hard limit on cache entries.
          * @param when Timeout for age expiry, or -1 to disable.
          */
-        set_expire_age(when: number): void;
+        set_expire_age(when: bigint | number): void;
         /**
          * Sets whether expire of cache data is enabled.
          *
@@ -5057,7 +5057,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        construct_from_data_sync(data: any, data_len: number, cancellable?: Gio.Cancellable | null): boolean;
+        construct_from_data_sync(data: any, data_len: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously constructs the content of `data_wrapper` from `input_stream`.
          *
@@ -5201,7 +5201,7 @@ export namespace Camel {
             output_stream: Gio.OutputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        ): globalThis.Promise<bigint | number>;
         /**
          * Asynchronously writes the decoded data content to `output_stream`.
          *
@@ -5235,7 +5235,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Finishes the operation started with
          * `camel_data_wrapper_decode_to_output_stream()`.
@@ -5272,7 +5272,7 @@ export namespace Camel {
             stream: Stream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        ): globalThis.Promise<bigint | number>;
         /**
          * Asynchronously writes the decoded data content to `stream`.
          *
@@ -5306,7 +5306,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Finishes the operation started with `camel_data_wrapper_decode_to_stream()`.
          * @param result a {@link Gio.AsyncResult}
@@ -5406,7 +5406,7 @@ export namespace Camel {
             output_stream: Gio.OutputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        ): globalThis.Promise<bigint | number>;
         /**
          * Asynchronously writes the content of `data_wrapper` to `output_stream` in
          * a machine-independent format appropriate for the data.
@@ -5442,7 +5442,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Finishes the operation started with
          * `camel_data_wrapper_write_to_output_stream()`.
@@ -5483,7 +5483,7 @@ export namespace Camel {
             stream: Stream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        ): globalThis.Promise<bigint | number>;
         /**
          * Asynchronously writes the content of `data_wrapper` to `stream` in a
          * machine-independent format appropriate for the data.  It should be
@@ -5523,7 +5523,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        ): globalThis.Promise<bigint | number> | void;
         /**
          * Finishes the operation started with `camel_data_wrapper_write_to_stream()`.
          * @param result a {@link Gio.AsyncResult}
@@ -7329,14 +7329,14 @@ export namespace Camel {
          * @param t Initial time
          * @param months number of months to add or subtract
          */
-        static util_add_months(t: number, months: number): number;
+        static util_add_months(t: bigint | number, months: number): number;
         /**
          * Compares date portion of the two date-time values, first converted
          * into the local time zone. The returned value is like with `strcmp()`.
          * @param datetime1 a time_t-like value of the first date-time
          * @param datetime2 a time_t-like value of the second date-time
          */
-        static util_compare_date(datetime1: number, datetime2: number): number;
+        static util_compare_date(datetime1: bigint | number, datetime2: bigint | number): number;
         /**
          * Calculates a hash of the Message-ID header value `message_id`.
          * @param message_id a raw Message-ID header value
@@ -7905,7 +7905,7 @@ export namespace Camel {
          * change the 'dirty' flag of the `summary`.
          * @param timestamp a timestamp to set
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
         /**
          * Sets version of the `summary`.
          * @param version version to set
@@ -8020,7 +8020,7 @@ export namespace Camel {
          */
         get_key_data_info_sync(
             data: number,
-            data_size: number,
+            data_size: bigint | number,
             flags: number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, GpgKeyInfo[]];
@@ -8090,7 +8090,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        import_key_sync(data: number, data_size: number, flags: number, cancellable?: Gio.Cancellable | null): boolean;
+        import_key_sync(
+            data: number,
+            data_size: bigint | number,
+            flags: number,
+            cancellable?: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Sets the `always_trust` flag on the gpg context which is used for
          * encryption.
@@ -8508,7 +8513,7 @@ export namespace Camel {
          * @param len
          * @virtual
          */
-        vfunc_add_buffer(buffer: string, len: number): number;
+        vfunc_add_buffer(buffer: string, len: bigint | number): number;
         /**
          * @param word
          * @virtual
@@ -8521,7 +8526,7 @@ export namespace Camel {
          * @param buffer
          * @param len
          */
-        add_buffer(buffer: string, len: number): number;
+        add_buffer(buffer: string, len: bigint | number): number;
         /**
          * @param word
          */
@@ -9179,10 +9184,10 @@ export namespace Camel {
             abort_notifications: boolean;
             abortNotifications: boolean;
             cc: string;
-            date_received: number;
-            dateReceived: number;
-            date_sent: number;
-            dateSent: number;
+            date_received: bigint | number;
+            dateReceived: bigint | number;
+            date_sent: bigint | number;
+            dateSent: bigint | number;
             dirty: boolean;
             flags: MessageFlags;
             folder_flagged: boolean;
@@ -9191,8 +9196,8 @@ export namespace Camel {
             folderFlaggedStamp: number;
             from: string;
             headers: NameValueArray;
-            message_id: number;
-            messageId: number;
+            message_id: bigint | number;
+            messageId: bigint | number;
             mlist: string;
             preview: string;
             references: any[];
@@ -9247,25 +9252,25 @@ export namespace Camel {
          * @since 3.24
          */
         get date_received(): number;
-        set date_received(val: number);
+        set date_received(val: bigint | number);
         /**
          * Received date of the associated message.
          * @since 3.24
          */
         get dateReceived(): number;
-        set dateReceived(val: number);
+        set dateReceived(val: bigint | number);
         /**
          * Sent Date of the associated message.
          * @since 3.24
          */
         get date_sent(): number;
-        set date_sent(val: number);
+        set date_sent(val: bigint | number);
         /**
          * Sent Date of the associated message.
          * @since 3.24
          */
         get dateSent(): number;
-        set dateSent(val: number);
+        set dateSent(val: bigint | number);
         /**
          * Flag, whether the info is changed and requires save to disk.
          * Compare with CamelMessageInfo:folder-flagged
@@ -9333,14 +9338,14 @@ export namespace Camel {
          * @since 3.24
          */
         get message_id(): number;
-        set message_id(val: number);
+        set message_id(val: bigint | number);
         /**
          * Encoded Message-ID of the associated message as a guint64 number,
          * partial MD5 sum. The value can be cast to {@link Camel.SummaryMessageID}.
          * @since 3.24
          */
         get messageId(): number;
-        set messageId(val: number);
+        set messageId(val: bigint | number);
         /**
          * Mailing list address of the associated message.
          * @since 3.24
@@ -9539,7 +9544,7 @@ export namespace Camel {
          * can be cast to {@link Camel.SummaryMessageID}.
          * @virtual
          */
-        vfunc_get_references(): number[] | null;
+        vfunc_get_references(): (bigint | number)[] | null;
         /**
          * @virtual
          */
@@ -9627,7 +9632,7 @@ export namespace Camel {
          * @param date_received a received date to set
          * @virtual
          */
-        vfunc_set_date_received(date_received: number): boolean;
+        vfunc_set_date_received(date_received: bigint | number): boolean;
         /**
          * Sets sent date (the Date header) of the associated message.
          *
@@ -9641,7 +9646,7 @@ export namespace Camel {
          * @param date_sent a sent date to set
          * @virtual
          */
-        vfunc_set_date_sent(date_sent: number): boolean;
+        vfunc_set_date_sent(date_sent: bigint | number): boolean;
         /**
          * Change the state of the flags on the `mi`. Both `mask` and `set` are bit-or
          * of {@link Camel.MessageFlags}.
@@ -9684,7 +9689,7 @@ export namespace Camel {
          * @param message_id a message id to set
          * @virtual
          */
-        vfunc_set_message_id(message_id: number): boolean;
+        vfunc_set_message_id(message_id: bigint | number): boolean;
         /**
          * Sets mesage list address from the associated message.
          *
@@ -9821,7 +9826,7 @@ export namespace Camel {
          * @param references a references to set
          * @virtual
          */
-        vfunc_take_references(references?: number[] | null): boolean;
+        vfunc_take_references(references?: (bigint | number)[] | null): boolean;
         /**
          * Takes all the `user_flags`, which replaces any current user flags on the `mi`.
          * The passed-in `user_flags` is consumed by the `mi`, which becomes an owner
@@ -9895,7 +9900,7 @@ export namespace Camel {
          * can be cast to {@link Camel.SummaryMessageID}.
          * @returns A {@link GLib.Array} of   guint64 encoded Message-ID-s; or `null` when none are available. Free returned   array with `g_array_unref()` when no longer needed.
          */
-        dup_references(): number[] | null;
+        dup_references(): (bigint | number)[] | null;
         /**
          * @returns A newly allocated {@link Camel.NamedFlags} with   all the currently set user flags on the `mi`. Free the returned structure   with `camel_named_flags_free()` when no londer needed.
          */
@@ -9998,7 +10003,7 @@ export namespace Camel {
          * can be cast to {@link Camel.SummaryMessageID}.
          * @returns A {@link GLib.Array} of   guint64 encoded Message-ID-s; or `null` when none are available.
          */
-        get_references(): number[] | null;
+        get_references(): (bigint | number)[] | null;
         /**
          * @returns Size of the associated message.
          */
@@ -10126,7 +10131,7 @@ export namespace Camel {
          * @param date_received a received date to set
          * @returns Whether the value changed.
          */
-        set_date_received(date_received: number): boolean;
+        set_date_received(date_received: bigint | number): boolean;
         /**
          * Sets sent date (the Date header) of the associated message.
          *
@@ -10140,7 +10145,7 @@ export namespace Camel {
          * @param date_sent a sent date to set
          * @returns Whether the value changed.
          */
-        set_date_sent(date_sent: number): boolean;
+        set_date_sent(date_sent: bigint | number): boolean;
         /**
          * Marks the `mi` as dirty, which means a save to the local summary
          * is required.
@@ -10200,7 +10205,7 @@ export namespace Camel {
          * @param message_id a message id to set
          * @returns Whether the value changed.
          */
-        set_message_id(message_id: number): boolean;
+        set_message_id(message_id: bigint | number): boolean;
         /**
          * Sets mesage list address from the associated message.
          *
@@ -10345,7 +10350,7 @@ export namespace Camel {
          * @param references a references to set
          * @returns Whether the value changed.
          */
-        take_references(references?: number[] | null): boolean;
+        take_references(references?: (bigint | number)[] | null): boolean;
         /**
          * Takes all the `user_flags`, which replaces any current user flags on the `mi`.
          * The passed-in `user_flags` is consumed by the `mi`, which becomes an owner
@@ -10500,11 +10505,11 @@ export namespace Camel {
         outreal: string;
         outbuf: string;
         outptr: string;
-        outsize: number;
-        outpre: number;
+        outsize: bigint | number;
+        outpre: bigint | number;
         backbuf: string;
-        backsize: number;
-        backlen: number;
+        backsize: bigint | number;
+        backlen: bigint | number;
 
         // Constructors
 
@@ -10547,7 +10552,7 @@ export namespace Camel {
          * @param prespace amount of prespace
          * @virtual
          */
-        vfunc_complete(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
+        vfunc_complete(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
         /**
          * Passes the input buffer, `in`, through `filter` and generates an
          * output buffer, `out`.
@@ -10555,7 +10560,7 @@ export namespace Camel {
          * @param prespace amount of prespace
          * @virtual
          */
-        vfunc_filter(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
+        vfunc_filter(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
         /**
          * Resets the state on `filter` so that it may be used again.
          * @virtual
@@ -10581,14 +10586,14 @@ export namespace Camel {
          * @param _in input buffer
          * @param prespace amount of prespace
          */
-        complete(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
+        complete(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
         /**
          * Passes the input buffer, `in`, through `filter` and generates an
          * output buffer, `out`.
          * @param _in input buffer
          * @param prespace amount of prespace
          */
-        filter(_in: Uint8Array | string, prespace: number): [Uint8Array, number];
+        filter(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
         /**
          * Resets the state on `filter` so that it may be used again.
          */
@@ -10599,7 +10604,7 @@ export namespace Camel {
          * @param size requested amount of storage space
          * @param keep `true` to keep existing buffered data or `false` otherwise
          */
-        set_size(size: number, keep: number): void;
+        set_size(size: bigint | number, keep: number): void;
     }
 
     namespace MimeFilterBasic {
@@ -11355,7 +11360,7 @@ export namespace Camel {
 
         _init(...args: any[]): void;
 
-        static ['new'](cancellable: Gio.Cancellable | null, total: number): MimeFilterProgress;
+        static ['new'](cancellable: Gio.Cancellable | null, total: bigint | number): MimeFilterProgress;
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
@@ -11760,7 +11765,7 @@ export namespace Camel {
          * @param date a time_t date or `CAMEL_MESSAGE_DATE_CURRENT` to use the current local date and time
          * @param offset an offset from UTC in decimal number using the +HHMM format (for instance an offset   of -10:45 is -1045). If `date` set to `CAMEL_MESSAGE_DATE_CURRENT`, this parameter is ignored
          */
-        set_date(date: number, offset: number): void;
+        set_date(date: bigint | number, offset: number): void;
         /**
          * Set the from address of a message.
          * @param from a {@link Camel.InternetAddress} object
@@ -11989,7 +11994,7 @@ export namespace Camel {
          * @param len The length of data to read
          * @returns The number of bytes available, or -1 on error.
          */
-        read(len: number): [number, Uint8Array];
+        read(len: bigint | number): [number, Uint8Array];
         /**
          * Tell the scanner if it should scan "^From " lines or not.
          *
@@ -12022,7 +12027,7 @@ export namespace Camel {
          * @param whence SEEK_SET, SEEK_CUR, SEEK_END
          * @returns The new seek offset, or -1 on an error (for example, trying to seek on a non-seekable stream or file descriptor).
          */
-        seek(offset: number, whence: number): number;
+        seek(offset: bigint | number, whence: number): number;
         /**
          * @param matchstr
          */
@@ -13904,12 +13909,6 @@ export namespace Camel {
         // Signals
 
         /** @signal */
-        connect<K extends keyof Operation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
@@ -14125,7 +14124,7 @@ export namespace Camel {
          * @param start
          * @param end
          */
-        evaluate_occur_times(start: number, end: number): boolean;
+        evaluate_occur_times(start: bigint | number, end: bigint | number): boolean;
         /**
          * Prepares to scan a file.
          * @param fd a file descriptor
@@ -19528,7 +19527,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -19548,7 +19547,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -19580,7 +19579,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -19600,7 +19599,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -20184,7 +20183,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -20204,7 +20203,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -20236,7 +20235,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -20256,7 +20255,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -20815,7 +20814,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -20835,7 +20834,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -20867,7 +20866,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -20887,7 +20886,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -21430,7 +21429,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -21450,7 +21449,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -21482,7 +21481,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -21502,7 +21501,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -22069,7 +22068,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -22089,7 +22088,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -22121,7 +22120,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -22141,7 +22140,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -22689,7 +22688,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -22709,7 +22708,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -22741,7 +22740,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -22761,7 +22760,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -23310,7 +23309,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -23330,7 +23329,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -23362,7 +23361,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
@@ -23382,7 +23381,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -26603,7 +26602,7 @@ export namespace Camel {
         version: number;
         flags: number;
         nextuid: number;
-        timestamp: number;
+        timestamp: bigint | number;
         saved_count: number;
         unread_count: number;
         deleted_count: number;
@@ -26611,25 +26610,6 @@ export namespace Camel {
         visible_count: number;
         jnd_count: number;
         bdata: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                folder_name: string;
-                version: number;
-                flags: number;
-                nextuid: number;
-                timestamp: number;
-                saved_count: number;
-                unread_count: number;
-                deleted_count: number;
-                junk_count: number;
-                visible_count: number;
-                jnd_count: number;
-                bdata: string;
-            }>,
-        );
     }
 
     /**
@@ -26882,22 +26862,15 @@ export namespace Camel {
         // Fields
 
         name: string;
-        used: number;
-        total: number;
+        used: bigint | number;
+        total: bigint | number;
         next: any;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                name: string;
-                used: number;
-                total: number;
-                next: any;
-            }>,
-        );
+        constructor(name: string, used: bigint | number, total: bigint | number);
 
-        static ['new'](name: string, used: number, total: number): FolderQuotaInfo;
+        static ['new'](name: string, used: bigint | number, total: bigint | number): FolderQuotaInfo;
 
         // Methods
 
@@ -27097,7 +27070,7 @@ export namespace Camel {
          * @param _in
          * @param headerlen
          */
-        static fold(_in: string, headerlen: number): string;
+        static fold(_in: string, headerlen: bigint | number): string;
         /**
          * TODO: Document me.
          * @param addrlistp a NULL-terminated list of {@link Camel.HeaderAddress} objects
@@ -27339,8 +27312,8 @@ export namespace Camel {
         junk: boolean;
         attachment: boolean;
         size: number;
-        dsent: number;
-        dreceived: number;
+        dsent: bigint | number;
+        dreceived: bigint | number;
         subject: string;
         from: string;
         to: string;
@@ -27356,41 +27329,6 @@ export namespace Camel {
         bdata: string;
         userheaders: string;
         preview: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                uid: string;
-                flags: number;
-                msg_type: number;
-                dirty: number;
-                read: boolean;
-                deleted: boolean;
-                replied: boolean;
-                important: boolean;
-                junk: boolean;
-                attachment: boolean;
-                size: number;
-                dsent: number;
-                dreceived: number;
-                subject: string;
-                from: string;
-                to: string;
-                cc: string;
-                mlist: string;
-                followup_flag: string;
-                followup_completed_on: string;
-                followup_due_by: string;
-                part: string;
-                labels: string;
-                usertags: string;
-                cinfo: string;
-                bdata: string;
-                userheaders: string;
-                preview: string;
-            }>,
-        );
     }
 
     /**
@@ -28414,8 +28352,8 @@ export namespace Camel {
 
         type: SExpResultType;
         time_generator: boolean;
-        occuring_start: number;
-        occuring_end: number;
+        occuring_start: bigint | number;
+        occuring_end: bigint | number;
     }
 
     /**
@@ -28944,8 +28882,8 @@ export namespace Camel {
 
         filename: string;
         level: number;
-        expired: number;
-        size: number;
+        expired: bigint | number;
+        size: bigint | number;
         fd: number;
 
         // Static methods
@@ -29163,19 +29101,8 @@ export namespace Camel {
 
         pattern: string;
         prefix: string;
-        um_so: number;
-        um_eo: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                pattern: string;
-                prefix: string;
-                um_so: number;
-                um_eo: number;
-            }>,
-        );
+        um_so: bigint | number;
+        um_eo: bigint | number;
     }
 
     /**

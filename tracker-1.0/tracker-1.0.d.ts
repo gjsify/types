@@ -230,11 +230,11 @@ export namespace Tracker {
         /**
          * @param literal
          */
-        object_int64(literal: number): void;
+        object_int64(literal: bigint | number): void;
         /**
          * @param literal
          */
-        object_date(literal: number): number;
+        object_date(literal: bigint | number): number;
         /**
          * @param literal
          */

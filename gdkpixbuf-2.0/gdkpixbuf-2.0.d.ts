@@ -244,7 +244,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufDestroyNotify {
-        (pixels: Uint8Array | string): void;
+        (pixels: Uint8Array): void;
     }
     /**
      * @gir-type Callback
@@ -262,7 +262,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufModuleIncrementLoadFunc {
-        (context: any | null, buf: Uint8Array | string): boolean;
+        (context: any | null, buf: Uint8Array): boolean;
     }
     /**
      * @gir-type Callback
@@ -322,7 +322,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufSaveFunc {
-        (buf: Uint8Array | string): boolean;
+        (buf: Uint8Array): boolean;
     }
     /**
      * Flags which allow a module to specify further details about the supported
@@ -372,8 +372,8 @@ export namespace GdkPixbuf {
             height: number;
             n_channels: number;
             nChannels: number;
-            pixel_bytes: GLib.Bytes;
-            pixelBytes: GLib.Bytes;
+            pixel_bytes: GLib.Bytes | Uint8Array;
+            pixelBytes: GLib.Bytes | Uint8Array;
             pixels: any;
             rowstride: number;
             width: number;

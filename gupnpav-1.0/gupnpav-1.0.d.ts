@@ -487,8 +487,8 @@ export namespace GUPnPAV {
             container_update_id: number;
             containerUpdateId: number;
             searchable: boolean;
-            storage_used: number;
-            storageUsed: number;
+            storage_used: bigint | number;
+            storageUsed: bigint | number;
             total_deleted_child_count: number;
             totalDeletedChildCount: number;
         }
@@ -531,12 +531,12 @@ export namespace GUPnPAV {
          * The number of bytes used by all child items of this container.
          */
         get storage_used(): number;
-        set storage_used(val: number);
+        set storage_used(val: bigint | number);
         /**
          * The number of bytes used by all child items of this container.
          */
         get storageUsed(): number;
-        set storageUsed(val: number);
+        set storageUsed(val: bigint | number);
         /**
          * Total deleted child count of this container.
          */
@@ -674,7 +674,7 @@ export namespace GUPnPAV {
          * Set the number of bytes used by all child items of the `container`.
          * @param storage_used The number of bytes used by all child items of the                `container` or -1 if unknown.
          */
-        set_storage_used(storage_used: number): void;
+        set_storage_used(storage_used: bigint | number): void;
         /**
          * Set the container update ID of the `container`.
          * @param count The container update ID
@@ -1144,7 +1144,7 @@ export namespace GUPnPAV {
         // Constructor properties interface
 
         interface ConstructorProps extends DIDLLiteObject.ConstructorProps {
-            lifetime: number;
+            lifetime: bigint | number;
             ref_id: string;
             refId: string;
         }
@@ -1162,7 +1162,7 @@ export namespace GUPnPAV {
          * The lifetime in seconds of this DIDLLite item in a media collection.
          */
         get lifetime(): number;
-        set lifetime(val: number);
+        set lifetime(val: bigint | number);
         /**
          * The ref ID of this item.
          */
@@ -1224,7 +1224,7 @@ export namespace GUPnPAV {
         /**
          * @param lifetime The lifetime (in seconds) of this item in a media collection.
          */
-        set_lifetime(lifetime: number): void;
+        set_lifetime(lifetime: bigint | number): void;
         /**
          * Set the ref ID of the `item`.
          * @param ref_id The ref ID
@@ -2009,13 +2009,13 @@ export namespace GUPnPAV {
             bitrate: number;
             bits_per_sample: number;
             bitsPerSample: number;
-            cleartext_size: number;
-            cleartextSize: number;
+            cleartext_size: bigint | number;
+            cleartextSize: bigint | number;
             color_depth: number;
             colorDepth: number;
             dlna_namespace: any;
             dlnaNamespace: any;
-            duration: number;
+            duration: bigint | number;
             height: number;
             import_uri: string;
             importUri: string;
@@ -2026,8 +2026,8 @@ export namespace GUPnPAV {
             pvNamespace: any;
             sample_freq: number;
             sampleFreq: number;
-            size: number;
-            size64: number;
+            size: bigint | number;
+            size64: bigint | number;
             subtitle_file_type: string;
             subtitleFileType: string;
             subtitle_file_uri: string;
@@ -2077,9 +2077,9 @@ export namespace GUPnPAV {
         get bitsPerSample(): number;
         set bitsPerSample(val: number);
         get cleartext_size(): number;
-        set cleartext_size(val: number);
+        set cleartext_size(val: bigint | number);
         get cleartextSize(): number;
-        set cleartextSize(val: number);
+        set cleartextSize(val: bigint | number);
         /**
          * The color-depth of this image/video resource.
          */
@@ -2106,7 +2106,7 @@ export namespace GUPnPAV {
          * The duration (in seconds) of this resource.
          */
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         /**
          * The height of this image/video resource.
          */
@@ -2163,12 +2163,12 @@ export namespace GUPnPAV {
          * The size (in bytes) of this resource.
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * The size (in bytes) of this resource.
          */
         get size64(): number;
-        set size64(val: number);
+        set size64(val: bigint | number);
         /**
          * Type of external subtitle file. Usually SRT or SMI.
          */
@@ -2395,7 +2395,7 @@ export namespace GUPnPAV {
          * unset this property.
          * @param cleartext_size The size (in bytes)
          */
-        set_cleartext_size(cleartext_size: number): void;
+        set_cleartext_size(cleartext_size: bigint | number): void;
         /**
          * Set the color-depth of this image/video resource. Passing a negative number
          * will unset this property.
@@ -2407,7 +2407,7 @@ export namespace GUPnPAV {
          * will unset this property.
          * @param duration The duration (in seconds)
          */
-        set_duration(duration: number): void;
+        set_duration(duration: bigint | number): void;
         /**
          * Set the height of this image/video resource. Setting both width and height to
          * a negative number will unset the resolution property.
@@ -2441,13 +2441,13 @@ export namespace GUPnPAV {
          * unset this property.
          * @param size The size (in bytes)
          */
-        set_size(size: number): void;
+        set_size(size: bigint | number): void;
         /**
          * Set the size (in bytes) of the `resource`. Passing a negative number will
          * unset this property.
          * @param size The size (in bytes)
          */
-        set_size64(size: number): void;
+        set_size64(size: bigint | number): void;
         /**
          * Set the type of an external subtitle file, specified via
          * pv:subtitleFileUri using `gupnp_didl_lite_resource_set_subtitle_file_uri()`.
