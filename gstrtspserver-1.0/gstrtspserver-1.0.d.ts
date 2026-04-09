@@ -1703,12 +1703,12 @@ export namespace GstRtspServer {
          * @param position
          * @virtual
          */
-        vfunc_query_position(position: bigint | number): boolean;
+        vfunc_query_position(position: number): boolean;
         /**
          * @param stop
          * @virtual
          */
-        vfunc_query_stop(stop: bigint | number): boolean;
+        vfunc_query_stop(stop: number): boolean;
         /**
          * @param stream
          * @virtual

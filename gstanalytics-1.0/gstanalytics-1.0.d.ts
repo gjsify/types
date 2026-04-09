@@ -468,7 +468,7 @@ export namespace GstAnalytics {
 
         // Fields
 
-        n_streams: bigint | number;
+        n_streams: number;
     }
 
     /**
@@ -481,8 +481,8 @@ export namespace GstAnalytics {
         // Fields
 
         index: number;
-        n_sticky_events: bigint | number;
-        n_objects: bigint | number;
+        n_sticky_events: number;
+        n_objects: number;
 
         // Methods
 
@@ -1044,8 +1044,8 @@ export namespace GstAnalytics {
 
         // Fields
 
-        initial_relation_order: bigint | number;
-        initial_buf_size: bigint | number;
+        initial_relation_order: number;
+        initial_buf_size: number;
     }
 
     /**
@@ -1237,8 +1237,8 @@ export namespace GstAnalytics {
         layout: TensorLayout;
         data_type: TensorDataType;
         dims_order: TensorDimOrder;
-        num_dims: bigint | number;
-        dims: (bigint | number)[];
+        num_dims: number;
+        dims: number[];
 
         // Constructors
 
@@ -1322,7 +1322,7 @@ export namespace GstAnalytics {
 
         // Fields
 
-        num_tensors: bigint | number;
+        num_tensors: number;
 
         // Methods
 

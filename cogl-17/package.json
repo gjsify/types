@@ -6,57 +6,51 @@
     "module": "cogl-17.js",
     "main": "cogl-17.js",
     "exports": {
-        "./ambient": {
-            "types": "./cogl-17-ambient.d.ts",
-            "import": "./cogl-17-ambient.js",
-            "default": "./cogl-17-ambient.js"
-        },
-        "./import": {
-            "types": "./cogl-17-import.d.ts",
-            "import": "./cogl-17-import.js",
-            "default": "./cogl-17-import.js"
-        },
-        "./cogl-17": {
-            "types": "./cogl-17.d.ts",
-            "import": "./cogl-17.js",
-            "default": "./cogl-17.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./cogl-17-ambient.d.ts",
+        "import": "./cogl-17-ambient.js",
+        "default": "./cogl-17-ambient.js"
+      },
+      "./import": {
+        "types": "./cogl-17-import.d.ts",
+        "import": "./cogl-17-import.js",
+        "default": "./cogl-17-import.js"
+      },
+      "./cogl-17": {
+        "types": "./cogl-17.d.ts",
+        "import": "./cogl-17.js",
+        "default": "./cogl-17.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^",
-        "@girs/gl-1.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/graphene-1.0": "workspace:^",
-        "@girs/mtk-17": "workspace:^"
-    },
+      "@girs/gjs": "workspace:^",
+      "@girs/mtk-17": "workspace:^",
+      "@girs/graphene-1.0": "workspace:^",
+      "@girs/gobject-2.0": "workspace:^",
+      "@girs/glib-2.0": "workspace:^",
+      "@girs/gl-1.0": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Cogl-17"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Cogl-17"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/cogl-17#readme"
 }
+
+

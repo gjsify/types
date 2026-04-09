@@ -4945,7 +4945,7 @@ export namespace Camel {
         vfunc_decode_to_output_stream_sync(
             output_stream: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
-        ): number;
+        ): bigint | number;
         /**
          * Writes the decoded data content to `stream`.
          *
@@ -4960,7 +4960,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_decode_to_stream_sync(stream: Stream, cancellable?: Gio.Cancellable | null): number;
+        vfunc_decode_to_stream_sync(stream: Stream, cancellable?: Gio.Cancellable | null): bigint | number;
         /**
          * @virtual
          */
@@ -5012,7 +5012,7 @@ export namespace Camel {
         vfunc_write_to_output_stream_sync(
             output_stream: Gio.OutputStream,
             cancellable?: Gio.Cancellable | null,
-        ): number;
+        ): bigint | number;
         /**
          * Writes the content of `data_wrapper` to `stream` in a machine-independent
          * format appropriate for the data.  It should be possible to construct an
@@ -5030,7 +5030,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_write_to_stream_sync(stream: Stream, cancellable?: Gio.Cancellable | null): number;
+        vfunc_write_to_stream_sync(stream: Stream, cancellable?: Gio.Cancellable | null): bigint | number;
 
         // Methods
 
@@ -5201,7 +5201,7 @@ export namespace Camel {
             output_stream: Gio.OutputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously writes the decoded data content to `output_stream`.
          *
@@ -5235,7 +5235,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with
          * `camel_data_wrapper_decode_to_output_stream()`.
@@ -5272,7 +5272,7 @@ export namespace Camel {
             stream: Stream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously writes the decoded data content to `stream`.
          *
@@ -5306,7 +5306,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with `camel_data_wrapper_decode_to_stream()`.
          * @param result a {@link Gio.AsyncResult}
@@ -5406,7 +5406,7 @@ export namespace Camel {
             output_stream: Gio.OutputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously writes the content of `data_wrapper` to `output_stream` in
          * a machine-independent format appropriate for the data.
@@ -5442,7 +5442,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with
          * `camel_data_wrapper_write_to_output_stream()`.
@@ -5483,7 +5483,7 @@ export namespace Camel {
             stream: Stream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously writes the content of `data_wrapper` to `stream` in a
          * machine-independent format appropriate for the data.  It should be
@@ -5523,7 +5523,7 @@ export namespace Camel {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes the operation started with `camel_data_wrapper_write_to_stream()`.
          * @param result a {@link Gio.AsyncResult}
@@ -8513,7 +8513,7 @@ export namespace Camel {
          * @param len
          * @virtual
          */
-        vfunc_add_buffer(buffer: string, len: bigint | number): number;
+        vfunc_add_buffer(buffer: string, len: number): bigint | number;
         /**
          * @param word
          * @virtual
@@ -9507,11 +9507,11 @@ export namespace Camel {
         /**
          * @virtual
          */
-        vfunc_get_date_received(): number;
+        vfunc_get_date_received(): bigint | number;
         /**
          * @virtual
          */
-        vfunc_get_date_sent(): number;
+        vfunc_get_date_sent(): bigint | number;
         /**
          * @virtual
          */
@@ -9529,7 +9529,7 @@ export namespace Camel {
          * partial MD5 sum. The value can be cast to {@link Camel.SummaryMessageID}.
          * @virtual
          */
-        vfunc_get_message_id(): number;
+        vfunc_get_message_id(): bigint | number;
         /**
          * @virtual
          */
@@ -9632,7 +9632,7 @@ export namespace Camel {
          * @param date_received a received date to set
          * @virtual
          */
-        vfunc_set_date_received(date_received: bigint | number): boolean;
+        vfunc_set_date_received(date_received: number): boolean;
         /**
          * Sets sent date (the Date header) of the associated message.
          *
@@ -9646,7 +9646,7 @@ export namespace Camel {
          * @param date_sent a sent date to set
          * @virtual
          */
-        vfunc_set_date_sent(date_sent: bigint | number): boolean;
+        vfunc_set_date_sent(date_sent: number): boolean;
         /**
          * Change the state of the flags on the `mi`. Both `mask` and `set` are bit-or
          * of {@link Camel.MessageFlags}.
@@ -9689,7 +9689,7 @@ export namespace Camel {
          * @param message_id a message id to set
          * @virtual
          */
-        vfunc_set_message_id(message_id: bigint | number): boolean;
+        vfunc_set_message_id(message_id: number): boolean;
         /**
          * Sets mesage list address from the associated message.
          *
@@ -10505,11 +10505,11 @@ export namespace Camel {
         outreal: string;
         outbuf: string;
         outptr: string;
-        outsize: bigint | number;
-        outpre: bigint | number;
+        outsize: number;
+        outpre: number;
         backbuf: string;
-        backsize: bigint | number;
-        backlen: bigint | number;
+        backsize: number;
+        backlen: number;
 
         // Constructors
 
@@ -10552,7 +10552,7 @@ export namespace Camel {
          * @param prespace amount of prespace
          * @virtual
          */
-        vfunc_complete(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
+        vfunc_complete(_in: Uint8Array, prespace: number): [Uint8Array | string, bigint | number];
         /**
          * Passes the input buffer, `in`, through `filter` and generates an
          * output buffer, `out`.
@@ -10560,7 +10560,7 @@ export namespace Camel {
          * @param prespace amount of prespace
          * @virtual
          */
-        vfunc_filter(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
+        vfunc_filter(_in: Uint8Array, prespace: number): [Uint8Array | string, bigint | number];
         /**
          * Resets the state on `filter` so that it may be used again.
          * @virtual
@@ -13791,7 +13791,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13818,7 +13818,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -16415,7 +16415,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16442,7 +16442,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -17684,7 +17684,9 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_initial_setup_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.HashTable<string, string>];
+        vfunc_initial_setup_sync(
+            cancellable?: Gio.Cancellable | null,
+        ): [boolean, { [key: string]: any } | GLib.HashTable<string, string>];
         /**
          * Renames the folder described by `old_name` to `new_name`.
          * @param old_name the current name of the folder
@@ -18973,7 +18975,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19000,7 +19002,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19421,14 +19423,14 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_read(buffer: number[], cancellable?: Gio.Cancellable | null): number;
+        vfunc_read(buffer: number[], cancellable?: Gio.Cancellable | null): bigint | number;
         /**
          * Attempts to write up to `n` bytes of `buffer` into `stream`.
          * @param buffer buffer to write.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_write(buffer: number[], cancellable?: Gio.Cancellable | null): number;
+        vfunc_write(buffer: number[], cancellable?: Gio.Cancellable | null): bigint | number;
 
         // Methods
 
@@ -19579,12 +19581,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -19599,7 +19601,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -19996,7 +19998,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20023,7 +20025,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -20235,12 +20237,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -20255,7 +20257,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -20652,7 +20654,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20679,7 +20681,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -20866,12 +20868,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -20886,7 +20888,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -21283,7 +21285,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21310,7 +21312,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21481,12 +21483,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -21501,7 +21503,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -21898,7 +21900,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21925,7 +21927,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -22120,12 +22122,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -22140,7 +22142,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -22537,7 +22539,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22564,7 +22566,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -22740,12 +22742,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -22760,7 +22762,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -23157,7 +23159,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23184,7 +23186,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23361,12 +23363,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -23381,7 +23383,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -23778,7 +23780,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23805,7 +23807,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -24721,7 +24723,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24748,7 +24750,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -25885,7 +25887,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25912,7 +25914,7 @@ export namespace Camel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -26602,7 +26604,7 @@ export namespace Camel {
         version: number;
         flags: number;
         nextuid: number;
-        timestamp: bigint | number;
+        timestamp: number;
         saved_count: number;
         unread_count: number;
         deleted_count: number;
@@ -26862,8 +26864,8 @@ export namespace Camel {
         // Fields
 
         name: string;
-        used: bigint | number;
-        total: bigint | number;
+        used: number;
+        total: number;
         next: any;
 
         // Constructors
@@ -27312,8 +27314,8 @@ export namespace Camel {
         junk: boolean;
         attachment: boolean;
         size: number;
-        dsent: bigint | number;
-        dreceived: bigint | number;
+        dsent: number;
+        dreceived: number;
         subject: string;
         from: string;
         to: string;
@@ -28352,8 +28354,8 @@ export namespace Camel {
 
         type: SExpResultType;
         time_generator: boolean;
-        occuring_start: bigint | number;
-        occuring_end: bigint | number;
+        occuring_start: number;
+        occuring_end: number;
     }
 
     /**
@@ -28882,8 +28884,8 @@ export namespace Camel {
 
         filename: string;
         level: number;
-        expired: bigint | number;
-        size: bigint | number;
+        expired: number;
+        size: number;
         fd: number;
 
         // Static methods
@@ -29101,8 +29103,8 @@ export namespace Camel {
 
         pattern: string;
         prefix: string;
-        um_so: bigint | number;
-        um_eo: bigint | number;
+        um_so: number;
+        um_eo: number;
     }
 
     /**

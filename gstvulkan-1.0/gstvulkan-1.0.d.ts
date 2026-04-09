@@ -2205,7 +2205,7 @@ export namespace GstVulkan {
          * @param timeout
          * @virtual
          */
-        vfunc_wait_func(timeout: bigint | number): boolean;
+        vfunc_wait_func(timeout: number): boolean;
 
         // Methods
 

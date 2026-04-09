@@ -822,7 +822,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -1233,7 +1233,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1260,7 +1260,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1890,7 +1890,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1917,7 +1917,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2511,7 +2511,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2538,7 +2538,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2697,7 +2697,7 @@ export namespace Gpseq {
          * @param end_time
          * @virtual
          */
-        vfunc_wait_until(end_time: bigint | number): [boolean, any];
+        vfunc_wait_until(end_time: number): [boolean, any];
         /**
          * @param a_type
          * @param a_dup_func
@@ -3236,7 +3236,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3263,7 +3263,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3439,7 +3439,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -3850,7 +3850,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3877,7 +3877,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4059,7 +4059,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -4470,7 +4470,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4497,7 +4497,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4671,7 +4671,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -5082,7 +5082,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5109,7 +5109,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6741,7 +6741,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6768,7 +6768,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6939,7 +6939,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -7350,7 +7350,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7377,7 +7377,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7551,7 +7551,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -7962,7 +7962,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7989,7 +7989,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8109,13 +8109,13 @@ export namespace Gpseq {
          * @param threads
          * @virtual
          */
-        vfunc_resolve_threshold(elements: bigint | number, threads: number): number;
+        vfunc_resolve_threshold(elements: number, threads: number): bigint | number;
         /**
          * @param elements
          * @param threads
          * @virtual
          */
-        vfunc_resolve_max_depth(elements: bigint | number, threads: number): number;
+        vfunc_resolve_max_depth(elements: number, threads: number): number;
 
         // Methods
 
@@ -8774,7 +8774,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8801,7 +8801,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9397,7 +9397,7 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_get_length(): number;
+            vfunc_get_length(): bigint | number;
             /**
              * @virtual
              */
@@ -9604,7 +9604,7 @@ export namespace Gpseq {
              * @param end_time
              * @virtual
              */
-            vfunc_recv_until(end_time: bigint | number): Result;
+            vfunc_recv_until(end_time: number): Result;
             /**
              * @virtual
              */
@@ -9877,7 +9877,7 @@ export namespace Gpseq {
              * @param end_time
              * @virtual
              */
-            vfunc_send_until(data: any, end_time: bigint | number): Result;
+            vfunc_send_until(data: any, end_time: number): Result;
             /**
              * @param data
              * @virtual
@@ -9940,7 +9940,7 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_get_estimated_size(): number;
+            vfunc_get_estimated_size(): bigint | number;
             /**
              * @virtual
              */

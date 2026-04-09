@@ -1868,7 +1868,7 @@ export namespace GstRtp {
          * @param input_meta a {@link Gst.Buffer}
          * @virtual
          */
-        vfunc_get_max_size(input_meta: Gst.Buffer): number;
+        vfunc_get_max_size(input_meta: Gst.Buffer): bigint | number;
         /**
          * @virtual
          */
@@ -1880,7 +1880,7 @@ export namespace GstRtp {
          * @param buffer a {@link Gst.Buffer} to modify if necessary
          * @virtual
          */
-        vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array | string, buffer: Gst.Buffer): boolean;
+        vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer): boolean;
         /**
          * @param direction
          * @param attributes
@@ -1925,8 +1925,8 @@ export namespace GstRtp {
             input_meta: Gst.Buffer,
             write_flags: RTPHeaderExtensionFlags,
             output: Gst.Buffer,
-            data: Uint8Array | string,
-        ): number;
+            data: Uint8Array,
+        ): bigint | number;
 
         // Methods
 
@@ -2748,7 +2748,7 @@ export namespace GstRtp {
 
         state: number;
         data: any[];
-        size: (bigint | number)[];
+        size: number[];
 
         // Static methods
 

@@ -1123,7 +1123,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1150,7 +1150,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1709,7 +1709,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1736,7 +1736,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2299,7 +2299,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2326,7 +2326,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3421,7 +3421,7 @@ export namespace Dee {
          * @param column the column to retrieve a int64 from
          * @virtual
          */
-        vfunc_get_int64(iter: ModelIter, column: number): number;
+        vfunc_get_int64(iter: ModelIter, column: number): bigint | number;
         /**
          * Retrieves a {@link Dee.ModelIter} representing the row at the given index.
          *
@@ -3501,7 +3501,7 @@ export namespace Dee {
          * @param column the column to retrieve a uint64 from
          * @virtual
          */
-        vfunc_get_uint64(iter: ModelIter, column: number): number;
+        vfunc_get_uint64(iter: ModelIter, column: number): bigint | number;
         /**
          * @param iter a {@link Dee.ModelIter} pointing to the row to inspect
          * @param column column number to retrieve the value from
@@ -3520,7 +3520,7 @@ export namespace Dee {
          * @param num_column
          * @virtual
          */
-        vfunc_get_vardict_schema(num_column: number): GLib.HashTable<string, string>;
+        vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
         /**
          * As `dee_model_insert()`, but intended for language bindings or
          * situations where you work with models on a meta level and may not have
@@ -3615,10 +3615,7 @@ export namespace Dee {
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          * @virtual
          */
-        vfunc_register_vardict_schema(
-            num_column: number,
-            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
+        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a {@link Dee.ModelIter} pointing to the row to remove
@@ -4114,7 +4111,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4141,7 +4138,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4738,7 +4735,7 @@ export namespace Dee {
          * @param column the column to retrieve a int64 from
          * @virtual
          */
-        vfunc_get_int64(iter: ModelIter, column: number): number;
+        vfunc_get_int64(iter: ModelIter, column: number): bigint | number;
         /**
          * Retrieves a {@link Dee.ModelIter} representing the row at the given index.
          *
@@ -4818,7 +4815,7 @@ export namespace Dee {
          * @param column the column to retrieve a uint64 from
          * @virtual
          */
-        vfunc_get_uint64(iter: ModelIter, column: number): number;
+        vfunc_get_uint64(iter: ModelIter, column: number): bigint | number;
         /**
          * @param iter a {@link Dee.ModelIter} pointing to the row to inspect
          * @param column column number to retrieve the value from
@@ -4837,7 +4834,7 @@ export namespace Dee {
          * @param num_column
          * @virtual
          */
-        vfunc_get_vardict_schema(num_column: number): GLib.HashTable<string, string>;
+        vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
         /**
          * As `dee_model_insert()`, but intended for language bindings or
          * situations where you work with models on a meta level and may not have
@@ -4932,10 +4929,7 @@ export namespace Dee {
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          * @virtual
          */
-        vfunc_register_vardict_schema(
-            num_column: number,
-            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
+        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a {@link Dee.ModelIter} pointing to the row to remove
@@ -5431,7 +5425,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5458,7 +5452,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6069,7 +6063,7 @@ export namespace Dee {
          * @param column the column to retrieve a int64 from
          * @virtual
          */
-        vfunc_get_int64(iter: ModelIter, column: number): number;
+        vfunc_get_int64(iter: ModelIter, column: number): bigint | number;
         /**
          * Retrieves a {@link Dee.ModelIter} representing the row at the given index.
          *
@@ -6149,7 +6143,7 @@ export namespace Dee {
          * @param column the column to retrieve a uint64 from
          * @virtual
          */
-        vfunc_get_uint64(iter: ModelIter, column: number): number;
+        vfunc_get_uint64(iter: ModelIter, column: number): bigint | number;
         /**
          * @param iter a {@link Dee.ModelIter} pointing to the row to inspect
          * @param column column number to retrieve the value from
@@ -6168,7 +6162,7 @@ export namespace Dee {
          * @param num_column
          * @virtual
          */
-        vfunc_get_vardict_schema(num_column: number): GLib.HashTable<string, string>;
+        vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
         /**
          * As `dee_model_insert()`, but intended for language bindings or
          * situations where you work with models on a meta level and may not have
@@ -6263,10 +6257,7 @@ export namespace Dee {
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          * @virtual
          */
-        vfunc_register_vardict_schema(
-            num_column: number,
-            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
+        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a {@link Dee.ModelIter} pointing to the row to remove
@@ -6762,7 +6753,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6789,7 +6780,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6929,13 +6920,13 @@ export namespace Dee {
              * @signal
              * @run-last
              */
-            'begin-transaction': (arg0: bigint | number, arg1: bigint | number) => void;
+            'begin-transaction': (arg0: number, arg1: number) => void;
             /**
              * Emitted right after a remote transaction has been committed to the model.
              * @signal
              * @run-last
              */
-            'end-transaction': (arg0: bigint | number, arg1: bigint | number) => void;
+            'end-transaction': (arg0: number, arg1: number) => void;
             'notify::access-mode': (pspec: GObject.ParamSpec) => void;
             'notify::flush-mode': (pspec: GObject.ParamSpec) => void;
             'notify::peer': (pspec: GObject.ParamSpec) => void;
@@ -7536,7 +7527,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7563,7 +7554,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8406,7 +8397,7 @@ export namespace Dee {
          * @param column the column to retrieve a int64 from
          * @virtual
          */
-        vfunc_get_int64(iter: ModelIter, column: number): number;
+        vfunc_get_int64(iter: ModelIter, column: number): bigint | number;
         /**
          * Retrieves a {@link Dee.ModelIter} representing the row at the given index.
          *
@@ -8486,7 +8477,7 @@ export namespace Dee {
          * @param column the column to retrieve a uint64 from
          * @virtual
          */
-        vfunc_get_uint64(iter: ModelIter, column: number): number;
+        vfunc_get_uint64(iter: ModelIter, column: number): bigint | number;
         /**
          * @param iter a {@link Dee.ModelIter} pointing to the row to inspect
          * @param column column number to retrieve the value from
@@ -8505,7 +8496,7 @@ export namespace Dee {
          * @param num_column
          * @virtual
          */
-        vfunc_get_vardict_schema(num_column: number): GLib.HashTable<string, string>;
+        vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
         /**
          * As `dee_model_insert()`, but intended for language bindings or
          * situations where you work with models on a meta level and may not have
@@ -8600,10 +8591,7 @@ export namespace Dee {
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          * @virtual
          */
-        vfunc_register_vardict_schema(
-            num_column: number,
-            schemas: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
+        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
         /**
          * Removes the row at the given position from the model.
          * @param iter a {@link Dee.ModelIter} pointing to the row to remove
@@ -9099,7 +9087,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9126,7 +9114,7 @@ export namespace Dee {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9753,7 +9741,7 @@ export namespace Dee {
              * @param column the column to retrieve a int64 from
              * @virtual
              */
-            vfunc_get_int64(iter: ModelIter, column: number): number;
+            vfunc_get_int64(iter: ModelIter, column: number): bigint | number;
             /**
              * Retrieves a {@link Dee.ModelIter} representing the row at the given index.
              *
@@ -9833,7 +9821,7 @@ export namespace Dee {
              * @param column the column to retrieve a uint64 from
              * @virtual
              */
-            vfunc_get_uint64(iter: ModelIter, column: number): number;
+            vfunc_get_uint64(iter: ModelIter, column: number): bigint | number;
             /**
              * @param iter a {@link Dee.ModelIter} pointing to the row to inspect
              * @param column column number to retrieve the value from
@@ -9852,7 +9840,7 @@ export namespace Dee {
              * @param num_column
              * @virtual
              */
-            vfunc_get_vardict_schema(num_column: number): GLib.HashTable<string, string>;
+            vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
             /**
              * As `dee_model_insert()`, but intended for language bindings or
              * situations where you work with models on a meta level and may not have
@@ -9947,10 +9935,7 @@ export namespace Dee {
              * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
              * @virtual
              */
-            vfunc_register_vardict_schema(
-                num_column: number,
-                schemas: { [key: string]: any } | GLib.HashTable<string, string>,
-            ): void;
+            vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
             /**
              * Removes the row at the given position from the model.
              * @param iter a {@link Dee.ModelIter} pointing to the row to remove

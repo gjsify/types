@@ -814,7 +814,7 @@ export namespace GstInterfaces {
              * Reports that the current frequency has changed.
              * @signal
              */
-            'frequency-changed': (arg0: bigint | number) => void;
+            'frequency-changed': (arg0: number) => void;
             /**
              * Reports that the signal strength has changed.
              * @signal
@@ -847,8 +847,8 @@ export namespace GstInterfaces {
         label: string;
         flags: TunerChannelFlags;
         freq_multiplicator: number;
-        min_frequency: bigint | number;
-        max_frequency: bigint | number;
+        min_frequency: number;
+        max_frequency: number;
         min_signal: number;
         max_signal: number;
 

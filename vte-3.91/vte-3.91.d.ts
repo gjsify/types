@@ -1613,7 +1613,7 @@ export namespace Vte {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1640,7 +1640,7 @@ export namespace Vte {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6058,7 +6058,7 @@ export namespace Vte {
          * @param end the end of the range, in characters
          * @virtual
          */
-        vfunc_get_contents(start: number, end: number): GLib.Bytes;
+        vfunc_get_contents(start: number, end: number): GLib.Bytes | Uint8Array;
         /**
          * Retrieve the current contents of the accessible object starting
          * from the given offset, and using the given granularity.
@@ -6068,7 +6068,10 @@ export namespace Vte {
          * @param granularity the granularity of the query
          * @virtual
          */
-        vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [GLib.Bytes, number, number];
+        vfunc_get_contents_at(
+            offset: number,
+            granularity: Gtk.AccessibleTextGranularity,
+        ): [GLib.Bytes | Uint8Array, number, number];
         /**
          * Retrieves the default text attributes inside the accessible object.
          *
@@ -6120,7 +6123,7 @@ export namespace Vte {
          * @param range the range to set the selection to
          * @virtual
          */
-        vfunc_set_selection(i: bigint | number, range: Gtk.AccessibleTextRange): boolean;
+        vfunc_set_selection(i: number, range: Gtk.AccessibleTextRange): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
@@ -6213,7 +6216,7 @@ export namespace Vte {
          * @param value
          * @virtual
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
@@ -6685,7 +6688,7 @@ export namespace Vte {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6712,7 +6715,7 @@ export namespace Vte {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

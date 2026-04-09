@@ -1337,7 +1337,7 @@ export namespace Libxfce4panel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1364,7 +1364,7 @@ export namespace Libxfce4panel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5315,7 +5315,7 @@ export namespace Libxfce4panel {
          * @param value value of property
          * @virtual
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -5718,7 +5718,7 @@ export namespace Libxfce4panel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5745,7 +5745,7 @@ export namespace Libxfce4panel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5845,7 +5845,7 @@ export namespace Libxfce4panel {
              * @signal
              * @run-last
              */
-            'remote-event': (arg0: string, arg1: GObject.Value) => boolean | void;
+            'remote-event': (arg0: string, arg1: unknown) => boolean | void;
             /**
              * This signal is emmitted when the plugin is permanently removed from
              * the panel configuration by the user. Developers can use this signal
@@ -6264,7 +6264,7 @@ export namespace Libxfce4panel {
          * @param value
          * @virtual
          */
-        vfunc_remote_event(name: string, value: GObject.Value | any): boolean;
+        vfunc_remote_event(name: string, value: unknown): boolean;
         /**
          * See {@link Libxfce4panel.PanelPlugin.SignalSignatures.removed | Libxfce4panel.PanelPlugin::removed} for more information.
          * @virtual
@@ -7085,7 +7085,7 @@ export namespace Libxfce4panel {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7112,7 +7112,7 @@ export namespace Libxfce4panel {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7216,7 +7216,7 @@ export namespace Libxfce4panel {
              * @param handle
              * @virtual
              */
-            vfunc_remote_event(name: string, value: GObject.Value | any, handle: number): boolean;
+            vfunc_remote_event(name: string, value: unknown, handle: number): boolean;
             /**
              * @virtual
              */

@@ -3116,7 +3116,7 @@ export namespace Gsf {
          * @param data Data to write.
          * @virtual
          */
-        vfunc_Write(data: Uint8Array | string): boolean;
+        vfunc_Write(data: Uint8Array): boolean;
 
         // Methods
 
@@ -3328,9 +3328,9 @@ export namespace Gsf {
         // Fields
 
         output: Output;
-        quote_len: bigint | number;
-        eol_len: bigint | number;
-        separator_len: bigint | number;
+        quote_len: number;
+        eol_len: number;
+        separator_len: number;
         fields_on_line: boolean;
 
         // Constructors
@@ -4325,7 +4325,7 @@ export namespace Gsf {
         // Fields
 
         date: GLib.Date;
-        seconds: bigint | number;
+        seconds: number;
         timet: number;
 
         // Constructors
@@ -4333,7 +4333,7 @@ export namespace Gsf {
         constructor(
             properties?: Partial<{
                 date: GLib.Date;
-                seconds: bigint | number;
+                seconds: number;
                 time_zone: GLib.String;
                 timet: number;
             }>,

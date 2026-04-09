@@ -3554,9 +3554,9 @@ export namespace Skk {
         get_time_func: GetTime;
         get_time_func_target: any;
         get_time_func_target_destroy_notify: GLib.DestroyNotify;
-        timeout: bigint | number;
-        overlap: bigint | number;
-        maxwait: bigint | number;
+        timeout: number;
+        overlap: number;
+        maxwait: number;
         special_doubles: string[];
         special_doubles_length1: number;
 

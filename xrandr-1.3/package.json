@@ -6,53 +6,47 @@
     "module": "xrandr-1.3.js",
     "main": "xrandr-1.3.js",
     "exports": {
-        "./ambient": {
-            "types": "./xrandr-1.3-ambient.d.ts",
-            "import": "./xrandr-1.3-ambient.js",
-            "default": "./xrandr-1.3-ambient.js"
-        },
-        "./import": {
-            "types": "./xrandr-1.3-import.d.ts",
-            "import": "./xrandr-1.3-import.js",
-            "default": "./xrandr-1.3-import.js"
-        },
-        "./xrandr-1.3": {
-            "types": "./xrandr-1.3.d.ts",
-            "import": "./xrandr-1.3.js",
-            "default": "./xrandr-1.3.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./xrandr-1.3-ambient.d.ts",
+        "import": "./xrandr-1.3-ambient.js",
+        "default": "./xrandr-1.3-ambient.js"
+      },
+      "./import": {
+        "types": "./xrandr-1.3-import.d.ts",
+        "import": "./xrandr-1.3-import.js",
+        "default": "./xrandr-1.3-import.js"
+      },
+      "./xrandr-1.3": {
+        "types": "./xrandr-1.3.d.ts",
+        "import": "./xrandr-1.3.js",
+        "default": "./xrandr-1.3.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
-    },
+      "@girs/gjs": "workspace:^",
+      "@girs/gobject-2.0": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "xrandr-1.3"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "xrandr-1.3"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/xrandr-1.3#readme"
 }
+
+

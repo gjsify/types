@@ -16733,10 +16733,10 @@ export namespace Guestfs {
         // Fields
 
         btrfsbalance_status: string;
-        btrfsbalance_total: bigint | number;
-        btrfsbalance_balanced: bigint | number;
-        btrfsbalance_considered: bigint | number;
-        btrfsbalance_left: bigint | number;
+        btrfsbalance_total: number;
+        btrfsbalance_balanced: number;
+        btrfsbalance_considered: number;
+        btrfsbalance_left: number;
     }
 
     /**
@@ -16781,8 +16781,8 @@ export namespace Guestfs {
         // Fields
 
         btrfsqgroup_id: string;
-        btrfsqgroup_rfer: bigint | number;
-        btrfsqgroup_excl: bigint | number;
+        btrfsqgroup_rfer: number;
+        btrfsqgroup_excl: number;
     }
 
     /**
@@ -16793,21 +16793,21 @@ export namespace Guestfs {
 
         // Fields
 
-        btrfsscrub_data_extents_scrubbed: bigint | number;
-        btrfsscrub_tree_extents_scrubbed: bigint | number;
-        btrfsscrub_data_bytes_scrubbed: bigint | number;
-        btrfsscrub_tree_bytes_scrubbed: bigint | number;
-        btrfsscrub_read_errors: bigint | number;
-        btrfsscrub_csum_errors: bigint | number;
-        btrfsscrub_verify_errors: bigint | number;
-        btrfsscrub_no_csum: bigint | number;
-        btrfsscrub_csum_discards: bigint | number;
-        btrfsscrub_super_errors: bigint | number;
-        btrfsscrub_malloc_errors: bigint | number;
-        btrfsscrub_uncorrectable_errors: bigint | number;
-        btrfsscrub_unverified_errors: bigint | number;
-        btrfsscrub_corrected_errors: bigint | number;
-        btrfsscrub_last_physical: bigint | number;
+        btrfsscrub_data_extents_scrubbed: number;
+        btrfsscrub_tree_extents_scrubbed: number;
+        btrfsscrub_data_bytes_scrubbed: number;
+        btrfsscrub_tree_bytes_scrubbed: number;
+        btrfsscrub_read_errors: number;
+        btrfsscrub_csum_errors: number;
+        btrfsscrub_verify_errors: number;
+        btrfsscrub_no_csum: number;
+        btrfsscrub_csum_discards: number;
+        btrfsscrub_super_errors: number;
+        btrfsscrub_malloc_errors: number;
+        btrfsscrub_uncorrectable_errors: number;
+        btrfsscrub_unverified_errors: number;
+        btrfsscrub_corrected_errors: number;
+        btrfsscrub_last_physical: number;
     }
 
     /**
@@ -16818,8 +16818,8 @@ export namespace Guestfs {
 
         // Fields
 
-        btrfssubvolume_id: bigint | number;
-        btrfssubvolume_top_level_id: bigint | number;
+        btrfssubvolume_id: number;
+        btrfssubvolume_top_level_id: number;
         btrfssubvolume_path: string;
     }
 
@@ -16952,7 +16952,7 @@ export namespace Guestfs {
 
         // Fields
 
-        ino: bigint | number;
+        ino: number;
         ftyp: number;
         name: string;
     }
@@ -17031,7 +17031,7 @@ export namespace Guestfs {
 
         // Fields
 
-        hivex_node_h: bigint | number;
+        hivex_node_h: number;
     }
 
     /**
@@ -17053,7 +17053,7 @@ export namespace Guestfs {
 
         // Fields
 
-        hivex_value_h: bigint | number;
+        hivex_value_h: number;
     }
 
     /**
@@ -17064,7 +17064,7 @@ export namespace Guestfs {
 
         // Fields
 
-        in_wd: bigint | number;
+        in_wd: number;
         in_mask: number;
         in_cookie: number;
         in_name: string;
@@ -17091,10 +17091,10 @@ export namespace Guestfs {
         iso_copyright_file_id: string;
         iso_abstract_file_id: string;
         iso_bibliographic_file_id: string;
-        iso_volume_creation_t: bigint | number;
-        iso_volume_modification_t: bigint | number;
-        iso_volume_expiration_t: bigint | number;
-        iso_volume_effective_t: bigint | number;
+        iso_volume_creation_t: number;
+        iso_volume_modification_t: number;
+        iso_volume_expiration_t: number;
+        iso_volume_effective_t: number;
     }
 
     /**
@@ -17239,12 +17239,12 @@ export namespace Guestfs {
         lv_name: string;
         lv_uuid: number[];
         lv_attr: string;
-        lv_major: bigint | number;
-        lv_minor: bigint | number;
-        lv_kernel_major: bigint | number;
-        lv_kernel_minor: bigint | number;
-        lv_size: bigint | number;
-        seg_count: bigint | number;
+        lv_major: number;
+        lv_minor: number;
+        lv_kernel_major: number;
+        lv_kernel_minor: number;
+        lv_size: number;
+        seg_count: number;
         origin: string;
         snap_percent: number;
         copy_percent: number;
@@ -17420,17 +17420,17 @@ export namespace Guestfs {
         pv_name: string;
         pv_uuid: number[];
         pv_fmt: string;
-        pv_size: bigint | number;
-        dev_size: bigint | number;
-        pv_free: bigint | number;
-        pv_used: bigint | number;
+        pv_size: number;
+        dev_size: number;
+        pv_free: number;
+        pv_used: number;
         pv_attr: string;
-        pv_pe_count: bigint | number;
-        pv_pe_alloc_count: bigint | number;
+        pv_pe_count: number;
+        pv_pe_alloc_count: number;
         pv_tags: string;
-        pe_start: bigint | number;
-        pv_mda_count: bigint | number;
-        pv_mda_free: bigint | number;
+        pe_start: number;
+        pv_mda_count: number;
+        pv_mda_free: number;
     }
 
     /**
@@ -17442,9 +17442,9 @@ export namespace Guestfs {
         // Fields
 
         part_num: number;
-        part_start: bigint | number;
-        part_end: bigint | number;
-        part_size: bigint | number;
+        part_start: number;
+        part_end: number;
+        part_size: number;
     }
 
     /**
@@ -17517,8 +17517,8 @@ export namespace Guestfs {
         event: SessionEvent;
         flags: number;
         buf: Uint8Array;
-        array: (bigint | number)[];
-        array_len: bigint | number;
+        array: number[];
+        array_len: number;
     }
 
     /**
@@ -17547,19 +17547,19 @@ export namespace Guestfs {
 
         // Fields
 
-        dev: bigint | number;
-        ino: bigint | number;
-        mode: bigint | number;
-        nlink: bigint | number;
-        uid: bigint | number;
-        gid: bigint | number;
-        rdev: bigint | number;
-        size: bigint | number;
-        blksize: bigint | number;
-        blocks: bigint | number;
-        atime: bigint | number;
-        mtime: bigint | number;
-        ctime: bigint | number;
+        dev: number;
+        ino: number;
+        mode: number;
+        nlink: number;
+        uid: number;
+        gid: number;
+        rdev: number;
+        size: number;
+        blksize: number;
+        blocks: number;
+        atime: number;
+        mtime: number;
+        ctime: number;
     }
 
     /**
@@ -17570,28 +17570,28 @@ export namespace Guestfs {
 
         // Fields
 
-        st_dev: bigint | number;
-        st_ino: bigint | number;
-        st_mode: bigint | number;
-        st_nlink: bigint | number;
-        st_uid: bigint | number;
-        st_gid: bigint | number;
-        st_rdev: bigint | number;
-        st_size: bigint | number;
-        st_blksize: bigint | number;
-        st_blocks: bigint | number;
-        st_atime_sec: bigint | number;
-        st_atime_nsec: bigint | number;
-        st_mtime_sec: bigint | number;
-        st_mtime_nsec: bigint | number;
-        st_ctime_sec: bigint | number;
-        st_ctime_nsec: bigint | number;
-        st_spare1: bigint | number;
-        st_spare2: bigint | number;
-        st_spare3: bigint | number;
-        st_spare4: bigint | number;
-        st_spare5: bigint | number;
-        st_spare6: bigint | number;
+        st_dev: number;
+        st_ino: number;
+        st_mode: number;
+        st_nlink: number;
+        st_uid: number;
+        st_gid: number;
+        st_rdev: number;
+        st_size: number;
+        st_blksize: number;
+        st_blocks: number;
+        st_atime_sec: number;
+        st_atime_nsec: number;
+        st_mtime_sec: number;
+        st_mtime_nsec: number;
+        st_ctime_sec: number;
+        st_ctime_nsec: number;
+        st_spare1: number;
+        st_spare2: number;
+        st_spare3: number;
+        st_spare4: number;
+        st_spare5: number;
+        st_spare6: number;
     }
 
     /**
@@ -17602,17 +17602,17 @@ export namespace Guestfs {
 
         // Fields
 
-        bsize: bigint | number;
-        frsize: bigint | number;
-        blocks: bigint | number;
-        bfree: bigint | number;
-        bavail: bigint | number;
-        files: bigint | number;
-        ffree: bigint | number;
-        favail: bigint | number;
-        fsid: bigint | number;
-        flag: bigint | number;
-        namemax: bigint | number;
+        bsize: number;
+        frsize: number;
+        blocks: number;
+        bfree: number;
+        bavail: number;
+        files: number;
+        ffree: number;
+        favail: number;
+        fsid: number;
+        flag: number;
+        namemax: number;
     }
 
     /**
@@ -17634,22 +17634,22 @@ export namespace Guestfs {
 
         // Fields
 
-        tsk_inode: bigint | number;
+        tsk_inode: number;
         tsk_type: number;
-        tsk_size: bigint | number;
+        tsk_size: number;
         tsk_name: string;
         tsk_flags: number;
-        tsk_atime_sec: bigint | number;
-        tsk_atime_nsec: bigint | number;
-        tsk_mtime_sec: bigint | number;
-        tsk_mtime_nsec: bigint | number;
-        tsk_ctime_sec: bigint | number;
-        tsk_ctime_nsec: bigint | number;
-        tsk_crtime_sec: bigint | number;
-        tsk_crtime_nsec: bigint | number;
-        tsk_nlink: bigint | number;
+        tsk_atime_sec: number;
+        tsk_atime_nsec: number;
+        tsk_mtime_sec: number;
+        tsk_mtime_nsec: number;
+        tsk_ctime_sec: number;
+        tsk_ctime_nsec: number;
+        tsk_crtime_sec: number;
+        tsk_crtime_nsec: number;
+        tsk_nlink: number;
         tsk_link: string;
-        tsk_spare1: bigint | number;
+        tsk_spare1: number;
     }
 
     /**
@@ -17744,21 +17744,21 @@ export namespace Guestfs {
         vg_uuid: number[];
         vg_fmt: string;
         vg_attr: string;
-        vg_size: bigint | number;
-        vg_free: bigint | number;
+        vg_size: number;
+        vg_free: number;
         vg_sysid: string;
-        vg_extent_size: bigint | number;
-        vg_extent_count: bigint | number;
-        vg_free_count: bigint | number;
-        max_lv: bigint | number;
-        max_pv: bigint | number;
-        pv_count: bigint | number;
-        lv_count: bigint | number;
-        snap_count: bigint | number;
-        vg_seqno: bigint | number;
+        vg_extent_size: number;
+        vg_extent_count: number;
+        vg_free_count: number;
+        max_lv: number;
+        max_pv: number;
+        pv_count: number;
+        lv_count: number;
+        snap_count: number;
+        vg_seqno: number;
         vg_tags: string;
-        vg_mda_count: bigint | number;
-        vg_mda_free: bigint | number;
+        vg_mda_count: number;
+        vg_mda_free: number;
     }
 
     /**
@@ -17769,9 +17769,9 @@ export namespace Guestfs {
 
         // Fields
 
-        major: bigint | number;
-        minor: bigint | number;
-        release: bigint | number;
+        major: number;
+        minor: number;
+        release: number;
         extra: string;
     }
 
@@ -17811,7 +17811,7 @@ export namespace Guestfs {
         xfs_sectsize: number;
         xfs_attr: number;
         xfs_blocksize: number;
-        xfs_datablocks: bigint | number;
+        xfs_datablocks: number;
         xfs_imaxpct: number;
         xfs_sunit: number;
         xfs_swidth: number;
@@ -17827,8 +17827,8 @@ export namespace Guestfs {
         xfs_lazycount: number;
         xfs_rtname: string;
         xfs_rtextsize: number;
-        xfs_rtblocks: bigint | number;
-        xfs_rtextents: bigint | number;
+        xfs_rtblocks: number;
+        xfs_rtextents: number;
     }
 
     /**

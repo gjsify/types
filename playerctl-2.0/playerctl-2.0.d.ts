@@ -155,7 +155,7 @@ export namespace Playerctl {
              * @signal
              * @run-first
              */
-            seeked: (arg0: bigint | number) => void;
+            seeked: (arg0: number) => void;
             /**
              * Emitted when the shuffle status changes.
              * @signal

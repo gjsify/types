@@ -6,57 +6,51 @@
     "module": "manette-0.2.js",
     "main": "manette-0.2.js",
     "exports": {
-        "./ambient": {
-            "types": "./manette-0.2-ambient.d.ts",
-            "import": "./manette-0.2-ambient.js",
-            "default": "./manette-0.2-ambient.js"
-        },
-        "./import": {
-            "types": "./manette-0.2-import.d.ts",
-            "import": "./manette-0.2-import.js",
-            "default": "./manette-0.2-import.js"
-        },
-        "./manette-0.2": {
-            "types": "./manette-0.2.d.ts",
-            "import": "./manette-0.2.js",
-            "default": "./manette-0.2.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./manette-0.2-ambient.d.ts",
+        "import": "./manette-0.2-ambient.js",
+        "default": "./manette-0.2-ambient.js"
+      },
+      "./import": {
+        "types": "./manette-0.2-import.d.ts",
+        "import": "./manette-0.2-import.js",
+        "default": "./manette-0.2-import.js"
+      },
+      "./manette-0.2": {
+        "types": "./manette-0.2.d.ts",
+        "import": "./manette-0.2.js",
+        "default": "./manette-0.2.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gudev-1.0": "workspace:^"
-    },
+      "@girs/gjs": "workspace:^",
+      "@girs/gio-2.0": "workspace:^",
+      "@girs/gobject-2.0": "workspace:^",
+      "@girs/glib-2.0": "workspace:^",
+      "@girs/gmodule-2.0": "workspace:^",
+      "@girs/gudev-1.0": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Manette-0.2"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Manette-0.2"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/manette-0.2#readme"
 }
+
+

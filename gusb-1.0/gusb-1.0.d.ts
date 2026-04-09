@@ -996,7 +996,7 @@ export namespace GUsb {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1023,7 +1023,7 @@ export namespace GUsb {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1178,7 +1178,7 @@ export namespace GUsb {
             data: Uint8Array | string,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Do an async bulk transfer
          * @param endpoint the address of a valid endpoint to communicate with
@@ -1208,7 +1208,7 @@ export namespace GUsb {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
@@ -1279,7 +1279,7 @@ export namespace GUsb {
             data: Uint8Array | string,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Do an async control transfer
          * @param direction
@@ -1329,7 +1329,7 @@ export namespace GUsb {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
@@ -1586,7 +1586,7 @@ export namespace GUsb {
             data: Uint8Array | string,
             timeout: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Do an async interrupt transfer
          * @param endpoint the address of a valid endpoint to communicate with
@@ -1616,7 +1616,7 @@ export namespace GUsb {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
@@ -2159,7 +2159,7 @@ export namespace GUsb {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2186,7 +2186,7 @@ export namespace GUsb {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

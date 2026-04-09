@@ -4674,7 +4674,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4701,7 +4701,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5703,7 +5703,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5730,7 +5730,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6313,10 +6313,7 @@ export namespace EDataServer {
          * @param uri_query query for the URI to use
          * @virtual
          */
-        vfunc_prepare_authentication_uri_query(
-            source: Source,
-            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
+        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -6335,7 +6332,7 @@ export namespace EDataServer {
         vfunc_prepare_get_token_form(
             source: Source,
             authorization_code: string,
-            form: { [key: string]: any } | GLib.HashTable<string, string>,
+            form: GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -6365,7 +6362,7 @@ export namespace EDataServer {
         vfunc_prepare_refresh_token_form(
             source: Source,
             refresh_token: string,
-            form: { [key: string]: any } | GLib.HashTable<string, string>,
+            form: GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -6773,7 +6770,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6800,7 +6797,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7329,10 +7326,7 @@ export namespace EDataServer {
          * @param uri_query query for the URI to use
          * @virtual
          */
-        vfunc_prepare_authentication_uri_query(
-            source: Source,
-            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
+        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -7351,7 +7345,7 @@ export namespace EDataServer {
         vfunc_prepare_get_token_form(
             source: Source,
             authorization_code: string,
-            form: { [key: string]: any } | GLib.HashTable<string, string>,
+            form: GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -7381,7 +7375,7 @@ export namespace EDataServer {
         vfunc_prepare_refresh_token_form(
             source: Source,
             refresh_token: string,
-            form: { [key: string]: any } | GLib.HashTable<string, string>,
+            form: GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -7789,7 +7783,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7816,7 +7810,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8343,10 +8337,7 @@ export namespace EDataServer {
          * @param uri_query query for the URI to use
          * @virtual
          */
-        vfunc_prepare_authentication_uri_query(
-            source: Source,
-            uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
+        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
         /**
          * Sets additional form parameters to be used in the POST request when requesting
          * access token after successfully obtained authorization code.
@@ -8365,7 +8356,7 @@ export namespace EDataServer {
         vfunc_prepare_get_token_form(
             source: Source,
             authorization_code: string,
-            form: { [key: string]: any } | GLib.HashTable<string, string>,
+            form: GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -8395,7 +8386,7 @@ export namespace EDataServer {
         vfunc_prepare_refresh_token_form(
             source: Source,
             refresh_token: string,
-            form: { [key: string]: any } | GLib.HashTable<string, string>,
+            form: GLib.HashTable<string, string>,
         ): void;
         /**
          * The `service` can change the `message` before it's sent to
@@ -8803,7 +8794,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8830,7 +8821,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9396,7 +9387,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9423,7 +9414,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -12430,7 +12421,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12457,7 +12448,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -14771,7 +14762,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14798,7 +14789,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19730,7 +19721,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19757,7 +19748,7 @@ export namespace EDataServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23811,9 +23802,9 @@ export namespace EDataServer {
         etag: string;
         display_name: string;
         content_type: string;
-        content_length: bigint | number;
-        creation_date: bigint | number;
-        last_modified: bigint | number;
+        content_length: number;
+        creation_date: number;
+        last_modified: number;
         description: string;
         color: string;
         order: number;
@@ -24118,10 +24109,7 @@ export namespace EDataServer {
              * @param uri_query query for the URI to use
              * @virtual
              */
-            vfunc_prepare_authentication_uri_query(
-                source: Source,
-                uri_query: { [key: string]: any } | GLib.HashTable<string, string>,
-            ): void;
+            vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
             /**
              * Sets additional form parameters to be used in the POST request when requesting
              * access token after successfully obtained authorization code.
@@ -24140,7 +24128,7 @@ export namespace EDataServer {
             vfunc_prepare_get_token_form(
                 source: Source,
                 authorization_code: string,
-                form: { [key: string]: any } | GLib.HashTable<string, string>,
+                form: GLib.HashTable<string, string>,
             ): void;
             /**
              * The `service` can change the `message` before it's sent to
@@ -24170,7 +24158,7 @@ export namespace EDataServer {
             vfunc_prepare_refresh_token_form(
                 source: Source,
                 refresh_token: string,
-                form: { [key: string]: any } | GLib.HashTable<string, string>,
+                form: GLib.HashTable<string, string>,
             ): void;
             /**
              * The `service` can change the `message` before it's sent to

@@ -1404,7 +1404,7 @@ export namespace RygelServer {
         mime_type: string;
         caption_type: string;
         file_extension: string;
-        size: bigint | number;
+        size: number;
 
         // Constructors
 
@@ -1889,8 +1889,8 @@ export namespace RygelServer {
         // Fields
 
         update_id: number;
-        storage_used: bigint | number;
-        total_deleted_child_count: bigint | number;
+        storage_used: number;
+        total_deleted_child_count: number;
 
         // Constructors
 
@@ -3332,7 +3332,7 @@ export namespace RygelServer {
         vfunc_create_data_source_for_resource(
             item: MediaObject,
             resource: MediaResource,
-            replacements: { [key: string]: any } | GLib.HashTable<string, string>,
+            replacements: GLib.HashTable<string, string>,
         ): DataSource | null;
         /**
          * @param uri
@@ -3894,11 +3894,11 @@ export namespace RygelServer {
         /**
          * @virtual
          */
-        vfunc_get_resource_size(): number;
+        vfunc_get_resource_size(): bigint | number;
         /**
          * @virtual
          */
-        vfunc_get_resource_duration(): number;
+        vfunc_get_resource_duration(): bigint | number;
         /**
          * @virtual
          */
@@ -4706,7 +4706,7 @@ export namespace RygelServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4733,7 +4733,7 @@ export namespace RygelServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5291,7 +5291,7 @@ export namespace RygelServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5318,7 +5318,7 @@ export namespace RygelServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5965,7 +5965,7 @@ export namespace RygelServer {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5992,7 +5992,7 @@ export namespace RygelServer {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6046,10 +6046,10 @@ export namespace RygelServer {
 
         // Fields
 
-        start_time: bigint | number;
-        end_time: bigint | number;
-        range_duration: bigint | number;
-        total_duration: bigint | number;
+        start_time: number;
+        end_time: number;
+        range_duration: number;
+        total_duration: number;
 
         // Constructors
 

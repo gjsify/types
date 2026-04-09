@@ -1593,7 +1593,7 @@ export namespace GioUnix {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1620,7 +1620,7 @@ export namespace GioUnix {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2014,7 +2014,7 @@ export namespace GioUnix {
          * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
          * @virtual
          */
-        vfunc_read_nonblocking(): [number, Uint8Array | null];
+        vfunc_read_nonblocking(): [bigint | number, Uint8Array | null];
         /**
          * Gets the underlying file descriptor.
          * @virtual
@@ -2190,7 +2190,7 @@ export namespace GioUnix {
         read_all_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): [globalThis.Promise<bigint | number>, Uint8Array];
+        ): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
@@ -2230,7 +2230,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [globalThis.Promise<bigint | number> | void, Uint8Array];
+        ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * {@link InputStream.read_all_async}.
@@ -2272,10 +2272,7 @@ export namespace GioUnix {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        read_async(
-            io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-        ): [globalThis.Promise<bigint | number>, Uint8Array];
+        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -2341,7 +2338,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [globalThis.Promise<bigint | number> | void, Uint8Array];
+        ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Like `g_input_stream_read()`, this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -2536,7 +2533,7 @@ export namespace GioUnix {
             count: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -2606,7 +2603,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a {@link Gio.AsyncResult}.
@@ -2684,14 +2681,14 @@ export namespace GioUnix {
          * @param result a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_read_finish(result: Gio.AsyncResult): number;
+        vfunc_read_finish(result: Gio.AsyncResult): bigint | number;
         /**
          * @param buffer
          * @param count
          * @param cancellable
          * @virtual
          */
-        vfunc_read_fn(buffer: any | null, count: bigint | number, cancellable?: Gio.Cancellable | null): number;
+        vfunc_read_fn(buffer: any | null, count: number, cancellable?: Gio.Cancellable | null): bigint | number;
         /**
          * Tries to skip `count` bytes from the stream. Will block during the operation.
          *
@@ -2711,7 +2708,7 @@ export namespace GioUnix {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_skip(count: bigint | number, cancellable?: Gio.Cancellable | null): number;
+        vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): bigint | number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -2743,7 +2740,7 @@ export namespace GioUnix {
          * @virtual
          */
         vfunc_skip_async(
-            count: bigint | number,
+            count: number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2753,7 +2750,7 @@ export namespace GioUnix {
          * @param result a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_skip_finish(result: Gio.AsyncResult): number;
+        vfunc_skip_finish(result: Gio.AsyncResult): bigint | number;
         /**
          * Creates an asynchronous iterator for a Gio.InputStream that reads the stream in chunks.
          *
@@ -3198,7 +3195,7 @@ export namespace GioUnix {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3225,7 +3222,7 @@ export namespace GioUnix {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3628,7 +3625,7 @@ export namespace GioUnix {
          * @param buffer a buffer to write     data from
          * @virtual
          */
-        vfunc_write_nonblocking(buffer?: Uint8Array | null): number;
+        vfunc_write_nonblocking(buffer?: Uint8Array | null): bigint | number;
         /**
          * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream`,
          * as with `g_output_stream_writev()`. If `stream` is not currently writable,
@@ -3652,7 +3649,7 @@ export namespace GioUnix {
          * @param vectors the buffer containing the `GOutputVectors` to write.
          * @virtual
          */
-        vfunc_writev_nonblocking(vectors: Gio.OutputVector[]): [Gio.PollableReturn, number];
+        vfunc_writev_nonblocking(vectors: Gio.OutputVector[]): [Gio.PollableReturn, bigint | number];
         /**
          * Gets the underlying file descriptor.
          * @virtual
@@ -3878,7 +3875,7 @@ export namespace GioUnix {
             flags: Gio.OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Splices a stream asynchronously.
          * When the operation is finished `callback` will be called.
@@ -3920,7 +3917,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an asynchronous stream splice operation.
          * @param result a {@link Gio.AsyncResult}.
@@ -4002,7 +3999,7 @@ export namespace GioUnix {
             buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4056,7 +4053,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * `g_output_stream_write_all_async()`.
@@ -4116,7 +4113,7 @@ export namespace GioUnix {
             buffer: Uint8Array | string,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4210,7 +4207,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * A wrapper function for `g_output_stream_write()` which takes a
          * {@link GLib.Bytes} as input.  This can be more convenient for use by language
@@ -4250,7 +4247,7 @@ export namespace GioUnix {
             bytes: GLib.Bytes | Uint8Array,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * This function is similar to `g_output_stream_write_async()`, but
          * takes a {@link GLib.Bytes} as input.  Due to the refcounted nature of {@link GLib.Bytes},
@@ -4300,7 +4297,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream write-from-{@link GLib.Bytes} operation.
          * @param result a {@link Gio.AsyncResult}.
@@ -4395,7 +4392,7 @@ export namespace GioUnix {
             vectors: Gio.OutputVector[],
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4451,7 +4448,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes an asynchronous stream write operation started with
          * `g_output_stream_writev_all_async()`.
@@ -4506,7 +4503,7 @@ export namespace GioUnix {
             vectors: Gio.OutputVector[],
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4590,7 +4587,7 @@ export namespace GioUnix {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream writev operation.
          * @param result a {@link Gio.AsyncResult}.
@@ -4678,7 +4675,7 @@ export namespace GioUnix {
             source: Gio.InputStream,
             flags: Gio.OutputStreamSpliceFlags,
             cancellable?: Gio.Cancellable | null,
-        ): number;
+        ): bigint | number;
         /**
          * Splices a stream asynchronously.
          * When the operation is finished `callback` will be called.
@@ -4706,7 +4703,7 @@ export namespace GioUnix {
          * @param result a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_splice_finish(result: Gio.AsyncResult): number;
+        vfunc_splice_finish(result: Gio.AsyncResult): bigint | number;
         /**
          * Request an asynchronous write of `count` bytes from `buffer` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4760,7 +4757,7 @@ export namespace GioUnix {
          * @param result a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_write_finish(result: Gio.AsyncResult): number;
+        vfunc_write_finish(result: Gio.AsyncResult): bigint | number;
         /**
          * Tries to write `count` bytes from `buffer` into the stream. Will block
          * during the operation.
@@ -4786,7 +4783,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @virtual
          */
-        vfunc_write_fn(buffer?: Uint8Array | null, cancellable?: Gio.Cancellable | null): number;
+        vfunc_write_fn(buffer?: Uint8Array | null, cancellable?: Gio.Cancellable | null): bigint | number;
         /**
          * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
          * the stream. When the operation is finished `callback` will be called.
@@ -4835,7 +4832,7 @@ export namespace GioUnix {
          * @param result a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_writev_finish(result: Gio.AsyncResult): [boolean, number];
+        vfunc_writev_finish(result: Gio.AsyncResult): [boolean, bigint | number];
         /**
          * Tries to write the bytes contained in the `n_vectors` `vectors` into the
          * stream. Will block during the operation.
@@ -4864,7 +4861,7 @@ export namespace GioUnix {
          * @param cancellable optional cancellable object
          * @virtual
          */
-        vfunc_writev_fn(vectors: Gio.OutputVector[], cancellable?: Gio.Cancellable | null): [boolean, number];
+        vfunc_writev_fn(vectors: Gio.OutputVector[], cancellable?: Gio.Cancellable | null): [boolean, bigint | number];
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5261,7 +5258,7 @@ export namespace GioUnix {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5288,7 +5285,7 @@ export namespace GioUnix {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

@@ -4006,7 +4006,7 @@ export namespace GObject {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4033,7 +4033,7 @@ export namespace GObject {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: ParamSpec): void;
 
         // Methods
 
@@ -4803,7 +4803,7 @@ export namespace GObject {
          * @param value
          * @virtual
          */
-        vfunc_value_is_valid(value: Value | any): boolean;
+        vfunc_value_is_valid(value: unknown): boolean;
         /**
          * Resets a `value` to the default value for this type
          *  (recommended, the default is `g_value_reset()`), see
@@ -4811,7 +4811,7 @@ export namespace GObject {
          * @param value
          * @virtual
          */
-        vfunc_value_set_default(value: Value | any): void;
+        vfunc_value_set_default(value: unknown): void;
         /**
          * Ensures that the contents of `value` comply with the
          *  specifications set out by this type (optional), see
@@ -4819,7 +4819,7 @@ export namespace GObject {
          * @param value
          * @virtual
          */
-        vfunc_value_validate(value: Value | any): boolean;
+        vfunc_value_validate(value: unknown): boolean;
         /**
          * Compares `value1` with `value2` according to this type
          *  (recommended, the default is `memcmp()`), see `g_param_values_cmp()`.
@@ -4827,7 +4827,7 @@ export namespace GObject {
          * @param value2
          * @virtual
          */
-        vfunc_values_cmp(value1: Value | any, value2: Value | any): number;
+        vfunc_values_cmp(value1: unknown, value2: unknown): number;
 
         // Methods
 
@@ -5727,7 +5727,7 @@ export namespace GObject {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5754,7 +5754,7 @@ export namespace GObject {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7422,8 +7422,8 @@ export namespace GObject {
         // Fields
 
         v_int: number;
-        v_long: bigint | number;
-        v_int64: bigint | number;
+        v_long: number;
+        v_int64: number;
         v_double: number;
         v_pointer: any;
     }
@@ -7438,10 +7438,10 @@ export namespace GObject {
 
         v_int: number;
         v_uint: number;
-        v_long: bigint | number;
-        v_ulong: bigint | number;
-        v_int64: bigint | number;
-        v_uint64: bigint | number;
+        v_long: number;
+        v_ulong: number;
+        v_int64: number;
+        v_uint64: number;
         v_float: number;
         v_double: number;
         v_pointer: any;

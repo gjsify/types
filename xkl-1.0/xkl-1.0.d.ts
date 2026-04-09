@@ -597,7 +597,7 @@ export namespace Xkl {
              * @signal
              * @run-last
              */
-            'new-toplevel-window': (arg0: bigint | number, arg1: bigint | number) => number;
+            'new-toplevel-window': (arg0: number, arg1: number) => number;
             'notify::backend-name': (pspec: GObject.ParamSpec) => void;
             'notify::default-group': (pspec: GObject.ParamSpec) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;

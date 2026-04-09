@@ -2847,8 +2847,8 @@ export namespace AtrilDocument {
         producer: string;
         linearized: string;
         security: string;
-        creation_date: bigint | number;
-        modified_date: bigint | number;
+        creation_date: number;
+        modified_date: number;
         layout: DocumentLayout;
         mode: DocumentMode;
         ui_hints: number;

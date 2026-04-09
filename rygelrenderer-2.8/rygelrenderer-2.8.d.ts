@@ -244,12 +244,12 @@ export namespace RygelRenderer {
              * @param time
              * @virtual
              */
-            vfunc_seek(time: bigint | number): boolean;
+            vfunc_seek(time: number): boolean;
             /**
              * @param bytes
              * @virtual
              */
-            vfunc_seek_bytes(bytes: bigint | number): boolean;
+            vfunc_seek_bytes(bytes: number): boolean;
             /**
              * @virtual
              */
@@ -301,11 +301,11 @@ export namespace RygelRenderer {
             /**
              * @virtual
              */
-            vfunc_get_duration(): number;
+            vfunc_get_duration(): bigint | number;
             /**
              * @virtual
              */
-            vfunc_get_size(): number;
+            vfunc_get_size(): bigint | number;
             /**
              * @virtual
              */
@@ -344,11 +344,11 @@ export namespace RygelRenderer {
             /**
              * @virtual
              */
-            vfunc_get_position(): number;
+            vfunc_get_position(): bigint | number;
             /**
              * @virtual
              */
-            vfunc_get_byte_position(): number;
+            vfunc_get_byte_position(): bigint | number;
             /**
              * @virtual
              */

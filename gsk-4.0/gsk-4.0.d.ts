@@ -3778,11 +3778,11 @@ export namespace Gsk {
 
         // Fields
 
-        bytes: bigint | number;
-        chars: bigint | number;
-        lines: bigint | number;
-        line_bytes: bigint | number;
-        line_chars: bigint | number;
+        bytes: number;
+        chars: number;
+        lines: number;
+        line_bytes: number;
+        line_chars: number;
     }
 
     /**

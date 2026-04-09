@@ -487,7 +487,7 @@ export namespace PangoOT {
         // Fields
 
         feature_name: number[];
-        property_bit: bigint | number;
+        property_bit: number;
     }
 
     /**

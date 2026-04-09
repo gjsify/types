@@ -4427,9 +4427,9 @@ export namespace GstGL {
 
         // Fields
 
-        struct_size: bigint | number;
+        struct_size: number;
         alloc_flags: number;
-        alloc_size: bigint | number;
+        alloc_size: number;
         context: GLContext;
         notify: GLib.DestroyNotify;
         user_data: any;

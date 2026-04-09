@@ -10728,7 +10728,7 @@ export namespace GstCodecParsers {
         marker: JpegMarker;
         data: number;
         offset: number;
-        size: bigint | number;
+        size: number;
 
         // Methods
 
@@ -10844,7 +10844,7 @@ export namespace GstCodecParsers {
 
         data: number;
         offset: number;
-        size: bigint | number;
+        size: number;
         marker_size: number;
         type: Mpeg4StartCode;
     }
@@ -11189,7 +11189,7 @@ export namespace GstCodecParsers {
         picext: MpegVideoPictureExt;
         quantext: MpegVideoQuantMatrixExt;
         num_slices: number;
-        slice_offset: bigint | number;
+        slice_offset: number;
 
         // Static methods
 

@@ -4275,10 +4275,10 @@ export namespace ICal {
 
         // Fields
 
-        element_size: bigint | number;
-        increment_size: bigint | number;
-        num_elements: bigint | number;
-        space_allocated: bigint | number;
+        element_size: number;
+        increment_size: number;
+        num_elements: number;
+        space_allocated: number;
         chunks: any;
     }
 
@@ -4579,7 +4579,7 @@ export namespace ICal {
 
         header: any;
         level: number;
-        data_size: bigint | number;
+        data_size: number;
         data: any;
     }
 
@@ -4591,8 +4591,8 @@ export namespace ICal {
 
         // Fields
 
-        start: bigint | number;
-        end: bigint | number;
+        start: number;
+        end: number;
         is_busy: number;
     }
 

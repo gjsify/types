@@ -3426,14 +3426,14 @@ export namespace EBookContacts {
 
         // Fields
 
-        length: bigint | number;
+        length: number;
         data: string;
 
         // Constructors
 
         constructor(
             properties?: Partial<{
-                length: bigint | number;
+                length: number;
                 data: string;
             }>,
         );

@@ -3126,7 +3126,7 @@ export namespace Json {
                 property_name: string,
                 pspec: GObject.ParamSpec,
                 property_node: Node,
-            ): [boolean, unknown];
+            ): [boolean, GObject.Value | any];
             /**
              * Calls the {@link Json.Serializable.find_property} implementation on
              * the {@link Json.Serializable} instance, which will return the property
@@ -3142,7 +3142,7 @@ export namespace Json {
              * @param pspec a property description
              * @virtual
              */
-            vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+            vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
             /**
              * @param args
              */
@@ -3156,11 +3156,7 @@ export namespace Json {
              * @param pspec a property description
              * @virtual
              */
-            vfunc_serialize_property(
-                property_name: string,
-                value: GObject.Value | any,
-                pspec: GObject.ParamSpec,
-            ): Node | null;
+            vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Node | null;
             /**
              * Calls the {@link Json.Serializable.set_property} implementation
              * on the {@link Json.Serializable} instance, which will set the property
@@ -3169,7 +3165,7 @@ export namespace Json {
              * @param value the property value to set
              * @virtual
              */
-            vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+            vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
             /**
              * @param args
              */
@@ -3369,7 +3365,7 @@ export namespace Json {
             property_name: string,
             pspec: GObject.ParamSpec,
             property_node: Node,
-        ): [boolean, unknown];
+        ): [boolean, GObject.Value | any];
         /**
          * Calls the {@link Json.Serializable.find_property} implementation on
          * the {@link Json.Serializable} instance, which will return the property
@@ -3397,7 +3393,7 @@ export namespace Json {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+        vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
         /**
          * the generic getter for all properties of this type. Should be
          *  overridden for every type with properties.
@@ -3411,7 +3407,7 @@ export namespace Json {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Asks a {@link Json.Serializable} implementation to serialize an object
          * property into a JSON node.
@@ -3425,11 +3421,7 @@ export namespace Json {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(
-            property_name: string,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-        ): Node | null;
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Node | null;
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
          * on the {@link Json.Serializable} instance, which will set the property
@@ -3444,7 +3436,7 @@ export namespace Json {
          * @param value the property value to set
          * @virtual
          */
-        vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
         /**
          * the generic setter for all properties of this type. Should be
          *  overridden for every type with properties. If implementations of
@@ -3464,7 +3456,7 @@ export namespace Json {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
     }
 
     export const Serializable: SerializableNamespace & {

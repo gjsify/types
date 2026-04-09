@@ -2246,7 +2246,7 @@ export namespace Secret {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2273,7 +2273,7 @@ export namespace Secret {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3747,7 +3747,7 @@ export namespace Secret {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3774,7 +3774,7 @@ export namespace Secret {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4734,7 +4734,7 @@ export namespace Secret {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4761,7 +4761,7 @@ export namespace Secret {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6478,7 +6478,7 @@ export namespace Secret {
          */
         vfunc_clear(
             schema: Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+            attributes: GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -6516,7 +6516,7 @@ export namespace Secret {
          */
         vfunc_lookup(
             schema: Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+            attributes: GLib.HashTable<any, any>,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -6537,7 +6537,7 @@ export namespace Secret {
          */
         vfunc_search(
             schema: Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+            attributes: GLib.HashTable<any, any>,
             flags: SearchFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -6555,7 +6555,7 @@ export namespace Secret {
          */
         vfunc_store(
             schema: Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+            attributes: GLib.HashTable<any, any>,
             collection: string,
             label: string,
             value: Value,
@@ -6964,7 +6964,7 @@ export namespace Secret {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6991,7 +6991,7 @@ export namespace Secret {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7274,7 +7274,7 @@ export namespace Secret {
              */
             vfunc_clear(
                 schema: Schema,
-                attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+                attributes: GLib.HashTable<any, any>,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
             ): void;
@@ -7312,7 +7312,7 @@ export namespace Secret {
              */
             vfunc_lookup(
                 schema: Schema,
-                attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+                attributes: GLib.HashTable<any, any>,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
             ): void;
@@ -7333,7 +7333,7 @@ export namespace Secret {
              */
             vfunc_search(
                 schema: Schema,
-                attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+                attributes: GLib.HashTable<any, any>,
                 flags: SearchFlags,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
@@ -7351,7 +7351,7 @@ export namespace Secret {
              */
             vfunc_store(
                 schema: Schema,
-                attributes: { [key: string]: any } | GLib.HashTable<any, any>,
+                attributes: GLib.HashTable<any, any>,
                 collection: string,
                 label: string,
                 value: Value,

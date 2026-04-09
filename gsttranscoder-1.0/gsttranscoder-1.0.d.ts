@@ -414,7 +414,7 @@ export namespace GstTranscoder {
              * @signal
              * @run-last
              */
-            'duration-changed': (arg0: bigint | number) => void;
+            'duration-changed': (arg0: number) => void;
             /**
              * @signal
              * @run-last
@@ -424,7 +424,7 @@ export namespace GstTranscoder {
              * @signal
              * @run-last
              */
-            'position-updated': (arg0: bigint | number) => void;
+            'position-updated': (arg0: number) => void;
             /**
              * @signal
              * @run-last

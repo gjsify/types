@@ -272,7 +272,7 @@ export namespace UMockdev {
 
         data: Uint8Array;
         data_length1: number;
-        client_addr: bigint | number;
+        client_addr: number;
 
         // Constructors
 

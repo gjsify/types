@@ -246,13 +246,13 @@ export namespace GstBadAudio {
         element: Gst.Element;
         sinkpad: Gst.Pad;
         srcpad: Gst.Pad;
-        upstream_size: bigint | number;
+        upstream_size: number;
         loaded_mode: boolean;
         input_data_adapter: GstBase.Adapter;
         subsong_duration: Gst.ClockTime;
         output_format_changed: boolean;
-        cur_pos_in_samples: bigint | number;
-        num_decoded_samples: bigint | number;
+        cur_pos_in_samples: number;
+        num_decoded_samples: number;
         discont: boolean;
         allocator: Gst.Allocator;
 

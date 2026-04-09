@@ -19071,7 +19071,7 @@ export namespace GLib {
 
         data: any;
         ref_count: number;
-        hook_id: bigint | number;
+        hook_id: number;
         flags: number;
         func: any;
         destroy: DestroyNotify;
@@ -19147,7 +19147,7 @@ export namespace GLib {
 
         // Fields
 
-        seq_id: bigint | number;
+        seq_id: number;
         hook_size: number;
         is_setup: number;
         dummy3: any;
@@ -20299,7 +20299,7 @@ export namespace GLib {
 
         key: string;
         value: any;
-        length: bigint | number;
+        length: number;
     }
 
     /**
@@ -25151,8 +25151,8 @@ export namespace GLib {
         // Fields
 
         str: string;
-        len: bigint | number;
-        allocated_len: bigint | number;
+        len: number;
+        allocated_len: number;
 
         // Constructors
 
@@ -26035,8 +26035,8 @@ export namespace GLib {
 
         // Fields
 
-        tv_sec: bigint | number;
-        tv_usec: bigint | number;
+        tv_sec: number;
+        tv_usec: number;
 
         // Static methods
 
@@ -27643,12 +27643,12 @@ export namespace GLib {
 
         v_symbol: any;
         v_identifier: string;
-        v_binary: bigint | number;
-        v_octal: bigint | number;
-        v_int: bigint | number;
-        v_int64: bigint | number;
+        v_binary: number;
+        v_octal: number;
+        v_int: number;
+        v_int64: number;
         v_float: number;
-        v_hex: bigint | number;
+        v_hex: number;
         v_string: string;
         v_comment: string;
         v_char: number;

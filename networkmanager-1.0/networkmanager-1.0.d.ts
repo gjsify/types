@@ -4259,7 +4259,7 @@ export namespace NetworkManager {
          * @param value
          * @virtual
          */
-        vfunc_update_one_secret(key: string, value: GObject.Value | any): number;
+        vfunc_update_one_secret(key: string, value: unknown): number;
 
         // Methods
 

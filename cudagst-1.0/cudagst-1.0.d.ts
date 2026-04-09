@@ -265,9 +265,9 @@ export namespace CudaGst {
 
         // Fields
 
-        Width: bigint | number;
-        Height: bigint | number;
-        Depth: bigint | number;
+        Width: number;
+        Height: number;
+        Depth: number;
         Format: array_format;
         NumChannels: number;
         Flags: number;
@@ -316,22 +316,22 @@ export namespace CudaGst {
 
         // Fields
 
-        srcXInBytes: bigint | number;
-        srcY: bigint | number;
+        srcXInBytes: number;
+        srcY: number;
         srcMemoryType: memorytype;
         srcHost: any;
         srcDevice: deviceptr;
         srcArray: array;
-        srcPitch: bigint | number;
-        dstXInBytes: bigint | number;
-        dstY: bigint | number;
+        srcPitch: number;
+        dstXInBytes: number;
+        dstY: number;
         dstMemoryType: memorytype;
         dstHost: any;
         dstDevice: deviceptr;
         dstArray: array;
-        dstPitch: bigint | number;
-        WidthInBytes: bigint | number;
-        Height: bigint | number;
+        dstPitch: number;
+        WidthInBytes: number;
+        Height: number;
     }
 
     /**
@@ -355,9 +355,9 @@ export namespace CudaGst {
         // Fields
 
         format: resourceViewFormat;
-        width: bigint | number;
-        height: bigint | number;
-        depth: bigint | number;
+        width: number;
+        height: number;
+        depth: number;
         firstMipmapLevel: number;
         lastMipmapLevel: number;
         firstLayer: number;
@@ -496,7 +496,7 @@ export namespace CudaGst {
         allocType: memAllocationType;
         handleTypes: memAllocationHandleType;
         win32SecurityAttributes: any;
-        maxSize: bigint | number;
+        maxSize: number;
         reserved: Uint8Array;
     }
 

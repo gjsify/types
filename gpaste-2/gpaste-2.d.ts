@@ -394,7 +394,7 @@ export namespace GPaste {
              * @signal
              * @run-last
              */
-            update: (arg0: UpdateAction, arg1: UpdateTarget, arg2: bigint | number) => void;
+            update: (arg0: UpdateAction, arg1: UpdateTarget, arg2: number) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
             'notify::g-connection': (pspec: GObject.ParamSpec) => void;
             'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
@@ -909,7 +909,7 @@ export namespace GPaste {
          * Get the history isize from the `GPasteDaemon`
          * @param name the name of the history
          */
-        get_history_size(name: string): globalThis.Promise<bigint | number>;
+        get_history_size(name: string): globalThis.Promise<number>;
         /**
          * Get the history isize from the `GPasteDaemon`
          * @param name the name of the history
@@ -924,7 +924,7 @@ export namespace GPaste {
         get_history_size(
             name: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Get the history size from the `GPasteDaemon`
          * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
@@ -2134,7 +2134,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2161,7 +2161,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3173,7 +3173,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3200,7 +3200,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4047,7 +4047,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4074,7 +4074,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

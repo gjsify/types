@@ -258,7 +258,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            'property-changed': (arg0: string, arg1: GObject.Value) => void;
+            'property-changed': (arg0: string, arg1: unknown) => void;
             'notify::channel-name': (pspec: GObject.ParamSpec) => void;
             'notify::is-singleton': (pspec: GObject.ParamSpec) => void;
             'notify::property-base': (pspec: GObject.ParamSpec) => void;
@@ -273,7 +273,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            'property-changed::channel-name': (arg0: string, arg1: GObject.Value) => void;
+            'property-changed::channel-name': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever a property on `channel` has changed.  If
              * the change was caused by the removal of `property`, `value`
@@ -285,7 +285,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            'property-changed::is-singleton': (arg0: string, arg1: GObject.Value) => void;
+            'property-changed::is-singleton': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever a property on `channel` has changed.  If
              * the change was caused by the removal of `property`, `value`
@@ -297,8 +297,8 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            'property-changed::property-base': (arg0: string, arg1: GObject.Value) => void;
-            [key: `property-changed::${string}`]: (arg0: string, arg1: GObject.Value) => void;
+            'property-changed::property-base': (arg0: string, arg1: unknown) => void;
+            [key: `property-changed::${string}`]: (arg0: string, arg1: unknown) => void;
         }
 
         // Constructor properties interface

@@ -10546,7 +10546,7 @@ export namespace Gdk {
 
         window: Window;
         native_window: Window;
-        serial: bigint | number;
+        serial: number;
         owner_events: boolean;
         time: number;
 
@@ -10715,7 +10715,7 @@ export namespace Gdk {
         toplevel_y: number;
         state: number;
         button: number;
-        motion_hint_serial: bigint | number;
+        motion_hint_serial: number;
     }
 
     /**

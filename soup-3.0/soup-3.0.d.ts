@@ -1966,7 +1966,7 @@ export namespace Soup {
          * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
          * @virtual
          */
-        vfunc_update(msg: Message, auth_header: { [key: string]: any } | GLib.HashTable<any, any>): boolean;
+        vfunc_update(msg: Message, auth_header: GLib.HashTable<any, any>): boolean;
 
         // Methods
 
@@ -3210,7 +3210,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3237,7 +3237,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3944,7 +3944,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3971,7 +3971,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4469,7 +4469,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4496,7 +4496,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4993,7 +4993,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5020,7 +5020,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5731,7 +5731,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5758,7 +5758,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6259,7 +6259,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6286,7 +6286,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6783,7 +6783,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6810,7 +6810,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7394,7 +7394,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7421,7 +7421,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7916,7 +7916,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7943,7 +7943,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8545,7 +8545,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8572,7 +8572,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9694,7 +9694,7 @@ export namespace Soup {
          * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
          * @virtual
          */
-        vfunc_read_nonblocking(): [number, Uint8Array | null];
+        vfunc_read_nonblocking(): [bigint | number, Uint8Array | null];
         /**
          * Clears the pending flag on `stream`.
          */
@@ -9865,7 +9865,7 @@ export namespace Soup {
         read_all_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): [globalThis.Promise<bigint | number>, Uint8Array];
+        ): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
@@ -9905,7 +9905,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [globalThis.Promise<bigint | number> | void, Uint8Array];
+        ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
          * {@link InputStream.read_all_async}.
@@ -9947,10 +9947,7 @@ export namespace Soup {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        read_async(
-            io_priority: number,
-            cancellable?: Gio.Cancellable | null,
-        ): [globalThis.Promise<bigint | number>, Uint8Array];
+        read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -10016,7 +10013,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): [globalThis.Promise<bigint | number> | void, Uint8Array];
+        ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Like `g_input_stream_read()`, this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
@@ -10211,7 +10208,7 @@ export namespace Soup {
             count: bigint | number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -10281,7 +10278,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream skip operation.
          * @param result a {@link Gio.AsyncResult}.
@@ -10359,14 +10356,14 @@ export namespace Soup {
          * @param result a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_read_finish(result: Gio.AsyncResult): number;
+        vfunc_read_finish(result: Gio.AsyncResult): bigint | number;
         /**
          * @param buffer
          * @param count
          * @param cancellable
          * @virtual
          */
-        vfunc_read_fn(buffer: any | null, count: bigint | number, cancellable?: Gio.Cancellable | null): number;
+        vfunc_read_fn(buffer: any | null, count: number, cancellable?: Gio.Cancellable | null): bigint | number;
         /**
          * Tries to skip `count` bytes from the stream. Will block during the operation.
          *
@@ -10386,7 +10383,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_skip(count: bigint | number, cancellable?: Gio.Cancellable | null): number;
+        vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): bigint | number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
@@ -10418,7 +10415,7 @@ export namespace Soup {
          * @virtual
          */
         vfunc_skip_async(
-            count: bigint | number,
+            count: number,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -10428,7 +10425,7 @@ export namespace Soup {
          * @param result a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_skip_finish(result: Gio.AsyncResult): number;
+        vfunc_skip_finish(result: Gio.AsyncResult): bigint | number;
         /**
          * Creates an asynchronous iterator for a Gio.InputStream that reads the stream in chunks.
          *
@@ -12292,7 +12289,7 @@ export namespace Soup {
             flags: Gio.OutputStreamSpliceFlags | null,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        ): globalThis.Promise<number>;
         /**
          * Asynchronously sends `msg` and splices the response body stream into `out_stream`.
          * When `callback` is called, then either `msg` has been sent and its response body
@@ -12334,7 +12331,7 @@ export namespace Soup {
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Gets the response to a {@link Session.send_and_splice_async}.
          * @param result the {@link Gio.AsyncResult} passed to your callback
@@ -13092,7 +13089,7 @@ export namespace Soup {
          * @param payload the payload data
          * @virtual
          */
-        vfunc_process_incoming_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
+        vfunc_process_incoming_message(header: number, payload: GLib.Bytes): [GLib.Bytes | Uint8Array, number];
         /**
          * Process a message before it's sent.
          *
@@ -13105,7 +13102,7 @@ export namespace Soup {
          * @param payload the payload data
          * @virtual
          */
-        vfunc_process_outgoing_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
+        vfunc_process_outgoing_message(header: number, payload: GLib.Bytes): [GLib.Bytes | Uint8Array, number];
 
         // Methods
 
@@ -13675,7 +13672,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13702,7 +13699,7 @@ export namespace Soup {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -14120,14 +14117,14 @@ export namespace Soup {
         // Fields
 
         data: Uint8Array;
-        length: bigint | number;
+        length: number;
 
         // Constructors
 
         constructor(
             properties?: Partial<{
                 data: Uint8Array;
-                length: bigint | number;
+                length: number;
             }>,
         );
 
@@ -14904,8 +14901,8 @@ export namespace Soup {
 
         // Fields
 
-        start: bigint | number;
-        end: bigint | number;
+        start: number;
+        end: number;
     }
 
     /**

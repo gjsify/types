@@ -743,7 +743,7 @@ export namespace Jcat {
          * @param blob {@link GLib.Bytes}
          * @virtual
          */
-        vfunc_add_public_key_raw(blob: GLib.Bytes | Uint8Array): boolean;
+        vfunc_add_public_key_raw(blob: GLib.Bytes): boolean;
         /**
          * Signs a chunk of data.
          * @param blob {@link GLib.Bytes}
@@ -752,12 +752,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
          * @virtual
          */
-        vfunc_pubkey_sign(
-            blob: GLib.Bytes | Uint8Array,
-            cert: GLib.Bytes | Uint8Array,
-            privkey: GLib.Bytes | Uint8Array,
-            flags: SignFlags,
-        ): Blob;
+        vfunc_pubkey_sign(blob: GLib.Bytes, cert: GLib.Bytes, privkey: GLib.Bytes, flags: SignFlags): Blob;
         /**
          * Verifies a chunk of data.
          * @param blob {@link GLib.Bytes}
@@ -765,18 +760,14 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @virtual
          */
-        vfunc_pubkey_verify(
-            blob: GLib.Bytes | Uint8Array,
-            blob_signature: GLib.Bytes | Uint8Array,
-            flags: VerifyFlags,
-        ): Result;
+        vfunc_pubkey_verify(blob: GLib.Bytes, blob_signature: GLib.Bytes, flags: VerifyFlags): Result;
         /**
          * Signs a chunk of data.
          * @param blob {@link GLib.Bytes}
          * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
          * @virtual
          */
-        vfunc_self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
+        vfunc_self_sign(blob: GLib.Bytes, flags: SignFlags): Blob;
         /**
          * Verifies a chunk of data.
          * @param blob {@link GLib.Bytes}
@@ -784,11 +775,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @virtual
          */
-        vfunc_self_verify(
-            blob: GLib.Bytes | Uint8Array,
-            blob_signature: GLib.Bytes | Uint8Array,
-            flags: VerifyFlags,
-        ): Result;
+        vfunc_self_verify(blob: GLib.Bytes, blob_signature: GLib.Bytes, flags: VerifyFlags): Result;
         /**
          * @virtual
          */

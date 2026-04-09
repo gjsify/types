@@ -6,80 +6,74 @@
     "module": "gjs.js",
     "main": "gjs.js",
     "exports": {
-        "./ambient": {
-            "types": "./gjs-ambient.d.ts",
-            "import": "./gjs-ambient.js",
-            "default": "./gjs-ambient.js"
-        },
-        "./dom": {
-            "types": "./dom.d.ts",
-            "import": "./dom.js",
-            "default": "./dom.js"
-        },
-        "./gettext": {
-            "types": "./gettext.d.ts",
-            "import": "./gettext.js",
-            "default": "./gettext.js"
-        },
-        "./system": {
-            "types": "./system.d.ts",
-            "import": "./system.js",
-            "default": "./system.js"
-        },
-        "./cairo": {
-            "types": "./cairo.d.ts",
-            "import": "./cairo.js",
-            "default": "./cairo.js"
-        },
-        "./console": {
-            "types": "./console.d.ts",
-            "import": "./console.js",
-            "default": "./console.js"
-        },
-        "./gi": {
-            "types": "./gi.d.ts",
-            "import": "./gi.js",
-            "default": "./gi.js"
-        },
-        "./gjs": {
-            "types": "./gjs.d.ts",
-            "import": "./gjs.js",
-            "default": "./gjs.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./gjs-ambient.d.ts",
+        "import": "./gjs-ambient.js",
+        "default": "./gjs-ambient.js"
+      },
+      "./dom": {
+        "types": "./dom.d.ts",
+        "import": "./dom.js",
+        "default": "./dom.js"
+      },
+      "./gettext": {
+        "types": "./gettext.d.ts",
+        "import": "./gettext.js",
+        "default": "./gettext.js"
+      },
+      "./system": {
+        "types": "./system.d.ts",
+        "import": "./system.js",
+        "default": "./system.js"
+      },
+      "./cairo": {
+        "types": "./cairo.d.ts",
+        "import": "./cairo.js",
+        "default": "./cairo.js"
+      },
+      "./console": {
+        "types": "./console.d.ts",
+        "import": "./console.js",
+        "default": "./console.js"
+      },
+      "./gi": {
+        "types": "./gi.d.ts",
+        "import": "./gi.js",
+        "default": "./gi.js"
+      },
+      "./gjs": {
+        "types": "./gjs.d.ts",
+        "import": "./gjs.js",
+        "default": "./gjs.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
-    },
+      "@girs/gobject-2.0": "workspace:^",
+      "@girs/glib-2.0": "workspace:^",
+      "@girs/gio-2.0": "workspace:^",
+      "@girs/cairo-1.0": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Gjs"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gjs"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gjs#readme"
 }
+
+

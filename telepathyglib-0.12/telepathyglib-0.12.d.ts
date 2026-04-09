@@ -6598,7 +6598,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
+            're-handled': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
             'notify::channel-request': (pspec: GObject.ParamSpec) => void;
             'notify::request-vardict': (pspec: GObject.ParamSpec) => void;
@@ -6625,7 +6625,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled::account': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
+            're-handled::account': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              *
@@ -6648,7 +6648,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled::channel-request': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
+            're-handled::channel-request': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              *
@@ -6671,7 +6671,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled::request-vardict': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
+            're-handled::request-vardict': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              *
@@ -6694,8 +6694,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            're-handled::user-action-time': (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
-            [key: `re-handled::${string}`]: (arg0: Channel, arg1: bigint | number, arg2: HandleChannelsContext) => void;
+            're-handled::user-action-time': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            [key: `re-handled::${string}`]: (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
         }
 
         // Constructor properties interface
@@ -9275,7 +9275,7 @@ export namespace TelepathyGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9302,7 +9302,7 @@ export namespace TelepathyGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9754,7 +9754,7 @@ export namespace TelepathyGLib {
             connection: Connection,
             channels: Channel[],
             requests_satisfied: ChannelRequest[],
-            user_action_time: bigint | number,
+            user_action_time: number,
             context: HandleChannelsContext,
         ): void;
         /**
@@ -11059,7 +11059,7 @@ export namespace TelepathyGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11086,7 +11086,7 @@ export namespace TelepathyGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21160,7 +21160,7 @@ export namespace TelepathyGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21187,7 +21187,7 @@ export namespace TelepathyGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -25145,7 +25145,7 @@ export namespace TelepathyGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25172,7 +25172,7 @@ export namespace TelepathyGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

@@ -607,7 +607,7 @@ export namespace cairo {
 
         // Fields
 
-        index: bigint | number;
+        index: number;
         x: number;
         y: number;
     }

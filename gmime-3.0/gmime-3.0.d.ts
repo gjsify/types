@@ -1933,8 +1933,8 @@ export namespace GMime {
         issuer_serial: string;
         issuer_name: string;
         fingerprint: string;
-        created: bigint | number;
-        expires: bigint | number;
+        created: number;
+        expires: number;
         keyid: string;
         email: string;
         name: string;
@@ -2890,7 +2890,7 @@ export namespace GMime {
          * @param stream output stream
          * @virtual
          */
-        vfunc_write_to_stream(stream: Stream): number;
+        vfunc_write_to_stream(stream: Stream): bigint | number;
 
         // Methods
 
@@ -3076,11 +3076,11 @@ export namespace GMime {
         outreal: string;
         outbuf: string;
         outptr: string;
-        outsize: bigint | number;
-        outpre: bigint | number;
+        outsize: number;
+        outpre: number;
         backbuf: string;
-        backsize: bigint | number;
-        backlen: bigint | number;
+        backsize: number;
+        backlen: number;
 
         // Constructors
 
@@ -3117,7 +3117,7 @@ export namespace GMime {
          * @param prespace prespace buffer length
          * @virtual
          */
-        vfunc_complete(inbuf: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
+        vfunc_complete(inbuf: Uint8Array, prespace: number): [Uint8Array | string, bigint | number];
         /**
          * Copies `filter` into a new {@link GMime.Filter} object.
          * @virtual
@@ -3129,7 +3129,7 @@ export namespace GMime {
          * @param prespace prespace buffer length
          * @virtual
          */
-        vfunc_filter(inbuf: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
+        vfunc_filter(inbuf: Uint8Array, prespace: number): [Uint8Array | string, bigint | number];
         /**
          * Resets the filter.
          * @virtual
@@ -4660,7 +4660,7 @@ export namespace GMime {
          * @param str
          * @virtual
          */
-        vfunc_to_string(options: FormatOptions, flags: number, linelen: bigint | number, str: GLib.String): void;
+        vfunc_to_string(options: FormatOptions, flags: number, linelen: number, str: GLib.String): void;
 
         // Methods
 
@@ -6036,7 +6036,7 @@ export namespace GMime {
          * @param stream
          * @virtual
          */
-        vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number;
+        vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): bigint | number;
 
         // Methods
 
@@ -6947,8 +6947,8 @@ export namespace GMime {
         parent_object: GObject.Object;
         status: SignatureStatus;
         cert: Certificate;
-        created: bigint | number;
-        expires: bigint | number;
+        created: number;
+        expires: number;
 
         // Constructors
 
@@ -7232,13 +7232,13 @@ export namespace GMime {
          * Gets the length of the stream.
          * @virtual
          */
-        vfunc_length(): number;
+        vfunc_length(): bigint | number;
         /**
          * Attempts to read up to `len` bytes from `stream` into `buf`.
          * @param buf buffer
          * @virtual
          */
-        vfunc_read(buf: Uint8Array | string): number;
+        vfunc_read(buf: Uint8Array): bigint | number;
         /**
          * Resets the stream.
          * @virtual
@@ -7261,25 +7261,25 @@ export namespace GMime {
          * @param whence seek directive
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, whence: SeekWhence): number;
+        vfunc_seek(offset: number, whence: SeekWhence): bigint | number;
         /**
          * Creates a new substream of `stream` with bounds `start` and `end`.
          * @param start start boundary
          * @param end end boundary
          * @virtual
          */
-        vfunc_substream(start: bigint | number, end: bigint | number): Stream;
+        vfunc_substream(start: number, end: number): Stream;
         /**
          * Gets the current offset within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Attempts to write up to `len` bytes of `buf` to `stream`.
          * @param buf buffer
          * @virtual
          */
-        vfunc_write(buf: Uint8Array | string): number;
+        vfunc_write(buf: Uint8Array): bigint | number;
 
         // Methods
 
@@ -7430,7 +7430,7 @@ export namespace GMime {
         buffer: string;
         bufptr: string;
         bufend: string;
-        buflen: bigint | number;
+        buflen: number;
 
         // Constructors
 
@@ -8015,7 +8015,7 @@ export namespace GMime {
         eos: boolean | any;
         fd: number;
         map: string;
-        maplen: bigint | number;
+        maplen: number;
 
         // Constructors
 
@@ -8099,8 +8099,8 @@ export namespace GMime {
         // Fields
 
         parent_object: Stream;
-        written: bigint | number;
-        newlines: bigint | number;
+        written: number;
+        newlines: number;
         count_newlines: boolean;
 
         // Constructors
@@ -8907,7 +8907,7 @@ export namespace GMime {
         // Fields
 
         marker: string;
-        len: bigint | number;
+        len: number;
         before: OpenPGPState;
         after: OpenPGPState;
         is_end_marker: boolean;
@@ -9286,7 +9286,7 @@ export namespace GMime {
         // Fields
 
         data: any;
-        len: bigint | number;
+        len: number;
     }
 
     /**

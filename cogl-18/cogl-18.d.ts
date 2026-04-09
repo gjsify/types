@@ -6662,7 +6662,7 @@ export namespace Cogl {
          * @param renderer
          * @virtual
          */
-        vfunc_renderer_get_implicit_drm_modifier(renderer: Renderer): number;
+        vfunc_renderer_get_implicit_drm_modifier(renderer: Renderer): bigint | number;
         /**
          * @param renderer
          * @virtual

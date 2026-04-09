@@ -225,7 +225,7 @@ export namespace GstApp {
              * @action
              * @run-last
              */
-            'try-pull-object': (arg0: bigint | number) => Gst.MiniObject | null;
+            'try-pull-object': (arg0: number) => Gst.MiniObject | null;
             /**
              * Get the last preroll sample in `appsink`. This was the sample that caused the
              * appsink to preroll in the PAUSED state.
@@ -251,7 +251,7 @@ export namespace GstApp {
              * @action
              * @run-last
              */
-            'try-pull-preroll': (arg0: bigint | number) => Gst.Sample | null;
+            'try-pull-preroll': (arg0: number) => Gst.Sample | null;
             /**
              * This function blocks until a sample or EOS becomes available or the appsink
              * element is set to the READY/NULL state or the timeout expires.
@@ -273,7 +273,7 @@ export namespace GstApp {
              * @action
              * @run-last
              */
-            'try-pull-sample': (arg0: bigint | number) => Gst.Sample | null;
+            'try-pull-sample': (arg0: number) => Gst.Sample | null;
             'notify::buffer-list': (pspec: GObject.ParamSpec) => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
             'notify::drop': (pspec: GObject.ParamSpec) => void;
@@ -1114,7 +1114,7 @@ export namespace GstApp {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1141,7 +1141,7 @@ export namespace GstApp {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1258,7 +1258,7 @@ export namespace GstApp {
              * @signal
              * @run-last
              */
-            'seek-data': (arg0: bigint | number) => boolean | void;
+            'seek-data': (arg0: number) => boolean | void;
             'notify::block': (pspec: GObject.ParamSpec) => void;
             'notify::caps': (pspec: GObject.ParamSpec) => void;
             'notify::current-level-buffers': (pspec: GObject.ParamSpec) => void;
@@ -1721,7 +1721,7 @@ export namespace GstApp {
          * @param offset
          * @virtual
          */
-        vfunc_seek_data(offset: bigint | number): boolean;
+        vfunc_seek_data(offset: number): boolean;
 
         // Methods
 
@@ -2345,7 +2345,7 @@ export namespace GstApp {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2372,7 +2372,7 @@ export namespace GstApp {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

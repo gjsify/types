@@ -3286,11 +3286,11 @@ export namespace LibvirtGObject {
 
         // Fields
 
-        rd_req: bigint | number;
-        rd_bytes: bigint | number;
-        wr_req: bigint | number;
-        wr_bytes: bigint | number;
-        errs: bigint | number;
+        rd_req: number;
+        rd_bytes: number;
+        wr_req: number;
+        wr_bytes: number;
+        errs: number;
     }
 
     /**
@@ -3302,10 +3302,10 @@ export namespace LibvirtGObject {
         // Fields
 
         state: DomainState;
-        maxMem: bigint | number;
-        memory: bigint | number;
+        maxMem: number;
+        memory: number;
         nrVirtCpu: number;
-        cpuTime: bigint | number;
+        cpuTime: number;
     }
 
     /**
@@ -3327,14 +3327,14 @@ export namespace LibvirtGObject {
 
         // Fields
 
-        rx_bytes: bigint | number;
-        rx_packets: bigint | number;
-        rx_errs: bigint | number;
-        rx_drop: bigint | number;
-        tx_bytes: bigint | number;
-        tx_packets: bigint | number;
-        tx_errs: bigint | number;
-        tx_drop: bigint | number;
+        rx_bytes: number;
+        rx_packets: number;
+        rx_errs: number;
+        rx_drop: number;
+        tx_bytes: number;
+        tx_packets: number;
+        tx_errs: number;
+        tx_drop: number;
     }
 
     /**
@@ -3430,7 +3430,7 @@ export namespace LibvirtGObject {
         // Fields
 
         model: number[];
-        memory: bigint | number;
+        memory: number;
         cpus: number;
         mhz: number;
         nodes: number;
@@ -3463,9 +3463,9 @@ export namespace LibvirtGObject {
         // Fields
 
         state: StoragePoolState;
-        capacity: bigint | number;
-        allocation: bigint | number;
-        available: bigint | number;
+        capacity: number;
+        allocation: number;
+        available: number;
     }
 
     /**
@@ -3488,8 +3488,8 @@ export namespace LibvirtGObject {
         // Fields
 
         type: StorageVolType;
-        capacity: bigint | number;
-        allocation: bigint | number;
+        capacity: number;
+        allocation: number;
     }
 
     /**

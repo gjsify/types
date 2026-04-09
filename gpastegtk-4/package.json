@@ -6,68 +6,62 @@
     "module": "gpastegtk-4.js",
     "main": "gpastegtk-4.js",
     "exports": {
-        "./ambient": {
-            "types": "./gpastegtk-4-ambient.d.ts",
-            "import": "./gpastegtk-4-ambient.js",
-            "default": "./gpastegtk-4-ambient.js"
-        },
-        "./import": {
-            "types": "./gpastegtk-4-import.d.ts",
-            "import": "./gpastegtk-4-import.js",
-            "default": "./gpastegtk-4-import.js"
-        },
-        "./gpastegtk-4": {
-            "types": "./gpastegtk-4.d.ts",
-            "import": "./gpastegtk-4.js",
-            "default": "./gpastegtk-4.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./gpastegtk-4-ambient.d.ts",
+        "import": "./gpastegtk-4-ambient.js",
+        "default": "./gpastegtk-4-ambient.js"
+      },
+      "./import": {
+        "types": "./gpastegtk-4-import.d.ts",
+        "import": "./gpastegtk-4-import.js",
+        "default": "./gpastegtk-4-import.js"
+      },
+      "./gpastegtk-4": {
+        "types": "./gpastegtk-4.d.ts",
+        "import": "./gpastegtk-4.js",
+        "default": "./gpastegtk-4.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/adw-1": "workspace:^",
-        "@girs/cairo-1.0": "workspace:^",
-        "@girs/freetype2-2.0": "workspace:^",
-        "@girs/gdk-4.0": "workspace:^",
-        "@girs/gdkpixbuf-2.0": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gpaste-2": "workspace:^",
-        "@girs/graphene-1.0": "workspace:^",
-        "@girs/gsk-4.0": "workspace:^",
-        "@girs/gtk-4.0": "workspace:^",
-        "@girs/harfbuzz-0.0": "workspace:^",
-        "@girs/pango-1.0": "workspace:^",
-        "@girs/pangocairo-1.0": "workspace:^"
-    },
+      "@girs/gjs": "workspace:^",
+      "@girs/gtk-4.0": "workspace:^",
+      "@girs/gsk-4.0": "workspace:^",
+      "@girs/graphene-1.0": "workspace:^",
+      "@girs/gobject-2.0": "workspace:^",
+      "@girs/glib-2.0": "workspace:^",
+      "@girs/gdk-4.0": "workspace:^",
+      "@girs/cairo-1.0": "workspace:^",
+      "@girs/pangocairo-1.0": "workspace:^",
+      "@girs/pango-1.0": "workspace:^",
+      "@girs/harfbuzz-0.0": "workspace:^",
+      "@girs/freetype2-2.0": "workspace:^",
+      "@girs/gio-2.0": "workspace:^",
+      "@girs/gmodule-2.0": "workspace:^",
+      "@girs/gdkpixbuf-2.0": "workspace:^",
+      "@girs/gpaste-2": "workspace:^",
+      "@girs/adw-1": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GPasteGtk-4"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GPasteGtk-4"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gpastegtk-4#readme"
 }
+
+

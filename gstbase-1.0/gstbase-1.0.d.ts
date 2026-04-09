@@ -963,9 +963,9 @@ export namespace GstBase {
              */
             'samples-selected': (
                 arg0: Gst.Segment,
-                arg1: bigint | number,
-                arg2: bigint | number,
-                arg3: bigint | number,
+                arg1: number,
+                arg2: number,
+                arg3: number,
                 arg4: Gst.Structure | null,
             ) => void;
             'notify::emit-signals': (pspec: GObject.ParamSpec) => void;
@@ -1861,12 +1861,7 @@ export namespace GstBase {
          * @param dest_value
          * @virtual
          */
-        vfunc_convert(
-            src_format: Gst.Format,
-            src_value: bigint | number,
-            dest_format: Gst.Format,
-            dest_value: bigint | number,
-        ): boolean;
+        vfunc_convert(src_format: Gst.Format, src_value: number, dest_format: Gst.Format, dest_value: number): boolean;
         /**
          * Optional.
          *                   Called until it doesn't return GST_FLOW_OK anymore for
@@ -2466,7 +2461,7 @@ export namespace GstBase {
         element: Gst.Element;
         sinkpad: Gst.Pad;
         pad_mode: Gst.PadMode;
-        offset: bigint | number;
+        offset: number;
         can_activate_pull: boolean;
         can_activate_push: boolean;
         eos: boolean;
@@ -3127,7 +3122,7 @@ export namespace GstBase {
          * @param size
          * @virtual
          */
-        vfunc_alloc(offset: bigint | number, size: number): [Gst.FlowReturn, Gst.Buffer | null];
+        vfunc_alloc(offset: number, size: number): [Gst.FlowReturn, Gst.Buffer | null];
         /**
          * Ask the subclass to create a buffer with `offset` and `size`, the default
          * implementation will call alloc if no allocated `buf` is provided and then call fill.
@@ -3136,11 +3131,7 @@ export namespace GstBase {
          * @param buf
          * @virtual
          */
-        vfunc_create(
-            offset: bigint | number,
-            size: number,
-            buf?: Gst.Buffer | null,
-        ): [Gst.FlowReturn, Gst.Buffer | null];
+        vfunc_create(offset: number, size: number, buf?: Gst.Buffer | null): [Gst.FlowReturn, Gst.Buffer | null];
         /**
          * configure the allocation query
          * @param query
@@ -3167,7 +3158,7 @@ export namespace GstBase {
          * @param buf
          * @virtual
          */
-        vfunc_fill(offset: bigint | number, size: number, buf: Gst.Buffer): Gst.FlowReturn;
+        vfunc_fill(offset: number, size: number, buf: Gst.Buffer): Gst.FlowReturn;
         /**
          * Called if, in negotiation, caps need fixating.
          * @param caps
@@ -3185,7 +3176,7 @@ export namespace GstBase {
          * `gst_base_src_set_format()`.
          * @virtual
          */
-        vfunc_get_size(): [boolean, number];
+        vfunc_get_size(): [boolean, bigint | number];
         /**
          * Given `buffer`, return `start` and `end` time when it should be pushed
          * out. The base class will sync on the clock using these times.
@@ -3724,7 +3715,7 @@ export namespace GstBase {
          * @param caps
          * @virtual
          */
-        vfunc_get_unit_size(caps: Gst.Caps): [boolean, number];
+        vfunc_get_unit_size(caps: Gst.Caps): [boolean, bigint | number];
         /**
          * @param input
          * @virtual
@@ -3852,9 +3843,9 @@ export namespace GstBase {
         vfunc_transform_size(
             direction: Gst.PadDirection,
             caps: Gst.Caps,
-            size: bigint | number,
+            size: number,
             othercaps: Gst.Caps,
-        ): [boolean, number];
+        ): [boolean, bigint | number];
 
         // Methods
 
@@ -4644,7 +4635,7 @@ export namespace GstBase {
         // Fields
 
         flags: number;
-        offset: bigint | number;
+        offset: number;
         overhead: number;
 
         // Constructors

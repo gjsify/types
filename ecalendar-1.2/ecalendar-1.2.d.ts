@@ -409,7 +409,7 @@ export namespace ECalendar {
              * @signal
              * @run-first
              */
-            'cal-opened-ex': (arg0: bigint | number) => void;
+            'cal-opened-ex': (arg0: number) => void;
             /**
              * @signal
              * @run-first
@@ -1381,12 +1381,12 @@ export namespace ECalendar {
              * @signal
              * @run-first
              */
-            'objects-added': (arg0: (bigint | number)[]) => void;
+            'objects-added': (arg0: number[]) => void;
             /**
              * @signal
              * @run-first
              */
-            'objects-modified': (arg0: (bigint | number)[]) => void;
+            'objects-modified': (arg0: number[]) => void;
             /**
              * @signal
              * @run-first
@@ -2154,12 +2154,12 @@ export namespace ECalendar {
              * @signal
              * @run-first
              */
-            'objects-added': (arg0: (bigint | number)[]) => void;
+            'objects-added': (arg0: number[]) => void;
             /**
              * @signal
              * @run-first
              */
-            'objects-modified': (arg0: (bigint | number)[]) => void;
+            'objects-modified': (arg0: number[]) => void;
             /**
              * @signal
              * @run-first
@@ -2403,9 +2403,9 @@ export namespace ECalendar {
         // Fields
 
         auid: string;
-        trigger: bigint | number;
-        occur_start: bigint | number;
-        occur_end: bigint | number;
+        trigger: number;
+        occur_start: number;
+        occur_end: number;
     }
 
     /**

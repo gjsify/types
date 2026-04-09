@@ -331,7 +331,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            'progress-changed': (arg0: number, arg1: number, arg2: bigint | number) => void;
+            'progress-changed': (arg0: number, arg1: number, arg2: number) => void;
             /**
              * @signal
              * @run-last
@@ -456,11 +456,7 @@ export namespace BraseroBurn {
          * @param time_remaining
          * @virtual
          */
-        vfunc_progress_changed(
-            overall_progress: number,
-            action_progress: number,
-            time_remaining: bigint | number,
-        ): void;
+        vfunc_progress_changed(overall_progress: number, action_progress: number, time_remaining: number): void;
         /**
          * @virtual
          */
@@ -1081,7 +1077,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1108,7 +1104,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1683,7 +1679,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1710,7 +1706,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3000,7 +2996,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3027,7 +3023,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3598,7 +3594,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3625,7 +3621,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3724,7 +3720,7 @@ export namespace BraseroBurn {
          * @param block_size
          * @virtual
          */
-        vfunc_get_size(blocks: bigint | number, block_size: bigint | number): BurnResult;
+        vfunc_get_size(blocks: number, block_size: number): BurnResult;
         /**
          * Sets `status` to reflect whether `track` is ready to be used
          * @param status a `BraseroTrackStatus`
@@ -3904,7 +3900,7 @@ export namespace BraseroBurn {
         /**
          * @virtual
          */
-        vfunc_get_file_num(): number;
+        vfunc_get_file_num(): bigint | number;
         /**
          * Returns the parameters determining the file system type
          * and various other options to create an image.
@@ -4632,7 +4628,7 @@ export namespace BraseroBurn {
          * @param column the column to lookup the value at
          * @virtual
          */
-        vfunc_get_value(iter: Gtk.TreeIter, column: number): unknown;
+        vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
         /**
          * Sets `iter` to point to the first child of `parent`.
          *
@@ -5297,7 +5293,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5324,7 +5320,7 @@ export namespace BraseroBurn {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5482,7 +5478,7 @@ export namespace BraseroBurn {
          * @param blocks a `goffset`
          * @virtual
          */
-        vfunc_set_block_num(blocks: bigint | number): BurnResult;
+        vfunc_set_block_num(blocks: number): BurnResult;
         /**
          * Sets the image source path (and its toc if need be)
          * as well as its format.
@@ -5680,7 +5676,7 @@ export namespace BraseroBurn {
          * @param gap a `gint64` or -1 to ignore
          * @virtual
          */
-        vfunc_set_boundaries(start: bigint | number, end: bigint | number, gap: bigint | number): BurnResult;
+        vfunc_set_boundaries(start: number, end: number, gap: number): BurnResult;
         /**
          * Sets the format of the stream.
          * @param format a {@link BraseroBurn.StreamFormat}

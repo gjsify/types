@@ -830,7 +830,7 @@ export namespace Liferea {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -857,7 +857,7 @@ export namespace Liferea {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1334,7 +1334,7 @@ export namespace Liferea {
 
         // Fields
 
-        id: bigint | number;
+        id: number;
         readStatus: boolean;
         popupStatus: boolean;
         updateStatus: boolean;
@@ -1348,13 +1348,13 @@ export namespace Liferea {
         validTime: boolean;
         description: string;
         metadata: any[];
-        time: bigint | number;
+        time: number;
         commentFeedId: string;
-        parentItemId: bigint | number;
+        parentItemId: number;
         isComment: boolean;
         nodeId: string;
         parentNodeId: string;
-        sourceNr: bigint | number;
+        sourceNr: number;
         remoteReadStatus: boolean;
         remoteFlagStatus: boolean;
 
@@ -2476,7 +2476,7 @@ export namespace Liferea {
         source: string;
         httpstatus: number;
         data: string;
-        size: bigint | number;
+        size: number;
         contentType: string;
         filterErrors: string;
 
@@ -2612,7 +2612,7 @@ export namespace Liferea {
 
         url: string;
         mime: string;
-        size: bigint | number;
+        size: number;
         downloaded: boolean;
 
         // Static methods
@@ -2689,7 +2689,7 @@ export namespace Liferea {
 
         // Fields
 
-        capabilities: bigint | number;
+        capabilities: number;
         id: string;
         icon: number;
 
@@ -2854,9 +2854,9 @@ export namespace Liferea {
 
         // Fields
 
-        lastModified: bigint | number;
-        lastPoll: bigint | number;
-        lastFaviconPoll: bigint | number;
+        lastModified: number;
+        lastPoll: number;
+        lastFaviconPoll: number;
         cookies: string;
         etag: string;
         maxAgeMinutes: number;

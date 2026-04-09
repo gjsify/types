@@ -5130,12 +5130,12 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -5150,7 +5150,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5547,7 +5547,7 @@ export namespace Vips {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5574,7 +5574,7 @@ export namespace Vips {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7230,7 +7230,7 @@ export namespace Vips {
         argument_table: ArgumentTable;
         close: boolean;
         postclose: boolean;
-        local_memory: bigint | number;
+        local_memory: number;
 
         // Constructors
 
@@ -8146,7 +8146,7 @@ export namespace Vips {
         parent_object: Connection;
         have_tested_seek: boolean;
         is_pipe: boolean;
-        read_position: bigint | number;
+        read_position: number;
 
         // Constructors
 
@@ -8199,7 +8199,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @virtual
          */
-        vfunc_read(buffer: any | null, length: bigint | number): number;
+        vfunc_read(buffer: any | null, length: number): bigint | number;
         /**
          * Move the file read position. You can't call this after pixel decode starts.
          * The arguments are exactly as [`lseek()`](man:lseek(2)).
@@ -8207,7 +8207,7 @@ export namespace Vips {
          * @param whence seek relative to this point
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, whence: number): number;
+        vfunc_seek(offset: number, whence: number): bigint | number;
 
         // Methods
 
@@ -8341,7 +8341,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: any | null, arg1: bigint | number) => bigint | number;
+            read: (arg0: any | null, arg1: number) => bigint | number;
             /**
              * This signal is emitted to seek the source. The handler should
              * change the source position appropriately.
@@ -8350,7 +8350,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            seek: (arg0: bigint | number, arg1: number) => bigint | number;
+            seek: (arg0: number, arg1: number) => bigint | number;
             'notify::blob': (pspec: GObject.ParamSpec) => void;
             'notify::descriptor': (pspec: GObject.ParamSpec) => void;
             'notify::filename': (pspec: GObject.ParamSpec) => void;
@@ -8421,13 +8421,13 @@ export namespace Vips {
          * @param length
          * @virtual
          */
-        vfunc_read(buffer: any | null, length: bigint | number): number;
+        vfunc_read(buffer: any | null, length: number): bigint | number;
         /**
          * @param offset
          * @param whence
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, whence: number): number;
+        vfunc_seek(offset: number, whence: number): bigint | number;
     }
 
     namespace SourceGInputStream {
@@ -8610,7 +8610,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @virtual
          */
-        vfunc_read(buffer: any | null, length: bigint | number): number;
+        vfunc_read(buffer: any | null, length: number): bigint | number;
         /**
          * Seek the target. This behaves exactly as [`lseek()`](man:lseek(2)).
          *
@@ -8620,13 +8620,13 @@ export namespace Vips {
          * @param whence seek relative to beginning, offset, or end
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, whence: number): number;
+        vfunc_seek(offset: number, whence: number): bigint | number;
         /**
          * @param data
          * @param length
          * @virtual
          */
-        vfunc_write(data: any | null, length: bigint | number): number;
+        vfunc_write(data: any | null, length: number): bigint | number;
 
         // Methods
 
@@ -8741,7 +8741,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: any | null, arg1: bigint | number) => bigint | number;
+            read: (arg0: any | null, arg1: number) => bigint | number;
             /**
              * This signal is emitted to seek the target. The handler should
              * change the target position appropriately.
@@ -8750,13 +8750,13 @@ export namespace Vips {
              * @signal
              * @action
              */
-            seek: (arg0: bigint | number, arg1: number) => bigint | number;
+            seek: (arg0: number, arg1: number) => bigint | number;
             /**
              * This signal is emitted to write bytes to the target.
              * @signal
              * @action
              */
-            write: (arg0: any | null, arg1: bigint | number) => bigint | number;
+            write: (arg0: any | null, arg1: number) => bigint | number;
             'notify::blob': (pspec: GObject.ParamSpec) => void;
             'notify::memory': (pspec: GObject.ParamSpec) => void;
             'notify::descriptor': (pspec: GObject.ParamSpec) => void;
@@ -8836,19 +8836,19 @@ export namespace Vips {
          * @param length
          * @virtual
          */
-        vfunc_read(buffer: any | null, length: bigint | number): number;
+        vfunc_read(buffer: any | null, length: number): bigint | number;
         /**
          * @param offset
          * @param whence
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, whence: number): number;
+        vfunc_seek(offset: number, whence: number): bigint | number;
         /**
          * @param data
          * @param length
          * @virtual
          */
-        vfunc_write(data: any | null, length: bigint | number): number;
+        vfunc_write(data: any | null, length: number): bigint | number;
     }
 
     namespace ThreadState {
@@ -8945,7 +8945,7 @@ export namespace Vips {
         // Fields
 
         data: any;
-        length: bigint | number;
+        length: number;
         n: number;
 
         // Constructors
@@ -9034,8 +9034,8 @@ export namespace Vips {
 
         object: Object;
         assigned: boolean;
-        close_id: bigint | number;
-        invalidate_id: bigint | number;
+        close_id: number;
+        invalidate_id: number;
     }
 
     /**
@@ -9508,8 +9508,8 @@ export namespace Vips {
 
         run: number;
         eta: number;
-        tpels: bigint | number;
-        npels: bigint | number;
+        tpels: number;
+        npels: number;
         percent: number;
 
         // Static methods

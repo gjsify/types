@@ -2501,7 +2501,7 @@ export namespace Nice {
         // Fields
 
         n_buffers: number;
-        length: bigint | number;
+        length: number;
     }
 
     /**

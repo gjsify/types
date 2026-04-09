@@ -340,7 +340,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            progress: (arg0: bigint | number, arg1: number) => void;
+            progress: (arg0: number, arg1: number) => void;
             'notify::completed-files': (pspec: GObject.ParamSpec) => void;
             'notify::completed-size': (pspec: GObject.ParamSpec) => void;
             'notify::create-top-level-directory': (pspec: GObject.ParamSpec) => void;
@@ -635,7 +635,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            progress: (arg0: bigint | number, arg1: number) => void;
+            progress: (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted when the archive extracting job needs a
              * passphrase.

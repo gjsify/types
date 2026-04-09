@@ -4852,7 +4852,7 @@ export namespace Cogl {
         // Fields
 
         name: string;
-        instance_count: bigint | number;
+        instance_count: number;
     }
 
     /**
@@ -4976,7 +4976,7 @@ export namespace Cogl {
 
         // Fields
 
-        begin_time: bigint | number;
+        begin_time: number;
         name: string;
         description: string;
     }

@@ -6315,7 +6315,7 @@ export namespace Cogl {
         // Fields
 
         name: string;
-        instance_count: bigint | number;
+        instance_count: number;
     }
 
     /**

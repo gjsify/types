@@ -4585,10 +4585,10 @@ export namespace BlockDev {
 
         // Fields
 
-        id: bigint | number;
+        id: number;
         path: string;
-        size: bigint | number;
-        used: bigint | number;
+        size: number;
+        used: number;
 
         // Methods
 
@@ -4612,8 +4612,8 @@ export namespace BlockDev {
 
         label: string;
         uuid: string;
-        num_devices: bigint | number;
-        used: bigint | number;
+        num_devices: number;
+        used: number;
 
         // Methods
 
@@ -4635,8 +4635,8 @@ export namespace BlockDev {
 
         // Fields
 
-        id: bigint | number;
-        parent_id: bigint | number;
+        id: number;
+        parent_id: number;
         path: string;
 
         // Methods
@@ -4698,7 +4698,7 @@ export namespace BlockDev {
         // Fields
 
         sector_size: number;
-        journal_size: bigint | number;
+        journal_size: number;
         journal_watermark: number;
         journal_commit_time: number;
         interleave_sectors: number;
@@ -4752,7 +4752,7 @@ export namespace BlockDev {
         sector_size: number;
         tag_size: number;
         interleave_sectors: number;
-        journal_size: bigint | number;
+        journal_size: number;
         journal_crypt: string;
         journal_integrity: string;
 
@@ -4814,7 +4814,7 @@ export namespace BlockDev {
 
         // Fields
 
-        data_alignment: bigint | number;
+        data_alignment: number;
         data_device: string;
         integrity: string;
         sector_size: number;
@@ -4870,7 +4870,7 @@ export namespace BlockDev {
         uuid: string;
         backing_device: string;
         sector_size: number;
-        metadata_size: bigint | number;
+        metadata_size: number;
         label: string;
         subsystem: string;
         hw_encryption: CryptoLUKSHWEncryptionType;
@@ -5023,8 +5023,8 @@ export namespace BlockDev {
 
         label: string;
         uuid: string;
-        size: bigint | number;
-        free_space: bigint | number;
+        size: number;
+        free_space: number;
 
         // Methods
 
@@ -5048,9 +5048,9 @@ export namespace BlockDev {
 
         label: string;
         uuid: string;
-        sector_size: bigint | number;
-        sector_count: bigint | number;
-        cluster_count: bigint | number;
+        sector_size: number;
+        sector_count: number;
+        cluster_count: number;
 
         // Methods
 
@@ -5075,9 +5075,9 @@ export namespace BlockDev {
         label: string;
         uuid: string;
         state: string;
-        block_size: bigint | number;
-        block_count: bigint | number;
-        free_blocks: bigint | number;
+        block_size: number;
+        block_count: number;
+        free_blocks: number;
 
         // Methods
 
@@ -5098,9 +5098,9 @@ export namespace BlockDev {
         label: string;
         uuid: string;
         state: string;
-        block_size: bigint | number;
-        block_count: bigint | number;
-        free_blocks: bigint | number;
+        block_size: number;
+        block_count: number;
+        free_blocks: number;
 
         // Methods
 
@@ -5125,9 +5125,9 @@ export namespace BlockDev {
         label: string;
         uuid: string;
         state: string;
-        block_size: bigint | number;
-        block_count: bigint | number;
-        free_blocks: bigint | number;
+        block_size: number;
+        block_count: number;
+        free_blocks: number;
 
         // Methods
 
@@ -5152,9 +5152,9 @@ export namespace BlockDev {
         label: string;
         uuid: string;
         state: string;
-        block_size: bigint | number;
-        block_count: bigint | number;
-        free_blocks: bigint | number;
+        block_size: number;
+        block_count: number;
+        free_blocks: number;
     }
 
     /**
@@ -5167,9 +5167,9 @@ export namespace BlockDev {
 
         label: string;
         uuid: string;
-        sector_size: bigint | number;
-        sector_count: bigint | number;
-        features: bigint | number;
+        sector_size: number;
+        sector_count: number;
+        features: number;
 
         // Methods
 
@@ -5198,8 +5198,8 @@ export namespace BlockDev {
         features: FSFeatureFlags;
         partition_id: string;
         partition_type: string;
-        min_size: bigint | number;
-        max_size: bigint | number;
+        min_size: number;
+        max_size: number;
 
         // Methods
 
@@ -5265,9 +5265,9 @@ export namespace BlockDev {
 
         label: string;
         uuid: string;
-        size: bigint | number;
-        block_size: bigint | number;
-        free_blocks: bigint | number;
+        size: number;
+        block_size: number;
+        free_blocks: number;
 
         // Methods
 
@@ -5291,8 +5291,8 @@ export namespace BlockDev {
 
         label: string;
         uuid: string;
-        size: bigint | number;
-        free_space: bigint | number;
+        size: number;
+        free_space: number;
 
         // Methods
 
@@ -5319,9 +5319,9 @@ export namespace BlockDev {
         revision: string;
         lvid: string;
         vid: string;
-        block_size: bigint | number;
-        block_count: bigint | number;
-        free_blocks: bigint | number;
+        block_size: number;
+        block_count: number;
+        free_blocks: number;
 
         // Methods
 
@@ -5345,9 +5345,9 @@ export namespace BlockDev {
 
         label: string;
         uuid: string;
-        cluster_size: bigint | number;
-        cluster_count: bigint | number;
-        free_cluster_count: bigint | number;
+        cluster_size: number;
+        cluster_count: number;
+        free_cluster_count: number;
 
         // Methods
 
@@ -5371,8 +5371,8 @@ export namespace BlockDev {
 
         label: string;
         uuid: string;
-        block_size: bigint | number;
-        block_count: bigint | number;
+        block_size: number;
+        block_count: number;
 
         // Methods
 
@@ -5394,16 +5394,16 @@ export namespace BlockDev {
 
         // Fields
 
-        block_size: bigint | number;
-        cache_size: bigint | number;
-        cache_used: bigint | number;
-        md_block_size: bigint | number;
-        md_size: bigint | number;
-        md_used: bigint | number;
-        read_hits: bigint | number;
-        read_misses: bigint | number;
-        write_hits: bigint | number;
-        write_misses: bigint | number;
+        block_size: number;
+        cache_size: number;
+        cache_used: number;
+        md_block_size: number;
+        md_size: number;
+        md_used: number;
+        read_hits: number;
+        read_misses: number;
+        write_hits: number;
+        write_misses: number;
         mode: LVMCacheMode;
 
         // Static methods
@@ -5452,7 +5452,7 @@ export namespace BlockDev {
         lv_name: string;
         vg_name: string;
         uuid: string;
-        size: bigint | number;
+        size: number;
         attr: string;
         segtype: string;
         origin: string;
@@ -5461,9 +5461,9 @@ export namespace BlockDev {
         metadata_lv: string;
         roles: string;
         move_pv: string;
-        data_percent: bigint | number;
-        metadata_percent: bigint | number;
-        copy_percent: bigint | number;
+        data_percent: number;
+        metadata_percent: number;
+        copy_percent: number;
         lv_tags: string[];
         data_lvs: string[];
         metadata_lvs: string[];
@@ -5490,17 +5490,17 @@ export namespace BlockDev {
 
         pv_name: string;
         pv_uuid: string;
-        pv_free: bigint | number;
-        pv_size: bigint | number;
-        pe_start: bigint | number;
+        pv_free: number;
+        pv_size: number;
+        pe_start: number;
         vg_name: string;
         vg_uuid: string;
-        vg_size: bigint | number;
-        vg_free: bigint | number;
-        vg_extent_size: bigint | number;
-        vg_extent_count: bigint | number;
-        vg_free_count: bigint | number;
-        vg_pv_count: bigint | number;
+        vg_size: number;
+        vg_free: number;
+        vg_extent_size: number;
+        vg_extent_count: number;
+        vg_free_count: number;
+        vg_pv_count: number;
         pv_tags: string[];
         missing: boolean;
 
@@ -5524,8 +5524,8 @@ export namespace BlockDev {
 
         // Fields
 
-        size_pe: bigint | number;
-        pv_start_pe: bigint | number;
+        size_pe: number;
+        pv_start_pe: number;
         pvdev: string;
 
         // Methods
@@ -5552,9 +5552,9 @@ export namespace BlockDev {
         compression_state: LVMVDOCompressionState;
         index_state: LVMVDOIndexState;
         write_policy: LVMVDOWritePolicy;
-        used_size: bigint | number;
+        used_size: number;
         saving_percent: number;
-        index_memory_size: bigint | number;
+        index_memory_size: number;
         deduplication: boolean;
         compression: boolean;
 
@@ -5578,14 +5578,14 @@ export namespace BlockDev {
 
         // Fields
 
-        block_size: bigint | number;
-        logical_block_size: bigint | number;
-        physical_blocks: bigint | number;
-        data_blocks_used: bigint | number;
-        overhead_blocks_used: bigint | number;
-        logical_blocks_used: bigint | number;
-        used_percent: bigint | number;
-        saving_percent: bigint | number;
+        block_size: number;
+        logical_block_size: number;
+        physical_blocks: number;
+        data_blocks_used: number;
+        overhead_blocks_used: number;
+        logical_blocks_used: number;
+        used_percent: number;
+        saving_percent: number;
         write_amplification_ratio: number;
 
         // Methods
@@ -5610,11 +5610,11 @@ export namespace BlockDev {
 
         name: string;
         uuid: string;
-        size: bigint | number;
-        extent_size: bigint | number;
-        extent_count: bigint | number;
-        free_count: bigint | number;
-        pv_count: bigint | number;
+        size: number;
+        extent_size: number;
+        extent_count: number;
+        free_count: number;
+        pv_count: number;
         exported: boolean;
         vg_tags: string[];
 
@@ -5639,7 +5639,7 @@ export namespace BlockDev {
         // Fields
 
         backing_file: string;
-        offset: bigint | number;
+        offset: number;
         autoclear: boolean;
         direct_io: boolean;
         part_scan: boolean;
@@ -5670,14 +5670,14 @@ export namespace BlockDev {
         creation_time: string;
         level: string;
         name: string;
-        array_size: bigint | number;
-        use_dev_size: bigint | number;
-        raid_devices: bigint | number;
-        total_devices: bigint | number;
-        active_devices: bigint | number;
-        working_devices: bigint | number;
-        failed_devices: bigint | number;
-        spare_devices: bigint | number;
+        array_size: number;
+        use_dev_size: number;
+        raid_devices: number;
+        total_devices: number;
+        active_devices: number;
+        working_devices: number;
+        failed_devices: number;
+        spare_devices: number;
         clean: boolean;
         uuid: string;
         container: string;
@@ -5704,15 +5704,15 @@ export namespace BlockDev {
 
         device: string;
         level: string;
-        num_devices: bigint | number;
+        num_devices: number;
         name: string;
-        size: bigint | number;
+        size: number;
         uuid: string;
-        update_time: bigint | number;
+        update_time: number;
         dev_uuid: string;
-        events: bigint | number;
+        events: number;
         metadata: string;
-        chunk_size: bigint | number;
+        chunk_size: number;
 
         // Methods
 
@@ -5735,10 +5735,10 @@ export namespace BlockDev {
         // Fields
 
         dev: string;
-        mode: bigint | number;
-        size: bigint | number;
+        mode: number;
+        size: number;
         uuid: string;
-        sector_size: bigint | number;
+        sector_size: number;
         blockdev: string;
         enabled: boolean;
 
@@ -5770,13 +5770,13 @@ export namespace BlockDev {
         serial_number: string;
         firmware_ver: string;
         nvme_ver: string;
-        features: bigint | number;
+        features: number;
         controller_type: NVMEControllerType;
         selftest_ext_time: number;
-        hmb_pref_size: bigint | number;
-        hmb_min_size: bigint | number;
-        size_total: bigint | number;
-        size_unalloc: bigint | number;
+        hmb_pref_size: number;
+        hmb_min_size: number;
+        size_total: number;
+        size_unalloc: number;
         num_namespaces: number;
         subsysnqn: string;
 
@@ -5800,12 +5800,12 @@ export namespace BlockDev {
 
         // Fields
 
-        error_count: bigint | number;
+        error_count: number;
         command_id: number;
-        command_specific: bigint | number;
+        command_specific: number;
         command_status: number;
         command_error: GLib.Error;
-        lba: bigint | number;
+        lba: number;
         nsid: number;
         transport_type: NVMETransportType;
 
@@ -5858,10 +5858,10 @@ export namespace BlockDev {
         eui64: string;
         uuid: string;
         nguid: string;
-        nsize: bigint | number;
-        ncap: bigint | number;
-        nuse: bigint | number;
-        features: bigint | number;
+        nsize: number;
+        ncap: number;
+        nuse: number;
+        features: number;
         format_progress_remaining: number;
         write_protected: boolean;
 
@@ -5889,12 +5889,12 @@ export namespace BlockDev {
         sanitize_status: NVMESanitizeStatus;
         global_data_erased: boolean;
         overwrite_passes: number;
-        time_for_overwrite: bigint | number;
-        time_for_block_erase: bigint | number;
-        time_for_crypto_erase: bigint | number;
-        time_for_overwrite_nd: bigint | number;
-        time_for_block_erase_nd: bigint | number;
-        time_for_crypto_erase_nd: bigint | number;
+        time_for_overwrite: number;
+        time_for_block_erase: number;
+        time_for_crypto_erase: number;
+        time_for_overwrite_nd: number;
+        time_for_block_erase_nd: number;
+        time_for_crypto_erase_nd: number;
 
         // Methods
 
@@ -5942,9 +5942,9 @@ export namespace BlockDev {
         result: NVMESelfTestResult;
         action: NVMESelfTestAction;
         segment: number;
-        power_on_hours: bigint | number;
+        power_on_hours: number;
         nsid: number;
-        failing_lba: bigint | number;
+        failing_lba: number;
         status_code_error: GLib.Error;
 
         // Methods
@@ -5971,14 +5971,14 @@ export namespace BlockDev {
         avail_spare: number;
         spare_thresh: number;
         percent_used: number;
-        total_data_read: bigint | number;
-        total_data_written: bigint | number;
-        ctrl_busy_time: bigint | number;
-        power_cycles: bigint | number;
-        power_on_hours: bigint | number;
-        unsafe_shutdowns: bigint | number;
-        media_errors: bigint | number;
-        num_err_log_entries: bigint | number;
+        total_data_read: number;
+        total_data_written: number;
+        ctrl_busy_time: number;
+        power_cycles: number;
+        power_on_hours: number;
+        unsafe_shutdowns: number;
+        media_errors: number;
+        num_err_log_entries: number;
         temperature: number;
         temp_sensors: number[];
         wctemp: number;
@@ -6008,8 +6008,8 @@ export namespace BlockDev {
 
         path: string;
         table_type: PartTableType;
-        size: bigint | number;
-        sector_size: bigint | number;
+        size: number;
+        sector_size: number;
 
         // Methods
 
@@ -6030,11 +6030,11 @@ export namespace BlockDev {
         uuid: string;
         id: string;
         type_guid: string;
-        type: bigint | number;
-        start: bigint | number;
-        size: bigint | number;
+        type: number;
+        start: number;
+        size: number;
         bootable: boolean;
-        attrs: bigint | number;
+        attrs: number;
         type_name: string;
 
         // Methods
@@ -6094,7 +6094,7 @@ export namespace BlockDev {
         self_test_polling_conveyance: number;
         smart_capabilities: number;
         power_on_time: number;
-        power_cycle_count: bigint | number;
+        power_cycle_count: number;
         temperature: number;
 
         // Static methods
@@ -6139,9 +6139,9 @@ export namespace BlockDev {
         threshold: number;
         failed_past: boolean;
         failing_now: boolean;
-        value_raw: bigint | number;
+        value_raw: number;
         flags: number;
-        pretty_value: bigint | number;
+        pretty_value: number;
         pretty_value_unit: SmartATAAttributeUnit;
         pretty_value_string: string;
 
@@ -6181,13 +6181,13 @@ export namespace BlockDev {
         read_errors_corrected_rereads: number;
         read_errors_corrected_total: number;
         read_errors_uncorrected: number;
-        read_processed_bytes: bigint | number;
+        read_processed_bytes: number;
         write_errors_corrected_eccfast: number;
         write_errors_corrected_eccdelayed: number;
         write_errors_corrected_rewrites: number;
         write_errors_corrected_total: number;
         write_errors_uncorrected: number;
-        write_processed_bytes: bigint | number;
+        write_processed_bytes: number;
         start_stop_cycle_count: number;
         start_stop_cycle_lifetime: number;
         load_unload_cycle_count: number;

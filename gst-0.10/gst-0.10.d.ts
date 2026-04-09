@@ -7138,7 +7138,7 @@ export namespace Gst {
         flags: number;
         filename: string;
         basename: string;
-        file_size: bigint | number;
+        file_size: number;
         file_mtime: number;
         registered: boolean;
 

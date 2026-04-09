@@ -696,7 +696,7 @@ export namespace Dmap {
              * @signal
              * @run-last
              */
-            connecting: (arg0: bigint | number, arg1: number) => void;
+            connecting: (arg0: number, arg1: number) => void;
             /**
              * @signal
              * @run-last
@@ -1748,11 +1748,7 @@ export namespace Dmap {
          * @param query
          * @virtual
          */
-        vfunc_ctrl_int(
-            message: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_ctrl_int(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
         /**
          * @param server
          * @param message
@@ -1764,7 +1760,7 @@ export namespace Dmap {
             server: Soup.Server,
             message: Soup.ServerMessage,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
         ): void;
         /**
          * @param msg
@@ -1772,11 +1768,7 @@ export namespace Dmap {
          * @param query
          * @virtual
          */
-        vfunc_databases_browse_xxx(
-            msg: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_databases_browse_xxx(msg: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
         /**
          * @param server
          * @param msg
@@ -1802,22 +1794,14 @@ export namespace Dmap {
          * @param query
          * @virtual
          */
-        vfunc_login(
-            message: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_login(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
         /**
          * @param message
          * @param path
          * @param query
          * @virtual
          */
-        vfunc_logout(
-            message: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_logout(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
         /**
          * @param msg
          * @virtual
@@ -1847,11 +1831,7 @@ export namespace Dmap {
          * @param query
          * @virtual
          */
-        vfunc_update(
-            message: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_update(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
 
         // Methods
 
@@ -2010,12 +1990,12 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -2030,7 +2010,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2427,7 +2407,7 @@ export namespace Dmap {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2454,7 +2434,7 @@ export namespace Dmap {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2898,7 +2878,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_count(): number;
+            vfunc_count(): bigint | number;
             /**
              * Apply a function to each record in a container database.
              * @param func The function to apply to each record in the database.
@@ -2975,7 +2955,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_get_entry_count(): number;
+            vfunc_get_entry_count(): bigint | number;
             /**
              * @virtual
              */
@@ -3178,7 +3158,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_count(): number;
+            vfunc_count(): bigint | number;
             /**
              * Apply a function to each record in a media database.
              * @param func The function to apply to each record in the database.
@@ -3368,11 +3348,11 @@ export namespace Dmap {
              * @param blob A byte array representation of a record.
              * @virtual
              */
-            vfunc_set_from_blob(blob: Uint8Array | string): boolean;
+            vfunc_set_from_blob(blob: Uint8Array): boolean;
             /**
              * @virtual
              */
-            vfunc_to_blob(): Uint8Array;
+            vfunc_to_blob(): Uint8Array | string;
         }
 
         // Constructor properties interface

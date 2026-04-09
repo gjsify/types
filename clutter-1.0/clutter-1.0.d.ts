@@ -14358,10 +14358,10 @@ export namespace Clutter {
         vfunc_animate_property(
             animation: Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -14375,7 +14375,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -14391,14 +14391,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -14713,7 +14717,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -14722,7 +14726,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -15130,7 +15134,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15157,7 +15161,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15662,7 +15666,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -15671,7 +15675,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -16079,7 +16083,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16106,7 +16110,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -16489,7 +16493,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -16498,7 +16502,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -16906,7 +16910,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16933,7 +16937,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17207,7 +17211,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -17216,7 +17220,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -17624,7 +17628,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17651,7 +17655,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18060,7 +18064,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -18069,7 +18073,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -18477,7 +18481,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18504,7 +18508,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18688,7 +18692,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -18697,7 +18701,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -19105,7 +19109,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19132,7 +19136,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19473,7 +19477,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -19482,7 +19486,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -19890,7 +19894,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19917,7 +19921,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -20103,7 +20107,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -20112,7 +20116,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -20520,7 +20524,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20547,7 +20551,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -20724,7 +20728,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -20733,7 +20737,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -21141,7 +21145,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21168,7 +21172,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21449,7 +21453,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -21458,7 +21462,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -21866,7 +21870,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21893,7 +21897,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -22119,7 +22123,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -22128,7 +22132,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -22536,7 +22540,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22563,7 +22567,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23459,10 +23463,10 @@ export namespace Clutter {
         vfunc_animate_property(
             animation: Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -23476,7 +23480,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -23492,14 +23496,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -23819,7 +23827,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -23828,7 +23836,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -24236,7 +24244,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24263,7 +24271,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -25527,7 +25535,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25554,7 +25562,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -26236,7 +26244,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26263,7 +26271,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -26905,10 +26913,10 @@ export namespace Clutter {
         vfunc_animate_property(
             animation: Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -26922,7 +26930,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -26938,14 +26946,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -27265,7 +27277,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -27274,7 +27286,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -27682,7 +27694,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -27709,7 +27721,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -30135,10 +30147,10 @@ export namespace Clutter {
         vfunc_animate_property(
             animation: Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -30152,7 +30164,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -30168,14 +30180,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -30495,7 +30511,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -30504,7 +30520,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -30912,7 +30928,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30939,7 +30955,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -31566,7 +31582,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -31593,7 +31609,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -32195,7 +32211,7 @@ export namespace Clutter {
          * @param factor the progress factor, between 0 and 1
          * @virtual
          */
-        vfunc_compute_value(factor: number): [boolean, unknown];
+        vfunc_compute_value(factor: number): [boolean, GObject.Value | any];
         /**
          * Validates the initial and final values of `interval` against
          * a {@link GObject.ParamSpec}.
@@ -32334,7 +32350,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -32343,7 +32359,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -32751,7 +32767,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -32778,7 +32794,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -33330,7 +33346,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -33357,7 +33373,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -33494,7 +33510,7 @@ export namespace Clutter {
          * @param mode the easing mode of the animation
          * @virtual
          */
-        vfunc_begin_animation(duration: number, mode: bigint | number): Alpha;
+        vfunc_begin_animation(duration: number, mode: number): Alpha;
         /**
          * Ends an animation started by `clutter_layout_manager_begin_animation()`
          *
@@ -33863,7 +33879,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -33872,7 +33888,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -34280,7 +34296,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -34307,7 +34323,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -34733,7 +34749,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -34742,7 +34758,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -35150,7 +35166,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -35177,7 +35193,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -35307,7 +35323,7 @@ export namespace Clutter {
          * @param column column number to retrieve the value from
          * @virtual
          */
-        vfunc_get_value(column: number): unknown;
+        vfunc_get_value(column: number): GObject.Value | any;
         /**
          * Gets whether the current iterator is at the beginning of the model
          * to which it belongs.
@@ -35341,7 +35357,7 @@ export namespace Clutter {
          * @param value new value for the cell
          * @virtual
          */
-        vfunc_set_value(column: number, value: GObject.Value | any): void;
+        vfunc_set_value(column: number, value: unknown): void;
 
         // Methods
 
@@ -36899,7 +36915,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -36926,7 +36942,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -37269,10 +37285,10 @@ export namespace Clutter {
         vfunc_animate_property(
             animation: Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -37286,7 +37302,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -37302,14 +37318,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -37629,7 +37649,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -37638,7 +37658,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -38046,7 +38066,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38073,7 +38093,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -38937,10 +38957,10 @@ export namespace Clutter {
         vfunc_animate_property(
             animation: Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -38954,7 +38974,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -38970,14 +38990,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -39297,7 +39321,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -39306,7 +39330,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -39714,7 +39738,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -39741,7 +39765,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -41865,7 +41889,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -41892,7 +41916,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -42343,7 +42367,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -42352,7 +42376,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -42760,7 +42784,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -42787,7 +42811,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -44592,10 +44616,10 @@ export namespace Clutter {
         vfunc_animate_property(
             animation: Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -44609,7 +44633,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -44625,14 +44649,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -44952,7 +44980,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -44961,7 +44989,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -45369,7 +45397,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -45396,7 +45424,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -45563,7 +45591,7 @@ export namespace Clutter {
          * @param n_bytes
          * @virtual
          */
-        vfunc_get_text(n_bytes: bigint | number): string;
+        vfunc_get_text(n_bytes: number): string;
         /**
          * Inserts `n_chars` characters of `chars` into the contents of the
          * buffer, at position `position`.
@@ -46395,10 +46423,10 @@ export namespace Clutter {
         vfunc_animate_property(
             animation: Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -46412,7 +46440,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -46428,14 +46456,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -46755,7 +46787,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -46764,7 +46796,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -47172,7 +47204,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -47199,7 +47231,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -48126,7 +48158,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -48135,7 +48167,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -48543,7 +48575,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -48570,7 +48602,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -48857,7 +48889,7 @@ export namespace Clutter {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -48866,7 +48898,7 @@ export namespace Clutter {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -49274,7 +49306,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -49301,7 +49333,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -49817,7 +49849,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -49844,7 +49876,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -52885,10 +52917,10 @@ export namespace Clutter {
             vfunc_animate_property(
                 animation: Animation,
                 property_name: string,
-                initial_value: GObject.Value | any,
-                final_value: GObject.Value | any,
+                initial_value: unknown,
+                final_value: unknown,
                 progress: number,
-                value: GObject.Value | any,
+                value: unknown,
             ): boolean;
             /**
              * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -52902,7 +52934,7 @@ export namespace Clutter {
              * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
              * @virtual
              */
-            vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+            vfunc_get_initial_state(property_name: string, value: unknown): void;
             /**
              * Asks a {@link Clutter.Animatable} implementation to interpolate a
              * a named property between the initial and final values of
@@ -52918,14 +52950,18 @@ export namespace Clutter {
              * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
              * @virtual
              */
-            vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+            vfunc_interpolate_value(
+                property_name: string,
+                interval: Interval,
+                progress: number,
+            ): [boolean, GObject.Value | any];
             /**
              * Sets the current state of `property_name` to `value`
              * @param property_name the name of the animatable property to set
              * @param value the value of the animatable property to set
              * @virtual
              */
-            vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+            vfunc_set_final_state(property_name: string, value: unknown): void;
         }
 
         // Constructor properties interface
@@ -53700,7 +53736,7 @@ export namespace Clutter {
              * @param node the JSON node to be parsed
              * @virtual
              */
-            vfunc_parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+            vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
             /**
              * Overrides the common properties setting. The underlying virtual
              * function should be used when implementing custom properties.
@@ -53709,7 +53745,7 @@ export namespace Clutter {
              * @param value the value of the property
              * @virtual
              */
-            vfunc_set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
+            vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
             /**
              * Sets `id_` as the unique Clutter script it for this instance of
              * {@link Clutter.ScriptableIface}.

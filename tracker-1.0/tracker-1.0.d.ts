@@ -762,7 +762,7 @@ export namespace Tracker {
          * @param column
          * @virtual
          */
-        vfunc_get_string(column: number): [string, number];
+        vfunc_get_string(column: number): [string, bigint | number];
         /**
          * @param cancellable
          * @virtual
@@ -791,7 +791,7 @@ export namespace Tracker {
          * @param column
          * @virtual
          */
-        vfunc_get_integer(column: number): number;
+        vfunc_get_integer(column: number): bigint | number;
         /**
          * @param column
          * @virtual

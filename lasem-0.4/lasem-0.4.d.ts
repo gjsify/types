@@ -1461,7 +1461,7 @@ export namespace Lasem {
 
         // Fields
 
-        size: bigint | number;
+        size: number;
     }
 
     /**

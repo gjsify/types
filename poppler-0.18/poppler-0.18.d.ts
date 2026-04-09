@@ -3212,7 +3212,7 @@ export namespace Poppler {
 
         name: string;
         description: string;
-        size: bigint | number;
+        size: number;
         mtime: GLib.Time;
         ctime: GLib.Time;
 

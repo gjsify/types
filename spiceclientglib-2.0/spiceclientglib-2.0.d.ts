@@ -583,7 +583,7 @@ export namespace SpiceClientGLib {
         port: PortChannel,
         buffer: Uint8Array | string,
         cancellable?: Gio.Cancellable | null,
-    ): globalThis.Promise<bigint | number>;
+    ): globalThis.Promise<number>;
     /**
      * Request an asynchronous write of count bytes from `buffer` into the
      * `port`. When the operation is finished `callback` will be called. You
@@ -619,7 +619,7 @@ export namespace SpiceClientGLib {
         buffer: Uint8Array | string,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<PortChannel> | null,
-    ): globalThis.Promise<bigint | number> | void;
+    ): globalThis.Promise<number> | void;
     /**
      * Finishes a port write operation.
      * @param port a {@link SpiceClientGLib.PortChannel}
@@ -2445,10 +2445,7 @@ export namespace SpiceClientGLib {
          * @param buffer the buffer containing the data to write
          * @param cancellable optional GCancellable object, NULL to ignore
          */
-        write_async(
-            buffer: Uint8Array | string,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<bigint | number>;
+        write_async(buffer: Uint8Array | string, cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Request an asynchronous write of count bytes from `buffer` into the
          * `port`. When the operation is finished `callback` will be called. You
@@ -2476,7 +2473,7 @@ export namespace SpiceClientGLib {
             buffer: Uint8Array | string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<bigint | number> | void;
+        ): globalThis.Promise<number> | void;
         /**
          * Finishes a port write operation.
          * @param result a {@link Gio.AsyncResult}
@@ -4461,7 +4458,7 @@ export namespace SpiceClientGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4488,7 +4485,7 @@ export namespace SpiceClientGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

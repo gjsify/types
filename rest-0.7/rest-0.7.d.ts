@@ -1185,7 +1185,7 @@ export namespace Rest {
          * {@link Rest.ProxyCall}.
          * @virtual
          */
-        vfunc_serialize_params(): [boolean, string, string, number];
+        vfunc_serialize_params(): [boolean, string, string, bigint | number];
 
         // Methods
 

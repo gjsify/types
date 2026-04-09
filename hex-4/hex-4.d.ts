@@ -1344,7 +1344,7 @@ export namespace Hex {
          * @param value
          * @virtual
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
@@ -1750,7 +1750,7 @@ export namespace Hex {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1777,7 +1777,7 @@ export namespace Hex {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1930,9 +1930,9 @@ export namespace Hex {
 
         // Fields
 
-        start: bigint | number;
-        end: bigint | number;
-        rep_len: bigint | number;
+        start: number;
+        end: number;
+        rep_len: number;
         lower_nibble: boolean;
         insert: boolean;
         type: ChangeType;
@@ -1956,12 +1956,12 @@ export namespace Hex {
         // Fields
 
         found: boolean;
-        start: bigint | number;
+        start: number;
         what: Uint8Array;
-        len: bigint | number;
+        len: number;
         flags: SearchFlags;
-        offset: bigint | number;
-        found_len: bigint | number;
+        offset: number;
+        found_len: number;
         found_msg: string;
         not_found_msg: string;
 
@@ -1970,12 +1970,12 @@ export namespace Hex {
         constructor(
             properties?: Partial<{
                 found: boolean;
-                start: bigint | number;
+                start: number;
                 what: Uint8Array;
-                len: bigint | number;
+                len: number;
                 flags: SearchFlags;
-                offset: bigint | number;
-                found_len: bigint | number;
+                offset: number;
+                found_len: number;
                 found_msg: string;
                 not_found_msg: string;
             }>,
@@ -2023,19 +2023,19 @@ export namespace Hex {
              * @param offset offset position of the data being requested within the payload
              * @virtual
              */
-            vfunc_get_byte(offset: bigint | number): number;
+            vfunc_get_byte(offset: number): number;
             /**
              * Get data of a particular size at a particular offset within the buffer.
              * @param offset offset position of the data being requested within the payload
              * @param len size in bytes of the requested data
              * @virtual
              */
-            vfunc_get_data(offset: bigint | number, len: bigint | number): string;
+            vfunc_get_data(offset: number, len: number): string;
             /**
              * Get the size of the payload of the buffer, in bytes.
              * @virtual
              */
-            vfunc_get_payload_size(): number;
+            vfunc_get_payload_size(): bigint | number;
             /**
              * Read the {@link Gio.File}, previously set, into the buffer. This method will block
              * until the operation is complete. For a non-blocking version, use
@@ -2075,7 +2075,7 @@ export namespace Hex {
              * @param data a pointer to   the data being provided
              * @virtual
              */
-            vfunc_set_data(offset: bigint | number, rep_len: bigint | number, data: Uint8Array | string): boolean;
+            vfunc_set_data(offset: number, rep_len: number, data: Uint8Array): boolean;
             /**
              * Set the {@link Gio.File} to be utilized by the buffer. Once it has been set,
              * you can read it into the buffer with {@link Hex.Buffer.read} or

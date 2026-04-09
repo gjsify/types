@@ -952,7 +952,7 @@ export namespace GUPnP {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -979,7 +979,7 @@ export namespace GUPnP {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2071,7 +2071,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable': (arg0: string, arg1: unknown) => void;
             'notify::root-device': (pspec: GObject.ParamSpec) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
@@ -2160,7 +2160,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable::root-device': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::root-device': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -2168,7 +2168,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable::context': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::context': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -2176,7 +2176,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable::document': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::document': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -2184,7 +2184,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable::element': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::element': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -2192,7 +2192,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable::location': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::location': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -2200,7 +2200,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable::service-type': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::service-type': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -2208,7 +2208,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable::udn': (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::udn': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -2216,8 +2216,8 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            'query-variable::url-base': (arg0: string, arg1: GObject.Value) => void;
-            [key: `query-variable::${string}`]: (arg0: string, arg1: GObject.Value) => void;
+            'query-variable::url-base': (arg0: string, arg1: unknown) => void;
+            [key: `query-variable::${string}`]: (arg0: string, arg1: unknown) => void;
         }
 
         // Constructor properties interface
@@ -2297,7 +2297,7 @@ export namespace GUPnP {
          * @param value
          * @virtual
          */
-        vfunc_query_variable(variable: string, value: GObject.Value | any): void;
+        vfunc_query_variable(variable: string, value: unknown): void;
 
         // Methods
 

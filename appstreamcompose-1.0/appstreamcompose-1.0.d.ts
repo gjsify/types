@@ -1362,7 +1362,7 @@ export namespace AppStreamCompose {
          * @param filename The file to read data for.
          * @virtual
          */
-        vfunc_read_data(filename: string): GLib.Bytes;
+        vfunc_read_data(filename: string): GLib.Bytes | Uint8Array;
 
         // Methods
 

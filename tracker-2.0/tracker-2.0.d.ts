@@ -845,7 +845,7 @@ export namespace Tracker {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -872,7 +872,7 @@ export namespace Tracker {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1949,7 +1949,7 @@ export namespace Tracker {
          * @param column
          * @virtual
          */
-        vfunc_get_string(column: number): [string | null, number];
+        vfunc_get_string(column: number): [string | null, bigint | number];
         /**
          * @param cancellable
          * @virtual
@@ -1978,7 +1978,7 @@ export namespace Tracker {
          * @param column
          * @virtual
          */
-        vfunc_get_integer(column: number): number;
+        vfunc_get_integer(column: number): bigint | number;
         /**
          * @param column
          * @virtual
@@ -2135,7 +2135,7 @@ export namespace Tracker {
          * @param value
          * @virtual
          */
-        vfunc_bind_int(name: string, value: bigint | number): void;
+        vfunc_bind_int(name: string, value: number): void;
         /**
          * @param name
          * @param value

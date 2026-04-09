@@ -1846,7 +1846,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1873,7 +1873,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7468,7 +7468,7 @@ export namespace OSTree {
             flags: Gio.FileMeasureFlags,
             cancellable: Gio.Cancellable | null,
             progress_callback: Gio.FileMeasureProgressCallback | null,
-        ): [boolean, number, number, number];
+        ): [boolean, bigint | number, bigint | number, bigint | number];
         /**
          * Collects the results from an earlier call to
          * `g_file_measure_disk_usage_async()`.  See `g_file_measure_disk_usage()` for
@@ -7476,7 +7476,9 @@ export namespace OSTree {
          * @param result the {@link Gio.AsyncResult} passed to your {@link Gio.AsyncReadyCallback}
          * @virtual
          */
-        vfunc_measure_disk_usage_finish(result: Gio.AsyncResult): [boolean, number, number, number];
+        vfunc_measure_disk_usage_finish(
+            result: Gio.AsyncResult,
+        ): [boolean, bigint | number, bigint | number, bigint | number];
         /**
          * Obtains a directory monitor for the given file.
          * This may fail if directory monitoring is not supported.
@@ -8832,7 +8834,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8859,7 +8861,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9484,7 +9486,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9511,7 +9513,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10513,7 +10515,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10540,7 +10542,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10923,11 +10925,11 @@ export namespace OSTree {
         metadata_objects_written: number;
         content_objects_total: number;
         content_objects_written: number;
-        content_bytes_written: bigint | number;
-        padding1: bigint | number;
-        padding2: bigint | number;
-        padding3: bigint | number;
-        padding4: bigint | number;
+        content_bytes_written: number;
+        padding1: number;
+        padding2: number;
+        padding3: number;
+        padding4: number;
     }
 
     /**
@@ -10941,7 +10943,7 @@ export namespace OSTree {
         crcmatches: number;
         bufmatches: number;
         total: number;
-        match_size: bigint | number;
+        match_size: number;
         matches: any[];
     }
 

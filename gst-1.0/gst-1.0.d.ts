@@ -7584,7 +7584,7 @@ export namespace Gst {
          * @param params optional parameters
          * @virtual
          */
-        vfunc_alloc(size: bigint | number, params?: AllocationParams | null): Memory | null;
+        vfunc_alloc(size: number, params?: AllocationParams | null): Memory | null;
         /**
          * Free `memory` that was previously allocated with `gst_allocator_alloc()`.
          * @param memory the memory to free
@@ -8568,7 +8568,7 @@ export namespace Gst {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8595,7 +8595,7 @@ export namespace Gst {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10172,7 +10172,7 @@ export namespace Gst {
          * @param values array to put control-values in
          * @virtual
          */
-        vfunc_get_g_value_array(timestamp: ClockTime, interval: ClockTime, values: (GObject.Value | any)[]): boolean;
+        vfunc_get_g_value_array(timestamp: ClockTime, interval: ClockTime, values: unknown[]): boolean;
         /**
          * Gets the value for the given controlled property at the requested time.
          * @param timestamp the time the control-change should be read from
@@ -15490,7 +15490,7 @@ export namespace Gst {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15517,7 +15517,7 @@ export namespace Gst {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17906,18 +17906,18 @@ export namespace Gst {
         // Fields
 
         flags: MemoryFlags;
-        align: bigint | number;
-        prefix: bigint | number;
-        padding: bigint | number;
+        align: number;
+        prefix: number;
+        padding: number;
 
         // Constructors
 
         constructor(
             properties?: Partial<{
                 flags: MemoryFlags;
-                align: bigint | number;
-                prefix: bigint | number;
-                padding: bigint | number;
+                align: number;
+                prefix: number;
+                padding: number;
             }>,
         );
 
@@ -18109,8 +18109,8 @@ export namespace Gst {
         pts: ClockTime;
         dts: ClockTime;
         duration: ClockTime;
-        offset: bigint | number;
-        offset_end: bigint | number;
+        offset: number;
+        offset_end: number;
 
         // Constructors
 
@@ -18120,8 +18120,8 @@ export namespace Gst {
                 pts: ClockTime;
                 dts: ClockTime;
                 duration: ClockTime;
-                offset: bigint | number;
-                offset_end: bigint | number;
+                offset: number;
+                offset_end: number;
             }>,
         );
 
@@ -18785,8 +18785,8 @@ export namespace Gst {
         // Fields
 
         format: Format;
-        start: bigint | number;
-        stop: bigint | number;
+        start: number;
+        stop: number;
         flags: BufferPoolAcquireFlags;
     }
 
@@ -18829,7 +18829,7 @@ export namespace Gst {
         // Fields
 
         data: number;
-        len: bigint | number;
+        len: number;
     }
 
     /**
@@ -20000,7 +20000,7 @@ export namespace Gst {
         // Fields
 
         type: EventType;
-        timestamp: bigint | number;
+        timestamp: number;
         seqnum: number;
 
         // Constructors
@@ -20009,7 +20009,7 @@ export namespace Gst {
             properties?: Partial<{
                 mini_object: MiniObject;
                 type: EventType;
-                timestamp: bigint | number;
+                timestamp: number;
                 seqnum: number;
             }>,
         );
@@ -20779,8 +20779,8 @@ export namespace Gst {
 
         flags: MapFlags;
         data: Uint8Array;
-        size: bigint | number;
-        maxsize: bigint | number;
+        size: number;
+        maxsize: number;
         user_data: any[];
 
         // Methods
@@ -20844,10 +20844,10 @@ export namespace Gst {
         // Fields
 
         allocator: Allocator;
-        maxsize: bigint | number;
-        align: bigint | number;
-        offset: bigint | number;
-        size: bigint | number;
+        maxsize: number;
+        align: number;
+        offset: number;
+        size: number;
 
         // Constructors
 
@@ -21010,7 +21010,7 @@ export namespace Gst {
         // Fields
 
         type: MessageType;
-        timestamp: bigint | number;
+        timestamp: number;
         src: Object;
         seqnum: number;
 
@@ -21861,7 +21861,7 @@ export namespace Gst {
 
         api: GObject.GType;
         type: GObject.GType;
-        size: bigint | number;
+        size: number;
         init_func: MetaInitFunction;
         free_func: MetaFreeFunction;
         transform_func: MetaTransformFunction;
@@ -21896,8 +21896,8 @@ export namespace Gst {
         // Fields
 
         region: boolean;
-        offset: bigint | number;
-        size: bigint | number;
+        offset: number;
+        size: number;
     }
 
     /**
@@ -22093,9 +22093,9 @@ export namespace Gst {
         // Fields
 
         type: PadProbeType;
-        id: bigint | number;
+        id: number;
         data: any;
-        offset: bigint | number;
+        offset: number;
         size: number;
 
         // Methods
@@ -23498,13 +23498,13 @@ export namespace Gst {
         rate: number;
         applied_rate: number;
         format: Format;
-        base: bigint | number;
-        offset: bigint | number;
-        start: bigint | number;
-        stop: bigint | number;
-        time: bigint | number;
-        position: bigint | number;
-        duration: bigint | number;
+        base: number;
+        offset: number;
+        start: number;
+        stop: number;
+        time: number;
+        position: number;
+        duration: number;
 
         // Constructors
 
@@ -23514,13 +23514,13 @@ export namespace Gst {
                 rate: number;
                 applied_rate: number;
                 format: Format;
-                base: bigint | number;
-                offset: bigint | number;
-                start: bigint | number;
-                stop: bigint | number;
-                time: bigint | number;
-                position: bigint | number;
-                duration: bigint | number;
+                base: number;
+                offset: number;
+                start: number;
+                stop: number;
+                time: number;
+                position: number;
+                duration: number;
             }>,
         );
 

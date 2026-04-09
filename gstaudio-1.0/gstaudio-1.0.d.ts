@@ -2222,7 +2222,7 @@ export namespace GstAudio {
 
         element: GstBase.BaseSink;
         ringbuffer: AudioRingBuffer;
-        next_sample: bigint | number;
+        next_sample: number;
         provided_clock: Gst.Clock;
         eos_rendering: boolean;
 
@@ -2450,7 +2450,7 @@ export namespace GstAudio {
 
         element: GstBase.PushSrc;
         ringbuffer: AudioRingBuffer;
-        next_sample: bigint | number;
+        next_sample: number;
         clock: Gst.Clock;
 
         // Constructors
@@ -3108,7 +3108,7 @@ export namespace GstAudio {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3135,7 +3135,7 @@ export namespace GstAudio {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4794,7 +4794,7 @@ export namespace GstAudio {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4821,7 +4821,7 @@ export namespace GstAudio {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4978,7 +4978,7 @@ export namespace GstAudio {
         open: boolean;
         acquired: boolean;
         memory: number;
-        size: bigint | number;
+        size: number;
         samples_per_seg: number;
         empty_seg: number;
         state: number;
@@ -5090,11 +5090,11 @@ export namespace GstAudio {
          * @virtual
          */
         vfunc_commit(
-            sample: bigint | number,
-            data: Uint8Array | string,
+            sample: number,
+            data: Uint8Array,
             out_samples: number,
             accum: number,
-        ): [number, number, number];
+        ): [number, bigint | number, number];
         /**
          * Get the number of samples queued in the audio device. This is
          * usually less than the segment size but can be bigger when the
@@ -5525,7 +5525,7 @@ export namespace GstAudio {
          * @param data the sample data
          * @virtual
          */
-        vfunc_write(data: Uint8Array | string): number;
+        vfunc_write(data: Uint8Array): number;
     }
 
     namespace AudioSrc {
@@ -5635,7 +5635,7 @@ export namespace GstAudio {
          * @param data the sample data
          * @virtual
          */
-        vfunc_read(data: Uint8Array | string): [number, Gst.ClockTime];
+        vfunc_read(data: Uint8Array): [number, Gst.ClockTime];
         /**
          * @virtual
          */
@@ -5718,7 +5718,7 @@ export namespace GstAudio {
 
         // Fields
 
-        n_samples: bigint | number;
+        n_samples: number;
         n_planes: number;
         planes: any;
 
@@ -5906,8 +5906,8 @@ export namespace GstAudio {
         // Fields
 
         format: Gst.Format;
-        start: bigint | number;
-        end: bigint | number;
+        start: number;
+        end: number;
 
         // Static methods
 
@@ -6270,8 +6270,8 @@ export namespace GstAudio {
 
         // Fields
 
-        samples: bigint | number;
-        offsets: bigint | number;
+        samples: number;
+        offsets: number;
 
         // Static methods
 
@@ -6442,8 +6442,8 @@ export namespace GstAudio {
         // Fields
 
         type: AudioRingBufferFormatType;
-        latency_time: bigint | number;
-        buffer_time: bigint | number;
+        latency_time: number;
+        buffer_time: number;
         segsize: number;
         segtotal: number;
         seglatency: number;

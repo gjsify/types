@@ -595,14 +595,14 @@ export namespace GTop {
         socket: number;
         ncpu: number;
         real_ncpu: number;
-        os_version_code: bigint | number;
+        os_version_code: number;
         name: string;
         server_command: string;
         server_host: string;
         server_user: string;
         server_rsh: string;
-        features: bigint | number;
-        server_port: bigint | number;
+        features: number;
+        server_port: number;
         pid: number;
         uid: number;
         euid: number;
@@ -1110,9 +1110,9 @@ export namespace GTop {
 
         // Fields
 
-        command: bigint | number;
-        size: bigint | number;
-        data_size: bigint | number;
+        command: number;
+        size: number;
+        data_size: number;
         parameter: number[];
     }
 
@@ -1124,25 +1124,25 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        total: bigint | number;
-        user: bigint | number;
-        nice: bigint | number;
-        sys: bigint | number;
-        idle: bigint | number;
-        iowait: bigint | number;
-        irq: bigint | number;
-        softirq: bigint | number;
-        frequency: bigint | number;
-        xcpu_total: (bigint | number)[];
-        xcpu_user: (bigint | number)[];
-        xcpu_nice: (bigint | number)[];
-        xcpu_sys: (bigint | number)[];
-        xcpu_idle: (bigint | number)[];
-        xcpu_iowait: (bigint | number)[];
-        xcpu_irq: (bigint | number)[];
-        xcpu_softirq: (bigint | number)[];
-        xcpu_flags: bigint | number;
+        flags: number;
+        total: number;
+        user: number;
+        nice: number;
+        sys: number;
+        idle: number;
+        iowait: number;
+        irq: number;
+        softirq: number;
+        frequency: number;
+        xcpu_total: number[];
+        xcpu_user: number[];
+        xcpu_nice: number[];
+        xcpu_sys: number[];
+        xcpu_idle: number[];
+        xcpu_iowait: number[];
+        xcpu_irq: number[];
+        xcpu_softirq: number[];
+        xcpu_flags: number;
     }
 
     /**
@@ -1153,12 +1153,12 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        xdisk_sectors_read: (bigint | number)[];
-        xdisk_time_read: (bigint | number)[];
-        xdisk_sectors_write: (bigint | number)[];
-        xdisk_time_write: (bigint | number)[];
-        xdisk_flags: bigint | number;
+        flags: number;
+        xdisk_sectors_read: number[];
+        xdisk_time_read: number[];
+        xdisk_sectors_write: number[];
+        xdisk_time_write: number[];
+        xdisk_flags: number;
     }
 
     /**
@@ -1180,15 +1180,15 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        blocks: bigint | number;
-        bfree: bigint | number;
-        bavail: bigint | number;
-        files: bigint | number;
-        ffree: bigint | number;
+        flags: number;
+        blocks: number;
+        bfree: number;
+        bavail: number;
+        files: number;
+        ffree: number;
         block_size: number;
-        read: bigint | number;
-        write: bigint | number;
+        read: number;
+        write: number;
     }
 
     /**
@@ -1199,11 +1199,11 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
+        flags: number;
         loadavg: number[];
-        nr_running: bigint | number;
-        nr_tasks: bigint | number;
-        last_pid: bigint | number;
+        nr_running: number;
+        nr_tasks: number;
+        last_pid: number;
     }
 
     /**
@@ -1221,21 +1221,21 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        start: bigint | number;
-        end: bigint | number;
-        offset: bigint | number;
-        perm: bigint | number;
-        inode: bigint | number;
-        device: bigint | number;
-        size: bigint | number;
-        rss: bigint | number;
-        shared_clean: bigint | number;
-        shared_dirty: bigint | number;
-        private_clean: bigint | number;
-        private_dirty: bigint | number;
-        pss: bigint | number;
-        swap: bigint | number;
+        flags: number;
+        start: number;
+        end: number;
+        offset: number;
+        perm: number;
+        inode: number;
+        device: number;
+        size: number;
+        rss: number;
+        shared_clean: number;
+        shared_dirty: number;
+        private_clean: number;
+        private_dirty: number;
+        pss: number;
+        swap: number;
         filename: number[];
     }
 
@@ -1247,15 +1247,15 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        total: bigint | number;
-        used: bigint | number;
-        free: bigint | number;
-        shared: bigint | number;
-        buffer: bigint | number;
-        cached: bigint | number;
-        user: bigint | number;
-        locked: bigint | number;
+        flags: number;
+        total: number;
+        used: number;
+        free: number;
+        shared: number;
+        buffer: number;
+        cached: number;
+        user: number;
+        locked: number;
     }
 
     /**
@@ -1266,7 +1266,7 @@ export namespace GTop {
 
         // Fields
 
-        dev: bigint | number;
+        dev: number;
         devname: number[];
         mountdir: number[];
         type: number[];
@@ -1280,10 +1280,10 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        number: bigint | number;
-        total: bigint | number;
-        size: bigint | number;
+        flags: number;
+        number: number;
+        total: number;
+        size: number;
     }
 
     /**
@@ -1294,14 +1294,14 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        msgpool: bigint | number;
-        msgmap: bigint | number;
-        msgmax: bigint | number;
-        msgmnb: bigint | number;
-        msgmni: bigint | number;
-        msgssz: bigint | number;
-        msgtql: bigint | number;
+        flags: number;
+        msgpool: number;
+        msgmap: number;
+        msgmax: number;
+        msgmnb: number;
+        msgmni: number;
+        msgssz: number;
+        msgtql: number;
     }
 
     /**
@@ -1312,7 +1312,7 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
+        flags: number;
         number: number;
     }
 
@@ -1324,21 +1324,21 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        if_flags: bigint | number;
+        flags: number;
+        if_flags: number;
         mtu: number;
         subnet: number;
         address: number;
-        packets_in: bigint | number;
-        packets_out: bigint | number;
-        packets_total: bigint | number;
-        bytes_in: bigint | number;
-        bytes_out: bigint | number;
-        bytes_total: bigint | number;
-        errors_in: bigint | number;
-        errors_out: bigint | number;
-        errors_total: bigint | number;
-        collisions: bigint | number;
+        packets_in: number;
+        packets_out: number;
+        packets_total: number;
+        bytes_in: number;
+        bytes_out: number;
+        bytes_total: number;
+        errors_in: number;
+        errors_out: number;
+        errors_total: number;
+        collisions: number;
         address6: Uint8Array;
         prefix6: Uint8Array;
         scope6: number;
@@ -1374,10 +1374,10 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        state: bigint | number;
-        bytes_in: bigint | number;
-        bytes_out: bigint | number;
+        flags: number;
+        state: number;
+        bytes_in: number;
+        bytes_out: number;
     }
 
     /**
@@ -1388,7 +1388,7 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
+        flags: number;
         number: number;
         all: boolean;
     }
@@ -1401,8 +1401,8 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        size: bigint | number;
+        flags: number;
+        size: number;
     }
 
     /**
@@ -1414,12 +1414,12 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        disk_rchar: bigint | number;
-        disk_wchar: bigint | number;
-        disk_rbytes: bigint | number;
-        disk_wbytes: bigint | number;
-        reserved: (bigint | number)[];
+        flags: number;
+        disk_rchar: number;
+        disk_wchar: number;
+        disk_rbytes: number;
+        disk_wbytes: number;
+        reserved: number[];
     }
 
     /**
@@ -1430,15 +1430,15 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        k_flags: bigint | number;
-        min_flt: bigint | number;
-        maj_flt: bigint | number;
-        cmin_flt: bigint | number;
-        cmaj_flt: bigint | number;
-        kstk_esp: bigint | number;
-        kstk_eip: bigint | number;
-        nwchan: bigint | number;
+        flags: number;
+        k_flags: number;
+        min_flt: number;
+        maj_flt: number;
+        cmin_flt: number;
+        cmaj_flt: number;
+        kstk_esp: number;
+        kstk_eip: number;
+        nwchan: number;
         wchan: number[];
     }
 
@@ -1450,10 +1450,10 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        number: bigint | number;
-        total: bigint | number;
-        size: bigint | number;
+        flags: number;
+        number: number;
+        total: number;
+        size: number;
     }
 
     /**
@@ -1464,13 +1464,13 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        size: bigint | number;
-        vsize: bigint | number;
-        resident: bigint | number;
-        share: bigint | number;
-        rss: bigint | number;
-        rss_rlim: bigint | number;
+        flags: number;
+        size: number;
+        vsize: number;
+        resident: number;
+        share: number;
+        rss: number;
+        rss_rlim: number;
     }
 
     /**
@@ -1481,10 +1481,10 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        number: bigint | number;
-        total: bigint | number;
-        size: bigint | number;
+        flags: number;
+        number: number;
+        total: number;
+        size: number;
     }
 
     /**
@@ -1495,15 +1495,15 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        text_rss: bigint | number;
-        shlib_rss: bigint | number;
-        data_rss: bigint | number;
-        stack_rss: bigint | number;
-        dirty_size: bigint | number;
-        start_code: bigint | number;
-        end_code: bigint | number;
-        start_stack: bigint | number;
+        flags: number;
+        text_rss: number;
+        shlib_rss: number;
+        data_rss: number;
+        stack_rss: number;
+        dirty_size: number;
+        start_code: number;
+        end_code: number;
+        start_stack: number;
     }
 
     /**
@@ -1514,11 +1514,11 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        signal: (bigint | number)[];
-        blocked: (bigint | number)[];
-        sigignore: (bigint | number)[];
-        sigcatch: (bigint | number)[];
+        flags: number;
+        signal: number[];
+        blocked: number[];
+        sigignore: number[];
+        sigcatch: number[];
     }
 
     /**
@@ -1529,7 +1529,7 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
+        flags: number;
         cmd: number[];
         state: number;
         uid: number;
@@ -1561,17 +1561,17 @@ export namespace GTop {
 
         // Fields
 
-        start_time: bigint | number;
-        rtime: bigint | number;
-        utime: bigint | number;
-        stime: bigint | number;
-        cutime: bigint | number;
-        cstime: bigint | number;
-        timeout: bigint | number;
-        it_real_value: bigint | number;
-        frequency: bigint | number;
-        xcpu_utime: (bigint | number)[];
-        xcpu_stime: (bigint | number)[];
+        start_time: number;
+        rtime: number;
+        utime: number;
+        stime: number;
+        cutime: number;
+        cstime: number;
+        timeout: number;
+        it_real_value: number;
+        frequency: number;
+        xcpu_utime: number[];
+        xcpu_stime: number[];
     }
 
     /**
@@ -1582,7 +1582,7 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
+        flags: number;
         uid: number;
         euid: number;
         gid: number;
@@ -1611,7 +1611,7 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
+        flags: number;
         number: number;
         root: number[];
         exe: number[];
@@ -1625,10 +1625,10 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        number: bigint | number;
-        total: bigint | number;
-        size: bigint | number;
+        flags: number;
+        number: number;
+        total: number;
+        size: number;
     }
 
     /**
@@ -1639,9 +1639,9 @@ export namespace GTop {
 
         // Fields
 
-        offset: bigint | number;
-        size: bigint | number;
-        data_size: bigint | number;
+        offset: number;
+        size: number;
+        data_size: number;
     }
 
     /**
@@ -1652,17 +1652,17 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        semmap: bigint | number;
-        semmni: bigint | number;
-        semmns: bigint | number;
-        semmnu: bigint | number;
-        semmsl: bigint | number;
-        semopm: bigint | number;
-        semume: bigint | number;
-        semusz: bigint | number;
-        semvmx: bigint | number;
-        semaem: bigint | number;
+        flags: number;
+        semmap: number;
+        semmni: number;
+        semmns: number;
+        semmnu: number;
+        semmsl: number;
+        semopm: number;
+        semume: number;
+        semusz: number;
+        semvmx: number;
+        semaem: number;
     }
 
     /**
@@ -1673,12 +1673,12 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        shmmax: bigint | number;
-        shmmin: bigint | number;
-        shmmni: bigint | number;
-        shmseg: bigint | number;
-        shmall: bigint | number;
+        flags: number;
+        shmmax: number;
+        shmmin: number;
+        shmmni: number;
+        shmseg: number;
+        shmall: number;
     }
 
     /**
@@ -1712,12 +1712,12 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        total: bigint | number;
-        used: bigint | number;
-        free: bigint | number;
-        pagein: bigint | number;
-        pageout: bigint | number;
+        flags: number;
+        total: number;
+        used: number;
+        free: number;
+        pagein: number;
+        pageout: number;
     }
 
     /**
@@ -1728,43 +1728,43 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        features: bigint | number;
-        cpu: bigint | number;
-        mem: bigint | number;
-        swap: bigint | number;
-        uptime: bigint | number;
-        loadavg: bigint | number;
-        shm_limits: bigint | number;
-        msg_limits: bigint | number;
-        sem_limits: bigint | number;
-        proclist: bigint | number;
-        proc_state: bigint | number;
-        proc_uid: bigint | number;
-        proc_mem: bigint | number;
-        proc_time: bigint | number;
-        proc_signal: bigint | number;
-        proc_kernel: bigint | number;
-        proc_segment: bigint | number;
-        proc_args: bigint | number;
-        proc_map: bigint | number;
-        proc_open_files: bigint | number;
-        mountlist: bigint | number;
-        fsusage: bigint | number;
-        netlist: bigint | number;
-        netload: bigint | number;
-        ppp: bigint | number;
-        proc_wd: bigint | number;
-        proc_affinity: bigint | number;
-        proc_io: bigint | number;
-        disk: bigint | number;
-        reserved1: bigint | number;
-        reserved2: bigint | number;
-        reserved3: bigint | number;
-        reserved4: bigint | number;
-        reserved5: bigint | number;
-        reserved6: bigint | number;
-        reserved7: bigint | number;
+        flags: number;
+        features: number;
+        cpu: number;
+        mem: number;
+        swap: number;
+        uptime: number;
+        loadavg: number;
+        shm_limits: number;
+        msg_limits: number;
+        sem_limits: number;
+        proclist: number;
+        proc_state: number;
+        proc_uid: number;
+        proc_mem: number;
+        proc_time: number;
+        proc_signal: number;
+        proc_kernel: number;
+        proc_segment: number;
+        proc_args: number;
+        proc_map: number;
+        proc_open_files: number;
+        mountlist: number;
+        fsusage: number;
+        netlist: number;
+        netload: number;
+        ppp: number;
+        proc_wd: number;
+        proc_affinity: number;
+        proc_io: number;
+        disk: number;
+        reserved1: number;
+        reserved2: number;
+        reserved3: number;
+        reserved4: number;
+        reserved5: number;
+        reserved6: number;
+        reserved7: number;
     }
 
     /**
@@ -1775,8 +1775,8 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
-        ncpu: bigint | number;
+        flags: number;
+        ncpu: number;
     }
 
     /**
@@ -1787,10 +1787,10 @@ export namespace GTop {
 
         // Fields
 
-        flags: bigint | number;
+        flags: number;
         uptime: number;
         idletime: number;
-        boot_time: bigint | number;
+        boot_time: number;
     }
 
     /**

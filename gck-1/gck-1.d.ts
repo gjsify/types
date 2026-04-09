@@ -1433,7 +1433,7 @@ export namespace Gck {
              * @signal
              * @run-last
              */
-            'discard-handle': (arg0: bigint | number) => boolean | void;
+            'discard-handle': (arg0: number) => boolean | void;
             'notify::app-data': (pspec: GObject.ParamSpec) => void;
             'notify::handle': (pspec: GObject.ParamSpec) => void;
             'notify::interaction': (pspec: GObject.ParamSpec) => void;
@@ -3488,7 +3488,7 @@ export namespace Gck {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3515,7 +3515,7 @@ export namespace Gck {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3771,9 +3771,9 @@ export namespace Gck {
 
         // Fields
 
-        type: bigint | number;
+        type: number;
         value: Uint8Array;
-        length: bigint | number;
+        length: number;
 
         // Constructors
 
@@ -4384,9 +4384,9 @@ export namespace Gck {
 
         // Fields
 
-        type: bigint | number;
+        type: number;
         parameter: any;
-        n_parameter: bigint | number;
+        n_parameter: number;
     }
 
     /**
@@ -4403,9 +4403,9 @@ export namespace Gck {
 
         // Fields
 
-        min_key_size: bigint | number;
-        max_key_size: bigint | number;
-        flags: bigint | number;
+        min_key_size: number;
+        max_key_size: number;
+        flags: number;
 
         // Methods
 
@@ -4441,7 +4441,7 @@ export namespace Gck {
         pkcs11_version_major: number;
         pkcs11_version_minor: number;
         manufacturer_id: string;
-        flags: bigint | number;
+        flags: number;
         library_description: string;
         library_version_major: number;
         library_version_minor: number;
@@ -4507,10 +4507,10 @@ export namespace Gck {
 
         // Fields
 
-        slot_id: bigint | number;
-        state: bigint | number;
-        flags: bigint | number;
-        device_error: bigint | number;
+        slot_id: number;
+        state: number;
+        flags: number;
+        device_error: number;
 
         // Methods
 
@@ -4553,7 +4553,7 @@ export namespace Gck {
 
         slot_description: string;
         manufacturer_id: string;
-        flags: bigint | number;
+        flags: number;
         hardware_version_major: number;
         hardware_version_minor: number;
         firmware_version_major: number;
@@ -4598,22 +4598,22 @@ export namespace Gck {
         manufacturer_id: string;
         model: string;
         serial_number: string;
-        flags: bigint | number;
-        max_session_count: bigint | number;
-        session_count: bigint | number;
-        max_rw_session_count: bigint | number;
-        rw_session_count: bigint | number;
-        max_pin_len: bigint | number;
-        min_pin_len: bigint | number;
-        total_public_memory: bigint | number;
-        free_public_memory: bigint | number;
-        total_private_memory: bigint | number;
-        free_private_memory: bigint | number;
+        flags: number;
+        max_session_count: number;
+        session_count: number;
+        max_rw_session_count: number;
+        rw_session_count: number;
+        max_pin_len: number;
+        min_pin_len: number;
+        total_public_memory: number;
+        free_public_memory: number;
+        total_private_memory: number;
+        free_private_memory: number;
         hardware_version_major: number;
         hardware_version_minor: number;
         firmware_version_major: number;
         firmware_version_minor: number;
-        utc_time: bigint | number;
+        utc_time: number;
 
         // Methods
 

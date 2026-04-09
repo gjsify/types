@@ -692,7 +692,7 @@ export namespace SugarGestures {
         // Fields
 
         device: Gdk.Device;
-        start_time: bigint | number;
+        start_time: number;
         x: number;
         y: number;
         root_x: number;

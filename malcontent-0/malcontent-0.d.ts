@@ -350,7 +350,7 @@ export namespace Malcontent {
              * @since 0.3.0
              * @run-last
              */
-            'app-filter-changed': (arg0: bigint | number) => void;
+            'app-filter-changed': (arg0: number) => void;
             /**
              * Emitted when the session limits stored for a user change.
              *
@@ -360,7 +360,7 @@ export namespace Malcontent {
              * @since 0.14.0
              * @run-last
              */
-            'session-limits-changed': (arg0: bigint | number) => void;
+            'session-limits-changed': (arg0: number) => void;
             /**
              * Emitted when the web filter stored for a user changes.
              *
@@ -370,7 +370,7 @@ export namespace Malcontent {
              * @since 0.14.0
              * @run-last
              */
-            'web-filter-changed': (arg0: bigint | number) => void;
+            'web-filter-changed': (arg0: number) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
 

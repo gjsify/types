@@ -1283,7 +1283,7 @@ export namespace Modulemd {
         /**
          * @virtual
          */
-        vfunc_get_mdversion(): number;
+        vfunc_get_mdversion(): bigint | number;
         /**
          * @virtual
          */
@@ -2216,7 +2216,7 @@ export namespace Modulemd {
         /**
          * @virtual
          */
-        vfunc_get_mdversion(): number;
+        vfunc_get_mdversion(): bigint | number;
         /**
          * Verifies that all stored values are internally consistent and that the
          * module is sufficiently-complete for emitting. This function is called

@@ -1361,7 +1361,7 @@ export namespace IAnjuta {
         file: string;
         line: number;
         'function': string;
-        address: bigint | number;
+        address: number;
         enable: boolean;
         ignore: number;
         times: number;
@@ -1386,7 +1386,7 @@ export namespace IAnjuta {
         line: number;
         'function': string;
         library: string;
-        address: bigint | number;
+        address: number;
     }
 
     /**
@@ -1402,7 +1402,7 @@ export namespace IAnjuta {
 
         // Fields
 
-        address: bigint | number;
+        address: number;
         label: string;
         text: string;
     }
@@ -1431,7 +1431,7 @@ export namespace IAnjuta {
 
         // Fields
 
-        address: bigint | number;
+        address: number;
         length: number;
         data: string;
     }
@@ -1987,7 +1987,7 @@ export namespace IAnjuta {
              * @param line
              * @virtual
              */
-            vfunc_location_changed(address: bigint | number, uri: string, line: number): void;
+            vfunc_location_changed(address: number, uri: string, line: number): void;
             /**
              * @virtual
              */
@@ -2004,7 +2004,7 @@ export namespace IAnjuta {
              * @param line
              * @virtual
              */
-            vfunc_program_moved(pid: number, tid: number, address: bigint | number, file: string, line: number): void;
+            vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void;
             /**
              * @virtual
              */
@@ -2200,7 +2200,7 @@ export namespace IAnjuta {
              * @param line
              * @virtual
              */
-            vfunc_program_moved(pid: number, tid: number, address: bigint | number, file: string, line: number): void;
+            vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void;
             /**
              * @virtual
              */
@@ -2540,13 +2540,13 @@ export namespace IAnjuta {
              * @param address Run from this addresss
              * @virtual
              */
-            vfunc_run_from_address(address: bigint | number): boolean;
+            vfunc_run_from_address(address: number): boolean;
             /**
              * Start the program until it reachs the address address
              * @param address Run to this addresss
              * @virtual
              */
-            vfunc_run_to_address(address: bigint | number): boolean;
+            vfunc_run_to_address(address: number): boolean;
             /**
              * Execute one assembler instruction in the program.
              * @virtual
@@ -6543,7 +6543,7 @@ export namespace IAnjuta {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
     }
 
     export const Project: ProjectNamespace & {
