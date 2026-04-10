@@ -190,7 +190,7 @@ export namespace Xfconf {
      * ID number.  See `xfconf_g_property_bind()`.
      * @param id A binding ID number.
      */
-    function property_unbind(id: number): void;
+    function property_unbind(id: bigint | number): void;
     /**
      * Unbinds all Xfconf channel bindings (see `xfconf_g_property_bind()`)
      * to `object`.  If `object` is an {@link Xfconf.Channel}, it will unbind all
@@ -258,7 +258,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            'property-changed': (arg0: string, arg1: GObject.Value) => void;
+            'property-changed': (arg0: string, arg1: unknown) => void;
             'notify::channel-name': (pspec: GObject.ParamSpec) => void;
             'notify::is-singleton': (pspec: GObject.ParamSpec) => void;
             'notify::property-base': (pspec: GObject.ParamSpec) => void;
@@ -273,7 +273,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            'property-changed::channel-name': (arg0: string, arg1: GObject.Value) => void;
+            'property-changed::channel-name': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever a property on `channel` has changed.  If
              * the change was caused by the removal of `property`, `value`
@@ -285,7 +285,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            'property-changed::is-singleton': (arg0: string, arg1: GObject.Value) => void;
+            'property-changed::is-singleton': (arg0: string, arg1: unknown) => void;
             /**
              * Emitted whenever a property on `channel` has changed.  If
              * the change was caused by the removal of `property`, `value`
@@ -297,8 +297,8 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            'property-changed::property-base': (arg0: string, arg1: GObject.Value) => void;
-            [key: `property-changed::${string}`]: (arg0: string, arg1: GObject.Value) => void;
+            'property-changed::property-base': (arg0: string, arg1: unknown) => void;
+            [key: `property-changed::${string}`]: (arg0: string, arg1: unknown) => void;
         }
 
         // Constructor properties interface
@@ -524,7 +524,7 @@ export namespace Xfconf {
          * @param default_value A fallback value.
          * @returns The uint64 value, or, if `property` is not in `channel` or if its type does not match,          `default_value` is returned.
          */
-        get_uint64(property: string, default_value: number): number;
+        get_uint64(property: string, default_value: bigint | number): number;
         /**
          * Checks to see if `property` exists on `channel`.
          * @param property A property name.
@@ -659,7 +659,7 @@ export namespace Xfconf {
          * @param value The value to set.
          * @returns `true` on success, `false` if an error occured.
          */
-        set_uint64(property: string, value: number): boolean;
+        set_uint64(property: string, value: bigint | number): boolean;
     }
 
     namespace Int16 {

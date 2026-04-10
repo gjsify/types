@@ -301,11 +301,11 @@ export namespace RygelRenderer {
             /**
              * @virtual
              */
-            vfunc_get_duration(): number;
+            vfunc_get_duration(): bigint | number;
             /**
              * @virtual
              */
-            vfunc_get_size(): number;
+            vfunc_get_size(): bigint | number;
             /**
              * @virtual
              */
@@ -344,11 +344,11 @@ export namespace RygelRenderer {
             /**
              * @virtual
              */
-            vfunc_get_position(): number;
+            vfunc_get_position(): bigint | number;
             /**
              * @virtual
              */
-            vfunc_get_byte_position(): number;
+            vfunc_get_byte_position(): bigint | number;
             /**
              * @virtual
              */
@@ -371,8 +371,8 @@ export namespace RygelRenderer {
             playbackSpeed: string;
             uri: string;
             volume: number;
-            duration: number;
-            size: number;
+            duration: bigint | number;
+            size: bigint | number;
             metadata: string;
             mime_type: string;
             mimeType: string;
@@ -382,9 +382,9 @@ export namespace RygelRenderer {
             canSeekBytes: boolean;
             content_features: string;
             contentFeatures: string;
-            position: number;
-            byte_position: number;
-            bytePosition: number;
+            position: bigint | number;
+            byte_position: bigint | number;
+            bytePosition: bigint | number;
             user_agent: string;
             userAgent: string;
         }
@@ -476,11 +476,11 @@ export namespace RygelRenderer {
         /**
          * @param time
          */
-        seek(time: number): boolean;
+        seek(time: bigint | number): boolean;
         /**
          * @param bytes
          */
-        seek_bytes(bytes: number): boolean;
+        seek_bytes(bytes: bigint | number): boolean;
         get_protocols(): string[];
         get_mime_types(): string[];
         /**

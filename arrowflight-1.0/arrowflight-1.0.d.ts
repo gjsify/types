@@ -281,7 +281,7 @@ export namespace ArrowFlight {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            expression: GLib.Bytes;
+            expression: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -298,7 +298,7 @@ export namespace ArrowFlight {
          * @since 5.0.0
          */
         get expression(): GLib.Bytes;
-        set expression(val: GLib.Bytes);
+        set expression(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.
@@ -601,8 +601,8 @@ export namespace ArrowFlight {
             schema: Arrow.Schema,
             descriptor: Descriptor,
             endpoints: Endpoint[],
-            total_records: number,
-            total_bytes: number,
+            total_records: bigint | number,
+            total_bytes: bigint | number,
         ): Info;
 
         // Signals
@@ -1301,7 +1301,7 @@ export namespace ArrowFlight {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: GLib.Bytes;
+            data: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -1319,7 +1319,7 @@ export namespace ArrowFlight {
          * @since 5.0.0
          */
         get data(): GLib.Bytes;
-        set data(val: GLib.Bytes);
+        set data(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.

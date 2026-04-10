@@ -720,7 +720,7 @@ export namespace AtrilDocument {
          * @param utime a `gint64`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: number): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -977,7 +977,7 @@ export namespace AtrilDocument {
          * @param utime a `gint64`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: number): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1241,7 +1241,7 @@ export namespace AtrilDocument {
          * @param utime a `gint64`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: number): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
@@ -1272,10 +1272,10 @@ export namespace AtrilDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ctime: number;
+            ctime: bigint | number;
             data: any;
             description: string;
-            mtime: number;
+            mtime: bigint | number;
             name: string;
             size: number;
         }
@@ -1292,7 +1292,7 @@ export namespace AtrilDocument {
         /**
          * @construct-only
          */
-        set ctime(val: number);
+        set ctime(val: bigint | number);
         /**
          * @construct-only
          */
@@ -1304,7 +1304,7 @@ export namespace AtrilDocument {
         /**
          * @construct-only
          */
-        set mtime(val: number);
+        set mtime(val: bigint | number);
         /**
          * @construct-only
          */
@@ -1336,9 +1336,9 @@ export namespace AtrilDocument {
         static ['new'](
             name: string,
             description: string,
-            mtime: number,
-            ctime: number,
-            size: number,
+            mtime: bigint | number,
+            ctime: bigint | number,
+            size: bigint | number,
             data?: any | null,
         ): Attachment;
 
@@ -1475,7 +1475,7 @@ export namespace AtrilDocument {
         /**
          * @param utime
          */
-        static misc_format_date(utime: number): string;
+        static misc_format_date(utime: bigint | number): string;
         /**
          * @param width the desired width
          * @param height the desired height

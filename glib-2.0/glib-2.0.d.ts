@@ -4862,7 +4862,11 @@ export namespace GLib {
      * @returns the allocated memory
      * @since 2.72
      */
-    function aligned_alloc(n_blocks: number, n_block_bytes: number, alignment: number): any | null;
+    function aligned_alloc(
+        n_blocks: bigint | number,
+        n_block_bytes: bigint | number,
+        alignment: bigint | number,
+    ): any | null;
     /**
      * This function is similar to `g_aligned_alloc()`, but it will
      * also clear the allocated memory before returning it.
@@ -4872,7 +4876,11 @@ export namespace GLib {
      * @returns the allocated, cleared memory
      * @since 2.72
      */
-    function aligned_alloc0(n_blocks: number, n_block_bytes: number, alignment: number): any | null;
+    function aligned_alloc0(
+        n_blocks: bigint | number,
+        n_block_bytes: bigint | number,
+        alignment: bigint | number,
+    ): any | null;
     /**
      * Frees the memory allocated by `g_aligned_alloc()`.
      * @param mem the memory to deallocate
@@ -4894,7 +4902,7 @@ export namespace GLib {
      * @param size size of `mem`, in bytes
      * @since 2.76
      */
-    function aligned_free_sized(mem: any | null, alignment: number, size: number): void;
+    function aligned_free_sized(mem: any | null, alignment: bigint | number, size: bigint | number): void;
     /**
      * Determines the numeric value of a character as a decimal digit. If the
      * character is not a decimal digit according to {@link GLib.ascii_isdigit},
@@ -4970,7 +4978,7 @@ export namespace GLib {
      * @param len length of `str` in bytes, or `-1` if `str` is nul-terminated
      * @returns a newly-allocated string, with all the upper case characters in   `str` converted to lower case. (Note that this is unlike the old   {@link GLib.strdown}, which modified the string in place.)
      */
-    function ascii_strdown(str: string, len: number): string;
+    function ascii_strdown(str: string, len: bigint | number): string;
     /**
      * A convenience function for converting a string to a signed number.
      *
@@ -5000,7 +5008,12 @@ export namespace GLib {
      * @returns true if `str` was a number, false otherwise
      * @since 2.54
      */
-    function ascii_string_to_signed(str: string, base: number, min: number, max: number): [boolean, number];
+    function ascii_string_to_signed(
+        str: string,
+        base: number,
+        min: bigint | number,
+        max: bigint | number,
+    ): [boolean, number];
     /**
      * A convenience function for converting a string to an unsigned number.
      *
@@ -5031,7 +5044,12 @@ export namespace GLib {
      * @returns true if `str` was a number, false otherwise
      * @since 2.54
      */
-    function ascii_string_to_unsigned(str: string, base: number, min: number, max: number): [boolean, number];
+    function ascii_string_to_unsigned(
+        str: string,
+        base: number,
+        min: bigint | number,
+        max: bigint | number,
+    ): [boolean, number];
     /**
      * Compare `s1` and `s2`, ignoring the case of ASCII characters and any
      * characters after the first `n` in each string. If either string is
@@ -5050,7 +5068,7 @@ export namespace GLib {
      * @param n number of characters to compare
      * @returns 0 if the strings match, a negative value if `s1` < `s2`,   or a positive value if `s1` > `s2`
      */
-    function ascii_strncasecmp(s1: string, s2: string, n: number): number;
+    function ascii_strncasecmp(s1: string, s2: string, n: bigint | number): number;
     /**
      * Converts a string to a floating point value.
      *
@@ -5141,7 +5159,7 @@ export namespace GLib {
      * @param len length of `str` in bytes, or `-1` if `str` is nul-terminated
      * @returns a newly-allocated string, with all the lower case characters   in `str` converted to upper case. (Note that this is unlike the old   {@link GLib.strup}, which modified the string in place.)
      */
-    function ascii_strup(str: string, len: number): string;
+    function ascii_strup(str: string, len: bigint | number): string;
     /**
      * Convert a character to ASCII lower case. If the character is not an
      * ASCII upper case letter, it is returned unchanged.
@@ -5225,9 +5243,9 @@ export namespace GLib {
         line: number,
         func: string,
         expr: string,
-        arg1: number,
+        arg1: bigint | number,
         cmp: string,
-        arg2: number,
+        arg2: bigint | number,
         numtype: number,
     ): void;
     /**
@@ -5268,7 +5286,7 @@ export namespace GLib {
         expr: string,
         arg1: string,
         arg2: string,
-        first_wrong_idx: number,
+        first_wrong_idx: bigint | number,
     ): void;
     /**
      * @param domain
@@ -5552,7 +5570,7 @@ export namespace GLib {
      * @returns the value of `atomic` before the add, signed
      * @since 2.30
      */
-    function atomic_pointer_add(atomic: any, val: number): never;
+    function atomic_pointer_add(atomic: any, val: bigint | number): never;
     /**
      * Performs an atomic bitwise 'and' of the value of `atomic` and `val`,
      * storing the result back in `atomic`.
@@ -5573,7 +5591,7 @@ export namespace GLib {
      * @returns the value of `atomic` before the operation, unsigned
      * @since 2.30
      */
-    function atomic_pointer_and(atomic: any, val: number): never;
+    function atomic_pointer_and(atomic: any, val: bigint | number): never;
     /**
      * Compares `atomic` to `oldval` and, if equal, sets it to `newval`.
      * If `atomic` was not equal to `oldval` then no change occurs.
@@ -5666,7 +5684,7 @@ export namespace GLib {
      * @returns the value of `atomic` before the operation, unsigned
      * @since 2.30
      */
-    function atomic_pointer_or(atomic: any, val: number): never;
+    function atomic_pointer_or(atomic: any, val: bigint | number): never;
     /**
      * Sets the value of `atomic` to `newval`.
      *
@@ -5700,7 +5718,7 @@ export namespace GLib {
      * @returns the value of `atomic` before the operation, unsigned
      * @since 2.30
      */
-    function atomic_pointer_xor(atomic: any, val: number): never;
+    function atomic_pointer_xor(atomic: any, val: bigint | number): never;
     /**
      * Atomically acquires a reference on the data pointed by `mem_block`.
      * @param mem_block a pointer to reference counted data
@@ -5721,7 +5739,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory
      * @since 2.58
      */
-    function atomic_rc_box_alloc(block_size: number): any;
+    function atomic_rc_box_alloc(block_size: bigint | number): any;
     /**
      * Allocates `block_size` bytes of memory, and adds atomic
      * reference counting semantics to it.
@@ -5737,7 +5755,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory
      * @since 2.58
      */
-    function atomic_rc_box_alloc0(block_size: number): any;
+    function atomic_rc_box_alloc0(block_size: bigint | number): any;
     /**
      * Allocates a new block of data with atomic reference counting
      * semantics, and copies `block_size` bytes of `mem_block`
@@ -5747,7 +5765,7 @@ export namespace GLib {
      * @returns a pointer to the allocated   memory
      * @since 2.58
      */
-    function atomic_rc_box_dup(block_size: number, mem_block: any): any;
+    function atomic_rc_box_dup(block_size: bigint | number, mem_block: any): any;
     /**
      * Retrieves the size of the reference counted data pointed by `mem_block`.
      * @param mem_block a pointer to reference counted data
@@ -5935,7 +5953,7 @@ export namespace GLib {
      * @param nth_bit the index of the bit to start the search from
      * @returns the index of the first bit set which is higher than `nth_bit`, or -1    if no higher bits are set
      */
-    function bit_nth_lsf(mask: number, nth_bit: number): number;
+    function bit_nth_lsf(mask: bigint | number, nth_bit: number): number;
     /**
      * Find the position of the first bit set in `mask`, searching
      * from (but not including) `nth_bit` downwards. Bits are numbered
@@ -5946,14 +5964,14 @@ export namespace GLib {
      * @param nth_bit the index of the bit to start the search from
      * @returns the index of the first bit set which is lower than `nth_bit`, or -1    if no lower bits are set
      */
-    function bit_nth_msf(mask: number, nth_bit: number): number;
+    function bit_nth_msf(mask: bigint | number, nth_bit: number): number;
     /**
      * Gets the number of bits used to hold `number`,
      * e.g. if `number` is 4, 3 bits are needed.
      * @param number a `guint`
      * @returns the number of bits used to hold `number`
      */
-    function bit_storage(number: number): number;
+    function bit_storage(number: bigint | number): number;
     /**
      * Sets the indicated `lock_bit` in `address`, returning `true` if
      * successful.  If the bit is already set, returns `false` immediately.
@@ -6415,7 +6433,7 @@ export namespace GLib {
     function compute_checksum_for_string(
         checksum_type: ChecksumType | null,
         str: string,
-        length: number,
+        length: bigint | number,
     ): string | null;
     /**
      * Computes the HMAC for a binary `data`. This is a
@@ -6466,7 +6484,7 @@ export namespace GLib {
         digest_type: ChecksumType | null,
         key: Uint8Array | string,
         str: string,
-        length: number,
+        length: bigint | number,
     ): string;
     /**
      * Converts a string from one character set to another.
@@ -6721,7 +6739,7 @@ export namespace GLib {
      * @param date valid {@link GLib.Date}
      * @returns number of characters written to the buffer, or `0` if the buffer was too small
      */
-    function date_strftime(s: string, slen: number, format: string, date: Date): number;
+    function date_strftime(s: string, slen: bigint | number, format: string, date: Date): number;
     /**
      * Returns `true` if the day of the month is valid (a day is valid if it's
      * between 1 and 31 inclusive).
@@ -6874,7 +6892,7 @@ export namespace GLib {
      * @returns The translated string
      * @since 2.18
      */
-    function dngettext(domain: string | null, msgid: string, msgid_plural: string, n: number): string;
+    function dngettext(domain: string | null, msgid: string, msgid_plural: string, n: bigint | number): string;
     /**
      * Compares the two `gdouble` values being pointed to and returns
      * `true` if they are equal.
@@ -6917,7 +6935,7 @@ export namespace GLib {
      * @returns The translated string
      * @since 2.16
      */
-    function dpgettext(domain: string | null, msgctxtid: string, msgidoffset: number): string;
+    function dpgettext(domain: string | null, msgctxtid: string, msgidoffset: bigint | number): string;
     /**
      * This function is a variant of `g_dgettext()` which supports
      * a disambiguating message context. GNU gettext uses the
@@ -6979,7 +6997,7 @@ export namespace GLib {
      */
     function error_domain_register(
         error_type_name: string,
-        error_type_private_size: number,
+        error_type_private_size: bigint | number,
         error_type_init: ErrorInitFunc,
         error_type_copy: ErrorCopyFunc,
         error_type_clear: ErrorClearFunc,
@@ -7012,7 +7030,7 @@ export namespace GLib {
      */
     function error_domain_register_static(
         error_type_name: string,
-        error_type_private_size: number,
+        error_type_private_size: bigint | number,
         error_type_init: ErrorInitFunc,
         error_type_copy: ErrorCopyFunc,
         error_type_clear: ErrorClearFunc,
@@ -7315,7 +7333,7 @@ export namespace GLib {
      * @param len the length of the string, or -1 if the string is                 nul-terminated.
      * @returns The converted string, or `null` on an error.
      */
-    function filename_from_utf8(utf8string: string, len: number): [string, number, number];
+    function filename_from_utf8(utf8string: string, len: bigint | number): [string, number, number];
     /**
      * Converts an absolute filename to an escaped ASCII-encoded URI, with the path
      * component following Section 3.3. of RFC 2396.
@@ -7341,7 +7359,7 @@ export namespace GLib {
      * @param len the length of the string, or -1 if the string is                 nul-terminated (Note that some encodings may allow nul                 bytes to occur inside strings. In that case, using -1                 for the `len` parameter is unsafe)
      * @returns The converted string, or `null` on an error.
      */
-    function filename_to_utf8(opsysstring: string, len: number): [string, number, number];
+    function filename_to_utf8(opsysstring: string, len: bigint | number): [string, number, number];
     /**
      * Locates the first executable named `program` in the user's path, in the
      * same way that `execvp()` would locate it. Returns an allocated string
@@ -7412,7 +7430,7 @@ export namespace GLib {
      * @returns a newly-allocated formatted string containing   a human readable file size
      * @since 2.30
      */
-    function format_size(size: number): string;
+    function format_size(size: bigint | number): string;
     /**
      * Formats a size (for example the size of a file) into a human
      * readable string. Sizes are rounded to the nearest size prefix
@@ -7428,7 +7446,7 @@ export namespace GLib {
      * @since 2.16
      * @deprecated since 2.30: This function is broken due to its use of SI     suffixes to denote IEC units. Use `g_format_size()` instead.
      */
-    function format_size_for_display(size: number): string;
+    function format_size_for_display(size: bigint | number): string;
     /**
      * Formats a size.
      *
@@ -7439,7 +7457,7 @@ export namespace GLib {
      * @returns a newly-allocated formatted string   containing a human readable file size
      * @since 2.30
      */
-    function format_size_full(size: number, flags: FormatSizeFlags | null): string;
+    function format_size_full(size: bigint | number, flags: FormatSizeFlags | null): string;
     /**
      * Frees the memory pointed to by `mem`.
      *
@@ -7473,7 +7491,7 @@ export namespace GLib {
      * @param size size of `mem`, in bytes
      * @since 2.76
      */
-    function free_sized(mem: any | null, size: number): void;
+    function free_sized(mem: any | null, size: bigint | number): void;
     /**
      * A wrapper for the POSIX `freopen()` function. The `freopen()` function
      * opens a file and associates it with an existing stream.
@@ -8337,7 +8355,7 @@ export namespace GLib {
      * @param hook_id a hook ID
      * @returns `true` if the {@link GLib.Hook} was found in the {@link GLib.HookList} and destroyed
      */
-    function hook_destroy(hook_list: HookList, hook_id: number): boolean;
+    function hook_destroy(hook_list: HookList, hook_id: bigint | number): boolean;
     /**
      * Removes one {@link GLib.Hook} from a {@link GLib.HookList}, marking it
      * inactive and calling `g_hook_unref()` on it.
@@ -8633,7 +8651,7 @@ export namespace GLib {
      * @param len the length of the string, or -1 if the string is                 nul-terminated.
      * @returns A newly-allocated buffer containing the converted string,          or `null` on an error, and error will be set.
      */
-    function locale_from_utf8(utf8string: string, len: number): [Uint8Array, number];
+    function locale_from_utf8(utf8string: string, len: bigint | number): [Uint8Array, number];
     /**
      * Converts a string which is in the encoding used for strings by
      * the C runtime (usually the same as that used by the operating
@@ -9269,7 +9287,7 @@ export namespace GLib {
      * @param n_bytes the number of bytes to allocate
      * @returns a pointer to the allocated memory
      */
-    function malloc(n_bytes: number): any | null;
+    function malloc(n_bytes: bigint | number): any | null;
     /**
      * Allocates `n_bytes` bytes of memory, initialized to 0's.
      * If `n_bytes` is 0 it returns `null`.
@@ -9279,7 +9297,7 @@ export namespace GLib {
      * @param n_bytes the number of bytes to allocate
      * @returns a pointer to the allocated memory
      */
-    function malloc0(n_bytes: number): any | null;
+    function malloc0(n_bytes: bigint | number): any | null;
     /**
      * This function is similar to `g_malloc0()`, allocating (`n_blocks` * `n_block_bytes`) bytes,
      * but care is taken to detect possible overflow during multiplication.
@@ -9291,7 +9309,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory
      * @since 2.24
      */
-    function malloc0_n(n_blocks: number, n_block_bytes: number): any | null;
+    function malloc0_n(n_blocks: bigint | number, n_block_bytes: bigint | number): any | null;
     /**
      * This function is similar to `g_malloc()`, allocating (`n_blocks` * `n_block_bytes`) bytes,
      * but care is taken to detect possible overflow during multiplication.
@@ -9303,7 +9321,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory
      * @since 2.24
      */
-    function malloc_n(n_blocks: number, n_block_bytes: number): any | null;
+    function malloc_n(n_blocks: bigint | number, n_block_bytes: bigint | number): any | null;
     function markup_error_quark(): Quark;
     /**
      * Escapes text so that the markup parser will parse it verbatim.
@@ -9324,7 +9342,7 @@ export namespace GLib {
      * @param length length of `text` in bytes, or -1 if the text is nul-terminated
      * @returns a newly allocated string with the escaped text
      */
-    function markup_escape_text(text: string, length: number): string;
+    function markup_escape_text(text: string, length: bigint | number): string;
     /**
      * @deprecated since 2.10
      */
@@ -9375,7 +9393,7 @@ export namespace GLib {
      * @returns a pointer to the newly-allocated copy of the memory
      * @since 2.68
      */
-    function memdup2(mem: any | null, byte_size: number): any | null;
+    function memdup2(mem: any | null, byte_size: bigint | number): any | null;
     /**
      * A wrapper for the POSIX `mkdir()` function. The `mkdir()` function
      * attempts to create a directory with the given name and permissions.
@@ -9517,7 +9535,7 @@ export namespace GLib {
     /**
      * @param location
      */
-    function once_init_enter_impl(location: number): boolean;
+    function once_init_enter_impl(location: bigint | number): boolean;
     /**
      * This functions behaves in the same way as `g_once_init_enter()`, but can
      * can be used to initialize pointers (or `guintptr`) instead of `gsize`.
@@ -9554,7 +9572,7 @@ export namespace GLib {
      * @param result new non-0 value for `*value_location`
      * @since 2.14
      */
-    function once_init_leave(location: any, result: number): any;
+    function once_init_leave(location: any, result: bigint | number): any;
     /**
      * Counterpart to `g_once_init_enter_pointer()`. Expects a location of a static
      * `NULL`-initialized initialization variable, and an initialization value
@@ -9845,7 +9863,12 @@ export namespace GLib {
      * @param compare_func function to compare elements
      * @deprecated since 2.82: `total_elems` is too small to represent larger arrays; use   {@link GLib.sort_array} instead
      */
-    function qsort_with_data(pbase: any, total_elems: number, size: number, compare_func: CompareDataFunc): void;
+    function qsort_with_data(
+        pbase: any,
+        total_elems: number,
+        size: bigint | number,
+        compare_func: CompareDataFunc,
+    ): void;
     /**
      * Gets the {@link GLib.Quark} identifying the given (static) string. If the
      * string does not currently have an associated {@link GLib.Quark}, a new {@link GLib.Quark}
@@ -9951,7 +9974,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory
      * @since 2.58
      */
-    function rc_box_alloc(block_size: number): any;
+    function rc_box_alloc(block_size: bigint | number): any;
     /**
      * Allocates `block_size` bytes of memory, and adds reference
      * counting semantics to it.
@@ -9967,7 +9990,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory
      * @since 2.58
      */
-    function rc_box_alloc0(block_size: number): any;
+    function rc_box_alloc0(block_size: bigint | number): any;
     /**
      * Allocates a new block of data with reference counting
      * semantics, and copies `block_size` bytes of `mem_block`
@@ -9977,7 +10000,7 @@ export namespace GLib {
      * @returns a pointer to the allocated   memory
      * @since 2.58
      */
-    function rc_box_dup(block_size: number, mem_block: any): any;
+    function rc_box_dup(block_size: bigint | number, mem_block: any): any;
     /**
      * Retrieves the size of the reference counted data pointed by `mem_block`.
      * @param mem_block a pointer to reference counted data
@@ -10017,7 +10040,7 @@ export namespace GLib {
      * @param n_bytes new size of the memory in bytes
      * @returns the new address of the allocated memory
      */
-    function realloc(mem: any | null, n_bytes: number): any | null;
+    function realloc(mem: any | null, n_bytes: bigint | number): any | null;
     /**
      * This function is similar to `g_realloc()`, allocating (`n_blocks` * `n_block_bytes`) bytes,
      * but care is taken to detect possible overflow during multiplication.
@@ -10030,7 +10053,7 @@ export namespace GLib {
      * @returns the new address of the allocated memory
      * @since 2.24
      */
-    function realloc_n(mem: any | null, n_blocks: number, n_block_bytes: number): any | null;
+    function realloc_n(mem: any | null, n_blocks: bigint | number, n_block_bytes: bigint | number): any | null;
     /**
      * Compares the current value of `rc` with `val`.
      * @param rc the address of a reference count variable
@@ -10119,7 +10142,7 @@ export namespace GLib {
      * @returns the newly created reference counted string
      * @since 2.58
      */
-    function ref_string_new_len(str: string, len: number): string;
+    function ref_string_new_len(str: string, len: bigint | number): string;
     /**
      * Releases a reference on a string; if it was the last reference, the
      * resources allocated by the string are freed as well.
@@ -10580,7 +10603,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory block, which will   be `null` if and only if `mem_size` is 0
      * @since 2.10
      */
-    function slice_alloc(block_size: number): any | null;
+    function slice_alloc(block_size: bigint | number): any | null;
     /**
      * Allocates a block of memory via `g_slice_alloc()` and initializes
      * the returned memory to 0.
@@ -10591,7 +10614,7 @@ export namespace GLib {
      * @returns a pointer to the allocated block, which will be `null`    if and only if `mem_size` is 0
      * @since 2.10
      */
-    function slice_alloc0(block_size: number): any | null;
+    function slice_alloc0(block_size: bigint | number): any | null;
     /**
      * Allocates a block of memory from the slice allocator
      * and copies `block_size` bytes into it from `mem_block`.
@@ -10605,7 +10628,7 @@ export namespace GLib {
      * @returns a pointer to the allocated memory block,    which will be `null` if and only if `mem_size` is 0
      * @since 2.14
      */
-    function slice_copy(block_size: number, mem_block?: any | null): any | null;
+    function slice_copy(block_size: bigint | number, mem_block?: any | null): any | null;
     /**
      * Frees a block of memory.
      *
@@ -10623,7 +10646,7 @@ export namespace GLib {
      * @param mem_block a pointer to the block to free
      * @since 2.10
      */
-    function slice_free1(block_size: number, mem_block?: any | null): void;
+    function slice_free1(block_size: bigint | number, mem_block?: any | null): void;
     /**
      * Frees a linked list of memory blocks of structure type `type`.
      *
@@ -10643,7 +10666,11 @@ export namespace GLib {
      * @param next_offset the offset of the `next` field in the blocks
      * @since 2.10
      */
-    function slice_free_chain_with_offset(block_size: number, mem_chain: any | null, next_offset: number): void;
+    function slice_free_chain_with_offset(
+        block_size: bigint | number,
+        mem_chain: any | null,
+        next_offset: bigint | number,
+    ): void;
     /**
      * @param ckey
      */
@@ -10653,12 +10680,12 @@ export namespace GLib {
      * @param address
      * @param n_values
      */
-    function slice_get_config_state(ckey: SliceConfig | null, address: number, n_values: number): number;
+    function slice_get_config_state(ckey: SliceConfig | null, address: bigint | number, n_values: number): number;
     /**
      * @param ckey
      * @param value
      */
-    function slice_set_config(ckey: SliceConfig | null, value: number): void;
+    function slice_set_config(ckey: SliceConfig | null, value: bigint | number): void;
     /**
      * @deprecated since 2.10
      */
@@ -11604,7 +11631,7 @@ export namespace GLib {
      * @param dest_size length of `dest` buffer in bytes (not length of existing string   inside `dest`)
      * @returns size of attempted result, which is `MIN (dest_size, strlen   (original dest)) + strlen (src)`, so if `retval` >= `dest_size`,   truncation occurred
      */
-    function strlcat(dest: string, src: string, dest_size: number): number;
+    function strlcat(dest: string, src: string, dest_size: bigint | number): number;
     /**
      * Portability wrapper that calls `strlcpy()` on systems which have it,
      * and emulates `strlcpy()` otherwise. Copies `src` to `dest`; `dest` is
@@ -11625,7 +11652,7 @@ export namespace GLib {
      * @param dest_size length of `dest` in bytes
      * @returns length of `src`
      */
-    function strlcpy(dest: string, src: string, dest_size: number): number;
+    function strlcpy(dest: string, src: string, dest_size: bigint | number): number;
     /**
      * A case-insensitive string comparison, corresponding to the standard
      * `strncasecmp()` function on platforms which support it. It is similar
@@ -11650,14 +11677,14 @@ export namespace GLib {
      * @param n the maximum number of bytes to copy from `str`
      * @returns a newly-allocated buffer containing the first    `n` bytes of `str`
      */
-    function strndup(str: string | null, n: number): string | null;
+    function strndup(str: string | null, n: bigint | number): string | null;
     /**
      * Creates a new string `length` bytes long filled with `fill_char`.
      * @param length the length of the new string
      * @param fill_char the byte to fill the string with
      * @returns a newly-allocated string filled with `fill_char`
      */
-    function strnfill(length: number, fill_char: number): string;
+    function strnfill(length: bigint | number, fill_char: number): string;
     /**
      * Reverses all of the bytes in a string. For example,
      * `g_strreverse ("abcdef")` will result in "fedcba".
@@ -11692,7 +11719,7 @@ export namespace GLib {
      * @param needle the string to search for
      * @returns a pointer to the found occurrence, or    `NULL` if not found
      */
-    function strrstr_len(haystack: string, haystack_len: number, needle: string): string | null;
+    function strrstr_len(haystack: string, haystack_len: bigint | number, needle: string): string | null;
     /**
      * Returns a string describing the given signal, e.g. "Segmentation fault".
      * If the signal is unknown, it returns “unknown signal (<signum\>)”.
@@ -11770,7 +11797,7 @@ export namespace GLib {
      * @param needle the string to search for
      * @returns a pointer to the found occurrence, or    `NULL` if not found
      */
-    function strstr_len(haystack: string, haystack_len: number, needle: string): string | null;
+    function strstr_len(haystack: string, haystack_len: bigint | number, needle: string): string | null;
     /**
      * Converts a string to a floating point value.
      *
@@ -12275,7 +12302,7 @@ export namespace GLib {
         file: string,
         line: number,
         func: string,
-        assertion_flags: number,
+        assertion_flags: bigint | number,
         pattern: string,
     ): void;
     /**
@@ -12316,7 +12343,7 @@ export namespace GLib {
      * @since 2.16
      * @deprecated This function is implemented only on Unix platforms, is not always reliable due to problems inherent in fork-without-exec and doesn't set close-on-exec flag on its file descriptors. Use func@GLib.test_trap_subprocess] instead.
      */
-    function test_trap_fork(usec_timeout: number, test_trap_flags: TestTrapFlags | null): boolean;
+    function test_trap_fork(usec_timeout: bigint | number, test_trap_flags: TestTrapFlags | null): boolean;
     /**
      * Checks the result of the last {@link GLib.test_trap_subprocess} call.
      * @returns true if the last test subprocess terminated successfully
@@ -12348,7 +12375,7 @@ export namespace GLib {
      */
     function test_trap_subprocess(
         test_path: string | null,
-        usec_timeout: number,
+        usec_timeout: bigint | number,
         test_flags: TestSubprocessFlags | null,
     ): void;
     /**
@@ -12450,7 +12477,7 @@ export namespace GLib {
     function test_trap_subprocess_with_envp(
         test_path: string | null,
         envp: string[] | null,
-        usec_timeout: number,
+        usec_timeout: bigint | number,
         test_flags: TestSubprocessFlags | null,
     ): void;
     function thread_error_quark(): Quark;
@@ -12730,7 +12757,7 @@ export namespace GLib {
      * @param n_bytes number of bytes to allocate.
      * @returns the allocated memory, or `null`.
      */
-    function try_malloc(n_bytes: number): any | null;
+    function try_malloc(n_bytes: bigint | number): any | null;
     /**
      * Attempts to allocate `n_bytes`, initialized to 0's, and returns `null` on
      * failure. Contrast with `g_malloc0()`, which aborts the program on failure.
@@ -12738,7 +12765,7 @@ export namespace GLib {
      * @returns the allocated memory, or `null`
      * @since 2.8
      */
-    function try_malloc0(n_bytes: number): any | null;
+    function try_malloc0(n_bytes: bigint | number): any | null;
     /**
      * This function is similar to `g_try_malloc0()`, allocating (`n_blocks` * `n_block_bytes`) bytes,
      * but care is taken to detect possible overflow during multiplication.
@@ -12747,7 +12774,7 @@ export namespace GLib {
      * @returns the allocated memory, or `null`
      * @since 2.24
      */
-    function try_malloc0_n(n_blocks: number, n_block_bytes: number): any | null;
+    function try_malloc0_n(n_blocks: bigint | number, n_block_bytes: bigint | number): any | null;
     /**
      * This function is similar to `g_try_malloc()`, allocating (`n_blocks` * `n_block_bytes`) bytes,
      * but care is taken to detect possible overflow during multiplication.
@@ -12756,7 +12783,7 @@ export namespace GLib {
      * @returns the allocated memory, or `null`.
      * @since 2.24
      */
-    function try_malloc_n(n_blocks: number, n_block_bytes: number): any | null;
+    function try_malloc_n(n_blocks: bigint | number, n_block_bytes: bigint | number): any | null;
     /**
      * Attempts to realloc `mem` to a new size, `n_bytes`, and returns `null`
      * on failure. Contrast with `g_realloc()`, which aborts the program
@@ -12767,7 +12794,7 @@ export namespace GLib {
      * @param n_bytes number of bytes to allocate.
      * @returns the allocated memory, or `null`.
      */
-    function try_realloc(mem: any | null, n_bytes: number): any | null;
+    function try_realloc(mem: any | null, n_bytes: bigint | number): any | null;
     /**
      * This function is similar to `g_try_realloc()`, allocating (`n_blocks` * `n_block_bytes`) bytes,
      * but care is taken to detect possible overflow during multiplication.
@@ -12777,7 +12804,7 @@ export namespace GLib {
      * @returns the allocated memory, or `null`.
      * @since 2.24
      */
-    function try_realloc_n(mem: any | null, n_blocks: number, n_block_bytes: number): any | null;
+    function try_realloc_n(mem: any | null, n_blocks: bigint | number, n_block_bytes: bigint | number): any | null;
     /**
      * Convert a string from UCS-4 to UTF-16.
      *
@@ -12898,7 +12925,7 @@ export namespace GLib {
      * @returns the length of the full decomposition.
      * @since 2.30
      */
-    function unichar_fully_decompose(ch: string, compat: boolean, result_len: number): [number, string];
+    function unichar_fully_decompose(ch: string, compat: boolean, result_len: bigint | number): [number, string];
     /**
      * In Unicode, some characters are "mirrored". This means that their
      * images are mirrored horizontally in text that is laid out from right
@@ -13142,7 +13169,7 @@ export namespace GLib {
      * @returns a newly allocated string of Unicode characters.   `result_len` is set to the resulting length of the string.
      * @deprecated since 2.30: Use the more flexible `g_unichar_fully_decompose()`   instead.
      */
-    function unicode_canonical_decomposition(ch: string, result_len: number): string;
+    function unicode_canonical_decomposition(ch: string, result_len: bigint | number): string;
     /**
      * Computes the canonical ordering of a string in-place.
      * This rearranges decomposed characters in the string
@@ -13451,7 +13478,7 @@ export namespace GLib {
      */
     function uri_parse_params(
         params: string,
-        length: number,
+        length: bigint | number,
         separators: string,
         flags: UriParamsFlags | null,
     ): HashTable<string, string>;
@@ -13580,7 +13607,11 @@ export namespace GLib {
      * @returns an unescaped version of `escaped_string`     or `null` on error (if decoding failed, using {@link GLib.UriError.FAILED} error     code). The returned {@link GLib.Bytes} should be unreffed when no longer needed.
      * @since 2.66
      */
-    function uri_unescape_bytes(escaped_string: string, length: number, illegal_characters?: string | null): Bytes;
+    function uri_unescape_bytes(
+        escaped_string: string,
+        length: bigint | number,
+        illegal_characters?: string | null,
+    ): Bytes;
     /**
      * Unescapes a segment of an escaped string.
      *
@@ -13626,7 +13657,7 @@ export namespace GLib {
      * length of the sleep.
      * @param microseconds number of microseconds to pause
      */
-    function usleep(microseconds: number): void;
+    function usleep(microseconds: bigint | number): void;
     /**
      * Convert a string from UTF-16 to UCS-4.
      *
@@ -13670,7 +13701,7 @@ export namespace GLib {
      * @param len length of `str`, in bytes, or -1 if `str` is nul-terminated.
      * @returns a newly allocated string, that is a   case independent form of `str`.
      */
-    function utf8_casefold(str: string, len: number): string;
+    function utf8_casefold(str: string, len: bigint | number): string;
     /**
      * Compares two strings for ordering using the linguistically
      * correct rules for the [current locale](https://docs.gtk.org/glib/running.html#locale).
@@ -13705,7 +13736,7 @@ export namespace GLib {
      * @param len length of `str`, in bytes, or -1 if `str` is nul-terminated.
      * @returns a newly allocated string.   The contents of the string are only meant to be used when sorting.   This string should be freed with `g_free()` when you are done with it.
      */
-    function utf8_collate_key(str: string, len: number): string;
+    function utf8_collate_key(str: string, len: bigint | number): string;
     /**
      * Converts a string into a collation key that can be compared
      * with other collation keys produced by the same function using `strcmp()`.
@@ -13727,7 +13758,7 @@ export namespace GLib {
      * @returns a newly allocated string.   The contents of the string are only meant to be used when sorting.   This string should be freed with `g_free()` when you are done with it.
      * @since 2.8
      */
-    function utf8_collate_key_for_filename(str: string, len: number): string;
+    function utf8_collate_key_for_filename(str: string, len: bigint | number): string;
     /**
      * Finds the start of the next UTF-8 character in the string after `p`.
      *
@@ -13782,7 +13813,7 @@ export namespace GLib {
      * @param max_len the maximum number of bytes to read, or `-1` if `p` is nul-terminated
      * @returns the resulting character. If `p` points to a partial   sequence at the end of a string that could begin a valid   character (or if `max_len` is zero), returns `(gunichar)-2`;   otherwise, if `p` does not point to a valid UTF-8 encoded   Unicode character, returns `(gunichar)-1`.
      */
-    function utf8_get_char_validated(p: string, max_len: number): string;
+    function utf8_get_char_validated(p: string, max_len: bigint | number): string;
     /**
      * If the provided string is valid UTF-8, return a copy of it. If not,
      * return a copy in which bytes that could not be interpreted as valid Unicode
@@ -13798,7 +13829,7 @@ export namespace GLib {
      * @returns a valid UTF-8 string whose content resembles `str`
      * @since 2.52
      */
-    function utf8_make_valid(str: string, len: number): string;
+    function utf8_make_valid(str: string, len: bigint | number): string;
     /**
      * Converts a string into canonical form, standardizing
      * such issues as whether a character with an accent
@@ -13830,7 +13861,7 @@ export namespace GLib {
      * @param mode the type of normalization to perform.
      * @returns a newly allocated string, that   is the normalized form of `str`, or `null` if `str`   is not valid UTF-8.
      */
-    function utf8_normalize(str: string, len: number, mode: NormalizeMode | null): string | null;
+    function utf8_normalize(str: string, len: bigint | number, mode: NormalizeMode | null): string | null;
     /**
      * Converts from an integer character offset to a pointer to a position
      * within the string.
@@ -13849,7 +13880,7 @@ export namespace GLib {
      * @param offset a character offset within `str`
      * @returns the resulting pointer
      */
-    function utf8_offset_to_pointer(str: string, offset: number): string;
+    function utf8_offset_to_pointer(str: string, offset: bigint | number): string;
     /**
      * Converts from a pointer to position within a string to an integer
      * character offset.
@@ -13883,7 +13914,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns `NULL` if the string does not contain   the character, otherwise, a pointer to the start of the leftmost occurrence   of the character in the string.
      */
-    function utf8_strchr(p: string, len: number, c: string): string | null;
+    function utf8_strchr(p: string, len: bigint | number, c: string): string | null;
     /**
      * Converts all Unicode characters in the string that have a case
      * to lowercase. The exact manner that this is done depends
@@ -13893,7 +13924,7 @@ export namespace GLib {
      * @param len length of `str`, in bytes, or -1 if `str` is nul-terminated.
      * @returns a newly allocated string, with all characters    converted to lowercase.
      */
-    function utf8_strdown(str: string, len: number): string;
+    function utf8_strdown(str: string, len: bigint | number): string;
     /**
      * Computes the length of the string in characters, not including
      * the terminating nul character. If the `max`’th byte falls in the
@@ -13902,7 +13933,7 @@ export namespace GLib {
      * @param max the maximum number of bytes to examine. If `max`   is less than 0, then the string is assumed to be   nul-terminated. If `max` is 0, `p` will not be examined and   may be `NULL`. If `max` is greater than 0, up to `max`   bytes are examined
      * @returns the length of the string in characters
      */
-    function utf8_strlen(p: string, max: number): number;
+    function utf8_strlen(p: string, max: bigint | number): number;
     /**
      * Like the standard C [`strncpy()`](man:strncpy) function, but copies a given
      * number of characters instead of a given number of bytes.
@@ -13918,7 +13949,7 @@ export namespace GLib {
      * @param n character count
      * @returns `dest`
      */
-    function utf8_strncpy(dest: string, src: string, n: number): string;
+    function utf8_strncpy(dest: string, src: string, n: bigint | number): string;
     /**
      * Find the rightmost occurrence of the given Unicode character
      * in a UTF-8 encoded string, while limiting the search to `len` bytes.
@@ -13929,7 +13960,7 @@ export namespace GLib {
      * @param c a Unicode character
      * @returns `NULL` if the string does not contain   the character, otherwise, a pointer to the start of the rightmost   occurrence of the character in the string.
      */
-    function utf8_strrchr(p: string, len: number, c: string): string | null;
+    function utf8_strrchr(p: string, len: bigint | number, c: string): string | null;
     /**
      * Reverses a UTF-8 string.
      *
@@ -13950,7 +13981,7 @@ export namespace GLib {
      * @returns a newly-allocated string which is the reverse of `str`
      * @since 2.2
      */
-    function utf8_strreverse(str: string, len: number): string;
+    function utf8_strreverse(str: string, len: bigint | number): string;
     /**
      * Converts all Unicode characters in the string that have a case
      * to uppercase. The exact manner that this is done depends
@@ -13961,7 +13992,7 @@ export namespace GLib {
      * @param len length of `str`, in bytes, or -1 if `str` is nul-terminated.
      * @returns a newly allocated string, with all characters    converted to uppercase.
      */
-    function utf8_strup(str: string, len: number): string;
+    function utf8_strup(str: string, len: bigint | number): string;
     /**
      * Copies a substring out of a UTF-8 encoded string.
      * The substring will contain `end_pos` - `start_pos` characters.
@@ -13974,7 +14005,7 @@ export namespace GLib {
      * @returns a newly allocated copy of the requested   substring. Free with {@link GLib.free} when no longer needed.
      * @since 2.30
      */
-    function utf8_substring(str: string, start_pos: number, end_pos: number): string;
+    function utf8_substring(str: string, start_pos: bigint | number, end_pos: bigint | number): string;
     /**
      * Convert a string from UTF-8 to a 32-bit fixed width representation as UCS-4.
      *
@@ -13984,7 +14015,7 @@ export namespace GLib {
      * @param len the maximum length of `str` to use, in bytes. If `len` is negative,   then the string is nul-terminated.
      * @returns a pointer to a newly allocated UCS-4 string.   This value must be freed with {@link GLib.free}.
      */
-    function utf8_to_ucs4(str: string, len: number): [string, number, number];
+    function utf8_to_ucs4(str: string, len: bigint | number): [string, number, number];
     /**
      * Convert a string from UTF-8 to a 32-bit fixed width
      * representation as UCS-4, assuming valid UTF-8 input.
@@ -13996,7 +14027,7 @@ export namespace GLib {
      * @param len the maximum length of `str` to use, in bytes. If `len` is negative,   then the string is nul-terminated.
      * @returns a pointer to a newly allocated UCS-4 string.   This value must be freed with {@link GLib.free}.
      */
-    function utf8_to_ucs4_fast(str: string, len: number): [string, number];
+    function utf8_to_ucs4_fast(str: string, len: bigint | number): [string, number];
     /**
      * Convert a string from UTF-8 to UTF-16.
      *
@@ -14005,7 +14036,7 @@ export namespace GLib {
      * @param len the maximum length (number of bytes) of `str` to use.   If `len` is negative, then the string is nul-terminated.
      * @returns a pointer to a newly allocated UTF-16 string.   This value must be freed with {@link GLib.free}.
      */
-    function utf8_to_utf16(str: string, len: number): [number, number, number];
+    function utf8_to_utf16(str: string, len: bigint | number): [number, number, number];
     /**
      * Cuts off the middle of the string, preserving half of `truncate_length`
      * characters at the beginning and half at the end.
@@ -14017,7 +14048,7 @@ export namespace GLib {
      * @returns a newly-allocated copy of `string` ellipsized in the middle
      * @since 2.78
      */
-    function utf8_truncate_middle(string: string, truncate_length: number): string;
+    function utf8_truncate_middle(string: string, truncate_length: bigint | number): string;
     /**
      * Validates UTF-8 encoded text.
      *
@@ -15959,7 +15990,7 @@ export namespace GLib {
          * @param timeout the number of microseconds to wait
          * @returns data from the queue or `null`, when no   data is received before the timeout.
          */
-        timeout_pop(timeout: number): any | null;
+        timeout_pop(timeout: bigint | number): any | null;
         /**
          * Pops data from the `queue`. If the queue is empty, blocks for
          * `timeout` microseconds, or until data becomes available.
@@ -15970,7 +16001,7 @@ export namespace GLib {
          * @param timeout the number of microseconds to wait
          * @returns data from the queue or `null`, when no   data is received before the timeout.
          */
-        timeout_pop_unlocked(timeout: number): any | null;
+        timeout_pop_unlocked(timeout: bigint | number): any | null;
         /**
          * Tries to pop data from the `queue`. If no data is available,
          * `null` is returned.
@@ -16396,7 +16427,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @param added a timestamp or -1 to use the current time
          */
-        set_added(uri: string, added: number): void;
+        set_added(uri: string, added: bigint | number): void;
         /**
          * Sets the time the bookmark for `uri` was added into `bookmark`.
          *
@@ -16441,7 +16472,7 @@ export namespace GLib {
          * @param stamp the time of the last registration for this application
          * @returns `true` if the application's meta-data was successfully   changed.
          */
-        set_app_info(uri: string, name: string, exec: string, count: number, stamp: number): boolean;
+        set_app_info(uri: string, name: string, exec: string, count: number, stamp: bigint | number): boolean;
         /**
          * Sets the meta-data of application `name` inside the list of
          * applications that have registered a bookmark for `uri` inside
@@ -16536,7 +16567,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @param modified a timestamp or -1 to use the current time
          */
-        set_modified(uri: string, modified: number): void;
+        set_modified(uri: string, modified: bigint | number): void;
         /**
          * Sets the last time the bookmark for `uri` was last modified.
          *
@@ -16574,7 +16605,7 @@ export namespace GLib {
          * @param uri a valid URI
          * @param visited a timestamp or -1 to use the current time
          */
-        set_visited(uri: string, visited: number): void;
+        set_visited(uri: string, visited: bigint | number): void;
         /**
          * Sets the time the bookmark for `uri` was last visited.
          *
@@ -16801,7 +16832,7 @@ export namespace GLib {
 
         static ['new'](data?: Uint8Array | null): Bytes;
 
-        static new_from_bytes(bytes: Bytes | Uint8Array, offset: number, length: number): Bytes;
+        static new_from_bytes(bytes: Bytes | Uint8Array, offset: bigint | number, length: bigint | number): Bytes;
 
         static new_take(data?: Uint8Array | null): Bytes;
 
@@ -16872,7 +16903,7 @@ export namespace GLib {
          * @param n_elements the number of elements in the region
          * @returns the requested region, or `NULL` in case of an error
          */
-        get_region(element_size: number, offset: number, n_elements: number): any | null;
+        get_region(element_size: bigint | number, offset: bigint | number, n_elements: bigint | number): any | null;
         /**
          * Get the size of the byte data in the {@link GLib.Bytes}.
          *
@@ -17330,7 +17361,7 @@ export namespace GLib {
          * @param end_time the monotonic time to wait until
          * @returns `true` on a signal, `false` on a timeout
          */
-        wait_until(mutex: Mutex, end_time: number): boolean;
+        wait_until(mutex: Mutex, end_time: bigint | number): boolean;
     }
 
     /**
@@ -17490,7 +17521,7 @@ export namespace GLib {
          * @param format format string
          * @param date valid {@link GLib.Date}
          */
-        static strftime(s: string, slen: number, format: string, date: Date): number;
+        static strftime(s: string, slen: bigint | number, format: string, date: Date): number;
         /**
          * Returns `true` if the day of the month is valid (a day is valid if it's
          * between 1 and 31 inclusive).
@@ -17750,7 +17781,7 @@ export namespace GLib {
          *
          * @param timet time_t value to set
          */
-        set_time_t(timet: number): void;
+        set_time_t(timet: bigint | number): void;
         /**
          * Sets the value of a date from a {@link GLib.TimeVal} value.  Note that the
          * `tv_usec` member is ignored, because {@link GLib.Date} can't make use of the
@@ -17857,13 +17888,13 @@ export namespace GLib {
 
         static new_from_timeval_utc(tv: TimeVal): DateTime;
 
-        static new_from_unix_local(t: number): DateTime;
+        static new_from_unix_local(t: bigint | number): DateTime;
 
-        static new_from_unix_local_usec(usecs: number): DateTime;
+        static new_from_unix_local_usec(usecs: bigint | number): DateTime;
 
-        static new_from_unix_utc(t: number): DateTime;
+        static new_from_unix_utc(t: bigint | number): DateTime;
 
-        static new_from_unix_utc_usec(usecs: number): DateTime;
+        static new_from_unix_utc_usec(usecs: bigint | number): DateTime;
 
         static new_local(
             year: number,
@@ -18515,7 +18546,7 @@ export namespace GLib {
          */
         static domain_register(
             error_type_name: string,
-            error_type_private_size: number,
+            error_type_private_size: bigint | number,
             error_type_init: ErrorInitFunc,
             error_type_copy: ErrorCopyFunc,
             error_type_clear: ErrorClearFunc,
@@ -18546,7 +18577,7 @@ export namespace GLib {
          */
         static domain_register_static(
             error_type_name: string,
-            error_type_private_size: number,
+            error_type_private_size: bigint | number,
             error_type_init: ErrorInitFunc,
             error_type_copy: ErrorCopyFunc,
             error_type_clear: ErrorClearFunc,
@@ -19301,7 +19332,7 @@ export namespace GLib {
          * @param bytes_read returns the number of bytes actually read
          * @returns {@link GLib.IOError.NONE} if the operation was successful.
          */
-        read(buf: string, count: number, bytes_read: number): IOError;
+        read(buf: string, count: bigint | number, bytes_read: bigint | number): IOError;
         /**
          * Replacement for `g_io_channel_read()` with the new API.
          * @returns the status of the operation.
@@ -19321,7 +19352,7 @@ export namespace GLib {
          * @param terminator_pos location to store position of line terminator, or `null`
          * @returns the status of the operation.
          */
-        read_line_string(buffer: String, terminator_pos?: number | null): IOStatus;
+        read_line_string(buffer: String, terminator_pos?: (bigint | number) | null): IOStatus;
         /**
          * Reads all the remaining data from the file.
          * @returns {@link GLib.IOStatus.NORMAL} on success.     This function never returns {@link GLib.IOStatus.EOF}.
@@ -19345,19 +19376,19 @@ export namespace GLib {
          * @param type the position in the file, which can be {@link GLib.SeekType.CUR} (the current        position), {@link GLib.SeekType.SET} (the start of the file), or {@link GLib.SeekType.END}        (the end of the file)
          * @returns {@link GLib.IOError.NONE} if the operation was successful.
          */
-        seek(offset: number, type: SeekType | null): IOError;
+        seek(offset: bigint | number, type: SeekType | null): IOError;
         /**
          * Replacement for `g_io_channel_seek()` with the new API.
          * @param offset The offset in bytes from the position specified by `type`
          * @param type a {@link GLib.SeekType}. The type {@link GLib.SeekType.CUR} is only allowed in those                      cases where a call to g_io_channel_set_encoding ()                      is allowed. See the documentation for                      g_io_channel_set_encoding () for details.
          * @returns the status of the operation.
          */
-        seek_position(offset: number, type: SeekType | null): IOStatus;
+        seek_position(offset: bigint | number, type: SeekType | null): IOStatus;
         /**
          * Sets the buffer size.
          * @param size the size of the buffer, or 0 to let GLib pick a good size
          */
-        set_buffer_size(size: number): void;
+        set_buffer_size(size: bigint | number): void;
         /**
          * The buffering state can only be set if the channel's encoding
          * is `null`. For any other encoding, the channel must be buffered.
@@ -19470,7 +19501,7 @@ export namespace GLib {
          * @param bytes_written the number of bytes actually written
          * @returns {@link GLib.IOError.NONE} if the operation was successful.
          */
-        write(buf: string, count: number, bytes_written: number): IOError;
+        write(buf: string, count: bigint | number, bytes_written: bigint | number): IOError;
         /**
          * Replacement for `g_io_channel_write()` with the new API.
          *
@@ -19482,7 +19513,7 @@ export namespace GLib {
          * @param count the size of the buffer. If -1, the buffer         is taken to be a nul-terminated string.
          * @returns the status of the operation.
          */
-        write_chars(buf: Uint8Array | string, count: number): [IOStatus, number];
+        write_chars(buf: Uint8Array | string, count: bigint | number): [IOStatus, number];
         /**
          * Writes a Unicode character to `channel`.
          * This function cannot be called on a channel with `null` encoding.
@@ -19920,7 +19951,7 @@ export namespace GLib {
          * @param flags flags from {@link GLib.KeyFileFlags}
          * @returns true if a key file could be loaded, false otherwise
          */
-        load_from_data(data: string, length: number, flags: KeyFileFlags | null): boolean;
+        load_from_data(data: string, length: bigint | number, flags: KeyFileFlags | null): boolean;
         /**
          * Looks for a key file named `file` in the paths returned from
          * {@link GLib.get_user_data_dir} and {@link GLib.get_system_data_dirs}.
@@ -20081,7 +20112,7 @@ export namespace GLib {
          * @param key a key
          * @param value an integer value
          */
-        set_int64(group_name: string, key: string, value: number): void;
+        set_int64(group_name: string, key: string, value: bigint | number): void;
         /**
          * Associates a new integer value with `key` under `group_name`.
          *
@@ -20163,7 +20194,7 @@ export namespace GLib {
          * @param key a key
          * @param value an integer value
          */
-        set_uint64(group_name: string, key: string, value: number): void;
+        set_uint64(group_name: string, key: string, value: bigint | number): void;
         /**
          * Associates a new value with `key` under `group_name`.
          *
@@ -20269,16 +20300,6 @@ export namespace GLib {
         key: string;
         value: any;
         length: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                key: string;
-                value: any;
-                length: number;
-            }>,
-        );
     }
 
     /**
@@ -20914,7 +20935,7 @@ export namespace GLib {
          * @param text_len length of `text` in bytes
          * @returns `false` if an error occurred, `true` on success
          */
-        parse(text: string, text_len: number): boolean;
+        parse(text: string, text_len: bigint | number): boolean;
         /**
          * Completes the process of a temporary sub-parser redirection.
          *
@@ -21695,7 +21716,7 @@ export namespace GLib {
         /**
          * @param location
          */
-        static init_enter_impl(location: number): boolean;
+        static init_enter_impl(location: bigint | number): boolean;
         /**
          * This functions behaves in the same way as `g_once_init_enter()`, but can
          * can be used to initialize pointers (or `guintptr`) instead of `gsize`.
@@ -21729,7 +21750,7 @@ export namespace GLib {
          * @param location location of a static initializable variable    containing 0
          * @param result new non-0 value for `*value_location`
          */
-        static init_leave(location: any, result: number): any;
+        static init_leave(location: any, result: bigint | number): any;
         /**
          * Counterpart to `g_once_init_enter_pointer()`. Expects a location of a static
          * `NULL`-initialized initialization variable, and an initialization value
@@ -22377,7 +22398,7 @@ export namespace GLib {
          * @param string_reversed the reverse of `string`
          * @returns `true` if `string` matches `pspec`
          */
-        match(string_length: number, string: string, string_reversed?: string | null): boolean;
+        match(string_length: bigint | number, string: string, string_reversed?: string | null): boolean;
         /**
          * Matches a string against a compiled pattern.
          *
@@ -23893,11 +23914,9 @@ export namespace GLib {
         input_name: string;
         config: ScannerConfig;
         token: TokenType;
-        value: TokenValue;
         line: number;
         position: number;
         next_token: TokenType;
-        next_value: TokenValue;
         next_line: number;
         next_position: number;
         msg_handler: ScannerMsgFunc;
@@ -25036,7 +25055,7 @@ export namespace GLib {
          * Do not call this API on a {@link GLib.Source} that you did not create.
          * @param ready_time the monotonic time at which the source will be ready;   `0` for ‘immediately’, `-1` for ‘never’
          */
-        set_ready_time(ready_time: number): void;
+        set_ready_time(ready_time: bigint | number): void;
         /**
          * A variant of {@link GLib.Source.set_name} that does not
          * duplicate the `name`, and can only be used with
@@ -25137,21 +25156,15 @@ export namespace GLib {
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                str: string;
-                len: number;
-                allocated_len: number;
-            }>,
-        );
+        constructor(init?: string | null);
 
         static ['new'](init?: string | null): String;
 
-        static new_len(init: string, len: number): String;
+        static new_len(init: string, len: bigint | number): String;
 
         static new_take(init?: string | null): String;
 
-        static sized_new(dfl_size: number): String;
+        static sized_new(dfl_size: bigint | number): String;
 
         // Methods
 
@@ -25183,7 +25196,7 @@ export namespace GLib {
          * @param len number of bytes of `val` to use, or -1 for all of `val`
          * @returns `string`
          */
-        append_len(val: string, len: number): String;
+        append_len(val: string, len: bigint | number): String;
         /**
          * Converts a Unicode character into UTF-8, and appends it
          * to the string.
@@ -25246,7 +25259,7 @@ export namespace GLib {
          * @param len the number of bytes to remove, or -1 to remove all       following bytes
          * @returns `string`
          */
-        erase(pos: number, len: number): String;
+        erase(pos: bigint | number, len: bigint | number): String;
         /**
          * Frees the memory allocated for the {@link GLib.String}.
          * If `free_segment` is `true` it also frees the character data.  If
@@ -25291,14 +25304,14 @@ export namespace GLib {
          * @param val the string to insert
          * @returns `string`
          */
-        insert(pos: number, val: string): String;
+        insert(pos: bigint | number, val: string): String;
         /**
          * Inserts a byte into a {@link GLib.String}, expanding it if necessary.
          * @param pos the position to insert the byte
          * @param c the byte to insert
          * @returns `string`
          */
-        insert_c(pos: number, c: number): String;
+        insert_c(pos: bigint | number, c: number): String;
         /**
          * Inserts `len` bytes of `val` into `string` at `pos`.
          *
@@ -25315,7 +25328,7 @@ export namespace GLib {
          * @param len number of bytes of `val` to insert, or -1 for all of `val`
          * @returns `string`
          */
-        insert_len(pos: number, val: string, len: number): String;
+        insert_len(pos: bigint | number, val: string, len: bigint | number): String;
         /**
          * Converts a Unicode character into UTF-8, and insert it
          * into the string at the given position.
@@ -25323,14 +25336,14 @@ export namespace GLib {
          * @param wc a Unicode character
          * @returns `string`
          */
-        insert_unichar(pos: number, wc: string): String;
+        insert_unichar(pos: bigint | number, wc: string): String;
         /**
          * Overwrites part of a string, lengthening it if necessary.
          * @param pos the position at which to start overwriting
          * @param val the string that will overwrite the `string` starting at `pos`
          * @returns `string`
          */
-        overwrite(pos: number, val: string): String;
+        overwrite(pos: bigint | number, val: string): String;
         /**
          * Overwrites part of a string, lengthening it if necessary.
          * This function will work with embedded nuls.
@@ -25339,7 +25352,7 @@ export namespace GLib {
          * @param len the number of bytes to write from `val`
          * @returns `string`
          */
-        overwrite_len(pos: number, val: string, len: number): String;
+        overwrite_len(pos: bigint | number, val: string, len: bigint | number): String;
         /**
          * Adds a string on to the start of a {@link GLib.String},
          * expanding it if necessary.
@@ -25368,7 +25381,7 @@ export namespace GLib {
          * @param len number of bytes in `val` to prepend, or -1 for all of `val`
          * @returns `string`
          */
-        prepend_len(val: string, len: number): String;
+        prepend_len(val: string, len: bigint | number): String;
         /**
          * Converts a Unicode character into UTF-8, and prepends it
          * to the string.
@@ -25405,13 +25418,13 @@ export namespace GLib {
          * @param len the new length
          * @returns `string`
          */
-        set_size(len: number): String;
+        set_size(len: bigint | number): String;
         /**
          * Cuts off the end of the GString, leaving the first `len` bytes.
          * @param len the new size of `string`
          * @returns `string`
          */
-        truncate(len: number): String;
+        truncate(len: bigint | number): String;
         /**
          * Converts a {@link GLib.String} to uppercase.
          * @returns `string`
@@ -25510,7 +25523,7 @@ export namespace GLib {
          * @param len number of bytes of `string` to insert, or -1 to insert a     nul-terminated string
          * @returns a pointer to the copy of `string` within the {@link GLib.StringChunk}
          */
-        insert_len(string: string, len: number): string;
+        insert_len(string: string, len: bigint | number): string;
     }
 
     /**
@@ -25655,10 +25668,6 @@ export namespace GLib {
      */
     class TestLogBuffer {
         static $gtype: GObject.GType<TestLogBuffer>;
-
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
 
         // Methods
 
@@ -26029,15 +26038,6 @@ export namespace GLib {
         tv_sec: number;
         tv_usec: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                tv_sec: number;
-                tv_usec: number;
-            }>,
-        );
-
         // Static methods
 
         /**
@@ -26071,7 +26071,7 @@ export namespace GLib {
          * also be negative to decrease the value of `time_`.
          * @param microseconds number of microseconds to add to `time`
          */
-        add(microseconds: number): void;
+        add(microseconds: bigint | number): void;
         /**
          * Converts `time_` into an RFC 3339 encoded string, relative to the
          * Coordinated Universal Time (UTC). This is one of the many formats
@@ -26184,7 +26184,7 @@ export namespace GLib {
          * @param time_ a pointer to a number of seconds since January 1, 1970
          * @returns the interval containing `time_`, never -1
          */
-        adjust_time(type: TimeType | null, time_: number): [number, number];
+        adjust_time(type: TimeType | null, time_: bigint | number): [number, number];
         /**
          * Finds an interval within `tz` that corresponds to the given `time_`.
          * The meaning of `time_` depends on `type`.
@@ -26208,7 +26208,7 @@ export namespace GLib {
          * @param time_ a number of seconds since January 1, 1970
          * @returns the interval containing `time_`, or -1 in case of failure
          */
-        find_interval(type: TimeType | null, time_: number): number;
+        find_interval(type: TimeType | null, time_: bigint | number): number;
         /**
          * Determines the time zone abbreviation to be used during a particular
          * `interval` of time in the time zone `tz`.
@@ -26294,7 +26294,7 @@ export namespace GLib {
          * @param microseconds return location for the fractional part of seconds                elapsed, in microseconds (that is, the total number                of microseconds elapsed, modulo 1000000), or `null`
          * @returns seconds elapsed as a floating point value, including any          fractional part.
          */
-        elapsed(microseconds: number): number;
+        elapsed(microseconds: bigint | number): number;
         /**
          * Exposes whether the timer is currently active.
          * @returns `true` if the timer is running, `false` otherwise
@@ -27084,7 +27084,7 @@ export namespace GLib {
          */
         static parse_params(
             params: string,
-            length: number,
+            length: bigint | number,
             separators: string,
             flags: UriParamsFlags,
         ): HashTable<string, string>;
@@ -27199,7 +27199,11 @@ export namespace GLib {
          * @param length the length (in bytes) of `escaped_string` to escape, or `-1` if it   is nul-terminated.
          * @param illegal_characters a string of illegal characters   not to be allowed, or `null`.
          */
-        static unescape_bytes(escaped_string: string, length: number, illegal_characters?: string | null): Bytes;
+        static unescape_bytes(
+            escaped_string: string,
+            length: bigint | number,
+            illegal_characters?: string | null,
+        ): Bytes;
         /**
          * Unescapes a segment of an escaped string.
          *
@@ -27427,7 +27431,7 @@ export namespace GLib {
          * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
          * @param flags flags to modify the way the parameters are handled.
          */
-        init(params: string, length: number, separators: string, flags: UriParamsFlags | null): void;
+        init(params: string, length: bigint | number, separators: string, flags: UriParamsFlags | null): void;
         /**
          * Advances `iter` and retrieves the next attribute/value. `false` is returned if
          * an error has occurred (in which case `error` is set), or if the end of the
@@ -27649,25 +27653,6 @@ export namespace GLib {
         v_comment: string;
         v_char: number;
         v_error: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                v_symbol: any;
-                v_identifier: string;
-                v_binary: number;
-                v_octal: number;
-                v_int: number;
-                v_int64: number;
-                v_float: number;
-                v_hex: number;
-                v_string: string;
-                v_comment: string;
-                v_char: number;
-                v_error: number;
-            }>,
-        );
     }
 
     /**
@@ -27803,7 +27788,7 @@ export namespace GLib {
      * A value representing an interval of time, in microseconds.
      * @gir-type Alias
      */
-    type TimeSpan = number;
+    type TimeSpan = bigint | number;
     /**
      * @param logDomain
      * @param logLevel

@@ -235,11 +235,11 @@ export namespace RygelRendererGst {
         /**
          * @param time
          */
-        seek(time: number): boolean;
+        seek(time: bigint | number): boolean;
         /**
          * @param bytes
          */
-        seek_bytes(bytes: number): boolean;
+        seek_bytes(bytes: bigint | number): boolean;
         get_protocols(): string[];
         get_mime_types(): string[];
         /**
@@ -357,11 +357,11 @@ export namespace RygelRendererGst {
         /**
          * @virtual
          */
-        vfunc_get_duration(): number;
+        vfunc_get_duration(): bigint | number;
         /**
          * @virtual
          */
-        vfunc_get_size(): number;
+        vfunc_get_size(): bigint | number;
         /**
          * @virtual
          */
@@ -400,11 +400,11 @@ export namespace RygelRendererGst {
         /**
          * @virtual
          */
-        vfunc_get_position(): number;
+        vfunc_get_position(): bigint | number;
         /**
          * @virtual
          */
-        vfunc_get_byte_position(): number;
+        vfunc_get_byte_position(): bigint | number;
         /**
          * @virtual
          */
@@ -810,7 +810,7 @@ export namespace RygelRendererGst {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -837,7 +837,7 @@ export namespace RygelRendererGst {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

@@ -996,7 +996,7 @@ export namespace GUsb {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1023,7 +1023,7 @@ export namespace GUsb {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1536,7 +1536,7 @@ export namespace GUsb {
          * @param length size of the request data buffer
          * @returns a possibly UTF-16 string, or NULL on error.
          */
-        get_string_descriptor_bytes_full(desc_index: number, langid: number, length: number): GLib.Bytes;
+        get_string_descriptor_bytes_full(desc_index: number, langid: number, length: bigint | number): GLib.Bytes;
         /**
          * Gets all the tags.
          * @returns string tags
@@ -2159,7 +2159,7 @@ export namespace GUsb {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2186,7 +2186,7 @@ export namespace GUsb {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

@@ -192,9 +192,9 @@ export namespace GstTranscoder {
             avoidReencoding: boolean;
             dest_uri: string;
             destUri: string;
-            duration: number;
+            duration: bigint | number;
             pipeline: Gst.Element;
-            position: number;
+            position: bigint | number;
             position_update_interval: number;
             positionUpdateInterval: number;
             profile: GstPbutils.EncodingProfile;

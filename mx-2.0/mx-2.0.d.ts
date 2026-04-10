@@ -1375,7 +1375,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1402,7 +1402,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1636,7 +1636,7 @@ export namespace Mx {
          * is cancelled.
          * @param id An operation ID
          */
-        cancel_operation(id: number): void;
+        cancel_operation(id: bigint | number): void;
         /**
          * Cancels all operations associated with the given actor.
          * @param actor A {@link Clutter.Actor}
@@ -1897,7 +1897,7 @@ export namespace Mx {
          * @param duration duration in milliseconds
          * @param mode A {@link Clutter.AnimationMode}
          */
-        interpolate(value: number, duration: number, mode: number): void;
+        interpolate(value: number, duration: number, mode: bigint | number): void;
         /**
          * Interpolate the value of {@link Mx.Adjustment.value} to a new value calculated from
          * `offset`.
@@ -1905,7 +1905,7 @@ export namespace Mx {
          * @param duration duration in milliseconds
          * @param mode A {@link Clutter.AnimationMode}
          */
-        interpolate_relative(offset: number, duration: number, mode: number): void;
+        interpolate_relative(offset: number, duration: number, mode: bigint | number): void;
         /**
          * Set the value of the {@link Mx.Adjustment.clamp_value} property.
          * @param clamp a `gboolean`
@@ -2998,7 +2998,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3025,7 +3025,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3913,7 +3913,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3940,7 +3940,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4892,7 +4892,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4919,7 +4919,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5962,7 +5962,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5989,7 +5989,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7041,7 +7041,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7068,7 +7068,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7878,7 +7878,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7905,7 +7905,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8825,7 +8825,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8852,7 +8852,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9641,7 +9641,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9668,7 +9668,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10585,7 +10585,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10612,7 +10612,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11472,7 +11472,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11499,7 +11499,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -12428,7 +12428,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12455,7 +12455,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -13230,7 +13230,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13257,7 +13257,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -13660,7 +13660,7 @@ export namespace Mx {
          * @param duration duration of the animation in milliseconds
          * @param scale_mode The {@link Mx.ImageScaleMode} to set
          */
-        animate_scale_mode(mode: number, duration: number, scale_mode: ImageScaleMode | null): void;
+        animate_scale_mode(mode: bigint | number, duration: number, scale_mode: ImageScaleMode | null): void;
         /**
          * Clear the current image and set a blank, transparent image.
          * @returns static void
@@ -14379,7 +14379,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14406,7 +14406,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15134,7 +15134,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15161,7 +15161,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15314,8 +15314,8 @@ export namespace Mx {
             accelerationFactor: number;
             clamp_duration: number;
             clampDuration: number;
-            clamp_mode: number;
-            clampMode: number;
+            clamp_mode: bigint | number;
+            clampMode: bigint | number;
             clamp_to_center: boolean;
             clampToCenter: boolean;
             deceleration: number;
@@ -15363,9 +15363,9 @@ export namespace Mx {
         get clampDuration(): number;
         set clampDuration(val: number);
         get clamp_mode(): number;
-        set clamp_mode(val: number);
+        set clamp_mode(val: bigint | number);
         get clampMode(): number;
-        set clampMode(val: number);
+        set clampMode(val: bigint | number);
         get clamp_to_center(): boolean;
         set clamp_to_center(val: boolean);
         get clampToCenter(): boolean;
@@ -15519,7 +15519,7 @@ export namespace Mx {
          * Animation mode to use for the adjustment clamp animation.
          * @param clamp_mode Clamp mode
          */
-        set_clamp_mode(clamp_mode: number): void;
+        set_clamp_mode(clamp_mode: bigint | number): void;
         /**
          * Set whether to clamp to step increments based on the center of the page.
          * @param clamp_to_center Clamp to center
@@ -16198,7 +16198,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16225,7 +16225,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17161,7 +17161,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17188,7 +17188,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17909,7 +17909,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17936,7 +17936,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18585,7 +18585,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18612,7 +18612,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19414,7 +19414,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19441,7 +19441,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -20122,7 +20122,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20149,7 +20149,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21001,7 +21001,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21028,7 +21028,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21793,7 +21793,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21820,7 +21820,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -22617,7 +22617,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22644,7 +22644,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23437,7 +23437,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23464,7 +23464,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -24389,7 +24389,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24416,7 +24416,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -25196,7 +25196,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25223,7 +25223,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -26069,7 +26069,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26096,7 +26096,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -27293,7 +27293,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -27320,7 +27320,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -27974,10 +27974,10 @@ export namespace Mx {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -27991,7 +27991,7 @@ export namespace Mx {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -28011,14 +28011,14 @@ export namespace Mx {
             property_name: string,
             interval: Clutter.Interval,
             progress: number,
-        ): [boolean, unknown];
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -28338,12 +28338,7 @@ export namespace Mx {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(
-            script: Clutter.Script,
-            value: GObject.Value | any,
-            name: string,
-            node: Json.Node,
-        ): boolean;
+        vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -28352,7 +28347,7 @@ export namespace Mx {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -28760,7 +28755,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -28787,7 +28782,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -29574,7 +29569,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -29601,7 +29596,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -30413,7 +30408,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30440,7 +30435,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -31077,7 +31072,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -31104,7 +31099,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -31806,7 +31801,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -31833,7 +31828,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -32259,10 +32254,10 @@ export namespace Mx {
         vfunc_animate_property(
             animation: Clutter.Animation,
             property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
+            initial_value: unknown,
+            final_value: unknown,
             progress: number,
-            value: GObject.Value | any,
+            value: unknown,
         ): boolean;
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -32276,7 +32271,7 @@ export namespace Mx {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -32296,14 +32291,14 @@ export namespace Mx {
             property_name: string,
             interval: Clutter.Interval,
             progress: number,
-        ): [boolean, unknown];
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
@@ -32623,12 +32618,7 @@ export namespace Mx {
          * @param node the JSON node to be parsed
          * @virtual
          */
-        vfunc_parse_custom_node(
-            script: Clutter.Script,
-            value: GObject.Value | any,
-            name: string,
-            node: Json.Node,
-        ): boolean;
+        vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -32637,7 +32627,7 @@ export namespace Mx {
          * @param value the value of the property
          * @virtual
          */
-        vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
@@ -33188,7 +33178,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -33215,7 +33205,7 @@ export namespace Mx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

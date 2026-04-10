@@ -271,7 +271,7 @@ export namespace LangTag {
             }>,
         );
 
-        static ['new'](size: number, finalizer: DestroyFunc): ExtModuleData;
+        static ['new'](size: bigint | number, finalizer: DestroyFunc): ExtModuleData;
 
         // Methods
 
@@ -1177,7 +1177,7 @@ export namespace LangTag {
          * @param pos position in `string` where to obtain the byte
          * @returns the byte in `string` at `pos`
          */
-        at(pos: number): number;
+        at(pos: bigint | number): number;
         /**
          * Clean up the buffer in `string`.
          */
@@ -1207,11 +1207,11 @@ export namespace LangTag {
          * @param c the byte to replace
          * @returns the same `string` object
          */
-        replace_c(pos: number, c: number): String;
+        replace_c(pos: bigint | number, c: number): String;
         /**
          * @param len
          */
-        truncate(len: number): String;
+        truncate(len: bigint | number): String;
         /**
          * Decreases the reference count of `string`. when its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).

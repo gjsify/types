@@ -88,13 +88,21 @@ export namespace Mtk {
      * @param base_us
      * @param interval_us
      */
-    function extrapolate_next_interval_boundary(boundary_us: number, base_us: number, interval_us: number): number;
+    function extrapolate_next_interval_boundary(
+        boundary_us: bigint | number,
+        base_us: bigint | number,
+        interval_us: bigint | number,
+    ): number;
     /**
      * @param boundary_us
      * @param base_us
      * @param interval_us
      */
-    function find_nearest_interval_boundary(boundary_us: number, base_us: number, interval_us: number): number;
+    function find_nearest_interval_boundary(
+        boundary_us: bigint | number,
+        base_us: bigint | number,
+        interval_us: bigint | number,
+    ): number;
     /**
      * @param name
      */

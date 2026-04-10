@@ -7525,7 +7525,7 @@ export namespace Mbim {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7552,7 +7552,7 @@ export namespace Mbim {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8061,22 +8061,6 @@ export namespace Mbim {
         sinr: number;
         timing_advance: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                provider_id: string;
-                nci: number;
-                physical_cell_id: number;
-                nrarfcn: number;
-                tac: number;
-                rsrp: number;
-                rsrq: number;
-                sinr: number;
-                timing_advance: number;
-            }>,
-        );
-
         // Static methods
 
         /**
@@ -8410,21 +8394,6 @@ export namespace Mbim {
         sinr: number;
         rssi: number;
         connection_status: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                serving_cell_info: number;
-                center_frequency: number;
-                bandwidth: number;
-                rsrp: number;
-                rsrq: number;
-                sinr: number;
-                rssi: number;
-                connection_status: number;
-            }>,
-        );
 
         // Static methods
 

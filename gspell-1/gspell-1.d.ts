@@ -181,7 +181,7 @@ export namespace Gspell {
          * @param word a word.
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          */
-        add_word_to_personal(word: string, word_length: number): void;
+        add_word_to_personal(word: string, word_length: bigint | number): void;
         /**
          * Adds a word to the session dictionary. Each {@link Gspell.Checker} instance has a
          * different session dictionary. The session dictionary is lost when the
@@ -192,7 +192,7 @@ export namespace Gspell {
          * @param word a word.
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          */
-        add_word_to_session(word: string, word_length: number): void;
+        add_word_to_session(word: string, word_length: bigint | number): void;
         /**
          * If the {@link Gspell.Checker.language} is `null`, i.e. when no dictonaries are
          * available, this function returns `true` to limit the damage.
@@ -200,7 +200,7 @@ export namespace Gspell {
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          * @returns `true` if `word` is correctly spelled, `false` otherwise.
          */
-        check_word(word: string, word_length: number): boolean;
+        check_word(word: string, word_length: bigint | number): boolean;
         /**
          * Clears the session dictionary.
          */
@@ -216,7 +216,7 @@ export namespace Gspell {
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          * @returns the list of suggestions.
          */
-        get_suggestions(word: string, word_length: number): string[];
+        get_suggestions(word: string, word_length: bigint | number): string[];
         /**
          * Informs the spell checker that `word` is replaced/corrected by `replacement`.
          * @param word a word.
@@ -224,7 +224,12 @@ export namespace Gspell {
          * @param replacement the replacement word.
          * @param replacement_length the byte length of `replacement`, or -1 if `replacement`   is nul-terminated.
          */
-        set_correction(word: string, word_length: number, replacement: string, replacement_length: number): void;
+        set_correction(
+            word: string,
+            word_length: bigint | number,
+            replacement: string,
+            replacement_length: bigint | number,
+        ): void;
         /**
          * Sets the language to use for the spell checking. If `language` is `null`, the
          * default language is picked with `gspell_language_get_default()`.
@@ -786,7 +791,7 @@ export namespace Gspell {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -813,7 +818,7 @@ export namespace Gspell {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2411,7 +2416,7 @@ export namespace Gspell {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2438,7 +2443,7 @@ export namespace Gspell {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6647,7 +6652,7 @@ export namespace Gspell {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6674,7 +6679,7 @@ export namespace Gspell {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

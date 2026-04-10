@@ -551,7 +551,7 @@ export namespace Gly {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: GLib.Bytes;
+            data: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -1029,7 +1029,7 @@ export namespace Gly {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             apply_transformation: boolean;
             applyTransformation: boolean;
-            bytes: GLib.Bytes;
+            bytes: GLib.Bytes | Uint8Array;
             cancellable: Gio.Cancellable;
             file: Gio.File;
             memory_format_selection: MemoryFormatSelection;

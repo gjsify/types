@@ -539,12 +539,12 @@ export namespace GstAnalytics {
          * @param index Object class index
          * @returns confidence level for `index`, <0.0 if the call failed.
          */
-        get_level(index: number): number;
+        get_level(index: bigint | number): number;
         /**
          * @param index index of the class Get quark of the class at `index`
          * @returns Quark of this class (label) associated with `index`
          */
-        get_quark(index: number): GLib.Quark;
+        get_quark(index: bigint | number): GLib.Quark;
     }
 
     /**
@@ -593,10 +593,10 @@ export namespace GstAnalytics {
          */
         find_tensor_name(
             dir: ModelInfoTensorDirection | null,
-            index: number,
+            index: bigint | number,
             in_tensor_name: string | null,
             data_type: TensorDataType | null,
-            dims: number[],
+            dims: (bigint | number)[],
         ): string | null;
         /**
          * Free a modelinfo object allocated by `gst_analytics_modelinfo_load()`.
@@ -910,7 +910,7 @@ export namespace GstAnalytics {
          * @param num_dims The number of dimensions in the tensor
          * @returns Added successfully
          */
-        add_tensor_mtd(num_dims: number): [boolean, TensorMtd | null];
+        add_tensor_mtd(num_dims: bigint | number): [boolean, TensorMtd | null];
         /**
          * Add a new {@link GstAnalytics.TensorMtd} holding a {@link GstAnalytics.Tensor} to `instance`.
          * @param id semantically identify the contents of the tensor
@@ -925,14 +925,14 @@ export namespace GstAnalytics {
             data_type: TensorDataType | null,
             data: Gst.Buffer,
             dims_order: TensorDimOrder | null,
-            dims: number[],
+            dims: (bigint | number)[],
         ): [boolean, TensorMtd | null];
         /**
          * @param tracking_id Tracking id
          * @param tracking_first_seen Timestamp of first time the object was observed.
          * @returns Added successfully
          */
-        add_tracking_mtd(tracking_id: number, tracking_first_seen: Gst.ClockTime): [boolean, TrackingMtd];
+        add_tracking_mtd(tracking_id: bigint | number, tracking_first_seen: Gst.ClockTime): [boolean, TrackingMtd];
         /**
          * Verify existence of relation(s) between `an_meta_first_d` and
          * `an_meta_second_id` according to relation condition `cond_types`. It optionally
@@ -1046,15 +1046,6 @@ export namespace GstAnalytics {
 
         initial_relation_order: number;
         initial_buf_size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                initial_relation_order: number;
-                initial_buf_size: number;
-            }>,
-        );
     }
 
     /**
@@ -1223,7 +1214,7 @@ export namespace GstAnalytics {
          * @param index Region index
          * @returns The region ID
          */
-        get_region_id(index: number): number;
+        get_region_id(index: bigint | number): number;
         /**
          * Get region index of the region identified by `id`.
          * @param id Region id
@@ -1251,16 +1242,16 @@ export namespace GstAnalytics {
 
         // Constructors
 
-        constructor(num_dims: number);
+        constructor(num_dims: bigint | number);
 
-        static alloc(num_dims: number): Tensor;
+        static alloc(num_dims: bigint | number): Tensor;
 
         static new_simple(
             id: GLib.Quark,
             data_type: TensorDataType,
             data: Gst.Buffer,
             dims_order: TensorDimOrder,
-            dims: number[],
+            dims: (bigint | number)[],
         ): Tensor;
 
         // Static methods
@@ -1281,7 +1272,11 @@ export namespace GstAnalytics {
          * @param dims An optional array of dimensions, where G_MAXSIZE means ANY.
          * @returns TRUE if the {@link GstAnalytics.Tensor} has the reading order from the memory matching `order`, dimensions matching `num_dims`, data type matching `data_type` Otherwise FALSE will be returned.
          */
-        check_type(data_type: TensorDataType | null, order: TensorDimOrder | null, dims?: number[] | null): boolean;
+        check_type(
+            data_type: TensorDataType | null,
+            order: TensorDimOrder | null,
+            dims?: (bigint | number)[] | null,
+        ): boolean;
         /**
          * Create a copy of `tensor`.
          * @returns a new {@link GstAnalytics.Tensor}
@@ -1314,7 +1309,7 @@ export namespace GstAnalytics {
             data_type: TensorDataType | null,
             data: Gst.Buffer,
             dims_order: TensorDimOrder | null,
-            dims: number[],
+            dims: (bigint | number)[],
         ): boolean;
     }
 
@@ -1337,7 +1332,7 @@ export namespace GstAnalytics {
          * @param index The number of the tensor to get
          * @returns a GstTensor
          */
-        get(index: number): Tensor;
+        get(index: bigint | number): Tensor;
         /**
          * Get the first tensor from the {@link GstAnalytics.TensorMeta} identified by `id`.
          * @param id A {@link GLib.Quark} identifying tensor-encoding
@@ -1365,7 +1360,7 @@ export namespace GstAnalytics {
             tensor_id: GLib.Quark,
             data_type: TensorDataType | null,
             order: TensorDimOrder | null,
-            dims?: number[] | null,
+            dims?: (bigint | number)[] | null,
         ): Tensor | null;
         /**
          * Sets tensors into the {@link GstAnalytics.TensorMeta}

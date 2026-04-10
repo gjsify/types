@@ -944,13 +944,13 @@ export namespace ICal {
      * @param src
      * @param size
      */
-    function decode_base64(dest: string, src: string, size: number): string;
+    function decode_base64(dest: string, src: string, size: bigint | number): string;
     /**
      * @param dest
      * @param src
      * @param size
      */
-    function decode_quoted_printable(dest: string, src: string, size: number): string;
+    function decode_quoted_printable(dest: string, src: string, size: bigint | number): string;
     function free_zone_directory(): void;
     function get_unknown_token_handling_setting(): _unknown_token_handling;
     function get_zone_directory(): string;
@@ -963,7 +963,7 @@ export namespace ICal {
      * @param array
      * @param position
      */
-    function icalarray_element_at(array: array, position: number): any | null;
+    function icalarray_element_at(array: array, position: bigint | number): any | null;
     /**
      * `par` Usage
      * ```c
@@ -985,7 +985,7 @@ export namespace ICal {
      * @param array
      * @param position
      */
-    function icalarray_remove_element_at(array: array, position: number): void;
+    function icalarray_remove_element_at(array: array, position: bigint | number): void;
     /**
      * @param array
      * @param compare
@@ -1410,14 +1410,14 @@ export namespace ICal {
      * @param buf_size
      * @param ch
      */
-    function icalmemory_append_char(buf: string, pos: string, buf_size: number, ch: number): void;
+    function icalmemory_append_char(buf: string, pos: string, buf_size: bigint | number, ch: number): void;
     /**
      * @param buf
      * @param pos
      * @param buf_size
      * @param string
      */
-    function icalmemory_append_string(buf: string, pos: string, buf_size: number, string: string): void;
+    function icalmemory_append_string(buf: string, pos: string, buf_size: bigint | number, string: string): void;
     /**
      * @param buf
      */
@@ -1429,12 +1429,12 @@ export namespace ICal {
     /**
      * @param size
      */
-    function icalmemory_new_buffer(size: number): any | null;
+    function icalmemory_new_buffer(size: bigint | number): any | null;
     /**
      * @param buf
      * @param size
      */
-    function icalmemory_resize_buffer(buf: any | null, size: number): any | null;
+    function icalmemory_resize_buffer(buf: any | null, size: bigint | number): any | null;
     /**
      * @param s
      */
@@ -1442,7 +1442,7 @@ export namespace ICal {
     /**
      * @param size
      */
-    function icalmemory_tmp_buffer(size: number): any | null;
+    function icalmemory_tmp_buffer(size: bigint | number): any | null;
     /**
      * @param str
      */
@@ -2017,7 +2017,7 @@ export namespace ICal {
      * @param buf_size
      * @param d
      */
-    function icalparser_string_line_generator(out: string, buf_size: number, d?: any | null): string;
+    function icalparser_string_line_generator(out: string, buf_size: bigint | number, d?: any | null): string;
     /**
      * @param p
      */
@@ -3320,7 +3320,12 @@ export namespace ICal {
      * @param count
      * @param array
      */
-    function icalrecur_expand_recurrence(rule: string, start: number, count: number, array: number): number;
+    function icalrecur_expand_recurrence(
+        rule: string,
+        start: bigint | number,
+        count: number,
+        array: bigint | number,
+    ): number;
     /**
      * @param kind
      */
@@ -3552,7 +3557,7 @@ export namespace ICal {
      * @param is_date
      * @param zone
      */
-    function icaltime_from_timet_with_zone(tm: number, is_date: number, zone: timezone): any | null;
+    function icaltime_from_timet_with_zone(tm: bigint | number, is_date: number, zone: timezone): any | null;
     /**
      * @param t
      */
@@ -4195,7 +4200,7 @@ export namespace ICal {
      * @param parts
      * @param max_parts
      */
-    function sspm_free_parts(parts: any | null, max_parts: number): void;
+    function sspm_free_parts(parts: any | null, max_parts: bigint | number): void;
     /**
      * @param type
      */
@@ -4214,7 +4219,7 @@ export namespace ICal {
      */
     function sspm_parse_mime(
         parts: any | null,
-        max_parts: number,
+        max_parts: bigint | number,
         actions?: any | null,
         get_string?: any | null,
         get_string_data?: any | null,
@@ -4226,7 +4231,12 @@ export namespace ICal {
      * @param output_string
      * @param header
      */
-    function sspm_write_mime(parts: any | null, num_parts: number, output_string: string, header: string): number;
+    function sspm_write_mime(
+        parts: any | null,
+        num_parts: bigint | number,
+        output_string: string,
+        header: string,
+    ): number;
     /**
      * @gir-type Callback
      */
@@ -4270,18 +4280,6 @@ export namespace ICal {
         num_elements: number;
         space_allocated: number;
         chunks: any;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                element_size: number;
-                increment_size: number;
-                num_elements: number;
-                space_allocated: number;
-                chunks: any;
-            }>,
-        );
     }
 
     /**
@@ -4583,17 +4581,6 @@ export namespace ICal {
         level: number;
         data_size: number;
         data: any;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                header: any;
-                level: number;
-                data_size: number;
-                data: any;
-            }>,
-        );
     }
 
     /**
@@ -4607,16 +4594,6 @@ export namespace ICal {
         start: number;
         end: number;
         is_busy: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                start: number;
-                end: number;
-                is_busy: number;
-            }>,
-        );
     }
 
     /**

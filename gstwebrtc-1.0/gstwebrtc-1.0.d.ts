@@ -851,10 +851,10 @@ export namespace GstWebRTC {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffered_amount: number;
-            bufferedAmount: number;
-            buffered_amount_low_threshold: number;
-            bufferedAmountLowThreshold: number;
+            buffered_amount: bigint | number;
+            bufferedAmount: bigint | number;
+            buffered_amount_low_threshold: bigint | number;
+            bufferedAmountLowThreshold: bigint | number;
             id: number;
             label: string;
             max_packet_lifetime: number;
@@ -888,9 +888,9 @@ export namespace GstWebRTC {
          */
         get bufferedAmount(): number;
         get buffered_amount_low_threshold(): number;
-        set buffered_amount_low_threshold(val: number);
+        set buffered_amount_low_threshold(val: bigint | number);
         get bufferedAmountLowThreshold(): number;
-        set bufferedAmountLowThreshold(val: number);
+        set bufferedAmountLowThreshold(val: bigint | number);
         /**
          * @construct-only
          */
@@ -1870,8 +1870,8 @@ export namespace GstWebRTC {
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             max_channels: number;
             maxChannels: number;
-            max_message_size: number;
-            maxMessageSize: number;
+            max_message_size: bigint | number;
+            maxMessageSize: bigint | number;
             state: WebRTCSCTPTransportState;
             transport: WebRTCDTLSTransport;
         }

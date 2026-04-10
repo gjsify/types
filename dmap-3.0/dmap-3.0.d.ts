@@ -728,7 +728,7 @@ export namespace DMAP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -748,7 +748,7 @@ export namespace DMAP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -785,7 +785,7 @@ export namespace DMAP {
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -1197,7 +1197,7 @@ export namespace DMAP {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1224,7 +1224,7 @@ export namespace DMAP {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1606,7 +1606,7 @@ export namespace DMAP {
             server: Soup.Server,
             message: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             ctx: Soup.ClientContext,
         ): void;
         /**
@@ -1621,7 +1621,7 @@ export namespace DMAP {
             server: Soup.Server,
             message: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             ctx: Soup.ClientContext,
         ): void;
         /**
@@ -1636,7 +1636,7 @@ export namespace DMAP {
             server: Soup.Server,
             message: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             context: Soup.ClientContext,
         ): void;
         /**
@@ -1651,7 +1651,7 @@ export namespace DMAP {
             server: Soup.Server,
             msg: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             context: Soup.ClientContext,
         ): void;
         /**
@@ -1666,7 +1666,7 @@ export namespace DMAP {
             server: Soup.Server,
             msg: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             context: Soup.ClientContext,
         ): void;
         /**
@@ -1689,7 +1689,7 @@ export namespace DMAP {
             server: Soup.Server,
             message: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             ctx: Soup.ClientContext,
         ): void;
         /**
@@ -1704,7 +1704,7 @@ export namespace DMAP {
             server: Soup.Server,
             message: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             ctx: Soup.ClientContext,
         ): void;
         /**
@@ -1736,7 +1736,7 @@ export namespace DMAP {
             server: Soup.Server,
             message: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             ctx: Soup.ClientContext,
         ): void;
         /**
@@ -1751,7 +1751,7 @@ export namespace DMAP {
             server: Soup.Server,
             message: Soup.Message,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             ctx: Soup.ClientContext,
         ): void;
     }
@@ -1983,7 +1983,7 @@ export namespace DMAP {
             /**
              * @virtual
              */
-            vfunc_count(): number;
+            vfunc_count(): bigint | number;
         }
 
         // Constructor properties interface
@@ -2035,7 +2035,7 @@ export namespace DMAP {
             /**
              * @virtual
              */
-            vfunc_get_entry_count(): number;
+            vfunc_get_entry_count(): bigint | number;
             /**
              * @virtual
              */
@@ -2115,7 +2115,7 @@ export namespace DMAP {
             /**
              * @virtual
              */
-            vfunc_count(): number;
+            vfunc_count(): bigint | number;
             /**
              * @param location A record location.
              * @virtual
@@ -2184,7 +2184,7 @@ export namespace DMAP {
              * @param blob
              * @virtual
              */
-            vfunc_set_from_blob(blob: Uint8Array | string): boolean;
+            vfunc_set_from_blob(blob: Uint8Array): boolean;
         }
 
         // Constructor properties interface

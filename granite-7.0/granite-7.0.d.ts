@@ -388,19 +388,22 @@ export namespace Granite {
     /**
      * @param count
      */
-    function services_application_set_badge(count: number): globalThis.Promise<boolean>;
-    /**
-     * @param count
-     * @param _callback_
-     */
-    function services_application_set_badge(count: number, _callback_: Gio.AsyncReadyCallback<number> | null): void;
+    function services_application_set_badge(count: bigint | number): globalThis.Promise<boolean>;
     /**
      * @param count
      * @param _callback_
      */
     function services_application_set_badge(
-        count: number,
-        _callback_?: Gio.AsyncReadyCallback<number> | null,
+        count: bigint | number,
+        _callback_: Gio.AsyncReadyCallback<bigint | number> | null,
+    ): void;
+    /**
+     * @param count
+     * @param _callback_
+     */
+    function services_application_set_badge(
+        count: bigint | number,
+        _callback_?: Gio.AsyncReadyCallback<bigint | number> | null,
     ): globalThis.Promise<boolean> | void;
     /**
      * @param _res_
@@ -2096,7 +2099,7 @@ export namespace Granite {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2123,7 +2126,7 @@ export namespace Granite {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4618,7 +4621,7 @@ export namespace Granite {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4645,7 +4648,7 @@ export namespace Granite {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

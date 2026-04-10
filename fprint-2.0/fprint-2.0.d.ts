@@ -519,8 +519,8 @@ export namespace FPrint {
             driver: string;
             finger_status: FingerStatusFlags;
             fingerStatus: FingerStatusFlags;
-            fpi_driver_data: number;
-            fpiDriverData: number;
+            fpi_driver_data: bigint | number;
+            fpiDriverData: bigint | number;
             fpi_environ: string;
             fpiEnviron: string;
             fpi_udev_data_hidraw: string;
@@ -571,11 +571,11 @@ export namespace FPrint {
         /**
          * @construct-only
          */
-        set fpi_driver_data(val: number);
+        set fpi_driver_data(val: bigint | number);
         /**
          * @construct-only
          */
-        set fpiDriverData(val: number);
+        set fpiDriverData(val: bigint | number);
         /**
          * @construct-only
          */
@@ -1945,7 +1945,7 @@ export namespace FPrint {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1972,7 +1972,7 @@ export namespace FPrint {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2809,7 +2809,7 @@ export namespace FPrint {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2836,7 +2836,7 @@ export namespace FPrint {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

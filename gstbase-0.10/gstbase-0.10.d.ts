@@ -809,7 +809,7 @@ export namespace GstBase {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
-            blocksize: number;
+            blocksize: bigint | number;
             do_timestamp: boolean;
             doTimestamp: boolean;
             num_buffers: number;
@@ -828,7 +828,7 @@ export namespace GstBase {
         // Properties
 
         get blocksize(): number;
-        set blocksize(val: number);
+        set blocksize(val: bigint | number);
         get do_timestamp(): boolean;
         set do_timestamp(val: boolean);
         get doTimestamp(): boolean;
@@ -912,7 +912,7 @@ export namespace GstBase {
         /**
          * @param blocksize
          */
-        set_blocksize(blocksize: number): void;
+        set_blocksize(blocksize: bigint | number): void;
         get_blocksize(): number;
         /**
          * @param timestamp

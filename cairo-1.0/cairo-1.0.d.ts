@@ -610,16 +610,6 @@ export namespace cairo {
         index: number;
         x: number;
         y: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                index: number;
-                x: number;
-                y: number;
-            }>,
-        );
     }
 
     /**

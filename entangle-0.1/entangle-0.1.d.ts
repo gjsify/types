@@ -648,7 +648,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -675,7 +675,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1547,7 +1547,7 @@ export namespace Entangle {
          * @param waitms the number of milliseconds to wait
          * @returns TRUE if the file was deleted, FALSE on error
          */
-        process_events(waitms: number): boolean;
+        process_events(waitms: bigint | number): boolean;
         /**
          * Wait upto `waitms` milliseconds for events to arrive from
          * the camera. Signals will be emitted for any interesting
@@ -1562,7 +1562,10 @@ export namespace Entangle {
          * @param waitms the number of milliseconds to wait
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        process_events_async(waitms: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        process_events_async(
+            waitms: bigint | number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
         /**
          * Wait upto `waitms` milliseconds for events to arrive from
          * the camera. Signals will be emitted for any interesting
@@ -1579,7 +1582,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         process_events_async(
-            waitms: number,
+            waitms: bigint | number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1599,7 +1602,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         process_events_async(
-            waitms: number,
+            waitms: bigint | number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1741,7 +1744,7 @@ export namespace Entangle {
          * @param epochsecs new time in seconds since the epoch
          * @returns TRUE if the clock was changed, FALSE on error
          */
-        set_clock(epochsecs: number): boolean;
+        set_clock(epochsecs: bigint | number): boolean;
         /**
          * Update the camera clock to be `epochsecs` seconds since
          * the epoch.
@@ -1754,7 +1757,7 @@ export namespace Entangle {
          * @param epochsecs new time in seconds since the epoch
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        set_clock_async(epochsecs: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_clock_async(epochsecs: bigint | number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Update the camera clock to be `epochsecs` seconds since
          * the epoch.
@@ -1769,7 +1772,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         set_clock_async(
-            epochsecs: number,
+            epochsecs: bigint | number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1787,7 +1790,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         set_clock_async(
-            epochsecs: number,
+            epochsecs: bigint | number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -2091,7 +2094,7 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: Uint8Array;
+            data: Uint8Array | string;
             folder: string;
             mimetype: string;
             name: string;
@@ -2107,7 +2110,7 @@ export namespace Entangle {
         // Properties
 
         get data(): Uint8Array;
-        set data(val: Uint8Array);
+        set data(val: Uint8Array | string);
         /**
          * @construct-only
          */
@@ -3490,7 +3493,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3517,7 +3520,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4096,7 +4099,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4123,7 +4126,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4785,7 +4788,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4812,7 +4815,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4850,7 +4853,7 @@ export namespace Entangle {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: Uint8Array;
+            data: Uint8Array | string;
             filename: string;
         }
     }
@@ -5988,7 +5991,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6015,7 +6018,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6917,7 +6920,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6944,7 +6947,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7697,7 +7700,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7724,7 +7727,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8270,7 +8273,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8297,7 +8300,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9087,7 +9090,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9114,7 +9117,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9680,7 +9683,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9707,7 +9710,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11013,7 +11016,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11040,7 +11043,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11730,7 +11733,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11757,7 +11760,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -12134,7 +12137,7 @@ export namespace Entangle {
          * @param count maximum number of images to return
          * @returns the list of images
          */
-        get_earlier_images(include_selected: boolean, count: number): Image[];
+        get_earlier_images(include_selected: boolean, count: bigint | number): Image[];
         get_highlight(): string;
         /**
          * Retrieve the media displayed at the co-ordinates (`x`, `y`)
@@ -12682,7 +12685,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12709,7 +12712,7 @@ export namespace Entangle {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

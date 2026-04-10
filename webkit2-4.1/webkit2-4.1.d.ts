@@ -3100,7 +3100,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3127,7 +3127,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4479,7 +4479,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4506,7 +4506,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6237,7 +6237,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6264,7 +6264,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7304,7 +7304,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7331,7 +7331,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7839,7 +7839,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7866,7 +7866,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8120,7 +8120,7 @@ export namespace WebKit2 {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             body: string;
-            id: number;
+            id: bigint | number;
             tag: string;
             title: string;
         }
@@ -8707,7 +8707,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8734,7 +8734,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9443,7 +9443,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9470,7 +9470,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -12313,8 +12313,8 @@ export namespace WebKit2 {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            content_length: number;
-            contentLength: number;
+            content_length: bigint | number;
+            contentLength: bigint | number;
             http_headers: Soup.MessageHeaders;
             httpHeaders: Soup.MessageHeaders;
             mime_type: string;
@@ -12548,7 +12548,7 @@ export namespace WebKit2 {
          * @param stream_length the length of the stream or -1 if not known
          * @param content_type the content type of the stream or `null` if not known
          */
-        finish(stream: Gio.InputStream, stream_length: number, content_type?: string | null): void;
+        finish(stream: Gio.InputStream, stream_length: bigint | number, content_type?: string | null): void;
         /**
          * Finish a {@link WebKit2.URISchemeRequest} with a {@link GLib.Error}.
          * @param error a {@link GLib.Error} that will be passed to the {@link WebKit2.WebView}
@@ -12607,8 +12607,8 @@ export namespace WebKit2 {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             stream: Gio.InputStream;
-            stream_length: number;
-            streamLength: number;
+            stream_length: bigint | number;
+            streamLength: bigint | number;
         }
     }
 
@@ -12643,13 +12643,13 @@ export namespace WebKit2 {
          * @since 2.36
          * @construct-only
          */
-        set stream_length(val: number);
+        set stream_length(val: bigint | number);
         /**
          * The input stream length in bytes, `-1` for unknown length.
          * @since 2.36
          * @construct-only
          */
-        set streamLength(val: number);
+        set streamLength(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -12666,7 +12666,7 @@ export namespace WebKit2 {
 
         _init(...args: any[]): void;
 
-        static ['new'](input_stream: Gio.InputStream, stream_length: number): URISchemeResponse;
+        static ['new'](input_stream: Gio.InputStream, stream_length: bigint | number): URISchemeResponse;
 
         // Signals
 
@@ -13865,7 +13865,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13892,7 +13892,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15901,8 +15901,8 @@ export namespace WebKit2 {
             isWebProcessResponsive: boolean;
             microphone_capture_state: MediaCaptureState;
             microphoneCaptureState: MediaCaptureState;
-            page_id: number;
-            pageId: number;
+            page_id: bigint | number;
+            pageId: bigint | number;
             related_view: WebView;
             relatedView: WebView;
             settings: Settings;
@@ -16651,7 +16651,7 @@ export namespace WebKit2 {
          */
         call_async_javascript_function(
             body: string,
-            length: number,
+            length: bigint | number,
             _arguments?: GLib.Variant | null,
             world_name?: string | null,
             source_uri?: string | null,
@@ -16726,7 +16726,7 @@ export namespace WebKit2 {
          */
         call_async_javascript_function(
             body: string,
-            length: number,
+            length: bigint | number,
             _arguments: GLib.Variant | null,
             world_name: string | null,
             source_uri: string | null,
@@ -16802,7 +16802,7 @@ export namespace WebKit2 {
          */
         call_async_javascript_function(
             body: string,
-            length: number,
+            length: bigint | number,
             _arguments?: GLib.Variant | null,
             world_name?: string | null,
             source_uri?: string | null,
@@ -16943,7 +16943,7 @@ export namespace WebKit2 {
          */
         evaluate_javascript(
             script: string,
-            length: number,
+            length: bigint | number,
             world_name?: string | null,
             source_uri?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -17012,7 +17012,7 @@ export namespace WebKit2 {
          */
         evaluate_javascript(
             script: string,
-            length: number,
+            length: bigint | number,
             world_name: string | null,
             source_uri: string | null,
             cancellable: Gio.Cancellable | null,
@@ -17082,7 +17082,7 @@ export namespace WebKit2 {
          */
         evaluate_javascript(
             script: string,
-            length: number,
+            length: bigint | number,
             world_name?: string | null,
             source_uri?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -18595,7 +18595,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18622,7 +18622,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19143,7 +19143,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19170,7 +19170,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19688,7 +19688,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19715,7 +19715,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21279,7 +21279,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21306,7 +21306,7 @@ export namespace WebKit2 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21388,7 +21388,7 @@ export namespace WebKit2 {
          * @param minor the minor version number
          * @param micro the micro version number
          */
-        set_version(major: number, minor: number, micro: number): void;
+        set_version(major: bigint | number, minor: bigint | number, micro: bigint | number): void;
         /**
          * Atomically decrements the reference count of `info` by one.
          *
@@ -21745,7 +21745,7 @@ export namespace WebKit2 {
          * @param index index of the feature
          * @returns The feature at `index`.
          */
-        get(index: number): Feature;
+        get(index: bigint | number): Feature;
         /**
          * Gets the number of elements in the feature list.
          * @returns number of elements. Since 2.42
@@ -21880,7 +21880,7 @@ export namespace WebKit2 {
          * By default it's the time when the `position` was created.
          * @param timestamp timestamp in seconds since the epoch, or 0 to use current time
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
     }
 
     /**

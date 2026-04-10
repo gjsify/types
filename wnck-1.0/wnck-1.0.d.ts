@@ -349,7 +349,7 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application with process ID `pid`.
      * @since 2.6
      */
-    function pid_read_resource_usage(gdk_display: Gdk.Display, pid: number, usage: ResourceUsage): void;
+    function pid_read_resource_usage(gdk_display: Gdk.Display, pid: bigint | number, usage: ResourceUsage): void;
     /**
      * Sets the role of the libwnck user.
      *
@@ -372,7 +372,7 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application owning the X window ID `xid`.
      * @since 2.6
      */
-    function xid_read_resource_usage(gdk_display: Gdk.Display, xid: number, usage: ResourceUsage): void;
+    function xid_read_resource_usage(gdk_display: Gdk.Display, xid: bigint | number, usage: ResourceUsage): void;
     /**
      * @gir-type Flags
      */
@@ -1076,7 +1076,7 @@ export namespace Wnck {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1103,7 +1103,7 @@ export namespace Wnck {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1204,7 +1204,7 @@ export namespace Wnck {
          * as X window ID.
          * @param xwindow the X window ID of a group leader.
          */
-        static get(xwindow: number): Application;
+        static get(xwindow: bigint | number): Application;
 
         // Virtual methods
 
@@ -1694,7 +1694,7 @@ export namespace Wnck {
          * @param value value of property
          * @virtual
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -2097,7 +2097,7 @@ export namespace Wnck {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2124,7 +2124,7 @@ export namespace Wnck {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2327,7 +2327,7 @@ export namespace Wnck {
          * sought {@link Wnck.Screen} before, and returns `null`.
          * @param root_window_id an X window ID.
          */
-        static get_for_root(root_window_id: number): Screen;
+        static get_for_root(root_window_id: bigint | number): Screen;
 
         // Virtual methods
 
@@ -3071,7 +3071,7 @@ export namespace Wnck {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3098,7 +3098,7 @@ export namespace Wnck {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3689,7 +3689,7 @@ export namespace Wnck {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3716,7 +3716,7 @@ export namespace Wnck {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3846,7 +3846,7 @@ export namespace Wnck {
          * window IDs.
          * @param xwindow an X window ID.
          */
-        static get(xwindow: number): Window;
+        static get(xwindow: bigint | number): Window;
 
         // Virtual methods
 
@@ -4588,25 +4588,6 @@ export namespace Wnck {
         n_passive_grabs: number;
         n_cursors: number;
         n_other: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                total_bytes_estimate: number;
-                pixmap_bytes: number;
-                n_pixmaps: number;
-                n_windows: number;
-                n_gcs: number;
-                n_pictures: number;
-                n_glyphsets: number;
-                n_fonts: number;
-                n_colormap_entries: number;
-                n_passive_grabs: number;
-                n_cursors: number;
-                n_other: number;
-            }>,
-        );
     }
 
     /**

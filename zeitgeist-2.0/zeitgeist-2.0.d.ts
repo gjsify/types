@@ -267,7 +267,7 @@ export namespace Zeitgeist {
      * @param events
      * @param limit
      */
-    function events_to_variant_with_limit(events: Event[], limit: number): GLib.Variant;
+    function events_to_variant_with_limit(events: Event[], limit: bigint | number): GLib.Variant;
     /**
      * @param timeval
      */
@@ -275,7 +275,7 @@ export namespace Zeitgeist {
     /**
      * @param timestamp
      */
-    function timestamp_to_timeval(timestamp: number): GLib.TimeVal;
+    function timestamp_to_timeval(timestamp: bigint | number): GLib.TimeVal;
     function timestamp_from_now(): number;
     /**
      * @param datetime
@@ -284,7 +284,7 @@ export namespace Zeitgeist {
     /**
      * @param timestamp
      */
-    function timestamp_to_iso8601(timestamp: number): string;
+    function timestamp_to_iso8601(timestamp: bigint | number): string;
     /**
      * @param date
      */
@@ -298,15 +298,15 @@ export namespace Zeitgeist {
     /**
      * @param timestamp
      */
-    function timestamp_to_date(timestamp: number): GLib.Date;
+    function timestamp_to_date(timestamp: bigint | number): GLib.Date;
     /**
      * @param timestamp
      */
-    function timestamp_next_midnight(timestamp: number): number;
+    function timestamp_next_midnight(timestamp: bigint | number): number;
     /**
      * @param timestamp
      */
-    function timestamp_prev_midnight(timestamp: number): number;
+    function timestamp_prev_midnight(timestamp: bigint | number): number;
     /**
      * @param symbol_uri
      */
@@ -1751,7 +1751,7 @@ export namespace Zeitgeist {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1778,7 +1778,7 @@ export namespace Zeitgeist {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1993,7 +1993,7 @@ export namespace Zeitgeist {
             eventTemplates: Event[];
             enabled: boolean;
             running: boolean;
-            timestamp: number;
+            timestamp: bigint | number;
         }
     }
 
@@ -2022,7 +2022,7 @@ export namespace Zeitgeist {
         get running(): boolean;
         set running(val: boolean);
         get timestamp(): number;
-        set timestamp(val: number);
+        set timestamp(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2103,7 +2103,7 @@ export namespace Zeitgeist {
         /**
          * @param value
          */
-        set_timestamp(value: number): void;
+        set_timestamp(value: bigint | number): void;
     }
 
     namespace Event {
@@ -2123,7 +2123,7 @@ export namespace Zeitgeist {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: number;
-            timestamp: number;
+            timestamp: bigint | number;
             origin: string;
             actor: string;
             interpretation: string;
@@ -2144,7 +2144,7 @@ export namespace Zeitgeist {
         get id(): number;
         set id(val: number);
         get timestamp(): number;
-        set timestamp(val: number);
+        set timestamp(val: bigint | number);
         get origin(): string;
         set origin(val: string);
         get actor(): string;
@@ -2232,7 +2232,7 @@ export namespace Zeitgeist {
         /**
          * @param value
          */
-        set_timestamp(value: number): void;
+        set_timestamp(value: bigint | number): void;
         get_origin(): string | null;
         /**
          * @param value
@@ -2453,8 +2453,8 @@ export namespace Zeitgeist {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            start: number;
-            end: number;
+            start: bigint | number;
+            end: bigint | number;
         }
     }
 
@@ -2467,9 +2467,9 @@ export namespace Zeitgeist {
         // Properties
 
         get start(): number;
-        set start(val: number);
+        set start(val: bigint | number);
         get end(): number;
-        set end(val: number);
+        set end(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2486,7 +2486,7 @@ export namespace Zeitgeist {
 
         _init(...args: any[]): void;
 
-        static ['new'](start_msec: number, end_msec: number): TimeRange;
+        static ['new'](start_msec: bigint | number, end_msec: bigint | number): TimeRange;
 
         static anytime(): TimeRange;
 
@@ -3009,7 +3009,7 @@ export namespace Zeitgeist {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3036,7 +3036,7 @@ export namespace Zeitgeist {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

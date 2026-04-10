@@ -81,13 +81,13 @@ export namespace BraseroMedia {
      * @param with_unit
      * @param round
      */
-    function units_get_time_string(time: number, with_unit: boolean, round: boolean): string;
+    function units_get_time_string(time: bigint | number, with_unit: boolean, round: boolean): string;
     /**
      * @param size
      * @param with_unit
      * @param round
      */
-    function units_get_time_string_from_size(size: number, with_unit: boolean, round: boolean): string;
+    function units_get_time_string_from_size(size: bigint | number, with_unit: boolean, round: boolean): string;
     /**
      * @gir-type Flags
      */
@@ -1654,7 +1654,7 @@ export namespace BraseroMedia {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1681,7 +1681,7 @@ export namespace BraseroMedia {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5425,14 +5425,14 @@ export namespace BraseroMedia {
          * @param bytes a `gint64` * or NULL
          * @param blocks a `gint64` * or NULL
          */
-        get_capacity(bytes: number, blocks: number): void;
+        get_capacity(bytes: bigint | number, blocks: bigint | number): void;
         /**
          * Stores in either `size` (in bytes) or `blocks` (the number of blocks) the size
          * used to store data (including audio on CDs) on the disc.
          * @param bytes a `gint64` * or NULL
          * @param blocks a `gint64` * or NULL
          */
-        get_data_size(bytes: number, blocks: number): void;
+        get_data_size(bytes: bigint | number, blocks: bigint | number): void;
         /**
          * Gets the {@link BraseroMedia.Drive} in which the medium is inserted.
          * @returns a {@link BraseroMedia.Drive}. No need to unref after use.
@@ -5444,7 +5444,7 @@ export namespace BraseroMedia {
          * @param bytes a `gint64` * or NULL
          * @param blocks a `gint64` * or NULL
          */
-        get_free_space(bytes: number, blocks: number): void;
+        get_free_space(bytes: bigint | number, blocks: bigint | number): void;
         /**
          * Stores in either `bytes` (in bytes) or in `sectors` (in blocks) the address where
          * the last session starts. This is useful when creating a multisession image or
@@ -5453,7 +5453,7 @@ export namespace BraseroMedia {
          * @param sectors a `goffset` * or NULL
          * @returns a `gboolean`. Returns TRUE if information could be retrieved.
          */
-        get_last_data_track_address(bytes: number, sectors: number): boolean;
+        get_last_data_track_address(bytes: bigint | number, sectors: bigint | number): boolean;
         /**
          * Stores in either `bytes` (in bytes) or in `sectors` (in blocks) the space used by
          * the last track on the medium.
@@ -5461,7 +5461,7 @@ export namespace BraseroMedia {
          * @param sectors a `goffset` * or NULL
          * @returns a `gboolean`. Returns TRUE if information could be retrieved.
          */
-        get_last_data_track_space(bytes: number, sectors: number): boolean;
+        get_last_data_track_space(bytes: bigint | number, sectors: bigint | number): boolean;
         /**
          * Gets the maximum speed that can be used to write to `medium`.
          * Note: the speed are in B/sec.
@@ -5492,7 +5492,7 @@ export namespace BraseroMedia {
          * @param sectors a `goffset` * or NULL
          * @returns a `gboolean`. Returns TRUE if information could be retrieved; FALSE otherwise (usually when track `num` doesn't exist).
          */
-        get_track_address(num: number, bytes: number, sectors: number): boolean;
+        get_track_address(num: number, bytes: bigint | number, sectors: bigint | number): boolean;
         /**
          * Gets the number of tracks on the medium.
          * @returns a `guint`.
@@ -5506,7 +5506,7 @@ export namespace BraseroMedia {
          * @param sectors a `goffset` * or NULL
          * @returns a `gboolean`. Returns TRUE if information could be retrieved; FALSE otherwise (usually when track `num` doesn't exist).
          */
-        get_track_space(num: number, bytes: number, sectors: number): boolean;
+        get_track_space(num: number, bytes: bigint | number, sectors: bigint | number): boolean;
         /**
          * Returns the medium type as a string to be displayed in a UI.
          * @returns a `gchar` *.
@@ -6905,7 +6905,7 @@ export namespace BraseroMedia {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6932,7 +6932,7 @@ export namespace BraseroMedia {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

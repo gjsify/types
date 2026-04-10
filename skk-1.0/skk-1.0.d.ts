@@ -2192,7 +2192,7 @@ export namespace Skk {
      * @gir-type Callback
      */
     interface GetTime {
-        (): number;
+        (): bigint | number;
     }
     /**
      * @gir-type Flags

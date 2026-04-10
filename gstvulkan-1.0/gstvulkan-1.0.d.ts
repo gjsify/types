@@ -248,7 +248,7 @@ export namespace GstVulkan {
      */
     function vulkan_buffer_memory_alloc(
         device: VulkanDevice,
-        size: number,
+        size: bigint | number,
         usage: Vulkan.BufferUsageFlags,
         mem_prop_flags: Vulkan.MemoryPropertyFlags,
     ): Gst.Memory;
@@ -280,7 +280,7 @@ export namespace GstVulkan {
      * @param code
      * @param size
      */
-    function vulkan_create_shader(device: VulkanDevice, code: string, size: number): VulkanHandle;
+    function vulkan_create_shader(device: VulkanDevice, code: string, size: bigint | number): VulkanHandle;
     /**
      * @param type a {@link GstVulkan.VulkanDisplayType}
      * @returns the Vulkan extension string required for creating a VkSurfaceKHR using a window system handle or `null`
@@ -373,8 +373,8 @@ export namespace GstVulkan {
     function vulkan_image_memory_alloc(
         device: VulkanDevice,
         format: Vulkan.Format,
-        width: number,
-        height: number,
+        width: bigint | number,
+        height: bigint | number,
         tiling: Vulkan.ImageTiling,
         usage: Vulkan.ImageUsageFlags,
         mem_prop_flags: Vulkan.MemoryPropertyFlags,
@@ -401,8 +401,8 @@ export namespace GstVulkan {
         device: VulkanDevice,
         image: Vulkan.Image,
         format: Vulkan.Format,
-        width: number,
-        height: number,
+        width: bigint | number,
+        height: bigint | number,
         tiling: Vulkan.ImageTiling,
         usage: Vulkan.ImageUsageFlags,
         user_data?: any | null,
@@ -429,7 +429,7 @@ export namespace GstVulkan {
         device: VulkanDevice,
         memory_type_index: number,
         params: Gst.AllocationParams,
-        size: number,
+        size: bigint | number,
         mem_prop_flags: Vulkan.MemoryPropertyFlags,
     ): Gst.Memory;
     /**
@@ -902,7 +902,11 @@ export namespace GstVulkan {
 
         _init(...args: any[]): void;
 
-        static new_wrapped(device: VulkanDevice, pool: Vulkan.DescriptorPool, max_sets: number): VulkanDescriptorPool;
+        static new_wrapped(
+            device: VulkanDevice,
+            pool: Vulkan.DescriptorPool,
+            max_sets: bigint | number,
+        ): VulkanDescriptorPool;
 
         // Signals
 
@@ -1342,7 +1346,7 @@ export namespace GstVulkan {
          * @param indices
          * @param n_indices
          */
-        set_index_buffer(indices: Gst.Memory, n_indices: number): boolean;
+        set_index_buffer(indices: Gst.Memory, n_indices: bigint | number): boolean;
         /**
          * @param in_info
          * @param out_info
@@ -2224,7 +2228,7 @@ export namespace GstVulkan {
         /**
          * @param timeout
          */
-        wait(timeout: number): boolean;
+        wait(timeout: bigint | number): boolean;
     }
 
     namespace VulkanVideoFilter {
@@ -2540,7 +2544,7 @@ export namespace GstVulkan {
          */
         static alloc(
             device: VulkanDevice,
-            size: number,
+            size: bigint | number,
             usage: Vulkan.BufferUsageFlags,
             mem_prop_flags: Vulkan.MemoryPropertyFlags,
         ): Gst.Memory;
@@ -2933,8 +2937,8 @@ export namespace GstVulkan {
         static alloc(
             device: VulkanDevice,
             format: Vulkan.Format,
-            width: number,
-            height: number,
+            width: bigint | number,
+            height: bigint | number,
             tiling: Vulkan.ImageTiling,
             usage: Vulkan.ImageUsageFlags,
             mem_prop_flags: Vulkan.MemoryPropertyFlags,
@@ -2979,7 +2983,7 @@ export namespace GstVulkan {
             device: VulkanDevice,
             usage: Vulkan.ImageUsageFlags,
             params: Gst.AllocationParams,
-            size: number,
+            size: bigint | number,
             user_data?: any | null,
         ): boolean;
     }
@@ -3054,7 +3058,7 @@ export namespace GstVulkan {
             device: VulkanDevice,
             memory_type_index: number,
             params: Gst.AllocationParams,
-            size: number,
+            size: bigint | number,
             mem_prop_flags: Vulkan.MemoryPropertyFlags,
         ): Gst.Memory;
         /**

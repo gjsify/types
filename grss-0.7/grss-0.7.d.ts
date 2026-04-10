@@ -388,7 +388,7 @@ export namespace Grss {
          * To set the time of publishing for the feed.
          * @param publish timestamp of publishing.
          */
-        set_publish_time(publish: number): void;
+        set_publish_time(publish: bigint | number): void;
         /**
          * To set information about PubSubHubbub for the channel. To unset the hub,
          * pass `null` as parameter.
@@ -422,7 +422,7 @@ export namespace Grss {
          * To set the latest update time of `channel`.
          * @param update update time of the feed.
          */
-        set_update_time(update: number): void;
+        set_update_time(update: bigint | number): void;
         /**
          * To assign a webmaster to the `channel`.
          * @param webmaster webmaster of the feed.
@@ -537,7 +537,7 @@ export namespace Grss {
          * To set the size of the embedded `enclosure`.
          * @param length size of the enclosure, in bytes.
          */
-        set_length(length: number): void;
+        set_length(length: bigint | number): void;
     }
 
     namespace FeedFormatter {
@@ -837,7 +837,7 @@ export namespace Grss {
          * To set the publish time of the item.
          * @param publish publishing timestamp of the item.
          */
-        set_publish_time(publish: number): void;
+        set_publish_time(publish: bigint | number): void;
         /**
          * To set an alternative real source for `item`. This parameter is used by web
          * aggregators to explicit the origin of a content reproduced in them.

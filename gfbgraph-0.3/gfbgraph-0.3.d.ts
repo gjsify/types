@@ -224,7 +224,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @virtual
          */
-        vfunc_get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
+        vfunc_get_connection_post_params(node_type: GObject.GType): { [key: string]: any } | GLib.HashTable<any, any>;
         /**
          * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
          * executed.
@@ -825,7 +825,7 @@ export namespace GFBGraph {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -852,7 +852,7 @@ export namespace GFBGraph {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1272,7 +1272,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @virtual
          */
-        vfunc_get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
+        vfunc_get_connection_post_params(node_type: GObject.GType): { [key: string]: any } | GLib.HashTable<any, any>;
         /**
          * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
          * executed.
@@ -1440,7 +1440,7 @@ export namespace GFBGraph {
             property_name: string,
             pspec: GObject.ParamSpec,
             property_node: Json.Node,
-        ): [boolean, unknown];
+        ): [boolean, GObject.Value | any];
         /**
          * Calls the {@link Json.Serializable.find_property} implementation on
          * the {@link Json.Serializable} instance, which will return the property
@@ -1456,7 +1456,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+        vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
         /**
          * @param args
          * @virtual
@@ -1471,11 +1471,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(
-            property_name: string,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-        ): Json.Node | null;
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
          * on the {@link Json.Serializable} instance, which will set the property
@@ -1484,7 +1480,7 @@ export namespace GFBGraph {
          * @param value the property value to set
          * @virtual
          */
-        vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
         /**
          * @param args
          * @virtual
@@ -2505,7 +2501,7 @@ export namespace GFBGraph {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2532,7 +2528,7 @@ export namespace GFBGraph {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2930,7 +2926,9 @@ export namespace GFBGraph {
              * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
              * @virtual
              */
-            vfunc_get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
+            vfunc_get_connection_post_params(
+                node_type: GObject.GType,
+            ): { [key: string]: any } | GLib.HashTable<any, any>;
             /**
              * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
              * executed.

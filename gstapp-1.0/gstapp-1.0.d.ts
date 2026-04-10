@@ -1114,7 +1114,7 @@ export namespace GstApp {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1141,7 +1141,7 @@ export namespace GstApp {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1292,13 +1292,13 @@ export namespace GstApp {
         interface ConstructorProps extends GstBase.BaseSrc.ConstructorProps, Gst.URIHandler.ConstructorProps {
             block: boolean;
             caps: Gst.Caps;
-            current_level_buffers: number;
-            currentLevelBuffers: number;
-            current_level_bytes: number;
-            currentLevelBytes: number;
-            current_level_time: number;
-            currentLevelTime: number;
-            duration: number;
+            current_level_buffers: bigint | number;
+            currentLevelBuffers: bigint | number;
+            current_level_bytes: bigint | number;
+            currentLevelBytes: bigint | number;
+            current_level_time: bigint | number;
+            currentLevelTime: bigint | number;
+            duration: bigint | number;
             emit_signals: boolean;
             emitSignals: boolean;
             format: Gst.Format;
@@ -1308,19 +1308,19 @@ export namespace GstApp {
             isLive: boolean;
             leaky_type: AppLeakyType;
             leakyType: AppLeakyType;
-            max_buffers: number;
-            maxBuffers: number;
-            max_bytes: number;
-            maxBytes: number;
-            max_latency: number;
-            maxLatency: number;
-            max_time: number;
-            maxTime: number;
-            min_latency: number;
-            minLatency: number;
+            max_buffers: bigint | number;
+            maxBuffers: bigint | number;
+            max_bytes: bigint | number;
+            maxBytes: bigint | number;
+            max_latency: bigint | number;
+            maxLatency: bigint | number;
+            max_time: bigint | number;
+            maxTime: bigint | number;
+            min_latency: bigint | number;
+            minLatency: bigint | number;
             min_percent: number;
             minPercent: number;
-            size: number;
+            size: bigint | number;
             stream_type: AppStreamType;
             streamType: AppStreamType;
         }
@@ -1454,7 +1454,7 @@ export namespace GstApp {
          * @since 1.10
          */
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         /**
          * Make appsrc emit the "need-data", "enough-data" and "seek-data" signals.
          * This option is by default enabled for backwards compatibility reasons but
@@ -1538,7 +1538,7 @@ export namespace GstApp {
          * @since 1.20
          */
         get max_buffers(): number;
-        set max_buffers(val: number);
+        set max_buffers(val: bigint | number);
         /**
          * The maximum amount of buffers that can be queued internally.
          * After the maximum amount of buffers are queued, appsrc will emit the
@@ -1546,25 +1546,25 @@ export namespace GstApp {
          * @since 1.20
          */
         get maxBuffers(): number;
-        set maxBuffers(val: number);
+        set maxBuffers(val: bigint | number);
         /**
          * The maximum amount of bytes that can be queued internally.
          * After the maximum amount of bytes are queued, appsrc will emit the
          * "enough-data" signal.
          */
         get max_bytes(): number;
-        set max_bytes(val: number);
+        set max_bytes(val: bigint | number);
         /**
          * The maximum amount of bytes that can be queued internally.
          * After the maximum amount of bytes are queued, appsrc will emit the
          * "enough-data" signal.
          */
         get maxBytes(): number;
-        set maxBytes(val: number);
+        set maxBytes(val: bigint | number);
         get max_latency(): number;
-        set max_latency(val: number);
+        set max_latency(val: bigint | number);
         get maxLatency(): number;
-        set maxLatency(val: number);
+        set maxLatency(val: bigint | number);
         /**
          * The maximum amount of time that can be queued internally.
          * After the maximum amount of time are queued, appsrc will emit the
@@ -1572,7 +1572,7 @@ export namespace GstApp {
          * @since 1.20
          */
         get max_time(): number;
-        set max_time(val: number);
+        set max_time(val: bigint | number);
         /**
          * The maximum amount of time that can be queued internally.
          * After the maximum amount of time are queued, appsrc will emit the
@@ -1580,19 +1580,19 @@ export namespace GstApp {
          * @since 1.20
          */
         get maxTime(): number;
-        set maxTime(val: number);
+        set maxTime(val: bigint | number);
         /**
          * The minimum latency of the source. A value of -1 will use the default
          * latency calculations of {@link GstBase.BaseSrc}.
          */
         get min_latency(): number;
-        set min_latency(val: number);
+        set min_latency(val: bigint | number);
         /**
          * The minimum latency of the source. A value of -1 will use the default
          * latency calculations of {@link GstBase.BaseSrc}.
          */
         get minLatency(): number;
-        set minLatency(val: number);
+        set minLatency(val: bigint | number);
         /**
          * Make appsrc emit the "need-data" signal when the amount of bytes in the
          * queue drops below this percentage of max-bytes.
@@ -1610,7 +1610,7 @@ export namespace GstApp {
          * is recommended to configure it with this property.
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * The type of stream that this source is producing.  For seekable streams the
          * application should connect to the seek-data signal.
@@ -1867,7 +1867,7 @@ export namespace GstApp {
          * @param min the min latency
          * @param max the max latency
          */
-        set_latency(min: number, max: number): void;
+        set_latency(min: bigint | number, max: bigint | number): void;
         /**
          * When set to any other value than GST_APP_LEAKY_TYPE_NONE then the appsrc
          * will drop any buffers that are pushed into it once its internal queue is
@@ -1882,14 +1882,14 @@ export namespace GstApp {
          * "enough-data" signal.
          * @param max the maximum number of buffers to queue
          */
-        set_max_buffers(max: number): void;
+        set_max_buffers(max: bigint | number): void;
         /**
          * Set the maximum amount of bytes that can be queued in `appsrc`.
          * After the maximum amount of bytes are queued, `appsrc` will emit the
          * "enough-data" signal.
          * @param max the maximum number of bytes to queue
          */
-        set_max_bytes(max: number): void;
+        set_max_bytes(max: bigint | number): void;
         /**
          * Set the maximum amount of time that can be queued in `appsrc`.
          * After the maximum amount of time are queued, `appsrc` will emit the
@@ -1902,7 +1902,7 @@ export namespace GstApp {
          * not known.
          * @param size the size to set
          */
-        set_size(size: number): void;
+        set_size(size: bigint | number): void;
         /**
          * Set the stream type on `appsrc`. For seekable streams, the "seek" signal must
          * be connected to.
@@ -2345,7 +2345,7 @@ export namespace GstApp {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2372,7 +2372,7 @@ export namespace GstApp {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

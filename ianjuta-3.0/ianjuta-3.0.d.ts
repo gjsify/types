@@ -1368,25 +1368,6 @@ export namespace IAnjuta {
         condition: string;
         temporary: boolean;
         pending: boolean;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                type: number;
-                id: number;
-                file: string;
-                line: number;
-                function: string;
-                address: number;
-                enable: boolean;
-                ignore: number;
-                times: number;
-                condition: string;
-                temporary: boolean;
-                pending: boolean;
-            }>,
-        );
     }
 
     /**
@@ -1406,21 +1387,6 @@ export namespace IAnjuta {
         'function': string;
         library: string;
         address: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                thread: number;
-                level: number;
-                args: string;
-                file: string;
-                line: number;
-                function: string;
-                library: string;
-                address: number;
-            }>,
-        );
     }
 
     /**
@@ -1439,16 +1405,6 @@ export namespace IAnjuta {
         address: number;
         label: string;
         text: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                address: number;
-                label: string;
-                text: string;
-            }>,
-        );
     }
 
     /**
@@ -1461,16 +1417,6 @@ export namespace IAnjuta {
         // Fields
 
         size: number;
-        data: DebuggerInstructionALine[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                size: number;
-                data: DebuggerInstructionALine[];
-            }>,
-        );
     }
 
     /**
@@ -1488,16 +1434,6 @@ export namespace IAnjuta {
         address: number;
         length: number;
         data: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                address: number;
-                length: number;
-                data: string;
-            }>,
-        );
     }
 
     /**
@@ -2646,13 +2582,13 @@ export namespace IAnjuta {
          * @param address Run from this addresss
          * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
          */
-        run_from_address(address: number): boolean;
+        run_from_address(address: bigint | number): boolean;
         /**
          * Start the program until it reachs the address address
          * @param address Run to this addresss
          * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
          */
-        run_to_address(address: number): boolean;
+        run_to_address(address: bigint | number): boolean;
         /**
          * Execute one assembler instruction in the program.
          * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
@@ -6607,7 +6543,7 @@ export namespace IAnjuta {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
     }
 
     export const Project: ProjectNamespace & {

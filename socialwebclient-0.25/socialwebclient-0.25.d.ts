@@ -391,7 +391,7 @@ export namespace SocialWebClient {
             artist: string,
             album: string,
             track: string,
-            time: number,
+            time: bigint | number,
             source: string,
             rating: string,
             length: number,
@@ -596,7 +596,6 @@ export namespace SocialWebClient {
         refcount: number;
         service: string;
         uuid: string;
-        date: GLib.TimeVal;
 
         // Constructors
 
@@ -642,7 +641,6 @@ export namespace SocialWebClient {
         refcount: number;
         service: string;
         uuid: string;
-        date: GLib.TimeVal;
 
         // Constructors
 

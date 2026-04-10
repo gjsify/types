@@ -798,13 +798,13 @@ export namespace Xmlb {
          * @param tail a string
          * @param tail_len length of `tail`, or -1 if `tail` is NUL terminated
          */
-        set_tail(tail: string | null, tail_len: number): void;
+        set_tail(tail: string | null, tail_len: bigint | number): void;
         /**
          * Sets the text on the builder node.
          * @param text a string
          * @param text_len length of `text`, or -1 if `text` is NUL terminated
          */
-        set_text(text: string | null, text_len: number): void;
+        set_text(text: string | null, text_len: bigint | number): void;
         /**
          * Sorts the node children using a custom sort function.
          * @param func a {@link Xmlb.BuilderNodeSortFunc}
@@ -1141,7 +1141,7 @@ export namespace Xmlb {
          * @param text_len length of `text`, or -1 if `text` is `NUL` terminated
          * @returns opcodes, or `null` on error
          */
-        parse(text: string, text_len: number): Stack;
+        parse(text: string, text_len: bigint | number): Stack;
         /**
          * Parses an XPath predicate. Not all of XPath 1.0 or XPath 1.0 is supported,
          * and new functions and mnemonics can be added using `xb_machine_add_method()`
@@ -1151,7 +1151,7 @@ export namespace Xmlb {
          * @param flags {@link Xmlb.MachineParseFlags}, e.g. {@link Xmlb.MachineParseFlags.OPTIMIZE}
          * @returns opcodes, or `null` on error
          */
-        parse_full(text: string, text_len: number, flags: MachineParseFlags | null): Stack;
+        parse_full(text: string, text_len: bigint | number, flags: MachineParseFlags | null): Stack;
         /**
          * Runs a set of opcodes on the virtual machine.
          *

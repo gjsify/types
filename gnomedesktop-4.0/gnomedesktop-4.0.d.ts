@@ -42,7 +42,7 @@ export namespace GnomeDesktop {
      * @returns TRUE if the thumbnail has the right `uri` and `mtime`
      * @since 2.2
      */
-    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: number): boolean;
+    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: bigint | number): boolean;
     /**
      * Returns the filename that a thumbnail of size `size` for `uri` would have.
      * This function is threadsafe and does no blocking I/O.
@@ -331,7 +331,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
          */
-        can_thumbnail(uri: string, mime_type: string, mtime: number): boolean;
+        can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
         /**
          * Creates a failed thumbnail for the file so that we don't try
          * to re-thumbnail the file later.
@@ -342,7 +342,7 @@ export namespace GnomeDesktop {
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
          */
-        create_failed_thumbnail(uri: string, mtime: number, cancellable?: Gio.Cancellable | null): boolean;
+        create_failed_thumbnail(uri: string, mtime: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_create_failed_thumbnail()`
          *
@@ -353,7 +353,7 @@ export namespace GnomeDesktop {
          */
         create_failed_thumbnail_async(
             uri: string,
-            original_mtime: number,
+            original_mtime: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -367,7 +367,7 @@ export namespace GnomeDesktop {
          */
         create_failed_thumbnail_async(
             uri: string,
-            original_mtime: number,
+            original_mtime: bigint | number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -382,7 +382,7 @@ export namespace GnomeDesktop {
          */
         create_failed_thumbnail_async(
             uri: string,
-            original_mtime: number,
+            original_mtime: bigint | number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -460,7 +460,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
          */
-        has_valid_failed_thumbnail(uri: string, mtime: number): boolean;
+        has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
         /**
          * Tries to locate an existing thumbnail for the file specified.
          *
@@ -469,7 +469,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
          */
-        lookup(uri: string, mtime: number): string;
+        lookup(uri: string, mtime: bigint | number): string;
         /**
          * Saves `thumbnail` at the right place. If the save fails a
          * failed thumbnail is written.
@@ -484,7 +484,7 @@ export namespace GnomeDesktop {
         save_thumbnail(
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
-            original_mtime: number,
+            original_mtime: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -499,7 +499,7 @@ export namespace GnomeDesktop {
         save_thumbnail_async(
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
-            original_mtime: number,
+            original_mtime: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -515,7 +515,7 @@ export namespace GnomeDesktop {
         save_thumbnail_async(
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
-            original_mtime: number,
+            original_mtime: bigint | number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -532,7 +532,7 @@ export namespace GnomeDesktop {
         save_thumbnail_async(
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
-            original_mtime: number,
+            original_mtime: bigint | number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -603,7 +603,7 @@ export namespace GnomeDesktop {
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `gnome_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `gnome_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: number, callback?: IdleMonitorWatchFunc | null): number;
+        add_idle_watch(interval_msec: bigint | number, callback?: IdleMonitorWatchFunc | null): number;
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `gnome_idle_monitor_add_idle_watch()`, has triggered.
@@ -1102,7 +1102,7 @@ export namespace GnomeDesktop {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1129,7 +1129,7 @@ export namespace GnomeDesktop {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

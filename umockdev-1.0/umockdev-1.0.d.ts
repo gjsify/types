@@ -309,18 +309,18 @@ export namespace UMockdev {
          * @param offset
          * @param len
          */
-        resolve(offset: number, len: number): IoctlData | null;
+        resolve(offset: bigint | number, len: bigint | number): IoctlData | null;
         /**
          * @param offset
          * @param child
          */
-        set_ptr(offset: number, child: IoctlData): boolean;
+        set_ptr(offset: bigint | number, child: IoctlData): boolean;
         reload(): boolean;
         /**
          * @param offset
          * @param new_data
          */
-        update(offset: number, new_data: Uint8Array | string): void;
+        update(offset: bigint | number, new_data: Uint8Array | string): void;
         retrieve(): Uint8Array;
     }
 
@@ -337,7 +337,7 @@ export namespace UMockdev {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             devnode: string;
-            request: number;
+            request: bigint | number;
             arg: IoctlData;
             connected: boolean;
         }
@@ -415,7 +415,7 @@ export namespace UMockdev {
          * @param res
          * @param errno_
          */
-        complete(res: number, errno_: number): void;
+        complete(res: bigint | number, errno_: number): void;
         abort(): void;
     }
 

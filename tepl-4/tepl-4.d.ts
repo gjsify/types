@@ -1475,7 +1475,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1502,7 +1502,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1971,12 +1971,12 @@ export namespace Tepl {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: Buffer;
-            chunk_size: number;
-            chunkSize: number;
+            chunk_size: bigint | number;
+            chunkSize: bigint | number;
             file: File;
             location: Gio.File;
-            max_size: number;
-            maxSize: number;
+            max_size: bigint | number;
+            maxSize: bigint | number;
         }
     }
 
@@ -2005,7 +2005,7 @@ export namespace Tepl {
          * @since 1.0
          */
         get chunk_size(): number;
-        set chunk_size(val: number);
+        set chunk_size(val: bigint | number);
         /**
          * The chunk size, in bytes. The content is loaded chunk by chunk. It
          * permits to avoid allocating a too big contiguous memory area, as well
@@ -2016,7 +2016,7 @@ export namespace Tepl {
          * @since 1.0
          */
         get chunkSize(): number;
-        set chunkSize(val: number);
+        set chunkSize(val: bigint | number);
         /**
          * The {@link Tepl.File}. The {@link Tepl.FileLoader} object has a weak
          * reference to the file.
@@ -2040,7 +2040,7 @@ export namespace Tepl {
          * @since 1.0
          */
         get max_size(): number;
-        set max_size(val: number);
+        set max_size(val: bigint | number);
         /**
          * The maximum content size, in bytes. Keep in mind that all the
          * content is loaded in memory, and when loaded into a {@link Gtk.TextBuffer}
@@ -2050,7 +2050,7 @@ export namespace Tepl {
          * @since 1.0
          */
         get maxSize(): number;
-        set maxSize(val: number);
+        set maxSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2178,11 +2178,11 @@ export namespace Tepl {
         /**
          * @param chunk_size the new chunk size.
          */
-        set_chunk_size(chunk_size: number): void;
+        set_chunk_size(chunk_size: bigint | number): void;
         /**
          * @param max_size the new maximum size, or -1 for unlimited.
          */
-        set_max_size(max_size: number): void;
+        set_max_size(max_size: bigint | number): void;
     }
 
     namespace FileMetadata {
@@ -3404,7 +3404,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3431,7 +3431,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4272,7 +4272,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4299,7 +4299,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5115,7 +5115,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5142,7 +5142,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5725,7 +5725,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5752,7 +5752,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6365,7 +6365,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6392,7 +6392,7 @@ export namespace Tepl {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

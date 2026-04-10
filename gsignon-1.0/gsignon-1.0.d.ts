@@ -288,11 +288,7 @@ export namespace gSignon {
      * @gir-type Callback
      */
     interface AuthSessionProcessCb {
-        (
-            self: AuthSession,
-            session_data: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            error: GLib.Error,
-        ): void;
+        (self: AuthSession, session_data: GLib.HashTable<string, GObject.Value>, error: GLib.Error): void;
     }
     /**
      * @gir-type Callback

@@ -2036,7 +2036,7 @@ export namespace Atspi {
      * @returns `true` if successful, otherwise `false`.
      */
     function generate_keyboard_event(
-        keyval: number,
+        keyval: bigint | number,
         keystring: string | null,
         synth_type: KeySynthType | null,
     ): boolean;
@@ -2052,7 +2052,7 @@ export namespace Atspi {
      * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
      * @returns `true` if successful, otherwise `false`.
      */
-    function generate_mouse_event(x: number, y: number, name: string): boolean;
+    function generate_mouse_event(x: bigint | number, y: bigint | number, name: string): boolean;
     /**
      * Gets the virtual desktop indicated by index `i`.
      * NOTE: currently multiple virtual desktops are not implemented;
@@ -4008,7 +4008,7 @@ export namespace Atspi {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4035,7 +4035,7 @@ export namespace Atspi {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

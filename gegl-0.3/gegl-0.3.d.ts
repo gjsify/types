@@ -1261,8 +1261,8 @@ export namespace Gegl {
             queueSize: number;
             swap: string;
             threads: number;
-            tile_cache_size: number;
-            tileCacheSize: number;
+            tile_cache_size: bigint | number;
+            tileCacheSize: bigint | number;
             tile_height: number;
             tileHeight: number;
             tile_width: number;
@@ -1299,9 +1299,9 @@ export namespace Gegl {
         get threads(): number;
         set threads(val: number);
         get tile_cache_size(): number;
-        set tile_cache_size(val: number);
+        set tile_cache_size(val: bigint | number);
         get tileCacheSize(): number;
-        set tileCacheSize(val: number);
+        set tileCacheSize(val: bigint | number);
         get tile_height(): number;
         set tile_height(val: number);
         get tileHeight(): number;
@@ -2228,22 +2228,22 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             swap_busy: boolean;
             swapBusy: boolean;
-            swap_file_size: number;
-            swapFileSize: number;
-            swap_total: number;
-            swapTotal: number;
+            swap_file_size: bigint | number;
+            swapFileSize: bigint | number;
+            swap_total: bigint | number;
+            swapTotal: bigint | number;
             tile_cache_hits: number;
             tileCacheHits: number;
             tile_cache_misses: number;
             tileCacheMisses: number;
-            tile_cache_total: number;
-            tileCacheTotal: number;
-            tile_cache_total_max: number;
-            tileCacheTotalMax: number;
-            tile_cache_total_uncloned: number;
-            tileCacheTotalUncloned: number;
-            zoom_total: number;
-            zoomTotal: number;
+            tile_cache_total: bigint | number;
+            tileCacheTotal: bigint | number;
+            tile_cache_total_max: bigint | number;
+            tileCacheTotalMax: bigint | number;
+            tile_cache_total_uncloned: bigint | number;
+            tileCacheTotalUncloned: bigint | number;
+            zoom_total: bigint | number;
+            zoomTotal: bigint | number;
         }
     }
 

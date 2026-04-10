@@ -230,11 +230,11 @@ export namespace Tracker {
         /**
          * @param literal
          */
-        object_int64(literal: number): void;
+        object_int64(literal: bigint | number): void;
         /**
          * @param literal
          */
-        object_date(literal: number): number;
+        object_date(literal: bigint | number): number;
         /**
          * @param literal
          */
@@ -762,7 +762,7 @@ export namespace Tracker {
          * @param column
          * @virtual
          */
-        vfunc_get_string(column: number): [string, number];
+        vfunc_get_string(column: number): [string, bigint | number];
         /**
          * @param cancellable
          * @virtual
@@ -791,7 +791,7 @@ export namespace Tracker {
          * @param column
          * @virtual
          */
-        vfunc_get_integer(column: number): number;
+        vfunc_get_integer(column: number): bigint | number;
         /**
          * @param column
          * @virtual

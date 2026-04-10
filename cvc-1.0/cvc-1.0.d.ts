@@ -202,8 +202,8 @@ export namespace Cvc {
             humanProfile: string;
             icon_name: string;
             iconName: string;
-            id: number;
-            index: number;
+            id: bigint | number;
+            index: bigint | number;
             name: string;
             pa_context: any;
             paContext: any;
@@ -1023,8 +1023,8 @@ export namespace Cvc {
             applicationId: string;
             can_decibel: boolean;
             canDecibel: boolean;
-            card_index: number;
-            cardIndex: number;
+            card_index: bigint | number;
+            cardIndex: bigint | number;
             channel_map: ChannelMap;
             channelMap: ChannelMap;
             decibel: number;
@@ -1033,8 +1033,8 @@ export namespace Cvc {
             formFactor: string;
             icon_name: string;
             iconName: string;
-            id: number;
-            index: number;
+            id: bigint | number;
+            index: bigint | number;
             is_event_stream: boolean;
             isEventStream: boolean;
             is_muted: boolean;
@@ -1048,7 +1048,7 @@ export namespace Cvc {
             state: MixerStreamState;
             sysfs_path: string;
             sysfsPath: string;
-            volume: number;
+            volume: bigint | number;
         }
     }
 
@@ -1069,9 +1069,9 @@ export namespace Cvc {
         get canDecibel(): boolean;
         set canDecibel(val: boolean);
         get card_index(): number;
-        set card_index(val: number);
+        set card_index(val: bigint | number);
         get cardIndex(): number;
-        set cardIndex(val: number);
+        set cardIndex(val: bigint | number);
         get channel_map(): ChannelMap;
         set channel_map(val: ChannelMap);
         get channelMap(): ChannelMap;
@@ -1127,7 +1127,7 @@ export namespace Cvc {
         get sysfsPath(): string;
         set sysfsPath(val: string);
         get volume(): number;
-        set volume(val: number);
+        set volume(val: bigint | number);
 
         /**
          * Compile-time signal type information.

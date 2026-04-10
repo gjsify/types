@@ -170,8 +170,8 @@ export namespace AccountsService {
             loginFrequency: number;
             login_history: GLib.Variant;
             loginHistory: GLib.Variant;
-            login_time: number;
-            loginTime: number;
+            login_time: bigint | number;
+            loginTime: bigint | number;
             nonexistent: boolean;
             password_hint: string;
             passwordHint: string;
@@ -657,10 +657,10 @@ export namespace AccountsService {
          * @param days_after_expiration_until_lock location to write number of days account will be locked after password expires.
          */
         set_password_expiration_policy(
-            min_days_between_changes: number,
-            max_days_between_changes: number,
-            days_to_warn: number,
-            days_after_expiration_until_lock: number,
+            min_days_between_changes: bigint | number,
+            max_days_between_changes: bigint | number,
+            days_to_warn: bigint | number,
+            days_after_expiration_until_lock: bigint | number,
         ): void;
         /**
          * @param hint
@@ -704,7 +704,7 @@ export namespace AccountsService {
          * Note this function is synchronous and ignores errors.
          * @param expiration_time location to write users expires timestamp
          */
-        set_user_expiration_policy(expiration_time: number): void;
+        set_user_expiration_policy(expiration_time: bigint | number): void;
         /**
          * Assigns a new username for `user`.
          *

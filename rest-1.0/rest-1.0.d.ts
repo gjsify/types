@@ -432,7 +432,7 @@ export namespace Rest {
          * @param task
          * @virtual
          */
-        vfunc_parse_access_token(payload: GLib.Bytes | Uint8Array, task: Gio.Task): void;
+        vfunc_parse_access_token(payload: GLib.Bytes, task: Gio.Task): void;
 
         // Methods
 
@@ -917,7 +917,7 @@ export namespace Rest {
          * {@link Rest.ProxyCall}.
          * @virtual
          */
-        vfunc_serialize_params(): [boolean, string, string, number];
+        vfunc_serialize_params(): [boolean, string, string, bigint | number];
 
         // Methods
 
@@ -1144,7 +1144,7 @@ export namespace Rest {
          * @param len the length of `data`, or -1 if `data` is a nul-terminated string
          * @returns a new {@link Rest.XmlNode}, or `null` if the XML was invalid.
          */
-        parse_from_data(data: string, len: number): XmlNode;
+        parse_from_data(data: string, len: bigint | number): XmlNode;
     }
 
     /**

@@ -91,19 +91,19 @@ export namespace xlib {
     /**
      * @gir-type Alias
      */
-    type Atom = number;
+    type Atom = bigint | number;
     /**
      * @gir-type Alias
      */
-    type Colormap = number;
+    type Colormap = bigint | number;
     /**
      * @gir-type Alias
      */
-    type Cursor = number;
+    type Cursor = bigint | number;
     /**
      * @gir-type Alias
      */
-    type Drawable = number;
+    type Drawable = bigint | number;
     /**
      * @gir-type Alias
      */
@@ -115,31 +115,31 @@ export namespace xlib {
     /**
      * @gir-type Alias
      */
-    type KeySym = number;
+    type KeySym = bigint | number;
     /**
      * @gir-type Alias
      */
-    type Picture = number;
+    type Picture = bigint | number;
     /**
      * @gir-type Alias
      */
-    type Time = number;
+    type Time = bigint | number;
     /**
      * @gir-type Alias
      */
-    type VisualID = number;
+    type VisualID = bigint | number;
     /**
      * @gir-type Alias
      */
-    type Window = number;
+    type Window = bigint | number;
     /**
      * @gir-type Alias
      */
-    type XID = number;
+    type XID = bigint | number;
     /**
      * @gir-type Alias
      */
-    type Pixmap = number;
+    type Pixmap = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

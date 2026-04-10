@@ -566,7 +566,7 @@ export namespace Libinsane {
          * @param lng number of bytes wanted
          * @returns a new {@link GLib.Bytes}, or `null` if an error occured
          */
-        read_bytes(lng: number): GLib.Bytes;
+        read_bytes(lng: bigint | number): GLib.Bytes;
     }
 
     /**

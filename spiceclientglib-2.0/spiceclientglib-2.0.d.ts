@@ -338,7 +338,7 @@ export namespace SpiceClientGLib {
      * @param size data length in bytes
      * @deprecated since 0.6: use `spice_main_channel_clipboard_selection_notify()` instead.
      */
-    function main_clipboard_notify(channel: MainChannel, type: number, data: number, size: number): void;
+    function main_clipboard_notify(channel: MainChannel, type: number, data: number, size: bigint | number): void;
     /**
      * Release the clipboard (for example, when the client loses the
      * clipboard grab): Inform the guest no clipboard data is available.
@@ -384,7 +384,7 @@ export namespace SpiceClientGLib {
         selection: number,
         type: number,
         data: number,
-        size: number,
+        size: bigint | number,
     ): void;
     /**
      * Release the clipboard (for example, when the client loses the
@@ -637,7 +637,7 @@ export namespace SpiceClientGLib {
      * @param time stream timestamp
      * @deprecated since 0.35: use `spice_record_channel_send_data()` instead.
      */
-    function record_send_data(channel: RecordChannel, data: any | null, bytes: number, time: number): void;
+    function record_send_data(channel: RecordChannel, data: any | null, bytes: bigint | number, time: number): void;
     /**
      * Set various properties on `session`, according to the commandline
      * arguments given to `spice_get_option_group()` option group.
@@ -910,8 +910,8 @@ export namespace SpiceClientGLib {
             socket: Gio.Socket;
             spice_session: Session;
             spiceSession: Session;
-            total_read_bytes: number;
-            totalReadBytes: number;
+            total_read_bytes: bigint | number;
+            totalReadBytes: bigint | number;
         }
     }
 
@@ -1516,10 +1516,10 @@ export namespace SpiceClientGLib {
             file: Gio.File;
             id: number;
             progress: number;
-            total_bytes: number;
-            totalBytes: number;
-            transferred_bytes: number;
-            transferredBytes: number;
+            total_bytes: bigint | number;
+            totalBytes: bigint | number;
+            transferred_bytes: bigint | number;
+            transferredBytes: bigint | number;
         }
     }
 
@@ -2029,7 +2029,7 @@ export namespace SpiceClientGLib {
          * @param data clipboard data
          * @param size data length in bytes
          */
-        clipboard_selection_notify(selection: number, type: number, data: number, size: number): void;
+        clipboard_selection_notify(selection: number, type: number, data: number, size: bigint | number): void;
         /**
          * Release the clipboard (for example, when the client loses the
          * clipboard grab): Inform the guest no clipboard data is available.
@@ -2743,7 +2743,7 @@ export namespace SpiceClientGLib {
          * @param bytes size of `data`
          * @param time stream timestamp
          */
-        send_data(data: any | null, bytes: number, time: number): void;
+        send_data(data: any | null, bytes: bigint | number, time: number): void;
     }
 
     namespace Session {
@@ -2815,7 +2815,7 @@ export namespace SpiceClientGLib {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ca: Uint8Array;
+            ca: Uint8Array | string;
             ca_file: string;
             caFile: string;
             cache_size: number;
@@ -2849,7 +2849,7 @@ export namespace SpiceClientGLib {
             port: string;
             protocol: number;
             proxy: string;
-            pubkey: Uint8Array;
+            pubkey: Uint8Array | string;
             read_only: boolean;
             readOnly: boolean;
             secure_channels: string[];
@@ -2892,7 +2892,7 @@ export namespace SpiceClientGLib {
          * @since 0.15
          */
         get ca(): Uint8Array;
-        set ca(val: Uint8Array);
+        set ca(val: Uint8Array | string);
         /**
          * File holding the CA certificates for the host the client is
          * connecting to
@@ -3079,7 +3079,7 @@ export namespace SpiceClientGLib {
         get proxy(): string;
         set proxy(val: string);
         get pubkey(): Uint8Array;
-        set pubkey(val: Uint8Array);
+        set pubkey(val: Uint8Array | string);
         /**
          * Whether this connection is read-only mode.
          * @since 0.8
@@ -4458,7 +4458,7 @@ export namespace SpiceClientGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4485,7 +4485,7 @@ export namespace SpiceClientGLib {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

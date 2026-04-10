@@ -1847,7 +1847,7 @@ export namespace Gsk {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             resource: string;
-            source: GLib.Bytes;
+            source: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -3276,7 +3276,7 @@ export namespace Gsk {
          * @param i the given index
          * @returns the shadow data
          */
-        get_shadow(i: number): Shadow;
+        get_shadow(i: bigint | number): Shadow;
     }
 
     namespace StrokeNode {
@@ -3783,18 +3783,6 @@ export namespace Gsk {
         lines: number;
         line_bytes: number;
         line_chars: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                bytes: number;
-                chars: number;
-                lines: number;
-                line_bytes: number;
-                line_chars: number;
-            }>,
-        );
     }
 
     /**

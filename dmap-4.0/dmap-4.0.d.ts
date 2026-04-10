@@ -1748,11 +1748,7 @@ export namespace Dmap {
          * @param query
          * @virtual
          */
-        vfunc_ctrl_int(
-            message: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_ctrl_int(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
         /**
          * @param server
          * @param message
@@ -1764,7 +1760,7 @@ export namespace Dmap {
             server: Soup.Server,
             message: Soup.ServerMessage,
             path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
         ): void;
         /**
          * @param msg
@@ -1772,11 +1768,7 @@ export namespace Dmap {
          * @param query
          * @virtual
          */
-        vfunc_databases_browse_xxx(
-            msg: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_databases_browse_xxx(msg: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
         /**
          * @param server
          * @param msg
@@ -1802,22 +1794,14 @@ export namespace Dmap {
          * @param query
          * @virtual
          */
-        vfunc_login(
-            message: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_login(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
         /**
          * @param message
          * @param path
          * @param query
          * @virtual
          */
-        vfunc_logout(
-            message: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_logout(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
         /**
          * @param msg
          * @virtual
@@ -1847,11 +1831,7 @@ export namespace Dmap {
          * @param query
          * @virtual
          */
-        vfunc_update(
-            message: Soup.ServerMessage,
-            path: string,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-        ): void;
+        vfunc_update(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
 
         // Methods
 
@@ -1958,7 +1938,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -1978,7 +1958,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -2015,7 +1995,7 @@ export namespace Dmap {
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -2427,7 +2407,7 @@ export namespace Dmap {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2454,7 +2434,7 @@ export namespace Dmap {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2773,7 +2753,7 @@ export namespace Dmap {
             bitrate: number;
             disc: number;
             duration: number;
-            filesize: number;
+            filesize: bigint | number;
             firstseen: number;
             format: string;
             has_video: boolean;
@@ -2784,7 +2764,7 @@ export namespace Dmap {
             mtime: number;
             rating: number;
             songalbum: string;
-            songalbumid: number;
+            songalbumid: bigint | number;
             songartist: string;
             songgenre: string;
             sort_album: string;
@@ -2823,7 +2803,7 @@ export namespace Dmap {
         get duration(): number;
         set duration(val: number);
         get filesize(): number;
-        set filesize(val: number);
+        set filesize(val: bigint | number);
         get firstseen(): number;
         set firstseen(val: number);
         get format(): string;
@@ -2845,7 +2825,7 @@ export namespace Dmap {
         get songalbum(): string;
         set songalbum(val: string);
         get songalbumid(): number;
-        set songalbumid(val: number);
+        set songalbumid(val: bigint | number);
         get songartist(): string;
         set songartist(val: string);
         get songgenre(): string;
@@ -2898,7 +2878,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_count(): number;
+            vfunc_count(): bigint | number;
             /**
              * Apply a function to each record in a container database.
              * @param func The function to apply to each record in the database.
@@ -2975,7 +2955,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_get_entry_count(): number;
+            vfunc_get_entry_count(): bigint | number;
             /**
              * @virtual
              */
@@ -3080,13 +3060,13 @@ export namespace Dmap {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             play_state: ControlPlayState;
             playState: ControlPlayState;
-            playing_time: number;
-            playingTime: number;
+            playing_time: bigint | number;
+            playingTime: bigint | number;
             repeat_state: ControlRepeatState;
             repeatState: ControlRepeatState;
             shuffle_state: boolean;
             shuffleState: boolean;
-            volume: number;
+            volume: bigint | number;
         }
     }
 
@@ -3105,9 +3085,9 @@ export namespace Dmap {
         get playState(): ControlPlayState;
         set playState(val: ControlPlayState);
         get playing_time(): number;
-        set playing_time(val: number);
+        set playing_time(val: bigint | number);
         get playingTime(): number;
-        set playingTime(val: number);
+        set playingTime(val: bigint | number);
         get repeat_state(): ControlRepeatState;
         set repeat_state(val: ControlRepeatState);
         get repeatState(): ControlRepeatState;
@@ -3117,7 +3097,7 @@ export namespace Dmap {
         get shuffleState(): boolean;
         set shuffleState(val: boolean);
         get volume(): number;
-        set volume(val: number);
+        set volume(val: bigint | number);
 
         // Methods
 
@@ -3178,7 +3158,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_count(): number;
+            vfunc_count(): bigint | number;
             /**
              * Apply a function to each record in a media database.
              * @param func The function to apply to each record in the database.
@@ -3368,11 +3348,11 @@ export namespace Dmap {
              * @param blob A byte array representation of a record.
              * @virtual
              */
-            vfunc_set_from_blob(blob: Uint8Array | string): boolean;
+            vfunc_set_from_blob(blob: Uint8Array): boolean;
             /**
              * @virtual
              */
-            vfunc_to_blob(): Uint8Array;
+            vfunc_to_blob(): Uint8Array | string;
         }
 
         // Constructor properties interface
@@ -3449,7 +3429,7 @@ export namespace Dmap {
     /**
      * @gir-type Alias
      */
-    type Bits = number;
+    type Bits = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

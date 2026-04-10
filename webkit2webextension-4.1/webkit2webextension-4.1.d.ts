@@ -1662,7 +1662,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1689,7 +1689,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1727,7 +1727,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            size: number;
+            size: bigint | number;
         }
     }
 
@@ -2262,7 +2262,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2289,7 +2289,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2443,7 +2443,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -2506,7 +2506,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMCSSRule}
          */
-        item(index: number): DOMCSSRule;
+        item(index: bigint | number): DOMCSSRule;
     }
 
     namespace DOMCSSStyleDeclaration {
@@ -2523,7 +2523,7 @@ export namespace WebKit2WebExtension {
         interface ConstructorProps extends DOMObject.ConstructorProps {
             css_text: string;
             cssText: string;
-            length: number;
+            length: bigint | number;
             parent_rule: DOMCSSRule;
             parentRule: DOMCSSRule;
         }
@@ -2630,7 +2630,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `gchar`
          */
-        item(index: number): string;
+        item(index: bigint | number): string;
         /**
          * @param propertyName A `gchar`
          * @returns A `gchar`
@@ -2753,11 +2753,11 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `glong`
          */
-        add_rule(selector: string, style: string, index: number): number;
+        add_rule(selector: string, style: string, index: bigint | number): number;
         /**
          * @param index A `gulong`
          */
-        delete_rule(index: number): void;
+        delete_rule(index: bigint | number): void;
         /**
          * @returns A {@link WebKit2WebExtension.DOMCSSRuleList}
          */
@@ -2775,11 +2775,11 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `gulong`
          */
-        insert_rule(rule: string, index: number): number;
+        insert_rule(rule: string, index: bigint | number): number;
         /**
          * @param index A `gulong`
          */
-        remove_rule(index: number): void;
+        remove_rule(index: bigint | number): void;
     }
 
     namespace DOMCSSValue {
@@ -2898,7 +2898,7 @@ export namespace WebKit2WebExtension {
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
             data: string;
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -2963,7 +2963,7 @@ export namespace WebKit2WebExtension {
          * @param offset A `gulong`
          * @param length A `gulong`
          */
-        delete_data(offset: number, length: number): void;
+        delete_data(offset: bigint | number, length: bigint | number): void;
         /**
          * @returns A `gchar`
          */
@@ -2981,13 +2981,13 @@ export namespace WebKit2WebExtension {
          * @param offset A `gulong`
          * @param data A `gchar`
          */
-        insert_data(offset: number, data: string): void;
+        insert_data(offset: bigint | number, data: string): void;
         /**
          * @param offset A `gulong`
          * @param length A `gulong`
          * @param data A `gchar`
          */
-        replace_data(offset: number, length: number, data: string): void;
+        replace_data(offset: bigint | number, length: bigint | number, data: string): void;
         /**
          * @param value A `gchar`
          */
@@ -2997,7 +2997,7 @@ export namespace WebKit2WebExtension {
          * @param length A `gulong`
          * @returns A `gchar`
          */
-        substring_data(offset: number, length: number): string;
+        substring_data(offset: bigint | number, length: bigint | number): string;
         /**
          * @param event_name A `gchar`
          * @param handler A {@link GObject.Callback}
@@ -3421,7 +3421,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3448,7 +3448,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3613,7 +3613,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -3678,7 +3678,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMClientRect}
          */
-        item(index: number): DOMClientRect;
+        item(index: bigint | number): DOMClientRect;
     }
 
     namespace DOMComment {
@@ -4154,7 +4154,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4181,7 +4181,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4325,24 +4325,24 @@ export namespace WebKit2WebExtension {
         interface ConstructorProps extends DOMObject.ConstructorProps {
             anchor_node: DOMNode;
             anchorNode: DOMNode;
-            anchor_offset: number;
-            anchorOffset: number;
+            anchor_offset: bigint | number;
+            anchorOffset: bigint | number;
             base_node: DOMNode;
             baseNode: DOMNode;
-            base_offset: number;
-            baseOffset: number;
+            base_offset: bigint | number;
+            baseOffset: bigint | number;
             extent_node: DOMNode;
             extentNode: DOMNode;
-            extent_offset: number;
-            extentOffset: number;
+            extent_offset: bigint | number;
+            extentOffset: bigint | number;
             focus_node: DOMNode;
             focusNode: DOMNode;
-            focus_offset: number;
-            focusOffset: number;
+            focus_offset: bigint | number;
+            focusOffset: bigint | number;
             is_collapsed: boolean;
             isCollapsed: boolean;
-            range_count: number;
-            rangeCount: number;
+            range_count: bigint | number;
+            rangeCount: bigint | number;
             type: string;
         }
     }
@@ -4486,7 +4486,7 @@ export namespace WebKit2WebExtension {
          * @param node A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `gulong`
          */
-        collapse(node: DOMNode, offset: number): void;
+        collapse(node: DOMNode, offset: bigint | number): void;
         collapse_to_end(): void;
         collapse_to_start(): void;
         /**
@@ -4501,7 +4501,7 @@ export namespace WebKit2WebExtension {
          * @param node A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `gulong`
          */
-        extend(node: DOMNode, offset: number): void;
+        extend(node: DOMNode, offset: bigint | number): void;
         /**
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
@@ -4542,7 +4542,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMRange}
          */
-        get_range_at(index: number): DOMRange;
+        get_range_at(index: bigint | number): DOMRange;
         /**
          * @returns A `gulong`
          */
@@ -4568,12 +4568,17 @@ export namespace WebKit2WebExtension {
          * @param extentNode A {@link WebKit2WebExtension.DOMNode}
          * @param extentOffset A `gulong`
          */
-        set_base_and_extent(baseNode: DOMNode, baseOffset: number, extentNode: DOMNode, extentOffset: number): void;
+        set_base_and_extent(
+            baseNode: DOMNode,
+            baseOffset: bigint | number,
+            extentNode: DOMNode,
+            extentOffset: bigint | number,
+        ): void;
         /**
          * @param node A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `gulong`
          */
-        set_position(node: DOMNode, offset: number): void;
+        set_position(node: DOMNode, offset: bigint | number): void;
     }
 
     namespace DOMDOMTokenList {
@@ -4587,7 +4592,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
             value: string;
         }
     }
@@ -4662,7 +4667,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `gchar`
          */
-        item(index: number): string;
+        item(index: bigint | number): string;
         /**
          * @param token A `gchar`
          * @param newToken A `gchar`
@@ -4728,37 +4733,37 @@ export namespace WebKit2WebExtension {
             frame_element: DOMElement;
             frameElement: DOMElement;
             frames: DOMDOMWindow;
-            inner_height: number;
-            innerHeight: number;
-            inner_width: number;
-            innerWidth: number;
-            length: number;
+            inner_height: bigint | number;
+            innerHeight: bigint | number;
+            inner_width: bigint | number;
+            innerWidth: bigint | number;
+            length: bigint | number;
             name: string;
             offscreen_buffering: boolean;
             offscreenBuffering: boolean;
             opener: DOMDOMWindow;
-            orientation: number;
-            outer_height: number;
-            outerHeight: number;
-            outer_width: number;
-            outerWidth: number;
-            page_x_offset: number;
-            pageXOffset: number;
-            page_y_offset: number;
-            pageYOffset: number;
+            orientation: bigint | number;
+            outer_height: bigint | number;
+            outerHeight: bigint | number;
+            outer_width: bigint | number;
+            outerWidth: bigint | number;
+            page_x_offset: bigint | number;
+            pageXOffset: bigint | number;
+            page_y_offset: bigint | number;
+            pageYOffset: bigint | number;
             parent: DOMDOMWindow;
-            screen_left: number;
-            screenLeft: number;
-            screen_top: number;
-            screenTop: number;
-            screen_x: number;
-            screenX: number;
-            screen_y: number;
-            screenY: number;
-            scroll_x: number;
-            scrollX: number;
-            scroll_y: number;
-            scrollY: number;
+            screen_left: bigint | number;
+            screenLeft: bigint | number;
+            screen_top: bigint | number;
+            screenTop: bigint | number;
+            screen_x: bigint | number;
+            screenX: bigint | number;
+            screen_y: bigint | number;
+            screenY: bigint | number;
+            scroll_x: bigint | number;
+            scrollX: bigint | number;
+            scroll_y: bigint | number;
+            scrollY: bigint | number;
             self: DOMDOMWindow;
             status: string;
             top: DOMDOMWindow;
@@ -5635,7 +5640,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5662,7 +5667,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5771,8 +5776,8 @@ export namespace WebKit2WebExtension {
             character_set: string;
             characterSet: string;
             charset: string;
-            child_element_count: number;
-            childElementCount: number;
+            child_element_count: bigint | number;
+            childElementCount: bigint | number;
             children: DOMHTMLCollection;
             compat_mode: string;
             compatMode: string;
@@ -6195,7 +6200,7 @@ export namespace WebKit2WebExtension {
          * @param y A `glong`
          * @returns A {@link WebKit2WebExtension.DOMRange}
          */
-        caret_range_from_point(x: number, y: number): DOMRange;
+        caret_range_from_point(x: bigint | number, y: bigint | number): DOMRange;
         /**
          * @param name A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMAttr}
@@ -6262,7 +6267,7 @@ export namespace WebKit2WebExtension {
          */
         create_node_iterator(
             root: DOMNode,
-            whatToShow: number,
+            whatToShow: bigint | number,
             filter: DOMNodeFilter | null,
             expandEntityReferences: boolean,
         ): DOMNodeIterator;
@@ -6295,7 +6300,7 @@ export namespace WebKit2WebExtension {
          */
         create_tree_walker(
             root: DOMNode,
-            whatToShow: number,
+            whatToShow: bigint | number,
             filter: DOMNodeFilter | null,
             expandEntityReferences: boolean,
         ): DOMTreeWalker;
@@ -6304,7 +6309,7 @@ export namespace WebKit2WebExtension {
          * @param y A `glong`
          * @returns A {@link WebKit2WebExtension.DOMElement}
          */
-        element_from_point(x: number, y: number): DOMElement;
+        element_from_point(x: bigint | number, y: bigint | number): DOMElement;
         /**
          * @param expression A `gchar`
          * @param contextNode A {@link WebKit2WebExtension.DOMNode}
@@ -7118,7 +7123,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7145,7 +7150,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7199,8 +7204,8 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
-            child_element_count: number;
-            childElementCount: number;
+            child_element_count: bigint | number;
+            childElementCount: bigint | number;
             children: DOMHTMLCollection;
             first_element_child: DOMElement;
             firstElementChild: DOMElement;
@@ -7761,7 +7766,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7788,7 +7793,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8407,7 +8412,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8434,7 +8439,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8516,8 +8521,8 @@ export namespace WebKit2WebExtension {
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
             attributes: DOMNamedNodeMap;
-            child_element_count: number;
-            childElementCount: number;
+            child_element_count: bigint | number;
+            childElementCount: bigint | number;
             children: DOMHTMLCollection;
             class_list: DOMDOMTokenList;
             classList: DOMDOMTokenList;
@@ -8559,14 +8564,14 @@ export namespace WebKit2WebExtension {
             prefix: string;
             previous_element_sibling: DOMElement;
             previousElementSibling: DOMElement;
-            scroll_height: number;
-            scrollHeight: number;
-            scroll_left: number;
-            scrollLeft: number;
-            scroll_top: number;
-            scrollTop: number;
-            scroll_width: number;
-            scrollWidth: number;
+            scroll_height: bigint | number;
+            scrollHeight: bigint | number;
+            scroll_left: bigint | number;
+            scrollLeft: bigint | number;
+            scroll_top: bigint | number;
+            scrollTop: bigint | number;
+            scroll_width: bigint | number;
+            scrollWidth: bigint | number;
             style: DOMCSSStyleDeclaration;
             tag_name: string;
             tagName: string;
@@ -8754,13 +8759,13 @@ export namespace WebKit2WebExtension {
          */
         get scrollHeight(): number;
         get scroll_left(): number;
-        set scroll_left(val: number);
+        set scroll_left(val: bigint | number);
         get scrollLeft(): number;
-        set scrollLeft(val: number);
+        set scrollLeft(val: bigint | number);
         get scroll_top(): number;
-        set scroll_top(val: number);
+        set scroll_top(val: bigint | number);
         get scrollTop(): number;
-        set scrollTop(val: number);
+        set scrollTop(val: bigint | number);
         /**
          * @read-only
          */
@@ -9114,11 +9119,11 @@ export namespace WebKit2WebExtension {
         /**
          * @param lines A `glong`
          */
-        scroll_by_lines(lines: number): void;
+        scroll_by_lines(lines: bigint | number): void;
         /**
          * @param pages A `glong`
          */
-        scroll_by_pages(pages: number): void;
+        scroll_by_pages(pages: bigint | number): void;
         /**
          * @param alignWithTop A `gboolean`
          */
@@ -9167,11 +9172,11 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_scroll_left(value: number): void;
+        set_scroll_left(value: bigint | number): void;
         /**
          * @param value A `glong`
          */
-        set_scroll_top(value: number): void;
+        set_scroll_top(value: bigint | number): void;
         /**
          * @param selectors A `gchar`
          * @returns A `gboolean`
@@ -9622,7 +9627,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9649,7 +9654,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10186,7 +10191,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10213,7 +10218,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10522,7 +10527,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -10585,7 +10590,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMFile}
          */
-        item(index: number): DOMFile;
+        item(index: bigint | number): DOMFile;
     }
 
     namespace DOMHTMLAnchorElement {
@@ -11319,7 +11324,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11346,7 +11351,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11459,10 +11464,10 @@ export namespace WebKit2WebExtension {
             code_base: string;
             codeBase: string;
             height: string;
-            hspace: number;
+            hspace: bigint | number;
             name: string;
             object: string;
-            vspace: number;
+            vspace: bigint | number;
             width: string;
         }
     }
@@ -11490,13 +11495,13 @@ export namespace WebKit2WebExtension {
         get height(): string;
         set height(val: string);
         get hspace(): number;
-        set hspace(val: number);
+        set hspace(val: bigint | number);
         get name(): string;
         set name(val: string);
         get object(): string;
         set object(val: string);
         get vspace(): number;
-        set vspace(val: number);
+        set vspace(val: bigint | number);
         get width(): string;
         set width(val: string);
 
@@ -11611,7 +11616,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_hspace(value: number): void;
+        set_hspace(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -11623,7 +11628,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_vspace(value: number): void;
+        set_vspace(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -12024,7 +12029,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12051,7 +12056,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -12751,7 +12756,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12778,7 +12783,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -13331,7 +13336,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13358,7 +13363,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -13923,7 +13928,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13950,7 +13955,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -14122,7 +14127,7 @@ export namespace WebKit2WebExtension {
          * This function has been removed from the DOM spec and it does nothing.
          * @param value A `glong`
          */
-        set_size(value: number): void;
+        set_size(value: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -14519,7 +14524,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14546,7 +14551,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15168,7 +15173,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15195,7 +15200,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15823,7 +15828,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15850,7 +15855,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15947,8 +15952,8 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
-            height: number;
-            width: number;
+            height: bigint | number;
+            width: bigint | number;
         }
     }
 
@@ -15961,9 +15966,9 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get height(): number;
-        set height(val: number);
+        set height(val: bigint | number);
         get width(): number;
-        set width(val: number);
+        set width(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -16016,11 +16021,11 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_height(value: number): void;
+        set_height(value: bigint | number): void;
         /**
          * @param value A `glong`
          */
-        set_width(value: number): void;
+        set_width(value: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -16417,7 +16422,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16444,7 +16449,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -16482,7 +16487,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -16545,7 +16550,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        item(index: number): DOMNode;
+        item(index: bigint | number): DOMNode;
         /**
          * @param name A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMNode}
@@ -17080,7 +17085,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17107,7 +17112,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17662,7 +17667,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17689,7 +17694,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18242,7 +18247,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18269,7 +18274,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18384,12 +18389,12 @@ export namespace WebKit2WebExtension {
             dir: string;
             fg_color: string;
             fgColor: string;
-            height: number;
+            height: bigint | number;
             link_color: string;
             linkColor: string;
             vlink_color: string;
             vlinkColor: string;
-            width: number;
+            width: bigint | number;
         }
     }
 
@@ -18950,7 +18955,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18977,7 +18982,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19087,8 +19092,8 @@ export namespace WebKit2WebExtension {
             outer_text: string;
             outerText: string;
             spellcheck: boolean;
-            tab_index: number;
-            tabIndex: number;
+            tab_index: bigint | number;
+            tabIndex: bigint | number;
             title: string;
             translate: boolean;
             webkitdropzone: string;
@@ -19138,9 +19143,9 @@ export namespace WebKit2WebExtension {
         get spellcheck(): boolean;
         set spellcheck(val: boolean);
         get tab_index(): number;
-        set tab_index(val: number);
+        set tab_index(val: bigint | number);
         get tabIndex(): number;
-        set tabIndex(val: number);
+        set tabIndex(val: bigint | number);
         get title(): string;
         set title(val: string);
         get translate(): boolean;
@@ -19302,7 +19307,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_tab_index(value: number): void;
+        set_tab_index(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -19711,7 +19716,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19738,7 +19743,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19840,11 +19845,11 @@ export namespace WebKit2WebExtension {
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
             align: string;
-            height: number;
+            height: bigint | number;
             name: string;
             src: string;
             type: string;
-            width: number;
+            width: bigint | number;
         }
     }
 
@@ -19859,7 +19864,7 @@ export namespace WebKit2WebExtension {
         get align(): string;
         set align(val: string);
         get height(): number;
-        set height(val: number);
+        set height(val: bigint | number);
         get name(): string;
         set name(val: string);
         get src(): string;
@@ -19867,7 +19872,7 @@ export namespace WebKit2WebExtension {
         get type(): string;
         set type(val: string);
         get width(): number;
-        set width(val: number);
+        set width(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -19940,7 +19945,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_height(value: number): void;
+        set_height(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -19956,7 +19961,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_width(value: number): void;
+        set_width(value: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -20353,7 +20358,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20380,7 +20385,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -20933,7 +20938,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20960,7 +20965,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21537,7 +21542,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21564,7 +21569,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21674,7 +21679,7 @@ export namespace WebKit2WebExtension {
             elements: DOMHTMLCollection;
             encoding: string;
             enctype: string;
-            length: number;
+            length: bigint | number;
             method: string;
             name: string;
             target: string;
@@ -22214,7 +22219,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22241,7 +22246,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -22354,7 +22359,7 @@ export namespace WebKit2WebExtension {
             contentWindow: DOMDOMWindow;
             frame_border: string;
             frameBorder: string;
-            height: number;
+            height: bigint | number;
             long_desc: string;
             longDesc: string;
             margin_height: string;
@@ -22366,7 +22371,7 @@ export namespace WebKit2WebExtension {
             noResize: boolean;
             scrolling: string;
             src: string;
-            width: number;
+            width: bigint | number;
         }
     }
 
@@ -22939,7 +22944,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22966,7 +22971,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23533,7 +23538,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23560,7 +23565,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -24152,7 +24157,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24179,7 +24184,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -24732,7 +24737,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24759,7 +24764,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -25314,7 +25319,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25341,7 +25346,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -25894,7 +25899,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25921,7 +25926,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -26626,7 +26631,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26653,7 +26658,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -26770,25 +26775,25 @@ export namespace WebKit2WebExtension {
             alt: string;
             border: string;
             complete: boolean;
-            height: number;
-            hspace: number;
+            height: bigint | number;
+            hspace: bigint | number;
             is_map: boolean;
             isMap: boolean;
             long_desc: string;
             longDesc: string;
             lowsrc: string;
             name: string;
-            natural_height: number;
-            naturalHeight: number;
-            natural_width: number;
-            naturalWidth: number;
+            natural_height: bigint | number;
+            naturalHeight: bigint | number;
+            natural_width: bigint | number;
+            naturalWidth: bigint | number;
             src: string;
             use_map: string;
             useMap: string;
-            vspace: number;
-            width: number;
-            x: number;
-            y: number;
+            vspace: bigint | number;
+            width: bigint | number;
+            x: bigint | number;
+            y: bigint | number;
         }
     }
 
@@ -26811,9 +26816,9 @@ export namespace WebKit2WebExtension {
          */
         get complete(): boolean;
         get height(): number;
-        set height(val: number);
+        set height(val: bigint | number);
         get hspace(): number;
-        set hspace(val: number);
+        set hspace(val: bigint | number);
         get is_map(): boolean;
         set is_map(val: boolean);
         get isMap(): boolean;
@@ -26849,9 +26854,9 @@ export namespace WebKit2WebExtension {
         get useMap(): string;
         set useMap(val: string);
         get vspace(): number;
-        set vspace(val: number);
+        set vspace(val: bigint | number);
         get width(): number;
-        set width(val: number);
+        set width(val: bigint | number);
         /**
          * @read-only
          */
@@ -26988,11 +26993,11 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_height(value: number): void;
+        set_height(value: bigint | number): void;
         /**
          * @param value A `glong`
          */
-        set_hspace(value: number): void;
+        set_hspace(value: bigint | number): void;
         /**
          * @param value A `gboolean`
          */
@@ -27020,11 +27025,11 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_vspace(value: number): void;
+        set_vspace(value: bigint | number): void;
         /**
          * @param value A `glong`
          */
-        set_width(value: number): void;
+        set_width(value: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -27421,7 +27426,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -27448,7 +27453,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -27580,21 +27585,21 @@ export namespace WebKit2WebExtension {
             disabled: boolean;
             files: DOMFileList;
             form: DOMHTMLFormElement;
-            height: number;
+            height: bigint | number;
             indeterminate: boolean;
-            max_length: number;
-            maxLength: number;
+            max_length: bigint | number;
+            maxLength: bigint | number;
             multiple: boolean;
             name: string;
             read_only: boolean;
             readOnly: boolean;
-            size: number;
+            size: bigint | number;
             src: string;
             type: string;
             use_map: string;
             useMap: string;
             value: string;
-            width: number;
+            width: bigint | number;
             will_validate: boolean;
             willValidate: boolean;
         }
@@ -27639,13 +27644,13 @@ export namespace WebKit2WebExtension {
          */
         get form(): DOMHTMLFormElement;
         get height(): number;
-        set height(val: number);
+        set height(val: bigint | number);
         get indeterminate(): boolean;
         set indeterminate(val: boolean);
         get max_length(): number;
-        set max_length(val: number);
+        set max_length(val: bigint | number);
         get maxLength(): number;
-        set maxLength(val: number);
+        set maxLength(val: bigint | number);
         get multiple(): boolean;
         set multiple(val: boolean);
         get name(): string;
@@ -27655,7 +27660,7 @@ export namespace WebKit2WebExtension {
         get readOnly(): boolean;
         set readOnly(val: boolean);
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         get src(): string;
         set src(val: string);
         get type(): string;
@@ -27667,7 +27672,7 @@ export namespace WebKit2WebExtension {
         get value(): string;
         set value(val: string);
         get width(): number;
-        set width(val: number);
+        set width(val: bigint | number);
         /**
          * @read-only
          */
@@ -27877,7 +27882,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `gulong`
          */
-        set_height(value: number): void;
+        set_height(value: bigint | number): void;
         /**
          * @param value A `gboolean`
          */
@@ -27889,7 +27894,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_max_length(value: number): void;
+        set_max_length(value: bigint | number): void;
         /**
          * @param value A `gboolean`
          */
@@ -27905,7 +27910,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `gulong`
          */
-        set_size(value: number): void;
+        set_size(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -27921,7 +27926,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `gulong`
          */
-        set_width(value: number): void;
+        set_width(value: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -28318,7 +28323,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -28345,7 +28350,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -28443,7 +28448,7 @@ export namespace WebKit2WebExtension {
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
             type: string;
-            value: number;
+            value: bigint | number;
         }
     }
 
@@ -28458,7 +28463,7 @@ export namespace WebKit2WebExtension {
         get type(): string;
         set type(val: string);
         get value(): number;
-        set value(val: number);
+        set value(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -28513,7 +28518,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_value(value: number): void;
+        set_value(value: bigint | number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -28910,7 +28915,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -28937,7 +28942,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -29505,7 +29510,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -29532,7 +29537,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -30097,7 +30102,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30124,7 +30129,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -30797,7 +30802,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -30824,7 +30829,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -31387,7 +31392,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -31414,7 +31419,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -31955,7 +31960,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -31982,7 +31987,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -32535,7 +32540,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -32562,7 +32567,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -33154,7 +33159,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -33181,7 +33186,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -33749,7 +33754,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -33776,7 +33781,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -33875,7 +33880,7 @@ export namespace WebKit2WebExtension {
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
             compact: boolean;
-            start: number;
+            start: bigint | number;
             type: string;
         }
     }
@@ -33891,7 +33896,7 @@ export namespace WebKit2WebExtension {
         get compact(): boolean;
         set compact(val: boolean);
         get start(): number;
-        set start(val: number);
+        set start(val: bigint | number);
         get type(): string;
         set type(val: string);
 
@@ -33954,7 +33959,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_start(value: number): void;
+        set_start(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -34355,7 +34360,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -34382,7 +34387,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -34509,13 +34514,13 @@ export namespace WebKit2WebExtension {
             declare: boolean;
             form: DOMHTMLFormElement;
             height: string;
-            hspace: number;
+            hspace: bigint | number;
             name: string;
             standby: string;
             type: string;
             use_map: string;
             useMap: string;
-            vspace: number;
+            vspace: bigint | number;
             width: string;
         }
     }
@@ -34563,7 +34568,7 @@ export namespace WebKit2WebExtension {
         get height(): string;
         set height(val: string);
         get hspace(): number;
-        set hspace(val: number);
+        set hspace(val: bigint | number);
         get name(): string;
         set name(val: string);
         get standby(): string;
@@ -34575,7 +34580,7 @@ export namespace WebKit2WebExtension {
         get useMap(): string;
         set useMap(val: string);
         get vspace(): number;
-        set vspace(val: number);
+        set vspace(val: bigint | number);
         get width(): string;
         set width(val: string);
 
@@ -34735,7 +34740,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_hspace(value: number): void;
+        set_hspace(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -34755,7 +34760,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_vspace(value: number): void;
+        set_vspace(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -35135,7 +35140,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -35162,7 +35167,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -35729,7 +35734,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -35756,7 +35761,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -35863,7 +35868,7 @@ export namespace WebKit2WebExtension {
             defaultSelected: boolean;
             disabled: boolean;
             form: DOMHTMLFormElement;
-            index: number;
+            index: bigint | number;
             label: string;
             selected: boolean;
             text: string;
@@ -36392,7 +36397,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -36419,7 +36424,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -36458,9 +36463,9 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLCollection.ConstructorProps {
-            length: number;
-            selected_index: number;
-            selectedIndex: number;
+            length: bigint | number;
+            selected_index: bigint | number;
+            selectedIndex: bigint | number;
         }
     }
 
@@ -36477,9 +36482,9 @@ export namespace WebKit2WebExtension {
          */
         get length(): number;
         get selected_index(): number;
-        set selected_index(val: number);
+        set selected_index(val: bigint | number);
         get selectedIndex(): number;
-        set selectedIndex(val: number);
+        set selectedIndex(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -36537,7 +36542,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_selected_index(value: number): void;
+        set_selected_index(value: bigint | number): void;
     }
 
     namespace DOMHTMLParagraphElement {
@@ -37067,7 +37072,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -37094,7 +37099,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -37688,7 +37693,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -37715,7 +37720,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -37812,7 +37817,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
-            width: number;
+            width: bigint | number;
             wrap: boolean;
         }
     }
@@ -37826,7 +37831,7 @@ export namespace WebKit2WebExtension {
         // Properties
 
         get width(): number;
-        set width(val: number);
+        set width(val: bigint | number);
         get wrap(): boolean;
         set wrap(val: boolean);
 
@@ -37879,7 +37884,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_width(value: number): void;
+        set_width(value: bigint | number): void;
         /**
          * @param value A `gboolean`
          */
@@ -38280,7 +38285,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38307,7 +38312,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -38862,7 +38867,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38889,7 +38894,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -39519,7 +39524,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -39546,7 +39551,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -39656,13 +39661,13 @@ export namespace WebKit2WebExtension {
             autofocus: boolean;
             disabled: boolean;
             form: DOMHTMLFormElement;
-            length: number;
+            length: bigint | number;
             multiple: boolean;
             name: string;
             options: DOMHTMLOptionsCollection;
-            selected_index: number;
-            selectedIndex: number;
-            size: number;
+            selected_index: bigint | number;
+            selectedIndex: bigint | number;
+            size: bigint | number;
             type: string;
             value: string;
             will_validate: boolean;
@@ -39687,7 +39692,7 @@ export namespace WebKit2WebExtension {
          */
         get form(): DOMHTMLFormElement;
         get length(): number;
-        set length(val: number);
+        set length(val: bigint | number);
         get multiple(): boolean;
         set multiple(val: boolean);
         get name(): string;
@@ -39697,11 +39702,11 @@ export namespace WebKit2WebExtension {
          */
         get options(): DOMHTMLOptionsCollection;
         get selected_index(): number;
-        set selected_index(val: number);
+        set selected_index(val: bigint | number);
         get selectedIndex(): number;
-        set selectedIndex(val: number);
+        set selectedIndex(val: bigint | number);
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * @read-only
          */
@@ -39814,7 +39819,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        item(index: number): DOMNode;
+        item(index: bigint | number): DOMNode;
         /**
          * @param name A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMNode}
@@ -39823,7 +39828,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param index A `glong`
          */
-        remove(index: number): void;
+        remove(index: bigint | number): void;
         /**
          * @param args
          */
@@ -39840,7 +39845,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `gulong`
          */
-        set_length(value: number): void;
+        set_length(value: bigint | number): void;
         /**
          * @param value A `gboolean`
          */
@@ -39852,11 +39857,11 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_selected_index(value: number): void;
+        set_selected_index(value: bigint | number): void;
         /**
          * @param value A `glong`
          */
-        set_size(value: number): void;
+        set_size(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -40257,7 +40262,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -40284,7 +40289,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -40873,7 +40878,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -40900,7 +40905,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -41455,7 +41460,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -41482,7 +41487,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -41597,19 +41602,19 @@ export namespace WebKit2WebExtension {
             axis: string;
             bg_color: string;
             bgColor: string;
-            cell_index: number;
-            cellIndex: number;
+            cell_index: bigint | number;
+            cellIndex: bigint | number;
             ch: string;
             ch_off: string;
             chOff: string;
-            col_span: number;
-            colSpan: number;
+            col_span: bigint | number;
+            colSpan: bigint | number;
             headers: string;
             height: string;
             no_wrap: boolean;
             noWrap: boolean;
-            row_span: number;
-            rowSpan: number;
+            row_span: bigint | number;
+            rowSpan: bigint | number;
             scope: string;
             v_align: string;
             vAlign: string;
@@ -41650,9 +41655,9 @@ export namespace WebKit2WebExtension {
         get chOff(): string;
         set chOff(val: string);
         get col_span(): number;
-        set col_span(val: number);
+        set col_span(val: bigint | number);
         get colSpan(): number;
-        set colSpan(val: number);
+        set colSpan(val: bigint | number);
         get headers(): string;
         set headers(val: string);
         get height(): string;
@@ -41662,9 +41667,9 @@ export namespace WebKit2WebExtension {
         get noWrap(): boolean;
         set noWrap(val: boolean);
         get row_span(): number;
-        set row_span(val: number);
+        set row_span(val: bigint | number);
         get rowSpan(): number;
-        set rowSpan(val: number);
+        set rowSpan(val: bigint | number);
         get scope(): string;
         set scope(val: string);
         get v_align(): string;
@@ -41801,7 +41806,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_col_span(value: number): void;
+        set_col_span(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -41817,7 +41822,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_row_span(value: number): void;
+        set_row_span(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -42226,7 +42231,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -42253,7 +42258,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -42358,7 +42363,7 @@ export namespace WebKit2WebExtension {
             ch: string;
             ch_off: string;
             chOff: string;
-            span: number;
+            span: bigint | number;
             v_align: string;
             vAlign: string;
             width: string;
@@ -42382,7 +42387,7 @@ export namespace WebKit2WebExtension {
         get chOff(): string;
         set chOff(val: string);
         get span(): number;
-        set span(val: number);
+        set span(val: bigint | number);
         get v_align(): string;
         set v_align(val: string);
         get vAlign(): string;
@@ -42469,7 +42474,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_span(value: number): void;
+        set_span(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -42874,7 +42879,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -42901,7 +42906,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -43150,7 +43155,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param index A `glong`
          */
-        delete_row(index: number): void;
+        delete_row(index: bigint | number): void;
         delete_t_foot(): void;
         delete_t_head(): void;
         /**
@@ -43209,7 +43214,7 @@ export namespace WebKit2WebExtension {
          * @param index A `glong`
          * @returns A {@link WebKit2WebExtension.DOMHTMLElement}
          */
-        insert_row(index: number): DOMHTMLElement;
+        insert_row(index: bigint | number): DOMHTMLElement;
         /**
          * @param value A `gchar`
          */
@@ -43650,7 +43655,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -43677,7 +43682,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -43787,10 +43792,10 @@ export namespace WebKit2WebExtension {
             ch: string;
             ch_off: string;
             chOff: string;
-            row_index: number;
-            rowIndex: number;
-            section_row_index: number;
-            sectionRowIndex: number;
+            row_index: bigint | number;
+            rowIndex: bigint | number;
+            section_row_index: bigint | number;
+            sectionRowIndex: bigint | number;
             v_align: string;
             vAlign: string;
         }
@@ -43884,7 +43889,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param index A `glong`
          */
-        delete_cell(index: number): void;
+        delete_cell(index: bigint | number): void;
         /**
          * @returns A `gchar`
          */
@@ -43921,7 +43926,7 @@ export namespace WebKit2WebExtension {
          * @param index A `glong`
          * @returns A {@link WebKit2WebExtension.DOMHTMLElement}
          */
-        insert_cell(index: number): DOMHTMLElement;
+        insert_cell(index: bigint | number): DOMHTMLElement;
         /**
          * @param value A `gchar`
          */
@@ -44338,7 +44343,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -44365,7 +44370,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -44543,7 +44548,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param index A `glong`
          */
-        delete_row(index: number): void;
+        delete_row(index: bigint | number): void;
         /**
          * @returns A `gchar`
          */
@@ -44568,7 +44573,7 @@ export namespace WebKit2WebExtension {
          * @param index A `glong`
          * @returns A {@link WebKit2WebExtension.DOMHTMLElement}
          */
-        insert_row(index: number): DOMHTMLElement;
+        insert_row(index: bigint | number): DOMHTMLElement;
         /**
          * @param value A `gchar`
          */
@@ -44981,7 +44986,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -45008,7 +45013,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -45117,7 +45122,7 @@ export namespace WebKit2WebExtension {
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
             autofocus: boolean;
-            cols: number;
+            cols: bigint | number;
             default_value: string;
             defaultValue: string;
             disabled: boolean;
@@ -45125,11 +45130,11 @@ export namespace WebKit2WebExtension {
             name: string;
             read_only: boolean;
             readOnly: boolean;
-            rows: number;
-            selection_end: number;
-            selectionEnd: number;
-            selection_start: number;
-            selectionStart: number;
+            rows: bigint | number;
+            selection_end: bigint | number;
+            selectionEnd: bigint | number;
+            selection_start: bigint | number;
+            selectionStart: bigint | number;
             type: string;
             value: string;
             will_validate: boolean;
@@ -45148,7 +45153,7 @@ export namespace WebKit2WebExtension {
         get autofocus(): boolean;
         set autofocus(val: boolean);
         get cols(): number;
-        set cols(val: number);
+        set cols(val: bigint | number);
         get default_value(): string;
         set default_value(val: string);
         get defaultValue(): string;
@@ -45166,15 +45171,15 @@ export namespace WebKit2WebExtension {
         get readOnly(): boolean;
         set readOnly(val: boolean);
         get rows(): number;
-        set rows(val: number);
+        set rows(val: bigint | number);
         get selection_end(): number;
-        set selection_end(val: number);
+        set selection_end(val: bigint | number);
         get selectionEnd(): number;
-        set selectionEnd(val: number);
+        set selectionEnd(val: bigint | number);
         get selection_start(): number;
-        set selection_start(val: number);
+        set selection_start(val: bigint | number);
         get selectionStart(): number;
-        set selectionStart(val: number);
+        set selectionStart(val: bigint | number);
         /**
          * @read-only
          */
@@ -45294,7 +45299,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_cols(value: number): void;
+        set_cols(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -45314,21 +45319,21 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_rows(value: number): void;
+        set_rows(value: bigint | number): void;
         /**
          * @param value A `glong`
          */
-        set_selection_end(value: number): void;
+        set_selection_end(value: bigint | number): void;
         /**
          * @param start A `glong`
          * @param end A `glong`
          * @param direction A `gchar`
          */
-        set_selection_range(start: number, end: number, direction: string): void;
+        set_selection_range(start: bigint | number, end: bigint | number, direction: string): void;
         /**
          * @param value A `glong`
          */
-        set_selection_start(value: number): void;
+        set_selection_start(value: bigint | number): void;
         /**
          * @param value A `gchar`
          */
@@ -45729,7 +45734,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -45756,7 +45761,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -46311,7 +46316,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -46338,7 +46343,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -46905,7 +46910,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -46932,7 +46937,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -47002,8 +47007,8 @@ export namespace WebKit2WebExtension {
             ctrlKey: boolean;
             key_identifier: string;
             keyIdentifier: string;
-            key_location: number;
-            keyLocation: number;
+            key_location: bigint | number;
+            keyLocation: bigint | number;
             meta_key: boolean;
             metaKey: boolean;
             shift_key: boolean;
@@ -47166,7 +47171,7 @@ export namespace WebKit2WebExtension {
             cancelable: boolean,
             view: DOMDOMWindow,
             keyIdentifier: string,
-            location: number,
+            location: bigint | number,
             ctrlKey: boolean,
             altKey: boolean,
             shiftKey: boolean,
@@ -47186,7 +47191,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
             media_text: string;
             mediaText: string;
         }
@@ -47267,7 +47272,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `gchar`
          */
-        item(index: number): string;
+        item(index: bigint | number): string;
         /**
          * @param value A `gchar`
          */
@@ -47320,32 +47325,32 @@ export namespace WebKit2WebExtension {
             alt_key: boolean;
             altKey: boolean;
             button: number;
-            client_x: number;
-            clientX: number;
-            client_y: number;
-            clientY: number;
+            client_x: bigint | number;
+            clientX: bigint | number;
+            client_y: bigint | number;
+            clientY: bigint | number;
             ctrl_key: boolean;
             ctrlKey: boolean;
             from_element: DOMNode;
             fromElement: DOMNode;
             meta_key: boolean;
             metaKey: boolean;
-            offset_x: number;
-            offsetX: number;
-            offset_y: number;
-            offsetY: number;
+            offset_x: bigint | number;
+            offsetX: bigint | number;
+            offset_y: bigint | number;
+            offsetY: bigint | number;
             related_target: DOMEventTarget;
             relatedTarget: DOMEventTarget;
-            screen_x: number;
-            screenX: number;
-            screen_y: number;
-            screenY: number;
+            screen_x: bigint | number;
+            screenX: bigint | number;
+            screen_y: bigint | number;
+            screenY: bigint | number;
             shift_key: boolean;
             shiftKey: boolean;
             to_element: DOMNode;
             toElement: DOMNode;
-            x: number;
-            y: number;
+            x: bigint | number;
+            y: bigint | number;
         }
     }
 
@@ -47598,11 +47603,11 @@ export namespace WebKit2WebExtension {
             canBubble: boolean,
             cancelable: boolean,
             view: DOMDOMWindow,
-            detail: number,
-            screenX: number,
-            screenY: number,
-            clientX: number,
-            clientY: number,
+            detail: bigint | number,
+            screenX: bigint | number,
+            screenY: bigint | number,
+            clientX: bigint | number,
+            clientY: bigint | number,
             ctrlKey: boolean,
             altKey: boolean,
             shiftKey: boolean,
@@ -47622,7 +47627,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -47696,7 +47701,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        item(index: number): DOMNode;
+        item(index: bigint | number): DOMNode;
         /**
          * @param name A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMNode}
@@ -48520,7 +48525,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -48547,7 +48552,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -48595,8 +48600,8 @@ export namespace WebKit2WebExtension {
             reference_node: DOMNode;
             referenceNode: DOMNode;
             root: DOMNode;
-            what_to_show: number;
-            whatToShow: number;
+            what_to_show: bigint | number;
+            whatToShow: bigint | number;
         }
     }
 
@@ -48725,7 +48730,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -48788,7 +48793,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        item(index: number): DOMNode;
+        item(index: bigint | number): DOMNode;
     }
 
     namespace DOMObject {
@@ -49365,7 +49370,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -49392,7 +49397,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -49441,12 +49446,12 @@ export namespace WebKit2WebExtension {
             commonAncestorContainer: DOMNode;
             end_container: DOMNode;
             endContainer: DOMNode;
-            end_offset: number;
-            endOffset: number;
+            end_offset: bigint | number;
+            endOffset: bigint | number;
             start_container: DOMNode;
             startContainer: DOMNode;
-            start_offset: number;
-            startOffset: number;
+            start_offset: bigint | number;
+            startOffset: bigint | number;
             text: string;
         }
     }
@@ -49574,7 +49579,7 @@ export namespace WebKit2WebExtension {
          * @param offset A `glong`
          * @returns A `gshort`
          */
-        compare_point(refNode: DOMNode, offset: number): number;
+        compare_point(refNode: DOMNode, offset: bigint | number): number;
         /**
          * @param html A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMDocumentFragment}
@@ -49632,7 +49637,7 @@ export namespace WebKit2WebExtension {
          * @param offset A `glong`
          * @returns A `gboolean`
          */
-        is_point_in_range(refNode: DOMNode, offset: number): boolean;
+        is_point_in_range(refNode: DOMNode, offset: bigint | number): boolean;
         /**
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
          */
@@ -49645,7 +49650,7 @@ export namespace WebKit2WebExtension {
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `glong`
          */
-        set_end(refNode: DOMNode, offset: number): void;
+        set_end(refNode: DOMNode, offset: bigint | number): void;
         /**
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
          */
@@ -49658,7 +49663,7 @@ export namespace WebKit2WebExtension {
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `glong`
          */
-        set_start(refNode: DOMNode, offset: number): void;
+        set_start(refNode: DOMNode, offset: bigint | number): void;
         /**
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
          */
@@ -49830,7 +49835,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -49893,7 +49898,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMStyleSheet}
          */
-        item(index: number): DOMStyleSheet;
+        item(index: bigint | number): DOMStyleSheet;
     }
 
     namespace DOMText {
@@ -49994,7 +49999,7 @@ export namespace WebKit2WebExtension {
          * @param offset A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMText}
          */
-        split_text(offset: number): DOMText;
+        split_text(offset: bigint | number): DOMText;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -50401,7 +50406,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -50428,7 +50433,7 @@ export namespace WebKit2WebExtension {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -50473,8 +50478,8 @@ export namespace WebKit2WebExtension {
             currentNode: DOMNode;
             filter: DOMNodeFilter;
             root: DOMNode;
-            what_to_show: number;
-            whatToShow: number;
+            what_to_show: bigint | number;
+            whatToShow: bigint | number;
         }
     }
 
@@ -50631,19 +50636,19 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMEvent.ConstructorProps {
-            char_code: number;
-            charCode: number;
-            detail: number;
-            key_code: number;
-            keyCode: number;
-            layer_x: number;
-            layerX: number;
-            layer_y: number;
-            layerY: number;
-            page_x: number;
-            pageX: number;
-            page_y: number;
-            pageY: number;
+            char_code: bigint | number;
+            charCode: bigint | number;
+            detail: bigint | number;
+            key_code: bigint | number;
+            keyCode: bigint | number;
+            layer_x: bigint | number;
+            layerX: bigint | number;
+            layer_y: bigint | number;
+            layerY: bigint | number;
+            page_x: bigint | number;
+            pageX: bigint | number;
+            page_y: bigint | number;
+            pageY: bigint | number;
             view: DOMDOMWindow;
         }
     }
@@ -50790,7 +50795,13 @@ export namespace WebKit2WebExtension {
          * @param view A {@link WebKit2WebExtension.DOMDOMWindow}
          * @param detail A `glong`
          */
-        init_ui_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number): void;
+        init_ui_event(
+            type: string,
+            canBubble: boolean,
+            cancelable: boolean,
+            view: DOMDOMWindow,
+            detail: bigint | number,
+        ): void;
     }
 
     namespace DOMWheelEvent {
@@ -50839,12 +50850,12 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends DOMMouseEvent.ConstructorProps {
-            wheel_delta: number;
-            wheelDelta: number;
-            wheel_delta_x: number;
-            wheelDeltaX: number;
-            wheel_delta_y: number;
-            wheelDeltaY: number;
+            wheel_delta: bigint | number;
+            wheelDelta: bigint | number;
+            wheel_delta_x: bigint | number;
+            wheelDeltaX: bigint | number;
+            wheel_delta_y: bigint | number;
+            wheelDeltaY: bigint | number;
         }
     }
 
@@ -50945,13 +50956,13 @@ export namespace WebKit2WebExtension {
          * @param metaKey A `gboolean`
          */
         init_wheel_event(
-            wheelDeltaX: number,
-            wheelDeltaY: number,
+            wheelDeltaX: bigint | number,
+            wheelDeltaY: bigint | number,
             view: DOMDOMWindow,
-            screenX: number,
-            screenY: number,
-            clientX: number,
-            clientY: number,
+            screenX: bigint | number,
+            screenY: bigint | number,
+            clientX: bigint | number,
+            clientY: bigint | number,
             ctrlKey: boolean,
             altKey: boolean,
             shiftKey: boolean,
@@ -51049,8 +51060,8 @@ export namespace WebKit2WebExtension {
             resultType: number;
             single_node_value: DOMNode;
             singleNodeValue: DOMNode;
-            snapshot_length: number;
-            snapshotLength: number;
+            snapshot_length: bigint | number;
+            snapshotLength: bigint | number;
             string_value: string;
             stringValue: string;
         }
@@ -51195,7 +51206,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        snapshot_item(index: number): DOMNode;
+        snapshot_item(index: bigint | number): DOMNode;
     }
 
     namespace Frame {
@@ -51725,8 +51736,8 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            content_length: number;
-            contentLength: number;
+            content_length: bigint | number;
+            contentLength: bigint | number;
             http_headers: Soup.MessageHeaders;
             httpHeaders: Soup.MessageHeaders;
             mime_type: string;
@@ -52255,7 +52266,7 @@ export namespace WebKit2WebExtension {
          * @param page_id the identifier of the {@link WebKit2WebExtension.WebPage} to get
          * @returns the {@link WebKit2WebExtension.WebPage} for the given `page_id`, or `null` if the    identifier doesn't correspond to an existing web page.
          */
-        get_page(page_id: number): WebPage;
+        get_page(page_id: bigint | number): WebPage;
         /**
          * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
          *

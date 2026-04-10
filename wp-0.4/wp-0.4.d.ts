@@ -261,7 +261,7 @@ export namespace Wp {
     function log_writer_default(
         log_level: GLib.LogLevelFlags | null,
         fields: GLib.LogField,
-        n_fields: number,
+        n_fields: bigint | number,
         user_data?: any | null,
     ): GLib.LogWriterOutput;
     /**
@@ -439,13 +439,13 @@ export namespace Wp {
      * @gir-type Callback
      */
     interface IteratorFoldFunc {
-        (item: GObject.Value | any, ret: GObject.Value | any, data?: any | null): boolean;
+        (item: unknown, ret: unknown, data?: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface IteratorForeachFunc {
-        (item: GObject.Value | any, data?: any | null): void;
+        (item: unknown, data?: any | null): void;
     }
     /**
      * @gir-type Flags
@@ -3135,7 +3135,7 @@ export namespace Wp {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3162,7 +3162,7 @@ export namespace Wp {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7448,7 +7448,7 @@ export namespace Wp {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7475,7 +7475,7 @@ export namespace Wp {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7564,9 +7564,9 @@ export namespace Wp {
 
         // Constructors
 
-        constructor(methods: IteratorMethods, user_size: number);
+        constructor(methods: IteratorMethods, user_size: bigint | number);
 
-        static ['new'](methods: IteratorMethods, user_size: number): Iterator;
+        static ['new'](methods: IteratorMethods, user_size: bigint | number): Iterator;
 
         // Methods
 
@@ -8022,7 +8022,7 @@ export namespace Wp {
 
         static new_from_string(json_str: string): SpaJson;
 
-        static new_from_stringn(json_str: string, len: number): SpaJson;
+        static new_from_stringn(json_str: string, len: bigint | number): SpaJson;
 
         static new_int(value: number): SpaJson;
 
@@ -8282,7 +8282,7 @@ export namespace Wp {
 
         static new_double(value: number): SpaPod;
 
-        static new_fd(value: number): SpaPod;
+        static new_fd(value: bigint | number): SpaPod;
 
         static new_float(value: number): SpaPod;
 
@@ -8292,7 +8292,7 @@ export namespace Wp {
 
         static new_int(value: number): SpaPod;
 
-        static new_long(value: number): SpaPod;
+        static new_long(value: bigint | number): SpaPod;
 
         static new_none(): SpaPod;
 
@@ -8563,7 +8563,7 @@ export namespace Wp {
          * @param value the Fd value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_fd(value: number): boolean;
+        set_fd(value: bigint | number): boolean;
         /**
          * Sets a float value in the spa pod object.
          * @param value the float value
@@ -8594,7 +8594,7 @@ export namespace Wp {
          * @param value the long value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_long(value: number): boolean;
+        set_long(value: bigint | number): boolean;
         /**
          * Sets the value of a spa pod object in the current spa pod object. The spa pod objects must be of the same value.
          * @param pod the pod with the value to be set
@@ -8669,7 +8669,7 @@ export namespace Wp {
          * Adds a Fd value into the builder.
          * @param value the Fd value
          */
-        add_fd(value: number): void;
+        add_fd(value: bigint | number): void;
         /**
          * Adds a float value into the builder.
          * @param value the float value
@@ -8695,7 +8695,7 @@ export namespace Wp {
          * Adds a long value into the builder.
          * @param value the long value
          */
-        add_long(value: number): void;
+        add_long(value: bigint | number): void;
         /**
          * Adds a none value into the builder.
          */

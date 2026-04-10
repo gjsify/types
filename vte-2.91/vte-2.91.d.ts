@@ -757,7 +757,7 @@ export namespace Vte {
      * @returns `true` iff `str` is a valid string representation
      * @since 0.78
      */
-    function uuid_validate_string(str: string, len: number, fmt: UuidFormat | null): boolean;
+    function uuid_validate_string(str: string, len: bigint | number, fmt: UuidFormat | null): boolean;
     /**
      * @gir-type Callback
      */
@@ -1612,7 +1612,7 @@ export namespace Vte {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1639,7 +1639,7 @@ export namespace Vte {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4969,10 +4969,10 @@ export namespace Vte {
          * @returns a newly allocated text string, or `null`.
          */
         get_text_range(
-            start_row: number,
-            start_col: number,
-            end_row: number,
-            end_col: number,
+            start_row: bigint | number,
+            start_col: bigint | number,
+            end_row: bigint | number,
+            end_col: bigint | number,
             is_selected?: SelectionFunc | null,
         ): [string | null, CharAttributes[] | null];
         /**
@@ -4986,10 +4986,10 @@ export namespace Vte {
          */
         get_text_range_format(
             format: Format | null,
-            start_row: number,
-            start_col: number,
-            end_row: number,
-            end_col: number,
+            start_row: bigint | number,
+            start_col: bigint | number,
+            end_row: bigint | number,
+            end_col: bigint | number,
         ): [string | null, number];
         /**
          * Gets the currently selected text in the format specified by `format`.
@@ -5076,7 +5076,7 @@ export namespace Vte {
          * @param row the text row
          * @returns a newly allocated string which matches one of the previously   set regular expressions
          */
-        match_check(column: number, row: number): [string | null, number];
+        match_check(column: bigint | number, row: bigint | number): [string | null, number];
         /**
          * Checks if the text in and around the position of the event matches any of the
          * regular expressions previously set using `vte_terminal_match_add()`.  If a
@@ -5630,14 +5630,14 @@ export namespace Vte {
          * No scrollback is allowed on the alternate screen buffer.
          * @param lines the length of the history buffer
          */
-        set_scrollback_lines(lines: number): void;
+        set_scrollback_lines(lines: bigint | number): void;
         /**
          * Attempts to change the terminal's size in terms of rows and columns.  If
          * the attempt succeeds, the widget will resize itself to the proper size.
          * @param columns the desired number of columns
          * @param rows the desired number of rows
          */
-        set_size(columns: number, rows: number): void;
+        set_size(columns: bigint | number, rows: bigint | number): void;
         /**
          * Suppress emissions of signals and property notifications
          * that are deprecated.
@@ -6102,7 +6102,7 @@ export namespace Vte {
          * @param value value of property
          * @virtual
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -6567,7 +6567,7 @@ export namespace Vte {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6594,7 +6594,7 @@ export namespace Vte {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6628,10 +6628,6 @@ export namespace Vte {
      */
     class CharAttributes {
         static $gtype: GObject.GType<CharAttributes>;
-
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
     }
 
     /**
@@ -6662,15 +6658,25 @@ export namespace Vte {
 
         // Constructors
 
-        constructor(pattern: string, pattern_length: number, flags: number);
+        constructor(pattern: string, pattern_length: bigint | number, flags: number);
 
-        static new_for_match(pattern: string, pattern_length: number, flags: number): Regex;
+        static new_for_match(pattern: string, pattern_length: bigint | number, flags: number): Regex;
 
-        static new_for_match_full(pattern: string, pattern_length: number, flags: number, extra_flags: number): Regex;
+        static new_for_match_full(
+            pattern: string,
+            pattern_length: bigint | number,
+            flags: number,
+            extra_flags: number,
+        ): Regex;
 
-        static new_for_search(pattern: string, pattern_length: number, flags: number): Regex;
+        static new_for_search(pattern: string, pattern_length: bigint | number, flags: number): Regex;
 
-        static new_for_search_full(pattern: string, pattern_length: number, flags: number, extra_flags: number): Regex;
+        static new_for_search_full(
+            pattern: string,
+            pattern_length: bigint | number,
+            flags: number,
+            extra_flags: number,
+        ): Regex;
 
         // Methods
 
@@ -6724,7 +6730,7 @@ export namespace Vte {
 
         constructor(properties?: Partial<{}>);
 
-        static new_from_string(str: string, len: number, fmt: UuidFormat): Uuid;
+        static new_from_string(str: string, len: bigint | number, fmt: UuidFormat): Uuid;
 
         static new_v4(): Uuid;
 
@@ -6736,7 +6742,7 @@ export namespace Vte {
          * @param len the length of `str`, or -1 is `str` is NUL terminated
          * @param fmt a {@link Vte.UuidFormat}
          */
-        static validate_string(str: string, len: number, fmt: UuidFormat): boolean;
+        static validate_string(str: string, len: bigint | number, fmt: UuidFormat): boolean;
 
         // Methods
 
@@ -6762,14 +6768,14 @@ export namespace Vte {
          * @param len a location to store the length of the returned string, or `null`
          * @returns a string representation of `uuid`
          */
-        free_to_string(fmt: UuidFormat | null, len: number): string;
+        free_to_string(fmt: UuidFormat | null, len: bigint | number): string;
         /**
          * Creates a new UUID for `ns` and `str`.
          * @param data string data
          * @param len the length of `data`, or -1 if `str` is NUL terminated
          * @returns a new v5 UUID
          */
-        new_v5(data: string, len: number): Uuid;
+        new_v5(data: string, len: bigint | number): Uuid;
         /**
          * Returns the string representation of `uuid`.
          * @param fmt a {@link Vte.UuidFormat}

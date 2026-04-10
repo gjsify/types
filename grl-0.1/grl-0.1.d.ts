@@ -458,7 +458,7 @@ export namespace Grl {
          * @param size pointer to size of data
          * @returns the binary API key, size will reflect the size of the buffer
          */
-        get_api_key_blob(size: number): number;
+        get_api_key_blob(size: bigint | number): number;
         /**
          * @returns the webservice API passphrase
          */
@@ -471,7 +471,7 @@ export namespace Grl {
          * @param param
          * @param size
          */
-        get_binary(param: string, size: number): number;
+        get_binary(param: string, size: bigint | number): number;
         /**
          * @param param
          */
@@ -526,7 +526,7 @@ export namespace Grl {
          * @param blob the binary API key blob
          * @param size the size of the blob
          */
-        set_api_key_blob(blob: number, size: number): void;
+        set_api_key_blob(blob: number, size: bigint | number): void;
         /**
          * Set the webservice passphrase in the configuration
          * @param secret the webservice passphrase
@@ -542,7 +542,7 @@ export namespace Grl {
          * @param blob
          * @param size
          */
-        set_binary(param: string, blob: number, size: number): void;
+        set_binary(param: string, blob: number, size: bigint | number): void;
         /**
          * @param param
          * @param value
@@ -661,7 +661,7 @@ export namespace Grl {
          * @param buf the buffer containing the new value
          * @param size size of buffer
          */
-        add_binary(key: GObject.ParamSpec, buf: number, size: number): void;
+        add_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
         /**
          * Appends a new float value for `key` in `data`.
          * @param key key to append
@@ -860,7 +860,7 @@ export namespace Grl {
          * @param buf buffer holding the data
          * @param size size of the buffer
          */
-        set_binary(key: GObject.ParamSpec, buf: number, size: number): void;
+        set_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
         /**
          * Sets the first float value associated with `key` in `data`. If `key` already has
          * a first value old value is replaced by the new one.
@@ -992,7 +992,7 @@ export namespace Grl {
          * @param thumbnail a buffer containing the thumbnail for `media`
          * @param size size of buffer
          */
-        add_thumbnail_binary(thumbnail: number, size: number): void;
+        add_thumbnail_binary(thumbnail: number, size: bigint | number): void;
         /**
          * Adds a new media's URL with its mime-type.
          * @param url a media's URL
@@ -1096,14 +1096,14 @@ export namespace Grl {
          * @param size pointer to storing the thumbnail buffer size
          * @returns the media's thumbnail data and set size to the thumbnail buffer size
          */
-        get_thumbnail_binary(size: number): number;
+        get_thumbnail_binary(size: bigint | number): number;
         /**
          * buffer size.
          * @param size pointer to store the thumbnail buffer size
          * @param index element to retrieve
          * @returns the n-th media's thumbnail binary and sets size to the thumbnail
          */
-        get_thumbnail_binary_nth(size: number, index: number): number;
+        get_thumbnail_binary_nth(size: bigint | number, index: number): number;
         /**
          * @param index element to retrieve
          * @returns the n-th media's thumbnail.
@@ -1234,7 +1234,7 @@ export namespace Grl {
          * @param thumbnail thumbnail buffer
          * @param size thumbnail buffer size
          */
-        set_thumbnail_binary(thumbnail: number, size: number): void;
+        set_thumbnail_binary(thumbnail: number, size: bigint | number): void;
         /**
          * Set the media's title
          * @param title the title
@@ -3292,7 +3292,7 @@ export namespace Grl {
          * @param buf buffer holding the relkeys
          * @param size size of the buffer
          */
-        set_binary(key: GObject.ParamSpec, buf: number, size: number): void;
+        set_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as a float-type key. Old value is replaced by the new one.

@@ -462,7 +462,7 @@ export namespace Bamf {
             is_foreground_tab: boolean;
             isForegroundTab: boolean;
             location: string;
-            xid: number;
+            xid: bigint | number;
         }
     }
 
@@ -554,7 +554,7 @@ export namespace Bamf {
          * The desktop file for the tab.
          * @virtual
          */
-        vfunc_get_xid(): number;
+        vfunc_get_xid(): bigint | number;
 
         // Methods
 
@@ -1017,7 +1017,7 @@ export namespace Bamf {
         /**
          * @virtual
          */
-        vfunc_last_active(): number;
+        vfunc_last_active(): bigint | number;
         /**
          * @virtual
          */

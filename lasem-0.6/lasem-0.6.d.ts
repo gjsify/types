@@ -219,7 +219,7 @@ export namespace Lasem {
      * @param size itex string length, -1 if NULL terminated
      * @returns a newly allocated string, NULL on parse error. The returned data must be freed using `lsm_itex_free_mathml_buffer`.
      */
-    function itex_to_mathml(itex: string | null, size: number): string;
+    function itex_to_mathml(itex: string | null, size: bigint | number): string;
     function shutdown(): void;
     /**
      * @param str
@@ -355,7 +355,7 @@ export namespace Lasem {
 
         _init(...args: any[]): void;
 
-        static new_from_memory(buffer: string, size: number): DomDocument;
+        static new_from_memory(buffer: string, size: bigint | number): DomDocument;
 
         static new_from_path(path: string): DomDocument;
 
@@ -418,7 +418,7 @@ export namespace Lasem {
          * @param buffer a memory buffer holding xml data
          * @param size size of the xml data, in bytes, -1 if NULL terminated
          */
-        append_from_memory(node: DomNode, buffer: string, size: number): void;
+        append_from_memory(node: DomNode, buffer: string, size: bigint | number): void;
         /**
          * Create a new element node with a type corresponding to `tag_name`.
          * @param tag_name name of the element to create
@@ -446,7 +446,7 @@ export namespace Lasem {
          * @param size placeholder for the size of the returned data
          * @returns a newly allocated buffer containing the requested data.
          */
-        get_href_data(href: string, size: number): any | null;
+        get_href_data(href: string, size: bigint | number): any | null;
         /**
          * Get document URL.
          * @returns document URL.
@@ -1227,18 +1227,7 @@ export namespace Lasem {
 
         name: string;
         attribute_offset: number;
-        trait_class: TraitClass;
         trait_default: any;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                name: string;
-                attribute_offset: number;
-                trait_default: any;
-            }>,
-        );
     }
 
     /**
@@ -1429,18 +1418,7 @@ export namespace Lasem {
 
         name: string;
         id: number;
-        trait_class: TraitClass;
         trait_default: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                name: string;
-                id: number;
-                trait_default: string;
-            }>,
-        );
     }
 
     /**
@@ -1499,14 +1477,6 @@ export namespace Lasem {
         // Fields
 
         size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                size: number;
-            }>,
-        );
     }
 
     /**

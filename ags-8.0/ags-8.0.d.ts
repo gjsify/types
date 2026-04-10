@@ -483,7 +483,7 @@ export namespace Ags {
      * @param byte_order reverse order
      * @since 3.0.0
      */
-    function buffer_util_char_buffer_write_s64(cbuffer: number, value: number, byte_order: number): void;
+    function buffer_util_char_buffer_write_s64(cbuffer: number, value: bigint | number, byte_order: number): void;
     /**
      * Write a gint8 quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -547,7 +547,7 @@ export namespace Ags {
      * @returns the guchar buffer
      * @since 3.0.0
      */
-    function buffer_util_s64_to_char_buffer(buffer: number, buffer_length: number): number;
+    function buffer_util_s64_to_char_buffer(buffer: bigint | number, buffer_length: number): number;
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gint8 buffer
@@ -3783,7 +3783,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3810,7 +3810,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -4363,7 +4363,7 @@ export namespace Ags {
          * @param buffer the data buffer
          * @param buffer_length the size of the buffer
          */
-        load_from_data(buffer: string, buffer_length: number): void;
+        load_from_data(buffer: string, buffer_length: bigint | number): void;
         /**
          * Load configuration from `filename`.
          * @param filename the configuration file
@@ -4385,7 +4385,7 @@ export namespace Ags {
          * @param buffer the data buffer
          * @param buffer_length the size of the buffer
          */
-        to_data(buffer: string, buffer_length: number): void;
+        to_data(buffer: string, buffer_length: bigint | number): void;
     }
 
     namespace Controller {
@@ -5085,7 +5085,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5112,7 +5112,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6423,7 +6423,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6450,7 +6450,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6679,7 +6679,7 @@ export namespace Ags {
          */
         vfunc_do_request(
             msg: Soup.ServerMessage,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
+            query: GLib.HashTable<any, any>,
             security_context: GObject.Object,
             path: string,
             login: string,
@@ -7511,7 +7511,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7538,7 +7538,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -9040,7 +9040,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9067,7 +9067,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -10152,7 +10152,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10179,7 +10179,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -10785,7 +10785,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10812,7 +10812,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -12127,7 +12127,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12154,7 +12154,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -12804,7 +12804,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12831,7 +12831,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -13769,7 +13769,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13796,7 +13796,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -14523,7 +14523,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14550,7 +14550,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -14775,7 +14775,7 @@ export namespace Ags {
          * Set AGS offset as unsigned 64 bit integer.
          * @param ags_offset the AGS offset
          */
-        set_ags_offset(ags_offset: number): void;
+        set_ags_offset(ags_offset: bigint | number): void;
         /**
          * Set `flags` of `timestamp`.
          * @param flags the flags
@@ -14785,7 +14785,7 @@ export namespace Ags {
          * Set unix time.
          * @param unix_time the unix time value
          */
-        set_unix_time(unix_time: number): void;
+        set_unix_time(unix_time: bigint | number): void;
         /**
          * Test `flags` to be set.
          * @param flags the flags
@@ -15964,7 +15964,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15991,7 +15991,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -16565,7 +16565,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16592,7 +16592,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17217,7 +17217,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17244,7 +17244,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17987,7 +17987,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18014,7 +18014,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18611,7 +18611,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18638,7 +18638,7 @@ export namespace Ags {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18845,7 +18845,7 @@ export namespace Ags {
          * @param value the gint64 value
          * @param byte_order reverse order
          */
-        static char_buffer_write_s64(cbuffer: number, value: number, byte_order: number): void;
+        static char_buffer_write_s64(cbuffer: number, value: bigint | number, byte_order: number): void;
         /**
          * Write a gint8 quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -18894,7 +18894,7 @@ export namespace Ags {
          * @param buffer the gint64 buffer
          * @param buffer_length the buffer length
          */
-        static s64_to_char_buffer(buffer: number, buffer_length: number): number;
+        static s64_to_char_buffer(buffer: bigint | number, buffer_length: number): number;
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint8 buffer
@@ -19240,7 +19240,7 @@ export namespace Ags {
          * @param value the value
          * @returns the newly allocated string
          */
-        put_int64(value: number): string;
+        put_int64(value: bigint | number): string;
         /**
          * Put `str` to string.
          * @param str the string
@@ -19259,7 +19259,7 @@ export namespace Ags {
          * @param value the value
          * @returns the newly allocated string
          */
-        put_uint64(value: number): string;
+        put_uint64(value: bigint | number): string;
         /**
          * @param file_version
          */
@@ -20821,22 +20821,22 @@ export namespace Ags {
              * Retrieve current position of MIDI.
              * @virtual
              */
-            vfunc_get_midi_counter(): number;
+            vfunc_get_midi_counter(): bigint | number;
             /**
              * Retrieve current position of notation.
              * @virtual
              */
-            vfunc_get_notation_counter(): number;
+            vfunc_get_notation_counter(): bigint | number;
             /**
              * Retrieve current position of sequencer.
              * @virtual
              */
-            vfunc_get_sequencer_counter(): number;
+            vfunc_get_sequencer_counter(): bigint | number;
             /**
              * Retrieve current position of wave.
              * @virtual
              */
-            vfunc_get_wave_counter(): number;
+            vfunc_get_wave_counter(): bigint | number;
         }
 
         // Constructor properties interface
@@ -20922,7 +20922,7 @@ export namespace Ags {
              * Get duration.
              * @virtual
              */
-            vfunc_get_duration(): number;
+            vfunc_get_duration(): bigint | number;
             /**
              * Get next.
              * @virtual
@@ -20932,7 +20932,7 @@ export namespace Ags {
              * Get offset.
              * @virtual
              */
-            vfunc_get_offset(): number;
+            vfunc_get_offset(): bigint | number;
             /**
              * Get prev.
              * @virtual
@@ -21496,7 +21496,7 @@ export namespace Ags {
              */
             vfunc_do_request(
                 msg: Soup.ServerMessage,
-                query: { [key: string]: any } | GLib.HashTable<any, any>,
+                query: GLib.HashTable<any, any>,
                 security_context: GObject.Object,
                 path: string,
                 login: string,
@@ -21567,14 +21567,14 @@ export namespace Ags {
              * @param value the {@link GObject.Value}
              * @virtual
              */
-            vfunc_safe_get_property(property_name: string, value: GObject.Value | any): void;
+            vfunc_safe_get_property(property_name: string, value: unknown): void;
             /**
              * Set property thread safe.
              * @param property_name propertie's name
              * @param value the {@link GObject.Value}
              * @virtual
              */
-            vfunc_safe_set_property(property_name: string, value: GObject.Value | any): void;
+            vfunc_safe_set_property(property_name: string, value: unknown): void;
             /**
              * Set port.
              * @param port the {@link GObject.Object}
@@ -21668,7 +21668,7 @@ export namespace Ags {
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: number, whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
     }
 
     export const Seekable: SeekableNamespace & {
@@ -22096,7 +22096,7 @@ export namespace Ags {
             vfunc_register_sequencer_with_params<T = GObject.Object>(
                 is_output: boolean,
                 param_strv: string,
-                param_value: GObject.Value | any,
+                param_value: unknown,
             ): T;
             /**
              * Fetches `soundcard` of `sound_server`.
@@ -22114,7 +22114,7 @@ export namespace Ags {
             vfunc_register_soundcard_with_params<T = GObject.Object>(
                 is_output: boolean,
                 param_strv: string,
-                param_value: GObject.Value | any,
+                param_value: unknown,
             ): T;
             /**
              * @param ports
@@ -22926,17 +22926,17 @@ export namespace Ags {
              * Get midi duration.
              * @virtual
              */
-            vfunc_get_midi_duration(): number;
+            vfunc_get_midi_duration(): bigint | number;
             /**
              * Get notation duration.
              * @virtual
              */
-            vfunc_get_notation_duration(): number;
+            vfunc_get_notation_duration(): bigint | number;
             /**
              * Get sequencer duration.
              * @virtual
              */
-            vfunc_get_sequencer_duration(): number;
+            vfunc_get_sequencer_duration(): bigint | number;
             /**
              * Get tact.
              * @virtual
@@ -22946,7 +22946,7 @@ export namespace Ags {
              * Get wave duration.
              * @virtual
              */
-            vfunc_get_wave_duration(): number;
+            vfunc_get_wave_duration(): bigint | number;
         }
 
         // Constructor properties interface
@@ -22974,17 +22974,17 @@ export namespace Ags {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: number): void;
+        change_midi_duration(midi_duration: bigint | number): void;
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: number): void;
+        change_notation_duration(notation_duration: bigint | number): void;
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: number): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
         /**
          * Change tact.
          * @param new_tact the new tact
@@ -22995,7 +22995,7 @@ export namespace Ags {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: number): void;
+        change_wave_duration(wave_duration: bigint | number): void;
         /**
          * Get bpm.
          * @returns the bpm

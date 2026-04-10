@@ -524,7 +524,7 @@ export namespace ECal {
      * @param t A time value.
      * @returns String with the ISO 8601 representation of the UTC time.
      */
-    function isodate_from_time_t(t: number): string;
+    function isodate_from_time_t(t: bigint | number): string;
     /**
      * Matches `tzid` against the system timezone definitions
      * and returns the matching TZID, or `null` if none found
@@ -678,7 +678,7 @@ export namespace ECal {
      * @param days Number of days to add.
      * @returns a time_t value containing `time` plus the days added.
      */
-    function time_add_day(time: number, days: number): number;
+    function time_add_day(time: bigint | number, days: number): number;
     /**
      * Adds or subtracts a number of days to/from the given time_t value, using
      * the given timezone.
@@ -690,7 +690,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing `time` plus the days added.
      */
-    function time_add_day_with_zone(time: number, days: number, zone: ICalGLib.Timezone): number;
+    function time_add_day_with_zone(time: bigint | number, days: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds or subtracts a number of months to/from the given time_t value, using
      * the given timezone.
@@ -707,14 +707,14 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing `time` plus the months added.
      */
-    function time_add_month_with_zone(time: number, months: number, zone: ICalGLib.Timezone): number;
+    function time_add_month_with_zone(time: bigint | number, months: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds the given number of weeks to a time value.
      * @param time A time_t value.
      * @param weeks Number of weeks to add.
      * @returns a time_t value containing `time` plus the weeks added.
      */
-    function time_add_week(time: number, weeks: number): number;
+    function time_add_week(time: bigint | number, weeks: number): number;
     /**
      * Adds or subtracts a number of weeks to/from the given time_t value, using
      * the given timezone.
@@ -726,13 +726,13 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns a time_t value containing `time` plus the weeks added.
      */
-    function time_add_week_with_zone(time: number, weeks: number, zone: ICalGLib.Timezone): number;
+    function time_add_week_with_zone(time: bigint | number, weeks: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the start of the day, according to the local time.
      * @param t A time_t value.
      * @returns the time corresponding to the beginning of the day.
      */
-    function time_day_begin(t: number): number;
+    function time_day_begin(t: bigint | number): number;
     /**
      * Returns the start of the day containing the given time_t, using the given
      * timezone.
@@ -743,13 +743,13 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the day.
      */
-    function time_day_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
+    function time_day_begin_with_zone(time: bigint | number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the end of the day, according to the local time.
      * @param t A time_t value.
      * @returns the time corresponding to the end of the day.
      */
-    function time_day_end(t: number): number;
+    function time_day_end(t: bigint | number): number;
     /**
      * Returns the end of the day containing the given time_t, using the given
      * timezone. (The end of the day is the start of the next day.)
@@ -760,7 +760,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the end of the day.
      */
-    function time_day_end_with_zone(time: number, zone: ICalGLib.Timezone): number;
+    function time_day_end_with_zone(time: bigint | number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the day of the week for the specified date, 0 (Sun) to 6 (Sat).
      * For the days that were removed on the Gregorian reformation, it returns
@@ -818,7 +818,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the month.
      */
-    function time_month_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
+    function time_month_begin_with_zone(time: bigint | number, zone: ICalGLib.Timezone): number;
     /**
      * Converts a time_t value to a {@link GLib.Date} structure using the specified timezone.
      * This is analogous to `g_date_set_time()` but takes the timezone into account.
@@ -826,7 +826,7 @@ export namespace ECal {
      * @param time A time value.
      * @param zone Desired timezone for destination `date`, or `null` if    the UTC timezone is desired.
      */
-    function time_to_gdate_with_zone(date: GLib.Date, time: number, zone?: ICalGLib.Timezone | null): void;
+    function time_to_gdate_with_zone(date: GLib.Date, time: bigint | number, zone?: ICalGLib.Timezone | null): void;
     /**
      * Returns the start of the week containing the given time_t, using the given
      * timezone. week_start_day should use the same values as `mktime()`,
@@ -839,7 +839,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the week.
      */
-    function time_week_begin_with_zone(time: number, week_start_day: number, zone: ICalGLib.Timezone): number;
+    function time_week_begin_with_zone(time: bigint | number, week_start_day: number, zone: ICalGLib.Timezone): number;
     /**
      * Returns the start of the year containing the given time_t, using the given
      * timezone.
@@ -850,7 +850,7 @@ export namespace ECal {
      * @param zone Timezone to use.
      * @returns the beginning of the year.
      */
-    function time_year_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
+    function time_year_begin_with_zone(time: bigint | number, zone: ICalGLib.Timezone): number;
     /**
      * Adds VTIMEZONE components to a VCALENDAR for all tzid's
      * in the given `icalcomp`.
@@ -1180,8 +1180,8 @@ export namespace ECal {
      */
     function util_generate_alarms_for_comp(
         comp: Component,
-        start: number,
-        end: number,
+        start: bigint | number,
+        end: bigint | number,
         omit: ComponentAlarmAction | null,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1203,8 +1203,8 @@ export namespace ECal {
      */
     function util_generate_alarms_for_list(
         comps: Component[],
-        start: number,
-        end: number,
+        start: bigint | number,
+        end: bigint | number,
         omit: ComponentAlarmAction | null,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1235,8 +1235,8 @@ export namespace ECal {
     function util_generate_alarms_for_uid_sync(
         client: any | null,
         uid: string,
-        start: number,
-        end: number,
+        start: bigint | number,
+        end: bigint | number,
         omit: ComponentAlarmAction | null,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1336,8 +1336,8 @@ export namespace ECal {
      */
     function util_has_alarms_in_range(
         comp: Component,
-        start: number,
-        end: number,
+        start: bigint | number,
+        end: bigint | number,
         omit: ComponentAlarmAction | null,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
@@ -1433,7 +1433,7 @@ export namespace ECal {
      */
     function util_mark_task_complete_sync(
         vtodo: ICalGLib.Component,
-        completed_time: number,
+        completed_time: bigint | number,
         cal_client: Client,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
@@ -1567,7 +1567,7 @@ export namespace ECal {
      * @returns a newly allocated string with localized description    of the given time in seconds.
      * @since 3.30
      */
-    function util_seconds_to_string(seconds: number): string;
+    function util_seconds_to_string(seconds: bigint | number): string;
     /**
      * Sets the ACKNOWLEDGED property on the `component`'s alarm with UID `auid`
      * to the time `when` (in UTC), or to the current time, when the `when` is 0.
@@ -1577,7 +1577,7 @@ export namespace ECal {
      * @returns Whether succeeded.
      * @since 3.40
      */
-    function util_set_alarm_acknowledged(component: Component, auid: string, when: number): boolean;
+    function util_set_alarm_acknowledged(component: Component, auid: string, when: bigint | number): boolean;
     /**
      * Splits a recurring `icalcomp` into two at time `rid`. The returned {@link ICalGLib.Component}
      * is modified `icalcomp` which contains recurrences beginning at `rid`, inclusive.
@@ -2461,7 +2461,12 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param cb Callback for each generated instance.
          */
-        generate_instances(start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void;
+        generate_instances(
+            start: bigint | number,
+            end: bigint | number,
+            cancellable: Gio.Cancellable | null,
+            cb: RecurInstanceCb,
+        ): void;
         /**
          * Does a combination of `e_cal_client_get_object_list()` and
          * `e_cal_recur_generate_instances_sync()`, like
@@ -2480,8 +2485,8 @@ export namespace ECal {
          */
         generate_instances_for_object(
             icalcomp: ICalGLib.Component,
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2501,8 +2506,8 @@ export namespace ECal {
          */
         generate_instances_for_object_sync(
             icalcomp: ICalGLib.Component,
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2522,8 +2527,8 @@ export namespace ECal {
          */
         generate_instances_for_uid_sync(
             uid: string,
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2540,8 +2545,8 @@ export namespace ECal {
          * @param cb Callback for each generated instance
          */
         generate_instances_sync(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             cancellable: Gio.Cancellable | null,
             cb: RecurInstanceCb,
         ): void;
@@ -2678,8 +2683,8 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_free_busy(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Component[]>;
@@ -2696,8 +2701,8 @@ export namespace ECal {
          * @param callback callback to call when a result is ready
          */
         get_free_busy(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             users: string[],
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -2715,8 +2720,8 @@ export namespace ECal {
          * @param callback callback to call when a result is ready
          */
         get_free_busy(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2742,8 +2747,8 @@ export namespace ECal {
          * @returns `true` if successful, `false` otherwise.
          */
         get_free_busy_sync(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
         ): [boolean, Component[]];
@@ -4352,7 +4357,7 @@ export namespace ECal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4379,7 +4384,7 @@ export namespace ECal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5067,7 +5072,7 @@ export namespace ECal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5094,7 +5099,7 @@ export namespace ECal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6498,7 +6503,7 @@ export namespace ECal {
          * @param rd an {@link ECal.ReminderData} identifying the reminder
          * @param until time_t as gint64, when the `rd` should be retriggered
          */
-        snooze(rd: ReminderData, until: number): void;
+        snooze(rd: ReminderData, until: bigint | number): void;
         /**
          * Notifies the #watcher that the timer previously scheduled
          * with EReminderWatcherClass::schedule_timer elapsed. This can
@@ -6749,13 +6754,18 @@ export namespace ECal {
 
         // Constructors
 
-        constructor(uid: string, instance_time: number, occur_start: number, occur_end: number);
+        constructor(
+            uid: string,
+            instance_time: bigint | number,
+            occur_start: bigint | number,
+            occur_end: bigint | number,
+        );
 
         static ['new'](
             uid: string,
-            instance_time: number,
-            occur_start: number,
-            occur_end: number,
+            instance_time: bigint | number,
+            occur_start: bigint | number,
+            occur_end: bigint | number,
         ): ComponentAlarmInstance;
 
         // Methods
@@ -6806,12 +6816,12 @@ export namespace ECal {
          * Set the actual event occurrence end to which this `instance` corresponds.
          * @param occur_end event occurence end to set
          */
-        set_occur_end(occur_end: number): void;
+        set_occur_end(occur_end: bigint | number): void;
         /**
          * Set the actual event occurrence start to which this `instance` corresponds.
          * @param occur_start event occurence start to set
          */
-        set_occur_start(occur_start: number): void;
+        set_occur_start(occur_start: bigint | number): void;
         /**
          * Set the Recurrence ID of the component this `instance` was generated for.
          * @param rid recurrence UID to set, or `null`
@@ -6821,7 +6831,7 @@ export namespace ECal {
          * Set the instance time, i.e. "5 minutes before the appointment".
          * @param instance_time instance time to set
          */
-        set_time(instance_time: number): void;
+        set_time(instance_time: bigint | number): void;
         /**
          * Set the alarm UID.
          * @param uid alarm UID to set

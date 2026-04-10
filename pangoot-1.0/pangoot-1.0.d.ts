@@ -362,7 +362,7 @@ export namespace PangoOT {
          * @param feature_index the index of the feature to add
          * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   `PANGO_OT_ALL_GLYPHS` if it should be applied to all glyphs.
          */
-        add_feature(table_type: TableType | null, feature_index: number, property_bit: number): void;
+        add_feature(table_type: TableType | null, feature_index: number, property_bit: bigint | number): void;
         /**
          * Gets the number of GSUB and GPOS features in the ruleset.
          * @returns Total number of features in the `ruleset`
@@ -381,7 +381,7 @@ export namespace PangoOT {
          * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   `PANGO_OT_ALL_GLYPHS` if it should be applied to all glyphs.
          * @returns `true` if the feature was found and added to ruleset,   `false` otherwise
          */
-        maybe_add_feature(table_type: TableType | null, feature_tag: Tag, property_bit: number): boolean;
+        maybe_add_feature(table_type: TableType | null, feature_tag: Tag, property_bit: bigint | number): boolean;
         /**
          * This is a convenience function that for each feature in the feature map
          * array `features` converts the feature name to a {@link PangoOT.Tag} feature tag
@@ -488,15 +488,6 @@ export namespace PangoOT {
 
         feature_name: number[];
         property_bit: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                feature_name: number[];
-                property_bit: number;
-            }>,
-        );
     }
 
     /**
@@ -547,11 +538,8 @@ export namespace PangoOT {
         // Fields
 
         script: Pango.Script;
-        static_gsub_features: FeatureMap;
         n_static_gsub_features: number;
-        static_gpos_features: FeatureMap;
         n_static_gpos_features: number;
-        other_features: FeatureMap;
         n_other_features: number;
 
         // Methods

@@ -947,7 +947,7 @@ export namespace GObject {
      * @param instance The instance to remove the signal handler from.   This pointer may be `null` or invalid, if the handler ID is zero.
      * @since 2.62
      */
-    function clear_signal_handler(handler_id_ptr: number, instance: Object): void;
+    function clear_signal_handler(handler_id_ptr: bigint | number, instance: Object): void;
     /**
      * This function is meant to be called from the `complete_type_info`
      * function of a {@link GObject.TypePlugin} implementation, as in the following
@@ -1278,9 +1278,9 @@ export namespace GObject {
         name: string,
         nick: string | null,
         blurb: string | null,
-        minimum: number,
-        maximum: number,
-        default_value: number,
+        minimum: bigint | number,
+        maximum: bigint | number,
+        default_value: bigint | number,
         flags: ParamFlags | null,
     ): ParamSpec;
     /**
@@ -1300,9 +1300,9 @@ export namespace GObject {
         name: string,
         nick: string | null,
         blurb: string | null,
-        minimum: number,
-        maximum: number,
-        default_value: number,
+        minimum: bigint | number,
+        maximum: bigint | number,
+        default_value: bigint | number,
         flags: ParamFlags | null,
     ): ParamSpec;
     /**
@@ -1439,9 +1439,9 @@ export namespace GObject {
         name: string,
         nick: string | null,
         blurb: string | null,
-        minimum: number,
-        maximum: number,
-        default_value: number,
+        minimum: bigint | number,
+        maximum: bigint | number,
+        default_value: bigint | number,
         flags: ParamFlags | null,
     ): ParamSpec;
     /**
@@ -1462,9 +1462,9 @@ export namespace GObject {
         name: string,
         nick: string | null,
         blurb: string | null,
-        minimum: number,
-        maximum: number,
-        default_value: number,
+        minimum: bigint | number,
+        maximum: bigint | number,
+        default_value: bigint | number,
         flags: ParamFlags | null,
     ): ParamSpec;
     /**
@@ -1751,7 +1751,7 @@ export namespace GObject {
      * @param instance The instance to block the signal handler of.
      * @param handler_id Handler id of the handler to be blocked.
      */
-    function signal_handler_block(instance: Object, handler_id: number): void;
+    function signal_handler_block(instance: Object, handler_id: bigint | number): void;
     /**
      * Disconnects a handler from an instance so it will not be called during
      * any future or currently ongoing emissions of the signal it has been
@@ -1762,14 +1762,14 @@ export namespace GObject {
      * @param instance The instance to remove the signal handler from.
      * @param handler_id Handler id of the handler to be disconnected.
      */
-    function signal_handler_disconnect(instance: Object, handler_id: number): void;
+    function signal_handler_disconnect(instance: Object, handler_id: bigint | number): void;
     /**
      * Returns whether `handler_id` is the ID of a handler connected to `instance`.
      * @param instance The instance where a signal handler is sought.
      * @param handler_id the handler ID.
      * @returns whether `handler_id` identifies a handler connected to `instance`.
      */
-    function signal_handler_is_connected(instance: Object, handler_id: number): boolean;
+    function signal_handler_is_connected(instance: Object, handler_id: bigint | number): boolean;
     /**
      * Undoes the effect of a previous `g_signal_handler_block()` call.  A
      * blocked handler is skipped during signal emissions and will not be
@@ -1787,7 +1787,7 @@ export namespace GObject {
      * @param instance The instance to unblock the signal handler of.
      * @param handler_id Handler id of the handler to be unblocked.
      */
-    function signal_handler_unblock(instance: Object, handler_id: number): void;
+    function signal_handler_unblock(instance: Object, handler_id: bigint | number): void;
     /**
      * Blocks all handlers on an instance that match a certain selection criteria.
      *
@@ -2023,7 +2023,7 @@ export namespace GObject {
      * @param signal_id the id of the signal
      * @param hook_id the id of the emission hook, as returned by  `g_signal_add_emission_hook()`
      */
-    function signal_remove_emission_hook(signal_id: number, hook_id: number): void;
+    function signal_remove_emission_hook(signal_id: number, hook_id: bigint | number): void;
     /**
      * Stops a signal's current emission.
      *
@@ -2103,12 +2103,12 @@ export namespace GObject {
      * @param private_size size of private structure
      * @since 2.24
      */
-    function type_add_class_private(class_type: GType, private_size: number): void;
+    function type_add_class_private(class_type: GType, private_size: bigint | number): void;
     /**
      * @param class_type
      * @param private_size
      */
-    function type_add_instance_private(class_type: GType, private_size: number): number;
+    function type_add_instance_private(class_type: GType, private_size: bigint | number): number;
     /**
      * Adds `interface_type` to the dynamic `instance_type`. The information
      * contained in the {@link GObject.TypePlugin} structure pointed to by `plugin`
@@ -2615,7 +2615,7 @@ export namespace GObject {
      * @gir-type Callback
      */
     interface BindingTransformFunc {
-        (binding: Binding, from_value: Value | any, to_value: Value | any): boolean;
+        (binding: Binding, from_value: unknown, to_value: unknown): boolean;
     }
     /**
      * @gir-type Callback
@@ -2654,7 +2654,7 @@ export namespace GObject {
         (
             closure: Closure,
             return_value: Value | null,
-            param_values: (Value | any)[],
+            param_values: unknown[],
             invocation_hint?: any | null,
             marshal_data?: any | null,
         ): void;
@@ -2693,30 +2693,25 @@ export namespace GObject {
      * @gir-type Callback
      */
     interface ObjectGetPropertyFunc<A = Object> {
-        (object: A, property_id: number, value: Value | any, pspec: ParamSpec): void;
+        (object: A, property_id: number, value: unknown, pspec: ParamSpec): void;
     }
     /**
      * @gir-type Callback
      */
     interface ObjectSetPropertyFunc<A = Object> {
-        (object: A, property_id: number, value: Value | any, pspec: ParamSpec): void;
+        (object: A, property_id: number, value: unknown, pspec: ParamSpec): void;
     }
     /**
      * @gir-type Callback
      */
     interface SignalAccumulator {
-        (
-            ihint: SignalInvocationHint,
-            return_accu: Value | any,
-            handler_return: Value | any,
-            data?: any | null,
-        ): boolean;
+        (ihint: SignalInvocationHint, return_accu: unknown, handler_return: unknown, data?: any | null): boolean;
     }
     /**
      * @gir-type Callback
      */
     interface SignalEmissionHook {
-        (ihint: SignalInvocationHint, param_values: (Value | any)[], data?: any | null): boolean;
+        (ihint: SignalInvocationHint, param_values: unknown[], data?: any | null): boolean;
     }
     /**
      * @gir-type Callback
@@ -2764,43 +2759,43 @@ export namespace GObject {
      * @gir-type Callback
      */
     interface TypeValueCollectFunc {
-        (value: Value | any, collect_values: TypeCValue[], collect_flags: number): string | null;
+        (value: unknown, collect_values: TypeCValue[], collect_flags: number): string | null;
     }
     /**
      * @gir-type Callback
      */
     interface TypeValueCopyFunc {
-        (src_value: Value | any): void;
+        (src_value: unknown): void;
     }
     /**
      * @gir-type Callback
      */
     interface TypeValueFreeFunc {
-        (value: Value | any): void;
+        (value: unknown): void;
     }
     /**
      * @gir-type Callback
      */
     interface TypeValueInitFunc {
-        (value: Value | any): void;
+        (value: unknown): void;
     }
     /**
      * @gir-type Callback
      */
     interface TypeValueLCopyFunc {
-        (value: Value | any, collect_values: TypeCValue[], collect_flags: number): string | null;
+        (value: unknown, collect_values: TypeCValue[], collect_flags: number): string | null;
     }
     /**
      * @gir-type Callback
      */
     interface TypeValuePeekPointerFunc {
-        (value: Value | any): any | null;
+        (value: unknown): any | null;
     }
     /**
      * @gir-type Callback
      */
     interface ValueTransform {
-        (src_value: Value | any, dest_value: Value | any): void;
+        (src_value: unknown, dest_value: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -3901,7 +3896,7 @@ export namespace GObject {
          * @param what
          * @param data
          */
-        static compat_control(what: number, data?: any | null): number;
+        static compat_control(what: bigint | number, data?: any | null): number;
         /**
          * Find the {@link GObject.ParamSpec} with the given name for an
          * interface. Generally, the interface vtable passed in as `g_iface`
@@ -4011,7 +4006,7 @@ export namespace GObject {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4038,7 +4033,7 @@ export namespace GObject {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: ParamSpec): void;
 
         // Methods
 
@@ -4808,7 +4803,7 @@ export namespace GObject {
          * @param value
          * @virtual
          */
-        vfunc_value_is_valid(value: Value | any): boolean;
+        vfunc_value_is_valid(value: unknown): boolean;
         /**
          * Resets a `value` to the default value for this type
          *  (recommended, the default is `g_value_reset()`), see
@@ -4816,7 +4811,7 @@ export namespace GObject {
          * @param value
          * @virtual
          */
-        vfunc_value_set_default(value: Value | any): void;
+        vfunc_value_set_default(value: unknown): void;
         /**
          * Ensures that the contents of `value` comply with the
          *  specifications set out by this type (optional), see
@@ -4824,7 +4819,7 @@ export namespace GObject {
          * @param value
          * @virtual
          */
-        vfunc_value_validate(value: Value | any): boolean;
+        vfunc_value_validate(value: unknown): boolean;
         /**
          * Compares `value1` with `value2` according to this type
          *  (recommended, the default is `memcmp()`), see `g_param_values_cmp()`.
@@ -4832,7 +4827,7 @@ export namespace GObject {
          * @param value2
          * @virtual
          */
-        vfunc_values_cmp(value1: Value | any, value2: Value | any): number;
+        vfunc_values_cmp(value1: unknown, value2: unknown): number;
 
         // Methods
 
@@ -5732,7 +5727,7 @@ export namespace GObject {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5759,7 +5754,7 @@ export namespace GObject {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6602,7 +6597,7 @@ export namespace GObject {
          *
          * @param private_size size of private structure
          */
-        add_private(private_size: number): void;
+        add_private(private_size: bigint | number): void;
         /**
          * @param private_type
          */
@@ -7113,7 +7108,7 @@ export namespace GObject {
          * Set the contents of a `G_TYPE_INT64` {@link GObject.Value} to `v_int64`.
          * @param v_int64 64bit integer value to be set
          */
-        set_int64(v_int64: number): void;
+        set_int64(v_int64: bigint | number): void;
         /**
          * Set the contents of a `G_TYPE_STRING` {@link GObject.Value} to `v_string`.  The string is
          * assumed to be static and interned (canonical, for example from
@@ -7125,7 +7120,7 @@ export namespace GObject {
          * Set the contents of a `G_TYPE_LONG` {@link GObject.Value} to `v_long`.
          * @param v_long long integer value to be set
          */
-        set_long(v_long: number): void;
+        set_long(v_long: bigint | number): void;
         /**
          * Set the contents of a `G_TYPE_OBJECT` derived {@link GObject.Value} to `v_object`.
          *
@@ -7198,12 +7193,12 @@ export namespace GObject {
          * Set the contents of a `G_TYPE_UINT64` {@link GObject.Value} to `v_uint64`.
          * @param v_uint64 unsigned 64bit integer value to be set
          */
-        set_uint64(v_uint64: number): void;
+        set_uint64(v_uint64: bigint | number): void;
         /**
          * Set the contents of a `G_TYPE_ULONG` {@link GObject.Value} to `v_ulong`.
          * @param v_ulong unsigned long integer value to be set
          */
-        set_ulong(v_ulong: number): void;
+        set_ulong(v_ulong: bigint | number): void;
         /**
          * Set the contents of a variant {@link GObject.Value} to `variant`.
          * If the variant is floating, it is consumed.
@@ -7431,24 +7426,12 @@ export namespace GObject {
         v_int64: number;
         v_double: number;
         v_pointer: any;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                v_int: number;
-                v_long: number;
-                v_int64: number;
-                v_double: number;
-                v_pointer: any;
-            }>,
-        );
     }
 
     /**
      * @gir-type Struct
      */
-    class _Value__data__union {
+    abstract class _Value__data__union {
         static $gtype: GType<_Value__data__union>;
 
         // Fields
@@ -7462,22 +7445,6 @@ export namespace GObject {
         v_float: number;
         v_double: number;
         v_pointer: any;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                v_int: number;
-                v_uint: number;
-                v_long: number;
-                v_ulong: number;
-                v_int64: number;
-                v_uint64: number;
-                v_float: number;
-                v_double: number;
-                v_pointer: any;
-            }>,
-        );
     }
 
     namespace TypePlugin {
@@ -7603,7 +7570,7 @@ export namespace GObject {
      * type.
      * @gir-type Alias
      */
-    type Type = number;
+    type Type = bigint | number;
     /**
      * @gir-type Interface
      */

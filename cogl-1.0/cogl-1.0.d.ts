@@ -1091,7 +1091,7 @@ export namespace Cogl {
      * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
      * @deprecated since 1.16: Use `cogl_framebuffer_clear()` api instead
      */
-    function clear(color: Color, buffers: number): void;
+    function clear(color: Color, buffers: bigint | number): void;
     /**
      * Ensures that the current clipping region has been set in GL. This
      * will automatically be called before any Cogl primitives but it
@@ -3666,29 +3666,6 @@ export namespace Cogl {
         yw: number;
         zw: number;
         ww: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                xx: number;
-                yx: number;
-                zx: number;
-                wx: number;
-                xy: number;
-                yy: number;
-                zy: number;
-                wy: number;
-                xz: number;
-                yz: number;
-                zz: number;
-                wz: number;
-                xw: number;
-                yw: number;
-                zw: number;
-                ww: number;
-            }>,
-        );
 
         // Static methods
 

@@ -3243,7 +3243,7 @@ export namespace AppStream {
          * @param size a size in bytes, or 0 for unknown
          * @param kind a {@link AppStream.SizeKind}
          */
-        set_size(size: number, kind: SizeKind | null): void;
+        set_size(size: bigint | number, kind: SizeKind | null): void;
     }
 
     namespace Branding {
@@ -3684,7 +3684,7 @@ export namespace AppStream {
             projectLicense: string;
             screenshots: Screenshot[];
             summary: string;
-            urls: GLib.HashTable<UrlKind, string>;
+            urls: { [key: string]: any } | GLib.HashTable<UrlKind, string>;
         }
     }
 
@@ -5676,7 +5676,7 @@ export namespace AppStream {
          * @param format The format of the data (XML or YAML).
          * @returns `true` on success.
          */
-        parse_data(data: string, data_len: number, format: FormatKind | null): boolean;
+        parse_data(data: string, data_len: bigint | number, format: FormatKind | null): boolean;
         /**
          * Parses XDG Desktop Entry metadata and adds it to the list of parsed entities.
          *
@@ -5688,7 +5688,7 @@ export namespace AppStream {
          * @param data_len The data length, or -1 if unknown and null-terminated.
          * @returns `true` if the file was parsed without error.
          */
-        parse_desktop_data(cid: string, data: string, data_len: number): boolean;
+        parse_desktop_data(cid: string, data: string, data_len: bigint | number): boolean;
         /**
          * Parses an AppStream upstream metadata file.
          *
@@ -6726,13 +6726,13 @@ export namespace AppStream {
          * Sets the release timestamp.
          * @param timestamp the timestamp value.
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
         /**
          * Sets the UNIX timestamp for the date when this
          * release is out of support (end-of-life).
          * @param timestamp the timestamp value.
          */
-        set_timestamp_eol(timestamp: number): void;
+        set_timestamp_eol(timestamp: bigint | number): void;
         /**
          * Sets the release urgency.
          * @param urgency the urgency of this release/update (as {@link AppStream.UrgencyKind})
@@ -6916,7 +6916,7 @@ export namespace AppStream {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             date: Review;
             description: string;
-            flags: number;
+            flags: bigint | number;
             id: string;
             locale: string;
             priority: number;
@@ -6952,7 +6952,7 @@ export namespace AppStream {
          * @since 0.14.0
          */
         get flags(): number;
-        set flags(val: number);
+        set flags(val: bigint | number);
         /**
          * @since 0.14.0
          */
@@ -7586,7 +7586,7 @@ export namespace AppStream {
          * @param side the {@link AppStream.DisplaySideKind} to select.
          * @param value_dip the length value in device-independt pixels.
          */
-        set_display_length(side: DisplaySideKind | null, value_dip: number): void;
+        set_display_length(side: DisplaySideKind | null, value_dip: bigint | number): void;
         /**
          * Set whether this system has a GUI / desktop environment available.
          * @param available `true` if GUI is available.
@@ -7987,7 +7987,7 @@ export namespace AppStream {
          * Sets the line number where this issue was found.
          * @param line the line number.
          */
-        set_line(line: number): void;
+        set_line(line: bigint | number): void;
         /**
          * Sets the severity for this issue.
          * @param severity the {@link AppStream.IssueSeverity}.

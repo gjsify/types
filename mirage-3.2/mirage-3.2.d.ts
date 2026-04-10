@@ -1138,7 +1138,7 @@ export namespace Mirage {
      * @gir-type Callback
      */
     interface CdTextDataCallback {
-        (code: number, type: number, track: number, data: Uint8Array | string): boolean;
+        (code: number, type: number, track: number, data: Uint8Array): boolean;
     }
     /**
      * @gir-type Callback
@@ -1729,7 +1729,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1756,7 +1756,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2916,7 +2916,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2943,7 +2943,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3160,14 +3160,14 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: any | null, count: number): number;
+        read(buffer: any | null, count: bigint | number): number;
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
          * @param offset offset to seek
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: number, type: GLib.SeekType | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null): boolean;
         /**
          * Retrieves the current position within the stream.
          * @returns the offset from the beginning of the stream.
@@ -3180,7 +3180,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: any | null, count: number): number;
+        write(buffer: any | null, count: bigint | number): number;
         /**
          * Retrieves the name to file on which the stream is opened. If `self` is
          * a filter stream in the filter stream chain, the filename is obtained from
@@ -3211,7 +3211,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @virtual
          */
-        vfunc_read(buffer: any | null, count: number): number;
+        vfunc_read(buffer: any | null, count: number): bigint | number;
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
          * @param offset offset to seek
@@ -3223,7 +3223,7 @@ export namespace Mirage {
          * Retrieves the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Attempts to write `count` bytes to stream from the buffer starting at
          * `buffer`. Will block during the operation.
@@ -3231,7 +3231,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @virtual
          */
-        vfunc_write(buffer: any | null, count: number): number;
+        vfunc_write(buffer: any | null, count: number): bigint | number;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3628,7 +3628,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3655,7 +3655,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3753,7 +3753,7 @@ export namespace Mirage {
          * @param count
          * @virtual
          */
-        vfunc_read(buffer: any | null, count: number): number;
+        vfunc_read(buffer: any | null, count: number): bigint | number;
         /**
          * seeks to a location within stream
          * @param offset
@@ -3767,26 +3767,26 @@ export namespace Mirage {
          * @param count
          * @virtual
          */
-        vfunc_simplified_partial_read(buffer: any | null, count: number): number;
+        vfunc_simplified_partial_read(buffer: any | null, count: number): bigint | number;
         /**
          * writes a chunk of requested data to stream (part of simplified interface)
          * @param buffer
          * @param count
          * @virtual
          */
-        vfunc_simplified_partial_write(buffer: any | null, count: number): number;
+        vfunc_simplified_partial_write(buffer: any | null, count: number): bigint | number;
         /**
          * tells the current location within stream
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * wrties data to stream
          * @param buffer
          * @param count
          * @virtual
          */
-        vfunc_write(buffer: any | null, count: number): number;
+        vfunc_write(buffer: any | null, count: number): bigint | number;
 
         // Methods
 
@@ -3827,7 +3827,7 @@ export namespace Mirage {
          * the simplified interface.
          * @param length length of the stream
          */
-        simplified_set_stream_length(length: number): void;
+        simplified_set_stream_length(length: bigint | number): void;
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
          * streams on top of it.
@@ -3951,14 +3951,14 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: any | null, count: number): number;
+        read(buffer: any | null, count: bigint | number): number;
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
          * @param offset offset to seek
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: number, type: GLib.SeekType | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null): boolean;
         /**
          * Retrieves the current position within the stream.
          * @returns the offset from the beginning of the stream.
@@ -3971,7 +3971,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: any | null, count: number): number;
+        write(buffer: any | null, count: bigint | number): number;
         /**
          * Retrieves the name to file on which the stream is opened. If `self` is
          * a filter stream in the filter stream chain, the filename is obtained from
@@ -4391,7 +4391,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4418,7 +4418,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4568,7 +4568,7 @@ export namespace Mirage {
          * Sets main data file offset.
          * @param offset main data file offset
          */
-        main_data_set_offset(offset: number): void;
+        main_data_set_offset(offset: bigint | number): void;
         /**
          * Sets main data file sector size.
          * @param size main data file sector size
@@ -4653,7 +4653,7 @@ export namespace Mirage {
          * Sets subchannel data file offset.
          * @param offset subchannel data file offset
          */
-        subchannel_data_set_offset(offset: number): void;
+        subchannel_data_set_offset(offset: bigint | number): void;
         /**
          * Sets subchannel data file sector size.
          * @param size subchannel data file sector size
@@ -5171,7 +5171,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5198,7 +5198,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5784,7 +5784,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5811,7 +5811,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6403,7 +6403,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6430,7 +6430,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7014,7 +7014,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7041,7 +7041,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7662,7 +7662,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7689,7 +7689,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8218,7 +8218,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8245,7 +8245,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8983,7 +8983,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9010,7 +9010,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9909,7 +9909,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9936,7 +9936,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10868,7 +10868,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10895,7 +10895,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11635,7 +11635,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11662,7 +11662,7 @@ export namespace Mirage {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -12170,7 +12170,7 @@ export namespace Mirage {
              * @param count number of bytes to read from stream
              * @virtual
              */
-            vfunc_read(buffer: any | null, count: number): number;
+            vfunc_read(buffer: any | null, count: number): bigint | number;
             /**
              * Seeks in the stream by the given `offset`, modified by `type`.
              * @param offset offset to seek
@@ -12182,7 +12182,7 @@ export namespace Mirage {
              * Retrieves the current position within the stream.
              * @virtual
              */
-            vfunc_tell(): number;
+            vfunc_tell(): bigint | number;
             /**
              * Attempts to write `count` bytes to stream from the buffer starting at
              * `buffer`. Will block during the operation.
@@ -12190,7 +12190,7 @@ export namespace Mirage {
              * @param count number of bytes to write to stream
              * @virtual
              */
-            vfunc_write(buffer: any | null, count: number): number;
+            vfunc_write(buffer: any | null, count: number): bigint | number;
         }
 
         // Constructor properties interface
@@ -12246,14 +12246,14 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: any | null, count: number): number;
+        read(buffer: any | null, count: bigint | number): number;
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
          * @param offset offset to seek
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: number, type: GLib.SeekType | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null): boolean;
         /**
          * Retrieves the current position within the stream.
          * @returns the offset from the beginning of the stream.
@@ -12266,7 +12266,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: any | null, count: number): number;
+        write(buffer: any | null, count: bigint | number): number;
     }
 
     export const Stream: StreamNamespace & {

@@ -1013,7 +1013,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.BtrfsTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function btrfs_is_tech_avail(tech: BtrfsTech | null, mode: number): boolean;
+    function btrfs_is_tech_avail(tech: BtrfsTech | null, mode: bigint | number): boolean;
     /**
      * @param device a device that is part of the queried btrfs volume
      * @returns information about the devices that are part of the btrfs volume containing `device` or `null` in case of error Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.QUERY}
@@ -1059,14 +1059,18 @@ export namespace BlockDev {
      * @param extra extra options for the volume resize (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint` filesystem was successfully resized to `size` or not Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
      */
-    function btrfs_resize(mountpoint: string, size: number, extra?: ExtraArg[] | null): boolean;
+    function btrfs_resize(mountpoint: string, size: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @param mountpoint mountpoint of the volume to set the default subvolume ID of
      * @param subvol_id ID of the subvolume to be set as the default subvolume
      * @param extra extra options for the setting (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint` volume's default subvolume was correctly set          to `subvol_id` or not Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.MODIFY}
      */
-    function btrfs_set_default_subvolume(mountpoint: string, subvol_id: number, extra?: ExtraArg[] | null): boolean;
+    function btrfs_set_default_subvolume(
+        mountpoint: string,
+        subvol_id: bigint | number,
+        extra?: ExtraArg[] | null,
+    ): boolean;
     /**
      * @param bitlk_device BITLK device to close
      * @returns whether the given `bitlk_device` was successfully closed or not Tech category: {@link BlockDev.CryptoTech.BITLK}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
@@ -1204,7 +1208,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.CryptoTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function crypto_is_tech_avail(tech: CryptoTech | null, mode: number): boolean;
+    function crypto_is_tech_avail(tech: CryptoTech | null, mode: bigint | number): boolean;
     /**
      * @param key_desc kernel keyring key description
      * @param key_data a key to add to kernel keyring (may contain arbitrary binary data)
@@ -1265,9 +1269,9 @@ export namespace BlockDev {
     function crypto_luks_format(
         device: string,
         cipher: string | null,
-        key_size: number,
+        key_size: bigint | number,
         context: CryptoKeyslotContext,
-        min_entropy: number,
+        min_entropy: bigint | number,
         luks_version: CryptoLUKSVersion | null,
         extra?: CryptoLUKSExtra | null,
     ): boolean;
@@ -1319,7 +1323,11 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for this LUKS `device`
      * @returns whether the `luks_device` was successfully resized or not You need to specify either `context` for LUKS 2 devices that don't have verified key loaded in kernel. For LUKS 1 devices you can set `context` `null`. Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.RESIZE}
      */
-    function crypto_luks_resize(luks_device: string, size: number, context?: CryptoKeyslotContext | null): boolean;
+    function crypto_luks_resize(
+        luks_device: string,
+        size: bigint | number,
+        context?: CryptoKeyslotContext | null,
+    ): boolean;
     /**
      * Supported `context` types for this function: passphrase, key file
      * @param luks_device LUKS device to resume
@@ -1383,9 +1391,9 @@ export namespace BlockDev {
     function crypto_opal_format(
         device: string,
         cipher: string | null,
-        key_size: number,
+        key_size: bigint | number,
         context: CryptoKeyslotContext,
-        min_entropy: number,
+        min_entropy: bigint | number,
         hw_encryption: CryptoLUKSHWEncryptionType | null,
         opal_context: CryptoKeyslotContext,
         extra?: CryptoLUKSExtra | null,
@@ -1443,7 +1451,7 @@ export namespace BlockDev {
      * @param uuid UUID for the new dev mapper device or `null` if not specified
      * @returns whether the new linear mapping `map_name` was successfully created for the `device` or not Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.CREATE_ACTIVATE}
      */
-    function dm_create_linear(map_name: string, device: string, length: number, uuid?: string | null): boolean;
+    function dm_create_linear(map_name: string, device: string, length: bigint | number, uuid?: string | null): boolean;
     function dm_error_quark(): GLib.Quark;
     /**
      * @param device_name name of the device
@@ -1455,7 +1463,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.DMTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function dm_is_tech_avail(tech: DMTech | null, mode: number): boolean;
+    function dm_is_tech_avail(tech: DMTech | null, mode: bigint | number): boolean;
     /**
      * @param map_name name of the queried map
      * @param live_only whether to go through the live maps only or not
@@ -1542,7 +1550,7 @@ export namespace BlockDev {
      * @param extra extra options for the volume resize (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mpoint` filesystem was successfully resized to `new_size` or not Note: This function WON'T WORK for multi device btrfs filesystems,       for more complicated setups use the btrfs plugin instead. Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
      */
-    function fs_btrfs_resize(mpoint: string, new_size: number, extra?: ExtraArg[] | null): boolean;
+    function fs_btrfs_resize(mpoint: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @param mpoint the mount point of the file system to set label for
      * @param label label to set
@@ -1769,7 +1777,7 @@ export namespace BlockDev {
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_ext2_resize(device: string, new_size: number, extra?: ExtraArg[] | null): boolean;
+    function fs_ext2_resize(device: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to set label for
      * @param label label to set
@@ -1827,7 +1835,7 @@ export namespace BlockDev {
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_ext3_resize(device: string, new_size: number, extra?: ExtraArg[] | null): boolean;
+    function fs_ext3_resize(device: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to set label for
      * @param label label to set
@@ -1885,7 +1893,7 @@ export namespace BlockDev {
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_ext4_resize(device: string, new_size: number, extra?: ExtraArg[] | null): boolean;
+    function fs_ext4_resize(device: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @param device the device the file system on which to set label for
      * @param label label to set
@@ -1933,7 +1941,12 @@ export namespace BlockDev {
      * @param extra extra options for the resize (right now                                                 passed to the 'resize.f2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_f2fs_resize(device: string, new_size: number, safe: boolean, extra?: ExtraArg[] | null): boolean;
+    function fs_f2fs_resize(
+        device: string,
+        new_size: bigint | number,
+        safe: boolean,
+        extra?: ExtraArg[] | null,
+    ): boolean;
     /**
      * Returns (transfer-none): features supported by `fstype`, see %BDFSFeatures for more information.
      *
@@ -2001,7 +2014,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.FSTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function fs_is_tech_avail(tech: FSTech | null, mode: number): boolean;
+    function fs_is_tech_avail(tech: FSTech | null, mode: bigint | number): boolean;
     /**
      * This is a helper function for creating filesystems with extra options.
      * This is the same as running a filesystem-specific function like %bd_fs_ext4_mkfs
@@ -2062,7 +2075,7 @@ export namespace BlockDev {
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.NILFS2}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_nilfs2_resize(device: string, new_size: number): boolean;
+    function fs_nilfs2_resize(device: string, new_size: bigint | number): boolean;
     /**
      * @param device the device containing the file system to set label for
      * @param label label to set
@@ -2118,7 +2131,7 @@ export namespace BlockDev {
      * @param new_size new requested size for the file system in bytes (if 0, the file system            is adapted to the underlying block device)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_ntfs_resize(device: string, new_size: number): boolean;
+    function fs_ntfs_resize(device: string, new_size: bigint | number): boolean;
     /**
      * @param device the device containing the file system to set the label for
      * @param label label to set
@@ -2154,7 +2167,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_resize(device: string, new_size: number, fstype?: string | null): boolean;
+    function fs_resize(device: string, new_size: bigint | number, fstype?: string | null): boolean;
     /**
      * Set label for filesystem on `device`. This calls other fs label functions from this
      * plugin based on detected filesystem (e.g. bd_fs_xfs_set_label for XFS). This
@@ -2211,7 +2224,7 @@ export namespace BlockDev {
         device: string,
         media_type: string | null,
         revision: string | null,
-        block_size: number,
+        block_size: bigint | number,
         extra?: ExtraArg[] | null,
     ): boolean;
     /**
@@ -2283,7 +2296,7 @@ export namespace BlockDev {
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_vfat_resize(device: string, new_size: number): boolean;
+    function fs_vfat_resize(device: string, new_size: bigint | number): boolean;
     /**
      * @param device the device containing the file system to set label for
      * @param label label to set
@@ -2342,7 +2355,7 @@ export namespace BlockDev {
      * @param extra extra options for the resize (right now                                                 passed to the 'xfs_growfs' utility)
      * @returns whether the file system mounted on `mpoint` was successfully resized or not Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.RESIZE}
      */
-    function fs_xfs_resize(mpoint: string, new_size: number, extra?: ExtraArg[] | null): boolean;
+    function fs_xfs_resize(mpoint: string, new_size: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @param device the device containing the file system to set label for
      * @param label label to set
@@ -2400,7 +2413,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.LoopTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function loop_is_tech_avail(tech: LoopTech | null, mode: number): boolean;
+    function loop_is_tech_avail(tech: LoopTech | null, mode: bigint | number): boolean;
     /**
      * @param loop path or name of the loop device
      * @param autoclear whether to set or unset the autoclear flag
@@ -2425,11 +2438,11 @@ export namespace BlockDev {
      */
     function loop_setup(
         file: string,
-        offset: number,
-        size: number,
+        offset: bigint | number,
+        size: bigint | number,
         read_only: boolean,
         part_scan: boolean,
-        sector_size: number,
+        sector_size: bigint | number,
     ): [boolean, string];
     /**
      * @param fd file descriptor for a file to setup as a new loop device
@@ -2442,11 +2455,11 @@ export namespace BlockDev {
      */
     function loop_setup_from_fd(
         fd: number,
-        offset: number,
-        size: number,
+        offset: bigint | number,
+        size: bigint | number,
         read_only: boolean,
         part_scan: boolean,
-        sector_size: number,
+        sector_size: bigint | number,
     ): [boolean, string];
     /**
      * @param loop path or name of the loop device to tear down
@@ -2500,9 +2513,9 @@ export namespace BlockDev {
     function lvm_cache_create_cached_lv(
         vg_name: string,
         lv_name: string,
-        data_size: number,
-        cache_size: number,
-        md_size: number,
+        data_size: bigint | number,
+        cache_size: bigint | number,
+        md_size: bigint | number,
         mode: LVMCacheMode | null,
         flags: LVMCachePoolFlags | null,
         slow_pvs: string[],
@@ -2521,8 +2534,8 @@ export namespace BlockDev {
     function lvm_cache_create_pool(
         vg_name: string,
         pool_name: string,
-        pool_size: number,
-        md_size: number,
+        pool_size: bigint | number,
+        md_size: bigint | number,
         mode: LVMCacheMode | null,
         flags: LVMCachePoolFlags | null,
         fast_pvs: string[],
@@ -2539,7 +2552,7 @@ export namespace BlockDev {
      * @param cache_size size of the cache to determine MD size for
      * @returns recommended default size of the cache metadata LV or 0 in case of error Tech category: {@link BlockDev.LVMTech.CACHE_CALCS} no mode (it is ignored)
      */
-    function lvm_cache_get_default_md_size(cache_size: number): number;
+    function lvm_cache_get_default_md_size(cache_size: bigint | number): number;
     /**
      * @param mode_str string representation of a cache mode
      * @returns cache mode for the `mode_str` or {@link BlockDev.LVMCacheMode.UNKNOWN} if          failed to determine Tech category: always provided/supported
@@ -2643,7 +2656,7 @@ export namespace BlockDev {
      * @param pe_size PE size
      * @returns space taken on disk(s) by the LV with given `size` Gives number of bytes needed for an LV with the size `lv_size` on an LVM stack using given `pe_size`. Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
      */
-    function lvm_get_lv_physical_size(lv_size: number, pe_size: number): number;
+    function lvm_get_lv_physical_size(lv_size: bigint | number, pe_size: bigint | number): number;
     /**
      * @returns maximum LV size in bytes Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
      */
@@ -2660,14 +2673,18 @@ export namespace BlockDev {
      * @param n_snapshots ignored
      * @returns recommended size of the metadata space for the specified pool Tech category: {@link BlockDev.LVMTech.THIN_CALCS} no mode (it is ignored)
      */
-    function lvm_get_thpool_meta_size(size: number, chunk_size: number, n_snapshots: number): number;
+    function lvm_get_thpool_meta_size(
+        size: bigint | number,
+        chunk_size: bigint | number,
+        n_snapshots: bigint | number,
+    ): number;
     /**
      * @param size size of the thin pool
      * @param pe_size PE size or 0 if the default value should be used
      * @param included if padding is already included in the size
      * @returns size of the padding needed for a thin pool with the given `size`         according to the `pe_size` and `included` Tech category: {@link BlockDev.LVMTech.THIN_CALCS} no mode (it is ignored)
      */
-    function lvm_get_thpool_padding(size: number, pe_size: number, included: boolean): number;
+    function lvm_get_thpool_padding(size: bigint | number, pe_size: bigint | number, included: boolean): number;
     /**
      * @param state state to get the string representation for
      * @returns string representation of `state` or `null` in case of error Tech category: always provided/supported
@@ -2697,24 +2714,24 @@ export namespace BlockDev {
      * @param size size (in bytes) to test
      * @returns whether the given size is supported physical extent size or not Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
      */
-    function lvm_is_supported_pe_size(size: number): boolean;
+    function lvm_is_supported_pe_size(size: bigint | number): boolean;
     /**
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.LVMTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function lvm_is_tech_avail(tech: LVMTech | null, mode: number): boolean;
+    function lvm_is_tech_avail(tech: LVMTech | null, mode: bigint | number): boolean;
     /**
      * @param size the size to be tested
      * @param discard whether discard/TRIM is required to be supported or not
      * @returns whether the given size is a valid thin pool chunk size or not Tech category: {@link BlockDev.LVMTech.THIN_CALCS} no mode (it is ignored)
      */
-    function lvm_is_valid_thpool_chunk_size(size: number, discard: boolean): boolean;
+    function lvm_is_valid_thpool_chunk_size(size: bigint | number, discard: boolean): boolean;
     /**
      * @param size the size to be tested
      * @returns whether the given size is a valid thin pool metadata size or not Tech category: {@link BlockDev.LVMTech.THIN_CALCS} no mode (it is ignored)
      */
-    function lvm_is_valid_thpool_md_size(size: number): boolean;
+    function lvm_is_valid_thpool_md_size(size: bigint | number): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-activated LV
      * @param lv_name name of the to-be-activated LV
@@ -2742,7 +2759,7 @@ export namespace BlockDev {
     function lvm_lvcreate(
         vg_name: string,
         lv_name: string,
-        size: number,
+        size: bigint | number,
         type?: string | null,
         pv_list?: string[] | null,
         extra?: ExtraArg[] | null,
@@ -2804,7 +2821,7 @@ export namespace BlockDev {
      * @param extra extra options for the LV resize                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully resized or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_lvresize(vg_name: string, lv_name: string, size: number, extra?: ExtraArg[] | null): boolean;
+    function lvm_lvresize(vg_name: string, lv_name: string, size: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @param vg_name name of the VG to get information about LVs from
      * @returns information about LVs found in the given `vg_name` VG or in system if `vg_name` is `null` Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
@@ -2828,7 +2845,7 @@ export namespace BlockDev {
         vg_name: string,
         origin_name: string,
         snapshot_name: string,
-        size: number,
+        size: bigint | number,
         extra?: ExtraArg[] | null,
     ): boolean;
     /**
@@ -2847,8 +2864,8 @@ export namespace BlockDev {
      */
     function lvm_pvcreate(
         device: string,
-        data_alignment: number,
-        metadata_size: number,
+        data_alignment: bigint | number,
+        metadata_size: bigint | number,
         extra?: ExtraArg[] | null,
     ): boolean;
     /**
@@ -2875,7 +2892,7 @@ export namespace BlockDev {
      * @param extra extra options for the PV resize                                                 (just passed to LVM as is)
      * @returns whether the PV's size was successfully changed or not If given `size` different from 0, sets the PV's size to the given value (see pvresize(8)). If given `size` 0, adjusts the PV's size to the underlying block device's size. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_pvresize(device: string, size: number, extra?: ExtraArg[] | null): boolean;
+    function lvm_pvresize(device: string, size: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @returns information about PVs found in the system Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
      */
@@ -2893,7 +2910,7 @@ export namespace BlockDev {
      * @param roundup whether to round up or down (ceil or floor)
      * @returns `size` rounded to `pe_size` according to the `roundup` Rounds given `size` up/down to a multiple of `pe_size` according to the value of the `roundup` parameter. If the rounded value is too big to fit in the return type, the result is rounded down (floored) regardless of the `roundup` parameter. Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
      */
-    function lvm_round_size_to_pe(size: number, pe_size: number, roundup: boolean): number;
+    function lvm_round_size_to_pe(size: bigint | number, pe_size: bigint | number, roundup: boolean): number;
     /**
      * @param devices list of devices for lvm commands to work on
      * @returns whether the devices filter was successfully set or not Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
@@ -2921,7 +2938,7 @@ export namespace BlockDev {
         vg_name: string,
         pool_name: string,
         lv_name: string,
-        size: number,
+        size: bigint | number,
         extra?: ExtraArg[] | null,
     ): boolean;
     /**
@@ -2960,9 +2977,9 @@ export namespace BlockDev {
     function lvm_thpoolcreate(
         vg_name: string,
         lv_name: string,
-        size: number,
-        md_size: number,
-        chunk_size: number,
+        size: bigint | number,
+        md_size: bigint | number,
+        chunk_size: bigint | number,
         profile?: string | null,
         extra?: ExtraArg[] | null,
     ): boolean;
@@ -3047,8 +3064,8 @@ export namespace BlockDev {
         vg_name: string,
         pool_lv: string,
         name: string | null,
-        virtual_size: number,
-        index_memory: number,
+        virtual_size: bigint | number,
+        index_memory: bigint | number,
         compression: boolean,
         deduplication: boolean,
         write_policy: LVMVDOWritePolicy | null,
@@ -3071,9 +3088,9 @@ export namespace BlockDev {
         vg_name: string,
         lv_name: string,
         pool_name: string | null,
-        data_size: number,
-        virtual_size: number,
-        index_memory: number,
+        data_size: bigint | number,
+        virtual_size: bigint | number,
+        index_memory: bigint | number,
         compression: boolean,
         deduplication: boolean,
         write_policy: LVMVDOWritePolicy | null,
@@ -3086,7 +3103,12 @@ export namespace BlockDev {
      * @param extra extra options for the VDO pool LV resize                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`pool_name` VDO pool LV was successfully resized or not Note: Size of the VDO pool LV can be only extended, not reduced. Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vdo_pool_resize(vg_name: string, pool_name: string, size: number, extra?: ExtraArg[] | null): boolean;
+    function lvm_vdo_pool_resize(
+        vg_name: string,
+        pool_name: string,
+        size: bigint | number,
+        extra?: ExtraArg[] | null,
+    ): boolean;
     /**
      * @param vg_name name of the VG containing the to-be-resized VDO LV
      * @param lv_name name of the to-be-resized VDO LV
@@ -3094,7 +3116,12 @@ export namespace BlockDev {
      * @param extra extra options for the VDO LV resize                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` VDO LV was successfully resized or not Note: Reduction needs to process TRIM for reduced disk area to unmap used data blocks       from the VDO pool LV and it may take a long time. Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
      */
-    function lvm_vdo_resize(vg_name: string, lv_name: string, size: number, extra?: ExtraArg[] | null): boolean;
+    function lvm_vdo_resize(
+        vg_name: string,
+        lv_name: string,
+        size: bigint | number,
+        extra?: ExtraArg[] | null,
+    ): boolean;
     /**
      * @param vg_name name of the VG containing the queried VDO LV
      * @param lv_name name of the queried VDO LV
@@ -3132,7 +3159,12 @@ export namespace BlockDev {
      * @param extra extra options for the VG creation                                                 (just passed to LVM as is)
      * @returns whether the VG `name` was successfully created or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.CREATE}
      */
-    function lvm_vgcreate(name: string, pv_list: string[], pe_size: number, extra?: ExtraArg[] | null): boolean;
+    function lvm_vgcreate(
+        name: string,
+        pv_list: string[],
+        pe_size: bigint | number,
+        extra?: ExtraArg[] | null,
+    ): boolean;
     /**
      * @param vg_name name of the to be deactivated VG
      * @param extra extra options for the VG deactivation                                                 (just passed to LVM as is)
@@ -3212,8 +3244,8 @@ export namespace BlockDev {
     function lvm_writecache_create_cached_lv(
         vg_name: string,
         lv_name: string,
-        data_size: number,
-        cache_size: number,
+        data_size: bigint | number,
+        cache_size: bigint | number,
         slow_pvs: string[],
         fast_pvs: string[],
     ): boolean;
@@ -3252,7 +3284,7 @@ export namespace BlockDev {
      * @param extra extra options for the addition (right now                                                 passed to the 'mdadm' utility)
      * @returns whether the `device` was successfully added to the `raid_spec` RAID or not The `raid_devs` parameter is used when adding devices to a raid array that has no actual redundancy. In this case it is necessary to explicitly grow the array all at once rather than manage it in the sense of adding spares. Whether the new device will be added as a spare or an active member is decided by mdadm. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
      */
-    function md_add(raid_spec: string, device: string, raid_devs: number, extra?: ExtraArg[] | null): boolean;
+    function md_add(raid_spec: string, device: string, raid_devs: bigint | number, extra?: ExtraArg[] | null): boolean;
     /**
      * @param uuid UUID to canonicalize
      * @returns canonicalized form of `uuid` This function expects a UUID in the form that mdadm returns. The change is as follows: 3386ff85:f5012621:4a435f06:1eb47236 -> 3386ff85-f501-2621-4a43-5f061eb47236 Tech category: always available
@@ -3273,10 +3305,10 @@ export namespace BlockDev {
         device_name: string,
         level: string,
         disks: string[],
-        spares: number,
+        spares: bigint | number,
         version: string | null,
         bitmap: string | null,
-        chunk_size: number,
+        chunk_size: bigint | number,
         extra?: ExtraArg[] | null,
     ): boolean;
     /**
@@ -3325,13 +3357,13 @@ export namespace BlockDev {
      * @param version metadata version or `null` to use the current default version
      * @returns Calculated superblock size for an array with a given `member_size` and metadata `version` or default if unsupported `version` is used. Tech category: always available
      */
-    function md_get_superblock_size(member_size: number, version?: string | null): number;
+    function md_get_superblock_size(member_size: bigint | number, version?: string | null): number;
     /**
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function md_is_tech_avail(tech: MDTech | null, mode: number): boolean;
+    function md_is_tech_avail(tech: MDTech | null, mode: bigint | number): boolean;
     /**
      * @param node path of the MD RAID's device node
      * @returns `name` of the MD RAID the device node belongs to or `null` in case of error Tech category: always available
@@ -3391,7 +3423,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function mpath_is_tech_avail(tech: MpathTech | null, mode: number): boolean;
+    function mpath_is_tech_avail(tech: MpathTech | null, mode: bigint | number): boolean;
     /**
      * @param enabled whether friendly names should be enabled or not
      * @returns if successfully set or not Tech category: {@link BlockDev.MpathTech.FRIENDLY_NAMES}-{@link BlockDev.MpathTechMode.MODIFY}
@@ -3404,7 +3436,7 @@ export namespace BlockDev {
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
-    function nvdimm_is_tech_avail(tech: NVDIMMTech | null, mode: number): boolean;
+    function nvdimm_is_tech_avail(tech: NVDIMMTech | null, mode: bigint | number): boolean;
     /**
      * @param bus return only namespaces on given bus (specified by name),                     `null` may be specified to return namespaces from all buses
      * @param region return only namespaces on given region (specified by regionX name or region id),                        `null` may be specified to return namespaces from all regions
@@ -3696,7 +3728,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.NVMETechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function nvme_is_tech_avail(tech: NVMETech | null, mode: number): boolean;
+    function nvme_is_tech_avail(tech: NVMETech | null, mode: bigint | number): boolean;
     /**
      * Starts a sanitize operation or recovers from a previously failed sanitize operation.
      * By definition, a sanitize operation alters all user data in the NVM subsystem such
@@ -3773,8 +3805,8 @@ export namespace BlockDev {
     function part_create_part(
         disk: string,
         type: PartTypeReq | null,
-        start: number,
-        size: number,
+        start: bigint | number,
+        size: bigint | number,
         align: PartAlign | null,
     ): PartSpec;
     /**
@@ -3797,7 +3829,7 @@ export namespace BlockDev {
      * @param size size of the partition to be added
      * @returns spec of the best free region on `disk` for a new partition of type `type`                           with the size of `size` or `null` if there is none such region or if                           there was an error (`error` gets populated) Note: For the `type` {@link BlockDev.PartType.NORMAL}, the smallest possible space that *is not* in an extended partition       is found. For the `type` {@link BlockDev.PartType.LOGICAL}, the smallest possible space that *is* in an extended       partition is found. For {@link BlockDev.PartType.EXTENDED}, the biggest possible space is found as long as there       is no other extended partition (there can only be one). Tech category: {@link BlockDev.PartTechMode.QUERY_TABLE} + the tech according to the partition table type
      */
-    function part_get_best_free_region(disk: string, type: PartType | null, size: number): PartSpec;
+    function part_get_best_free_region(disk: string, type: PartType | null, size: bigint | number): PartSpec;
     /**
      * @param disk disk to get free regions for
      * @returns specs of the free regions from `disk` or `null` in case of error Tech category: {@link BlockDev.PartTechMode.QUERY_TABLE} + the tech according to the partition table type
@@ -3818,7 +3850,7 @@ export namespace BlockDev {
      * @param position position (in bytes) determining the partition
      * @returns spec of the partition from `disk` spanning over the `position` or `null` if no such          partition exists or in case of error (`error` is set) Tech category: {@link BlockDev.PartTechMode.QUERY_PART} + the tech according to the partition table type
      */
-    function part_get_part_by_pos(disk: string, position: number): PartSpec;
+    function part_get_part_by_pos(disk: string, position: bigint | number): PartSpec;
     /**
      * @param disk disk to remove the partition from
      * @param part partition to get spec for
@@ -3840,7 +3872,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.PartTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function part_is_tech_avail(tech: PartTech | null, mode: number): boolean;
+    function part_is_tech_avail(tech: PartTech | null, mode: bigint | number): boolean;
     /**
      * @param disk disk containing the partition
      * @param part partition to resize
@@ -3848,14 +3880,14 @@ export namespace BlockDev {
      * @param align alignment to use for the partition end
      * @returns whether the `part` partition was successfully resized on `disk` to `size` NOTE: The resulting partition may be slightly bigger than requested due to alignment. Tech category: {@link BlockDev.PartTechMode.MODIFY_TABLE} + the tech according to the partition table type
      */
-    function part_resize_part(disk: string, part: string, size: number, align: PartAlign | null): boolean;
+    function part_resize_part(disk: string, part: string, size: bigint | number, align: PartAlign | null): boolean;
     /**
      * @param disk device the partition belongs to
      * @param part partition the attributes should be set for
      * @param attrs GPT attributes to set on `part`
      * @returns whether the `attrs` GPT attributes were successfully set for `part` or not Tech category: {@link BlockDev.PartTech.GPT}-{@link BlockDev.PartTechMode.MODIFY_PART}
      */
-    function part_set_part_attributes(disk: string, part: string, attrs: number): boolean;
+    function part_set_part_attributes(disk: string, part: string, attrs: bigint | number): boolean;
     /**
      * @param disk device the partition belongs to
      * @param part partition the bootable flag should be set for
@@ -3929,7 +3961,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.SmartTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function smart_is_tech_avail(tech: SmartTechMode | null, mode: number): boolean;
+    function smart_is_tech_avail(tech: SmartTechMode | null, mode: bigint | number): boolean;
     /**
      * Retrieve SMART information from SCSI or SAS-compliant drive.
      * @param device device to check.
@@ -3961,7 +3993,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.SwapTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function swap_is_tech_avail(tech: SwapTech | null, mode: number): boolean;
+    function swap_is_tech_avail(tech: SwapTech | null, mode: bigint | number): boolean;
     /**
      * @param device a device to create swap space on
      * @param label a label for the swap space device
@@ -4175,7 +4207,7 @@ export namespace BlockDev {
      * @param task_id ID of the task the status of which is being logged
      * @param msg log message
      */
-    function utils_log_task_status(task_id: number, msg: string): void;
+    function utils_log_task_status(task_id: bigint | number, msg: string): void;
     /**
      * @returns whether progress reporting for the current thread was successfully muted (deinitialized even in presence of a global reporting function) or not
      */
@@ -4188,13 +4220,13 @@ export namespace BlockDev {
      * @param task_id ID of the task/action
      * @param msg message describing the status of the task/action
      */
-    function utils_report_finished(task_id: number, msg: string): void;
+    function utils_report_finished(task_id: bigint | number, msg: string): void;
     /**
      * @param task_id ID of the task/action
      * @param completion percentage of completion
      * @param msg message describing the status of the task/action
      */
-    function utils_report_progress(task_id: number, completion: number, msg: string): void;
+    function utils_report_progress(task_id: bigint | number, completion: bigint | number, msg: string): void;
     /**
      * @param msg message describing the started task/action
      * @returns ID of the started task/action
@@ -4558,17 +4590,6 @@ export namespace BlockDev {
         size: number;
         used: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                id: number;
-                path: string;
-                size: number;
-                used: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -4594,17 +4615,6 @@ export namespace BlockDev {
         num_devices: number;
         used: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                num_devices: number;
-                used: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -4628,16 +4638,6 @@ export namespace BlockDev {
         id: number;
         parent_id: number;
         path: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                id: number;
-                parent_id: number;
-                path: string;
-            }>,
-        );
 
         // Methods
 
@@ -4708,25 +4708,23 @@ export namespace BlockDev {
         // Constructors
 
         constructor(
-            properties?: Partial<{
-                sector_size: number;
-                journal_size: number;
-                journal_watermark: number;
-                journal_commit_time: number;
-                interleave_sectors: number;
-                tag_size: number;
-                buffer_sectors: number;
-            }>,
+            sector_size: number,
+            journal_size: bigint | number,
+            journal_watermark: number,
+            journal_commit_time: number,
+            interleave_sectors: bigint | number,
+            tag_size: bigint | number,
+            buffer_sectors: bigint | number,
         );
 
         static ['new'](
             sector_size: number,
-            journal_size: number,
+            journal_size: bigint | number,
             journal_watermark: number,
             journal_commit_time: number,
-            interleave_sectors: number,
-            tag_size: number,
-            buffer_sectors: number,
+            interleave_sectors: bigint | number,
+            tag_size: bigint | number,
+            buffer_sectors: bigint | number,
         ): CryptoIntegrityExtra;
 
         // Methods
@@ -4758,21 +4756,6 @@ export namespace BlockDev {
         journal_crypt: string;
         journal_integrity: string;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                algorithm: string;
-                key_size: number;
-                sector_size: number;
-                tag_size: number;
-                interleave_sectors: number;
-                journal_size: number;
-                journal_crypt: string;
-                journal_integrity: string;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -4797,9 +4780,13 @@ export namespace BlockDev {
 
         // Constructors
 
-        constructor(keyfile: string, keyfile_offset: number, key_size: number);
+        constructor(keyfile: string, keyfile_offset: bigint | number, key_size: bigint | number);
 
-        static new_keyfile(keyfile: string, keyfile_offset: number, key_size: number): CryptoKeyslotContext;
+        static new_keyfile(
+            keyfile: string,
+            keyfile_offset: bigint | number,
+            key_size: bigint | number,
+        ): CryptoKeyslotContext;
 
         static new_keyring(key_desc: string): CryptoKeyslotContext;
 
@@ -4838,18 +4825,17 @@ export namespace BlockDev {
         // Constructors
 
         constructor(
-            properties?: Partial<{
-                data_alignment: number;
-                data_device: string;
-                integrity: string;
-                sector_size: number;
-                label: string;
-                subsystem: string;
-            }>,
+            data_alignment: bigint | number,
+            data_device: string | null,
+            integrity: string | null,
+            sector_size: number,
+            label?: string | null,
+            subsystem?: string | null,
+            pbkdf?: CryptoLUKSPBKDF | null,
         );
 
         static ['new'](
-            data_alignment: number,
+            data_alignment: bigint | number,
             data_device: string | null,
             integrity: string | null,
             sector_size: number,
@@ -5040,17 +5026,6 @@ export namespace BlockDev {
         size: number;
         free_space: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                size: number;
-                free_space: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5076,18 +5051,6 @@ export namespace BlockDev {
         sector_size: number;
         sector_count: number;
         cluster_count: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                sector_size: number;
-                sector_count: number;
-                cluster_count: number;
-            }>,
-        );
 
         // Methods
 
@@ -5116,19 +5079,6 @@ export namespace BlockDev {
         block_count: number;
         free_blocks: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                state: string;
-                block_size: number;
-                block_count: number;
-                free_blocks: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5151,19 +5101,6 @@ export namespace BlockDev {
         block_size: number;
         block_count: number;
         free_blocks: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                state: string;
-                block_size: number;
-                block_count: number;
-                free_blocks: number;
-            }>,
-        );
 
         // Methods
 
@@ -5192,19 +5129,6 @@ export namespace BlockDev {
         block_count: number;
         free_blocks: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                state: string;
-                block_size: number;
-                block_count: number;
-                free_blocks: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5231,19 +5155,6 @@ export namespace BlockDev {
         block_size: number;
         block_count: number;
         free_blocks: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                state: string;
-                block_size: number;
-                block_count: number;
-                free_blocks: number;
-            }>,
-        );
     }
 
     /**
@@ -5259,18 +5170,6 @@ export namespace BlockDev {
         sector_size: number;
         sector_count: number;
         features: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                sector_size: number;
-                sector_count: number;
-                features: number;
-            }>,
-        );
 
         // Methods
 
@@ -5370,18 +5269,6 @@ export namespace BlockDev {
         block_size: number;
         free_blocks: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                size: number;
-                block_size: number;
-                free_blocks: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5406,17 +5293,6 @@ export namespace BlockDev {
         uuid: string;
         size: number;
         free_space: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                size: number;
-                free_space: number;
-            }>,
-        );
 
         // Methods
 
@@ -5447,21 +5323,6 @@ export namespace BlockDev {
         block_count: number;
         free_blocks: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                revision: string;
-                lvid: string;
-                vid: string;
-                block_size: number;
-                block_count: number;
-                free_blocks: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5488,18 +5349,6 @@ export namespace BlockDev {
         cluster_count: number;
         free_cluster_count: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                cluster_size: number;
-                cluster_count: number;
-                free_cluster_count: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5524,17 +5373,6 @@ export namespace BlockDev {
         uuid: string;
         block_size: number;
         block_count: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                label: string;
-                uuid: string;
-                block_size: number;
-                block_count: number;
-            }>,
-        );
 
         // Methods
 
@@ -5629,33 +5467,6 @@ export namespace BlockDev {
         lv_tags: string[];
         data_lvs: string[];
         metadata_lvs: string[];
-        segs: LVMSEGdata[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                lv_name: string;
-                vg_name: string;
-                uuid: string;
-                size: number;
-                attr: string;
-                segtype: string;
-                origin: string;
-                pool_lv: string;
-                data_lv: string;
-                metadata_lv: string;
-                roles: string;
-                move_pv: string;
-                data_percent: number;
-                metadata_percent: number;
-                copy_percent: number;
-                lv_tags: string[];
-                data_lvs: string[];
-                metadata_lvs: string[];
-                segs: LVMSEGdata[];
-            }>,
-        );
 
         // Methods
 
@@ -5693,28 +5504,6 @@ export namespace BlockDev {
         pv_tags: string[];
         missing: boolean;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                pv_name: string;
-                pv_uuid: string;
-                pv_free: number;
-                pv_size: number;
-                pe_start: number;
-                vg_name: string;
-                vg_uuid: string;
-                vg_size: number;
-                vg_free: number;
-                vg_extent_size: number;
-                vg_extent_count: number;
-                vg_free_count: number;
-                vg_pv_count: number;
-                pv_tags: string[];
-                missing: boolean;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5738,16 +5527,6 @@ export namespace BlockDev {
         size_pe: number;
         pv_start_pe: number;
         pvdev: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                size_pe: number;
-                pv_start_pe: number;
-                pvdev: string;
-            }>,
-        );
 
         // Methods
 
@@ -5809,22 +5588,6 @@ export namespace BlockDev {
         saving_percent: number;
         write_amplification_ratio: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                block_size: number;
-                logical_block_size: number;
-                physical_blocks: number;
-                data_blocks_used: number;
-                overhead_blocks_used: number;
-                logical_blocks_used: number;
-                used_percent: number;
-                saving_percent: number;
-                write_amplification_ratio: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5855,23 +5618,6 @@ export namespace BlockDev {
         exported: boolean;
         vg_tags: string[];
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                name: string;
-                uuid: string;
-                size: number;
-                free: number;
-                extent_size: number;
-                extent_count: number;
-                free_count: number;
-                pv_count: number;
-                exported: boolean;
-                vg_tags: string[];
-            }>,
-        );
-
         // Methods
 
         /**
@@ -5898,19 +5644,6 @@ export namespace BlockDev {
         direct_io: boolean;
         part_scan: boolean;
         read_only: boolean;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                backing_file: string;
-                offset: number;
-                autoclear: boolean;
-                direct_io: boolean;
-                part_scan: boolean;
-                read_only: boolean;
-            }>,
-        );
 
         // Methods
 
@@ -5949,29 +5682,6 @@ export namespace BlockDev {
         uuid: string;
         container: string;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                device: string;
-                metadata: string;
-                creation_time: string;
-                level: string;
-                name: string;
-                array_size: number;
-                use_dev_size: number;
-                raid_devices: number;
-                total_devices: number;
-                active_devices: number;
-                working_devices: number;
-                failed_devices: number;
-                spare_devices: number;
-                clean: boolean;
-                uuid: string;
-                container: string;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -6004,24 +5714,6 @@ export namespace BlockDev {
         metadata: string;
         chunk_size: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                device: string;
-                level: string;
-                num_devices: number;
-                name: string;
-                size: number;
-                uuid: string;
-                update_time: number;
-                dev_uuid: string;
-                events: number;
-                metadata: string;
-                chunk_size: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -6049,20 +5741,6 @@ export namespace BlockDev {
         sector_size: number;
         blockdev: string;
         enabled: boolean;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                dev: string;
-                mode: number;
-                size: number;
-                uuid: string;
-                sector_size: number;
-                blockdev: string;
-                enabled: boolean;
-            }>,
-        );
 
         // Methods
 
@@ -6308,31 +5986,6 @@ export namespace BlockDev {
         warning_temp_time: number;
         critical_temp_time: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                critical_warning: number;
-                avail_spare: number;
-                spare_thresh: number;
-                percent_used: number;
-                total_data_read: number;
-                total_data_written: number;
-                ctrl_busy_time: number;
-                power_cycles: number;
-                power_on_hours: number;
-                unsafe_shutdowns: number;
-                media_errors: number;
-                num_err_log_entries: number;
-                temperature: number;
-                temp_sensors: number[];
-                wctemp: number;
-                cctemp: number;
-                warning_temp_time: number;
-                critical_temp_time: number;
-            }>,
-        );
-
         // Methods
 
         /**
@@ -6383,24 +6036,6 @@ export namespace BlockDev {
         bootable: boolean;
         attrs: number;
         type_name: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                path: string;
-                name: string;
-                uuid: string;
-                id: string;
-                type_guid: string;
-                type: number;
-                start: number;
-                size: number;
-                bootable: boolean;
-                attrs: number;
-                type_name: string;
-            }>,
-        );
 
         // Methods
 

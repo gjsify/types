@@ -128,7 +128,7 @@ export namespace EDataCal {
         interface ConstructorProps extends EBackend.Backend.ConstructorProps, ECal.TimezoneCache.ConstructorProps {
             cache_dir: string;
             cacheDir: string;
-            kind: number;
+            kind: bigint | number;
             proxy_resolver: Gio.ProxyResolver;
             proxyResolver: Gio.ProxyResolver;
             registry: EDataServer.SourceRegistry;
@@ -786,8 +786,8 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
         get_free_busy(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
@@ -805,8 +805,8 @@ export namespace EDataCal {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_free_busy(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             users: string[],
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -825,8 +825,8 @@ export namespace EDataCal {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         get_free_busy(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             users: string[],
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -863,8 +863,8 @@ export namespace EDataCal {
          * @returns `true` on success, `false` on failure.
          */
         get_free_busy_sync(
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
             users: string[],
             out_freebusy: string[],
             cancellable?: Gio.Cancellable | null,
@@ -2114,7 +2114,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2141,7 +2141,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2286,7 +2286,7 @@ export namespace EDataCal {
          * @param end End of the time window will be stored here.
          * @returns `true` on success, `false` otherwise
          */
-        evaluate_occur_times(start: number, end: number): boolean;
+        evaluate_occur_times(start: bigint | number, end: bigint | number): boolean;
         /**
          * Locks the `sexp`. Other threads cannot use it until
          * it's unlocked with `e_cal_backend_sexp_unlock()`.
@@ -2554,8 +2554,8 @@ export namespace EDataCal {
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             users: string[],
-            start: number,
-            end: number,
+            start: bigint | number,
+            end: bigint | number,
         ): string[];
         /**
          * @param args
@@ -3123,7 +3123,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3150,7 +3150,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3403,8 +3403,8 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         get_components_in_range(
-            range_start: number,
-            range_end: number,
+            range_start: bigint | number,
+            range_end: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, ECal.Component[]];
         /**
@@ -3415,8 +3415,8 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         get_components_in_range_as_strings(
-            range_start: number,
-            range_end: number,
+            range_start: bigint | number,
+            range_end: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[]];
         /**
@@ -4120,7 +4120,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4147,7 +4147,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5346,7 +5346,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5373,7 +5373,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6124,7 +6124,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6151,7 +6151,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6721,7 +6721,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6748,7 +6748,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7483,7 +7483,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7510,7 +7510,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7603,7 +7603,7 @@ export namespace EDataCal {
          * @param end end of the interval
          * @param comp Component
          */
-        insert(start: number, end: number, comp: ECal.Component): boolean;
+        insert(start: bigint | number, end: bigint | number, comp: ECal.Component): boolean;
         /**
          * @param uid the uid of the component to remove
          * @param rid the recurrance id of the component to remove
@@ -7614,7 +7614,7 @@ export namespace EDataCal {
          * @param end end of the interval
          * @returns list of {@link ECal.Component}-s    that overlap given interval, or `null`.
          */
-        search(start: number, end: number): ECal.Component[] | null;
+        search(start: bigint | number, end: bigint | number): ECal.Component[] | null;
     }
 
     namespace SubprocessCalFactory {
@@ -8155,7 +8155,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8182,7 +8182,7 @@ export namespace EDataCal {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

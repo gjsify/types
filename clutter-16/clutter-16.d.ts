@@ -4325,7 +4325,7 @@ export namespace Clutter {
      * @gir-type Callback
      */
     interface ProgressFunc {
-        (a: GObject.Value | any, b: GObject.Value | any, progress: number, retval: GObject.Value | any): boolean;
+        (a: unknown, b: unknown, progress: number, retval: unknown): boolean;
     }
     /**
      * @gir-type Callback
@@ -12212,7 +12212,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -12226,14 +12226,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12630,7 +12634,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12657,7 +12661,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -13406,7 +13410,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13433,7 +13437,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15442,7 +15446,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -15456,14 +15460,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15860,7 +15868,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15887,7 +15895,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17532,7 +17540,7 @@ export namespace Clutter {
         /**
          * @param when_us
          */
-        add_future_time(when_us: number): void;
+        add_future_time(when_us: bigint | number): void;
         /**
          * @param timeline
          */
@@ -17545,7 +17553,7 @@ export namespace Clutter {
         /**
          * @param flip_time_us
          */
-        record_flip_time(flip_time_us: number): void;
+        record_flip_time(flip_time_us: bigint | number): void;
         /**
          * @param timeline
          */
@@ -17555,7 +17563,7 @@ export namespace Clutter {
         /**
          * @param deadline_evasion_us
          */
-        set_deadline_evasion(deadline_evasion_us: number): void;
+        set_deadline_evasion(deadline_evasion_us: bigint | number): void;
         /**
          * @param mode
          */
@@ -18814,8 +18822,8 @@ export namespace Clutter {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             axes: InputAxisFlags;
-            id: number;
-            serial: number;
+            id: bigint | number;
+            serial: bigint | number;
             type: InputDeviceToolType;
         }
     }
@@ -19196,7 +19204,7 @@ export namespace Clutter {
          * @param time_
          * @param press
          */
-        forward_key(keyval: number, keycode: number, state: number, time_: number, press: boolean): void;
+        forward_key(keyval: number, keycode: number, state: number, time_: bigint | number, press: boolean): void;
         /**
          * @param event
          * @param filtered
@@ -19228,8 +19236,8 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            final: GObject.Value;
-            initial: GObject.Value;
+            final: GObject.Value | any;
+            initial: GObject.Value | any;
             value_type: GObject.GTypeInput;
             valueType: GObject.GTypeInput;
         }
@@ -19261,13 +19269,13 @@ export namespace Clutter {
         /**
          * The final value of the interval.
          */
-        get final(): GObject.Value;
-        set final(val: GObject.Value);
+        get final(): unknown;
+        set final(val: GObject.Value | any);
         /**
          * The initial value of the interval.
          */
-        get initial(): GObject.Value;
-        set initial(val: GObject.Value);
+        get initial(): unknown;
+        set initial(val: GObject.Value | any);
         /**
          * The type of the values in the interval.
          * @construct-only
@@ -19329,7 +19337,7 @@ export namespace Clutter {
          * @param factor the progress factor, between 0 and 1
          * @virtual
          */
-        vfunc_compute_value(factor: number): [boolean, unknown];
+        vfunc_compute_value(factor: number): [boolean, GObject.Value | any];
         /**
          * Validates the initial and final values of `interval` against
          * a {@link GObject.ParamSpec}.
@@ -22596,7 +22604,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -22610,14 +22618,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -23014,7 +23026,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23041,7 +23053,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23107,8 +23119,8 @@ export namespace Clutter {
             transform: number;
             use_shadowfb: boolean;
             useShadowfb: boolean;
-            vblank_duration_us: number;
-            vblankDurationUs: number;
+            vblank_duration_us: bigint | number;
+            vblankDurationUs: bigint | number;
         }
     }
 
@@ -24069,7 +24081,7 @@ export namespace Clutter {
          * @param start_pos starting position
          * @param end_pos ending position
          */
-        delete_text(start_pos: number, end_pos: number): void;
+        delete_text(start_pos: bigint | number, end_pos: bigint | number): void;
         /**
          * Retrieves whether a {@link Clutter.Text} is activatable or not.
          * @returns `true` if the actor is activatable
@@ -24096,7 +24108,7 @@ export namespace Clutter {
          * @param end_pos end of text, in characters
          * @returns a newly allocated string with the contents of   the text actor between the specified positions. Use {@link GLib.free}   to free the resources when done
          */
-        get_chars(start_pos: number, end_pos: number): string;
+        get_chars(start_pos: bigint | number, end_pos: bigint | number): string;
         /**
          * Retrieves the text color as set by {@link Text.set_color}.
          */
@@ -24261,7 +24273,7 @@ export namespace Clutter {
          * @param text the text to be inserted
          * @param position the position of the insertion, or -1
          */
-        insert_text(text: string, position: number): void;
+        insert_text(text: string, position: bigint | number): void;
         /**
          * Inserts `wc` at the current cursor position of a
          * {@link Clutter.Text} actor.
@@ -24499,7 +24511,7 @@ export namespace Clutter {
          * @param start_pos start of the selection, in characters
          * @param end_pos end of the selection, in characters
          */
-        set_selection(start_pos: number, end_pos: number): void;
+        set_selection(start_pos: bigint | number, end_pos: bigint | number): void;
         /**
          * Sets the other end of the selection, starting from the current
          * cursor position.
@@ -24609,7 +24621,7 @@ export namespace Clutter {
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          * @virtual
          */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_get_initial_state(property_name: string, value: unknown): void;
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
@@ -24623,14 +24635,18 @@ export namespace Clutter {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+        vfunc_interpolate_value(
+            property_name: string,
+            interval: Interval,
+            progress: number,
+        ): [boolean, GObject.Value | any];
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          * @virtual
          */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        vfunc_set_final_state(property_name: string, value: unknown): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -25027,7 +25043,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25054,7 +25070,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -25171,7 +25187,7 @@ export namespace Clutter {
 
         static ['new'](): TextBuffer;
 
-        static new_with_text(text: string | null, text_len: number): TextBuffer;
+        static new_with_text(text: string | null, text_len: bigint | number): TextBuffer;
 
         // Signals
 
@@ -25934,7 +25950,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25961,7 +25977,7 @@ export namespace Clutter {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -27415,20 +27431,20 @@ export namespace Clutter {
          * @param x
          * @param y
          */
-        notify_absolute_motion(time_us: number, x: number, y: number): void;
+        notify_absolute_motion(time_us: bigint | number, x: number, y: number): void;
         /**
          * @param time_us
          * @param button
          * @param button_state
          */
-        notify_button(time_us: number, button: number, button_state: ButtonState | null): void;
+        notify_button(time_us: bigint | number, button: number, button_state: ButtonState | null): void;
         /**
          * @param time_us
          * @param direction
          * @param scroll_source
          */
         notify_discrete_scroll(
-            time_us: number,
+            time_us: bigint | number,
             direction: ScrollDirection | null,
             scroll_source: ScrollSource | null,
         ): void;
@@ -27437,19 +27453,19 @@ export namespace Clutter {
          * @param key
          * @param key_state
          */
-        notify_key(time_us: number, key: number, key_state: KeyState | null): void;
+        notify_key(time_us: bigint | number, key: number, key_state: KeyState | null): void;
         /**
          * @param time_us
          * @param keyval
          * @param key_state
          */
-        notify_keyval(time_us: number, keyval: number, key_state: KeyState | null): void;
+        notify_keyval(time_us: bigint | number, keyval: number, key_state: KeyState | null): void;
         /**
          * @param time_us
          * @param dx
          * @param dy
          */
-        notify_relative_motion(time_us: number, dx: number, dy: number): void;
+        notify_relative_motion(time_us: bigint | number, dx: number, dy: number): void;
         /**
          * @param time_us
          * @param dx
@@ -27458,7 +27474,7 @@ export namespace Clutter {
          * @param finish_flags
          */
         notify_scroll_continuous(
-            time_us: number,
+            time_us: bigint | number,
             dx: number,
             dy: number,
             scroll_source: ScrollSource | null,
@@ -27470,19 +27486,19 @@ export namespace Clutter {
          * @param x
          * @param y
          */
-        notify_touch_down(time_us: number, slot: number, x: number, y: number): void;
+        notify_touch_down(time_us: bigint | number, slot: number, x: number, y: number): void;
         /**
          * @param time_us
          * @param slot
          * @param x
          * @param y
          */
-        notify_touch_motion(time_us: number, slot: number, x: number, y: number): void;
+        notify_touch_motion(time_us: bigint | number, slot: number, x: number, y: number): void;
         /**
          * @param time_us
          * @param slot
          */
-        notify_touch_up(time_us: number, slot: number): void;
+        notify_touch_up(time_us: bigint | number, slot: number): void;
     }
 
     namespace ZoomAction {
@@ -28088,11 +28104,11 @@ export namespace Clutter {
         /**
          * @param frame_deadline_us
          */
-        get_frame_deadline(frame_deadline_us: number): boolean;
+        get_frame_deadline(frame_deadline_us: bigint | number): boolean;
         /**
          * @param target_presentation_time_us
          */
-        get_target_presentation_time(target_presentation_time_us: number): boolean;
+        get_target_presentation_time(target_presentation_time_us: bigint | number): boolean;
         has_result(): boolean;
         ref(): Frame;
         /**
@@ -29118,7 +29134,7 @@ export namespace Clutter {
              * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
              * @virtual
              */
-            vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
+            vfunc_get_initial_state(property_name: string, value: unknown): void;
             /**
              * Asks a {@link Clutter.Animatable} implementation to interpolate a
              * a named property between the initial and final values of
@@ -29132,14 +29148,18 @@ export namespace Clutter {
              * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
              * @virtual
              */
-            vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
+            vfunc_interpolate_value(
+                property_name: string,
+                interval: Interval,
+                progress: number,
+            ): [boolean, GObject.Value | any];
             /**
              * Sets the current state of `property_name` to `value`
              * @param property_name the name of the animatable property to set
              * @param value the value of the animatable property to set
              * @virtual
              */
-            vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+            vfunc_set_final_state(property_name: string, value: unknown): void;
         }
 
         // Constructor properties interface

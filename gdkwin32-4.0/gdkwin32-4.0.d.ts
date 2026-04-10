@@ -892,7 +892,7 @@ export namespace GdkWin32 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -919,7 +919,7 @@ export namespace GdkWin32 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -965,8 +965,8 @@ export namespace GdkWin32 {
             color_state: Gdk.ColorState;
             colorState: Gdk.ColorState;
             fence: any;
-            fence_wait: number;
-            fenceWait: number;
+            fence_wait: bigint | number;
+            fenceWait: bigint | number;
             premultiplied: boolean;
             resource: any;
             update_region: cairo.Region;
@@ -1020,13 +1020,13 @@ export namespace GdkWin32 {
          * @since 4.20
          */
         get fence_wait(): number;
-        set fence_wait(val: number);
+        set fence_wait(val: bigint | number);
         /**
          * The value the fence should wait on
          * @since 4.20
          */
         get fenceWait(): number;
-        set fenceWait(val: number);
+        set fenceWait(val: bigint | number);
         /**
          * Whether the alpha channel is premultiplied into the others.
          *
@@ -1174,7 +1174,7 @@ export namespace GdkWin32 {
          * When no fence is set, this value has no effect.
          * @param fence_wait the value to wait on
          */
-        set_fence_wait(fence_wait: number): void;
+        set_fence_wait(fence_wait: bigint | number): void;
         /**
          * Sets whether the data is premultiplied.
          *

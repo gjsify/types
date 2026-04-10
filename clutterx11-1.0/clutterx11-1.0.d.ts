@@ -404,14 +404,14 @@ export namespace ClutterX11 {
             automatic_updates: boolean;
             automaticUpdates: boolean;
             destroyed: boolean;
-            pixmap: number;
+            pixmap: bigint | number;
             pixmap_depth: number;
             pixmapDepth: number;
             pixmap_height: number;
             pixmapHeight: number;
             pixmap_width: number;
             pixmapWidth: number;
-            window: number;
+            window: bigint | number;
             window_mapped: boolean;
             windowMapped: boolean;
             window_override_redirect: boolean;
@@ -447,7 +447,7 @@ export namespace ClutterX11 {
          */
         get destroyed(): boolean;
         get pixmap(): number;
-        set pixmap(val: number);
+        set pixmap(val: bigint | number);
         /**
          * @read-only
          */
@@ -473,7 +473,7 @@ export namespace ClutterX11 {
          */
         get pixmapWidth(): number;
         get window(): number;
-        set window(val: number);
+        set window(val: bigint | number);
         /**
          * @read-only
          */
@@ -1004,7 +1004,7 @@ export namespace ClutterX11 {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1031,7 +1031,7 @@ export namespace ClutterX11 {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

@@ -1484,7 +1484,7 @@ export namespace GstInterfaces {
          * @param channel The current {@link GstInterfaces.TunerChannel}
          * @param frequency The new frequency setting
          */
-        frequency_changed(channel: TunerChannel, frequency: number): void;
+        frequency_changed(channel: TunerChannel, frequency: bigint | number): void;
         /**
          * Retrieve the current frequency from the given channel. As for
          * `gst_tuner_set_frequency()`, the {@link GstInterfaces.TunerChannel} must support frequency
@@ -1532,7 +1532,7 @@ export namespace GstInterfaces {
          * @param channel The {@link GstInterfaces.TunerChannel} to set the frequency on.
          * @param frequency The frequency to tune in to.
          */
-        set_frequency(channel: TunerChannel, frequency: number): void;
+        set_frequency(channel: TunerChannel, frequency: bigint | number): void;
         /**
          * Changes the video norm on this tuner to the given norm, which should be
          * one of the norms returned by `gst_tuner_list_norms()`.
@@ -1721,7 +1721,7 @@ export namespace GstInterfaces {
          * This function should only be used by video overlay plugin developers.
          * @param xwindow_id a `XID` referencing the XWindow.
          */
-        got_xwindow_id(xwindow_id: number): void;
+        got_xwindow_id(xwindow_id: bigint | number): void;
         /**
          * Tell an overlay that it should handle events from the window system. These
          * events are forwared upstream as navigation events. In some window system,
@@ -1763,7 +1763,7 @@ export namespace GstInterfaces {
          * stop using that window and create an internal one.
          * @param xwindow_id a `XID` referencing the XWindow.
          */
-        set_xwindow_id(xwindow_id: number): void;
+        set_xwindow_id(xwindow_id: bigint | number): void;
     }
 
     export const XOverlay: XOverlayNamespace & {

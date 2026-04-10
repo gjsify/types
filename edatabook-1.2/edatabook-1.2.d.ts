@@ -948,7 +948,11 @@ export namespace EDataBook {
          * @param range_length how many contacts to retrieve
          * @returns an array of the contacts, or `null`, when the view cannot be found    or when the `range_start` is out of bounds.
          */
-        dup_view_contacts(view_id: number, range_start: number, range_length: number): EBookContacts.Contact[] | null;
+        dup_view_contacts(
+            view_id: bigint | number,
+            range_start: number,
+            range_length: number,
+        ): EBookContacts.Contact[] | null;
         /**
          * Returns a list of {@link EBookContacts.BookIndices} holding indices of the contacts
          * in the view identified by `view_id`. The array is terminated by an item
@@ -963,7 +967,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns an array of {@link EBookContacts.BookIndices}, or `null`
          */
-        dup_view_indices(view_id: number): EBookContacts.BookIndices | null;
+        dup_view_indices(view_id: bigint | number): EBookContacts.BookIndices | null;
         /**
          * Returns currently used sort fields for manual query views. The returned
          * array is NULL only if the view could not be found. The default sort is
@@ -978,7 +982,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns current sort fields for the `view_id`, as an {@link EBookContacts.BookClientViewSortFields}    array, or `null`, when the view could not be found.
          */
-        dup_view_sort_fields(view_id: number): EBookContacts.BookClientViewSortFields;
+        dup_view_sort_fields(view_id: bigint | number): EBookContacts.BookClientViewSortFields;
         /**
          * Calls `func` for each existing view (as returned by `e_book_backend_list_views()`).
          * The `func` can return `false` to stop early.
@@ -1235,7 +1239,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns how many contacts the view identified by `view_id`    contains.
          */
-        get_view_n_total(view_id: number): number;
+        get_view_n_total(view_id: bigint | number): number;
         /**
          * Returns whether `backend` will accept changes to its data content.
          * @returns whether `backend` is writable
@@ -1479,7 +1483,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns a referenced {@link EDataBook.DataBookView} corresponding    to the given `view_id`, or `null`, when it cannot be found
          */
-        ref_view(view_id: number): DataBookView | null;
+        ref_view(view_id: bigint | number): DataBookView | null;
         /**
          * References user data previously set by `e_book_backend_take_view_user_data()`
          * for the `view_id`.
@@ -1489,7 +1493,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns previously set user data for the `view_id`,   or `null` when none had been set yet or when the view does not exist.
          */
-        ref_view_user_data<T = GObject.Object>(view_id: number): T;
+        ref_view_user_data<T = GObject.Object>(view_id: bigint | number): T;
         /**
          * Asynchronously initiates a refresh for `backend`, if the `backend` supports
          * refreshing.  The actual refresh operation completes on its own time.  This
@@ -1677,7 +1681,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @param indices an array of {@link EBookContacts.BookIndices}, or `null`
          */
-        set_view_indices(view_id: number, indices?: EBookContacts.BookIndices | null): void;
+        set_view_indices(view_id: bigint | number, indices?: EBookContacts.BookIndices | null): void;
         /**
          * Stores how many contacts the view identified by `view_id`
          * contains. It also sets the `n_total` to the corresponding
@@ -1688,7 +1692,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @param n_total the value to set
          */
-        set_view_n_total(view_id: number, n_total: number): void;
+        set_view_n_total(view_id: bigint | number, n_total: number): void;
         /**
          * Sets the sort fields for the view identified by the `view_id`.
          * The `fields` array should be terminated by an item, which has
@@ -1705,7 +1709,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @param fields an array of {@link EBookContacts.BookClientViewSortFields}, or `null`
          */
-        set_view_sort_fields(view_id: number, fields?: EBookContacts.BookClientViewSortFields | null): void;
+        set_view_sort_fields(view_id: bigint | number, fields?: EBookContacts.BookClientViewSortFields | null): void;
         /**
          * Sets whether `backend` will accept changes to its data content.
          * @param writable whether `backend` is writable
@@ -1733,7 +1737,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @param user_data user data to set
          */
-        take_view_user_data(view_id: number, user_data?: GObject.Object | null): void;
+        take_view_user_data(view_id: bigint | number, user_data?: GObject.Object | null): void;
     }
 
     namespace BookBackendFactory {
@@ -3090,7 +3094,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3117,7 +3121,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4733,7 +4737,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4760,7 +4764,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5468,7 +5472,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5495,7 +5499,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6593,7 +6597,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6620,7 +6624,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7475,7 +7479,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7502,7 +7506,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8311,7 +8315,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8338,7 +8342,7 @@ export namespace EDataBook {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

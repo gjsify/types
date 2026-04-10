@@ -444,7 +444,7 @@ export namespace Gsf {
      * @param len max length of data to decode
      * @returns the number of bytes converted
      */
-    function base64_decode_simple(data: Uint8Array | string, len: number): number;
+    function base64_decode_simple(data: Uint8Array | string, len: bigint | number): number;
     /**
      * Decodes a chunk of base64 encoded data
      * @param _in input stream
@@ -456,7 +456,7 @@ export namespace Gsf {
      */
     function base64_decode_step(
         _in: Uint8Array | string,
-        len: number,
+        len: bigint | number,
         out: Uint8Array | string,
         state: number,
         save: number,
@@ -484,7 +484,7 @@ export namespace Gsf {
      * @param len max length of data to encode
      * @returns the number of bytes encoded
      */
-    function base64_encode_simple(data: Uint8Array | string, len: number): number;
+    function base64_encode_simple(data: Uint8Array | string, len: bigint | number): number;
     /**
      * Performs an 'encode step', only encodes blocks of 3 characters from `in` into
      * the output `out` at a time, saves left-over state in `state` and `save`
@@ -499,7 +499,7 @@ export namespace Gsf {
      */
     function base64_encode_step(
         _in: Uint8Array | string,
-        len: number,
+        len: bigint | number,
         break_lines: boolean,
         out: Uint8Array | string,
         state: number,
@@ -578,7 +578,7 @@ export namespace Gsf {
      * @param ptr memory area to be dumped.
      * @param len how many bytes will be dumped.
      */
-    function mem_dump(ptr: number, len: number): void;
+    function mem_dump(ptr: number, len: bigint | number): void;
     /**
      * @param codepage
      */
@@ -936,7 +936,7 @@ export namespace Gsf {
          * @param ret_size Location to return the size of the returned data buffer.
          * @returns Pointer to the real clipboard data.  The size in bytes of this buffer is returned in the `ret_size` argument.
          */
-        peek_real_data(ret_size: number): any | null;
+        peek_real_data(ret_size: bigint | number): any | null;
     }
 
     namespace DocMetaData {
@@ -1649,9 +1649,9 @@ export namespace Gsf {
             eof: boolean;
             modtime: GLib.DateTime;
             name: string;
-            position: number;
-            remaining: number;
-            size: number;
+            position: bigint | number;
+            remaining: bigint | number;
+            size: bigint | number;
         }
     }
 
@@ -1810,7 +1810,7 @@ export namespace Gsf {
          * @param num_bytes number of bytes to read
          * @returns the data read.
          */
-        read(num_bytes: number): Uint8Array;
+        read(num_bytes: bigint | number): Uint8Array;
         /**
          * Move the current location in the input stream.
          * @param offset target offset
@@ -1899,8 +1899,8 @@ export namespace Gsf {
         interface ConstructorProps extends Input.ConstructorProps {
             raw: boolean;
             source: Input;
-            uncompressed_size: number;
-            uncompressedSize: number;
+            uncompressed_size: bigint | number;
+            uncompressedSize: bigint | number;
         }
     }
 
@@ -2982,8 +2982,8 @@ export namespace Gsf {
             isClosed: boolean;
             modtime: GLib.DateTime;
             name: string;
-            position: number;
-            size: number;
+            position: bigint | number;
+            size: bigint | number;
         }
     }
 
@@ -3116,7 +3116,7 @@ export namespace Gsf {
          * @param data Data to write.
          * @virtual
          */
-        vfunc_Write(data: Uint8Array | string): boolean;
+        vfunc_Write(data: Uint8Array): boolean;
 
         // Methods
 
@@ -3332,7 +3332,6 @@ export namespace Gsf {
         eol_len: number;
         separator_len: number;
         fields_on_line: boolean;
-        buf: GLib.String;
 
         // Constructors
 
@@ -3368,7 +3367,7 @@ export namespace Gsf {
          * @param field
          * @param len
          */
-        write_field(field: string, len: number): boolean;
+        write_field(field: string, len: bigint | number): boolean;
     }
 
     namespace OutputGZip {
@@ -4327,7 +4326,6 @@ export namespace Gsf {
 
         date: GLib.Date;
         seconds: number;
-        time_zone: GLib.String;
         timet: number;
 
         // Constructors
@@ -4375,7 +4373,7 @@ export namespace Gsf {
         /**
          * @param t
          */
-        set_time(t: number): void;
+        set_time(t: bigint | number): void;
         /**
          * Calls g_value_set_box (value, stamp);
          * @param value {@link GObject.Value}
@@ -4399,7 +4397,6 @@ export namespace Gsf {
         // Fields
 
         user_state: any;
-        content: GLib.String;
 
         // Methods
 
@@ -4530,7 +4527,7 @@ export namespace Gsf {
      * to on the platform
      * @gir-type Alias
      */
-    type gsf_off_t = number;
+    type gsf_off_t = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

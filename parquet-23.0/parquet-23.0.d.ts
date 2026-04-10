@@ -283,7 +283,7 @@ export namespace Parquet {
          * @param chunk_size The max number of rows in a row group.
          * @returns `true` on success, `false` if there was an error.
          */
-        write_table(table: Arrow.Table, chunk_size: number): boolean;
+        write_table(table: Arrow.Table, chunk_size: bigint | number): boolean;
     }
 
     namespace BooleanStatistics {
@@ -1241,7 +1241,7 @@ export namespace Parquet {
         /**
          * @param batch_size The batch size.
          */
-        set_batch_size(batch_size: number): void;
+        set_batch_size(batch_size: bigint | number): void;
         /**
          * @param compression_type A {@link Arrow.CompressionType}.
          * @param path The column path as dot string.
@@ -1250,15 +1250,15 @@ export namespace Parquet {
         /**
          * @param data_page_size The data page size.
          */
-        set_data_page_size(data_page_size: number): void;
+        set_data_page_size(data_page_size: bigint | number): void;
         /**
          * @param limit The dictionary page size limit.
          */
-        set_dictionary_page_size_limit(limit: number): void;
+        set_dictionary_page_size_limit(limit: bigint | number): void;
         /**
          * @param length The max row group length.
          */
-        set_max_row_group_length(length: number): void;
+        set_max_row_group_length(length: bigint | number): void;
     }
 
     /**

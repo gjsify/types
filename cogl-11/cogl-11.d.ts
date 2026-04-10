@@ -2053,7 +2053,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: number, color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
          * that includes the color buffer then the specified `color` is used.
@@ -2063,7 +2063,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: number, red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
         /**
          * Declares that the specified `buffers` no longer need to be referenced
          * by any further rendering commands. This can be an important
@@ -2083,7 +2083,7 @@ export namespace Cogl {
          * a {@link Cogl.Offscreen} framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: number): void;
+        discard_buffers(buffers: bigint | number): void;
         /**
          * Draws a textured rectangle to `framebuffer` with the given `pipeline`
          * state with the top left corner positioned at (`x_1`, `y_1`) and the
@@ -4853,15 +4853,6 @@ export namespace Cogl {
 
         name: string;
         instance_count: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                name: string;
-                instance_count: number;
-            }>,
-        );
     }
 
     /**
@@ -4988,16 +4979,6 @@ export namespace Cogl {
         begin_time: number;
         name: string;
         description: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                begin_time: number;
-                name: string;
-                description: string;
-            }>,
-        );
     }
 
     /**

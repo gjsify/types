@@ -1166,7 +1166,7 @@ export namespace Jsonrpc {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1193,7 +1193,7 @@ export namespace Jsonrpc {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1377,7 +1377,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -1397,7 +1397,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
+        truncate(offset: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
@@ -1434,7 +1434,7 @@ export namespace Jsonrpc {
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): number;
+        vfunc_tell(): bigint | number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
@@ -1846,7 +1846,7 @@ export namespace Jsonrpc {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1873,7 +1873,7 @@ export namespace Jsonrpc {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2158,15 +2158,6 @@ export namespace Jsonrpc {
 
         magic: MessageMagic;
         valptr: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                magic: MessageMagic;
-                valptr: number;
-            }>,
-        );
     }
 
     /**
@@ -2325,15 +2316,6 @@ export namespace Jsonrpc {
 
         magic: MessageMagic;
         val: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                magic: MessageMagic;
-                val: number;
-            }>,
-        );
     }
 
     /**

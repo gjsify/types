@@ -141,7 +141,7 @@ export namespace PackageKitPlugin {
      * @param value The return numeric return value
      * @returns `true` if the string was converted correctly
      */
-    function strtouint64(text: string, value: number): boolean;
+    function strtouint64(text: string, value: bigint | number): boolean;
     /**
      * This function is a much safer way of doing "if (strlen (text) == 0))"
      * as it does not rely on text being NULL terminated. It's also much
@@ -634,7 +634,7 @@ export namespace PackageKitPlugin {
             group: PackageKitGlib.GroupEnum | null,
             description: string,
             url: string,
-            size: number,
+            size: bigint | number,
         ): void;
         /**
          * @param type
@@ -798,7 +798,7 @@ export namespace PackageKitPlugin {
         /**
          * @param download_size_remaining
          */
-        set_download_size_remaining(download_size_remaining: number): void;
+        set_download_size_remaining(download_size_remaining: bigint | number): void;
         /**
          * Should only be used internally, or from PkRunner when setting CANCELLED.
          * @param exit

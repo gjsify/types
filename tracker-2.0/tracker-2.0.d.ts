@@ -845,7 +845,7 @@ export namespace Tracker {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -872,7 +872,7 @@ export namespace Tracker {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1003,7 +1003,7 @@ export namespace Tracker {
          * @param property_uri a string identifying the property to modify
          * @param value the property object
          */
-        add_int64(property_uri: string, value: number): void;
+        add_int64(property_uri: string, value: bigint | number): void;
         /**
          * Adds a resource object to a multi-valued property. This
          * function produces similar RDF to `tracker_resource_add_uri()`,
@@ -1177,7 +1177,7 @@ export namespace Tracker {
          * @param property_uri a string identifying the property to modify
          * @param value the property object
          */
-        set_int64(property_uri: string, value: number): void;
+        set_int64(property_uri: string, value: bigint | number): void;
         /**
          * Sets a single-valued resource object as a {@link Tracker.Resource}. This
          * function produces similar RDF to `tracker_resource_set_uri()`,
@@ -1351,11 +1351,11 @@ export namespace Tracker {
         /**
          * @param literal
          */
-        object_int64(literal: number): void;
+        object_int64(literal: bigint | number): void;
         /**
          * @param literal
          */
-        object_date(literal: number): number;
+        object_date(literal: bigint | number): number;
         /**
          * @param literal
          */
@@ -1949,7 +1949,7 @@ export namespace Tracker {
          * @param column
          * @virtual
          */
-        vfunc_get_string(column: number): [string | null, number];
+        vfunc_get_string(column: number): [string | null, bigint | number];
         /**
          * @param cancellable
          * @virtual
@@ -1978,7 +1978,7 @@ export namespace Tracker {
          * @param column
          * @virtual
          */
-        vfunc_get_integer(column: number): number;
+        vfunc_get_integer(column: number): bigint | number;
         /**
          * @param column
          * @virtual
@@ -2180,7 +2180,7 @@ export namespace Tracker {
          * @param name
          * @param value
          */
-        bind_int(name: string, value: number): void;
+        bind_int(name: string, value: bigint | number): void;
         /**
          * @param name
          * @param value

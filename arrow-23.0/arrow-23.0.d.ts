@@ -1464,10 +1464,10 @@ export namespace Arrow {
          * @returns `true` if both of them have the same data in the range,   `false` otherwise.
          */
         equal_range(
-            start_index: number,
+            start_index: bigint | number,
             other_array: Array,
-            other_start_index: number,
-            end_index: number,
+            other_start_index: bigint | number,
+            end_index: bigint | number,
             options?: EqualOptions | null,
         ): boolean;
         /**
@@ -1522,12 +1522,12 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns Whether the `i`-th value is null or not.
          */
-        is_null(i: number): boolean;
+        is_null(i: bigint | number): boolean;
         /**
          * @param i The index of the target value.
          * @returns Whether the `i`-th value is valid (not null) or not.
          */
-        is_valid(i: number): boolean;
+        is_valid(i: bigint | number): boolean;
         /**
          * @param options A {@link Arrow.RunEndEncodeOptions}.
          * @returns A newly created `GArrowRunEndEncodeArray` for the `array` on success,   `null` on error.
@@ -1538,7 +1538,7 @@ export namespace Arrow {
          * @param length The length of sub {@link Arrow.Array}.
          * @returns The sub {@link Arrow.Array}. It covers only from   `offset` to `offset + length` range. The sub {@link Arrow.Array} shares   values with the base {@link Arrow.Array}.
          */
-        slice(offset: number, length: number): Array;
+        slice(offset: bigint | number, length: bigint | number): Array;
         /**
          * @param order The order for sort.
          * @returns The indices that would sort   an array in the specified order on success, `null` on error.
@@ -1662,7 +1662,7 @@ export namespace Arrow {
          * @param n The number of null values to be appended.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_empty_values(n: number): boolean;
+        append_empty_values(n: bigint | number): boolean;
         /**
          * @returns `true` on success, `false` if there was an error.
          */
@@ -1673,7 +1673,7 @@ export namespace Arrow {
          * @param n The number of null values to be appended.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_nulls(n: number): boolean;
+        append_nulls(n: bigint | number): boolean;
         /**
          * @returns The built {@link Arrow.Array} on success,   `null` on error.
          */
@@ -1711,13 +1711,13 @@ export namespace Arrow {
          * @param additional_capacity The additional capacity to be reserved.
          * @returns `true` on success, `false` if there was an error.
          */
-        reserve(additional_capacity: number): boolean;
+        reserve(additional_capacity: bigint | number): boolean;
         reset(): void;
         /**
          * @param capacity A new capacity.
          * @returns `true` on success, `false` if there was an error.
          */
-        resize(capacity: number): boolean;
+        resize(capacity: bigint | number): boolean;
     }
 
     namespace ArrayDatum {
@@ -2358,11 +2358,11 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             value_data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): BinaryArray;
 
         // Signals
@@ -2404,7 +2404,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
     namespace BinaryArrayBuilder {
@@ -2615,7 +2615,7 @@ export namespace Arrow {
          * @param is_valids The array of   `true` or `false` that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_indices(values: number[], is_valids?: boolean[] | null): boolean;
+        append_indices(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
         /**
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
@@ -2741,12 +2741,12 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             views: Buffer,
             data_buffers: Buffer[],
             null_bitmap: Buffer | null,
-            n_nulls: number,
-            offset: number,
+            n_nulls: bigint | number,
+            offset: bigint | number,
         ): BinaryViewArray;
 
         // Signals
@@ -2776,7 +2776,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
     namespace BinaryViewDataType {
@@ -2872,7 +2872,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): BooleanArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): BooleanArray;
 
         // Signals
 
@@ -2906,7 +2911,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): boolean;
+        get_value(i: bigint | number): boolean;
         /**
          * @returns The raw boolean values.   It should be freed with `g_free()` when no longer needed.
          */
@@ -3138,7 +3143,7 @@ export namespace Arrow {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: any;
-            data: GLib.Bytes;
+            data: GLib.Bytes | Uint8Array;
             parent: Buffer;
         }
     }
@@ -3158,7 +3163,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set data(val: GLib.Bytes);
+        set data(val: GLib.Bytes | Uint8Array);
         /**
          * @construct-only
          */
@@ -3211,7 +3216,7 @@ export namespace Arrow {
          * @param size The number of bytes to be copied from the start.
          * @returns A newly copied {@link Arrow.Buffer} on success, `null` on error.
          */
-        copy(start: number, size: number): Buffer | null;
+        copy(start: bigint | number, size: bigint | number): Buffer | null;
         /**
          * @param other_buffer A {@link Arrow.Buffer} to be compared.
          * @returns `true` if both of them have the same data, `false`   otherwise.
@@ -3222,7 +3227,7 @@ export namespace Arrow {
          * @param n_bytes The number of first bytes to be compared.
          * @returns `true` if both of them have the same data in the first   `n_bytes`, `false` otherwise.
          */
-        equal_n_bytes(other_buffer: Buffer, n_bytes: number): boolean;
+        equal_n_bytes(other_buffer: Buffer, n_bytes: bigint | number): boolean;
         /**
          * @returns The number of bytes that where allocated for the buffer in   total.
          */
@@ -3257,7 +3262,7 @@ export namespace Arrow {
          * @param size The number of bytes of the sliced data.
          * @returns A newly created {@link Arrow.Buffer} that shares   data of the base {@link Arrow.Buffer}. The created {@link Arrow.Buffer} has data   start with offset from the base buffer data and are the specified   bytes size.
          */
-        slice(offset: number, size: number): Buffer;
+        slice(offset: bigint | number, size: bigint | number): Buffer;
     }
 
     namespace BufferInputStream {
@@ -3728,7 +3733,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3755,7 +3760,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4260,7 +4265,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4287,7 +4292,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5334,7 +5339,7 @@ export namespace Arrow {
          * @param length The length of sub {@link Arrow.ChunkedArray}.
          * @returns The sub {@link Arrow.ChunkedArray}. It covers only from   `offset` to `offset + length` range. The sub {@link Arrow.ChunkedArray} shares   values with the base {@link Arrow.ChunkedArray}.
          */
-        slice(offset: number, length: number): ChunkedArray;
+        slice(offset: bigint | number, length: bigint | number): ChunkedArray;
         /**
          * @param order The order for sort.
          * @returns The indices that would sort   a chunked array in the specified order on success, `null` on error.
@@ -5597,7 +5602,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read(n_bytes: number): Buffer | null;
+        read(n_bytes: bigint | number): Buffer | null;
         /**
          * @param args
          */
@@ -5607,7 +5612,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          */
-        read_bytes(n_bytes: number): GLib.Bytes | null;
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
         /**
          * @param args
          */
@@ -6009,7 +6014,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6036,7 +6041,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6559,7 +6564,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6586,7 +6591,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6897,7 +6902,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Date32Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Date32Array;
 
         // Signals
 
@@ -6926,7 +6936,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -7167,7 +7177,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Date64Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Date64Array;
 
         // Signals
 
@@ -7196,7 +7211,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -7264,12 +7279,12 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: number): boolean;
+        append(value: bigint | number): boolean;
         /**
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: number): boolean;
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -7277,7 +7292,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
     }
 
     namespace Date64DataType {
@@ -7369,7 +7384,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): Date64Scalar;
+        static ['new'](value: bigint | number): Date64Scalar;
 
         // Signals
 
@@ -7707,7 +7722,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): DayTimeIntervalArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): DayTimeIntervalArray;
 
         // Signals
 
@@ -7738,7 +7758,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): DayMillisecond;
+        get_value(i: bigint | number): DayMillisecond;
         /**
          * @returns The list of {@link Arrow.DayMillisecond}.
          */
@@ -7984,7 +8004,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: number): Decimal128;
+        static new_integer(data: bigint | number): Decimal128;
 
         static new_string(data: string): Decimal128;
 
@@ -8162,12 +8182,12 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
          */
-        format_value(i: number): string;
+        format_value(i: bigint | number): string;
         /**
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): Decimal128;
+        get_value(i: bigint | number): Decimal128;
         /**
          * @param args
          */
@@ -8444,7 +8464,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: number): Decimal256;
+        static new_integer(data: bigint | number): Decimal256;
 
         static new_string(data: string): Decimal256;
 
@@ -8613,12 +8633,12 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
          */
-        format_value(i: number): string;
+        format_value(i: bigint | number): string;
         /**
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): Decimal256;
+        get_value(i: bigint | number): Decimal256;
         /**
          * @param args
          */
@@ -8890,7 +8910,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: number): Decimal32;
+        static new_integer(data: bigint | number): Decimal32;
 
         static new_string(data: string): Decimal32;
 
@@ -9068,12 +9088,12 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
          */
-        format_value(i: number): string;
+        format_value(i: bigint | number): string;
         /**
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): Decimal32;
+        get_value(i: bigint | number): Decimal32;
         /**
          * @param args
          */
@@ -9345,7 +9365,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: number): Decimal64;
+        static new_integer(data: bigint | number): Decimal64;
 
         static new_string(data: string): Decimal64;
 
@@ -9523,12 +9543,12 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
          */
-        format_value(i: number): string;
+        format_value(i: bigint | number): string;
         /**
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): Decimal64;
+        get_value(i: bigint | number): Decimal64;
         /**
          * @param args
          */
@@ -9918,7 +9938,7 @@ export namespace Arrow {
          * @param i The index of the offset of the value in the union.
          * @returns The offset of the i-th value.
          */
-        get_value_offset(i: number): number;
+        get_value_offset(i: bigint | number): number;
     }
 
     namespace DenseUnionArrayBuilder {
@@ -10369,7 +10389,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): DoubleArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): DoubleArray;
 
         // Signals
 
@@ -10398,7 +10423,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -10645,10 +10670,10 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DurationDataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): DurationArray;
 
         // Signals
@@ -10678,7 +10703,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -10748,7 +10773,7 @@ export namespace Arrow {
          * @param value The elapsed time in 64-bit signed integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: number): boolean;
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -10756,7 +10781,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
     }
 
     namespace DurationDataType {
@@ -10855,7 +10880,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data_type: DurationDataType, value: number): DurationScalar;
+        static ['new'](data_type: DurationDataType, value: bigint | number): DurationScalar;
 
         // Signals
 
@@ -11720,7 +11745,7 @@ export namespace Arrow {
          *   to deserialize later.
          * @virtual
          */
-        vfunc_serialize(): GLib.Bytes;
+        vfunc_serialize(): GLib.Bytes | Uint8Array;
 
         // Methods
 
@@ -12404,9 +12429,9 @@ export namespace Arrow {
             dir_name: string;
             dirName: string;
             extension: string;
-            mtime: number;
+            mtime: bigint | number;
             path: string;
-            size: number;
+            size: bigint | number;
             type: FileType;
         }
     }
@@ -12454,7 +12479,7 @@ export namespace Arrow {
          * @since 0.17.0
          */
         get mtime(): number;
-        set mtime(val: number);
+        set mtime(val: bigint | number);
         /**
          * The full file path in the file system.
          * @since 0.17.0
@@ -12467,7 +12492,7 @@ export namespace Arrow {
          * @since 0.17.0
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * The type of the entry.
          * @since 0.17.0
@@ -12994,7 +13019,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13021,7 +13046,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -13526,7 +13551,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13553,7 +13578,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -14032,8 +14057,8 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps extends ExtensionDataType.ConstructorProps {
-            n_dimensions: number;
-            nDimensions: number;
+            n_dimensions: bigint | number;
+            nDimensions: bigint | number;
         }
     }
 
@@ -14071,8 +14096,8 @@ export namespace Arrow {
 
         static ['new'](
             value_type: DataType,
-            shape: number[],
-            permutation?: number[] | null,
+            shape: (bigint | number)[],
+            permutation?: (bigint | number)[] | null,
             dim_names?: string[] | null,
         ): FixedShapeTensorDataType;
 
@@ -14158,10 +14183,10 @@ export namespace Arrow {
 
         static ['new'](
             data_type: FixedSizeBinaryDataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): FixedSizeBinaryArray;
 
         // Signals
@@ -14197,7 +14222,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
         /**
          * @returns All values as a {@link GLib.Bytes}.
          */
@@ -14473,10 +14498,10 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            length: number,
+            length: bigint | number,
             values: Array,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): FixedSizeListArray;
 
         // Signals
@@ -14510,17 +14535,17 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th list.
          */
-        get_value(i: number): Array;
+        get_value(i: bigint | number): Array;
         /**
          * @param i The index of the target value (unused, as all lists have the same size).
          * @returns The fixed size of each list.
          */
-        get_value_length(i: number): number;
+        get_value_length(i: bigint | number): number;
         /**
          * @param i The index of the offset of the target value.
          * @returns The target offset in the array containing the list's values.
          */
-        get_value_offset(i: number): number;
+        get_value_offset(i: bigint | number): number;
         /**
          * @returns The data type of value in each list.
          */
@@ -14778,7 +14803,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): FloatArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): FloatArray;
 
         // Signals
 
@@ -14807,7 +14837,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -15845,7 +15875,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15872,7 +15902,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -16394,7 +16424,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16421,7 +16451,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -16540,7 +16570,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): HalfFloatArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): HalfFloatArray;
 
         // Signals
 
@@ -16569,7 +16604,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -17040,7 +17075,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be advanced.
          * @returns `true` on success, `false` on error.
          */
-        advance(n_bytes: number): boolean;
+        advance(n_bytes: bigint | number): boolean;
         /**
          * @param alignment The byte multiple for the metadata prefix, usually 8   or 64, to ensure the body starts on a multiple of that alignment.
          * @returns `true` on success, `false` on error.
@@ -17076,7 +17111,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read(n_bytes: number): Buffer | null;
+        read(n_bytes: bigint | number): Buffer | null;
         /**
          * @param args
          */
@@ -17086,7 +17121,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          */
-        read_bytes(n_bytes: number): GLib.Bytes | null;
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
         /**
          * @param args
          */
@@ -17488,7 +17523,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17515,7 +17550,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17580,7 +17615,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int16Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Int16Array;
 
         // Signals
 
@@ -17609,7 +17649,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -17854,7 +17894,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int32Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Int32Array;
 
         // Signals
 
@@ -17883,7 +17928,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -18128,7 +18173,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int64Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Int64Array;
 
         // Signals
 
@@ -18157,7 +18207,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -18229,12 +18279,12 @@ export namespace Arrow {
          * @param value A int64 value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: number): boolean;
+        append(value: bigint | number): boolean;
         /**
          * @param value A int64 value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: number): boolean;
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -18242,7 +18292,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
     }
 
     namespace Int64DataType {
@@ -18334,7 +18384,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): Int64Scalar;
+        static ['new'](value: bigint | number): Int64Scalar;
 
         // Signals
 
@@ -18402,7 +18452,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int8Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Int8Array;
 
         // Signals
 
@@ -18431,7 +18486,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -18700,12 +18755,12 @@ export namespace Arrow {
          * @param value A int value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: number): boolean;
+        append(value: bigint | number): boolean;
         /**
          * @param value A int value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: number): boolean;
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -18713,7 +18768,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
     }
 
     namespace IntegerDataType {
@@ -19179,11 +19234,11 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             value_data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): LargeBinaryArray;
 
         // Signals
@@ -19225,7 +19280,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
     namespace LargeBinaryArrayBuilder {
@@ -19477,11 +19532,11 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             values: Array,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): LargeListArray;
 
         // Signals
@@ -19511,16 +19566,16 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th list.
          */
-        get_value(i: number): Array;
+        get_value(i: bigint | number): Array;
         /**
          * @param i
          */
-        get_value_length(i: number): number;
+        get_value_length(i: bigint | number): number;
         /**
          * @param i The index of the offset of the target value.
          * @returns The target offset in the array containing the list's values.
          */
-        get_value_offset(i: number): number;
+        get_value_offset(i: bigint | number): number;
         /**
          * @returns The target offsets in the array containing the list's values.
          */
@@ -19768,11 +19823,11 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             value_data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): LargeStringArray;
 
         // Signals
@@ -19802,7 +19857,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th UTF-8 encoded string.
          */
-        get_string(i: number): string;
+        get_string(i: bigint | number): string;
     }
 
     namespace LargeStringArrayBuilder {
@@ -19874,7 +19929,7 @@ export namespace Arrow {
          * @param length The length of `value`.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_string_len(value: string, length: number): boolean;
+        append_string_len(value: string, length: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -20055,11 +20110,11 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             values: Array,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): ListArray;
 
         // Signals
@@ -20089,16 +20144,16 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The i-th list.
          */
-        get_value(i: number): Array;
+        get_value(i: bigint | number): Array;
         /**
          * @param i The index of the length of the target value.
          * @returns The target length in the array containing the list's values.
          */
-        get_value_length(i: number): number;
+        get_value_length(i: bigint | number): number;
         /**
          * @param i
          */
-        get_value_offset(i: number): number;
+        get_value_offset(i: bigint | number): number;
         /**
          * @returns The target offsets in the array containing the list's values.
          */
@@ -20395,9 +20450,9 @@ export namespace Arrow {
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             return_fixed_size_list: ListSliceReturnFixedSizeList;
             returnFixedSizeList: ListSliceReturnFixedSizeList;
-            start: number;
-            step: number;
-            stop: number;
+            start: bigint | number;
+            step: bigint | number;
+            stop: bigint | number;
         }
     }
 
@@ -20434,20 +20489,20 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get start(): number;
-        set start(val: number);
+        set start(val: bigint | number);
         /**
          * Slicing step.
          * @since 23.0.0
          */
         get step(): number;
-        set step(val: number);
+        set step(val: bigint | number);
         /**
          * Optional stop of list slicing. If not set (value is
          * `GARROW_LIST_SLICE_OPTIONS_STOP_UNSPECIFIED`), then slice to end.
          * @since 23.0.0
          */
         get stop(): number;
-        set stop(val: number);
+        set stop(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -21670,7 +21725,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21697,7 +21752,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21880,7 +21935,7 @@ export namespace Arrow {
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             min_count: number;
             minCount: number;
-            n: number;
+            n: bigint | number;
             skip_nulls: boolean;
             skipNulls: boolean;
         }
@@ -21911,7 +21966,7 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get n(): number;
-        set n(val: number);
+        set n(val: bigint | number);
         /**
          * Whether NULLs are skipped or not.
          * @since 23.0.0
@@ -21977,7 +22032,7 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             day: number;
             month: number;
-            nanosecond: number;
+            nanosecond: bigint | number;
         }
     }
 
@@ -22006,7 +22061,7 @@ export namespace Arrow {
          * @since 8.0.0
          */
         get nanosecond(): number;
-        set nanosecond(val: number);
+        set nanosecond(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -22023,7 +22078,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](month: number, day: number, nanosecond: number): MonthDayNano;
+        static ['new'](month: number, day: number, nanosecond: bigint | number): MonthDayNano;
 
         // Signals
 
@@ -22093,10 +22148,10 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): MonthDayNanoIntervalArray;
 
         // Signals
@@ -22128,7 +22183,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): MonthDayNano;
+        get_value(i: bigint | number): MonthDayNano;
         /**
          * @returns The list of {@link Arrow.MonthDayNano}.
          */
@@ -22373,7 +22428,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): MonthIntervalArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): MonthIntervalArray;
 
         // Signals
 
@@ -22402,7 +22462,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -22673,7 +22733,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` otherwise.
          */
-        set_data(offset: number, data: Uint8Array | string): boolean;
+        set_data(offset: bigint | number, data: Uint8Array | string): boolean;
         /**
          * @param args
          */
@@ -22684,7 +22744,7 @@ export namespace Arrow {
          * @param size The number of bytes of the sliced data.
          * @returns A newly created {@link Arrow.MutableBuffer} that   shares data of the base {@link Arrow.MutableBuffer}. The created   {@link Arrow.MutableBuffer} has data start with offset from the base   buffer data and are the specified bytes size.
          */
-        slice(offset: number, size: number): MutableBuffer;
+        slice(offset: bigint | number, size: bigint | number): MutableBuffer;
     }
 
     namespace NullArray {
@@ -22724,7 +22784,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number): NullArray;
+        static ['new'](length: bigint | number): NullArray;
 
         // Signals
 
@@ -23208,7 +23268,7 @@ export namespace Arrow {
          * @param i The stripe index to be read.
          * @returns A newly read stripe as   {@link Arrow.RecordBatch} or `null` on error.
          */
-        read_stripe(i: number): RecordBatch | null;
+        read_stripe(i: bigint | number): RecordBatch | null;
         /**
          * @returns A newly read stripes as   {@link Arrow.Table} or `null` on error.
          */
@@ -23735,7 +23795,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23762,7 +23822,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23804,7 +23864,7 @@ export namespace Arrow {
             lean_left_on_odd_padding: boolean;
             leanLeftOnOddPadding: boolean;
             padding: string;
-            width: number;
+            width: bigint | number;
         }
     }
 
@@ -23843,7 +23903,7 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get width(): number;
-        set width(val: number);
+        set width(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -23893,7 +23953,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            periods: number;
+            periods: bigint | number;
         }
     }
 
@@ -23910,7 +23970,7 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get periods(): number;
-        set periods(val: number);
+        set periods(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -23963,7 +24023,7 @@ export namespace Arrow {
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             null_placement: NullPlacement;
             nullPlacement: NullPlacement;
-            pivot: number;
+            pivot: bigint | number;
         }
     }
 
@@ -23992,7 +24052,7 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get pivot(): number;
-        set pivot(val: number);
+        set pivot(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -24811,7 +24871,7 @@ export namespace Arrow {
          * @param length The length of sub {@link Arrow.RecordBatch}.
          * @returns The sub {@link Arrow.RecordBatch}. It covers   only from `offset` to `offset + length` range. The sub   {@link Arrow.RecordBatch} shares values with the base   {@link Arrow.RecordBatch}.
          */
-        slice(offset: number, length: number): RecordBatch;
+        slice(offset: bigint | number, length: bigint | number): RecordBatch;
         /**
          * @param options The options to be used.
          * @returns The indices that would sort   a record batch with the specified options on success, `null` on error.
@@ -24941,7 +25001,7 @@ export namespace Arrow {
         /**
          * @param capacity The new initial capacity for array builders.
          */
-        set_initial_capacity(capacity: number): void;
+        set_initial_capacity(capacity: bigint | number): void;
     }
 
     namespace RecordBatchDatum {
@@ -25583,8 +25643,8 @@ export namespace Arrow {
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             replacement: string;
-            start: number;
-            stop: number;
+            start: bigint | number;
+            stop: bigint | number;
         }
     }
 
@@ -25607,13 +25667,13 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get start(): number;
-        set start(val: number);
+        set start(val: bigint | number);
         /**
          * Index to stop slicing at.
          * @since 23.0.0
          */
         get stop(): number;
-        set stop(val: number);
+        set stop(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -25667,8 +25727,8 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            max_replacements: number;
-            maxReplacements: number;
+            max_replacements: bigint | number;
+            maxReplacements: bigint | number;
             pattern: string;
             replacement: string;
         }
@@ -25687,13 +25747,13 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get max_replacements(): number;
-        set max_replacements(val: number);
+        set max_replacements(val: bigint | number);
         /**
          * Max number of substrings to replace (-1 means unbounded).
          * @since 23.0.0
          */
         get maxReplacements(): number;
-        set maxReplacements(val: number);
+        set maxReplacements(val: bigint | number);
         /**
          * Pattern to match, literal, or regular expression depending on which kernel is used.
          * @since 23.0.0
@@ -25782,7 +25842,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](initial_size: number): ResizableBuffer;
+        static ['new'](initial_size: bigint | number): ResizableBuffer;
         // Conflicted with Arrow.MutableBuffer.new
 
         static ['new'](...args: never[]): any;
@@ -25814,12 +25874,12 @@ export namespace Arrow {
          * @param new_capacity The new buffer capacity in bytes.
          * @returns `true` on success, `false` if there was an error.
          */
-        reserve(new_capacity: number): boolean;
+        reserve(new_capacity: bigint | number): boolean;
         /**
          * @param new_size The new buffer size in bytes.
          * @returns `true` on success, `false` if there was an error.
          */
-        resize(new_size: number): boolean;
+        resize(new_size: bigint | number): boolean;
     }
 
     namespace RoundBinaryOptions {
@@ -25900,8 +25960,8 @@ export namespace Arrow {
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             mode: RoundMode;
-            n_digits: number;
-            nDigits: number;
+            n_digits: bigint | number;
+            nDigits: bigint | number;
         }
     }
 
@@ -25924,13 +25984,13 @@ export namespace Arrow {
          * @since 7.0.0
          */
         get n_digits(): number;
-        set n_digits(val: number);
+        set n_digits(val: bigint | number);
         /**
          * The rounding precision (number of digits to round to).
          * @since 7.0.0
          */
         get nDigits(): number;
-        set nDigits(val: number);
+        set nDigits(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -26317,10 +26377,10 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            logical_length: number,
+            logical_length: bigint | number,
             run_ends: Array,
             values: Array,
-            logical_offset: number,
+            logical_offset: bigint | number,
         ): RunEndEncodedArray;
 
         // Signals
@@ -27064,19 +27124,19 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be peeked.
          * @returns The data of the buffer, up to the   indicated number. The data becomes invalid after any operation on   the stream. If the stream is unbuffered, the data is empty.   It should be freed with `g_bytes_unref()` when no longer needed.
          */
-        peek(n_bytes: number): GLib.Bytes;
+        peek(n_bytes: bigint | number): GLib.Bytes;
         /**
          * @param position The read start position.
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read_at(position: number, n_bytes: number): Buffer | null;
+        read_at(position: bigint | number, n_bytes: bigint | number): Buffer | null;
         /**
          * @param position The read start position.
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on   success, `null` if there was an error.
          */
-        read_at_bytes(position: number, n_bytes: number): GLib.Bytes | null;
+        read_at_bytes(position: bigint | number, n_bytes: bigint | number): GLib.Bytes | null;
         /**
          * @returns `true` on success, `false` if there was an error.
          */
@@ -27097,7 +27157,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read(n_bytes: number): Buffer | null;
+        read(n_bytes: bigint | number): Buffer | null;
         /**
          * @param args
          */
@@ -27107,7 +27167,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          */
-        read_bytes(n_bytes: number): GLib.Bytes | null;
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
         /**
          * @param args
          */
@@ -27509,7 +27569,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -27536,7 +27596,7 @@ export namespace Arrow {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -27573,7 +27633,7 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            k: number;
+            k: bigint | number;
         }
     }
 
@@ -27590,7 +27650,7 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get k(): number;
-        set k(val: number);
+        set k(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -27910,9 +27970,9 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            start: number;
-            step: number;
-            stop: number;
+            start: bigint | number;
+            step: bigint | number;
+            stop: bigint | number;
         }
     }
 
@@ -27929,19 +27989,19 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get start(): number;
-        set start(val: number);
+        set start(val: bigint | number);
         /**
          * Slice step.
          * @since 23.0.0
          */
         get step(): number;
-        set step(val: number);
+        set step(val: bigint | number);
         /**
          * Index to stop slicing at (exclusive).
          * @since 23.0.0
          */
         get stop(): number;
-        set stop(val: number);
+        set stop(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -28556,8 +28616,8 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            max_splits: number;
-            maxSplits: number;
+            max_splits: bigint | number;
+            maxSplits: bigint | number;
             reverse: boolean;
         }
     }
@@ -28575,13 +28635,13 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get max_splits(): number;
-        set max_splits(val: number);
+        set max_splits(val: bigint | number);
         /**
          * Maximum number of splits allowed, or unlimited when -1.
          * @since 23.0.0
          */
         get maxSplits(): number;
-        set maxSplits(val: number);
+        set maxSplits(val: bigint | number);
         /**
          * Start splitting from the end of the string (only relevant when max_splits != -1).
          * @since 23.0.0
@@ -28639,8 +28699,8 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            max_splits: number;
-            maxSplits: number;
+            max_splits: bigint | number;
+            maxSplits: bigint | number;
             pattern: string;
             reverse: boolean;
         }
@@ -28655,9 +28715,9 @@ export namespace Arrow {
         // Properties
 
         get max_splits(): number;
-        set max_splits(val: number);
+        set max_splits(val: bigint | number);
         get maxSplits(): number;
-        set maxSplits(val: number);
+        set maxSplits(val: bigint | number);
         /**
          * The exact substring to split on.
          * @since 16.0.0
@@ -29091,11 +29151,11 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             value_data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): StringArray;
 
         // Signals
@@ -29125,7 +29185,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th UTF-8 encoded string.
          */
-        get_string(i: number): string;
+        get_string(i: bigint | number): string;
     }
 
     namespace StringArrayBuilder {
@@ -29342,7 +29402,7 @@ export namespace Arrow {
          * @param is_valids The array of   `true` or `false` that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_indices(values: number[], is_valids?: boolean[] | null): boolean;
+        append_indices(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
         /**
          * @param value A string value.
          * @returns `true` on success, `false` if there was an error.
@@ -29463,12 +29523,12 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             views: Buffer,
             data_buffers: Buffer[],
             null_bitmap: Buffer | null,
-            n_nulls: number,
-            offset: number,
+            n_nulls: bigint | number,
+            offset: bigint | number,
         ): StringViewArray;
 
         // Signals
@@ -29498,7 +29558,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
     namespace StringViewDataType {
@@ -29751,10 +29811,10 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            length: number,
+            length: bigint | number,
             fields: Array[],
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): StructArray;
 
         // Signals
@@ -30438,7 +30498,7 @@ export namespace Arrow {
          * @param length The length of sub {@link Arrow.Table}.
          * @returns The sub {@link Arrow.Table}. It covers   only from `offset` to `offset + length` range. The sub   {@link Arrow.Table} shares values with the base   {@link Arrow.Table}.
          */
-        slice(offset: number, length: number): Table;
+        slice(offset: bigint | number, length: bigint | number): Table;
         /**
          * @param options The options to be used.
          * @returns The indices that would sort   a table with the specified options on success, `null` on error.
@@ -30547,7 +30607,7 @@ export namespace Arrow {
          * depending on actual chunking characteristics of each table column.
          * @param max_chunk_size The maximum chunk size of record batches.
          */
-        set_max_chunk_size(max_chunk_size: number): void;
+        set_max_chunk_size(max_chunk_size: bigint | number): void;
     }
 
     namespace TableConcatenateOptions {
@@ -30887,8 +30947,8 @@ export namespace Arrow {
         static ['new'](
             data_type: DataType,
             data: Buffer,
-            shape: number[],
-            strides?: number[] | null,
+            shape: (bigint | number)[],
+            strides?: (bigint | number)[] | null,
             dimension_names?: string[] | null,
         ): Tensor;
 
@@ -31066,10 +31126,10 @@ export namespace Arrow {
 
         static ['new'](
             data_type: Time32DataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): Time32Array;
 
         // Signals
@@ -31099,7 +31159,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -31342,10 +31402,10 @@ export namespace Arrow {
 
         static ['new'](
             data_type: Time64DataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): Time64Array;
 
         // Signals
@@ -31375,7 +31435,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -31443,12 +31503,12 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: number): boolean;
+        append(value: bigint | number): boolean;
         /**
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: number): boolean;
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -31456,7 +31516,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
     }
 
     namespace Time64DataType {
@@ -31548,7 +31608,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data_type: Time64DataType, value: number): Time64Scalar;
+        static ['new'](data_type: Time64DataType, value: bigint | number): Time64Scalar;
 
         // Signals
 
@@ -31679,10 +31739,10 @@ export namespace Arrow {
 
         static ['new'](
             data_type: TimestampDataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): TimestampArray;
 
         // Signals
@@ -31712,7 +31772,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -31782,12 +31842,12 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: number): boolean;
+        append(value: bigint | number): boolean;
         /**
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: number): boolean;
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -31795,7 +31855,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
     }
 
     namespace TimestampDataType {
@@ -31983,7 +32043,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data_type: TimestampDataType, value: number): TimestampScalar;
+        static ['new'](data_type: TimestampDataType, value: bigint | number): TimestampScalar;
 
         // Signals
 
@@ -32118,7 +32178,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt16Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): UInt16Array;
 
         // Signals
 
@@ -32147,7 +32212,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -32392,7 +32457,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt32Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): UInt32Array;
 
         // Signals
 
@@ -32421,7 +32491,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -32666,7 +32736,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt64Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): UInt64Array;
 
         // Signals
 
@@ -32695,7 +32770,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -32767,12 +32842,12 @@ export namespace Arrow {
          * @param value An uint64 value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: number): boolean;
+        append(value: bigint | number): boolean;
         /**
          * @param value An uint64 value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: number): boolean;
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -32780,7 +32855,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
     }
 
     namespace UInt64DataType {
@@ -32872,7 +32947,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): UInt64Scalar;
+        static ['new'](value: bigint | number): UInt64Scalar;
 
         // Signals
 
@@ -32940,7 +33015,12 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt8Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): UInt8Array;
 
         // Signals
 
@@ -32969,7 +33049,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: number): number;
+        get_value(i: bigint | number): number;
         /**
          * @returns The raw values.
          */
@@ -33238,12 +33318,12 @@ export namespace Arrow {
          * @param value A unsigned int value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: number): boolean;
+        append(value: bigint | number): boolean;
         /**
          * @param value A unsigned int value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: number): boolean;
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
@@ -33251,7 +33331,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids?: boolean[] | null): boolean;
     }
 
     namespace UTF8NormalizeOptions {
@@ -33459,7 +33539,7 @@ export namespace Arrow {
          * @param i The index of the physical child ID containing value in the union.
          * @returns The physical child ID containing the i-th value.
          */
-        get_child_id(i: number): number;
+        get_child_id(i: bigint | number): number;
         /**
          * @param i The index of the field in the union.
          * @returns The i-th field values as a   {@link Arrow.Array} or `null` on out of range.
@@ -33469,7 +33549,7 @@ export namespace Arrow {
          * @param i The index of the logical type code of the value in the union.
          * @returns The i-th logical type code of the value.
          */
-        get_type_code(i: number): number;
+        get_type_code(i: bigint | number): number;
     }
 
     namespace UnionArrayBuilder {
@@ -34162,7 +34242,7 @@ export namespace Arrow {
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             padding: string;
-            width: number;
+            width: bigint | number;
         }
     }
 
@@ -34185,7 +34265,7 @@ export namespace Arrow {
          * @since 23.0.0
          */
         get width(): number;
-        set width(val: number);
+        set width(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -35660,12 +35740,12 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read(n_bytes: number): Buffer | null;
+        read(n_bytes: bigint | number): Buffer | null;
         /**
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          */
-        read_bytes(n_bytes: number): GLib.Bytes | null;
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
     }
 
     export const Readable: ReadableNamespace & {
@@ -35725,7 +35805,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write_at(position: number, data: Uint8Array | string): boolean;
+        write_at(position: bigint | number, data: Uint8Array | string): boolean;
     }
 
     export const WritableFile: WritableFileNamespace & {
@@ -35735,7 +35815,7 @@ export namespace Arrow {
     /**
      * @gir-type Alias
      */
-    type TimePoint = number;
+    type TimePoint = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

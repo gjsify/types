@@ -777,7 +777,7 @@ export namespace GExiv2 {
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
          */
-        set_tag_long(tag: string, value: number): boolean;
+        set_tag_long(tag: string, value: bigint | number): boolean;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          *
@@ -1037,7 +1037,7 @@ export namespace GExiv2 {
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
          */
-        try_set_tag_long(tag: string, value: number): boolean;
+        try_set_tag_long(tag: string, value: bigint | number): boolean;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          *

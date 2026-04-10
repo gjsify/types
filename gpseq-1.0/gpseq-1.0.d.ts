@@ -440,17 +440,17 @@ export namespace Gpseq {
      * @param a
      * @param b
      */
-    function overflow_long_add(a: number, b: number): [boolean, number];
+    function overflow_long_add(a: bigint | number, b: bigint | number): [boolean, number];
     /**
      * @param a
      * @param b
      */
-    function overflow_long_sub(a: number, b: number): [boolean, number];
+    function overflow_long_sub(a: bigint | number, b: bigint | number): [boolean, number];
     /**
      * @param a
      * @param b
      */
-    function overflow_long_mul(a: number, b: number): [boolean, number];
+    function overflow_long_mul(a: bigint | number, b: bigint | number): [boolean, number];
     /**
      * @param a
      * @param b
@@ -470,17 +470,17 @@ export namespace Gpseq {
      * @param a
      * @param b
      */
-    function overflow_int64_add(a: number, b: number): [boolean, number];
+    function overflow_int64_add(a: bigint | number, b: bigint | number): [boolean, number];
     /**
      * @param a
      * @param b
      */
-    function overflow_int64_sub(a: number, b: number): [boolean, number];
+    function overflow_int64_sub(a: bigint | number, b: bigint | number): [boolean, number];
     /**
      * @param a
      * @param b
      */
-    function overflow_int64_mul(a: number, b: number): [boolean, number];
+    function overflow_int64_mul(a: bigint | number, b: bigint | number): [boolean, number];
     /**
      * @param g_type
      * @param g_dup_func
@@ -526,46 +526,50 @@ export namespace Gpseq {
     /**
      * @param atomic
      */
-    function atomic_int64_get(atomic: number): [number, number];
+    function atomic_int64_get(atomic: bigint | number): [number, number];
     /**
      * @param atomic
      * @param newval
      */
-    function atomic_int64_set(atomic: number, newval: number): number;
+    function atomic_int64_set(atomic: bigint | number, newval: bigint | number): number;
     /**
      * @param atomic
      */
-    function atomic_int64_inc(atomic: number): number;
+    function atomic_int64_inc(atomic: bigint | number): number;
     /**
      * @param atomic
      */
-    function atomic_int64_dec_and_test(atomic: number): [boolean, number];
+    function atomic_int64_dec_and_test(atomic: bigint | number): [boolean, number];
     /**
      * @param atomic
      * @param oldval
      * @param newval
      */
-    function atomic_int64_compare_and_exchange(atomic: number, oldval: number, newval: number): [boolean, number];
+    function atomic_int64_compare_and_exchange(
+        atomic: bigint | number,
+        oldval: bigint | number,
+        newval: bigint | number,
+    ): [boolean, number];
     /**
      * @param atomic
      * @param val
      */
-    function atomic_int64_add(atomic: number, val: number): [number, number];
+    function atomic_int64_add(atomic: bigint | number, val: bigint | number): [number, number];
     /**
      * @param atomic
      * @param val
      */
-    function atomic_int64_and(atomic: number, val: number): [number, number];
+    function atomic_int64_and(atomic: bigint | number, val: bigint | number): [number, number];
     /**
      * @param atomic
      * @param val
      */
-    function atomic_int64_or(atomic: number, val: number): [number, number];
+    function atomic_int64_or(atomic: bigint | number, val: bigint | number): [number, number];
     /**
      * @param atomic
      * @param val
      */
-    function atomic_int64_xor(atomic: number, val: number): [number, number];
+    function atomic_int64_xor(atomic: bigint | number, val: bigint | number): [number, number];
     /**
      * @gir-type Callback
      */
@@ -818,7 +822,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -1229,7 +1233,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1256,7 +1260,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1316,7 +1320,7 @@ export namespace Gpseq {
             root: ForkJoinTask;
             is_root: boolean;
             isRoot: boolean;
-            threshold: number;
+            threshold: bigint | number;
             max_depth: number;
             maxDepth: number;
             depth: number;
@@ -1886,7 +1890,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1913,7 +1917,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2507,7 +2511,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2534,7 +2538,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2709,7 +2713,7 @@ export namespace Gpseq {
         /**
          * @param end_time
          */
-        wait_until(end_time: number): [boolean, any];
+        wait_until(end_time: bigint | number): [boolean, any];
         /**
          * @param a_type
          * @param a_dup_func
@@ -3232,7 +3236,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3259,7 +3263,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3435,7 +3439,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -3846,7 +3850,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3873,7 +3877,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3975,7 +3979,7 @@ export namespace Gpseq {
             g_type: GObject.GType,
             g_dup_func: GObject.BoxedCopyFunc,
             iterator: Gee.Iterator,
-            estimated_size: number,
+            estimated_size: bigint | number,
             size_known: boolean,
         ): IteratorSpliterator;
 
@@ -4055,7 +4059,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -4466,7 +4470,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4493,7 +4497,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4667,7 +4671,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -5078,7 +5082,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5105,7 +5109,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5531,7 +5535,7 @@ export namespace Gpseq {
             g_type: GObject.GType,
             g_dup_func: GObject.BoxedCopyFunc,
             iterator: Gee.Iterator,
-            estimated_size: number,
+            estimated_size: bigint | number,
             size_known: boolean,
             env: TaskEnv,
         ): Seq;
@@ -5640,29 +5644,29 @@ export namespace Gpseq {
         /**
          * @param n
          */
-        skip(n: number): Seq;
+        skip(n: bigint | number): Seq;
         /**
          * @param n
          */
-        limit(n: number): Seq;
+        limit(n: bigint | number): Seq;
         /**
          * @param offset
          * @param length
          */
-        chop(offset: number, length: number): Seq;
+        chop(offset: bigint | number, length: bigint | number): Seq;
         /**
          * @param n
          */
-        skip_ordered(n: number): Seq;
+        skip_ordered(n: bigint | number): Seq;
         /**
          * @param n
          */
-        limit_ordered(n: number): Seq;
+        limit_ordered(n: bigint | number): Seq;
         /**
          * @param offset
          * @param length
          */
-        chop_ordered(offset: number, length: number): Seq;
+        chop_ordered(offset: bigint | number, length: bigint | number): Seq;
         /**
          * @param pred
          */
@@ -6737,7 +6741,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6764,7 +6768,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6935,7 +6939,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -7346,7 +7350,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7373,7 +7377,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7547,7 +7551,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): number;
+        vfunc_get_estimated_size(): bigint | number;
         /**
          * @virtual
          */
@@ -7958,7 +7962,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7985,7 +7989,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8105,7 +8109,7 @@ export namespace Gpseq {
          * @param threads
          * @virtual
          */
-        vfunc_resolve_threshold(elements: number, threads: number): number;
+        vfunc_resolve_threshold(elements: number, threads: number): bigint | number;
         /**
          * @param elements
          * @param threads
@@ -8120,12 +8124,12 @@ export namespace Gpseq {
          * @param elements
          * @param threads
          */
-        resolve_threshold(elements: number, threads: number): number;
+        resolve_threshold(elements: bigint | number, threads: number): number;
         /**
          * @param elements
          * @param threads
          */
-        resolve_max_depth(elements: number, threads: number): number;
+        resolve_max_depth(elements: bigint | number, threads: number): number;
     }
 
     namespace WaitGroup {
@@ -8203,7 +8207,7 @@ export namespace Gpseq {
         /**
          * @param end_time
          */
-        wait_until(end_time: number): boolean;
+        wait_until(end_time: bigint | number): boolean;
     }
 
     namespace WorkerPool {
@@ -8354,7 +8358,7 @@ export namespace Gpseq {
         /**
          * @param end_time
          */
-        wait_termination_until(end_time: number): void;
+        wait_termination_until(end_time: bigint | number): void;
         /**
          * @read-only
          * @category Inherited from Gpseq.Executor
@@ -8770,7 +8774,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8797,7 +8801,7 @@ export namespace Gpseq {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9393,7 +9397,7 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_get_length(): number;
+            vfunc_get_length(): bigint | number;
             /**
              * @virtual
              */
@@ -9412,7 +9416,7 @@ export namespace Gpseq {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             capacity: Optional;
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -9627,7 +9631,7 @@ export namespace Gpseq {
         /**
          * @param end_time
          */
-        recv_until(end_time: number): Result;
+        recv_until(end_time: bigint | number): Result;
         try_recv(): Result;
     }
 
@@ -9905,7 +9909,7 @@ export namespace Gpseq {
          * @param data
          * @param end_time
          */
-        send_until(data: any, end_time: number): Result;
+        send_until(data: any, end_time: bigint | number): Result;
         /**
          * @param data
          */
@@ -9936,7 +9940,7 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_get_estimated_size(): number;
+            vfunc_get_estimated_size(): bigint | number;
             /**
              * @virtual
              */
@@ -9956,8 +9960,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            estimated_size: number;
-            estimatedSize: number;
+            estimated_size: bigint | number;
+            estimatedSize: bigint | number;
             is_size_known: boolean;
             isSizeKnown: boolean;
         }

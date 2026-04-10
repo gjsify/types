@@ -75,7 +75,7 @@ export namespace GstCheck {
      * @param data data to compare to
      * @param size size of data to compare
      */
-    function check_buffer_data(buffer: Gst.Buffer, data: any | null, size: number): void;
+    function check_buffer_data(buffer: Gst.Buffer, data: any | null, size: bigint | number): void;
     /**
      * Compare two caps with gst_caps_is_equal and fail unless they are
      * equal.
@@ -398,8 +398,8 @@ export namespace GstCheck {
         interface ConstructorProps extends Gst.Clock.ConstructorProps {
             clock_type: Gst.ClockType;
             clockType: Gst.ClockType;
-            start_time: number;
-            startTime: number;
+            start_time: bigint | number;
+            startTime: bigint | number;
         }
     }
 
@@ -1067,7 +1067,7 @@ export namespace GstCheck {
          * @param size a `gsize` specifying the size of the buffer
          * @returns a {@link Gst.Buffer} of size `size`
          */
-        create_buffer(size: number): Gst.Buffer;
+        create_buffer(size: bigint | number): Gst.Buffer;
         /**
          * Allows you to dump the `GstBuffers` the {@link GstCheck.Harness} sinkpad {@link GLib.AsyncQueue}
          * to a file.

@@ -1908,7 +1908,7 @@ export namespace Libosinfo {
          * @param default_value the value to be returned in case there's no value                 associated with the `key`
          * @returns the value associated with the key as an int64, or `default_value`
          */
-        get_param_value_int64_with_default(key: string, default_value: number): number;
+        get_param_value_int64_with_default(key: string, default_value: bigint | number): number;
         /**
          * Retrieve all the parameter values associated with a named
          * key. If no values are associated, NULL is returned
@@ -1948,7 +1948,7 @@ export namespace Libosinfo {
          * @param key the name of the key
          * @param value the int64 value to be associated with that key
          */
-        set_param_int64(key: string, value: number): void;
+        set_param_int64(key: string, value: bigint | number): void;
     }
 
     namespace Filter {
@@ -4059,8 +4059,8 @@ export namespace Libosinfo {
             url: string;
             volume_id: string;
             volumeId: string;
-            volume_size: number;
-            volumeSize: number;
+            volume_size: bigint | number;
+            volumeSize: bigint | number;
         }
     }
 
@@ -4239,12 +4239,12 @@ export namespace Libosinfo {
          * Expected volume size, in bytes for ISO9660 image/device.
          */
         get volume_size(): number;
-        set volume_size(val: number);
+        set volume_size(val: bigint | number);
         /**
          * Expected volume size, in bytes for ISO9660 image/device.
          */
         get volumeSize(): number;
-        set volumeSize(val: number);
+        set volumeSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -5637,11 +5637,11 @@ export namespace Libosinfo {
 
         interface ConstructorProps extends Entity.ConstructorProps {
             architecture: string;
-            cpu: number;
+            cpu: bigint | number;
             n_cpus: number;
             nCpus: number;
-            ram: number;
-            storage: number;
+            ram: bigint | number;
+            storage: bigint | number;
         }
     }
 
@@ -5662,7 +5662,7 @@ export namespace Libosinfo {
          * The CPU frequency in hertz (Hz).
          */
         get cpu(): number;
-        set cpu(val: number);
+        set cpu(val: bigint | number);
         /**
          * The number of CPUs.
          */
@@ -5677,12 +5677,12 @@ export namespace Libosinfo {
          * The amount of Random Access Memory (RAM) in bytes.
          */
         get ram(): number;
-        set ram(val: number);
+        set ram(val: bigint | number);
         /**
          * The amount of storage space in bytes.
          */
         get storage(): number;
-        set storage(val: number);
+        set storage(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -5759,7 +5759,7 @@ export namespace Libosinfo {
          * Sets the CPU frequency.
          * @param cpu the CPU frequency in hertz (Hz)
          */
-        set_cpu(cpu: number): void;
+        set_cpu(cpu: bigint | number): void;
         /**
          * Sets the number of CPUs.
          * @param n_cpus the number of CPUs
@@ -5769,12 +5769,12 @@ export namespace Libosinfo {
          * Sets the amount of RAM in bytes.
          * @param ram the amount of ram in bytes
          */
-        set_ram(ram: number): void;
+        set_ram(ram: bigint | number): void;
         /**
          * Sets the amount of storage space.
          * @param storage the amount of storage in bytes
          */
-        set_storage(storage: number): void;
+        set_storage(storage: bigint | number): void;
     }
 
     namespace ResourcesList {

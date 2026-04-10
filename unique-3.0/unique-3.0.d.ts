@@ -481,7 +481,7 @@ export namespace Unique {
          * @param data binary blob to set, or `null`
          * @param length length of `data`
          */
-        set(data: number, length: number): void;
+        set(data: number, length: bigint | number): void;
         /**
          * Sets `filename` as the contents of `message_data`.
          * @param filename a filename
@@ -495,7 +495,7 @@ export namespace Unique {
          * @param length length of the text, or -1
          * @returns `true` if the text was successfully converted to UTF-8
          */
-        set_text(str: string, length: number): boolean;
+        set_text(str: string, length: bigint | number): boolean;
         /**
          * Converts `uris` to a valid URI list and sets it as payload of
          * `message_data`. You can use `unique_message_data_get_uris()` to

@@ -616,7 +616,7 @@ export namespace GstRtp {
      * @param ntptime an NTP timestamp
      * @returns the UNIX time for `ntptime` in nanoseconds.
      */
-    function rtcp_ntp_to_unix(ntptime: number): number;
+    function rtcp_ntp_to_unix(ntptime: bigint | number): number;
     /**
      * Convert `name` into a `GstRTCPSDESType`. `name` is typically a key in a
      * {@link Gst.Structure} containing SDES items.
@@ -640,7 +640,7 @@ export namespace GstRtp {
      * @param unixtime an UNIX timestamp in nanoseconds
      * @returns the NTP time for `unixtime`.
      */
-    function rtcp_unix_to_ntp(unixtime: number): number;
+    function rtcp_unix_to_ntp(unixtime: bigint | number): number;
     /**
      * Allocate enough data in `buffer` to hold an RTP packet with `csrc_count` CSRCs,
      * a payload length of `payload_len` and padding of `pad_len`.
@@ -710,7 +710,7 @@ export namespace GstRtp {
      * @param timestamp a new timestamp
      * @returns The extended timestamp of `timestamp` or 0 if the result can't go anywhere backwards.
      */
-    function rtp_buffer_ext_timestamp(exttimestamp: number, timestamp: number): [number, number];
+    function rtp_buffer_ext_timestamp(exttimestamp: bigint | number, timestamp: number): [number, number];
     /**
      * Similar to gst_rtp_buffer_get_extension_onebyte_header, but working
      * on the {@link GLib.Bytes} you get from gst_rtp_buffer_get_extension_bytes.
@@ -803,7 +803,7 @@ export namespace GstRtp {
      * @param ntptime the NTP time
      * @returns `true` on success.
      */
-    function rtp_hdrext_set_ntp_56(data: any | null, size: number, ntptime: number): boolean;
+    function rtp_hdrext_set_ntp_56(data: any | null, size: number, ntptime: bigint | number): boolean;
     /**
      * Writes the NTP time in `ntptime` to the format required for the NTP-64 header
      * extension. `data` must hold at least #GST_RTP_HDREXT_NTP_64_SIZE bytes.
@@ -812,7 +812,7 @@ export namespace GstRtp {
      * @param ntptime the NTP time
      * @returns `true` on success.
      */
-    function rtp_hdrext_set_ntp_64(data: any | null, size: number, ntptime: number): boolean;
+    function rtp_hdrext_set_ntp_64(data: any | null, size: number, ntptime: bigint | number): boolean;
     /**
      * Get the {@link GstRtp.RTPPayloadInfo} for `media` and `encoding_name`. This function is
      * mostly used to get the default clock-rate and bandwidth for dynamic payload
@@ -1420,18 +1420,18 @@ export namespace GstRtp {
         interface ConstructorProps extends Gst.Element.ConstructorProps {
             auto_header_extension: boolean;
             autoHeaderExtension: boolean;
-            max_ptime: number;
-            maxPtime: number;
-            min_ptime: number;
-            minPtime: number;
+            max_ptime: bigint | number;
+            maxPtime: bigint | number;
+            min_ptime: bigint | number;
+            minPtime: bigint | number;
             mtu: number;
             onvif_no_rate_control: boolean;
             onvifNoRateControl: boolean;
             perfect_rtptime: boolean;
             perfectRtptime: boolean;
             pt: number;
-            ptime_multiple: number;
-            ptimeMultiple: number;
+            ptime_multiple: bigint | number;
+            ptimeMultiple: bigint | number;
             scale_rtptime: boolean;
             scaleRtptime: boolean;
             seqnum: number;
@@ -1475,19 +1475,19 @@ export namespace GstRtp {
         get autoHeaderExtension(): boolean;
         set autoHeaderExtension(val: boolean);
         get max_ptime(): number;
-        set max_ptime(val: number);
+        set max_ptime(val: bigint | number);
         get maxPtime(): number;
-        set maxPtime(val: number);
+        set maxPtime(val: bigint | number);
         /**
          * Minimum duration of the packet data in ns (can't go above MTU)
          */
         get min_ptime(): number;
-        set min_ptime(val: number);
+        set min_ptime(val: bigint | number);
         /**
          * Minimum duration of the packet data in ns (can't go above MTU)
          */
         get minPtime(): number;
-        set minPtime(val: number);
+        set minPtime(val: bigint | number);
         get mtu(): number;
         set mtu(val: number);
         /**
@@ -1548,12 +1548,12 @@ export namespace GstRtp {
          * Force buffers to be multiples of this duration in ns (0 disables)
          */
         get ptime_multiple(): number;
-        set ptime_multiple(val: number);
+        set ptime_multiple(val: bigint | number);
         /**
          * Force buffers to be multiples of this duration in ns (0 disables)
          */
         get ptimeMultiple(): number;
-        set ptimeMultiple(val: number);
+        set ptimeMultiple(val: bigint | number);
         /**
          * Make the RTP packets' timestamps be scaled with the segment's rate
          * (corresponding to RTSP speed parameter). Disabling this property means
@@ -1868,7 +1868,7 @@ export namespace GstRtp {
          * @param input_meta a {@link Gst.Buffer}
          * @virtual
          */
-        vfunc_get_max_size(input_meta: Gst.Buffer): number;
+        vfunc_get_max_size(input_meta: Gst.Buffer): bigint | number;
         /**
          * @virtual
          */
@@ -1880,7 +1880,7 @@ export namespace GstRtp {
          * @param buffer a {@link Gst.Buffer} to modify if necessary
          * @virtual
          */
-        vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array | string, buffer: Gst.Buffer): boolean;
+        vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer): boolean;
         /**
          * @param direction
          * @param attributes
@@ -1925,8 +1925,8 @@ export namespace GstRtp {
             input_meta: Gst.Buffer,
             write_flags: RTPHeaderExtensionFlags,
             output: Gst.Buffer,
-            data: Uint8Array | string,
-        ): number;
+            data: Uint8Array,
+        ): bigint | number;
 
         // Methods
 
@@ -2517,7 +2517,7 @@ export namespace GstRtp {
          */
         sr_set_sender_info(
             ssrc: number,
-            ntptime: number,
+            ntptime: bigint | number,
             rtptime: number,
             packet_count: number,
             octet_count: number,
@@ -2588,7 +2588,7 @@ export namespace GstRtp {
          * @param timestamp NTP timestamp
          * @returns `true` if the report block returns the reference time correctly.
          */
-        xr_get_rrt(timestamp: number): boolean;
+        xr_get_rrt(timestamp: bigint | number): boolean;
         /**
          * Get the ssrc field of the XR `packet`.
          * @returns the ssrc.
@@ -2810,7 +2810,7 @@ export namespace GstRtp {
          * @param exttimestamp a previous extended timestamp
          * @param timestamp a new timestamp
          */
-        static ext_timestamp(exttimestamp: number, timestamp: number): [number, number];
+        static ext_timestamp(exttimestamp: bigint | number, timestamp: number): [number, number];
         /**
          * Similar to gst_rtp_buffer_get_extension_onebyte_header, but working
          * on the {@link GLib.Bytes} you get from gst_rtp_buffer_get_extension_bytes.

@@ -3107,7 +3107,7 @@ export namespace NetworkManager {
      * @returns a array of bytes, or `null` on error
      * @since 0.9.10
      */
-    function utils_hexstr2bin(hex: string, len: number): string;
+    function utils_hexstr2bin(hex: string, len: bigint | number): string;
     /**
      * Parses `asc` and converts it to binary form in a {@link GLib.ByteArray}. See
      * `nm_utils_hwaddr_aton()` if you don't want a {@link GLib.ByteArray}.
@@ -3138,7 +3138,7 @@ export namespace NetworkManager {
      * @returns `buffer`, or `null` if `asc` couldn't be parsed   or would be shorter or longer than `length`.
      * @since 0.9.10
      */
-    function utils_hwaddr_aton_len(asc: string, buffer: any | null, length: number): number;
+    function utils_hwaddr_aton_len(asc: string, buffer: any | null, length: bigint | number): number;
     /**
      * Returns the length in octets of a hardware address of type `type`.
      * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
@@ -3162,7 +3162,7 @@ export namespace NetworkManager {
      * @returns the textual form of `addr`
      * @since 0.9.10
      */
-    function utils_hwaddr_ntoa_len(addr: any | null, length: number): string;
+    function utils_hwaddr_ntoa_len(addr: any | null, length: bigint | number): string;
     /**
      * Returns the type (either <literal>ARPHRD_ETHER</literal> or
      * <literal>ARPHRD_INFINIBAND</literal>) of the raw address given its length.
@@ -3457,7 +3457,7 @@ export namespace NetworkManager {
      * @gir-type Callback
      */
     interface SettingValueIterFn {
-        (setting: Setting, key: string, value: GObject.Value | any, flags: GObject.ParamFlags): void;
+        (setting: Setting, key: string, value: unknown, flags: GObject.ParamFlags): void;
     }
     /**
      * @gir-type Callback
@@ -4259,7 +4259,7 @@ export namespace NetworkManager {
          * @param value
          * @virtual
          */
-        vfunc_update_one_secret(key: string, value: GObject.Value | any): number;
+        vfunc_update_one_secret(key: string, value: unknown): number;
 
         // Methods
 
@@ -6164,7 +6164,7 @@ export namespace NetworkManager {
             readOnly: boolean;
             slave_type: string;
             slaveType: string;
-            timestamp: number;
+            timestamp: bigint | number;
             type: string;
             uuid: string;
             zone: string;
@@ -6284,7 +6284,7 @@ export namespace NetworkManager {
          * property will not be preserved).
          */
         get timestamp(): number;
-        set timestamp(val: number);
+        set timestamp(val: bigint | number);
         /**
          * Base type of the connection. For hardware-dependent connections, should
          * contain the setting name of the hardware-type specific setting (ie,
@@ -7192,8 +7192,8 @@ export namespace NetworkManager {
             method: string;
             never_default: boolean;
             neverDefault: boolean;
-            route_metric: number;
-            routeMetric: number;
+            route_metric: bigint | number;
+            routeMetric: bigint | number;
         }
     }
 
@@ -7351,7 +7351,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get route_metric(): number;
-        set route_metric(val: number);
+        set route_metric(val: bigint | number);
         /**
          * The default metric for routes that don't explicitly specify a metric.
          * The default value -1 means that the metric is chosen automatically
@@ -7364,7 +7364,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get routeMetric(): number;
-        set routeMetric(val: number);
+        set routeMetric(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -7618,8 +7618,8 @@ export namespace NetworkManager {
             method: string;
             never_default: boolean;
             neverDefault: boolean;
-            route_metric: number;
-            routeMetric: number;
+            route_metric: bigint | number;
+            routeMetric: bigint | number;
         }
     }
 
@@ -7759,7 +7759,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get route_metric(): number;
-        set route_metric(val: number);
+        set route_metric(val: bigint | number);
         /**
          * The default metric for routes that don't explicitly specify a metric.
          * The default value -1 means that the metric is chosen automatically
@@ -7772,7 +7772,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get routeMetric(): number;
-        set routeMetric(val: number);
+        set routeMetric(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -8692,8 +8692,8 @@ export namespace NetworkManager {
             baud: number;
             bits: number;
             parity: number;
-            send_delay: number;
-            sendDelay: number;
+            send_delay: bigint | number;
+            sendDelay: bigint | number;
             stopbits: number;
         }
     }
@@ -8728,12 +8728,12 @@ export namespace NetworkManager {
          * Time to delay between each byte sent to the modem, in microseconds.
          */
         get send_delay(): number;
-        set send_delay(val: number);
+        set send_delay(val: bigint | number);
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
          */
         get sendDelay(): number;
-        set sendDelay(val: number);
+        set sendDelay(val: bigint | number);
         /**
          * Number of stop bits for communication on the serial port.  Either 1 or 2.
          * The 1 in "8n1" for example.

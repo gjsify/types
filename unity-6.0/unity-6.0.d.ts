@@ -237,7 +237,7 @@ export namespace Unity {
         input: Gio.InputStream,
         io_priority: number,
         cancellable: Gio.Cancellable,
-    ): globalThis.Promise<[Uint8Array, number]>;
+    ): globalThis.Promise<[Uint8Array, bigint | number]>;
     /**
      * <para>Asynchronously read a stream into memory. This method will close the input stream when done.</para>
      * @param input
@@ -263,7 +263,7 @@ export namespace Unity {
         io_priority: number,
         cancellable: Gio.Cancellable,
         _callback_: Gio.AsyncReadyCallback<Gio.InputStream>,
-    ): globalThis.Promise<[Uint8Array, number]> | void;
+    ): globalThis.Promise<[Uint8Array, bigint | number]> | void;
     /**
      * @param _res_
      */
@@ -650,7 +650,7 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Dee.Serializable.ConstructorProps {
             app_uri: string;
             appUri: string;
-            count: number;
+            count: bigint | number;
             count_visible: boolean;
             countVisible: boolean;
             progress: number;
@@ -678,7 +678,7 @@ export namespace Unity {
         get appUri(): string;
         set appUri(val: string);
         get count(): number;
-        set count(val: number);
+        set count(val: bigint | number);
         get count_visible(): boolean;
         set count_visible(val: boolean);
         get countVisible(): boolean;
@@ -1168,7 +1168,7 @@ export namespace Unity {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1195,7 +1195,7 @@ export namespace Unity {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2196,7 +2196,7 @@ export namespace Unity {
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
             search_string: string;
             searchString: string;
-            hints: GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
             results_model: Dee.SerializableModel;
             resultsModel: Dee.SerializableModel;
         }
@@ -2957,7 +2957,7 @@ export namespace Unity {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2984,7 +2984,7 @@ export namespace Unity {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3039,7 +3039,7 @@ export namespace Unity {
             iconHint: Gio.Icon;
             layout_hint: LayoutHint;
             layoutHint: LayoutHint;
-            hints: GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
         }
     }
 
@@ -3556,7 +3556,7 @@ export namespace Unity {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3583,7 +3583,7 @@ export namespace Unity {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

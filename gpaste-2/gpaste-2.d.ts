@@ -190,7 +190,7 @@ export namespace GPaste {
      * @param variant
      * @param len
      */
-    function util_get_dbus_au_result(variant: GLib.Variant, len: number): number;
+    function util_get_dbus_au_result(variant: GLib.Variant, len: bigint | number): number;
     /**
      * Get the "(ss)" GVariant as an item
      * @param variant a {@link GLib.Variant}
@@ -756,20 +756,20 @@ export namespace GPaste {
          * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
          */
-        get_element_at_index(index: number): globalThis.Promise<ClientItem>;
+        get_element_at_index(index: bigint | number): globalThis.Promise<ClientItem>;
         /**
          * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
-        get_element_at_index(index: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        get_element_at_index(index: bigint | number, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_element_at_index(
-            index: number,
+            index: bigint | number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ClientItem> | void;
         /**
@@ -783,7 +783,7 @@ export namespace GPaste {
          * @param index the index of the element we want to get
          * @returns a new {@link GPaste.ClientItem}
          */
-        get_element_at_index_sync(index: number): ClientItem;
+        get_element_at_index_sync(index: bigint | number): ClientItem;
         /**
          * Get an item from the `GPasteDaemon`
          * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
@@ -2134,7 +2134,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2161,7 +2161,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3173,7 +3173,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3200,7 +3200,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4047,7 +4047,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4074,7 +4074,7 @@ export namespace GPaste {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4441,7 +4441,7 @@ export namespace GPaste {
          * Change the "element-size" setting
          * @param value the maximum displayed size of an item
          */
-        set_element_size(value: number): void;
+        set_element_size(value: bigint | number): void;
         /**
          * Change the "empty-history-confirmation" setting
          * @param value whether to prompt for confirmation when emptying a history
@@ -4481,27 +4481,27 @@ export namespace GPaste {
          * Change the "max-displayed-history-size" setting
          * @param value the maximum number of items to display
          */
-        set_max_displayed_history_size(value: number): void;
+        set_max_displayed_history_size(value: bigint | number): void;
         /**
          * Change the "max-history-size" setting
          * @param value the maximum number of items the history can contain
          */
-        set_max_history_size(value: number): void;
+        set_max_history_size(value: bigint | number): void;
         /**
          * Change the "max-memory-usage" setting
          * @param value the maximum amount of memory we can use
          */
-        set_max_memory_usage(value: number): void;
+        set_max_memory_usage(value: bigint | number): void;
         /**
          * Change the "max-text-item-size" setting
          * @param value the maximum size for a textual item to be handled
          */
-        set_max_text_item_size(value: number): void;
+        set_max_text_item_size(value: bigint | number): void;
         /**
          * Change the "min-text-item-size" setting
          * @param value the minimum size for a textual item to be handled
          */
-        set_min_text_item_size(value: number): void;
+        set_min_text_item_size(value: bigint | number): void;
         /**
          * Change the "open-centered" setting
          * @param value the new history name

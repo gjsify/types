@@ -3899,15 +3899,15 @@ export namespace PackageKitGlib {
             connected: boolean;
             distro_id: string;
             distroId: string;
-            filters: number;
-            groups: number;
+            filters: bigint | number;
+            groups: bigint | number;
             locked: boolean;
             mime_types: string[];
             mimeTypes: string[];
             network_state: NetworkEnum;
             networkState: NetworkEnum;
-            provides: number;
-            roles: number;
+            provides: bigint | number;
+            roles: bigint | number;
             version_major: number;
             versionMajor: number;
             version_micro: number;
@@ -3974,12 +3974,12 @@ export namespace PackageKitGlib {
          * @since 0.5.2
          */
         get filters(): number;
-        set filters(val: number);
+        set filters(val: bigint | number);
         /**
          * @since 0.5.2
          */
         get groups(): number;
-        set groups(val: number);
+        set groups(val: bigint | number);
         /**
          * @since 0.5.3
          */
@@ -4009,12 +4009,12 @@ export namespace PackageKitGlib {
          * @since 0.8.8
          */
         get provides(): number;
-        set provides(val: number);
+        set provides(val: bigint | number);
         /**
          * @since 0.5.2
          */
         get roles(): number;
-        set roles(val: number);
+        set roles(val: bigint | number);
         /**
          * @since 0.5.2
          * @read-only
@@ -4573,13 +4573,13 @@ export namespace PackageKitGlib {
 
         interface ConstructorProps extends Source.ConstructorProps {
             description: string;
-            download_size: number;
-            downloadSize: number;
+            download_size: bigint | number;
+            downloadSize: bigint | number;
             group: GroupEnum;
             license: string;
             package_id: string;
             packageId: string;
-            size: number;
+            size: bigint | number;
             summary: string;
             url: string;
         }
@@ -4602,12 +4602,12 @@ export namespace PackageKitGlib {
          * @since 1.2.4
          */
         get download_size(): number;
-        set download_size(val: number);
+        set download_size(val: bigint | number);
         /**
          * @since 1.2.4
          */
         get downloadSize(): number;
-        set downloadSize(val: number);
+        set downloadSize(val: bigint | number);
         /**
          * @since 0.5.4
          */
@@ -4632,7 +4632,7 @@ export namespace PackageKitGlib {
          * @since 0.5.4
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * @since 0.9.1
          */
@@ -5404,7 +5404,7 @@ export namespace PackageKitGlib {
             license: string;
             package_id: string;
             packageId: string;
-            size: number;
+            size: bigint | number;
             summary: string;
             update_bugzilla_urls: string[];
             updateBugzillaUrls: string[];
@@ -5476,7 +5476,7 @@ export namespace PackageKitGlib {
          * @since 0.5.4
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * @since 0.5.4
          */
@@ -6099,8 +6099,8 @@ export namespace PackageKitGlib {
             allowCancel: boolean;
             caller_active: boolean;
             callerActive: boolean;
-            download_size_remaining: number;
-            downloadSizeRemaining: number;
+            download_size_remaining: bigint | number;
+            downloadSizeRemaining: bigint | number;
             elapsed_time: number;
             elapsedTime: number;
             item_progress: ItemProgress;
@@ -6115,8 +6115,8 @@ export namespace PackageKitGlib {
             sender: string;
             speed: number;
             status: number;
-            transaction_flags: number;
-            transactionFlags: number;
+            transaction_flags: bigint | number;
+            transactionFlags: bigint | number;
             transaction_id: string;
             transactionId: string;
             uid: number;
@@ -6160,13 +6160,13 @@ export namespace PackageKitGlib {
          * @since 0.8.0
          */
         get download_size_remaining(): number;
-        set download_size_remaining(val: number);
+        set download_size_remaining(val: bigint | number);
         /**
          * Number of bytes remaining to download.
          * @since 0.8.0
          */
         get downloadSizeRemaining(): number;
-        set downloadSizeRemaining(val: number);
+        set downloadSizeRemaining(val: bigint | number);
         /**
          * Amount of time the transaction has taken in seconds.
          * @since 0.5.2
@@ -6258,13 +6258,13 @@ export namespace PackageKitGlib {
          * @since 0.8.8
          */
         get transaction_flags(): number;
-        set transaction_flags(val: number);
+        set transaction_flags(val: bigint | number);
         /**
          * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} associated with this transaction.
          * @since 0.8.8
          */
         get transactionFlags(): number;
-        set transactionFlags(val: number);
+        set transactionFlags(val: bigint | number);
         /**
          * ID used by this transaction.
          * @since 0.5.2
@@ -6421,7 +6421,7 @@ export namespace PackageKitGlib {
          * @param download_size_remaining number of bytes remaining to download.
          * @returns `true` if value changed.
          */
-        set_download_size_remaining(download_size_remaining: number): boolean;
+        set_download_size_remaining(download_size_remaining: bigint | number): boolean;
         /**
          * Set the amount of time the transaction has taken.
          * @param elapsed_time time in seconds
@@ -6487,7 +6487,7 @@ export namespace PackageKitGlib {
          * @param transaction_flags a {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} values.
          * @returns `true` if value changed.
          */
-        set_transaction_flags(transaction_flags: number): boolean;
+        set_transaction_flags(transaction_flags: bigint | number): boolean;
         /**
          * Set the ID used by this transaction.
          * @param transaction_id a transaction ID.
@@ -6865,8 +6865,8 @@ export namespace PackageKitGlib {
             inputs: number;
             progress: Progress;
             role: RoleEnum;
-            transaction_flags: number;
-            transactionFlags: number;
+            transaction_flags: bigint | number;
+            transactionFlags: bigint | number;
         }
     }
 
@@ -6899,13 +6899,13 @@ export namespace PackageKitGlib {
          * @since 0.8.1
          */
         get transaction_flags(): number;
-        set transaction_flags(val: number);
+        set transaction_flags(val: bigint | number);
         /**
          * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} for this result.
          * @since 0.8.1
          */
         get transactionFlags(): number;
-        set transactionFlags(val: number);
+        set transactionFlags(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -8986,7 +8986,7 @@ export namespace PackageKitGlib {
      * A bitfield capable of storing enumerations with up to 64 values.
      * @gir-type Alias
      */
-    type Bitfield = number;
+    type Bitfield = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

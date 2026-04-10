@@ -1555,7 +1555,7 @@ export namespace Snapd {
             released_at: GLib.DateTime;
             releasedAt: GLib.DateTime;
             revision: string;
-            size: number;
+            size: bigint | number;
             version: string;
         }
     }
@@ -4105,7 +4105,7 @@ export namespace Snapd {
          * @param id login ID to use.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        logout_async(id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        logout_async(id: bigint | number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously log out from the snap store.
          * See `snapd_client_logout_sync()` for more information.
@@ -4114,7 +4114,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         logout_async(
-            id: number,
+            id: bigint | number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -4126,7 +4126,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         logout_async(
-            id: number,
+            id: bigint | number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -4143,7 +4143,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          */
-        logout_sync(id: number, cancellable?: Gio.Cancellable | null): boolean;
+        logout_sync(id: bigint | number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously ???.
          * See `snapd_client_prefer_sync()` for more information.
@@ -4873,11 +4873,11 @@ export namespace Snapd {
             manual: boolean;
             name: string;
             plug: PlugRef;
-            plug_attrs: GLib.HashTable<any, any>;
-            plugAttrs: GLib.HashTable<any, any>;
+            plug_attrs: { [key: string]: any } | GLib.HashTable<any, any>;
+            plugAttrs: { [key: string]: any } | GLib.HashTable<any, any>;
             slot: SlotRef;
-            slot_attrs: GLib.HashTable<any, any>;
-            slotAttrs: GLib.HashTable<any, any>;
+            slot_attrs: { [key: string]: any } | GLib.HashTable<any, any>;
+            slotAttrs: { [key: string]: any } | GLib.HashTable<any, any>;
             snap: string;
         }
     }
@@ -5056,7 +5056,7 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: GLib.Bytes;
+            data: GLib.Bytes | Uint8Array;
             mime_type: string;
             mimeType: string;
         }
@@ -5652,7 +5652,7 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: GLib.HashTable<any, any>;
+            attributes: { [key: string]: any } | GLib.HashTable<any, any>;
             connections: any[];
             interface: string;
             label: string;
@@ -6060,7 +6060,7 @@ export namespace Snapd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: GLib.HashTable<any, any>;
+            attributes: { [key: string]: any } | GLib.HashTable<any, any>;
             connections: any[];
             interface: string;
             label: string;
@@ -6333,14 +6333,14 @@ export namespace Snapd {
             description: string;
             developer: string;
             devmode: boolean;
-            download_size: number;
-            downloadSize: number;
+            download_size: bigint | number;
+            downloadSize: bigint | number;
             icon: string;
             id: string;
             install_date: GLib.DateTime;
             installDate: GLib.DateTime;
-            installed_size: number;
-            installedSize: number;
+            installed_size: bigint | number;
+            installedSize: bigint | number;
             jailmode: boolean;
             license: string;
             media: any[];
@@ -7171,12 +7171,12 @@ export namespace Snapd {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: string;
             kind: string;
-            progress_done: number;
-            progressDone: number;
+            progress_done: bigint | number;
+            progressDone: bigint | number;
             progress_label: string;
             progressLabel: string;
-            progress_total: number;
-            progressTotal: number;
+            progress_total: bigint | number;
+            progressTotal: bigint | number;
             ready: boolean;
             ready_time: GLib.DateTime;
             readyTime: GLib.DateTime;
@@ -7364,7 +7364,7 @@ export namespace Snapd {
             auth_data: AuthData;
             authData: AuthData;
             email: string;
-            id: number;
+            id: bigint | number;
             ssh_keys: string[];
             sshKeys: string[];
             username: string;

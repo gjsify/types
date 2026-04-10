@@ -1674,7 +1674,7 @@ export namespace AppStreamGlib {
      * @returns the version string, or `null` for error.
      * @since 0.3.5
      */
-    function inf_get_driver_version(keyfile: GLib.KeyFile, timestamp: number): string;
+    function inf_get_driver_version(keyfile: GLib.KeyFile, timestamp: bigint | number): string;
     /**
      * Repairs .inf file data and opens it as a keyfile.
      *
@@ -2025,7 +2025,7 @@ export namespace AppStreamGlib {
      * @returns A new GUID, or `null` if the namespace_id was invalid
      * @since 0.6.13
      */
-    function utils_guid_from_data(namespace_id: string, data: number, data_len: number): string;
+    function utils_guid_from_data(namespace_id: string, data: number, data_len: bigint | number): string;
     /**
      * Returns a GUID for a given string. This uses a hash and so even small
      * differences in the `str` will produce radically different return values.
@@ -3910,7 +3910,7 @@ export namespace AppStreamGlib {
          * @param donor the donor.
          * @param flags any optional {@link AppStreamGlib.AppSubsumeFlags}, e.g. {@link AppStreamGlib.AppSubsumeFlags.NO_OVERWRITE}
          */
-        subsume_full(donor: App, flags: number): void;
+        subsume_full(donor: App, flags: bigint | number): void;
         /**
          * Exports a DOM tree to an XML file.
          * @param file a {@link Gio.File}
@@ -5260,7 +5260,7 @@ export namespace AppStreamGlib {
          * Sets the typical duration of the install.
          * @param install_duration the install duration in seconds
          */
-        set_install_duration(install_duration: number): void;
+        set_install_duration(install_duration: bigint | number): void;
         /**
          * Sets the release kind.
          * @param kind the {@link AppStreamGlib.ReleaseKind}
@@ -5271,7 +5271,7 @@ export namespace AppStreamGlib {
          * @param kind a {@link AppStreamGlib.SizeKind}, e.g. #AS_SIZE_KIND_DOWNLOAD
          * @param size a size in bytes, or 0 for unknown
          */
-        set_size(kind: SizeKind | null, size: number): void;
+        set_size(kind: SizeKind | null, size: bigint | number): void;
         /**
          * Sets the release state.
          * @param state the release state, e.g. {@link AppStreamGlib.ReleaseState.INSTALLED}
@@ -5281,7 +5281,7 @@ export namespace AppStreamGlib {
          * Sets the release timestamp.
          * @param timestamp the timestamp value.
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
         /**
          * Sets the release urgency.
          * @param urgency the release urgency, e.g. {@link AppStreamGlib.UrgencyKind.CRITICAL}
@@ -5458,7 +5458,7 @@ export namespace AppStreamGlib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             date: Review;
             description: string;
-            flags: number;
+            flags: bigint | number;
             id: string;
             locale: string;
             rating: number;
@@ -5493,7 +5493,7 @@ export namespace AppStreamGlib {
          * @since 0.6.1
          */
         get flags(): number;
-        set flags(val: number);
+        set flags(val: bigint | number);
         /**
          * @since 0.6.1
          */

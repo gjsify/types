@@ -276,7 +276,7 @@ export namespace Json {
      * @since 0.4
      * @deprecated since 0.10: Use {@link Json.gobject_from_data} instead
      */
-    function construct_gobject<T = GObject.Object>(gtype: GObject.GType, data: string, length: number): T;
+    function construct_gobject<T = GObject.Object>(gtype: GObject.GType, data: string, length: bigint | number): T;
     /**
      * Parses the given string and returns the corresponding JSON tree.
      *
@@ -314,7 +314,7 @@ export namespace Json {
      * @returns a new object instance of the given type
      * @since 0.10
      */
-    function gobject_from_data<T = GObject.Object>(gtype: GObject.GType, data: string, length: number): T;
+    function gobject_from_data<T = GObject.Object>(gtype: GObject.GType, data: string, length: bigint | number): T;
     /**
      * Creates a JSON tree representing the passed object instance.
      *
@@ -386,7 +386,11 @@ export namespace Json {
      * @returns A newly created {@link GLib.Variant}D compliant
      * @since 0.14
      */
-    function gvariant_deserialize_data(json: string, length: number, signature?: string | null): GLib.Variant | null;
+    function gvariant_deserialize_data(
+        json: string,
+        length: bigint | number,
+        signature?: string | null,
+    ): GLib.Variant | null;
     /**
      * Converts `variant` to a JSON tree.
      * @param variant A {@link GLib.Variant} to convert
@@ -624,7 +628,7 @@ export namespace Json {
          * @param value the value of the member or element
          * @returns the builder instance
          */
-        add_int_value(value: number): Builder | null;
+        add_int_value(value: bigint | number): Builder | null;
         /**
          * Adds a null value to the currently open object member or array.
          *
@@ -1223,7 +1227,7 @@ export namespace Json {
          * @param length the length of the buffer, or -1 if it is `NUL` terminated
          * @returns `TRUE` if the buffer was succesfully parsed
          */
-        load_from_data(data: string, length: number): boolean;
+        load_from_data(data: string, length: bigint | number): boolean;
         /**
          * Loads a JSON stream from the content of `filename` and parses it.
          *
@@ -1995,7 +1999,7 @@ export namespace Json {
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_int}
          * @param value the integer value to add
          */
-        add_int_element(value: number): void;
+        add_int_element(value: bigint | number): void;
         /**
          * Conveniently adds a `null` element into an array
          *
@@ -2434,7 +2438,7 @@ export namespace Json {
          * @param value an integer
          * @returns the initialized node
          */
-        init_int(value: number): Node;
+        init_int(value: bigint | number): Node;
         /**
          * Initializes `node` to `JSON_NODE_NULL`.
          *
@@ -2528,7 +2532,7 @@ export namespace Json {
          * a value node.
          * @param value an integer value
          */
-        set_int(value: number): void;
+        set_int(value: bigint | number): void;
         /**
          * Sets `objects` inside `node`.
          *
@@ -2771,7 +2775,7 @@ export namespace Json {
          * @param default_value the value to return if `member_name` is not valid
          * @returns the integer value of the object's member, or the   given default
          */
-        get_int_member_with_default(member_name: string, default_value: number): number;
+        get_int_member_with_default(member_name: string, default_value: bigint | number): number;
         /**
          * Retrieves the value of the given member inside an object.
          * @param member_name the name of the JSON object member to access
@@ -2913,7 +2917,7 @@ export namespace Json {
          * @param member_name the name of the member
          * @param value the value of the member
          */
-        set_int_member(member_name: string, value: number): void;
+        set_int_member(member_name: string, value: bigint | number): void;
         /**
          * Sets the value of a member inside an object.
          *
@@ -3122,7 +3126,7 @@ export namespace Json {
                 property_name: string,
                 pspec: GObject.ParamSpec,
                 property_node: Node,
-            ): [boolean, unknown];
+            ): [boolean, GObject.Value | any];
             /**
              * Calls the {@link Json.Serializable.find_property} implementation on
              * the {@link Json.Serializable} instance, which will return the property
@@ -3138,7 +3142,7 @@ export namespace Json {
              * @param pspec a property description
              * @virtual
              */
-            vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+            vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
             /**
              * @param args
              */
@@ -3152,11 +3156,7 @@ export namespace Json {
              * @param pspec a property description
              * @virtual
              */
-            vfunc_serialize_property(
-                property_name: string,
-                value: GObject.Value | any,
-                pspec: GObject.ParamSpec,
-            ): Node | null;
+            vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Node | null;
             /**
              * Calls the {@link Json.Serializable.set_property} implementation
              * on the {@link Json.Serializable} instance, which will set the property
@@ -3165,7 +3165,7 @@ export namespace Json {
              * @param value the property value to set
              * @virtual
              */
-            vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+            vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
             /**
              * @param args
              */
@@ -3365,7 +3365,7 @@ export namespace Json {
             property_name: string,
             pspec: GObject.ParamSpec,
             property_node: Node,
-        ): [boolean, unknown];
+        ): [boolean, GObject.Value | any];
         /**
          * Calls the {@link Json.Serializable.find_property} implementation on
          * the {@link Json.Serializable} instance, which will return the property
@@ -3393,7 +3393,7 @@ export namespace Json {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+        vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
         /**
          * the generic getter for all properties of this type. Should be
          *  overridden for every type with properties.
@@ -3407,7 +3407,7 @@ export namespace Json {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Asks a {@link Json.Serializable} implementation to serialize an object
          * property into a JSON node.
@@ -3421,11 +3421,7 @@ export namespace Json {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(
-            property_name: string,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-        ): Node | null;
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Node | null;
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
          * on the {@link Json.Serializable} instance, which will set the property
@@ -3440,7 +3436,7 @@ export namespace Json {
          * @param value the property value to set
          * @virtual
          */
-        vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
         /**
          * the generic setter for all properties of this type. Should be
          *  overridden for every type with properties. If implementations of
@@ -3460,7 +3456,7 @@ export namespace Json {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
     }
 
     export const Serializable: SerializableNamespace & {

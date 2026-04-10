@@ -6562,14 +6562,14 @@ export namespace Gthree {
          * @param data
          * @param stride
          */
-        download(renderer: Renderer, data: number, stride: number): void;
+        download(renderer: Renderer, data: number, stride: bigint | number): void;
         /**
          * @param renderer
          * @param area
          * @param data
          * @param stride
          */
-        download_area(renderer: Renderer, area: cairo.RectangleInt, data: number, stride: number): void;
+        download_area(renderer: Renderer, area: cairo.RectangleInt, data: number, stride: bigint | number): void;
         get_depth_buffer(): boolean;
         get_height(): number;
         get_stencil_buffer(): boolean;

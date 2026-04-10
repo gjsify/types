@@ -405,7 +405,7 @@ export namespace TotemPlParser {
          * @param len the length of data to check
          * @param debug `true` if debug statements should be printed
          */
-        static can_parse_from_data(data: string, len: number, debug: boolean): boolean;
+        static can_parse_from_data(data: string, len: bigint | number, debug: boolean): boolean;
         /**
          * Checks if the file can be parsed. Files can be parsed if:
          * <itemizedlist>
@@ -446,7 +446,7 @@ export namespace TotemPlParser {
          * @param metadata
          * @virtual
          */
-        vfunc_entry_parsed(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
+        vfunc_entry_parsed(uri: string, metadata: GLib.HashTable<any, any>): void;
         /**
          * @param uri
          * @virtual
@@ -457,7 +457,7 @@ export namespace TotemPlParser {
          * @param metadata
          * @virtual
          */
-        vfunc_playlist_started(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
+        vfunc_playlist_started(uri: string, metadata: GLib.HashTable<any, any>): void;
 
         // Methods
 

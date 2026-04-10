@@ -2780,7 +2780,7 @@ export namespace GIRepository {
          * @param n a union field index
          * @returns The {@link GIRepository.ConstantInfo}, or   `NULL` if the union is not discriminated. Free it with   {@link GIRepository.BaseInfo.unref} when done.
          */
-        get_discriminator(n: number): ConstantInfo | null;
+        get_discriminator(n: bigint | number): ConstantInfo | null;
         /**
          * Obtain the offset of the discriminator field within the structure.
          *
@@ -3105,34 +3105,6 @@ export namespace GIRepository {
         v_size: number;
         v_string: string;
         v_pointer: any;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                v_boolean: boolean;
-                v_int8: number;
-                v_uint8: number;
-                v_int16: number;
-                v_uint16: number;
-                v_int32: number;
-                v_uint32: number;
-                v_int64: number;
-                v_uint64: number;
-                v_float: number;
-                v_double: number;
-                v_short: number;
-                v_ushort: number;
-                v_int: number;
-                v_uint: number;
-                v_long: number;
-                v_ulong: number;
-                v_ssize: number;
-                v_size: number;
-                v_string: string;
-                v_pointer: any;
-            }>,
-        );
     }
 
     /**

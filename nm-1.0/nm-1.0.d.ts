@@ -4924,7 +4924,7 @@ export namespace NM {
      * @returns `true` if the input key is a valid base64 encoded key   with `required_key_len` bytes.
      * @since 1.16
      */
-    function utils_base64secret_decode(base64_key: string, required_key_len: number): [boolean, number];
+    function utils_base64secret_decode(base64_key: string, required_key_len: bigint | number): [boolean, number];
     /**
      * Converts the byte array `src` into a hexadecimal string. If `final_len` is
      * greater than -1, the returned string is terminated at that index
@@ -5116,7 +5116,7 @@ export namespace NM {
      * @param length the expected length in bytes of the result
      * @returns a new {@link GLib.ByteArray}, or `null` if `asc` couldn't be parsed
      */
-    function utils_hwaddr_atoba(asc: string, length: number): Uint8Array;
+    function utils_hwaddr_atoba(asc: string, length: bigint | number): Uint8Array;
     /**
      * Parses `asc` and converts it to binary form in `buffer`.
      * Bytes in `asc` can be separated by colons (:), or hyphens (-), but not mixed.
@@ -5133,7 +5133,7 @@ export namespace NM {
      * @param length the length of address that `asc` is expected to convert to   (or -1 to accept any length up to `NM_UTILS_HWADDR_LEN_MAX`)
      * @returns the canonicalized address if `asc` appears to   be a valid hardware address of the indicated length, `null` if not.
      */
-    function utils_hwaddr_canonical(asc: string, length: number): string;
+    function utils_hwaddr_canonical(asc: string, length: bigint | number): string;
     /**
      * Returns the length in octets of a hardware address of type `type`.
      *
@@ -5175,9 +5175,9 @@ export namespace NM {
      */
     function utils_hwaddr_matches(
         hwaddr1: any | null,
-        hwaddr1_len: number,
+        hwaddr1_len: bigint | number,
         hwaddr2: any | null,
-        hwaddr2_len: number,
+        hwaddr2_len: bigint | number,
     ): boolean;
     /**
      * Converts `addr` to textual form.
@@ -5192,7 +5192,7 @@ export namespace NM {
      * @param length the length of address that `asc` is expected to convert to   (or -1 to accept any length up to `NM_UTILS_HWADDR_LEN_MAX`)
      * @returns `true` if `asc` appears to be a valid hardware address   of the indicated length, `false` if not.
      */
-    function utils_hwaddr_valid(asc: string, length: number): boolean;
+    function utils_hwaddr_valid(asc: string, length: bigint | number): boolean;
     /**
      * Validate the network interface name.
      * @param name Name of interface
@@ -5786,7 +5786,7 @@ export namespace NM {
      * @gir-type Callback
      */
     interface SettingValueIterFn {
-        (setting: Setting, key: string, value: GObject.Value | any, flags: GObject.ParamFlags): void;
+        (setting: Setting, key: string, value: unknown, flags: GObject.ParamFlags): void;
     }
     /**
      * @gir-type Callback
@@ -7424,7 +7424,7 @@ export namespace NM {
             mode: __80211Mode;
             rsn_flags: __80211ApSecurityFlags;
             rsnFlags: __80211ApSecurityFlags;
-            ssid: GLib.Bytes;
+            ssid: GLib.Bytes | Uint8Array;
             strength: number;
             wpa_flags: __80211ApSecurityFlags;
             wpaFlags: __80211ApSecurityFlags;
@@ -8000,7 +8000,7 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
-            created: number;
+            created: bigint | number;
             devices: Device[];
             rollback_timeout: number;
             rollbackTimeout: number;
@@ -10841,7 +10841,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10868,7 +10868,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11492,7 +11492,7 @@ export namespace NM {
         get_applied_connection_async(
             flags: number,
             cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<[Connection, number]>;
+        ): globalThis.Promise<[Connection, bigint | number]>;
         /**
          * Asynchronously begins and gets the currently applied connection.
          * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
@@ -11514,7 +11514,7 @@ export namespace NM {
             flags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[Connection, number]> | void;
+        ): globalThis.Promise<[Connection, bigint | number]> | void;
         /**
          * Gets the result of a call to `nm_device_get_applied_connection_async()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
@@ -11729,7 +11729,7 @@ export namespace NM {
          */
         reapply(
             connection: Connection | null,
-            version_id: number,
+            version_id: bigint | number,
             flags: number,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -11743,7 +11743,7 @@ export namespace NM {
          */
         reapply_async(
             connection: Connection | null,
-            version_id: number,
+            version_id: bigint | number,
             flags: number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
@@ -11758,7 +11758,7 @@ export namespace NM {
          */
         reapply_async(
             connection: Connection | null,
-            version_id: number,
+            version_id: bigint | number,
             flags: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -11774,7 +11774,7 @@ export namespace NM {
          */
         reapply_async(
             connection: Connection | null,
-            version_id: number,
+            version_id: bigint | number,
             flags: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -13586,8 +13586,8 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
-            cipher_suite: number;
-            cipherSuite: number;
+            cipher_suite: bigint | number;
+            cipherSuite: bigint | number;
             encoding_sa: number;
             encodingSa: number;
             encrypt: boolean;
@@ -13601,7 +13601,7 @@ export namespace NM {
             replay_protect: boolean;
             replayProtect: boolean;
             scb: boolean;
-            sci: number;
+            sci: bigint | number;
             validation: string;
             window: number;
         }
@@ -14881,13 +14881,13 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
-            group: number;
+            group: bigint | number;
             mode: string;
             multi_queue: boolean;
             multiQueue: boolean;
             no_pi: boolean;
             noPi: boolean;
-            owner: number;
+            owner: bigint | number;
             vnet_hdr: boolean;
             vnetHdr: boolean;
         }
@@ -15785,8 +15785,8 @@ export namespace NM {
             active_access_point: AccessPoint;
             activeAccessPoint: AccessPoint;
             bitrate: number;
-            last_scan: number;
-            lastScan: number;
+            last_scan: bigint | number;
+            lastScan: bigint | number;
             mode: __80211Mode;
             perm_hw_address: string;
             permHwAddress: string;
@@ -16552,8 +16552,8 @@ export namespace NM {
             fwmark: number;
             listen_port: number;
             listenPort: number;
-            public_key: GLib.Bytes;
-            publicKey: GLib.Bytes;
+            public_key: GLib.Bytes | Uint8Array;
+            publicKey: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -16759,7 +16759,7 @@ export namespace NM {
 
         interface ConstructorProps extends Object.ConstructorProps {
             family: number;
-            options: GLib.HashTable<string, string>;
+            options: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -17121,8 +17121,8 @@ export namespace NM {
             filename: string;
             flags: number;
             unsaved: boolean;
-            version_id: number;
-            versionId: number;
+            version_id: bigint | number;
+            versionId: bigint | number;
             visible: boolean;
         }
     }
@@ -18271,7 +18271,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18298,7 +18298,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19437,7 +19437,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19464,7 +19464,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19864,16 +19864,16 @@ export namespace NM {
             anonymousIdentity: string;
             auth_timeout: number;
             authTimeout: number;
-            ca_cert: GLib.Bytes;
-            caCert: GLib.Bytes;
+            ca_cert: GLib.Bytes | Uint8Array;
+            caCert: GLib.Bytes | Uint8Array;
             ca_cert_password: string;
             caCertPassword: string;
             ca_cert_password_flags: SettingSecretFlags;
             caCertPasswordFlags: SettingSecretFlags;
             ca_path: string;
             caPath: string;
-            client_cert: GLib.Bytes;
-            clientCert: GLib.Bytes;
+            client_cert: GLib.Bytes | Uint8Array;
+            clientCert: GLib.Bytes | Uint8Array;
             client_cert_password: string;
             clientCertPassword: string;
             client_cert_password_flags: SettingSecretFlags;
@@ -19892,8 +19892,8 @@ export namespace NM {
             password: string;
             password_flags: SettingSecretFlags;
             passwordFlags: SettingSecretFlags;
-            password_raw: GLib.Bytes;
-            passwordRaw: GLib.Bytes;
+            password_raw: GLib.Bytes | Uint8Array;
+            passwordRaw: GLib.Bytes | Uint8Array;
             password_raw_flags: SettingSecretFlags;
             passwordRawFlags: SettingSecretFlags;
             phase1_auth_flags: number;
@@ -19910,16 +19910,16 @@ export namespace NM {
             phase2Auth: string;
             phase2_autheap: string;
             phase2Autheap: string;
-            phase2_ca_cert: GLib.Bytes;
-            phase2CaCert: GLib.Bytes;
+            phase2_ca_cert: GLib.Bytes | Uint8Array;
+            phase2CaCert: GLib.Bytes | Uint8Array;
             phase2_ca_cert_password: string;
             phase2CaCertPassword: string;
             phase2_ca_cert_password_flags: SettingSecretFlags;
             phase2CaCertPasswordFlags: SettingSecretFlags;
             phase2_ca_path: string;
             phase2CaPath: string;
-            phase2_client_cert: GLib.Bytes;
-            phase2ClientCert: GLib.Bytes;
+            phase2_client_cert: GLib.Bytes | Uint8Array;
+            phase2ClientCert: GLib.Bytes | Uint8Array;
             phase2_client_cert_password: string;
             phase2ClientCertPassword: string;
             phase2_client_cert_password_flags: SettingSecretFlags;
@@ -19928,8 +19928,8 @@ export namespace NM {
             phase2DomainMatch: string;
             phase2_domain_suffix_match: string;
             phase2DomainSuffixMatch: string;
-            phase2_private_key: GLib.Bytes;
-            phase2PrivateKey: GLib.Bytes;
+            phase2_private_key: GLib.Bytes | Uint8Array;
+            phase2PrivateKey: GLib.Bytes | Uint8Array;
             phase2_private_key_password: string;
             phase2PrivateKeyPassword: string;
             phase2_private_key_password_flags: SettingSecretFlags;
@@ -19939,8 +19939,8 @@ export namespace NM {
             pin: string;
             pin_flags: SettingSecretFlags;
             pinFlags: SettingSecretFlags;
-            private_key: GLib.Bytes;
-            privateKey: GLib.Bytes;
+            private_key: GLib.Bytes | Uint8Array;
+            privateKey: GLib.Bytes | Uint8Array;
             private_key_password: string;
             privateKeyPassword: string;
             private_key_password_flags: SettingSecretFlags;
@@ -20023,7 +20023,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_ca_cert()` function instead.
          */
         get ca_cert(): GLib.Bytes;
-        set ca_cert(val: GLib.Bytes);
+        set ca_cert(val: GLib.Bytes | Uint8Array);
         /**
          * Contains the CA certificate if used by the EAP method specified in the
          * {@link NM.Setting8021x.eap} property.
@@ -20044,7 +20044,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_ca_cert()` function instead.
          */
         get caCert(): GLib.Bytes;
-        set caCert(val: GLib.Bytes);
+        set caCert(val: GLib.Bytes | Uint8Array);
         /**
          * The password used to access the CA certificate stored in
          * {@link NM.Setting8021x.ca_cert} property. Only makes sense if the certificate
@@ -20108,7 +20108,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_client_cert()` function instead.
          */
         get client_cert(): GLib.Bytes;
-        set client_cert(val: GLib.Bytes);
+        set client_cert(val: GLib.Bytes | Uint8Array);
         /**
          * Contains the client certificate if used by the EAP method specified in
          * the {@link NM.Setting8021x.eap} property.
@@ -20124,7 +20124,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_client_cert()` function instead.
          */
         get clientCert(): GLib.Bytes;
-        set clientCert(val: GLib.Bytes);
+        set clientCert(val: GLib.Bytes | Uint8Array);
         /**
          * The password used to access the client certificate stored in
          * {@link NM.Setting8021x.client_cert} property. Only makes sense if the certificate
@@ -20276,7 +20276,7 @@ export namespace NM {
          * property are specified, {@link NM.Setting8021x.password} is preferred.
          */
         get password_raw(): GLib.Bytes;
-        set password_raw(val: GLib.Bytes);
+        set password_raw(val: GLib.Bytes | Uint8Array);
         /**
          * Password used for EAP authentication methods, given as a byte array to
          * allow passwords in other encodings than UTF-8 to be used. If both the
@@ -20284,7 +20284,7 @@ export namespace NM {
          * property are specified, {@link NM.Setting8021x.password} is preferred.
          */
         get passwordRaw(): GLib.Bytes;
-        set passwordRaw(val: GLib.Bytes);
+        set passwordRaw(val: GLib.Bytes | Uint8Array);
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.password_raw} property.
          */
@@ -20460,7 +20460,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_ca_cert()` function instead.
          */
         get phase2_ca_cert(): GLib.Bytes;
-        set phase2_ca_cert(val: GLib.Bytes);
+        set phase2_ca_cert(val: GLib.Bytes | Uint8Array);
         /**
          * Contains the "phase 2" CA certificate if used by the EAP method specified
          * in the {@link NM.Setting8021x.phase2_auth} or {@link NM.Setting8021x.phase2_autheap}
@@ -20482,7 +20482,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_ca_cert()` function instead.
          */
         get phase2CaCert(): GLib.Bytes;
-        set phase2CaCert(val: GLib.Bytes);
+        set phase2CaCert(val: GLib.Bytes | Uint8Array);
         /**
          * The password used to access the "phase2" CA certificate stored in
          * {@link NM.Setting8021x.phase2_ca_cert} property. Only makes sense if the certificate
@@ -20549,7 +20549,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_client_cert()` function instead.
          */
         get phase2_client_cert(): GLib.Bytes;
-        set phase2_client_cert(val: GLib.Bytes);
+        set phase2_client_cert(val: GLib.Bytes | Uint8Array);
         /**
          * Contains the "phase 2" client certificate if used by the EAP method
          * specified in the {@link NM.Setting8021x.phase2_auth} or
@@ -20568,7 +20568,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_client_cert()` function instead.
          */
         get phase2ClientCert(): GLib.Bytes;
-        set phase2ClientCert(val: GLib.Bytes);
+        set phase2ClientCert(val: GLib.Bytes | Uint8Array);
         /**
          * The password used to access the "phase2" client certificate stored in
          * {@link NM.Setting8021x.phase2_client_cert} property. Only makes sense if the certificate
@@ -20672,7 +20672,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_private_key()` function instead.
          */
         get phase2_private_key(): GLib.Bytes;
-        set phase2_private_key(val: GLib.Bytes);
+        set phase2_private_key(val: GLib.Bytes | Uint8Array);
         /**
          * Contains the "phase 2" inner private key when the
          * {@link NM.Setting8021x.phase2_auth} or {@link NM.Setting8021x.phase2_autheap} property is
@@ -20698,7 +20698,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_private_key()` function instead.
          */
         get phase2PrivateKey(): GLib.Bytes;
-        set phase2PrivateKey(val: GLib.Bytes);
+        set phase2PrivateKey(val: GLib.Bytes | Uint8Array);
         /**
          * The password used to decrypt the "phase 2" private key specified in the
          * {@link NM.Setting8021x.phase2_private_key} property when the private key either
@@ -20798,7 +20798,7 @@ export namespace NM {
          * private key data.
          */
         get private_key(): GLib.Bytes;
-        set private_key(val: GLib.Bytes);
+        set private_key(val: GLib.Bytes | Uint8Array);
         /**
          * Contains the private key when the {@link NM.Setting8021x.eap} property is set to
          * "tls".
@@ -20829,7 +20829,7 @@ export namespace NM {
          * private key data.
          */
         get privateKey(): GLib.Bytes;
-        set privateKey(val: GLib.Bytes);
+        set privateKey(val: GLib.Bytes | Uint8Array);
         /**
          * The password used to decrypt the private key specified in the
          * {@link NM.Setting8021x.private_key} property when the private key either uses the
@@ -20954,7 +20954,7 @@ export namespace NM {
          * @param pdata the data pointer
          * @param length the length of the data
          */
-        static check_cert_scheme(pdata: any | null, length: number): Setting8021xCKScheme;
+        static check_cert_scheme(pdata: any | null, length: bigint | number): Setting8021xCKScheme;
 
         // Methods
 
@@ -21870,7 +21870,7 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
-            options: GLib.HashTable<string, string>;
+            options: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -21889,7 +21889,7 @@ export namespace NM {
          * (ie, [a-zA-Z0-9]).
          */
         get options(): GLib.HashTable<string, string>;
-        set options(val: GLib.HashTable<string, string>);
+        set options(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Compile-time signal type information.
@@ -22153,18 +22153,18 @@ export namespace NM {
             multicastHashMax: number;
             multicast_last_member_count: number;
             multicastLastMemberCount: number;
-            multicast_last_member_interval: number;
-            multicastLastMemberInterval: number;
-            multicast_membership_interval: number;
-            multicastMembershipInterval: number;
+            multicast_last_member_interval: bigint | number;
+            multicastLastMemberInterval: bigint | number;
+            multicast_membership_interval: bigint | number;
+            multicastMembershipInterval: bigint | number;
             multicast_querier: boolean;
             multicastQuerier: boolean;
-            multicast_querier_interval: number;
-            multicastQuerierInterval: number;
-            multicast_query_interval: number;
-            multicastQueryInterval: number;
-            multicast_query_response_interval: number;
-            multicastQueryResponseInterval: number;
+            multicast_querier_interval: bigint | number;
+            multicastQuerierInterval: bigint | number;
+            multicast_query_interval: bigint | number;
+            multicastQueryInterval: bigint | number;
+            multicast_query_response_interval: bigint | number;
+            multicastQueryResponseInterval: bigint | number;
             multicast_query_use_ifaddr: boolean;
             multicastQueryUseIfaddr: boolean;
             multicast_router: string;
@@ -22173,8 +22173,8 @@ export namespace NM {
             multicastSnooping: boolean;
             multicast_startup_query_count: number;
             multicastStartupQueryCount: number;
-            multicast_startup_query_interval: number;
-            multicastStartupQueryInterval: number;
+            multicast_startup_query_interval: bigint | number;
+            multicastStartupQueryInterval: bigint | number;
             priority: number;
             stp: boolean;
             vlan_default_pvid: number;
@@ -22333,27 +22333,27 @@ export namespace NM {
          * members of a group, after a "leave" message is received.
          */
         get multicast_last_member_interval(): number;
-        set multicast_last_member_interval(val: number);
+        set multicast_last_member_interval(val: bigint | number);
         /**
          * Set interval (in deciseconds) between queries to find remaining
          * members of a group, after a "leave" message is received.
          */
         get multicastLastMemberInterval(): number;
-        set multicastLastMemberInterval(val: number);
+        set multicastLastMemberInterval(val: bigint | number);
         /**
          * Set delay (in deciseconds) after which the bridge will
          * leave a group, if no membership reports for this
          * group are received.
          */
         get multicast_membership_interval(): number;
-        set multicast_membership_interval(val: number);
+        set multicast_membership_interval(val: bigint | number);
         /**
          * Set delay (in deciseconds) after which the bridge will
          * leave a group, if no membership reports for this
          * group are received.
          */
         get multicastMembershipInterval(): number;
-        set multicastMembershipInterval(val: number);
+        set multicastMembershipInterval(val: bigint | number);
         /**
          * Enable or disable sending of multicast queries by the bridge.
          * If not specified the option is disabled.
@@ -22371,37 +22371,37 @@ export namespace NM {
          * the bridge will start to send its own queries.
          */
         get multicast_querier_interval(): number;
-        set multicast_querier_interval(val: number);
+        set multicast_querier_interval(val: bigint | number);
         /**
          * If no queries are seen after this delay (in deciseconds) has passed,
          * the bridge will start to send its own queries.
          */
         get multicastQuerierInterval(): number;
-        set multicastQuerierInterval(val: number);
+        set multicastQuerierInterval(val: bigint | number);
         /**
          * Interval (in deciseconds) between queries sent
          * by the bridge after the end of the startup phase.
          */
         get multicast_query_interval(): number;
-        set multicast_query_interval(val: number);
+        set multicast_query_interval(val: bigint | number);
         /**
          * Interval (in deciseconds) between queries sent
          * by the bridge after the end of the startup phase.
          */
         get multicastQueryInterval(): number;
-        set multicastQueryInterval(val: number);
+        set multicastQueryInterval(val: bigint | number);
         /**
          * Set the Max Response Time/Max Response Delay
          * (in deciseconds) for IGMP/MLD queries sent by the bridge.
          */
         get multicast_query_response_interval(): number;
-        set multicast_query_response_interval(val: number);
+        set multicast_query_response_interval(val: bigint | number);
         /**
          * Set the Max Response Time/Max Response Delay
          * (in deciseconds) for IGMP/MLD queries sent by the bridge.
          */
         get multicastQueryResponseInterval(): number;
-        set multicastQueryResponseInterval(val: number);
+        set multicastQueryResponseInterval(val: bigint | number);
         /**
          * If enabled the bridge's own IP address is used as
          * the source address for IGMP queries otherwise
@@ -22469,13 +22469,13 @@ export namespace NM {
          * at startup to determine membership information.
          */
         get multicast_startup_query_interval(): number;
-        set multicast_startup_query_interval(val: number);
+        set multicast_startup_query_interval(val: bigint | number);
         /**
          * Sets the time (in deciseconds) between queries sent out
          * at startup to determine membership information.
          */
         get multicastStartupQueryInterval(): number;
-        set multicastStartupQueryInterval(val: number);
+        set multicastStartupQueryInterval(val: bigint | number);
         /**
          * Sets the Spanning Tree Protocol (STP) priority for this bridge.  Lower
          * values are "better"; the lowest priority bridge will be elected the root
@@ -23130,7 +23130,7 @@ export namespace NM {
             slaveType: string;
             stable_id: string;
             stableId: string;
-            timestamp: number;
+            timestamp: bigint | number;
             type: string;
             uuid: string;
             wait_activation_delay: number;
@@ -23837,7 +23837,7 @@ export namespace NM {
          * property will not be preserved).
          */
         get timestamp(): number;
-        set timestamp(val: number);
+        set timestamp(val: bigint | number);
         /**
          * Base type of the connection. For hardware-dependent connections, should
          * contain the setting name of the hardware-type specific setting (ie,
@@ -26743,8 +26743,8 @@ export namespace NM {
             replaceLocalRule: Ternary;
             required_timeout: number;
             requiredTimeout: number;
-            route_metric: number;
-            routeMetric: number;
+            route_metric: bigint | number;
+            routeMetric: bigint | number;
             route_table: number;
             routeTable: number;
             routed_dns: number;
@@ -27482,7 +27482,7 @@ export namespace NM {
          * For IPv4, zero is a regular value for the metric.
          */
         get route_metric(): number;
-        set route_metric(val: number);
+        set route_metric(val: bigint | number);
         /**
          * The default metric for routes that don't explicitly specify a metric.
          * The default value -1 means that the metric is chosen automatically
@@ -27496,7 +27496,7 @@ export namespace NM {
          * For IPv4, zero is a regular value for the metric.
          */
         get routeMetric(): number;
-        set routeMetric(val: number);
+        set routeMetric(val: bigint | number);
         /**
          * Enable policy routing (source routing) and set the routing table used when adding routes.
          *
@@ -28617,14 +28617,14 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
-            gro_max_size: number;
-            groMaxSize: number;
-            gso_max_segments: number;
-            gsoMaxSegments: number;
-            gso_max_size: number;
-            gsoMaxSize: number;
-            tx_queue_length: number;
-            txQueueLength: number;
+            gro_max_size: bigint | number;
+            groMaxSize: bigint | number;
+            gso_max_segments: bigint | number;
+            gsoMaxSegments: bigint | number;
+            gso_max_size: bigint | number;
+            gsoMaxSize: bigint | number;
+            tx_queue_length: bigint | number;
+            txQueueLength: bigint | number;
         }
     }
 
@@ -28645,7 +28645,7 @@ export namespace NM {
          * @since 1.44
          */
         get gro_max_size(): number;
-        set gro_max_size(val: number);
+        set gro_max_size(val: bigint | number);
         /**
          * The maximum size of a packet built by the Generic Receive Offload stack for
          * this device. The value must be between 0 and 4294967295. When set to -1, the
@@ -28653,7 +28653,7 @@ export namespace NM {
          * @since 1.44
          */
         get groMaxSize(): number;
-        set groMaxSize(val: number);
+        set groMaxSize(val: bigint | number);
         /**
          * The maximum segments of a Generic Segment Offload packet the device should accept.
          * The value must be between 0 and 4294967295. When set to -1, the existing value
@@ -28661,7 +28661,7 @@ export namespace NM {
          * @since 1.44
          */
         get gso_max_segments(): number;
-        set gso_max_segments(val: number);
+        set gso_max_segments(val: bigint | number);
         /**
          * The maximum segments of a Generic Segment Offload packet the device should accept.
          * The value must be between 0 and 4294967295. When set to -1, the existing value
@@ -28669,7 +28669,7 @@ export namespace NM {
          * @since 1.44
          */
         get gsoMaxSegments(): number;
-        set gsoMaxSegments(val: number);
+        set gsoMaxSegments(val: bigint | number);
         /**
          * The maximum size of a Generic Segment Offload packet the device should accept.
          * The value must be between 0 and 4294967295. When set to -1, the existing value
@@ -28677,7 +28677,7 @@ export namespace NM {
          * @since 1.44
          */
         get gso_max_size(): number;
-        set gso_max_size(val: number);
+        set gso_max_size(val: bigint | number);
         /**
          * The maximum size of a Generic Segment Offload packet the device should accept.
          * The value must be between 0 and 4294967295. When set to -1, the existing value
@@ -28685,21 +28685,21 @@ export namespace NM {
          * @since 1.44
          */
         get gsoMaxSize(): number;
-        set gsoMaxSize(val: number);
+        set gsoMaxSize(val: bigint | number);
         /**
          * The size of the transmit queue for the device, in number of packets. The value
          * must be between 0 and 4294967295. When set to -1, the existing value is preserved.
          * @since 1.44
          */
         get tx_queue_length(): number;
-        set tx_queue_length(val: number);
+        set tx_queue_length(val: bigint | number);
         /**
          * The size of the transmit queue for the device, in number of packets. The value
          * must be between 0 and 4294967295. When set to -1, the existing value is preserved.
          * @since 1.44
          */
         get txQueueLength(): number;
-        set txQueueLength(val: number);
+        set txQueueLength(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -29531,7 +29531,7 @@ export namespace NM {
             channel: number;
             dhcp_anycast_address: string;
             dhcpAnycastAddress: string;
-            ssid: GLib.Bytes;
+            ssid: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -29571,7 +29571,7 @@ export namespace NM {
          * SSID of the mesh network to join.
          */
         get ssid(): GLib.Bytes;
-        set ssid(val: GLib.Bytes);
+        set ssid(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.
@@ -29969,7 +29969,7 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: GLib.HashTable<string, string>;
+            data: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -29987,7 +29987,7 @@ export namespace NM {
          * @since 1.30
          */
         get data(): GLib.HashTable<string, string>;
-        set data(val: GLib.HashTable<string, string>);
+        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Compile-time signal type information.
@@ -30189,7 +30189,7 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: GLib.HashTable<string, string>;
+            data: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -30210,7 +30210,7 @@ export namespace NM {
          * @since 1.42
          */
         get data(): GLib.HashTable<string, string>;
-        set data(val: GLib.HashTable<string, string>);
+        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Compile-time signal type information.
@@ -31070,8 +31070,8 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
-            subnet_id: number;
-            subnetId: number;
+            subnet_id: bigint | number;
+            subnetId: bigint | number;
         }
     }
 
@@ -31093,7 +31093,7 @@ export namespace NM {
          * @since 1.54
          */
         get subnet_id(): number;
-        set subnet_id(val: number);
+        set subnet_id(val: bigint | number);
         /**
          * The subnet ID to use on the interface from the prefix delegation received via
          * an upstream interface. Set to a value between 0 and 0xffffffff (2^32 - 1)
@@ -31102,7 +31102,7 @@ export namespace NM {
          * @since 1.54
          */
         get subnetId(): number;
-        set subnetId(val: number);
+        set subnetId(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -31307,8 +31307,8 @@ export namespace NM {
             baud: number;
             bits: number;
             parity: SettingSerialParity;
-            send_delay: number;
-            sendDelay: number;
+            send_delay: bigint | number;
+            sendDelay: bigint | number;
             stopbits: number;
         }
     }
@@ -31343,12 +31343,12 @@ export namespace NM {
          * Time to delay between each byte sent to the modem, in microseconds.
          */
         get send_delay(): number;
-        set send_delay(val: number);
+        set send_delay(val: bigint | number);
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
          */
         get sendDelay(): number;
-        set sendDelay(val: number);
+        set sendDelay(val: bigint | number);
         /**
          * Number of stop bits for communication on the serial port.  Either 1 or 2.
          * The 1 in "8n1" for example.
@@ -32732,7 +32732,7 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: GLib.HashTable<string, string>;
+            data: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -32753,7 +32753,7 @@ export namespace NM {
          * @since 1.8
          */
         get data(): GLib.HashTable<string, string>;
-        set data(val: GLib.HashTable<string, string>);
+        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Compile-time signal type information.
@@ -33167,9 +33167,9 @@ export namespace NM {
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: GLib.HashTable<string, string>;
+            data: { [key: string]: any } | GLib.HashTable<string, string>;
             persistent: boolean;
-            secrets: GLib.HashTable<string, string>;
+            secrets: { [key: string]: any } | GLib.HashTable<string, string>;
             service_type: string;
             serviceType: string;
             timeout: number;
@@ -33192,7 +33192,7 @@ export namespace NM {
          * values must be strings.
          */
         get data(): GLib.HashTable<string, string>;
-        set data(val: GLib.HashTable<string, string>);
+        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
         /**
          * If the VPN service supports persistence, and this property is `true`,
          * the VPN will attempt to stay connected across link changes and outages,
@@ -33205,7 +33205,7 @@ export namespace NM {
          * passwords or private keys.  Both keys and values must be strings.
          */
         get secrets(): GLib.HashTable<string, string>;
-        set secrets(val: GLib.HashTable<string, string>);
+        set secrets(val: { [key: string]: any } | GLib.HashTable<string, string>);
         /**
          * D-Bus service name of the VPN plugin that this setting uses to connect to
          * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
@@ -33788,8 +33788,8 @@ export namespace NM {
 
         interface ConstructorProps extends Setting.ConstructorProps {
             peer: string;
-            wfd_ies: GLib.Bytes;
-            wfdIes: GLib.Bytes;
+            wfd_ies: GLib.Bytes | Uint8Array;
+            wfdIes: GLib.Bytes | Uint8Array;
             wps_method: number;
             wpsMethod: number;
         }
@@ -33822,7 +33822,7 @@ export namespace NM {
          * @since 1.16
          */
         get wfd_ies(): GLib.Bytes;
-        set wfd_ies(val: GLib.Bytes);
+        set wfd_ies(val: GLib.Bytes | Uint8Array);
         /**
          * The Wi-Fi Display (WFD) Information Elements (IEs) to set.
          *
@@ -33833,7 +33833,7 @@ export namespace NM {
          * @since 1.16
          */
         get wfdIes(): GLib.Bytes;
-        set wfdIes(val: GLib.Bytes);
+        set wfdIes(val: GLib.Bytes | Uint8Array);
         /**
          * Flags indicating which mode of WPS is to be used.
          *
@@ -34377,8 +34377,8 @@ export namespace NM {
             port: string;
             s390_nettype: string;
             s390Nettype: string;
-            s390_options: GLib.HashTable<string, string>;
-            s390Options: GLib.HashTable<string, string>;
+            s390_options: { [key: string]: any } | GLib.HashTable<string, string>;
+            s390Options: { [key: string]: any } | GLib.HashTable<string, string>;
             s390_subchannels: string[];
             s390Subchannels: string[];
             speed: number;
@@ -34647,7 +34647,7 @@ export namespace NM {
          * and applies it to the interface.
          */
         get s390_options(): GLib.HashTable<string, string>;
-        set s390_options(val: GLib.HashTable<string, string>);
+        set s390_options(val: { [key: string]: any } | GLib.HashTable<string, string>);
         /**
          * Dictionary of key/value pairs of s390-specific device options.  Both keys
          * and values must be strings.  Allowed keys include "portno", "layer2",
@@ -34659,7 +34659,7 @@ export namespace NM {
          * and applies it to the interface.
          */
         get s390Options(): GLib.HashTable<string, string>;
-        set s390Options(val: GLib.HashTable<string, string>);
+        set s390Options(val: { [key: string]: any } | GLib.HashTable<string, string>);
         /**
          * Identifies specific subchannels that this network device uses for
          * communication with z/VM or s390 host.  Like the
@@ -35017,7 +35017,7 @@ export namespace NM {
             rate: number;
             seen_bssids: string[];
             seenBssids: string[];
-            ssid: GLib.Bytes;
+            ssid: GLib.Bytes | Uint8Array;
             tx_power: number;
             txPower: number;
             wake_on_wlan: number;
@@ -35393,7 +35393,7 @@ export namespace NM {
          * SSID of the Wi-Fi network. Must be specified.
          */
         get ssid(): GLib.Bytes;
-        set ssid(val: GLib.Bytes);
+        set ssid(val: GLib.Bytes | Uint8Array);
         /**
          * This property is not implemented and has no effect.
          * @deprecated since 1.44: This property is not implemented and has no effect.
@@ -37250,7 +37250,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -37277,7 +37277,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -38116,7 +38116,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38143,7 +38143,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -38891,7 +38891,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -38918,7 +38918,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -39689,7 +39689,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -39716,7 +39716,7 @@ export namespace NM {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
@@ -39771,8 +39771,8 @@ export namespace NM {
             name: string;
             serial: string;
             strength: number;
-            wfd_ies: GLib.Bytes;
-            wfdIes: GLib.Bytes;
+            wfd_ies: GLib.Bytes | Uint8Array;
+            wfdIes: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -40512,16 +40512,22 @@ export namespace NM {
 
         // Constructors
 
-        constructor(family: number, dest: string, prefix: number, next_hop: string | null, metric: number);
+        constructor(family: number, dest: string, prefix: number, next_hop: string | null, metric: bigint | number);
 
-        static ['new'](family: number, dest: string, prefix: number, next_hop: string | null, metric: number): IPRoute;
+        static ['new'](
+            family: number,
+            dest: string,
+            prefix: number,
+            next_hop: string | null,
+            metric: bigint | number,
+        ): IPRoute;
 
         static new_binary(
             family: number,
             dest: any | null,
             prefix: number,
             next_hop: any | null,
-            metric: number,
+            metric: bigint | number,
         ): IPRoute;
 
         // Static methods
@@ -40620,7 +40626,7 @@ export namespace NM {
          * Sets the metric property of this route object.
          * @param metric the route metric (or -1 for "default")
          */
-        set_metric(metric: number): void;
+        set_metric(metric: bigint | number): void;
         /**
          * Sets the next-hop property of this route object.
          *
@@ -40831,7 +40837,7 @@ export namespace NM {
          * other value.
          * @param priority the priority to set
          */
-        set_priority(priority: number): void;
+        set_priority(priority: bigint | number): void;
         /**
          * @param start the start port to set.
          * @param end the end port to set.
@@ -41045,9 +41051,9 @@ export namespace NM {
 
         // Constructors
 
-        constructor(start: number, end: number);
+        constructor(start: bigint | number, end: bigint | number);
 
-        static ['new'](start: number, end: number): Range;
+        static ['new'](start: bigint | number, end: bigint | number): Range;
 
         // Static methods
 
@@ -42622,7 +42628,7 @@ export namespace NM {
          * @param vt_size the size of the buffer. Can be 0 to only query the   size of plugin's VT.
          * @returns the actual size of the `plugin`'s virtual function table.
          */
-        get_vt(vt_size: number): [number, VpnEditorPluginVT];
+        get_vt(vt_size: bigint | number): [number, VpnEditorPluginVT];
         /**
          * @param path full path to the file to attempt to read into a new {@link NM.Connection}
          * @returns a new {@link NM.Connection} imported from `path`, or `null` on error or if the file at `path` was not recognized by this plugin

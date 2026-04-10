@@ -1512,7 +1512,7 @@ export namespace GstMpegts {
      * @param buf_len Size of `buffer`
      * @returns an array of the parsed descriptors or `null` if there was an error. Release with `g_array_unref` when done with it.
      */
-    function parse_descriptors(buffer: number, buf_len: number): Descriptor[];
+    function parse_descriptors(buffer: number, buf_len: bigint | number): Descriptor[];
     /**
      * Allocates a new {@link GLib.PtrArray} for {@link GstMpegts.PatProgram}. The array can be filled
      * and then converted to a PAT section with `gst_mpegts_section_from_pat()`.
@@ -3225,14 +3225,7 @@ export namespace GstMpegts {
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                tag: number;
-                splice_time_specified: boolean;
-                splice_time: number;
-                utc_splice_time: number;
-            }>,
-        );
+        constructor(tag: number);
 
         static ['new'](tag: number): SCTESpliceComponent;
     }

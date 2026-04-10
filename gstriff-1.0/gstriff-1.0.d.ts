@@ -237,7 +237,7 @@ export namespace GstRiff {
     function riff_read_chunk(
         element: Gst.Element,
         pad: Gst.Pad,
-        offset: number,
+        offset: bigint | number,
         tag: number,
         chunk_data: Gst.Buffer,
     ): Gst.FlowReturn;

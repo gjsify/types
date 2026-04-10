@@ -66,7 +66,7 @@ export namespace GstBase {
      * @param size The length in bytes
      * @returns the {@link Gst.Caps} corresponding to the data     stream.  Returns `null` if no {@link Gst.Caps} matches the data stream.
      */
-    function type_find_helper(src: Gst.Pad, size: number): Gst.Caps | null;
+    function type_find_helper(src: Gst.Pad, size: bigint | number): Gst.Caps | null;
     /**
      * Tries to find what type of data is contained in the given {@link Gst.Buffer}, the
      * assumption being that the buffer represents the beginning of the stream or
@@ -250,7 +250,7 @@ export namespace GstBase {
         obj: Gst.Object,
         parent: Gst.Object | null,
         func: TypeFindHelperGetRangeFunction,
-        size: number,
+        size: bigint | number,
         extension?: string | null,
     ): [Gst.Caps | null, Gst.TypeFindProbability | null];
     /**
@@ -278,7 +278,7 @@ export namespace GstBase {
         obj: Gst.Object,
         parent: Gst.Object | null,
         func: TypeFindHelperGetRangeFunction,
-        size: number,
+        size: bigint | number,
         extension: string | null,
     ): [Gst.FlowReturn, Gst.Caps, Gst.TypeFindProbability | null];
     /**
@@ -645,7 +645,7 @@ export namespace GstBase {
          * @param size the number of bytes to copy
          * @returns A new {@link GLib.Bytes} structure containing the copied data.
          */
-        copy(offset: number, size: number): GLib.Bytes;
+        copy(offset: bigint | number, size: bigint | number): GLib.Bytes;
         /**
          * Get the distance in bytes since the last buffer with the
          * {@link Gst.BufferFlags.DISCONT} flag.
@@ -669,7 +669,7 @@ export namespace GstBase {
          * See also: `gst_adapter_map()`, `gst_adapter_unmap()`
          * @param flush the number of bytes to flush
          */
-        flush(flush: number): void;
+        flush(flush: bigint | number): void;
         /**
          * Returns a {@link Gst.Buffer} containing the first `nbytes` of the `adapter`, but
          * does not flush them from the adapter. See `gst_adapter_take_buffer()`
@@ -682,7 +682,7 @@ export namespace GstBase {
          * @param nbytes the number of bytes to get
          * @returns a {@link Gst.Buffer} containing the first     `nbytes` of the adapter, or `null` if `nbytes` bytes are not available.     `gst_buffer_unref()` when no longer needed.
          */
-        get_buffer(nbytes: number): Gst.Buffer | null;
+        get_buffer(nbytes: bigint | number): Gst.Buffer | null;
         /**
          * Returns a {@link Gst.Buffer} containing the first `nbytes` of the `adapter`, but
          * does not flush them from the adapter. See `gst_adapter_take_buffer_fast()`
@@ -695,7 +695,7 @@ export namespace GstBase {
          * @param nbytes the number of bytes to get
          * @returns a {@link Gst.Buffer} containing the first     `nbytes` of the adapter, or `null` if `nbytes` bytes are not available.     `gst_buffer_unref()` when no longer needed.
          */
-        get_buffer_fast(nbytes: number): Gst.Buffer | null;
+        get_buffer_fast(nbytes: bigint | number): Gst.Buffer | null;
         /**
          * Returns a {@link Gst.BufferList} of buffers containing the first `nbytes` bytes of
          * the `adapter` but does not flush them from the adapter. See
@@ -706,7 +706,7 @@ export namespace GstBase {
          * @param nbytes the number of bytes to get
          * @returns a {@link Gst.BufferList} of buffers containing     the first `nbytes` of the adapter, or `null` if `nbytes` bytes are not     available
          */
-        get_buffer_list(nbytes: number): Gst.BufferList | null;
+        get_buffer_list(nbytes: bigint | number): Gst.BufferList | null;
         /**
          * Returns a {@link GLib.List} of buffers containing the first `nbytes` bytes of the
          * `adapter`, but does not flush them from the adapter. See
@@ -717,7 +717,7 @@ export namespace GstBase {
          * @param nbytes the number of bytes to get
          * @returns a {@link GLib.List} of     buffers containing the first `nbytes` of the adapter, or `null` if `nbytes`     bytes are not available
          */
-        get_list(nbytes: number): Gst.Buffer[] | null;
+        get_list(nbytes: bigint | number): Gst.Buffer[] | null;
         /**
          * Gets the first `size` bytes stored in the `adapter`. The returned pointer is
          * valid until the next function is called on the adapter.
@@ -754,7 +754,7 @@ export namespace GstBase {
          * @param size number of bytes to scan from offset
          * @returns offset of the first match, or -1 if no match was found. Example: |[ // Assume the adapter contains 0x00 0x01 0x02 ... 0xfe 0xff gst_adapter_masked_scan_uint32 (adapter, 0xffffffff, 0x00010203, 0, 256); // -> returns 0 gst_adapter_masked_scan_uint32 (adapter, 0xffffffff, 0x00010203, 1, 255); // -> returns -1 gst_adapter_masked_scan_uint32 (adapter, 0xffffffff, 0x01020304, 1, 255); // -> returns 1 gst_adapter_masked_scan_uint32 (adapter, 0xffff, 0x0001, 0, 256); // -> returns -1 gst_adapter_masked_scan_uint32 (adapter, 0xffff, 0x0203, 0, 256); // -> returns 0 gst_adapter_masked_scan_uint32 (adapter, 0xffff0000, 0x02030000, 0, 256); // -> returns 2 gst_adapter_masked_scan_uint32 (adapter, 0xffff0000, 0x02030000, 0, 4); // -> returns -1 ]|
          */
-        masked_scan_uint32(mask: number, pattern: number, offset: number, size: number): number;
+        masked_scan_uint32(mask: number, pattern: number, offset: bigint | number, size: bigint | number): number;
         /**
          * Scan for pattern `pattern` with applied mask `mask` in the adapter data,
          * starting from offset `offset`.  If a match is found, the value that matched
@@ -772,7 +772,12 @@ export namespace GstBase {
          * @param size number of bytes to scan from offset
          * @returns offset of the first match, or -1 if no match was found.
          */
-        masked_scan_uint32_peek(mask: number, pattern: number, offset: number, size: number): [number, number];
+        masked_scan_uint32_peek(
+            mask: number,
+            pattern: number,
+            offset: bigint | number,
+            size: bigint | number,
+        ): [number, number];
         /**
          * Get the offset that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
          * flag, or GST_BUFFER_OFFSET_NONE.
@@ -803,7 +808,7 @@ export namespace GstBase {
          * @param offset the offset in the adapter at which to get timestamp
          * @returns The previously seen dts at given offset.
          */
-        prev_dts_at_offset(offset: number): [Gst.ClockTime, number];
+        prev_dts_at_offset(offset: bigint | number): [Gst.ClockTime, number];
         /**
          * Get the offset that was before the current byte in the adapter. When
          * `distance` is given, the amount of bytes between the offset and the current
@@ -840,7 +845,7 @@ export namespace GstBase {
          * @param offset the offset in the adapter at which to get timestamp
          * @returns The previously seen pts at given offset.
          */
-        prev_pts_at_offset(offset: number): [Gst.ClockTime, number];
+        prev_pts_at_offset(offset: bigint | number): [Gst.ClockTime, number];
         /**
          * Get the PTS that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
          * flag, or GST_CLOCK_TIME_NONE.
@@ -886,7 +891,7 @@ export namespace GstBase {
          * @param nbytes the number of bytes to take
          * @returns a {@link Gst.Buffer} containing the first     `nbytes` of the adapter, or `null` if `nbytes` bytes are not available.     `gst_buffer_unref()` when no longer needed.
          */
-        take_buffer(nbytes: number): Gst.Buffer | null;
+        take_buffer(nbytes: bigint | number): Gst.Buffer | null;
         /**
          * Returns a {@link Gst.Buffer} containing the first `nbytes` of the `adapter`.
          * The returned bytes will be flushed from the adapter.  This function
@@ -914,7 +919,7 @@ export namespace GstBase {
          * @param nbytes the number of bytes to take
          * @returns a {@link Gst.Buffer} containing the first     `nbytes` of the adapter, or `null` if `nbytes` bytes are not available.     `gst_buffer_unref()` when no longer needed.
          */
-        take_buffer_fast(nbytes: number): Gst.Buffer | null;
+        take_buffer_fast(nbytes: bigint | number): Gst.Buffer | null;
         /**
          * Returns a {@link Gst.BufferList} of buffers containing the first `nbytes` bytes of
          * the `adapter`. The returned bytes will be flushed from the adapter.
@@ -926,7 +931,7 @@ export namespace GstBase {
          * @param nbytes the number of bytes to take
          * @returns a {@link Gst.BufferList} of buffers containing     the first `nbytes` of the adapter, or `null` if `nbytes` bytes are not     available
          */
-        take_buffer_list(nbytes: number): Gst.BufferList | null;
+        take_buffer_list(nbytes: bigint | number): Gst.BufferList | null;
         /**
          * Returns a {@link GLib.List} of buffers containing the first `nbytes` bytes of the
          * `adapter`. The returned bytes will be flushed from the adapter.
@@ -938,7 +943,7 @@ export namespace GstBase {
          * @param nbytes the number of bytes to take
          * @returns a {@link GLib.List} of     buffers containing the first `nbytes` of the adapter, or `null` if `nbytes`     bytes are not available
          */
-        take_list(nbytes: number): Gst.Buffer[] | null;
+        take_list(nbytes: bigint | number): Gst.Buffer[] | null;
         /**
          * Releases the memory obtained with the last `gst_adapter_map()`.
          */
@@ -977,11 +982,11 @@ export namespace GstBase {
         interface ConstructorProps extends Gst.Element.ConstructorProps {
             emit_signals: boolean;
             emitSignals: boolean;
-            latency: number;
-            min_upstream_latency: number;
-            minUpstreamLatency: number;
-            start_time: number | any;
-            startTime: number;
+            latency: bigint | number;
+            min_upstream_latency: bigint | number;
+            minUpstreamLatency: bigint | number;
+            start_time: (bigint | number) | any;
+            startTime: bigint | number;
             start_time_selection: AggregatorStartTimeSelection;
             startTimeSelection: AggregatorStartTimeSelection;
         }
@@ -1070,7 +1075,7 @@ export namespace GstBase {
         get emitSignals(): boolean;
         set emitSignals(val: boolean);
         get latency(): number;
-        set latency(val: number);
+        set latency(val: bigint | number);
         /**
          * Force minimum upstream latency (in nanoseconds). When sources with a
          * higher latency are expected to be plugged in dynamically after the
@@ -1080,7 +1085,7 @@ export namespace GstBase {
          * @since 1.16
          */
         get min_upstream_latency(): number;
-        set min_upstream_latency(val: number);
+        set min_upstream_latency(val: bigint | number);
         /**
          * Force minimum upstream latency (in nanoseconds). When sources with a
          * higher latency are expected to be plugged in dynamically after the
@@ -1090,11 +1095,11 @@ export namespace GstBase {
          * @since 1.16
          */
         get minUpstreamLatency(): number;
-        set minUpstreamLatency(val: number);
+        set minUpstreamLatency(val: bigint | number);
         // This accessor conflicts with a property or field in a parent class or interface.
-        start_time: number | any;
+        start_time: (bigint | number) | any;
         get startTime(): number;
-        set startTime(val: number);
+        set startTime(val: bigint | number);
         get start_time_selection(): AggregatorStartTimeSelection;
         set start_time_selection(val: AggregatorStartTimeSelection);
         get startTimeSelection(): AggregatorStartTimeSelection;
@@ -1968,7 +1973,7 @@ export namespace GstBase {
          * @param force add entry disregarding sanity checks
          * @returns `gboolean` indicating whether entry was added
          */
-        add_index_entry(offset: number, ts: Gst.ClockTime, key: boolean, force: boolean): boolean;
+        add_index_entry(offset: bigint | number, ts: Gst.ClockTime, key: boolean, force: boolean): boolean;
         /**
          * Default implementation of {@link GstBase.BaseParseClass.SignalSignatures.convert | GstBase.BaseParseClass::convert}.
          * @param src_format {@link Gst.Format} describing the source format.
@@ -1978,7 +1983,7 @@ export namespace GstBase {
          */
         convert_default(
             src_format: Gst.Format | null,
-            src_value: number,
+            src_value: bigint | number,
             dest_format: Gst.Format | null,
         ): [boolean, number];
         /**
@@ -2049,7 +2054,7 @@ export namespace GstBase {
          * @param duration duration value.
          * @param interval how often to update the duration estimate based on bitrate, or 0.
          */
-        set_duration(fmt: Gst.Format | null, duration: number, interval: number): void;
+        set_duration(fmt: Gst.Format | null, duration: bigint | number, interval: number): void;
         /**
          * If frames per second is configured, parser can take care of buffer duration
          * and timestamping.  When performing segment clipping, or seeking to a specific
@@ -2132,7 +2137,7 @@ export namespace GstBase {
          * into the frame data that the picture starts.
          * @param offset offset into current buffer
          */
-        set_ts_at_offset(offset: number): void;
+        set_ts_at_offset(offset: bigint | number): void;
     }
 
     namespace BaseSink {
@@ -2164,21 +2169,21 @@ export namespace GstBase {
             enableLastSample: boolean;
             last_sample: Gst.Sample;
             lastSample: Gst.Sample;
-            max_bitrate: number;
-            maxBitrate: number;
-            max_lateness: number;
-            maxLateness: number;
-            processing_deadline: number;
-            processingDeadline: number;
+            max_bitrate: bigint | number;
+            maxBitrate: bigint | number;
+            max_lateness: bigint | number;
+            maxLateness: bigint | number;
+            processing_deadline: bigint | number;
+            processingDeadline: bigint | number;
             qos: boolean;
-            render_delay: number;
-            renderDelay: number;
+            render_delay: bigint | number;
+            renderDelay: bigint | number;
             stats: Gst.Structure;
             sync: boolean;
-            throttle_time: number;
-            throttleTime: number;
-            ts_offset: number;
-            tsOffset: number;
+            throttle_time: bigint | number;
+            throttleTime: bigint | number;
+            ts_offset: bigint | number;
+            tsOffset: bigint | number;
         }
     }
 
@@ -2355,7 +2360,7 @@ export namespace GstBase {
          * @since 1.2
          */
         get max_bitrate(): number;
-        set max_bitrate(val: number);
+        set max_bitrate(val: bigint | number);
         /**
          * Control the maximum amount of bits that will be rendered per second.
          * Setting this property to a value bigger than 0 will make the sink delay
@@ -2363,11 +2368,11 @@ export namespace GstBase {
          * @since 1.2
          */
         get maxBitrate(): number;
-        set maxBitrate(val: number);
+        set maxBitrate(val: bigint | number);
         get max_lateness(): number;
-        set max_lateness(val: number);
+        set max_lateness(val: bigint | number);
         get maxLateness(): number;
-        set maxLateness(val: number);
+        set maxLateness(val: bigint | number);
         /**
          * Maximum amount of time (in nanoseconds) that the pipeline can take
          * for processing the buffer. This is added to the latency of live
@@ -2375,7 +2380,7 @@ export namespace GstBase {
          * @since 1.16
          */
         get processing_deadline(): number;
-        set processing_deadline(val: number);
+        set processing_deadline(val: bigint | number);
         /**
          * Maximum amount of time (in nanoseconds) that the pipeline can take
          * for processing the buffer. This is added to the latency of live
@@ -2383,7 +2388,7 @@ export namespace GstBase {
          * @since 1.16
          */
         get processingDeadline(): number;
-        set processingDeadline(val: number);
+        set processingDeadline(val: bigint | number);
         get qos(): boolean;
         set qos(val: boolean);
         /**
@@ -2392,14 +2397,14 @@ export namespace GstBase {
          * make other sinks compensate for the delay.
          */
         get render_delay(): number;
-        set render_delay(val: number);
+        set render_delay(val: bigint | number);
         /**
          * The additional delay between synchronisation and actual rendering of the
          * media. This property will add additional latency to the device in order to
          * make other sinks compensate for the delay.
          */
         get renderDelay(): number;
-        set renderDelay(val: number);
+        set renderDelay(val: bigint | number);
         /**
          * Various {@link GstBase.BaseSink} statistics. This property returns a {@link Gst.Structure}
          * with name `application/x-gst-base-sink-stats` with the following fields:
@@ -2419,28 +2424,28 @@ export namespace GstBase {
          * to a value bigger than 0 will make the sink create THROTTLE QoS events.
          */
         get throttle_time(): number;
-        set throttle_time(val: number);
+        set throttle_time(val: bigint | number);
         /**
          * The time to insert between buffers. This property can be used to control
          * the maximum amount of buffers per second to render. Setting this property
          * to a value bigger than 0 will make the sink create THROTTLE QoS events.
          */
         get throttleTime(): number;
-        set throttleTime(val: number);
+        set throttleTime(val: bigint | number);
         /**
          * Controls the final synchronisation, a negative value will render the buffer
          * earlier while a positive value delays playback. This property can be
          * used to fix synchronisation in bad files.
          */
         get ts_offset(): number;
-        set ts_offset(val: number);
+        set ts_offset(val: bigint | number);
         /**
          * Controls the final synchronisation, a negative value will render the buffer
          * earlier while a positive value delays playback. This property can be
          * used to fix synchronisation in bad files.
          */
         get tsOffset(): number;
-        set tsOffset(val: number);
+        set tsOffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2767,7 +2772,7 @@ export namespace GstBase {
          * Set the maximum amount of bits per second that the sink will render.
          * @param max_bitrate the max_bitrate in bits per second
          */
-        set_max_bitrate(max_bitrate: number): void;
+        set_max_bitrate(max_bitrate: bigint | number): void;
         /**
          * Sets the new max lateness value to `max_lateness`. This value is
          * used to decide if a buffer should be dropped or not based on the
@@ -2775,7 +2780,7 @@ export namespace GstBase {
          * an unlimited time.
          * @param max_lateness the new max lateness value.
          */
-        set_max_lateness(max_lateness: number): void;
+        set_max_lateness(max_lateness: bigint | number): void;
         /**
          * Maximum amount of time (in nanoseconds) that the pipeline can take
          * for processing the buffer. This is added to the latency of live
@@ -2818,7 +2823,7 @@ export namespace GstBase {
          * will render.
          * @param throttle the throttle time in nanoseconds
          */
-        set_throttle_time(throttle: number): void;
+        set_throttle_time(throttle: bigint | number): void;
         /**
          * Adjust the synchronisation of `sink` with `offset`. A negative value will
          * render buffers earlier than their timestamp. A positive value will delay
@@ -3171,7 +3176,7 @@ export namespace GstBase {
          * `gst_base_src_set_format()`.
          * @virtual
          */
-        vfunc_get_size(): [boolean, number];
+        vfunc_get_size(): [boolean, bigint | number];
         /**
          * Given `buffer`, return `start` and `end` time when it should be pushed
          * out. The base class will sync on the clock using these times.
@@ -3306,7 +3311,7 @@ export namespace GstBase {
          * @param time The new time value for the start of the new segment
          * @returns `true` if preparation of the seamless segment succeeded.
          */
-        new_seamless_segment(start: number, stop: number, time: number): boolean;
+        new_seamless_segment(start: bigint | number, stop: bigint | number, time: bigint | number): boolean;
         /**
          * Prepare a new segment for emission downstream. This function must
          * only be called by derived sub-classes, and only from the {@link GstBase.BaseSrcClass.SignalSignatures.create | GstBase.BaseSrcClass::create} function,
@@ -3710,7 +3715,7 @@ export namespace GstBase {
          * @param caps
          * @virtual
          */
-        vfunc_get_unit_size(caps: Gst.Caps): [boolean, number];
+        vfunc_get_unit_size(caps: Gst.Caps): [boolean, bigint | number];
         /**
          * @param input
          * @virtual
@@ -3840,7 +3845,7 @@ export namespace GstBase {
             caps: Gst.Caps,
             size: number,
             othercaps: Gst.Caps,
-        ): [boolean, number];
+        ): [boolean, bigint | number];
 
         // Methods
 
@@ -4377,8 +4382,8 @@ export namespace GstBase {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             current_level_bytes: number;
             currentLevelBytes: number;
-            current_level_time: number;
-            currentLevelTime: number;
+            current_level_time: bigint | number;
+            currentLevelTime: bigint | number;
             current_level_visible: number;
             currentLevelVisible: number;
         }
@@ -4906,7 +4911,7 @@ export namespace GstBase {
          * @param nbits number of bits to write
          * @returns `true` if successful, `false` otherwise.
          */
-        put_bits_uint64(value: number, nbits: number): boolean;
+        put_bits_uint64(value: bigint | number, nbits: number): boolean;
         /**
          * Write `nbits` bits of `value` to {@link GstBase.BitWriter}.
          * @param value value of `guint8` to write
@@ -5534,7 +5539,7 @@ export namespace GstBase {
          * @param size total size to copy. If -1, all data is copied
          * @returns `true` if the data could be written
          */
-        put_buffer(buffer: Gst.Buffer, offset: number, size: number): boolean;
+        put_buffer(buffer: Gst.Buffer, offset: bigint | number, size: bigint | number): boolean;
         /**
          * Writes `size` bytes of `data` to `writer`.
          * @param data Data to write
@@ -5606,13 +5611,13 @@ export namespace GstBase {
          * @param val Value to write
          * @returns `true` if the value could be written
          */
-        put_int64_be(val: number): boolean;
+        put_int64_be(val: bigint | number): boolean;
         /**
          * Writes a signed little endian 64 bit integer to `writer`.
          * @param val Value to write
          * @returns `true` if the value could be written
          */
-        put_int64_le(val: number): boolean;
+        put_int64_le(val: bigint | number): boolean;
         /**
          * Writes a signed 8 bit integer to `writer`.
          * @param val Value to write
@@ -5678,13 +5683,13 @@ export namespace GstBase {
          * @param val Value to write
          * @returns `true` if the value could be written
          */
-        put_uint64_be(val: number): boolean;
+        put_uint64_be(val: bigint | number): boolean;
         /**
          * Writes a unsigned little endian 64 bit integer to `writer`.
          * @param val Value to write
          * @returns `true` if the value could be written
          */
-        put_uint64_le(val: number): boolean;
+        put_uint64_le(val: bigint | number): boolean;
         /**
          * Writes a unsigned 8 bit integer to `writer`.
          * @param val Value to write

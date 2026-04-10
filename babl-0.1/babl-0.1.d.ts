@@ -269,7 +269,7 @@ export namespace Babl {
      * @param destination
      * @param n
      */
-    function process(babl_fish: Object, source: any | null, destination: any | null, n: number): number;
+    function process(babl_fish: Object, source: any | null, destination: any | null, n: bigint | number): number;
     /**
      * @param babl_fish
      * @param source
@@ -285,7 +285,7 @@ export namespace Babl {
         source_stride: number,
         dest: any | null,
         dest_stride: number,
-        n: number,
+        n: bigint | number,
         rows: number,
     ): number;
     /**

@@ -379,15 +379,15 @@ export namespace Totem {
             currentDisplayName: string;
             current_mrl: string;
             currentMrl: string;
-            current_time: number;
-            currentTime: number;
+            current_time: bigint | number;
+            currentTime: bigint | number;
             fullscreen: boolean;
             main_page: string;
             mainPage: string;
             playing: boolean;
             seekable: boolean;
-            stream_length: number;
-            streamLength: number;
+            stream_length: bigint | number;
+            streamLength: bigint | number;
         }
     }
 
@@ -735,14 +735,14 @@ export namespace Totem {
          * @param offset the time offset to seek to
          * @param accurate whether to use accurate seek, an accurate seek might be slower for some formats (see GStreamer docs)
          */
-        seek_relative(offset: number, accurate: boolean): void;
+        seek_relative(offset: bigint | number, accurate: boolean): void;
         /**
          * Seeks to an absolute time in the stream, or displays an
          * error dialog if that's not possible.
          * @param msec the time to seek to
          * @param accurate whether to use accurate seek, an accurate seek might be slower for some formats (see GStreamer docs)
          */
-        seek_time(msec: number, accurate: boolean): void;
+        seek_time(msec: bigint | number, accurate: boolean): void;
         /**
          * Add the `subtitle_uri` subtitle file to the playlist, setting it as the subtitle for the current
          * playlist entry.
@@ -1167,7 +1167,7 @@ export namespace Totem {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1194,7 +1194,7 @@ export namespace Totem {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

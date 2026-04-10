@@ -818,7 +818,7 @@ export namespace Thunarx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -845,7 +845,7 @@ export namespace Thunarx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1624,7 +1624,7 @@ export namespace Thunarx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1651,7 +1651,7 @@ export namespace Thunarx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1934,7 +1934,7 @@ export namespace Thunarx {
          * @param settings a {@link GLib.HashTable} which contains the previously saved             settings for `renamer` as key/value pairs of strings.
          * @virtual
          */
-        vfunc_load(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
+        vfunc_load(settings: GLib.HashTable<any, any>): void;
         /**
          * Determines the replacement for `text` (which is the relevant
          * part of the full `file` name, i.e. either the suffix, the name
@@ -1973,7 +1973,7 @@ export namespace Thunarx {
          * @param settings a {@link GLib.HashTable} to which the current settings of `renamer`             should be stored as key/value pairs of strings.
          * @virtual
          */
-        vfunc_save(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
+        vfunc_save(settings: GLib.HashTable<any, any>): void;
 
         // Methods
 
@@ -2559,7 +2559,7 @@ export namespace Thunarx {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2586,7 +2586,7 @@ export namespace Thunarx {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

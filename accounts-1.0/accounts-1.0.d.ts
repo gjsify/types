@@ -944,7 +944,7 @@ export namespace Accounts {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -971,7 +971,7 @@ export namespace Accounts {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2020,7 +2020,7 @@ export namespace Accounts {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2047,7 +2047,7 @@ export namespace Accounts {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2378,7 +2378,7 @@ export namespace Accounts {
          * @param contents location to receive the pointer to the file contents.
          * @param data_offset pointer to receive the offset of the type data.
          */
-        get_file_contents(contents: string, data_offset: number): void;
+        get_file_contents(contents: string, data_offset: bigint | number): void;
         /**
          * Gets the translation domain of the {@link Accounts.Service}.
          * @returns the name of the translation catalog.
@@ -2462,7 +2462,7 @@ export namespace Accounts {
          * @param contents location to receive the pointer to the file contents.
          * @param len location to receive the length of the file, in bytes.
          */
-        get_file_contents(contents: string, len: number): void;
+        get_file_contents(contents: string, len: bigint | number): void;
         /**
          * Get the translation domain of the {@link Accounts.ServiceType}.
          * @returns the translation domain.

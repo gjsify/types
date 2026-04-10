@@ -256,7 +256,7 @@ export namespace FcitxG {
          * set client capability of input context.
          * @param flags capability
          */
-        set_capability(flags: number): void;
+        set_capability(flags: bigint | number): void;
         /**
          * tell fcitx current client's cursor geometry info
          * @param x x of cursor

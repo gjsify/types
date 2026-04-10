@@ -173,10 +173,10 @@ export namespace Bump {
         interface ConstructorProps
             extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
             active: boolean;
-            time_acquired: number;
-            timeAcquired: number;
-            time_released: number;
-            timeReleased: number;
+            time_acquired: bigint | number;
+            timeAcquired: bigint | number;
+            time_released: bigint | number;
+            timeReleased: bigint | number;
             duration_held: GLib.TimeSpan;
             durationHeld: GLib.TimeSpan;
         }
@@ -195,13 +195,13 @@ export namespace Bump {
          */
         get active(): boolean;
         get time_acquired(): number;
-        set time_acquired(val: number);
+        set time_acquired(val: bigint | number);
         get timeAcquired(): number;
-        set timeAcquired(val: number);
+        set timeAcquired(val: bigint | number);
         get time_released(): number;
-        set time_released(val: number);
+        set time_released(val: bigint | number);
         get timeReleased(): number;
-        set timeReleased(val: number);
+        set timeReleased(val: bigint | number);
         /**
          * @read-only
          */
@@ -738,7 +738,7 @@ export namespace Bump {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -765,7 +765,7 @@ export namespace Bump {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2885,7 +2885,7 @@ export namespace Bump {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2912,7 +2912,7 @@ export namespace Bump {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

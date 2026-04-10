@@ -146,7 +146,7 @@ export namespace Liferea {
      * @param downloaded downloading state (TRUE=downloaded)
      * @returns new string (to be free'd using g_free)
      */
-    function enclosure_values_to_string(url: string, mime: string, size: number, downloaded: boolean): string;
+    function enclosure_values_to_string(url: string, mime: string, size: bigint | number, downloaded: boolean): string;
     /**
      * Takes a file name relative to "pixmaps" directory and tries to load the
      * image into a GdkPixbuf. Can be used to load icons not in lifereaIcon
@@ -287,7 +287,7 @@ export namespace Liferea {
      * @param state
      * @param lastmodified
      */
-    function update_state_set_lastmodified(state: updateStatePtr, lastmodified: number): void;
+    function update_state_set_lastmodified(state: updateStatePtr, lastmodified: bigint | number): void;
     /**
      * @gir-type Callback
      */
@@ -830,7 +830,7 @@ export namespace Liferea {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -857,7 +857,7 @@ export namespace Liferea {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1395,7 +1395,7 @@ export namespace Liferea {
          * the item with `item_unload()` once it is not used anymore.
          * @param id item id to load
          */
-        static load(id: number): Item | null;
+        static load(id: bigint | number): Item | null;
 
         // Methods
 
@@ -1468,7 +1468,7 @@ export namespace Liferea {
          * supplied for the item!
          * @param time the time
          */
-        set_time(time: number): void;
+        set_time(time: bigint | number): void;
         /**
          * Sets the item title
          * @param title the title
@@ -1622,7 +1622,7 @@ export namespace Liferea {
          * @param id the item id
          * @returns TRUE if the item is in the ItemListView
          */
-        contains_id(id: number): boolean;
+        contains_id(id: bigint | number): boolean;
         /**
          * @param enabled
          */
@@ -2055,7 +2055,7 @@ export namespace Liferea {
          * to mass-auto-update subscriptions.
          * @param now the current timestamp
          */
-        reset_update_counter(now: number): void;
+        reset_update_counter(now: bigint | number): void;
         /**
          * Saves the given node to cache.
          */
@@ -2615,17 +2615,6 @@ export namespace Liferea {
         size: number;
         downloaded: boolean;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                url: string;
-                mime: string;
-                size: number;
-                downloaded: boolean;
-            }>,
-        );
-
         // Static methods
 
         /**
@@ -2645,7 +2634,7 @@ export namespace Liferea {
          * @param size the enclosure size (optional, can be 0, and also -1)
          * @param downloaded downloading state (TRUE=downloaded)
          */
-        static values_to_string(url: string, mime: string, size: number, downloaded: boolean): string;
+        static values_to_string(url: string, mime: string, size: bigint | number, downloaded: boolean): string;
     }
 
     /**
@@ -2703,16 +2692,6 @@ export namespace Liferea {
         capabilities: number;
         id: string;
         icon: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                capabilities: number;
-                id: string;
-                icon: number;
-            }>,
-        );
 
         // Static methods
 
@@ -2885,22 +2864,6 @@ export namespace Liferea {
         synPeriod: number;
         timeToLive: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                lastModified: number;
-                lastPoll: number;
-                lastFaviconPoll: number;
-                cookies: string;
-                etag: string;
-                maxAgeMinutes: number;
-                synFrequency: number;
-                synPeriod: number;
-                timeToLive: number;
-            }>,
-        );
-
         // Static methods
 
         /**
@@ -2948,7 +2911,7 @@ export namespace Liferea {
          * @param state
          * @param lastmodified
          */
-        static set_lastmodified(state: updateStatePtr, lastmodified: number): void;
+        static set_lastmodified(state: updateStatePtr, lastmodified: bigint | number): void;
     }
 
     /**

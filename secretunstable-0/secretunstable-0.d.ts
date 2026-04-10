@@ -147,10 +147,10 @@ export namespace SecretUnstable {
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {
-            created: number;
+            created: bigint | number;
             label: string;
             locked: boolean;
-            modified: number;
+            modified: bigint | number;
             service: Service;
         }
     }
@@ -169,7 +169,7 @@ export namespace SecretUnstable {
          * collection was created.
          */
         get created(): number;
-        set created(val: number);
+        set created(val: bigint | number);
         /**
          * The human readable label for the collection.
          *
@@ -192,7 +192,7 @@ export namespace SecretUnstable {
          * collection was last modified.
          */
         get modified(): number;
-        set modified(val: number);
+        set modified(val: bigint | number);
         /**
          * The {@link SecretUnstable.Service} object that this collection is associated with and
          * uses to interact with the actual D-Bus Secret Service.
@@ -1532,7 +1532,7 @@ export namespace SecretUnstable {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1559,7 +1559,7 @@ export namespace SecretUnstable {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1615,11 +1615,11 @@ export namespace SecretUnstable {
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.DBusInterface.ConstructorProps,
                 Gio.Initable.ConstructorProps {
-            attributes: GLib.HashTable<string, string>;
-            created: number;
+            attributes: { [key: string]: any } | GLib.HashTable<string, string>;
+            created: bigint | number;
             label: string;
             locked: boolean;
-            modified: number;
+            modified: bigint | number;
             service: Service;
         }
     }
@@ -1638,13 +1638,13 @@ export namespace SecretUnstable {
          * item. They are not guaranteed to be stored or transferred securely.
          */
         get attributes(): GLib.HashTable<string, string>;
-        set attributes(val: GLib.HashTable<string, string>);
+        set attributes(val: { [key: string]: any } | GLib.HashTable<string, string>);
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * item was created.
          */
         get created(): number;
-        set created(val: number);
+        set created(val: bigint | number);
         /**
          * The human readable label for the item.
          *
@@ -1668,7 +1668,7 @@ export namespace SecretUnstable {
          * item was last modified.
          */
         get modified(): number;
-        set modified(val: number);
+        set modified(val: bigint | number);
         /**
          * The {@link SecretUnstable.Service} object that this item is associated with and
          * uses to interact with the actual D-Bus Secret Service.
@@ -2936,7 +2936,7 @@ export namespace SecretUnstable {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2963,7 +2963,7 @@ export namespace SecretUnstable {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3076,7 +3076,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          */
         perform(
-            window_id: number,
+            window_id: bigint | number,
             return_type: GLib.VariantType,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<GLib.Variant>;
@@ -3096,7 +3096,7 @@ export namespace SecretUnstable {
          * @param callback called when the operation completes
          */
         perform(
-            window_id: number,
+            window_id: bigint | number,
             return_type: GLib.VariantType,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
@@ -3117,7 +3117,7 @@ export namespace SecretUnstable {
          * @param callback called when the operation completes
          */
         perform(
-            window_id: number,
+            window_id: bigint | number,
             return_type: GLib.VariantType,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
@@ -3150,7 +3150,11 @@ export namespace SecretUnstable {
          * @param return_type the variant type of the prompt result
          * @returns `null` if the prompt was dismissed or an error occurred
          */
-        perform_sync(window_id: number, cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
+        perform_sync(
+            window_id: bigint | number,
+            cancellable: Gio.Cancellable,
+            return_type: GLib.VariantType,
+        ): GLib.Variant;
         /**
          * Runs a prompt and performs the prompting. Returns a variant result if the
          * prompt was completed and not dismissed. The type of result depends on the
@@ -3171,7 +3175,7 @@ export namespace SecretUnstable {
          * @param return_type the variant type of the prompt result
          * @returns `null` if the prompt was dismissed or an error occurred
          */
-        run(window_id: number, cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
+        run(window_id: bigint | number, cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -3897,7 +3901,7 @@ export namespace SecretUnstable {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3924,7 +3928,7 @@ export namespace SecretUnstable {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6841,7 +6845,7 @@ export namespace SecretUnstable {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6868,7 +6872,7 @@ export namespace SecretUnstable {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6949,11 +6953,11 @@ export namespace SecretUnstable {
 
         // Constructors
 
-        constructor(secret: string, length: number, content_type: string);
+        constructor(secret: string, length: bigint | number, content_type: string);
 
-        static ['new'](secret: string, length: number, content_type: string): Value;
+        static ['new'](secret: string, length: bigint | number, content_type: string): Value;
 
-        static new_full(secret: string, length: number, content_type: string): Value;
+        static new_full(secret: string, length: bigint | number, content_type: string): Value;
 
         // Methods
 

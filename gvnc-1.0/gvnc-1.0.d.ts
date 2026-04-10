@@ -751,7 +751,7 @@ export namespace GVnc {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -778,7 +778,7 @@ export namespace GVnc {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1056,7 +1056,7 @@ export namespace GVnc {
          * @param height the number of pixels to fill vertically
          * @virtual
          */
-        vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
+        vfunc_fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
         /**
          * @virtual
          */
@@ -1103,14 +1103,7 @@ export namespace GVnc {
          * @param height the number of pixels to fill vertically
          * @virtual
          */
-        vfunc_rgb24_blt(
-            src: Uint8Array | string,
-            rowstride: number,
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-        ): void;
+        vfunc_rgb24_blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
          * Set the color map to use for the framebuffer
          * @param map the new color map
@@ -1126,7 +1119,7 @@ export namespace GVnc {
          * @param y the vertical pixel to set
          * @virtual
          */
-        vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
+        vfunc_set_pixel_at(src: Uint8Array, x: number, y: number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1523,7 +1516,7 @@ export namespace GVnc {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1550,7 +1543,7 @@ export namespace GVnc {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1861,7 +1854,7 @@ export namespace GVnc {
          * @param data
          * @param length
          */
-        client_cut_text(data: any | null, length: number): boolean;
+        client_cut_text(data: any | null, length: bigint | number): boolean;
         /**
          * Request that the server send a framebuffer update when the
          * region positioned at (`x`, `y`) wth size (`width`, `height`)
@@ -2623,7 +2616,7 @@ export namespace GVnc {
              * @param height the number of pixels to fill vertically
              * @virtual
              */
-            vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
+            vfunc_fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
             /**
              * @virtual
              */
@@ -2671,7 +2664,7 @@ export namespace GVnc {
              * @virtual
              */
             vfunc_rgb24_blt(
-                src: Uint8Array | string,
+                src: Uint8Array,
                 rowstride: number,
                 x: number,
                 y: number,
@@ -2693,7 +2686,7 @@ export namespace GVnc {
              * @param y the vertical pixel to set
              * @virtual
              */
-            vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
+            vfunc_set_pixel_at(src: Uint8Array, x: number, y: number): void;
         }
 
         // Constructor properties interface

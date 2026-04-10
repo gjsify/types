@@ -2050,7 +2050,7 @@ export namespace Colord {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             colorspace: number;
             connected: string;
-            created: number;
+            created: bigint | number;
             embedded: string;
             enabled: boolean;
             format: string;
@@ -2058,7 +2058,7 @@ export namespace Colord {
             kind: number;
             mode: number;
             model: string;
-            modified: number;
+            modified: bigint | number;
             object_path: string;
             objectPath: string;
             owner: number;
@@ -3921,7 +3921,7 @@ export namespace Colord {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             colorspace: string;
             connected: string;
-            created: number;
+            created: bigint | number;
             filename: string;
             format: string;
             has_vcgt: string;

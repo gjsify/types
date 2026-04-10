@@ -1092,7 +1092,7 @@ export namespace GstRtsp {
          * @param timeout a timeout in microseconds
          * @returns #GST_RTSP_OK when a connection could be made.
          */
-        connect_usec(timeout: number): RTSPResult;
+        connect_usec(timeout: bigint | number): RTSPResult;
         /**
          * Attempt to connect to the url of `conn` made with
          * `gst_rtsp_connection_create()`. If `timeout` is `null` this function can block
@@ -1118,7 +1118,7 @@ export namespace GstRtsp {
          * @param response a {@link GstRtsp.RTSPMessage}
          * @returns #GST_RTSP_OK when a connection could be made.
          */
-        connect_with_response_usec(timeout: number, response: RTSPMessage): RTSPResult;
+        connect_with_response_usec(timeout: bigint | number, response: RTSPMessage): RTSPResult;
         /**
          * If `conn` received the first tunnel connection and `conn2` received
          * the second tunnel connection, link the two connections together so that
@@ -1264,7 +1264,7 @@ export namespace GstRtsp {
          * @param timeout a timeout in microseconds
          * @returns #GST_RTSP_OK on success.
          */
-        poll_usec(events: RTSPEvent | null, timeout: number): [RTSPResult, RTSPEvent];
+        poll_usec(events: RTSPEvent | null, timeout: bigint | number): [RTSPResult, RTSPEvent];
         /**
          * Attempt to read `size` bytes into `data` from the connected `conn`, blocking up to
          * the specified `timeout`. `timeout` can be `null`, in which case this function
@@ -1286,7 +1286,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on success.
          */
-        read_usec(data: Uint8Array | string, timeout: number): RTSPResult;
+        read_usec(data: Uint8Array | string, timeout: bigint | number): RTSPResult;
         /**
          * Attempt to read into `message` from the connected `conn`, blocking up to
          * the specified `timeout`. `timeout` can be `null`, in which case this function
@@ -1308,7 +1308,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or 0
          * @returns #GST_RTSP_OK on success.
          */
-        receive_usec(message: RTSPMessage, timeout: number): RTSPResult;
+        receive_usec(message: RTSPMessage, timeout: bigint | number): RTSPResult;
         /**
          * Reset the timeout of `conn`.
          * @returns #GST_RTSP_OK.
@@ -1346,7 +1346,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on Since.
          */
-        send_messages_usec(messages: RTSPMessage[], timeout: number): RTSPResult;
+        send_messages_usec(messages: RTSPMessage[], timeout: bigint | number): RTSPResult;
         /**
          * Attempt to send `message` to the connected `conn`, blocking up to
          * the specified `timeout`. `timeout` can be 0, in which case this function
@@ -1357,7 +1357,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on success.
          */
-        send_usec(message: RTSPMessage, timeout: number): RTSPResult;
+        send_usec(message: RTSPMessage, timeout: bigint | number): RTSPResult;
         /**
          * Sets a custom accept-certificate function for checking certificates for
          * validity. This will directly map to {@link Gio.TlsConnection} 's "accept-certificate"
@@ -1490,7 +1490,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or 0
          * @returns #GST_RTSP_OK on success.
          */
-        write_usec(data: Uint8Array | string, timeout: number): RTSPResult;
+        write_usec(data: Uint8Array | string, timeout: bigint | number): RTSPResult;
     }
 
     /**
@@ -2080,7 +2080,7 @@ export namespace GstRtsp {
          * @param bytes maximum bytes
          * @param messages maximum messages
          */
-        set_send_backlog(bytes: number, messages: number): void;
+        set_send_backlog(bytes: bigint | number, messages: number): void;
         /**
          * Decreases the reference count of `watch` by one. If the resulting reference
          * count is zero the watch and associated memory will be destroyed.
@@ -2115,7 +2115,7 @@ export namespace GstRtsp {
          * @param timeout a timeout in microseconds
          * @returns {@link GstRtsp.RTSPResult.OK} when if there is room in queue.          {@link GstRtsp.RTSPResult.ETIMEOUT} when `timeout` was reached.          {@link GstRtsp.RTSPResult.EINTR} when `watch` is flushing          {@link GstRtsp.RTSPResult.EINVAL} when called with invalid parameters.
          */
-        wait_backlog_usec(timeout: number): RTSPResult;
+        wait_backlog_usec(timeout: bigint | number): RTSPResult;
         /**
          * Write `data` using the connection of the `watch`. If it cannot be sent
          * immediately, it will be queued for transmission in `watch`. The contents of

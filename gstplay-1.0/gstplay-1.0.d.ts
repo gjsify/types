@@ -331,23 +331,23 @@ export namespace GstPlay {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
-            audio_video_offset: number;
-            audioVideoOffset: number;
+            audio_video_offset: bigint | number;
+            audioVideoOffset: bigint | number;
             current_audio_track: PlayAudioInfo;
             currentAudioTrack: PlayAudioInfo;
             current_subtitle_track: PlaySubtitleInfo;
             currentSubtitleTrack: PlaySubtitleInfo;
             current_video_track: PlayVideoInfo;
             currentVideoTrack: PlayVideoInfo;
-            duration: number;
+            duration: bigint | number;
             media_info: PlayMediaInfo;
             mediaInfo: PlayMediaInfo;
             mute: boolean;
             pipeline: Gst.Element;
-            position: number;
+            position: bigint | number;
             rate: number;
-            subtitle_video_offset: number;
-            subtitleVideoOffset: number;
+            subtitle_video_offset: bigint | number;
+            subtitleVideoOffset: bigint | number;
             suburi: string;
             uri: string;
             video_multiview_flags: GstVideo.VideoMultiviewFlags;
@@ -370,9 +370,9 @@ export namespace GstPlay {
         // Properties
 
         get audio_video_offset(): number;
-        set audio_video_offset(val: number);
+        set audio_video_offset(val: bigint | number);
         get audioVideoOffset(): number;
-        set audioVideoOffset(val: number);
+        set audioVideoOffset(val: bigint | number);
         /**
          * @read-only
          */
@@ -422,9 +422,9 @@ export namespace GstPlay {
         get rate(): number;
         set rate(val: number);
         get subtitle_video_offset(): number;
-        set subtitle_video_offset(val: number);
+        set subtitle_video_offset(val: bigint | number);
         get subtitleVideoOffset(): number;
-        set subtitleVideoOffset(val: number);
+        set subtitleVideoOffset(val: bigint | number);
         get suburi(): string;
         set suburi(val: string);
         get uri(): string;
@@ -706,7 +706,7 @@ export namespace GstPlay {
          * Sets audio-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
          */
-        set_audio_video_offset(offset: number): void;
+        set_audio_video_offset(offset: bigint | number): void;
         /**
          * Sets the current value of the indicated channel `type` to the passed
          * value.
@@ -771,7 +771,7 @@ export namespace GstPlay {
          * Sets subtitle-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
          */
-        set_subtitle_video_offset(offset: number): void;
+        set_subtitle_video_offset(offset: bigint | number): void;
         /**
          * Sets the next URI to play.
          * @param uri next URI to play.
@@ -1896,7 +1896,7 @@ export namespace GstPlay {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1923,7 +1923,7 @@ export namespace GstPlay {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

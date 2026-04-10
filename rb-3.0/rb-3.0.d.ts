@@ -1098,7 +1098,7 @@ export namespace RB {
      * @param bytes_needed number of bytes to check for
      * @returns `true` if enough space is available.
      */
-    function check_dir_has_space(dir: Gio.File, bytes_needed: number): boolean;
+    function check_dir_has_space(dir: Gio.File, bytes_needed: bigint | number): boolean;
     /**
      * Checks that the filesystem holding `uri` has at least `bytes_needed`
      * bytes available.
@@ -1106,7 +1106,7 @@ export namespace RB {
      * @param bytes_needed number of bytes to check for
      * @returns `true` if enough space is available.
      */
-    function check_dir_has_space_uri(uri: string, bytes_needed: number): boolean;
+    function check_dir_has_space_uri(uri: string, bytes_needed: bigint | number): boolean;
     /**
      * A row separator function to use for GtkComboBox widgets.
      * It expects the model to contain a string in its first column,
@@ -1881,7 +1881,7 @@ export namespace RB {
      * @gir-type Callback
      */
     interface ChunkLoaderCallback {
-        (loader: ChunkLoader, data: GLib.Bytes | Uint8Array, total: number): void;
+        (loader: ChunkLoader, data: GLib.Bytes, total: number): void;
     }
     /**
      * @gir-type Callback
@@ -1893,7 +1893,7 @@ export namespace RB {
      * @gir-type Callback
      */
     interface ExtDBRequestCallback {
-        (key: ExtDBKey, store_key: ExtDBKey, filename: string, data: GObject.Value | any): void;
+        (key: ExtDBKey, store_key: ExtDBKey, filename: string, data: unknown): void;
     }
     /**
      * @gir-type Callback
@@ -2517,7 +2517,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -2544,7 +2544,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3189,7 +3189,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3216,7 +3216,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3797,7 +3797,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -3824,7 +3824,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4404,7 +4404,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4431,7 +4431,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4739,7 +4739,7 @@ export namespace RB {
          * @param uri the uri to load
          * @param chunk_size maximum chunk size
          */
-        start(uri: string, chunk_size: number): void;
+        start(uri: string, chunk_size: bigint | number): void;
     }
 
     namespace DisplayPage {
@@ -5465,7 +5465,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5492,7 +5492,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6078,7 +6078,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6105,7 +6105,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6614,7 +6614,7 @@ export namespace RB {
          * @param column the column to lookup the value at
          * @virtual
          */
-        vfunc_get_value(iter: Gtk.TreeIter, column: number): unknown;
+        vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
         /**
          * Sets `iter` to point to the first child of `parent`.
          *
@@ -7155,7 +7155,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7182,7 +7182,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7809,7 +7809,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -7836,7 +7836,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8868,7 +8868,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8895,7 +8895,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8934,14 +8934,14 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            added: (arg0: ExtDBKey, arg1: string, arg2: GObject.Value) => void;
+            added: (arg0: ExtDBKey, arg1: string, arg2: unknown) => void;
             /**
              * Emitted when loading a metadata item from a local file or from a
              * URI.
              * @signal
              * @run-last
              */
-            load: (arg0: GObject.Value) => any | null;
+            load: (arg0: unknown) => any | null;
             /**
              * Emitted when a metadata request cannot be satisfied from the local
              * store.  Metadata providers initiate searches in response to this
@@ -8957,7 +8957,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            store: (arg0: GObject.Value) => any | null;
+            store: (arg0: unknown) => any | null;
             'notify::name': (pspec: GObject.ParamSpec) => void;
         }
 
@@ -9035,12 +9035,12 @@ export namespace RB {
          * @param data
          * @virtual
          */
-        vfunc_added(key: ExtDBKey, filename: string, data: GObject.Value | any): void;
+        vfunc_added(key: ExtDBKey, filename: string, data: unknown): void;
         /**
          * @param data
          * @virtual
          */
-        vfunc_load(data: GObject.Value | any): unknown;
+        vfunc_load(data: unknown): GObject.Value | any;
         /**
          * @param key
          * @param last_time
@@ -9051,7 +9051,7 @@ export namespace RB {
          * @param data
          * @virtual
          */
-        vfunc_store(data: GObject.Value | any): unknown;
+        vfunc_store(data: unknown): GObject.Value | any;
 
         // Methods
 
@@ -9249,7 +9249,7 @@ export namespace RB {
          * something tricky happens.
          * @param duration length of fade in milliseconds
          */
-        start(duration: number): void;
+        start(duration: bigint | number): void;
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -9429,7 +9429,7 @@ export namespace RB {
          * @param value value of property
          * @virtual
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -9832,7 +9832,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9859,7 +9859,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10754,7 +10754,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10781,7 +10781,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11177,17 +11177,17 @@ export namespace RB {
         /**
          * @virtual
          */
-        vfunc_get_capacity(): number;
+        vfunc_get_capacity(): bigint | number;
         /**
          * @param category the sync category name
          * @param map map to hold the entries
          * @virtual
          */
-        vfunc_get_entries(category: string, map: { [key: string]: any } | GLib.HashTable<string, RhythmDBEntry>): void;
+        vfunc_get_entries(category: string, map: GLib.HashTable<string, RhythmDBEntry>): void;
         /**
          * @virtual
          */
-        vfunc_get_free_space(): number;
+        vfunc_get_free_space(): bigint | number;
         /**
          * @virtual
          */
@@ -11613,7 +11613,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -11640,7 +11640,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -12965,7 +12965,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12992,7 +12992,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -13136,10 +13136,10 @@ export namespace RB {
             description: string,
             guid: string,
             img: string,
-            date: number,
-            duration: number,
-            position: number,
-            filesize: number,
+            date: bigint | number,
+            duration: bigint | number,
+            position: bigint | number,
+            filesize: bigint | number,
         ): RhythmDBEntry;
         /**
          * @param entry
@@ -14030,7 +14030,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14057,7 +14057,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -14410,7 +14410,7 @@ export namespace RB {
          * @param value value of property
          * @virtual
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -14813,7 +14813,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -14840,7 +14840,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15058,7 +15058,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-notify': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
+            'entry-extra-metadata-notify': (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -15070,7 +15070,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-request': (arg0: RhythmDBEntry) => GObject.Value;
+            'entry-extra-metadata-request': (arg0: RhythmDBEntry) => GObject.Value | any;
             /**
              * Emitted when a keyword is added to an entry.
              * @signal
@@ -15118,7 +15118,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-notify::dry-run': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
+            'entry-extra-metadata-notify::dry-run': (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -15126,7 +15126,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-notify::name': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
+            'entry-extra-metadata-notify::name': (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -15134,12 +15134,8 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-notify::no-update': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
-            [key: `entry-extra-metadata-notify::${string}`]: (
-                arg0: RhythmDBEntry,
-                arg1: string,
-                arg2: GObject.Value,
-            ) => void;
+            'entry-extra-metadata-notify::no-update': (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            [key: `entry-extra-metadata-notify::${string}`]: (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -15151,7 +15147,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-request::dry-run': (arg0: RhythmDBEntry) => GObject.Value;
+            'entry-extra-metadata-request::dry-run': (arg0: RhythmDBEntry) => GObject.Value | any;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -15163,7 +15159,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-request::name': (arg0: RhythmDBEntry) => GObject.Value;
+            'entry-extra-metadata-request::name': (arg0: RhythmDBEntry) => GObject.Value | any;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -15175,8 +15171,8 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-request::no-update': (arg0: RhythmDBEntry) => GObject.Value;
-            [key: `entry-extra-metadata-request::${string}`]: (arg0: RhythmDBEntry) => GObject.Value;
+            'entry-extra-metadata-request::no-update': (arg0: RhythmDBEntry) => GObject.Value | any;
+            [key: `entry-extra-metadata-request::${string}`]: (arg0: RhythmDBEntry) => GObject.Value | any;
         }
 
         // Constructor properties interface
@@ -15281,8 +15277,8 @@ export namespace RB {
          */
         static compute_status_normal(
             n_songs: number,
-            duration: number,
-            size: number,
+            duration: bigint | number,
+            size: bigint | number,
             singular: string,
             plural: string,
         ): string;
@@ -15343,12 +15339,12 @@ export namespace RB {
          * @param metadata
          * @virtual
          */
-        vfunc_entry_extra_metadata_notify(entry: RhythmDBEntry, field: string, metadata: GObject.Value | any): void;
+        vfunc_entry_extra_metadata_notify(entry: RhythmDBEntry, field: string, metadata: unknown): void;
         /**
          * @param entry
          * @virtual
          */
-        vfunc_entry_extra_metadata_request(entry: RhythmDBEntry): unknown;
+        vfunc_entry_extra_metadata_request(entry: RhythmDBEntry): GObject.Value | any;
         /**
          * @param entry
          * @param keyword
@@ -15371,12 +15367,12 @@ export namespace RB {
         /**
          * @virtual
          */
-        vfunc_impl_entry_count(): number;
+        vfunc_impl_entry_count(): bigint | number;
         /**
          * @param type
          * @virtual
          */
-        vfunc_impl_entry_count_by_type(type: RhythmDBEntryType): number;
+        vfunc_impl_entry_count_by_type(type: RhythmDBEntryType): bigint | number;
         /**
          * @param entry
          * @virtual
@@ -15393,7 +15389,7 @@ export namespace RB {
          * @param value
          * @virtual
          */
-        vfunc_impl_entry_get(entry: RhythmDBEntry, propid: number, value: GObject.Value | any): void;
+        vfunc_impl_entry_get(entry: RhythmDBEntry, propid: number, value: unknown): void;
         /**
          * @param entry
          * @param keyword
@@ -15423,7 +15419,7 @@ export namespace RB {
          * @param value
          * @virtual
          */
-        vfunc_impl_entry_set(entry: RhythmDBEntry, propid: number, value: GObject.Value | any): boolean;
+        vfunc_impl_entry_set(entry: RhythmDBEntry, propid: number, value: unknown): boolean;
         /**
          * @param type
          * @virtual
@@ -16047,7 +16043,7 @@ export namespace RB {
          * @param prefix a cache key prefix to scan
          * @param max_age maximum age of missing entries to keep
          */
-        purge_metadata_cache(prefix: string, max_age: number): void;
+        purge_metadata_cache(prefix: string, max_age: bigint | number): void;
     }
 
     namespace RhythmDBImportJob {
@@ -16704,7 +16700,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16731,7 +16727,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17157,7 +17153,7 @@ export namespace RB {
          * @param column the column to lookup the value at
          * @virtual
          */
-        vfunc_get_value(iter: Gtk.TreeIter, column: number): unknown;
+        vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
         /**
          * Sets `iter` to point to the first child of `parent`.
          *
@@ -17698,7 +17694,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17725,7 +17721,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18081,12 +18077,7 @@ export namespace RB {
          * @param new_value
          * @virtual
          */
-        vfunc_entry_prop_changed(
-            entry: RhythmDBEntry,
-            prop: RhythmDBPropType,
-            old: GObject.Value | any,
-            new_value: GObject.Value | any,
-        ): void;
+        vfunc_entry_prop_changed(entry: RhythmDBEntry, prop: RhythmDBPropType, old: unknown, new_value: unknown): void;
         /**
          * @param entry
          * @virtual
@@ -18501,7 +18492,7 @@ export namespace RB {
          * @param column the column to lookup the value at
          * @virtual
          */
-        vfunc_get_value(iter: Gtk.TreeIter, column: number): unknown;
+        vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
         /**
          * Sets `iter` to point to the first child of `parent`.
          *
@@ -19072,7 +19063,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19099,7 +19090,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19629,7 +19620,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19656,7 +19647,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -20313,7 +20304,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20340,7 +20331,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -20714,7 +20705,7 @@ export namespace RB {
          * @param value value of property
          * @virtual
          */
-        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -21117,7 +21108,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -21144,7 +21135,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21703,12 +21694,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'playing-song-property-changed': (
-                arg0: string,
-                arg1: string,
-                arg2: GObject.Value,
-                arg3: GObject.Value,
-            ) => void;
+            'playing-song-property-changed': (arg0: string, arg1: string, arg2: unknown, arg3: unknown) => void;
             /**
              * Emitted when a new {@link RB.Source} instance starts playing
              * @signal
@@ -21950,12 +21936,7 @@ export namespace RB {
          * @param newValue
          * @virtual
          */
-        vfunc_playing_song_property_changed(
-            uri: string,
-            property: string,
-            old: GObject.Value | any,
-            newValue: GObject.Value | any,
-        ): void;
+        vfunc_playing_song_property_changed(uri: string, property: string, old: unknown, newValue: unknown): void;
         /**
          * @param source
          * @virtual
@@ -22719,7 +22700,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -22746,7 +22727,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23425,7 +23406,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23452,7 +23433,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -24588,7 +24569,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -24615,7 +24596,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -25456,7 +25437,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -25483,7 +25464,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -26099,7 +26080,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26126,7 +26107,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -26694,7 +26675,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -26721,7 +26702,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -27441,7 +27422,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -27468,7 +27449,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -28282,7 +28263,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -28309,7 +28290,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -29023,7 +29004,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -29050,7 +29031,7 @@ export namespace RB {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -29490,22 +29471,6 @@ export namespace RB {
         pub_date: number;
         duration: number;
         filesize: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                title: string;
-                url: string;
-                description: string;
-                author: string;
-                guid: string;
-                img: string;
-                pub_date: number;
-                duration: number;
-                filesize: number;
-            }>,
-        );
     }
 
     /**
@@ -30305,7 +30270,7 @@ export namespace RB {
              * Returns the current playback for the current stream in nanoseconds.
              * @virtual
              */
-            vfunc_get_time(): number;
+            vfunc_get_time(): bigint | number;
             /**
              * Returns the current volume level, between 0.0 and 1.0.
              * @virtual
@@ -30323,7 +30288,7 @@ export namespace RB {
              * @param value
              * @virtual
              */
-            vfunc_info(stream_data: any | null, field: MetaDataField, value: GObject.Value | any): void;
+            vfunc_info(stream_data: any | null, field: MetaDataField, value: unknown): void;
             /**
              * Determines whether the player supports multiple open streams.
              * @virtual
@@ -30561,7 +30526,7 @@ export namespace RB {
          * @param crossfade requested crossfade duration (nanoseconds)
          * @returns `true` if playback started successfully
          */
-        play(play_type: PlayerPlayType | null, crossfade: number): boolean;
+        play(play_type: PlayerPlayType | null, crossfade: bigint | number): boolean;
         /**
          * Determines whether the player is currently playing a stream.
          * A stream is playing if it's not paused or being faded out.
@@ -30579,7 +30544,7 @@ export namespace RB {
          * The seek may take place asynchronously.
          * @param newtime seek target position in seconds
          */
-        set_time(newtime: number): void;
+        set_time(newtime: bigint | number): void;
         /**
          * Adjusts the output volume level.  This affects all streams.
          * The player may use a hardware volume control to implement
@@ -31056,7 +31021,7 @@ export namespace RB {
          * @param filesize size of the destination file
          * @param media_type media type of the destination file
          */
-        track_added(entry: RhythmDBEntry, uri: string, filesize: number, media_type: string): void;
+        track_added(entry: RhythmDBEntry, uri: string, filesize: bigint | number, media_type: string): void;
         /**
          * Performs any preparation necessary before starting the transfer.
          * This is called on a task thread, so no UI interaction is possible.
@@ -31073,7 +31038,7 @@ export namespace RB {
          * @param dest_size the size of the destination file
          * @param media_type the media type of the destination file
          */
-        track_upload(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): void;
+        track_upload(entry: RhythmDBEntry, uri: string, dest_size: bigint | number, media_type: string): void;
         /**
          * Starts tranferring `entries` to the target.  This returns the
          * {@link RB.TrackTransferBatch} that it starts, so the caller can track

@@ -425,7 +425,7 @@ export namespace Lasem {
          * @param size placeholder for the size of the returned data
          * @returns a newly allocated buffer containing the requested data.
          */
-        get_href_data(href: string, size: number): any | null;
+        get_href_data(href: string, size: bigint | number): any | null;
         get_url(): string;
         /**
          * @param element
@@ -1212,18 +1212,7 @@ export namespace Lasem {
 
         name: string;
         attribute_offset: number;
-        trait_class: TraitClass;
         trait_default: any;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                name: string;
-                attribute_offset: number;
-                trait_default: any;
-            }>,
-        );
     }
 
     /**
@@ -1414,18 +1403,7 @@ export namespace Lasem {
 
         name: string;
         id: number;
-        trait_class: TraitClass;
         trait_default: string;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                name: string;
-                id: number;
-                trait_default: string;
-            }>,
-        );
     }
 
     /**
@@ -1484,14 +1462,6 @@ export namespace Lasem {
         // Fields
 
         size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                size: number;
-            }>,
-        );
     }
 
     /**

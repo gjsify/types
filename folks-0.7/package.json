@@ -1,6 +1,6 @@
 {
     "name": "@girs/folks-0.7",
-    "version": "0.7.0-4.0.0-rc.1",
+    "version": "0.7.0-4.0.0-rc.2",
     "description": "GJS TypeScript type definitions for Folks-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "folks-0.7.js",
@@ -31,12 +31,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.1",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.1",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.1",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.1",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.1",
-      "@girs/gee-0.8": "0.8.0-4.0.0-rc.1"    },
+      "@girs/gjs": "4.0.0-rc.2",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+      "@girs/gee-0.8": "0.8.0-4.0.0-rc.2"    },
     "devDependencies": {
       "typescript": "*"
     },

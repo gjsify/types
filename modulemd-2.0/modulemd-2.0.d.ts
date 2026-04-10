@@ -776,7 +776,7 @@ export namespace Modulemd {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buildonly: boolean;
-            buildorder: number;
+            buildorder: bigint | number;
             name: string;
             rationale: string;
         }
@@ -793,7 +793,7 @@ export namespace Modulemd {
         get buildonly(): boolean;
         set buildonly(val: boolean);
         get buildorder(): number;
-        set buildorder(val: number);
+        set buildorder(val: bigint | number);
         /**
          * @construct-only
          */
@@ -918,7 +918,7 @@ export namespace Modulemd {
         /**
          * @param buildorder The order this component should be built relative to others.
          */
-        set_buildorder(buildorder: number): void;
+        set_buildorder(buildorder: bigint | number): void;
         /**
          * @param name The name of this component. Note that this is different from the key used to save this component to a {@link Modulemd.ModuleStream}. If this value is set, it adds a "name:" attribute to this component. This is used in bootstrapping cases where the key is a different name used to differentiate multiple ordered builds of the same component name. This function is currently only implemented for {@link Modulemd.ComponentRpm} and has no effect on other {@link Modulemd.Component} types.
          */
@@ -1204,7 +1204,7 @@ export namespace Modulemd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            mdversion: number;
+            mdversion: bigint | number;
             module_name: string;
             moduleName: string;
         }
@@ -1246,7 +1246,7 @@ export namespace Modulemd {
 
         _init(...args: any[]): void;
 
-        static ['new'](version: number, module_name: string): Defaults;
+        static ['new'](version: bigint | number, module_name: string): Defaults;
 
         // Signals
 
@@ -1283,7 +1283,7 @@ export namespace Modulemd {
         /**
          * @virtual
          */
-        vfunc_get_mdversion(): number;
+        vfunc_get_mdversion(): bigint | number;
         /**
          * @virtual
          */
@@ -1315,12 +1315,12 @@ export namespace Modulemd {
         /**
          * @param modified The last modified time represented as a 64-bit integer (such as 201807011200)
          */
-        set_modified(modified: number): void;
+        set_modified(modified: bigint | number): void;
         /**
          * @param mdversion The version to upgrade to.
          * @returns A newly-allocated copy of `self` upgraded to the requested defaults version. NULL if the upgrade cannot be performed and sets `error` appropriately. This function does not modify `self`.
          */
-        upgrade(mdversion: number): Defaults;
+        upgrade(mdversion: bigint | number): Defaults;
         /**
          * @returns TRUE if validation passed, FALSE and sets `error` appropriately if validation failed.
          */
@@ -1665,7 +1665,7 @@ export namespace Modulemd {
          * @param context The context of the stream to retrieve.
          * @returns The requested stream object or NULL if no match was found.
          */
-        get_stream_by_NSVC(stream_name: string, version: number, context: string): ModuleStream;
+        get_stream_by_NSVC(stream_name: string, version: bigint | number, context: string): ModuleStream;
         /**
          * @param stream_name The name of the stream to retrieve.
          * @param version The version of the stream to retrieve. If set to zero, the version is not included in the search.
@@ -1675,7 +1675,7 @@ export namespace Modulemd {
          */
         get_stream_by_NSVCA(
             stream_name: string,
-            version: number,
+            version: bigint | number,
             context?: string | null,
             arch?: string | null,
         ): ModuleStream;
@@ -1703,7 +1703,7 @@ export namespace Modulemd {
          */
         remove_streams_by_NSVCA(
             stream_name: string,
-            version: number,
+            version: bigint | number,
             context?: string | null,
             arch?: string | null,
         ): void;
@@ -1716,7 +1716,7 @@ export namespace Modulemd {
          */
         search_streams(
             stream_name: string,
-            version: number,
+            version: bigint | number,
             context?: string | null,
             arch?: string | null,
         ): ModuleStream[];
@@ -2056,12 +2056,12 @@ export namespace Modulemd {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             arch: string;
             context: string;
-            mdversion: number;
+            mdversion: bigint | number;
             module_name: string;
             moduleName: string;
             stream_name: string;
             streamName: string;
-            version: number;
+            version: bigint | number;
         }
     }
 
@@ -2098,7 +2098,7 @@ export namespace Modulemd {
          */
         get streamName(): string;
         get version(): number;
-        set version(val: number);
+        set version(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2115,7 +2115,11 @@ export namespace Modulemd {
 
         _init(...args: any[]): void;
 
-        static ['new'](mdversion: number, module_name?: string | null, module_stream?: string | null): ModuleStream;
+        static ['new'](
+            mdversion: bigint | number,
+            module_name?: string | null,
+            module_stream?: string | null,
+        ): ModuleStream;
 
         // Signals
 
@@ -2212,7 +2216,7 @@ export namespace Modulemd {
         /**
          * @virtual
          */
-        vfunc_get_mdversion(): number;
+        vfunc_get_mdversion(): bigint | number;
         /**
          * Verifies that all stored values are internally consistent and that the
          * module is sufficiently-complete for emitting. This function is called
@@ -2297,19 +2301,19 @@ export namespace Modulemd {
         /**
          * @param version The version of this {@link Modulemd.ModuleStream}.
          */
-        set_version(version: number): void;
+        set_version(version: bigint | number): void;
         /**
          * Return an upgraded copy of this object. Does not modify the original.
          * @param mdversion The metadata version to upgrade to. If zero, upgrades to the highest-supported version.
          * @returns A newly-allocated {@link Modulemd.ModuleStream} copy of this object upgraded to the requested version. Returns NULL and sets `error` appropriately if the upgrade could not be completed automatically.
          */
-        upgrade(mdversion: number): ModuleStream;
+        upgrade(mdversion: bigint | number): ModuleStream;
         /**
          * Does not modify the original {@link Modulemd.ModuleStream} object, `from`.
          * @param mdversion The metadata version to upgrade to. If zero, upgrades to the highest-supported version.
          * @returns A newly-allocated {@link Modulemd.Module} containing a copy of this object upgraded to the requested version, possibly with multiple streams. Returns NULL and sets `error` appropriately if the upgrade could not be completed automatically.
          */
-        upgrade_ext(mdversion: number): Module;
+        upgrade_ext(mdversion: bigint | number): Module;
         /**
          * Verifies that all stored values are internally consistent and that the
          * module is sufficiently-complete for emitting. This function is called
@@ -3143,11 +3147,11 @@ export namespace Modulemd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            eol_date: number;
-            eolDate: number;
-            mdversion: number;
+            eol_date: bigint | number;
+            eolDate: bigint | number;
+            mdversion: bigint | number;
             message: string;
-            modified: number;
+            modified: bigint | number;
             module_context: string;
             moduleContext: string;
             module_name: string;
@@ -3172,9 +3176,9 @@ export namespace Modulemd {
         // Properties
 
         get eol_date(): number;
-        set eol_date(val: number);
+        set eol_date(val: bigint | number);
         get eolDate(): number;
-        set eolDate(val: number);
+        set eolDate(val: bigint | number);
         /**
          * @construct-only
          */
@@ -3184,7 +3188,7 @@ export namespace Modulemd {
          */
         get message(): string;
         get modified(): number;
-        set modified(val: number);
+        set modified(val: bigint | number);
         get module_context(): string;
         set module_context(val: string);
         get moduleContext(): string;
@@ -3234,8 +3238,8 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](
-            mdversion: number,
-            modified: number,
+            mdversion: bigint | number,
+            modified: bigint | number,
             module_name: string,
             module_stream: string,
             message: string,
@@ -3304,11 +3308,11 @@ export namespace Modulemd {
         /**
          * @param eol_date The end-of-life date for this stream. If set to zero, the stream is EOLed immediately.
          */
-        set_eol_date(eol_date: number): void;
+        set_eol_date(eol_date: bigint | number): void;
         /**
          * @param modified The last modified time represented as a 64-bit integer (such as 201807011200).
          */
-        set_modified(modified: number): void;
+        set_modified(modified: bigint | number): void;
         /**
          * @param module_context The name of the module context to which this obsoletes applies.
          */
@@ -3779,7 +3783,7 @@ export namespace Modulemd {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             arch: string;
-            epoch: number;
+            epoch: bigint | number;
             name: string;
             nevra: string;
             release: string;
@@ -3798,7 +3802,7 @@ export namespace Modulemd {
         get arch(): string;
         set arch(val: string);
         get epoch(): number;
-        set epoch(val: number);
+        set epoch(val: bigint | number);
         get name(): string;
         set name(val: string);
         /**
@@ -3825,7 +3829,13 @@ export namespace Modulemd {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, epoch: number, version: string, release: string, arch: string): RpmMapEntry;
+        static ['new'](
+            name: string,
+            epoch: bigint | number,
+            version: string,
+            release: string,
+            arch: string,
+        ): RpmMapEntry;
 
         // Signals
 
@@ -3890,7 +3900,7 @@ export namespace Modulemd {
         /**
          * @param epoch The package epoch of this RPM.
          */
-        set_epoch(epoch: number): void;
+        set_epoch(epoch: bigint | number): void;
         /**
          * @param name The package name of this RPM.
          */
@@ -4088,12 +4098,12 @@ export namespace Modulemd {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            modified: number;
+            modified: bigint | number;
             module_name: string;
             moduleName: string;
             module_stream: string;
             moduleStream: string;
-            version: number;
+            version: bigint | number;
         }
     }
 
@@ -4106,7 +4116,7 @@ export namespace Modulemd {
         // Properties
 
         get modified(): number;
-        set modified(val: number);
+        set modified(val: bigint | number);
         /**
          * @construct-only
          */
@@ -4143,7 +4153,12 @@ export namespace Modulemd {
 
         _init(...args: any[]): void;
 
-        static ['new'](version: number, module_name: string, module_stream: string, modified: number): Translation;
+        static ['new'](
+            version: bigint | number,
+            module_name: string,
+            module_stream: string,
+            modified: bigint | number,
+        ): Translation;
 
         // Signals
 
@@ -4185,7 +4200,7 @@ export namespace Modulemd {
         /**
          * @param modified The last modified time represented as a 64-bit integer (such as 201807011200).
          */
-        set_modified(modified: number): void;
+        set_modified(modified: bigint | number): void;
         /**
          * @param translation_entry A set of translations of this module stream for a particular locale.
          */

@@ -1565,13 +1565,13 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface AttributesManagerFunc {
-        (att_name: string, value: GObject.Value | any, data?: any | null): void;
+        (att_name: string, value: unknown, data?: any | null): void;
     }
     /**
      * @gir-type Callback
      */
     interface AttributesManagerSignal<A = GObject.Object> {
-        (obj: A, att_name: string, value: GObject.Value | any, data?: any | null): void;
+        (obj: A, att_name: string, value: unknown, data?: any | null): void;
     }
     /**
      * @gir-type Callback
@@ -1603,7 +1603,7 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface SqlRenderingValue {
-        (value: GObject.Value | any, context: SqlRenderingContext): string;
+        (value: unknown, context: SqlRenderingContext): string;
     }
     /**
      * @gir-type Callback
@@ -1620,7 +1620,7 @@ export namespace Gda {
             instance: any | null,
             signame: string,
             n_param_values: number,
-            param_values: GObject.Value | any,
+            param_values: unknown,
             gda_reserved?: any | null,
             data?: any | null,
         ): void;
@@ -2060,7 +2060,7 @@ export namespace Gda {
         /**
          * @virtual
          */
-        vfunc_get_length(): number;
+        vfunc_get_length(): bigint | number;
         /**
          * Reads a chunk of bytes from the BLOB accessible through `op` into `blob`.
          * @param blob a {@link Gda.Blob} to read data to
@@ -2068,7 +2068,7 @@ export namespace Gda {
          * @param size maximum number of bytes to read.
          * @virtual
          */
-        vfunc_read(blob: Blob, offset: number, size: number): number;
+        vfunc_read(blob: Blob, offset: number, size: number): bigint | number;
         /**
          * Writes a chunk of bytes from a `blob` to the BLOB accessible through `op`, `blob` is unchanged after
          * this call.
@@ -2079,7 +2079,7 @@ export namespace Gda {
          * @param offset offset to write from the start of the blob (starts at 0)
          * @virtual
          */
-        vfunc_write(blob: Blob, offset: number): number;
+        vfunc_write(blob: Blob, offset: number): bigint | number;
         /**
          * Writes the whole contents of `blob` into the blob manipulated by `op`. If necessary the resulting
          * blob is truncated from its previous length.
@@ -2101,7 +2101,7 @@ export namespace Gda {
          * @param size maximum number of bytes to read.
          * @returns the number of bytes actually read. In case of error, -1 is returned and the provider should have added an error to the connection.
          */
-        read(blob: Blob, offset: number, size: number): number;
+        read(blob: Blob, offset: bigint | number, size: bigint | number): number;
         /**
          * Reads the whole contents of the blob manipulated by `op` into `blob`
          * @param blob a {@link Gda.Blob} to read data to
@@ -2118,7 +2118,7 @@ export namespace Gda {
          * @param offset offset to write from the start of the blob (starts at 0)
          * @returns the number of bytes written. In case of error, -1 is returned and the provider should have added an error to the connection.
          */
-        write(blob: Blob, offset: number): number;
+        write(blob: Blob, offset: bigint | number): number;
         /**
          * Writes the whole contents of `blob` into the blob manipulated by `op`. If necessary the resulting
          * blob is truncated from its previous length.
@@ -3985,7 +3985,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -4012,7 +4012,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4145,7 +4145,7 @@ export namespace Gda {
          * This function should not be called directly
          * @param code a code.
          */
-        set_code(code: number): void;
+        set_code(code: bigint | number): void;
         /**
          * Sets `event`'s `description`. This function should not be called directly.
          * @param description a description, or `null` (to unset current description if any)
@@ -4820,7 +4820,7 @@ export namespace Gda {
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+        vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
@@ -4912,7 +4912,7 @@ export namespace Gda {
          * @param value the to use to set on
          * @virtual
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -4946,7 +4946,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @virtual
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
@@ -5389,7 +5389,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -5416,7 +5416,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6219,7 +6219,7 @@ export namespace Gda {
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+        vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
@@ -6311,7 +6311,7 @@ export namespace Gda {
          * @param value the to use to set on
          * @virtual
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -6345,7 +6345,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @virtual
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
@@ -6788,7 +6788,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -6815,7 +6815,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7470,7 +7470,7 @@ export namespace Gda {
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+        vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
@@ -7562,7 +7562,7 @@ export namespace Gda {
          * @param value the to use to set on
          * @virtual
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -7596,7 +7596,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @virtual
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
@@ -8039,7 +8039,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8066,7 +8066,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8815,7 +8815,7 @@ export namespace Gda {
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+        vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
@@ -8907,7 +8907,7 @@ export namespace Gda {
          * @param value the to use to set on
          * @virtual
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -8941,7 +8941,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @virtual
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
@@ -9384,7 +9384,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9411,7 +9411,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10359,7 +10359,7 @@ export namespace Gda {
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+        vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
@@ -10451,7 +10451,7 @@ export namespace Gda {
          * @param value the to use to set on
          * @virtual
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -10485,7 +10485,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @virtual
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
@@ -10928,7 +10928,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10955,7 +10955,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11647,7 +11647,7 @@ export namespace Gda {
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+        vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
@@ -11739,7 +11739,7 @@ export namespace Gda {
          * @param value the to use to set on
          * @virtual
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -11773,7 +11773,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @virtual
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
@@ -12216,7 +12216,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -12243,7 +12243,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -13210,7 +13210,7 @@ export namespace Gda {
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+        vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
@@ -13302,7 +13302,7 @@ export namespace Gda {
          * @param value the to use to set on
          * @virtual
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -13336,7 +13336,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @virtual
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
@@ -13779,7 +13779,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -13806,7 +13806,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -14717,7 +14717,7 @@ export namespace Gda {
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
-        vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+        vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
@@ -14809,7 +14809,7 @@ export namespace Gda {
          * @param value the to use to set on
          * @virtual
          */
-        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
         /**
          * Removes a row from the data model.
          *
@@ -14843,7 +14843,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @virtual
          */
-        vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
@@ -15286,7 +15286,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15313,7 +15313,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15524,7 +15524,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
@@ -15539,7 +15539,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15936,7 +15936,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -15963,7 +15963,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -16174,7 +16174,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
@@ -16189,7 +16189,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -16586,7 +16586,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -16613,7 +16613,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -16824,7 +16824,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
@@ -16839,7 +16839,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -17236,7 +17236,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17263,7 +17263,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17481,7 +17481,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
@@ -17496,7 +17496,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -17893,7 +17893,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -17920,7 +17920,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18192,7 +18192,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
@@ -18207,7 +18207,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -18604,7 +18604,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -18631,7 +18631,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -18842,7 +18842,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
@@ -18857,7 +18857,7 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -19254,7 +19254,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -19281,7 +19281,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19317,7 +19317,7 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'attribute-changed': (arg0: string, arg1: GObject.Value) => void;
+            'attribute-changed': (arg0: string, arg1: unknown) => void;
             /**
              * Gets emitted when `holder`'s value has changed
              * @signal
@@ -19336,7 +19336,7 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            'validate-change': (arg0: GObject.Value) => GLib.Error;
+            'validate-change': (arg0: unknown) => GLib.Error;
             'notify::description': (pspec: GObject.ParamSpec) => void;
             'notify::full-bind': (pspec: GObject.ParamSpec) => void;
             'notify::g-type': (pspec: GObject.ParamSpec) => void;
@@ -19478,7 +19478,7 @@ export namespace Gda {
          * @param att_value
          * @virtual
          */
-        vfunc_att_changed(att_name: string, att_value: GObject.Value | any): void;
+        vfunc_att_changed(att_name: string, att_value: unknown): void;
         /**
          * @virtual
          */
@@ -19491,7 +19491,7 @@ export namespace Gda {
          * @param new_value
          * @virtual
          */
-        vfunc_validate_change(new_value: GObject.Value | any): GLib.Error;
+        vfunc_validate_change(new_value: unknown): GLib.Error;
 
         // Methods
 
@@ -20177,7 +20177,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -20204,7 +20204,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -21908,7 +21908,7 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'holder-attr-changed': (arg0: Holder, arg1: string, arg2: GObject.Value) => void;
+            'holder-attr-changed': (arg0: Holder, arg1: string, arg2: unknown) => void;
             /**
              * @signal
              * @run-first
@@ -21941,7 +21941,7 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            'validate-holder-change': (arg0: Holder, arg1: GObject.Value) => GLib.Error;
+            'validate-holder-change': (arg0: Holder, arg1: unknown) => GLib.Error;
             /**
              * Gets emitted when `gda_set_is_valid()` is called, use
              * this signal to control which combination of values `set`'s holder can have (for example to implement some business rules)
@@ -22063,7 +22063,7 @@ export namespace Gda {
          * @param attr_value
          * @virtual
          */
-        vfunc_holder_attr_changed(holder: Holder, attr_name: string, attr_value: GObject.Value | any): void;
+        vfunc_holder_attr_changed(holder: Holder, attr_name: string, attr_value: unknown): void;
         /**
          * @param holder
          * @virtual
@@ -22088,7 +22088,7 @@ export namespace Gda {
          * @param new_value
          * @virtual
          */
-        vfunc_validate_holder_change(holder: Holder, new_value: GObject.Value | any): GLib.Error;
+        vfunc_validate_holder_change(holder: Holder, new_value: unknown): GLib.Error;
         /**
          * @virtual
          */
@@ -23129,7 +23129,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -23156,7 +23156,7 @@ export namespace Gda {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -23477,7 +23477,12 @@ export namespace Gda {
          * thread and this signal has not been handled in the user thread).
          * @param id a handler ID, as returned by `gda_thread_wrapper_connect_raw()`
          */
-        disconnect(id: number): void;
+        disconnect(id: bigint | number): void;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.disconnect
+        disconnect(...args: never[]): any;
         /**
          * Make `wrapper` execute the `func` function with the `arg` argument (along with a {@link GLib.Error} which is not `error`)
          * in the sub thread managed by `wrapper`. To execute a function which does not return anything,
@@ -23577,7 +23582,7 @@ export namespace Gda {
          * was called.
          * @param id a signal ID
          */
-        steal_signal(id: number): void;
+        steal_signal(id: bigint | number): void;
         /**
          * Does the opposite of `gda_thread_wrapper_get_io_channel()`
          */
@@ -24928,15 +24933,6 @@ export namespace Gda {
         data: Uint8Array;
         binary_length: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                data: Uint8Array;
-                binary_length: number;
-            }>,
-        );
-
         // Static methods
 
         /**
@@ -24981,7 +24977,6 @@ export namespace Gda {
 
         // Fields
 
-        data: Binary;
         op: BlobOp;
 
         // Static methods
@@ -25381,7 +25376,7 @@ export namespace Gda {
                 table_name: string;
                 size: number;
                 column_names: string[];
-                column_values: GObject.Value[];
+                column_values: unknown[];
             }>,
         );
 
@@ -25670,12 +25665,12 @@ export namespace Gda {
          * Sets the precision of a {@link Gda.Numeric}.
          * @param precision a `glong`
          */
-        set_precision(precision: number): void;
+        set_precision(precision: bigint | number): void;
         /**
          * Sets the width of a {@link Gda.Numeric}. (Not yet implemented).
          * @param width a `glong`
          */
-        set_width(width: number): void;
+        set_width(width: bigint | number): void;
     }
 
     /**
@@ -26258,18 +26253,6 @@ export namespace Gda {
         fraction: number;
         timezone: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                hour: number;
-                minute: number;
-                second: number;
-                fraction: number;
-                timezone: number;
-            }>,
-        );
-
         // Static methods
 
         /**
@@ -26291,7 +26274,7 @@ export namespace Gda {
          * Note: the resulting will always be a valid time.
          * @param ntz a new timezone to use, in seconds added to GMT
          */
-        change_timezone(ntz: number): void;
+        change_timezone(ntz: bigint | number): void;
         /**
          * @returns `TRUE` if {@link Gda.Time} is valid; `false` otherwise.
          */
@@ -26316,21 +26299,6 @@ export namespace Gda {
         fraction: number;
         timezone: number;
 
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                year: number;
-                month: number;
-                day: number;
-                hour: number;
-                minute: number;
-                second: number;
-                fraction: number;
-                timezone: number;
-            }>,
-        );
-
         // Static methods
 
         /**
@@ -26350,7 +26318,7 @@ export namespace Gda {
          * Note: the resulting will always be a valid time.
          * @param ntz a new timezone to use, in seconds added to GMT
          */
-        change_timezone(ntz: number): void;
+        change_timezone(ntz: bigint | number): void;
         /**
          * @returns `TRUE` if {@link Gda.Timestamp} is valid; `false` otherwise.
          */
@@ -26580,7 +26548,7 @@ export namespace Gda {
              * @param type a GType
              * @virtual
              */
-            vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+            vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
             /**
              * Creates a new GValue which represents the `str` value given as argument. This is
              * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
@@ -26595,7 +26563,7 @@ export namespace Gda {
              * @param type a GType
              * @virtual
              */
-            vfunc_get_value_from_str(str: string | null, type: GObject.GType): unknown;
+            vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
         }
 
         // Constructor properties interface
@@ -26781,7 +26749,7 @@ export namespace Gda {
              * @param cols_index an array of `gint` containing the column number to match each value of `values`
              * @virtual
              */
-            vfunc_i_find_row(values: (GObject.Value | any)[], cols_index: number[]): number;
+            vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
             /**
              * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
              * @virtual
@@ -26873,7 +26841,7 @@ export namespace Gda {
              * @param value the to use to set on
              * @virtual
              */
-            vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+            vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
             /**
              * Removes a row from the data model.
              *
@@ -26907,7 +26875,7 @@ export namespace Gda {
              * @param value a {@link GObject.Value} (not `null`)
              * @virtual
              */
-            vfunc_i_set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+            vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
             /**
              * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
              * by setting several values at once.

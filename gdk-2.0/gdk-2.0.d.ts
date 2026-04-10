@@ -3163,9 +3163,9 @@ export namespace Gdk {
     function colors_alloc(
         colormap: Colormap,
         contiguous: boolean,
-        planes: number,
+        planes: bigint | number,
         nplanes: number,
-        pixels: number,
+        pixels: bigint | number,
         npixels: number,
     ): number;
     /**
@@ -3176,7 +3176,7 @@ export namespace Gdk {
      * @param npixels the number of values in `pixels`.
      * @param planes the plane masks for all planes to free, OR'd together.
      */
-    function colors_free(colormap: Colormap, pixels: number, npixels: number, planes: number): void;
+    function colors_free(colormap: Colormap, pixels: bigint | number, npixels: number, planes: bigint | number): void;
     /**
      * Changes the value of the first `ncolors` colors in
      * a private colormap. This function is obsolete and
@@ -4478,8 +4478,8 @@ export namespace Gdk {
         window: Window,
         property: Atom,
         type: Atom,
-        offset: number,
-        length: number,
+        offset: bigint | number,
+        length: bigint | number,
         pdelete: number,
         actual_property_type: Atom,
         actual_format: number,
@@ -5784,7 +5784,7 @@ export namespace Gdk {
          * @param pixel pixel value in hardware display format
          * @param result {@link Gdk.Color} with red, green, blue fields initialized
          */
-        query_color(pixel: number, result: Color): void;
+        query_color(pixel: bigint | number, result: Color): void;
         /**
          * Deprecated function; use `g_object_unref()` instead.
          */

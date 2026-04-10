@@ -491,7 +491,7 @@ export namespace OSTree {
     function content_stream_parse(
         compressed: boolean,
         input: Gio.InputStream,
-        input_length: number,
+        input_length: bigint | number,
         trusted: boolean,
         cancellable?: Gio.Cancellable | null,
     ): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
@@ -906,7 +906,7 @@ export namespace OSTree {
          * @param key
          * @param value
          */
-        set_uint64(key: string, value: number): void;
+        set_uint64(key: string, value: bigint | number): void;
     }
 
     namespace BootconfigParser {
@@ -1846,7 +1846,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1873,7 +1873,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3088,7 +3088,7 @@ export namespace OSTree {
             body: string | null,
             metadata: GLib.Variant | null,
             root: RepoFile,
-            time: number,
+            time: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string];
         /**
@@ -3110,7 +3110,7 @@ export namespace OSTree {
         write_content(
             expected_checksum: string | null,
             object_input: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, Uint8Array | null];
         /**
@@ -3124,7 +3124,7 @@ export namespace OSTree {
         write_content_async(
             expected_checksum: string | null,
             object: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
@@ -3139,7 +3139,7 @@ export namespace OSTree {
         write_content_async(
             expected_checksum: string | null,
             object: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3155,7 +3155,7 @@ export namespace OSTree {
         write_content_async(
             expected_checksum: string | null,
             object: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
@@ -3178,7 +3178,7 @@ export namespace OSTree {
         write_content_trusted(
             checksum: string,
             object_input: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3293,7 +3293,7 @@ export namespace OSTree {
             objtype: ObjectType | null,
             checksum: string,
             object_input: Gio.InputStream,
-            length: number,
+            length: bigint | number,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -6170,7 +6170,7 @@ export namespace OSTree {
          */
         set_attribute_int64(
             attribute: string,
-            value: number,
+            value: bigint | number,
             flags: Gio.FileQueryInfoFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -6227,7 +6227,7 @@ export namespace OSTree {
          */
         set_attribute_uint64(
             attribute: string,
-            value: number,
+            value: bigint | number,
             flags: Gio.FileQueryInfoFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -7468,7 +7468,7 @@ export namespace OSTree {
             flags: Gio.FileMeasureFlags,
             cancellable: Gio.Cancellable | null,
             progress_callback: Gio.FileMeasureProgressCallback | null,
-        ): [boolean, number, number, number];
+        ): [boolean, bigint | number, bigint | number, bigint | number];
         /**
          * Collects the results from an earlier call to
          * `g_file_measure_disk_usage_async()`.  See `g_file_measure_disk_usage()` for
@@ -7476,7 +7476,9 @@ export namespace OSTree {
          * @param result the {@link Gio.AsyncResult} passed to your {@link Gio.AsyncReadyCallback}
          * @virtual
          */
-        vfunc_measure_disk_usage_finish(result: Gio.AsyncResult): [boolean, number, number, number];
+        vfunc_measure_disk_usage_finish(
+            result: Gio.AsyncResult,
+        ): [boolean, bigint | number, bigint | number, bigint | number];
         /**
          * Obtains a directory monitor for the given file.
          * This may fail if directory monitoring is not supported.
@@ -8832,7 +8834,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -8859,7 +8861,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9484,7 +9486,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -9511,7 +9513,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10513,7 +10515,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -10540,7 +10542,7 @@ export namespace OSTree {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10928,22 +10930,6 @@ export namespace OSTree {
         padding2: number;
         padding3: number;
         padding4: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                metadata_objects_total: number;
-                metadata_objects_written: number;
-                content_objects_total: number;
-                content_objects_written: number;
-                content_bytes_written: number;
-                padding1: number;
-                padding2: number;
-                padding3: number;
-                padding4: number;
-            }>,
-        );
     }
 
     /**

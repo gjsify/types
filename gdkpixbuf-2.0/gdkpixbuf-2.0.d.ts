@@ -244,7 +244,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufDestroyNotify {
-        (pixels: Uint8Array | string): void;
+        (pixels: Uint8Array): void;
     }
     /**
      * @gir-type Callback
@@ -262,7 +262,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufModuleIncrementLoadFunc {
-        (context: any | null, buf: Uint8Array | string): boolean;
+        (context: any | null, buf: Uint8Array): boolean;
     }
     /**
      * @gir-type Callback
@@ -322,7 +322,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufSaveFunc {
-        (buf: Uint8Array | string): boolean;
+        (buf: Uint8Array): boolean;
     }
     /**
      * Flags which allow a module to specify further details about the supported
@@ -372,8 +372,8 @@ export namespace GdkPixbuf {
             height: number;
             n_channels: number;
             nChannels: number;
-            pixel_bytes: GLib.Bytes;
-            pixelBytes: GLib.Bytes;
+            pixel_bytes: GLib.Bytes | Uint8Array;
+            pixelBytes: GLib.Bytes | Uint8Array;
             pixels: any;
             rowstride: number;
             width: number;
@@ -1895,7 +1895,7 @@ export namespace GdkPixbuf {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1922,7 +1922,7 @@ export namespace GdkPixbuf {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected

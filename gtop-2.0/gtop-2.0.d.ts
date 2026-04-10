@@ -541,7 +541,7 @@ export namespace GTop {
      * @param arg an argument specific for the process type
      * @returns an array of process     ids
      */
-    function glibtop_get_proclist(buf: glibtop_proclist, which: number, arg: number): number[];
+    function glibtop_get_proclist(buf: glibtop_proclist, which: bigint | number, arg: bigint | number): number[];
     /**
      * @param buf
      */
@@ -568,7 +568,7 @@ export namespace GTop {
      * @param features
      * @param flags
      */
-    function glibtop_init_r(features: number, flags: number): [glibtop, glibtop];
+    function glibtop_init_r(features: bigint | number, flags: number): [glibtop, glibtop];
     /**
      * @param host
      */
@@ -603,8 +603,6 @@ export namespace GTop {
         server_rsh: string;
         features: number;
         server_port: number;
-        sysdeps: glibtop_sysdeps;
-        required: glibtop_sysdeps;
         pid: number;
         uid: number;
         euid: number;
@@ -737,7 +735,7 @@ export namespace GTop {
          * @param which a #GLIBTOP_* constant specifying process type
          * @param arg an argument specific for the process type
          */
-        static get_proclist(buf: glibtop_proclist, which: number, arg: number): number[];
+        static get_proclist(buf: glibtop_proclist, which: bigint | number, arg: bigint | number): number[];
         /**
          * @param buf
          */
@@ -764,7 +762,7 @@ export namespace GTop {
          * @param features
          * @param flags
          */
-        static init_r(features: number, flags: number): [glibtop, glibtop];
+        static init_r(features: bigint | number, flags: number): [glibtop, glibtop];
         /**
          * @param host
          */
@@ -787,9 +785,9 @@ export namespace GTop {
          */
         call_l(
             command: number,
-            send_size: number,
+            send_size: bigint | number,
             send_buf: any | null,
-            recv_size: number,
+            recv_size: bigint | number,
             recv_buf?: any | null,
         ): any | null;
         /**
@@ -801,9 +799,9 @@ export namespace GTop {
          */
         call_s(
             command: number,
-            send_size: number,
+            send_size: bigint | number,
             send_buf: any | null,
-            recv_size: number,
+            recv_size: bigint | number,
             recv_buf?: any | null,
         ): any | null;
         close_p(): void;
@@ -892,7 +890,7 @@ export namespace GTop {
          * @param data_ptr
          * @param data_size
          */
-        get_parameter_l(parameter: number, data_ptr: any | null, data_size: number): number;
+        get_parameter_l(parameter: number, data_ptr: any | null, data_size: bigint | number): number;
         /**
          * @param buf
          * @param device
@@ -1028,14 +1026,14 @@ export namespace GTop {
          * @param arg an argument specific for the process type
          * @returns an array of process     ids
          */
-        get_proclist_l(buf: glibtop_proclist, which: number, arg: number): number[];
+        get_proclist_l(buf: glibtop_proclist, which: bigint | number, arg: bigint | number): number[];
         /**
          * @param buf a {@link GTop.glibtop_proclist}
          * @param which a #GLIBTOP_* constant specifying process type
          * @param arg an argument specific for the process type
          * @returns an array of process     ids
          */
-        get_proclist_s(buf: glibtop_proclist, which: number, arg: number): number[];
+        get_proclist_s(buf: glibtop_proclist, which: bigint | number, arg: bigint | number): number[];
         /**
          * @param buf
          */
@@ -1077,31 +1075,31 @@ export namespace GTop {
          * @param features
          * @param flags
          */
-        init_p(features: number, flags: number): void;
+        init_p(features: bigint | number, flags: number): void;
         /**
          * @param program_name
          * @param features
          * @param flags
          */
-        open_l(program_name: string, features: number, flags: number): void;
+        open_l(program_name: string, features: bigint | number, flags: number): void;
         /**
          * @param program_name
          * @param features
          * @param flags
          */
-        open_p(program_name: string, features: number, flags: number): void;
+        open_p(program_name: string, features: bigint | number, flags: number): void;
         /**
          * @param program_name
          * @param features
          * @param flags
          */
-        open_s(program_name: string, features: number, flags: number): void;
+        open_s(program_name: string, features: bigint | number, flags: number): void;
         /**
          * @param parameter
          * @param data_ptr
          * @param data_size
          */
-        set_parameter_l(parameter: number, data_ptr: any | null, data_size: number): void;
+        set_parameter_l(parameter: number, data_ptr: any | null, data_size: bigint | number): void;
     }
 
     /**
@@ -1116,17 +1114,6 @@ export namespace GTop {
         size: number;
         data_size: number;
         parameter: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                command: number;
-                size: number;
-                data_size: number;
-                parameter: number[];
-            }>,
-        );
     }
 
     /**
@@ -1156,32 +1143,6 @@ export namespace GTop {
         xcpu_irq: number[];
         xcpu_softirq: number[];
         xcpu_flags: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                total: number;
-                user: number;
-                nice: number;
-                sys: number;
-                idle: number;
-                iowait: number;
-                irq: number;
-                softirq: number;
-                frequency: number;
-                xcpu_total: number[];
-                xcpu_user: number[];
-                xcpu_nice: number[];
-                xcpu_sys: number[];
-                xcpu_idle: number[];
-                xcpu_iowait: number[];
-                xcpu_irq: number[];
-                xcpu_softirq: number[];
-                xcpu_flags: number;
-            }>,
-        );
     }
 
     /**
@@ -1198,19 +1159,6 @@ export namespace GTop {
         xdisk_sectors_write: number[];
         xdisk_time_write: number[];
         xdisk_flags: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                xdisk_sectors_read: number[];
-                xdisk_time_read: number[];
-                xdisk_sectors_write: number[];
-                xdisk_time_write: number[];
-                xdisk_flags: number;
-            }>,
-        );
     }
 
     /**
@@ -1241,22 +1189,6 @@ export namespace GTop {
         block_size: number;
         read: number;
         write: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                blocks: number;
-                bfree: number;
-                bavail: number;
-                files: number;
-                ffree: number;
-                block_size: number;
-                read: number;
-                write: number;
-            }>,
-        );
     }
 
     /**
@@ -1272,18 +1204,6 @@ export namespace GTop {
         nr_running: number;
         nr_tasks: number;
         last_pid: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                loadavg: number[];
-                nr_running: number;
-                nr_tasks: number;
-                last_pid: number;
-            }>,
-        );
     }
 
     /**
@@ -1317,29 +1237,6 @@ export namespace GTop {
         pss: number;
         swap: number;
         filename: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                start: number;
-                end: number;
-                offset: number;
-                perm: number;
-                inode: number;
-                device: number;
-                size: number;
-                rss: number;
-                shared_clean: number;
-                shared_dirty: number;
-                private_clean: number;
-                private_dirty: number;
-                pss: number;
-                swap: number;
-                filename: number[];
-            }>,
-        );
     }
 
     /**
@@ -1359,22 +1256,6 @@ export namespace GTop {
         cached: number;
         user: number;
         locked: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                total: number;
-                used: number;
-                free: number;
-                shared: number;
-                buffer: number;
-                cached: number;
-                user: number;
-                locked: number;
-            }>,
-        );
     }
 
     /**
@@ -1389,17 +1270,6 @@ export namespace GTop {
         devname: number[];
         mountdir: number[];
         type: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                dev: number;
-                devname: number[];
-                mountdir: number[];
-                type: number[];
-            }>,
-        );
     }
 
     /**
@@ -1414,17 +1284,6 @@ export namespace GTop {
         number: number;
         total: number;
         size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                number: number;
-                total: number;
-                size: number;
-            }>,
-        );
     }
 
     /**
@@ -1443,21 +1302,6 @@ export namespace GTop {
         msgmni: number;
         msgssz: number;
         msgtql: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                msgpool: number;
-                msgmap: number;
-                msgmax: number;
-                msgmnb: number;
-                msgmni: number;
-                msgssz: number;
-                msgtql: number;
-            }>,
-        );
     }
 
     /**
@@ -1470,15 +1314,6 @@ export namespace GTop {
 
         flags: number;
         number: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                number: number;
-            }>,
-        );
     }
 
     /**
@@ -1508,32 +1343,6 @@ export namespace GTop {
         prefix6: Uint8Array;
         scope6: number;
         hwaddress: Uint8Array;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                if_flags: number;
-                mtu: number;
-                subnet: number;
-                address: number;
-                packets_in: number;
-                packets_out: number;
-                packets_total: number;
-                bytes_in: number;
-                bytes_out: number;
-                bytes_total: number;
-                errors_in: number;
-                errors_out: number;
-                errors_total: number;
-                collisions: number;
-                address6: Uint8Array;
-                prefix6: Uint8Array;
-                scope6: number;
-                hwaddress: Uint8Array;
-            }>,
-        );
     }
 
     /**
@@ -1569,17 +1378,6 @@ export namespace GTop {
         state: number;
         bytes_in: number;
         bytes_out: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                state: number;
-                bytes_in: number;
-                bytes_out: number;
-            }>,
-        );
     }
 
     /**
@@ -1593,16 +1391,6 @@ export namespace GTop {
         flags: number;
         number: number;
         all: boolean;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                number: number;
-                all: boolean;
-            }>,
-        );
     }
 
     /**
@@ -1615,15 +1403,6 @@ export namespace GTop {
 
         flags: number;
         size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                size: number;
-            }>,
-        );
     }
 
     /**
@@ -1641,19 +1420,6 @@ export namespace GTop {
         disk_rbytes: number;
         disk_wbytes: number;
         reserved: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                disk_rchar: number;
-                disk_wchar: number;
-                disk_rbytes: number;
-                disk_wbytes: number;
-                reserved: number[];
-            }>,
-        );
     }
 
     /**
@@ -1674,23 +1440,6 @@ export namespace GTop {
         kstk_eip: number;
         nwchan: number;
         wchan: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                k_flags: number;
-                min_flt: number;
-                maj_flt: number;
-                cmin_flt: number;
-                cmaj_flt: number;
-                kstk_esp: number;
-                kstk_eip: number;
-                nwchan: number;
-                wchan: number[];
-            }>,
-        );
     }
 
     /**
@@ -1705,17 +1454,6 @@ export namespace GTop {
         number: number;
         total: number;
         size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                number: number;
-                total: number;
-                size: number;
-            }>,
-        );
     }
 
     /**
@@ -1733,20 +1471,6 @@ export namespace GTop {
         share: number;
         rss: number;
         rss_rlim: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                size: number;
-                vsize: number;
-                resident: number;
-                share: number;
-                rss: number;
-                rss_rlim: number;
-            }>,
-        );
     }
 
     /**
@@ -1761,17 +1485,6 @@ export namespace GTop {
         number: number;
         total: number;
         size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                number: number;
-                total: number;
-                size: number;
-            }>,
-        );
     }
 
     /**
@@ -1791,22 +1504,6 @@ export namespace GTop {
         start_code: number;
         end_code: number;
         start_stack: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                text_rss: number;
-                shlib_rss: number;
-                data_rss: number;
-                stack_rss: number;
-                dirty_size: number;
-                start_code: number;
-                end_code: number;
-                start_stack: number;
-            }>,
-        );
     }
 
     /**
@@ -1822,18 +1519,6 @@ export namespace GTop {
         blocked: number[];
         sigignore: number[];
         sigcatch: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                signal: number[];
-                blocked: number[];
-                sigignore: number[];
-                sigcatch: number[];
-            }>,
-        );
     }
 
     /**
@@ -1854,23 +1539,6 @@ export namespace GTop {
         has_cpu: number;
         processor: number;
         last_processor: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                cmd: number[];
-                state: number;
-                uid: number;
-                gid: number;
-                ruid: number;
-                rgid: number;
-                has_cpu: number;
-                processor: number;
-                last_processor: number;
-            }>,
-        );
     }
 
     /**
@@ -1904,24 +1572,6 @@ export namespace GTop {
         frequency: number;
         xcpu_utime: number[];
         xcpu_stime: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                start_time: number;
-                rtime: number;
-                utime: number;
-                stime: number;
-                cutime: number;
-                cstime: number;
-                timeout: number;
-                it_real_value: number;
-                frequency: number;
-                xcpu_utime: number[];
-                xcpu_stime: number[];
-            }>,
-        );
     }
 
     /**
@@ -1951,32 +1601,6 @@ export namespace GTop {
         nice: number;
         ngroups: number;
         groups: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                uid: number;
-                euid: number;
-                gid: number;
-                egid: number;
-                suid: number;
-                sgid: number;
-                fsuid: number;
-                fsgid: number;
-                pid: number;
-                ppid: number;
-                pgrp: number;
-                session: number;
-                tty: number;
-                tpgid: number;
-                priority: number;
-                nice: number;
-                ngroups: number;
-                groups: number[];
-            }>,
-        );
     }
 
     /**
@@ -1991,17 +1615,6 @@ export namespace GTop {
         number: number;
         root: number[];
         exe: number[];
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                number: number;
-                root: number[];
-                exe: number[];
-            }>,
-        );
     }
 
     /**
@@ -2016,17 +1629,6 @@ export namespace GTop {
         number: number;
         total: number;
         size: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                number: number;
-                total: number;
-                size: number;
-            }>,
-        );
     }
 
     /**
@@ -2040,18 +1642,6 @@ export namespace GTop {
         offset: number;
         size: number;
         data_size: number;
-        u: glibtop_response_union;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                offset: number;
-                size: number;
-                data_size: number;
-                u: glibtop_response_union;
-            }>,
-        );
     }
 
     /**
@@ -2073,24 +1663,6 @@ export namespace GTop {
         semusz: number;
         semvmx: number;
         semaem: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                semmap: number;
-                semmni: number;
-                semmns: number;
-                semmnu: number;
-                semmsl: number;
-                semopm: number;
-                semume: number;
-                semusz: number;
-                semvmx: number;
-                semaem: number;
-            }>,
-        );
     }
 
     /**
@@ -2107,19 +1679,6 @@ export namespace GTop {
         shmmni: number;
         shmseg: number;
         shmall: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                shmmax: number;
-                shmmin: number;
-                shmmni: number;
-                shmseg: number;
-                shmall: number;
-            }>,
-        );
     }
 
     /**
@@ -2159,19 +1718,6 @@ export namespace GTop {
         free: number;
         pagein: number;
         pageout: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                total: number;
-                used: number;
-                free: number;
-                pagein: number;
-                pageout: number;
-            }>,
-        );
     }
 
     /**
@@ -2219,50 +1765,6 @@ export namespace GTop {
         reserved5: number;
         reserved6: number;
         reserved7: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                features: number;
-                cpu: number;
-                mem: number;
-                swap: number;
-                uptime: number;
-                loadavg: number;
-                shm_limits: number;
-                msg_limits: number;
-                sem_limits: number;
-                proclist: number;
-                proc_state: number;
-                proc_uid: number;
-                proc_mem: number;
-                proc_time: number;
-                proc_signal: number;
-                proc_kernel: number;
-                proc_segment: number;
-                proc_args: number;
-                proc_map: number;
-                proc_open_files: number;
-                mountlist: number;
-                fsusage: number;
-                netlist: number;
-                netload: number;
-                ppp: number;
-                proc_wd: number;
-                proc_affinity: number;
-                proc_io: number;
-                disk: number;
-                reserved1: number;
-                reserved2: number;
-                reserved3: number;
-                reserved4: number;
-                reserved5: number;
-                reserved6: number;
-                reserved7: number;
-            }>,
-        );
     }
 
     /**
@@ -2289,17 +1791,6 @@ export namespace GTop {
         uptime: number;
         idletime: number;
         boot_time: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                flags: number;
-                uptime: number;
-                idletime: number;
-                boot_time: number;
-            }>,
-        );
     }
 
     /**
@@ -2332,20 +1823,6 @@ export namespace GTop {
      */
     class glibtop_response_union {
         static $gtype: GObject.GType<glibtop_response_union>;
-
-        // Fields
-
-        data: glibtop_union;
-        sysdeps: glibtop_sysdeps;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                data: glibtop_union;
-                sysdeps: glibtop_sysdeps;
-            }>,
-        );
     }
 
     /**
@@ -2353,72 +1830,6 @@ export namespace GTop {
      */
     class glibtop_union {
         static $gtype: GObject.GType<glibtop_union>;
-
-        // Fields
-
-        cpu: glibtop_cpu;
-        disk: glibtop_disk;
-        mem: glibtop_mem;
-        swap: glibtop_swap;
-        uptime: glibtop_uptime;
-        loadavg: glibtop_loadavg;
-        shm_limits: glibtop_shm_limits;
-        msg_limits: glibtop_msg_limits;
-        sem_limits: glibtop_sem_limits;
-        proclist: glibtop_proclist;
-        proc_state: glibtop_proc_state;
-        proc_uid: glibtop_proc_uid;
-        proc_mem: glibtop_proc_mem;
-        proc_time: glibtop_proc_time;
-        proc_signal: glibtop_proc_signal;
-        proc_kernel: glibtop_proc_kernel;
-        proc_segment: glibtop_proc_segment;
-        proc_args: glibtop_proc_args;
-        proc_map: glibtop_proc_map;
-        mountlist: glibtop_mountlist;
-        fsusage: glibtop_fsusage;
-        netlist: glibtop_netlist;
-        netload: glibtop_netload;
-        ppp: glibtop_ppp;
-        proc_open_files: glibtop_proc_open_files;
-        proc_wd: glibtop_proc_wd;
-        proc_affinity: glibtop_proc_affinity;
-        proc_io: glibtop_proc_io;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                cpu: glibtop_cpu;
-                disk: glibtop_disk;
-                mem: glibtop_mem;
-                swap: glibtop_swap;
-                uptime: glibtop_uptime;
-                loadavg: glibtop_loadavg;
-                shm_limits: glibtop_shm_limits;
-                msg_limits: glibtop_msg_limits;
-                sem_limits: glibtop_sem_limits;
-                proclist: glibtop_proclist;
-                proc_state: glibtop_proc_state;
-                proc_uid: glibtop_proc_uid;
-                proc_mem: glibtop_proc_mem;
-                proc_time: glibtop_proc_time;
-                proc_signal: glibtop_proc_signal;
-                proc_kernel: glibtop_proc_kernel;
-                proc_segment: glibtop_proc_segment;
-                proc_args: glibtop_proc_args;
-                proc_map: glibtop_proc_map;
-                mountlist: glibtop_mountlist;
-                fsusage: glibtop_fsusage;
-                netlist: glibtop_netlist;
-                netload: glibtop_netload;
-                ppp: glibtop_ppp;
-                proc_open_files: glibtop_proc_open_files;
-                proc_wd: glibtop_proc_wd;
-                proc_affinity: glibtop_proc_affinity;
-                proc_io: glibtop_proc_io;
-            }>,
-        );
     }
 
     /**

@@ -2970,7 +2970,7 @@ export namespace EBookContacts {
          * @param len length of `str`, or -1 if `str` is `null` terminated
          * @param uid a unique ID string
          */
-        construct_full(str: string, len: number, uid?: string | null): void;
+        construct_full(str: string, len: bigint | number, uid?: string | null): void;
         /**
          * Constructs the existing {@link EBookContacts.VCard}, `evc`, setting its vCard data to `str`, and
          * adding a new UID attribute with the value given in `uid` (if `uid` is

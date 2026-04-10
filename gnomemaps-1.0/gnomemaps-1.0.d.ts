@@ -515,7 +515,13 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: number, version: number, changeset: number, longitude: number, latitude: number): OSMNode;
+        static ['new'](
+            id: bigint | number,
+            version: number,
+            changeset: bigint | number,
+            longitude: number,
+            latitude: number,
+        ): OSMNode;
 
         // Signals
 
@@ -606,8 +612,8 @@ export namespace GnomeMaps {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            changeset: number;
-            id: number;
+            changeset: bigint | number;
+            id: bigint | number;
             version: number;
         }
     }
@@ -624,12 +630,12 @@ export namespace GnomeMaps {
          * The OSM changeset for the current upload of the object.
          */
         get changeset(): number;
-        set changeset(val: number);
+        set changeset(val: bigint | number);
         /**
          * The OSM id of the object.
          */
         get id(): number;
-        set id(val: number);
+        set id(val: bigint | number);
         /**
          * The latest OSM version of the object.
          */
@@ -724,7 +730,7 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: number, version: number, changeset: number): OSMRelation;
+        static ['new'](id: bigint | number, version: number, changeset: bigint | number): OSMRelation;
 
         // Signals
 
@@ -754,7 +760,7 @@ export namespace GnomeMaps {
          * @param type
          * @param ref
          */
-        add_member(role: string, type: number, ref: number): void;
+        add_member(role: string, type: number, ref: bigint | number): void;
     }
 
     namespace OSMWay {
@@ -791,7 +797,7 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: number, version: number, changeset: number): OSMWay;
+        static ['new'](id: bigint | number, version: number, changeset: bigint | number): OSMWay;
 
         // Signals
 
@@ -819,7 +825,7 @@ export namespace GnomeMaps {
         /**
          * @param id
          */
-        add_node_id(id: number): void;
+        add_node_id(id: bigint | number): void;
     }
 
     /**

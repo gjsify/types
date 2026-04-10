@@ -220,8 +220,8 @@ export namespace GstMse {
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             active_source_buffers: SourceBufferList;
             activeSourceBuffers: SourceBufferList;
-            duration: number;
-            position: number;
+            duration: bigint | number;
+            position: bigint | number;
             ready_state: MediaSourceReadyState;
             readyState: MediaSourceReadyState;
             source_buffers: SourceBufferList;
@@ -272,13 +272,13 @@ export namespace GstMse {
          * @since 1.24
          */
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         /**
          * The position of the player consuming from the Media Source
          * @since 1.24
          */
         get position(): number;
-        set position(val: number);
+        set position(val: bigint | number);
         /**
          * The Ready State of the Media Source
          *
@@ -500,14 +500,14 @@ export namespace GstMse {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.URIHandler.ConstructorProps {
-            duration: number;
+            duration: bigint | number;
             n_audio: number;
             nAudio: number;
             n_text: number;
             nText: number;
             n_video: number;
             nVideo: number;
-            position: number;
+            position: bigint | number;
             ready_state: MseSrcReadyState;
             readyState: MseSrcReadyState;
         }
@@ -539,7 +539,7 @@ export namespace GstMse {
          * @since 1.24
          */
         get duration(): number;
-        set duration(val: number);
+        set duration(val: bigint | number);
         /**
          * The number of audio tracks in the Media Source
          * @since 1.24
@@ -1115,7 +1115,7 @@ export namespace GstMse {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1142,7 +1142,7 @@ export namespace GstMse {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1299,15 +1299,15 @@ export namespace GstMse {
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             append_mode: SourceBufferAppendMode;
             appendMode: SourceBufferAppendMode;
-            append_window_end: number;
-            appendWindowEnd: number;
-            append_window_start: number;
-            appendWindowStart: number;
+            append_window_end: bigint | number;
+            appendWindowEnd: bigint | number;
+            append_window_start: bigint | number;
+            appendWindowStart: bigint | number;
             buffered: any[];
             content_type: string;
             contentType: string;
-            timestamp_offset: number;
-            timestampOffset: number;
+            timestamp_offset: bigint | number;
+            timestampOffset: bigint | number;
             updating: boolean;
         }
     }
@@ -1438,7 +1438,7 @@ export namespace GstMse {
          * @since 1.24
          */
         get timestamp_offset(): number;
-        set timestamp_offset(val: number);
+        set timestamp_offset(val: bigint | number);
         /**
          * The next media segment appended to the current Source Buffer will have its
          * start timestamp increased by this amount.
@@ -1447,7 +1447,7 @@ export namespace GstMse {
          * @since 1.24
          */
         get timestampOffset(): number;
-        set timestampOffset(val: number);
+        set timestampOffset(val: bigint | number);
         /**
          * Whether the current source buffer is still asynchronously processing
          * previously issued commands.
@@ -1646,7 +1646,7 @@ export namespace GstMse {
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
-            length: number;
+            length: bigint | number;
         }
     }
 
@@ -1750,15 +1750,6 @@ export namespace GstMse {
 
         start: Gst.ClockTime;
         end: Gst.ClockTime;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                start: Gst.ClockTime;
-                end: Gst.ClockTime;
-            }>,
-        );
     }
 
     /**
@@ -1784,15 +1775,6 @@ export namespace GstMse {
 
         start: Gst.ClockTime;
         end: Gst.ClockTime;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                start: Gst.ClockTime;
-                end: Gst.ClockTime;
-            }>,
-        );
     }
 
     /**

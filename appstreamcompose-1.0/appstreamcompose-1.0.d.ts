@@ -650,7 +650,7 @@ export namespace AppStreamCompose {
          * will disable screenshot caching entirely.
          * @param size_bytes maximum size of a screenshot image or video in bytes
          */
-        set_max_screenshot_size(size_bytes: number): void;
+        set_max_screenshot_size(size_bytes: bigint | number): void;
         /**
          * Set the media base URL for the generated metadata. Can be `null` if no media
          * should be cached and the original URLs should be kept.
@@ -966,7 +966,7 @@ export namespace AppStreamCompose {
 
         static new_from_data(
             data: any | null,
-            len: number,
+            len: bigint | number,
             dest_width: number,
             dest_height: number,
             flags: ImageLoadFlags,
@@ -1362,7 +1362,7 @@ export namespace AppStreamCompose {
          * @param filename The file to read data for.
          * @virtual
          */
-        vfunc_read_data(filename: string): GLib.Bytes;
+        vfunc_read_data(filename: string): GLib.Bytes | Uint8Array;
 
         // Methods
 

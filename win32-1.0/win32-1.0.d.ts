@@ -31,15 +31,15 @@ export namespace win32 {
     /**
      * @gir-type Alias
      */
-    type HICON = number;
+    type HICON = bigint | number;
     /**
      * @gir-type Alias
      */
-    type HCURSOR = number;
+    type HCURSOR = bigint | number;
     /**
      * @gir-type Alias
      */
-    type HGDIOBJ = number;
+    type HGDIOBJ = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

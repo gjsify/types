@@ -1037,7 +1037,7 @@ export namespace UPowerGlib {
          * @param pspec
          * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
@@ -1064,7 +1064,7 @@ export namespace UPowerGlib {
          * @param pspec
          * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1184,12 +1184,12 @@ export namespace UPowerGlib {
             state: number;
             technology: number;
             temperature: number;
-            time_to_empty: number;
-            timeToEmpty: number;
-            time_to_full: number;
-            timeToFull: number;
-            update_time: number;
-            updateTime: number;
+            time_to_empty: bigint | number;
+            timeToEmpty: bigint | number;
+            time_to_full: bigint | number;
+            timeToFull: bigint | number;
+            update_time: bigint | number;
+            updateTime: bigint | number;
             vendor: string;
             voltage: number;
             voltage_max_design: number;
@@ -1520,37 +1520,37 @@ export namespace UPowerGlib {
          * @since 0.9.0
          */
         get time_to_empty(): number;
-        set time_to_empty(val: number);
+        set time_to_empty(val: bigint | number);
         /**
          * The amount of time until the device is empty.
          * @since 0.9.0
          */
         get timeToEmpty(): number;
-        set timeToEmpty(val: number);
+        set timeToEmpty(val: bigint | number);
         /**
          * The amount of time until the device is fully charged.
          * @since 0.9.0
          */
         get time_to_full(): number;
-        set time_to_full(val: number);
+        set time_to_full(val: bigint | number);
         /**
          * The amount of time until the device is fully charged.
          * @since 0.9.0
          */
         get timeToFull(): number;
-        set timeToFull(val: number);
+        set timeToFull(val: bigint | number);
         /**
          * The last time the device was updated.
          * @since 0.9.0
          */
         get update_time(): number;
-        set update_time(val: number);
+        set update_time(val: bigint | number);
         /**
          * The last time the device was updated.
          * @since 0.9.0
          */
         get updateTime(): number;
-        set updateTime(val: number);
+        set updateTime(val: bigint | number);
         /**
          * The vendor of the device.
          * @since 0.9.0
