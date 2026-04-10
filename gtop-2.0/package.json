@@ -6,48 +6,54 @@
     "module": "gtop-2.0.js",
     "main": "gtop-2.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./gtop-2.0-ambient.d.ts",
-        "import": "./gtop-2.0-ambient.js",
-        "default": "./gtop-2.0-ambient.js"
-      },
-      "./import": {
-        "types": "./gtop-2.0-import.d.ts",
-        "import": "./gtop-2.0-import.js",
-        "default": "./gtop-2.0-import.js"
-      },
-      "./gtop-2.0": {
-        "types": "./gtop-2.0.d.ts",
-        "import": "./gtop-2.0.js",
-        "default": "./gtop-2.0.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./gtop-2.0-ambient.d.ts",
+            "import": "./gtop-2.0-ambient.js",
+            "default": "./gtop-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gtop-2.0-import.d.ts",
+            "import": "./gtop-2.0-import.js",
+            "default": "./gtop-2.0-import.js"
+        },
+        "./gtop-2.0": {
+            "types": "./gtop-2.0.d.ts",
+            "import": "./gtop-2.0.js",
+            "default": "./gtop-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",
-      "@girs/gobject-2.0": "workspace:^",
-      "@girs/glib-2.0": "workspace:^"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GTop-2.0"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GTop-2.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gtop-2.0#readme"
 }
-
-

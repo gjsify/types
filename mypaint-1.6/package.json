@@ -6,48 +6,54 @@
     "module": "mypaint-1.6.js",
     "main": "mypaint-1.6.js",
     "exports": {
-      "./ambient": {
-        "types": "./mypaint-1.6-ambient.d.ts",
-        "import": "./mypaint-1.6-ambient.js",
-        "default": "./mypaint-1.6-ambient.js"
-      },
-      "./import": {
-        "types": "./mypaint-1.6-import.d.ts",
-        "import": "./mypaint-1.6-import.js",
-        "default": "./mypaint-1.6-import.js"
-      },
-      "./mypaint-1.6": {
-        "types": "./mypaint-1.6.d.ts",
-        "import": "./mypaint-1.6.js",
-        "default": "./mypaint-1.6.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./mypaint-1.6-ambient.d.ts",
+            "import": "./mypaint-1.6-ambient.js",
+            "default": "./mypaint-1.6-ambient.js"
+        },
+        "./import": {
+            "types": "./mypaint-1.6-import.d.ts",
+            "import": "./mypaint-1.6-import.js",
+            "default": "./mypaint-1.6-import.js"
+        },
+        "./mypaint-1.6": {
+            "types": "./mypaint-1.6.d.ts",
+            "import": "./mypaint-1.6.js",
+            "default": "./mypaint-1.6.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",
-      "@girs/gobject-2.0": "workspace:^",
-      "@girs/glib-2.0": "workspace:^"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "MyPaint-1.6"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "MyPaint-1.6"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/mypaint-1.6#readme"
 }
-
-
