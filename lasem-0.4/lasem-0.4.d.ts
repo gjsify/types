@@ -185,7 +185,7 @@ export namespace Lasem {
      * @param category
      * @param level
      */
-    function debug_check(category: DebugCategory, level: DebugLevel | null): boolean;
+    function debug_check(category: DebugCategory, level: DebugLevel): boolean;
     /**
      * @param category_selection
      */

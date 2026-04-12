@@ -233,7 +233,7 @@ export namespace Casilda {
             working_directory: string | null,
             argv: string[],
             envp: string[] | null,
-            flags: GLib.SpawnFlags | null,
+            flags: GLib.SpawnFlags,
             child_setup?: GLib.SpawnChildSetupFunc | null,
         ): [boolean, GLib.Pid | null];
         /**
@@ -305,7 +305,7 @@ export namespace Casilda {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
         /**
          * Retrieves the accessible identifier for the accessible object.
          *
@@ -362,22 +362,22 @@ export namespace Casilda {
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
-        reset_property(property: Gtk.AccessibleProperty | null): void;
+        reset_property(property: Gtk.AccessibleProperty): void;
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
-        reset_relation(relation: Gtk.AccessibleRelation | null): void;
+        reset_relation(relation: Gtk.AccessibleRelation): void;
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
-        reset_state(state: Gtk.AccessibleState | null): void;
+        reset_state(state: Gtk.AccessibleState): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -408,7 +408,7 @@ export namespace Casilda {
          * states automatically.
          * @param state the platform state to update
          */
-        update_platform_state(state: Gtk.AccessiblePlatformState | null): void;
+        update_platform_state(state: Gtk.AccessiblePlatformState): void;
         /**
          * Updates an array of accessible properties.
          *
@@ -419,7 +419,7 @@ export namespace Casilda {
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -430,7 +430,7 @@ export namespace Casilda {
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -441,7 +441,7 @@ export namespace Casilda {
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible identifier for the accessible object.
          *
@@ -638,7 +638,7 @@ export namespace Casilda {
          * below the minimum width or below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -651,7 +651,7 @@ export namespace Casilda {
          * below the minimum height or below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable.
@@ -706,7 +706,7 @@ export namespace Casilda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -747,7 +747,7 @@ export namespace Casilda {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

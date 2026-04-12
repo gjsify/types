@@ -420,7 +420,7 @@ export namespace GtkSource {
      * @returns the new start of   the {@link GLib.SList}.
      * @since 299.6
      */
-    function encoding_remove_duplicates(list: Encoding[], removal_type: EncodingDuplicates | null): Encoding[];
+    function encoding_remove_duplicates(list: Encoding[], removal_type: EncodingDuplicates): Encoding[];
     function file_loader_error_quark(): GLib.Quark;
     function file_saver_error_quark(): GLib.Quark;
     /**
@@ -513,7 +513,7 @@ export namespace GtkSource {
      * @returns a string intended to be shown in the UI,   that describes a bracket matching. `null` is returned on   {@link GtkSource.BracketMatchType.NONE}.
      * @since 299.0
      */
-    function utils_get_bracket_matched_message(iter: Gtk.TextIter, state: BracketMatchType | null): string | null;
+    function utils_get_bracket_matched_message(iter: Gtk.TextIter, state: BracketMatchType): string | null;
     /**
      * Use this function before `gtk_source_search_settings_set_search_text()`, to
      * unescape the following sequences of characters: `\n`, `\r`, `\t` and `\\`.
@@ -1000,7 +1000,7 @@ export namespace GtkSource {
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
          */
-        change_case(case_type: ChangeCaseType | null, start: Gtk.TextIter, end: Gtk.TextIter): void;
+        change_case(case_type: ChangeCaseType, start: Gtk.TextIter, end: Gtk.TextIter): void;
         /**
          * Creates a source mark in the `buffer` of category `category`.  A source mark is
          * a {@link Gtk.TextMark} but organised into categories. Depending on the category
@@ -1265,7 +1265,7 @@ export namespace GtkSource {
          * @param flags {@link GtkSource.SortFlags} specifying how the sort should behave
          * @param column sort considering the text starting at the given column
          */
-        sort_lines(start: Gtk.TextIter, end: Gtk.TextIter, flags: SortFlags | null, column: number): void;
+        sort_lines(start: Gtk.TextIter, end: Gtk.TextIter, flags: SortFlags, column: number): void;
         /**
          * Undoes the last user action which modified the buffer.  Use
          * `gtk_source_buffer_can_undo()` to check whether a call to this
@@ -1978,7 +1978,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2019,7 +2019,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2647,7 +2647,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2688,7 +2688,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3723,7 +3723,7 @@ export namespace GtkSource {
          * {@link GtkSource.File}.
          * @param compression_type the new compression type.
          */
-        set_compression_type(compression_type: CompressionType | null): void;
+        set_compression_type(compression_type: CompressionType): void;
         /**
          * Sets the encoding. If `encoding` is `null`, the UTF-8 encoding will be set.
          * By default the encoding is taken from the {@link GtkSource.File}.
@@ -3733,13 +3733,13 @@ export namespace GtkSource {
         /**
          * @param flags the new flags.
          */
-        set_flags(flags: FileSaverFlags | null): void;
+        set_flags(flags: FileSaverFlags): void;
         /**
          * Sets the newline type. By default the newline type is taken from the
          * {@link GtkSource.File}.
          * @param newline_type the new newline type.
          */
-        set_newline_type(newline_type: NewlineType | null): void;
+        set_newline_type(newline_type: NewlineType): void;
     }
 
     namespace Gutter {
@@ -4239,7 +4239,7 @@ export namespace GtkSource {
             cell_area: Gdk.Rectangle,
             start: Gtk.TextIter,
             end: Gtk.TextIter,
-            state: GutterRendererState | null,
+            state: GutterRendererState,
         ): void;
         /**
          * Called when drawing a region of lines has ended.
@@ -4304,7 +4304,7 @@ export namespace GtkSource {
          * @param end a {@link Gtk.TextIter}.
          * @param state a {@link GtkSource.GutterRendererState}.
          */
-        query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState | null): void;
+        query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void;
         /**
          * Emits the {@link GtkSource.GutterRenderer.SignalSignatures.query_tooltip | GtkSource.GutterRenderer::query-tooltip} signal. This function is
          * called from {@link GtkSource.Gutter}. Implementations can override the default signal
@@ -4340,7 +4340,7 @@ export namespace GtkSource {
          * renderer is aligned (see :xalign and :yalign).
          * @param mode a {@link GtkSource.GutterRendererAlignmentMode}
          */
-        set_alignment_mode(mode: GutterRendererAlignmentMode | null): void;
+        set_alignment_mode(mode: GutterRendererAlignmentMode): void;
         /**
          * Set the background color of the renderer. If `color` is set to `null`, the
          * renderer will not have a background color.
@@ -5565,7 +5565,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the bottom margin.
          */
-        get_bottom_margin(unit: Gtk.Unit | null): number;
+        get_bottom_margin(unit: Gtk.Unit): number;
         /**
          * Gets the {@link GtkSource.Buffer} associated with the compositor. The returned
          * object reference is owned by the compositor object and
@@ -5597,7 +5597,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the left margin
          */
-        get_left_margin(unit: Gtk.Unit | null): number;
+        get_left_margin(unit: Gtk.Unit): number;
         /**
          * Returns the name of the font used to print line numbers on the left margin.
          * The returned string must be freed with `g_free()`.
@@ -5643,7 +5643,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the right margin.
          */
-        get_right_margin(unit: Gtk.Unit | null): number;
+        get_right_margin(unit: Gtk.Unit): number;
         /**
          * Returns the width of tabulation in characters for printed text.
          * @returns width of tab.
@@ -5654,7 +5654,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the top margin.
          */
-        get_top_margin(unit: Gtk.Unit | null): number;
+        get_top_margin(unit: Gtk.Unit): number;
         /**
          * Gets the line wrapping mode for the printed text.
          * @returns the line wrap mode.
@@ -5743,7 +5743,7 @@ export namespace GtkSource {
          * @param margin the new bottom margin in units of `unit`.
          * @param unit the units for `margin`.
          */
-        set_bottom_margin(margin: number, unit: Gtk.Unit | null): void;
+        set_bottom_margin(margin: number, unit: Gtk.Unit): void;
         /**
          * Sets the font for printing the page footer. If
          * `null` is supplied, the default font (i.e. the one being used for the
@@ -5835,7 +5835,7 @@ export namespace GtkSource {
          * @param margin the new left margin in units of `unit`.
          * @param unit the units for `margin`.
          */
-        set_left_margin(margin: number, unit: Gtk.Unit | null): void;
+        set_left_margin(margin: number, unit: Gtk.Unit): void;
         /**
          * Sets the font for printing line numbers on the left margin.  If
          * `null` is supplied, the default font (i.e. the one being used for the
@@ -5896,7 +5896,7 @@ export namespace GtkSource {
          * @param margin the new right margin in units of `unit`.
          * @param unit the units for `margin`.
          */
-        set_right_margin(margin: number, unit: Gtk.Unit | null): void;
+        set_right_margin(margin: number, unit: Gtk.Unit): void;
         /**
          * Sets the width of tabulation in characters for printed text.
          *
@@ -5910,7 +5910,7 @@ export namespace GtkSource {
          * @param margin the new top margin in units of `unit`
          * @param unit the units for `margin`
          */
-        set_top_margin(margin: number, unit: Gtk.Unit | null): void;
+        set_top_margin(margin: number, unit: Gtk.Unit): void;
         /**
          * Sets the line wrapping mode for the printed text.
          *
@@ -5918,7 +5918,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param wrap_mode a {@link Gtk.WrapMode}.
          */
-        set_wrap_mode(wrap_mode: Gtk.WrapMode | null): void;
+        set_wrap_mode(wrap_mode: Gtk.WrapMode): void;
     }
 
     namespace Region {
@@ -6776,7 +6776,7 @@ export namespace GtkSource {
          * @param key the `settings` key to bind.
          * @param flags flags for the binding.
          */
-        bind_matrix_setting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags | null): void;
+        bind_matrix_setting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags): void;
         /**
          * @returns whether the {@link GtkSource.SpaceDrawer.matrix} property is enabled.
          */
@@ -6802,7 +6802,7 @@ export namespace GtkSource {
          * @param locations one or several {@link GtkSource.SpaceLocationFlags}.
          * @returns a combination of {@link GtkSource.SpaceTypeFlags}.
          */
-        get_types_for_locations(locations: SpaceLocationFlags | null): SpaceTypeFlags;
+        get_types_for_locations(locations: SpaceLocationFlags): SpaceTypeFlags;
         /**
          * Sets whether the {@link GtkSource.SpaceDrawer.matrix} property is enabled.
          * @param enable_matrix the new value.
@@ -6825,7 +6825,7 @@ export namespace GtkSource {
          * @param locations one or several {@link GtkSource.SpaceLocationFlags}.
          * @param types a combination of {@link GtkSource.SpaceTypeFlags}.
          */
-        set_types_for_locations(locations: SpaceLocationFlags | null, types: SpaceTypeFlags | null): void;
+        set_types_for_locations(locations: SpaceLocationFlags, types: SpaceTypeFlags): void;
     }
 
     namespace StyleScheme {
@@ -7688,7 +7688,7 @@ export namespace GtkSource {
          * @param window_type the gutter window type.
          * @returns the {@link GtkSource.Gutter}.
          */
-        get_gutter(window_type: Gtk.TextWindowType | null): Gutter;
+        get_gutter(window_type: Gtk.TextWindowType): Gutter;
         /**
          * @returns the current value of the {@link GtkSource.View.highlight_current_line}   property.
          */
@@ -7865,7 +7865,7 @@ export namespace GtkSource {
          * are pressed.
          * @param smart_home_end the desired behavior among {@link GtkSource.SmartHomeEndType}.
          */
-        set_smart_home_end(smart_home_end: SmartHomeEndType | null): void;
+        set_smart_home_end(smart_home_end: SmartHomeEndType): void;
         /**
          * Sets the {@link GtkSource.View.tab_width} property.
          * @param width the new value.
@@ -7966,7 +7966,7 @@ export namespace GtkSource {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -7978,7 +7978,7 @@ export namespace GtkSource {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -8032,7 +8032,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8073,7 +8073,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

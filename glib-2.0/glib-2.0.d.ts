@@ -5591,7 +5591,7 @@ export namespace GLib {
      * @returns the value of `atomic` before the operation, unsigned
      * @since 2.30
      */
-    function atomic_pointer_and(atomic: any, val: bigint | number): never;
+    function atomic_pointer_and(atomic: any, val: bigint | number): number;
     /**
      * Compares `atomic` to `oldval` and, if equal, sets it to `newval`.
      * If `atomic` was not equal to `oldval` then no change occurs.
@@ -5684,7 +5684,7 @@ export namespace GLib {
      * @returns the value of `atomic` before the operation, unsigned
      * @since 2.30
      */
-    function atomic_pointer_or(atomic: any, val: bigint | number): never;
+    function atomic_pointer_or(atomic: any, val: bigint | number): number;
     /**
      * Sets the value of `atomic` to `newval`.
      *
@@ -5718,7 +5718,7 @@ export namespace GLib {
      * @returns the value of `atomic` before the operation, unsigned
      * @since 2.30
      */
-    function atomic_pointer_xor(atomic: any, val: bigint | number): never;
+    function atomic_pointer_xor(atomic: any, val: bigint | number): number;
     /**
      * Atomically acquires a reference on the data pointed by `mem_block`.
      * @param mem_block a pointer to reference counted data
@@ -6265,7 +6265,7 @@ export namespace GLib {
      * @returns the checksum length, or -1 if `checksum_type` is not supported.
      * @since 2.16
      */
-    function checksum_type_get_length(checksum_type: ChecksumType | null): number;
+    function checksum_type_get_length(checksum_type: ChecksumType): number;
     /**
      * Sets a function to be called when the child indicated by `pid`
      * exits, at the priority `priority`.
@@ -6407,7 +6407,7 @@ export namespace GLib {
      * @returns the digest of the binary data as a   string in hexadecimal, or `null` if `g_checksum_new()` fails for   `checksum_type`. The returned string should be freed with `g_free()` when   done using it.
      * @since 2.34
      */
-    function compute_checksum_for_bytes(checksum_type: ChecksumType | null, data: Bytes | Uint8Array): string | null;
+    function compute_checksum_for_bytes(checksum_type: ChecksumType, data: Bytes | Uint8Array): string | null;
     /**
      * Computes the checksum for a binary `data` of `length`. This is a
      * convenience wrapper for `g_checksum_new()`, `g_checksum_get_string()`
@@ -6419,7 +6419,7 @@ export namespace GLib {
      * @returns the digest of the binary data as a   string in hexadecimal, or `null` if `g_checksum_new()` fails for   `checksum_type`. The returned string should be freed with `g_free()` when   done using it.
      * @since 2.16
      */
-    function compute_checksum_for_data(checksum_type: ChecksumType | null, data: Uint8Array | string): string | null;
+    function compute_checksum_for_data(checksum_type: ChecksumType, data: Uint8Array | string): string | null;
     /**
      * Computes the checksum of a string.
      *
@@ -6431,7 +6431,7 @@ export namespace GLib {
      * @since 2.16
      */
     function compute_checksum_for_string(
-        checksum_type: ChecksumType | null,
+        checksum_type: ChecksumType,
         str: string,
         length: bigint | number,
     ): string | null;
@@ -6448,7 +6448,7 @@ export namespace GLib {
      * @since 2.50
      */
     function compute_hmac_for_bytes(
-        digest_type: ChecksumType | null,
+        digest_type: ChecksumType,
         key: Bytes | Uint8Array,
         data: Bytes | Uint8Array,
     ): string;
@@ -6465,7 +6465,7 @@ export namespace GLib {
      * @since 2.30
      */
     function compute_hmac_for_data(
-        digest_type: ChecksumType | null,
+        digest_type: ChecksumType,
         key: Uint8Array | string,
         data: Uint8Array | string,
     ): string;
@@ -6481,7 +6481,7 @@ export namespace GLib {
      * @since 2.30
      */
     function compute_hmac_for_string(
-        digest_type: ChecksumType | null,
+        digest_type: ChecksumType,
         key: Uint8Array | string,
         str: string,
         length: bigint | number,
@@ -6667,7 +6667,7 @@ export namespace GLib {
      * @param year year
      * @returns number of days in `month` during the `year`
      */
-    function date_get_days_in_month(month: DateMonth | null, year: DateYear): number;
+    function date_get_days_in_month(month: DateMonth, year: DateYear): number;
     /**
      * Returns the number of weeks in the year, where weeks
      * are taken to start on Monday. Will be 52 or 53. The
@@ -6707,7 +6707,7 @@ export namespace GLib {
      * @returns the number of weeks in `year`
      * @since 2.86
      */
-    function date_get_weeks_in_year(year: DateYear, first_day_of_week: DateWeekday | null): number;
+    function date_get_weeks_in_year(year: DateYear, first_day_of_week: DateWeekday): number;
     /**
      * Returns `true` if the year is a leap year.
      *
@@ -6756,7 +6756,7 @@ export namespace GLib {
      * @param year year
      * @returns `true` if the date is a valid one
      */
-    function date_valid_dmy(day: DateDay, month: DateMonth | null, year: DateYear): boolean;
+    function date_valid_dmy(day: DateDay, month: DateMonth, year: DateYear): boolean;
     /**
      * Returns `true` if the Julian day is valid. Anything greater than zero
      * is basically a valid Julian, though there is a 32-bit limit.
@@ -6770,14 +6770,14 @@ export namespace GLib {
      * @param month month
      * @returns `true` if the month is valid
      */
-    function date_valid_month(month: DateMonth | null): boolean;
+    function date_valid_month(month: DateMonth): boolean;
     /**
      * Returns `true` if the weekday is valid. The seven {@link GLib.DateWeekday} enumeration
      * values are the only valid weekdays.
      * @param weekday weekday
      * @returns `true` if the weekday is valid
      */
-    function date_valid_weekday(weekday: DateWeekday | null): boolean;
+    function date_valid_weekday(weekday: DateWeekday): boolean;
     /**
      * Returns `true` if the year is valid. Any year greater than 0 is valid,
      * though there is a 16-bit limit to what {@link GLib.Date} will understand.
@@ -7193,7 +7193,7 @@ export namespace GLib {
     function file_set_contents_full(
         filename: string,
         contents: Uint8Array | string,
-        flags: FileSetContentsFlags | null,
+        flags: FileSetContentsFlags,
         mode: number,
     ): boolean;
     /**
@@ -7262,7 +7262,7 @@ export namespace GLib {
      * @param test bitfield of {@link GLib.FileTest} flags
      * @returns whether a test was `true`
      */
-    function file_test(filename: string, test: FileTest | null): boolean;
+    function file_test(filename: string, test: FileTest): boolean;
     /**
      * Returns the display basename for the particular filename, guaranteed
      * to be valid UTF-8. The display name might not be identical to the filename,
@@ -7457,7 +7457,7 @@ export namespace GLib {
      * @returns a newly-allocated formatted string   containing a human readable file size
      * @since 2.30
      */
-    function format_size_full(size: bigint | number, flags: FormatSizeFlags | null): string;
+    function format_size_full(size: bigint | number, flags: FormatSizeFlags): string;
     /**
      * Frees the memory pointed to by `mem`.
      *
@@ -8034,7 +8034,7 @@ export namespace GLib {
      * @returns the path to the specified special   directory, or `null` if the logical id was not found. The returned string is   owned by GLib and should not be modified or freed.
      * @since 2.14
      */
-    function get_user_special_dir(directory: UserDirectory | null): string | null;
+    function get_user_special_dir(directory: UserDirectory): string | null;
     /**
      * Returns a base directory in which to store state files specific to
      * particular user.
@@ -8586,7 +8586,7 @@ export namespace GLib {
      * @param func the function to call when the condition is satisfied
      * @returns the event source id
      */
-    function io_add_watch(channel: IOChannel, priority: number, condition: IOCondition | null, func: IOFunc): number;
+    function io_add_watch(channel: IOChannel, priority: number, condition: IOCondition, func: IOFunc): number;
     /**
      * Converts an `errno` error number to a {@link GLib.IOChannelError}.
      * @param en an `errno` error number, e.g. `EINVAL`
@@ -8613,7 +8613,7 @@ export namespace GLib {
      * @param condition conditions to watch for
      * @returns a new {@link GLib.Source}
      */
-    function io_create_watch(channel: IOChannel, condition: IOCondition | null): Source;
+    function io_create_watch(channel: IOChannel, condition: IOCondition): Source;
     function key_file_error_quark(): Quark;
     /**
      * @deprecated since 2.10
@@ -8707,7 +8707,7 @@ export namespace GLib {
      */
     function log_default_handler(
         log_domain: string | null,
-        log_level: LogLevelFlags | null,
+        log_level: LogLevelFlags,
         message?: string | null,
         unused_data?: any | null,
     ): void;
@@ -8788,7 +8788,7 @@ export namespace GLib {
      * @param fatal_mask the mask containing bits set for each level of error which is   to be fatal
      * @returns the old fatal mask
      */
-    function log_set_always_fatal(fatal_mask: LogLevelFlags | null): LogLevelFlags;
+    function log_set_always_fatal(fatal_mask: LogLevelFlags): LogLevelFlags;
     /**
      * Enable or disable debug output from the GLib logging system for all domains.
      *
@@ -8821,7 +8821,7 @@ export namespace GLib {
      * @param fatal_mask the new fatal mask
      * @returns the old fatal mask for the log domain
      */
-    function log_set_fatal_mask(log_domain: string, fatal_mask: LogLevelFlags | null): LogLevelFlags;
+    function log_set_fatal_mask(log_domain: string, fatal_mask: LogLevelFlags): LogLevelFlags;
     /**
      * Like {@link GLib.log_set_handler}, but takes a destroy notify for the `user_data`.
      *
@@ -8836,7 +8836,7 @@ export namespace GLib {
      * @returns the ID of the new handler
      * @since 2.46
      */
-    function log_set_handler(log_domain: string | null, log_levels: LogLevelFlags | null, log_func: LogFunc): number;
+    function log_set_handler(log_domain: string | null, log_levels: LogLevelFlags, log_func: LogFunc): number;
     /**
      * Set a writer function which will be called to format and write out each log
      * message.
@@ -8869,7 +8869,7 @@ export namespace GLib {
      * @param fields key–value pairs of structured data to add    to the log message
      * @since 2.50
      */
-    function log_structured_array(log_level: LogLevelFlags | null, fields: LogField[]): void;
+    function log_structured_array(log_level: LogLevelFlags, fields: LogField[]): void;
     /**
      * Log a message with structured data, accepting the data within a {@link GLib.Variant}.
      *
@@ -8891,7 +8891,7 @@ export namespace GLib {
      * @param fields a dictionary ({@link GLib.Variant} of the type `G_VARIANT_TYPE_VARDICT`) containing the key-value pairs of message data.
      * @since 2.50
      */
-    function log_variant(log_domain: string | null, log_level: LogLevelFlags | null, fields: Variant): void;
+    function log_variant(log_domain: string | null, log_level: LogLevelFlags, fields: Variant): void;
     /**
      * Format a structured log message and output it to the default log destination
      * for the platform.
@@ -8921,11 +8921,7 @@ export namespace GLib {
      * @returns {@link GLib.LogWriterOutput.HANDLED} on success,   {@link GLib.LogWriterOutput.UNHANDLED} otherwise
      * @since 2.50
      */
-    function log_writer_default(
-        log_level: LogLevelFlags | null,
-        fields: LogField[],
-        user_data?: any | null,
-    ): LogWriterOutput;
+    function log_writer_default(log_level: LogLevelFlags, fields: LogField[], user_data?: any | null): LogWriterOutput;
     /**
      * Reset the list of domains to be logged, that might be initially set by the
      * `G_MESSAGES_DEBUG` or `DEBUG_INVOCATION` environment variables.
@@ -8989,7 +8985,7 @@ export namespace GLib {
      * @returns `TRUE` if the log message would be dropped by GLib’s   default log handlers
      * @since 2.68
      */
-    function log_writer_default_would_drop(log_level: LogLevelFlags | null, log_domain?: string | null): boolean;
+    function log_writer_default_would_drop(log_level: LogLevelFlags, log_domain?: string | null): boolean;
     /**
      * Format a structured log message as a string suitable for outputting to the
      * terminal (or elsewhere).
@@ -9008,7 +9004,7 @@ export namespace GLib {
      * @returns string containing the formatted log message, in    the character set of the current locale
      * @since 2.50
      */
-    function log_writer_format_fields(log_level: LogLevelFlags | null, fields: LogField[], use_color: boolean): string;
+    function log_writer_format_fields(log_level: LogLevelFlags, fields: LogField[], use_color: boolean): string;
     /**
      * Check whether the given `output_fd` file descriptor is a connection to the
      * systemd journal, or something else (like a log file or `stdout` or
@@ -9042,11 +9038,7 @@ export namespace GLib {
      * @returns {@link GLib.LogWriterOutput.HANDLED} on success, {@link GLib.LogWriterOutput.UNHANDLED} otherwise
      * @since 2.50
      */
-    function log_writer_journald(
-        log_level: LogLevelFlags | null,
-        fields: LogField[],
-        user_data?: any | null,
-    ): LogWriterOutput;
+    function log_writer_journald(log_level: LogLevelFlags, fields: LogField[], user_data?: any | null): LogWriterOutput;
     /**
      * Format a structured log message and print it to either `stdout` or `stderr`,
      * depending on its log level.
@@ -9072,7 +9064,7 @@ export namespace GLib {
      * @since 2.50
      */
     function log_writer_standard_streams(
-        log_level: LogLevelFlags | null,
+        log_level: LogLevelFlags,
         fields: LogField[],
         user_data?: any | null,
     ): LogWriterOutput;
@@ -9105,11 +9097,7 @@ export namespace GLib {
      * @returns {@link GLib.LogWriterOutput.HANDLED} on success, {@link GLib.LogWriterOutput.UNHANDLED} otherwise
      * @since 2.80
      */
-    function log_writer_syslog(
-        log_level: LogLevelFlags | null,
-        fields: LogField[],
-        user_data?: any | null,
-    ): LogWriterOutput;
+    function log_writer_syslog(log_level: LogLevelFlags, fields: LogField[], user_data?: any | null): LogWriterOutput;
     /**
      * A wrapper for the POSIX `lstat()` function. The `lstat()` function is
      * like `stat()` except that in the case of symbolic links, it returns
@@ -9743,7 +9731,7 @@ export namespace GLib {
      * @param lock_bit a bit value between 0 and 31
      * @since 2.80
      */
-    function pointer_bit_lock_and_get(address: any, lock_bit: number): never;
+    function pointer_bit_lock_and_get(address: any, lock_bit: number): number;
     /**
      * This mangles `ptr` as `g_pointer_bit_lock()` and `g_pointer_bit_unlock()`
      * do.
@@ -9759,7 +9747,7 @@ export namespace GLib {
         ptr: any | null,
         lock_bit: number,
         set: boolean,
-        preserve_mask: never,
+        preserve_mask: bigint | number,
         preserve_ptr?: any | null,
     ): any | null;
     /**
@@ -9805,7 +9793,12 @@ export namespace GLib {
      * @param preserve_mask if non-zero, those bits of the current pointer in `address`   are preserved.   Note that the `lock_bit` bit will be always unset regardless of   `ptr`, `preserve_mask` and the currently set value in `address`.
      * @since 2.80
      */
-    function pointer_bit_unlock_and_set(address: any, lock_bit: number, ptr: any | null, preserve_mask: never): void;
+    function pointer_bit_unlock_and_set(
+        address: any,
+        lock_bit: number,
+        ptr: any | null,
+        preserve_mask: bigint | number,
+    ): void;
     /**
      * Polls `fds`, as with the `poll()` system call, but portably. (On
      * systems that don't have `poll()`, it is emulated using `select()`.)
@@ -10213,8 +10206,8 @@ export namespace GLib {
     function regex_match_simple(
         pattern: string,
         string: string,
-        compile_options: RegexCompileFlags | null,
-        match_options: RegexMatchFlags | null,
+        compile_options: RegexCompileFlags,
+        match_options: RegexMatchFlags,
     ): boolean;
     /**
      * Breaks the string on the pattern, and returns an array of
@@ -10254,8 +10247,8 @@ export namespace GLib {
     function regex_split_simple(
         pattern: string,
         string: string,
-        compile_options: RegexCompileFlags | null,
-        match_options: RegexMatchFlags | null,
+        compile_options: RegexCompileFlags,
+        match_options: RegexMatchFlags,
     ): string[];
     /**
      * Resets the cache used for `g_get_user_special_dir()`, so
@@ -10674,18 +10667,18 @@ export namespace GLib {
     /**
      * @param ckey
      */
-    function slice_get_config(ckey: SliceConfig | null): number;
+    function slice_get_config(ckey: SliceConfig): number;
     /**
      * @param ckey
      * @param address
      * @param n_values
      */
-    function slice_get_config_state(ckey: SliceConfig | null, address: bigint | number, n_values: number): number;
+    function slice_get_config_state(ckey: SliceConfig, address: bigint | number, n_values: number): number;
     /**
      * @param ckey
      * @param value
      */
-    function slice_set_config(ckey: SliceConfig | null, value: bigint | number): void;
+    function slice_set_config(ckey: SliceConfig, value: bigint | number): void;
     /**
      * @deprecated since 2.10
      */
@@ -10804,7 +10797,7 @@ export namespace GLib {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: SpawnFlags | null,
+        flags: SpawnFlags,
         child_setup?: SpawnChildSetupFunc | null,
     ): [boolean, Pid | null];
     /**
@@ -10827,7 +10820,7 @@ export namespace GLib {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: SpawnFlags | null,
+        flags: SpawnFlags,
         child_setup: SpawnChildSetupFunc | null,
         stdin_fd: number,
         stdout_fd: number,
@@ -10847,7 +10840,7 @@ export namespace GLib {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: SpawnFlags | null,
+        flags: SpawnFlags,
         child_setup: SpawnChildSetupFunc | null,
     ): [boolean, Pid | null, number, number, number];
     /**
@@ -11062,7 +11055,7 @@ export namespace GLib {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: SpawnFlags | null,
+        flags: SpawnFlags,
         child_setup: SpawnChildSetupFunc | null,
         stdin_fd: number,
         stdout_fd: number,
@@ -11224,7 +11217,7 @@ export namespace GLib {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: SpawnFlags | null,
+        flags: SpawnFlags,
         child_setup: SpawnChildSetupFunc | null,
     ): [boolean, Uint8Array | null, Uint8Array | null, number];
     /**
@@ -12000,7 +11993,7 @@ export namespace GLib {
      * @param pattern a glob-style pattern (see {@link GLib.PatternSpec})
      * @since 2.34
      */
-    function test_expect_message(log_domain: string | null, log_level: LogLevelFlags | null, pattern: string): void;
+    function test_expect_message(log_domain: string | null, log_level: LogLevelFlags, pattern: string): void;
     /**
      * Indicates that a test failed.
      *
@@ -12051,7 +12044,7 @@ export namespace GLib {
      * @returns the path of the directory, owned by GLib
      * @since 2.38
      */
-    function test_get_dir(file_type: TestFileType | null): string;
+    function test_get_dir(file_type: TestFileType): string;
     /**
      * Gets the test path for the test currently being run.
      *
@@ -12084,7 +12077,7 @@ export namespace GLib {
     /**
      * @param log_type
      */
-    function test_log_type_name(log_type: TestLogType | null): string;
+    function test_log_type_name(log_type: TestLogType): string;
     /**
      * Enqueues a callback `destroy_func` to be executed during the next test case
      * teardown phase.
@@ -12343,7 +12336,7 @@ export namespace GLib {
      * @since 2.16
      * @deprecated This function is implemented only on Unix platforms, is not always reliable due to problems inherent in fork-without-exec and doesn't set close-on-exec flag on its file descriptors. Use func@GLib.test_trap_subprocess] instead.
      */
-    function test_trap_fork(usec_timeout: bigint | number, test_trap_flags: TestTrapFlags | null): boolean;
+    function test_trap_fork(usec_timeout: bigint | number, test_trap_flags: TestTrapFlags): boolean;
     /**
      * Checks the result of the last {@link GLib.test_trap_subprocess} call.
      * @returns true if the last test subprocess terminated successfully
@@ -12376,7 +12369,7 @@ export namespace GLib {
     function test_trap_subprocess(
         test_path: string | null,
         usec_timeout: bigint | number,
-        test_flags: TestSubprocessFlags | null,
+        test_flags: TestSubprocessFlags,
     ): void;
     /**
      * Respawns the test program to run only `test_path` in a subprocess with
@@ -12478,7 +12471,7 @@ export namespace GLib {
         test_path: string | null,
         envp: string[] | null,
         usec_timeout: bigint | number,
-        test_flags: TestSubprocessFlags | null,
+        test_flags: TestSubprocessFlags,
     ): void;
     function thread_error_quark(): Quark;
     /**
@@ -13207,7 +13200,7 @@ export namespace GLib {
      * @returns the ISO 15924 code for `script`, encoded as an integer,   of zero if `script` is {@link GLib.UnicodeScript.INVALID_CODE} or   ISO 15924 code 'Zzzz' (script code for UNKNOWN) if `script` is not understood.
      * @since 2.30
      */
-    function unicode_script_to_iso15924(script: UnicodeScript | null): number;
+    function unicode_script_to_iso15924(script: UnicodeScript): number;
     /**
      * A wrapper for the POSIX `unlink()` function. The `unlink()` function
      * deletes a name from the filesystem. If this was the last link to the
@@ -13261,7 +13254,7 @@ export namespace GLib {
      * @since 2.66
      */
     function uri_build(
-        flags: UriFlags | null,
+        flags: UriFlags,
         scheme: string,
         userinfo: string | null,
         host: string | null,
@@ -13293,7 +13286,7 @@ export namespace GLib {
      * @since 2.66
      */
     function uri_build_with_user(
-        flags: UriFlags | null,
+        flags: UriFlags,
         scheme: string,
         user: string | null,
         password: string | null,
@@ -13353,7 +13346,7 @@ export namespace GLib {
      * @returns `true` if `uri_string` is a valid absolute URI, `false` on error.
      * @since 2.66
      */
-    function uri_is_valid(uri_string: string, flags: UriFlags | null): boolean;
+    function uri_is_valid(uri_string: string, flags: UriFlags): boolean;
     /**
      * Joins the given components together according to `flags` to create
      * an absolute URI string. `path` may not be `null` (though it may be the empty
@@ -13381,7 +13374,7 @@ export namespace GLib {
      * @since 2.66
      */
     function uri_join(
-        flags: UriFlags | null,
+        flags: UriFlags,
         scheme: string | null,
         userinfo: string | null,
         host: string | null,
@@ -13414,7 +13407,7 @@ export namespace GLib {
      * @since 2.66
      */
     function uri_join_with_user(
-        flags: UriFlags | null,
+        flags: UriFlags,
         scheme: string | null,
         user: string | null,
         password: string | null,
@@ -13443,7 +13436,7 @@ export namespace GLib {
      * @returns a new {@link GLib.Uri}, or NULL on error.
      * @since 2.66
      */
-    function uri_parse(uri_string: string, flags: UriFlags | null): Uri;
+    function uri_parse(uri_string: string, flags: UriFlags): Uri;
     /**
      * Many URI schemes include one or more attribute/value pairs as part of the URI
      * value. This method can be used to parse them into a hash table. When an
@@ -13480,7 +13473,7 @@ export namespace GLib {
         params: string,
         length: bigint | number,
         separators: string,
-        flags: UriParamsFlags | null,
+        flags: UriParamsFlags,
     ): HashTable<string, string>;
     /**
      * Gets the scheme portion of a URI string.
@@ -13529,7 +13522,7 @@ export namespace GLib {
      * @returns the resolved URI string, or NULL on error.
      * @since 2.66
      */
-    function uri_resolve_relative(base_uri_string: string | null, uri_ref: string, flags: UriFlags | null): string;
+    function uri_resolve_relative(base_uri_string: string | null, uri_ref: string, flags: UriFlags): string;
     /**
      * Parses `uri_ref` (which can be an
      * [absolute or relative URI](#relative-and-absolute-uris)) according to `flags`, and
@@ -13554,7 +13547,7 @@ export namespace GLib {
      */
     function uri_split(
         uri_ref: string,
-        flags: UriFlags | null,
+        flags: UriFlags,
     ): [boolean, string, string, string, number, string, string, string];
     /**
      * Parses `uri_string` (which must be an [absolute URI](#relative-and-absolute-uris))
@@ -13568,7 +13561,7 @@ export namespace GLib {
      * @returns `true` if `uri_string` parsed successfully,   `false` on error.
      * @since 2.66
      */
-    function uri_split_network(uri_string: string, flags: UriFlags | null): [boolean, string, string, number];
+    function uri_split_network(uri_string: string, flags: UriFlags): [boolean, string, string, number];
     /**
      * Parses `uri_ref` (which can be an
      * [absolute or relative URI](#relative-and-absolute-uris)) according to `flags`, and
@@ -13588,7 +13581,7 @@ export namespace GLib {
      */
     function uri_split_with_user(
         uri_ref: string,
-        flags: UriFlags | null,
+        flags: UriFlags,
     ): [boolean, string, string, string, string, string, number, string, string, string];
     /**
      * Unescapes a segment of an escaped string as binary data.
@@ -13861,7 +13854,7 @@ export namespace GLib {
      * @param mode the type of normalization to perform.
      * @returns a newly allocated string, that   is the normalized form of `str`, or `null` if `str`   is not valid UTF-8.
      */
-    function utf8_normalize(str: string, len: bigint | number, mode: NormalizeMode | null): string | null;
+    function utf8_normalize(str: string, len: bigint | number, mode: NormalizeMode): string | null;
     /**
      * Converts from an integer character offset to a pointer to a position
      * within the string.
@@ -17688,7 +17681,7 @@ export namespace GLib {
          * @param first_day_of_week the day which is considered the first day of the week    (for example, this would be {@link GLib.DateWeekday.SUNDAY} in US locales,    {@link GLib.DateWeekday.MONDAY} in British locales, and    {@link GLib.DateWeekday.SATURDAY} in Egyptian locales
          * @returns week number (starting from 1), or `0` if `date` is before the start    of the first week of the year
          */
-        get_week_of_year(first_day_of_week: DateWeekday | null): number;
+        get_week_of_year(first_day_of_week: DateWeekday): number;
         /**
          * Returns the day of the week for a {@link GLib.Date}. The date must be valid.
          * @returns day of the week as a {@link GLib.DateWeekday}.
@@ -17732,7 +17725,7 @@ export namespace GLib {
          * @param month month
          * @param y year
          */
-        set_dmy(day: DateDay, month: DateMonth | null, y: DateYear): void;
+        set_dmy(day: DateDay, month: DateMonth, y: DateYear): void;
         /**
          * Sets the value of a {@link GLib.Date} from a Julian day number.
          * @param julian_date Julian day number (days since January 1, Year 1)
@@ -17743,7 +17736,7 @@ export namespace GLib {
          * day-month-year triplet is invalid, the date will be invalid.
          * @param month month to set
          */
-        set_month(month: DateMonth | null): void;
+        set_month(month: DateMonth): void;
         /**
          * Parses a user-inputted string `str`, and try to figure out what date it
          * represents, taking the [current locale](https://docs.gtk.org/glib/running.html#locale)
@@ -19376,14 +19369,14 @@ export namespace GLib {
          * @param type the position in the file, which can be {@link GLib.SeekType.CUR} (the current        position), {@link GLib.SeekType.SET} (the start of the file), or {@link GLib.SeekType.END}        (the end of the file)
          * @returns {@link GLib.IOError.NONE} if the operation was successful.
          */
-        seek(offset: bigint | number, type: SeekType | null): IOError;
+        seek(offset: bigint | number, type: SeekType): IOError;
         /**
          * Replacement for `g_io_channel_seek()` with the new API.
          * @param offset The offset in bytes from the position specified by `type`
          * @param type a {@link GLib.SeekType}. The type {@link GLib.SeekType.CUR} is only allowed in those                      cases where a call to g_io_channel_set_encoding ()                      is allowed. See the documentation for                      g_io_channel_set_encoding () for details.
          * @returns the status of the operation.
          */
-        seek_position(offset: bigint | number, type: SeekType | null): IOStatus;
+        seek_position(offset: bigint | number, type: SeekType): IOStatus;
         /**
          * Sets the buffer size.
          * @param size the size of the buffer, or 0 to let GLib pick a good size
@@ -19466,7 +19459,7 @@ export namespace GLib {
          * @param flags the flags to set on the IO channel
          * @returns the status of the operation.
          */
-        set_flags(flags: IOFlags | null): IOStatus;
+        set_flags(flags: IOFlags): IOStatus;
         /**
          * This sets the string that {@link GLib.IOChannel} uses to determine
          * where in the file a line break occurs.
@@ -19941,7 +19934,7 @@ export namespace GLib {
          * @param flags flags from {@link GLib.KeyFileFlags}
          * @returns true if a key file could be loaded, false otherwise
          */
-        load_from_bytes(bytes: Bytes | Uint8Array, flags: KeyFileFlags | null): boolean;
+        load_from_bytes(bytes: Bytes | Uint8Array, flags: KeyFileFlags): boolean;
         /**
          * Loads a key file from memory into an empty {@link GLib.KeyFile} structure.
          *
@@ -19951,7 +19944,7 @@ export namespace GLib {
          * @param flags flags from {@link GLib.KeyFileFlags}
          * @returns true if a key file could be loaded, false otherwise
          */
-        load_from_data(data: string, length: bigint | number, flags: KeyFileFlags | null): boolean;
+        load_from_data(data: string, length: bigint | number, flags: KeyFileFlags): boolean;
         /**
          * Looks for a key file named `file` in the paths returned from
          * {@link GLib.get_user_data_dir} and {@link GLib.get_system_data_dirs}.
@@ -19966,7 +19959,7 @@ export namespace GLib {
          * @param flags flags from {@link GLib.KeyFileFlags}
          * @returns true if a key file could be loaded, false otherwise
          */
-        load_from_data_dirs(file: string, flags: KeyFileFlags | null): [boolean, string];
+        load_from_data_dirs(file: string, flags: KeyFileFlags): [boolean, string];
         /**
          * Looks for a key file named `file` in the paths specified in `search_dirs`,
          * loads the file into `key_file` and returns the file’s full path in `full_path`.
@@ -19988,7 +19981,7 @@ export namespace GLib {
          * @param flags flags from {@link GLib.KeyFileFlags}
          * @returns true if a key file could be loaded, false otherwise
          */
-        load_from_dirs(file: string, search_dirs: string[], flags: KeyFileFlags | null): [boolean, string];
+        load_from_dirs(file: string, search_dirs: string[], flags: KeyFileFlags): [boolean, string];
         /**
          * Loads a key file into an empty {@link GLib.KeyFile} structure.
          *
@@ -20002,7 +19995,7 @@ export namespace GLib {
          * @param flags flags from {@link GLib.KeyFileFlags}
          * @returns true if a key file could be loaded, false otherwise
          */
-        load_from_file(file: string, flags: KeyFileFlags | null): boolean;
+        load_from_file(file: string, flags: KeyFileFlags): boolean;
         /**
          * Increases the reference count of `key_file`.
          * @returns the same `key_file`.
@@ -21590,7 +21583,7 @@ export namespace GLib {
          * @param flags which types of children are to be visited, one of     {@link GLib.TraverseFlags.ALL}, {@link GLib.TraverseFlags.LEAVES} and {@link GLib.TraverseFlags.NON_LEAVES}
          * @param func the function to call for each visited node
          */
-        children_foreach(flags: TraverseFlags | null, func: NodeForeachFunc): void;
+        children_foreach(flags: TraverseFlags, func: NodeForeachFunc): void;
         /**
          * Recursively copies a {@link GLib.Node} (but does not deep-copy the data inside the
          * nodes, see `g_node_copy_deep()` if you need that).
@@ -21637,7 +21630,7 @@ export namespace GLib {
          * @param flags which types of children are to be counted, one of     {@link GLib.TraverseFlags.ALL}, {@link GLib.TraverseFlags.LEAVES} and {@link GLib.TraverseFlags.NON_LEAVES}
          * @returns the number of nodes in the tree
          */
-        n_nodes(flags: TraverseFlags | null): number;
+        n_nodes(flags: TraverseFlags): number;
         /**
          * Reverses the order of the children of a {@link GLib.Node}.
          * (It doesn't change the order of the grandchildren.)
@@ -21653,12 +21646,7 @@ export namespace GLib {
          * @param max_depth the maximum depth of the traversal. Nodes below this     depth will not be visited. If max_depth is -1 all nodes in     the tree are visited. If depth is 1, only the root is visited.     If depth is 2, the root and its children are visited. And so on.
          * @param func the function to call for each visited {@link GLib.Node}
          */
-        traverse(
-            order: TraverseType | null,
-            flags: TraverseFlags | null,
-            max_depth: number,
-            func: NodeTraverseFunc,
-        ): void;
+        traverse(order: TraverseType, flags: TraverseFlags, max_depth: number, func: NodeTraverseFunc): void;
         /**
          * Unlinks a {@link GLib.Node} from a tree, resulting in two separate trees.
          */
@@ -23427,7 +23415,7 @@ export namespace GLib {
          * @param match_options match options
          * @returns `true` is the string matched, `false` otherwise
          */
-        match(string: string, match_options: RegexMatchFlags | null): [boolean, MatchInfo | null];
+        match(string: string, match_options: RegexMatchFlags): [boolean, MatchInfo | null];
         /**
          * Using the standard algorithm for regular expression matching only
          * the longest match in the string is retrieved. This function uses
@@ -23447,7 +23435,7 @@ export namespace GLib {
          * @param match_options match options
          * @returns `true` is the string matched, `false` otherwise
          */
-        match_all(string: string, match_options: RegexMatchFlags | null): [boolean, MatchInfo | null];
+        match_all(string: string, match_options: RegexMatchFlags): [boolean, MatchInfo | null];
         /**
          * Using the standard algorithm for regular expression matching only
          * the longest match in the `string` is retrieved, it is not possible
@@ -23495,7 +23483,7 @@ export namespace GLib {
         match_all_full(
             string: string[],
             start_position: number,
-            match_options: RegexMatchFlags | null,
+            match_options: RegexMatchFlags,
         ): [boolean, MatchInfo | null];
         /**
          * Scans for a match in `string` for the pattern in `regex`.
@@ -23559,7 +23547,7 @@ export namespace GLib {
         match_full(
             string: string[],
             start_position: number,
-            match_options: RegexMatchFlags | null,
+            match_options: RegexMatchFlags,
         ): [boolean, MatchInfo | null];
         /**
          * Increases reference count of `regex` by 1.
@@ -23599,12 +23587,7 @@ export namespace GLib {
          * @param match_options options for the match
          * @returns a newly allocated string containing the replacements
          */
-        replace(
-            string: string[],
-            start_position: number,
-            replacement: string,
-            match_options: RegexMatchFlags | null,
-        ): string;
+        replace(string: string[], start_position: number, replacement: string, match_options: RegexMatchFlags): string;
         /**
          * Replaces occurrences of the pattern in regex with the output of
          * `eval` for that occurrence.
@@ -23662,7 +23645,7 @@ export namespace GLib {
         replace_eval(
             string: string[],
             start_position: number,
-            match_options: RegexMatchFlags | null,
+            match_options: RegexMatchFlags,
             _eval: RegexEvalCallback,
         ): string;
         /**
@@ -23684,7 +23667,7 @@ export namespace GLib {
             string: string[],
             start_position: number,
             replacement: string,
-            match_options: RegexMatchFlags | null,
+            match_options: RegexMatchFlags,
         ): string;
         /**
          * Breaks the string on the pattern, and returns an array of the tokens.
@@ -23708,7 +23691,7 @@ export namespace GLib {
          * @param match_options match time option flags
          * @returns a `null`-terminated gchar ** array. Free it using `g_strfreev()`
          */
-        split(string: string, match_options: RegexMatchFlags | null): string[];
+        split(string: string, match_options: RegexMatchFlags): string[];
         /**
          * Breaks the string on the pattern, and returns an array of the tokens.
          * If the pattern contains capturing parentheses, then the text for each
@@ -23740,7 +23723,7 @@ export namespace GLib {
         split_full(
             string: string[],
             start_position: number,
-            match_options: RegexMatchFlags | null,
+            match_options: RegexMatchFlags,
             max_tokens: number,
         ): string[];
         /**
@@ -24054,7 +24037,7 @@ export namespace GLib {
          * @param is_error if `true` it is output as an error. If `false` it is     output as a warning.
          */
         unexp_token(
-            expected_token: TokenType | null,
+            expected_token: TokenType,
             identifier_spec: string,
             symbol_spec: string,
             symbol_name: string,
@@ -24658,7 +24641,7 @@ export namespace GLib {
          * @param events an event mask
          * @returns an opaque tag
          */
-        add_unix_fd(fd: number, events: IOCondition | null): any;
+        add_unix_fd(fd: number, events: IOCondition): any;
         /**
          * Adds a {@link GLib.Source} to a `context` so that it will be executed within
          * that context.
@@ -24878,7 +24861,7 @@ export namespace GLib {
          * @param tag the tag from {@link GLib.Source.add_unix_fd}
          * @param new_events the new event mask to watch
          */
-        modify_unix_fd(tag: any, new_events: IOCondition | null): void;
+        modify_unix_fd(tag: any, new_events: IOCondition): void;
         /**
          * Queries the events reported for the file descriptor corresponding to `tag`
          * on `source` during the last poll.
@@ -26184,7 +26167,7 @@ export namespace GLib {
          * @param time_ a pointer to a number of seconds since January 1, 1970
          * @returns the interval containing `time_`, never -1
          */
-        adjust_time(type: TimeType | null, time_: bigint | number): [number, number];
+        adjust_time(type: TimeType, time_: bigint | number): [number, number];
         /**
          * Finds an interval within `tz` that corresponds to the given `time_`.
          * The meaning of `time_` depends on `type`.
@@ -26208,7 +26191,7 @@ export namespace GLib {
          * @param time_ a number of seconds since January 1, 1970
          * @returns the interval containing `time_`, or -1 in case of failure
          */
-        find_interval(type: TimeType | null, time_: bigint | number): number;
+        find_interval(type: TimeType, time_: bigint | number): number;
         /**
          * Determines the time zone abbreviation to be used during a particular
          * `interval` of time in the time zone `tz`.
@@ -26600,7 +26583,7 @@ export namespace GLib {
          * @param traverse_func the function to call for each node visited. If this   function returns `true`, the traversal is stopped.
          * @param traverse_type the order in which nodes are visited, one of {@link GLib.TraverseType.IN_ORDER},   {@link GLib.TraverseType.PRE_ORDER} and {@link GLib.TraverseType.POST_ORDER}
          */
-        traverse(traverse_func: TraverseFunc, traverse_type: TraverseType | null): void;
+        traverse(traverse_func: TraverseFunc, traverse_type: TraverseType): void;
         /**
          * Decrements the reference count of `tree` by one.
          * If the reference count drops to 0, all keys and values will
@@ -27330,7 +27313,7 @@ export namespace GLib {
          * @param flags flags describing how to parse `uri_ref`
          * @returns a new {@link GLib.Uri}, or NULL on error.
          */
-        parse_relative(uri_ref: string, flags: UriFlags | null): Uri;
+        parse_relative(uri_ref: string, flags: UriFlags): Uri;
         /**
          * Increments the reference count of `uri` by one.
          * @returns `uri`
@@ -27358,7 +27341,7 @@ export namespace GLib {
          * @param flags flags describing what parts of `uri` to hide
          * @returns a string representing     `uri`, which the caller must free.
          */
-        to_string_partial(flags: UriHideFlags | null): string;
+        to_string_partial(flags: UriHideFlags): string;
         /**
          * Atomically decrements the reference count of `uri` by one.
          *
@@ -27431,7 +27414,7 @@ export namespace GLib {
          * @param separators the separator byte character set between parameters. (usually   `&`, but sometimes `;` or both `&;`). Note that this function works on   bytes not characters, so it can't be used to delimit UTF-8 strings for   anything but ASCII characters. You may pass an empty set, in which case   no splitting will occur.
          * @param flags flags to modify the way the parameters are handled.
          */
-        init(params: string, length: bigint | number, separators: string, flags: UriParamsFlags | null): void;
+        init(params: string, length: bigint | number, separators: string, flags: UriParamsFlags): void;
         /**
          * Advances `iter` and retrieves the next attribute/value. `false` is returned if
          * an error has occurred (in which case `error` is set), or if the end of the

@@ -374,7 +374,7 @@ export namespace XreaderDocument {
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
      */
-    function file_compress(uri: string, type: CompressionType | null): string;
+    function file_compress(uri: string, type: CompressionType): string;
     /**
      * Note: on unknown MIME types, this may return NULL without `error`
      * being filled in.
@@ -401,7 +401,7 @@ export namespace XreaderDocument {
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
      */
-    function file_uncompress(uri: string, type: CompressionType | null): string;
+    function file_uncompress(uri: string, type: CompressionType): string;
     /**
      * Initializes the xreader document library, and binds the xreader
      * gettext domain.
@@ -1148,7 +1148,7 @@ export namespace XreaderDocument {
         /**
          * @param icon
          */
-        set_icon(icon: AnnotationTextIcon | null): boolean;
+        set_icon(icon: AnnotationTextIcon): boolean;
         /**
          * @param is_open
          */
@@ -1438,7 +1438,7 @@ export namespace XreaderDocument {
         /**
          * @param markup_type
          */
-        set_markup_type(markup_type: AnnotationTextMarkupType | null): boolean;
+        set_markup_type(markup_type: AnnotationTextMarkupType): boolean;
         /** @category Inherited from XreaderDocument.AnnotationMarkup */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
@@ -3756,7 +3756,7 @@ export namespace XreaderDocument {
          * @param annot
          * @param mask
          */
-        save_annotation(annot: Annotation, mask: AnnotationsSaveMask | null): void;
+        save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
     }
 
     export const DocumentAnnotations: DocumentAnnotationsNamespace & {
@@ -4563,13 +4563,13 @@ export namespace XreaderDocument {
          * @param style
          * @param points
          */
-        get_selected_text(page: Page, style: SelectionStyle | null, points: Rectangle): string;
+        get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         /**
          * @param rc
          * @param style
          * @param points
          */
-        get_selection_region(rc: RenderContext, style: SelectionStyle | null, points: Rectangle): cairo.Region;
+        get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
         /**
          * @param rc
          * @param surface
@@ -4584,7 +4584,7 @@ export namespace XreaderDocument {
             surface: cairo.Surface,
             points: Rectangle,
             old_points: Rectangle,
-            style: SelectionStyle | null,
+            style: SelectionStyle,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;

@@ -43,7 +43,7 @@ export namespace Mtk {
      * @param rect A rectangle
      * @param rounding_strategy The rounding strategy
      */
-    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy | null): Rectangle;
+    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
     function region_create(): Region;
     /**
      * @param rect
@@ -148,7 +148,7 @@ export namespace Mtk {
          * @param rounding_strategy
          * @param dest
          */
-        scale_double(scale: number, rounding_strategy: RoundingStrategy | null, dest: Rectangle): void;
+        scale_double(scale: number, rounding_strategy: RoundingStrategy, dest: Rectangle): void;
         /**
          * @returns Return a graphene_rect_t created from `rect`
          */

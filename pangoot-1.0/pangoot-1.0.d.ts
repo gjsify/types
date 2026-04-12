@@ -102,7 +102,7 @@ export namespace PangoOT {
      * @returns {@link PangoOT.Tag} corresponding to `script` or `PANGO_OT_TAG_DEFAULT_SCRIPT` if none found.
      * @since 1.18
      */
-    function tag_from_script(script: Pango.Script | null): Tag;
+    function tag_from_script(script: Pango.Script): Tag;
     /**
      * Finds a {@link Pango.Language} corresponding to `language_tag`.
      * @param language_tag A {@link PangoOT.Tag} OpenType language-system tag
@@ -207,7 +207,7 @@ export namespace PangoOT {
          * @returns `true` if the feature was found
          */
         find_feature(
-            table_type: TableType | null,
+            table_type: TableType,
             feature_tag: Tag,
             script_index: number,
             language_index: number,
@@ -227,7 +227,7 @@ export namespace PangoOT {
          * @param language_tag the tag of the language to find
          * @returns `true` if the language was found
          */
-        find_language(table_type: TableType | null, script_index: number, language_tag: Tag): [boolean, number, number];
+        find_language(table_type: TableType, script_index: number, language_tag: Tag): [boolean, number, number];
         /**
          * Finds the index of a script.
          *
@@ -243,7 +243,7 @@ export namespace PangoOT {
          * @param script_tag the tag of the script to find
          * @returns `true` if the script was found
          */
-        find_script(table_type: TableType | null, script_tag: Tag): [boolean, number];
+        find_script(table_type: TableType, script_tag: Tag): [boolean, number];
         /**
          * Obtains the list of features for the given language of the given script.
          * @param table_type the table type to obtain information about
@@ -252,7 +252,7 @@ export namespace PangoOT {
          * @param language_index the index of the language to list features for, or   `PANGO_OT_DEFAULT_LANGUAGE`, to list features for the default   language of the script
          * @returns a newly-allocated zero-terminated   array containing the tags of the available features
          */
-        list_features(table_type: TableType | null, tag: Tag, script_index: number, language_index: number): Tag;
+        list_features(table_type: TableType, tag: Tag, script_index: number, language_index: number): Tag;
         /**
          * Obtains the list of available languages for a given script.
          * @param table_type the table type to obtain information about
@@ -260,13 +260,13 @@ export namespace PangoOT {
          * @param language_tag unused parameter
          * @returns a newly-allocated zero-terminated   array containing the tags of the available languages
          */
-        list_languages(table_type: TableType | null, script_index: number, language_tag: Tag): Tag;
+        list_languages(table_type: TableType, script_index: number, language_tag: Tag): Tag;
         /**
          * Obtains the list of available scripts.
          * @param table_type the table type to obtain information about
          * @returns a newly-allocated zero-terminated   array containing the tags of the available scripts
          */
-        list_scripts(table_type: TableType | null): Tag;
+        list_scripts(table_type: TableType): Tag;
     }
 
     namespace Ruleset {
@@ -362,7 +362,7 @@ export namespace PangoOT {
          * @param feature_index the index of the feature to add
          * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   `PANGO_OT_ALL_GLYPHS` if it should be applied to all glyphs.
          */
-        add_feature(table_type: TableType | null, feature_index: number, property_bit: bigint | number): void;
+        add_feature(table_type: TableType, feature_index: number, property_bit: bigint | number): void;
         /**
          * Gets the number of GSUB and GPOS features in the ruleset.
          * @returns Total number of features in the `ruleset`
@@ -381,7 +381,7 @@ export namespace PangoOT {
          * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   `PANGO_OT_ALL_GLYPHS` if it should be applied to all glyphs.
          * @returns `true` if the feature was found and added to ruleset,   `false` otherwise
          */
-        maybe_add_feature(table_type: TableType | null, feature_tag: Tag, property_bit: bigint | number): boolean;
+        maybe_add_feature(table_type: TableType, feature_tag: Tag, property_bit: bigint | number): boolean;
         /**
          * This is a convenience function that for each feature in the feature map
          * array `features` converts the feature name to a {@link PangoOT.Tag} feature tag
@@ -392,7 +392,7 @@ export namespace PangoOT {
          * @param n_features number of feature records in `features` array
          * @returns The number of features in `features` that were found   and added to `ruleset`
          */
-        maybe_add_features(table_type: TableType | null, features: FeatureMap, n_features: number): number;
+        maybe_add_features(table_type: TableType, features: FeatureMap, n_features: number): number;
         /**
          * Performs the OpenType GPOS positioning on `buffer` using
          * the features in `ruleset`.

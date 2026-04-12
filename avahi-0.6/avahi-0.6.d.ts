@@ -345,7 +345,7 @@ export namespace Avahi {
          * @param size
          */
         add_record(
-            flags: AvahiCore.PublishFlags | null,
+            flags: AvahiCore.PublishFlags,
             name: string,
             type: number,
             ttl: number,
@@ -365,8 +365,8 @@ export namespace Avahi {
          */
         add_record_full(
             _interface: AvahiCore.IfIndex,
-            protocol: AvahiCore.Protocol | null,
-            flags: AvahiCore.PublishFlags | null,
+            protocol: AvahiCore.Protocol,
+            flags: AvahiCore.PublishFlags,
             name: string,
             clazz: number,
             type: number,

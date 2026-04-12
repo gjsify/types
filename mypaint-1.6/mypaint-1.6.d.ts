@@ -172,7 +172,7 @@ export namespace MyPaint {
     /**
      * @param id
      */
-    function brush_input_info(id: BrushInput | null): BrushInputInfo;
+    function brush_input_info(id: BrushInput): BrushInputInfo;
     /**
      * @param cname
      */
@@ -180,7 +180,7 @@ export namespace MyPaint {
     /**
      * @param id
      */
-    function brush_setting_info(id: BrushSetting | null): BrushSettingInfo;
+    function brush_setting_info(id: BrushSetting): BrushSettingInfo;
     /**
      * @gir-type Callback
      */
@@ -290,31 +290,31 @@ export namespace MyPaint {
          * Get the base value of a brush setting.
          * @param id
          */
-        get_base_value(id: BrushSetting | null): number;
+        get_base_value(id: BrushSetting): number;
         /**
          * Returns how many inputs are used for the dynamics of a {@link MyPaint.BrushSetting}
          * @param id
          */
-        get_inputs_used_n(id: BrushSetting | null): number;
+        get_inputs_used_n(id: BrushSetting): number;
         /**
          * Get the number of points used for the dynamics mapping between a {@link MyPaint.BrushInput} and {@link MyPaint.BrushSetting}.
          * @param id
          * @param input
          */
-        get_mapping_n(id: BrushSetting | null, input: BrushInput | null): number;
+        get_mapping_n(id: BrushSetting, input: BrushInput): number;
         /**
          * Get a X,Y point of a dynamics mapping.
          * @param id
          * @param input
          * @param index
          */
-        get_mapping_point(id: BrushSetting | null, input: BrushInput | null, index: number): [number, number];
+        get_mapping_point(id: BrushSetting, input: BrushInput, index: number): [number, number];
         /**
          * Get an internal brush engine state.
          * Normally used for debugging, but can be used to implement record & replay functionality.
          * @param i
          */
-        get_state(i: BrushState | null): number;
+        get_state(i: BrushState): number;
         /**
          * Return the total amount of painting time for the current stroke.
          */
@@ -323,7 +323,7 @@ export namespace MyPaint {
          * Returns TRUE if the brush has no dynamics for the given {@link MyPaint.BrushSetting}
          * @param id
          */
-        is_constant(id: BrushSetting | null): boolean;
+        is_constant(id: BrushSetting): boolean;
         /**
          * Start a new stroke.
          */
@@ -343,14 +343,14 @@ export namespace MyPaint {
          * @param id
          * @param value
          */
-        set_base_value(id: BrushSetting | null, value: number): void;
+        set_base_value(id: BrushSetting, value: number): void;
         /**
          * Set the number of points used for the dynamics mapping between a {@link MyPaint.BrushInput} and {@link MyPaint.BrushSetting}.
          * @param id
          * @param input
          * @param n
          */
-        set_mapping_n(id: BrushSetting | null, input: BrushInput | null, n: number): void;
+        set_mapping_n(id: BrushSetting, input: BrushInput, n: number): void;
         /**
          * Set a X,Y point of a dynamics mapping.
          * The index must be within the number of points set using `mypaint_brush_set_mapping_n()`
@@ -360,7 +360,7 @@ export namespace MyPaint {
          * @param x
          * @param y
          */
-        set_mapping_point(id: BrushSetting | null, input: BrushInput | null, index: number, x: number, y: number): void;
+        set_mapping_point(id: BrushSetting, input: BrushInput, index: number, x: number, y: number): void;
         /**
          * Enable/Disable printing of brush engine inputs on stderr. Intended for debugging only.
          * @param enabled
@@ -372,7 +372,7 @@ export namespace MyPaint {
          * @param i
          * @param value
          */
-        set_state(i: BrushState | null, value: number): void;
+        set_state(i: BrushState, value: number): void;
         /**
          * Should be called once for each motion event.
          * @param surface

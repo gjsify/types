@@ -96,7 +96,7 @@ export namespace Caja {
         update_complete: GObject.Closure,
         provider: InfoProvider,
         handle: OperationHandle,
-        result: OperationResult | null,
+        result: OperationResult,
     ): void;
     /**
      * @param module
@@ -1203,7 +1203,7 @@ export namespace Caja {
          * @param mime_type The mimetype for the uri
          * @returns True to use custom widget view, False to ignore, and caja use normal view.
          */
-        supports_uri(uri: string, file_type: Gio.FileType | null, mime_type: string): boolean;
+        supports_uri(uri: string, file_type: Gio.FileType, mime_type: string): boolean;
     }
 
     export const WidgetViewProvider: WidgetViewProviderNamespace & {

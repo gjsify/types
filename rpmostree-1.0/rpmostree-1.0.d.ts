@@ -85,7 +85,7 @@ export namespace RpmOstree {
         repo: OSTree.Repo,
         orig_ref: string,
         new_ref: string,
-        flags: DbDiffExtFlags | null,
+        flags: DbDiffExtFlags,
         cancellable?: Gio.Cancellable | null,
     ): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
     /**

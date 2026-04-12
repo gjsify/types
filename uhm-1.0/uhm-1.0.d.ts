@@ -128,7 +128,7 @@ export namespace Uhm {
         /**
          * @param version
          */
-        set_http_version(version: Soup.HTTPVersion | null): void;
+        set_http_version(version: Soup.HTTPVersion): void;
         /**
          * @param status
          * @param reason_phrase

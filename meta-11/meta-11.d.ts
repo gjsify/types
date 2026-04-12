@@ -1486,20 +1486,20 @@ export namespace Meta {
      * @param pick_flags
      */
     function add_clutter_debug_flags(
-        debug_flags: Clutter.DebugFlag | null,
-        draw_flags: Clutter.DrawDebugFlag | null,
-        pick_flags: Clutter.PickDebugFlag | null,
+        debug_flags: Clutter.DebugFlag,
+        draw_flags: Clutter.DrawDebugFlag,
+        pick_flags: Clutter.PickDebugFlag,
     ): void;
     /**
      * @param flag
      */
-    function add_debug_paint_flag(flag: DebugPaintFlag | null): void;
+    function add_debug_paint_flag(flag: DebugPaintFlag): void;
     /**
      * Ensure log messages for the given topic `topic`
      * will be printed.
      * @param topic Topic for which logging will be started
      */
-    function add_verbose_topic(topic: DebugTopic | null): void;
+    function add_verbose_topic(topic: DebugTopic): void;
     function clutter_init(): void;
     /**
      * Create a context.
@@ -1521,7 +1521,7 @@ export namespace Meta {
     /**
      * @param code
      */
-    function exit(code: ExitCode | null): void;
+    function exit(code: ExitCode): void;
     /**
      * @param keybinding_action
      */
@@ -1537,7 +1537,7 @@ export namespace Meta {
      * @param type a {@link Meta.FrameType}
      * @returns the string value
      */
-    function frame_type_to_string(type: FrameType | null): string;
+    function frame_type_to_string(type: FrameType): string;
     /**
      * @param src
      * @param n
@@ -1583,7 +1583,7 @@ export namespace Meta {
     /**
      * @param gravity
      */
-    function gravity_to_string(gravity: Gravity | null): string;
+    function gravity_to_string(gravity: Gravity): string;
     /**
      * Returns `true` if this instance of Mutter comes from Mutter
      * restarting itself (for example to enable/disable stereo.)
@@ -1594,7 +1594,7 @@ export namespace Meta {
     /**
      * @param topic
      */
-    function is_topic_enabled(topic: DebugTopic | null): boolean;
+    function is_topic_enabled(topic: DebugTopic): boolean;
     function is_verbose(): boolean;
     function is_wayland_compositor(): boolean;
     /**
@@ -1616,7 +1616,7 @@ export namespace Meta {
      * @param func callback to run later
      * @returns an integer ID (guaranteed to be non-zero) that can be used  to cancel the callback and prevent it from being run.
      */
-    function later_add(when: LaterType | null, func: GLib.SourceFunc): number;
+    function later_add(when: LaterType, func: GLib.SourceFunc): number;
     /**
      * Removes a callback added with `meta_later_add()`
      * @param later_id the integer ID returned from `meta_later_add()`
@@ -1626,7 +1626,7 @@ export namespace Meta {
     /**
      * @param pref
      */
-    function preference_to_string(pref: Preference | null): string;
+    function preference_to_string(pref: Preference): string;
     function prefs_bell_is_audible(): boolean;
     /**
      * @param i
@@ -1701,14 +1701,14 @@ export namespace Meta {
      * @param pick_flags
      */
     function remove_clutter_debug_flags(
-        debug_flags: Clutter.DebugFlag | null,
-        draw_flags: Clutter.DrawDebugFlag | null,
-        pick_flags: Clutter.PickDebugFlag | null,
+        debug_flags: Clutter.DebugFlag,
+        draw_flags: Clutter.DrawDebugFlag,
+        pick_flags: Clutter.PickDebugFlag,
     ): void;
     /**
      * @param flag
      */
-    function remove_debug_paint_flag(flag: DebugPaintFlag | null): void;
+    function remove_debug_paint_flag(flag: DebugPaintFlag): void;
     /**
      * Stop printing log messages for the given topic `topic`.  Note
      * that this method does not stack with `meta_add_verbose_topic()`;
@@ -1717,7 +1717,7 @@ export namespace Meta {
      * remove it.
      * @param topic Topic for which logging will be stopped
      */
-    function remove_verbose_topic(topic: DebugTopic | null): void;
+    function remove_verbose_topic(topic: DebugTopic): void;
     /**
      * Starts the process of restarting the compositor. Note that Mutter's
      * involvement here is to make the restart visually smooth for the
@@ -1733,7 +1733,7 @@ export namespace Meta {
     /**
      * @param topic
      */
-    function topic_to_string(topic: DebugTopic | null): string;
+    function topic_to_string(topic: DebugTopic): string;
     /**
      * @param v1
      * @param v2
@@ -2502,7 +2502,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2543,7 +2543,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2998,12 +2998,7 @@ export namespace Meta {
          * @param blend_factor
          * @param style
          */
-        set_blend(
-            file1: Gio.File,
-            file2: Gio.File,
-            blend_factor: number,
-            style: GDesktopEnums.BackgroundStyle | null,
-        ): void;
+        set_blend(file1: Gio.File, file2: Gio.File, blend_factor: number, style: GDesktopEnums.BackgroundStyle): void;
         /**
          * @param color
          */
@@ -3013,14 +3008,14 @@ export namespace Meta {
          * @param file a {@link Gio.File} representing the background file
          * @param style the background style to apply
          */
-        set_file(file: Gio.File | null, style: GDesktopEnums.BackgroundStyle | null): void;
+        set_file(file: Gio.File | null, style: GDesktopEnums.BackgroundStyle): void;
         /**
          * @param shading_direction
          * @param color
          * @param second_color
          */
         set_gradient(
-            shading_direction: GDesktopEnums.BackgroundShading | null,
+            shading_direction: GDesktopEnums.BackgroundShading,
             color: Clutter.Color,
             second_color: Clutter.Color,
         ): void;
@@ -3552,7 +3547,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3593,7 +3588,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4231,7 +4226,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4272,7 +4267,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5137,7 +5132,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5178,7 +5173,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5966,7 +5961,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6007,7 +6002,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6872,12 +6867,7 @@ export namespace Meta {
          * @param handler function to run when the keybinding is invoked
          * @returns the corresponding keybinding action if the keybinding was          added successfully, otherwise {@link Meta.KeyBindingAction.NONE}
          */
-        add_keybinding(
-            name: string,
-            settings: Gio.Settings,
-            flags: KeyBindingFlags | null,
-            handler: KeyHandlerFunc,
-        ): number;
+        add_keybinding(name: string, settings: Gio.Settings, flags: KeyBindingFlags, handler: KeyHandlerFunc): number;
         /**
          * @param window
          * @param op
@@ -6891,7 +6881,7 @@ export namespace Meta {
          */
         begin_grab_op(
             window: Window,
-            op: GrabOp | null,
+            op: GrabOp,
             pointer_already_grabbed: boolean,
             frame_action: boolean,
             button: number,
@@ -6985,7 +6975,7 @@ export namespace Meta {
          * @param which_monitor
          * @param dir
          */
-        get_monitor_neighbor_index(which_monitor: number, dir: DisplayDirection | null): number;
+        get_monitor_neighbor_index(which_monitor: number, dir: DisplayDirection): number;
         /**
          * Gets the monitor scaling value for the given `monitor`.
          * @param monitor the monitor number
@@ -7002,11 +6992,7 @@ export namespace Meta {
          * @param action_type
          * @param action_number
          */
-        get_pad_action_label(
-            pad: Clutter.InputDevice,
-            action_type: PadActionType | null,
-            action_number: number,
-        ): string;
+        get_pad_action_label(pad: Clutter.InputDevice, action_type: PadActionType, action_number: number): string;
         /**
          * Gets the index of the primary monitor on this `display`.
          * @returns a monitor index
@@ -7030,7 +7016,7 @@ export namespace Meta {
          * @param workspace origin workspace
          * @returns Current window
          */
-        get_tab_current(type: TabList | null, workspace: Workspace): Window;
+        get_tab_current(type: TabList, workspace: Workspace): Window;
         /**
          * Determine the list of windows that should be displayed for Alt-TAB
          * functionality.  The windows are returned in most recently used order.
@@ -7041,7 +7027,7 @@ export namespace Meta {
          * @param workspace origin workspace
          * @returns List of windows
          */
-        get_tab_list(type: TabList | null, workspace?: Workspace | null): Window[];
+        get_tab_list(type: TabList, workspace?: Workspace | null): Window[];
         /**
          * Determine the next window that should be displayed for Alt-TAB
          * functionality.
@@ -7051,7 +7037,7 @@ export namespace Meta {
          * @param backward If `true`, look for the previous window.
          * @returns Next window
          */
-        get_tab_next(type: TabList | null, workspace: Workspace, window: Window | null, backward: boolean): Window;
+        get_tab_next(type: TabList, workspace: Workspace, window: Window | null, backward: boolean): Window;
         /**
          * @returns The workspace manager of the display
          */
@@ -7060,7 +7046,7 @@ export namespace Meta {
          * @param accelerator
          * @param flags
          */
-        grab_accelerator(accelerator: string, flags: KeyBindingFlags | null): number;
+        grab_accelerator(accelerator: string, flags: KeyBindingFlags): number;
         /**
          * Tells whether the event sequence is the used for pointer emulation
          * and single-touch interaction.
@@ -7089,7 +7075,7 @@ export namespace Meta {
         /**
          * @param cursor
          */
-        set_cursor(cursor: Cursor | null): void;
+        set_cursor(cursor: Cursor): void;
         /**
          * @param window
          * @param focus_frame
@@ -7531,7 +7517,7 @@ export namespace Meta {
         /**
          * @param config_type
          */
-        switch_config(config_type: MonitorSwitchConfigType | null): void;
+        switch_config(config_type: MonitorSwitchConfigType): void;
     }
 
     namespace Plugin {
@@ -7983,14 +7969,14 @@ export namespace Meta {
          * @param selection_type Selection to query
          * @returns The supported mimetypes
          */
-        get_mimetypes(selection_type: SelectionType | null): string[];
+        get_mimetypes(selection_type: SelectionType): string[];
         /**
          * Sets `owner` as the owner of the selection given by `selection_type`,
          * unsets any previous owner there was.
          * @param selection_type Selection type
          * @param owner New selection owner
          */
-        set_owner(selection_type: SelectionType | null, owner: SelectionSource): void;
+        set_owner(selection_type: SelectionType, owner: SelectionSource): void;
         /**
          * Requests a transfer of `mimetype` on the selection given by
          * `selection_type`.
@@ -8001,7 +7987,7 @@ export namespace Meta {
          * @param cancellable Cancellable
          */
         transfer_async(
-            selection_type: SelectionType | null,
+            selection_type: SelectionType,
             mimetype: string,
             size: bigint | number,
             output: Gio.OutputStream,
@@ -8018,7 +8004,7 @@ export namespace Meta {
          * @param callback User callback
          */
         transfer_async(
-            selection_type: SelectionType | null,
+            selection_type: SelectionType,
             mimetype: string,
             size: bigint | number,
             output: Gio.OutputStream,
@@ -8036,7 +8022,7 @@ export namespace Meta {
          * @param callback User callback
          */
         transfer_async(
-            selection_type: SelectionType | null,
+            selection_type: SelectionType,
             mimetype: string,
             size: bigint | number,
             output: Gio.OutputStream,
@@ -8055,7 +8041,7 @@ export namespace Meta {
          * @param selection_type Selection type
          * @param owner Owner to unset
          */
-        unset_owner(selection_type: SelectionType | null, owner: SelectionSource): void;
+        unset_owner(selection_type: SelectionType, owner: SelectionSource): void;
     }
 
     namespace SelectionSource {
@@ -8552,7 +8538,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8593,7 +8579,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9388,7 +9374,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9429,7 +9415,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10476,7 +10462,7 @@ export namespace Meta {
          * @param frame_action
          * @param timestamp
          */
-        begin_grab_op(op: GrabOp | null, frame_action: boolean, timestamp: number): void;
+        begin_grab_op(op: GrabOp, frame_action: boolean, timestamp: number): void;
         can_close(): boolean;
         can_maximize(): boolean;
         can_minimize(): boolean;
@@ -10828,7 +10814,7 @@ export namespace Meta {
         /**
          * @param directions
          */
-        maximize(directions: MaximizeFlags | null): void;
+        maximize(directions: MaximizeFlags): void;
         minimize(): void;
         /**
          * Moves the window to the desired location on window's assigned
@@ -10886,7 +10872,7 @@ export namespace Meta {
         /**
          * @param directions
          */
-        unmaximize(directions: MaximizeFlags | null): void;
+        unmaximize(directions: MaximizeFlags): void;
         unminimize(): void;
         unset_demands_attention(): void;
         /**
@@ -11487,7 +11473,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11528,7 +11514,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12391,7 +12377,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12432,7 +12418,7 @@ export namespace Meta {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12927,7 +12913,7 @@ export namespace Meta {
          * @param direction a {@link Meta.MotionDirection}, relative to `workspace`
          * @returns the workspace next to `workspace`, or   `workspace` itself if the neighbor would be outside the layout
          */
-        get_neighbor(direction: MotionDirection | null): Workspace;
+        get_neighbor(direction: MotionDirection): Workspace;
         /**
          * Stores the work area in `area`.
          */
@@ -13106,7 +13092,7 @@ export namespace Meta {
          * @param n_columns number of columns of workspaces, or -1 to determine the number of columns from   `n_rows` and the total number of workspaces
          */
         override_workspace_layout(
-            starting_corner: DisplayCorner | null,
+            starting_corner: DisplayCorner,
             vertical_layout: boolean,
             n_rows: number,
             n_columns: number,
@@ -13389,7 +13375,7 @@ export namespace Meta {
          * @param func callback to run later
          * @returns an integer ID (guaranteed to be non-zero) that can be used  to cancel the callback and prevent it from being run.
          */
-        add(when: LaterType | null, func: GLib.SourceFunc): number;
+        add(when: LaterType, func: GLib.SourceFunc): number;
         /**
          * Removes a callback added with `meta_later_add()`
          * @param later_id the integer ID returned from `meta_later_add()`
@@ -13805,7 +13791,7 @@ export namespace Meta {
          * implementations.
          * @param response a {@link Meta.CloseDialogResponse}
          */
-        response(response: CloseDialogResponse | null): void;
+        response(response: CloseDialogResponse): void;
         /**
          * Shows the close dialog.
          */
@@ -13869,7 +13855,7 @@ export namespace Meta {
          * implementations.
          * @param response a {@link Meta.InhibitShortcutsDialogResponse}
          */
-        response(response: InhibitShortcutsDialogResponse | null): void;
+        response(response: InhibitShortcutsDialogResponse): void;
         /**
          * Shows the inhibit shortcuts dialog.
          */

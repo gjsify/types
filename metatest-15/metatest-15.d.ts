@@ -137,7 +137,7 @@ export namespace MetaTest {
         /**
          * @param flags
          */
-        run_tests(flags: TestRunFlags | null): number;
+        run_tests(flags: TestRunFlags): number;
         wait_for_x11_display(): void;
     }
 

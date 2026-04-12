@@ -570,7 +570,7 @@ export namespace SecretUnstable {
         search(
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<Item[]>;
         /**
@@ -598,7 +598,7 @@ export namespace SecretUnstable {
         search(
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -627,7 +627,7 @@ export namespace SecretUnstable {
         search(
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<Item[]> | void;
@@ -758,7 +758,7 @@ export namespace SecretUnstable {
         search_sync(
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable,
         ): Item[];
         /**
@@ -1180,7 +1180,7 @@ export namespace SecretUnstable {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1221,7 +1221,7 @@ export namespace SecretUnstable {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2584,7 +2584,7 @@ export namespace SecretUnstable {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2625,7 +2625,7 @@ export namespace SecretUnstable {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3549,7 +3549,7 @@ export namespace SecretUnstable {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3590,7 +3590,7 @@ export namespace SecretUnstable {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4306,7 +4306,7 @@ export namespace SecretUnstable {
         create_collection_dbus_path(
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             alias: string,
-            flags: CollectionCreateFlags | null,
+            flags: CollectionCreateFlags,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<string>;
         /**
@@ -4342,7 +4342,7 @@ export namespace SecretUnstable {
         create_collection_dbus_path(
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             alias: string,
-            flags: CollectionCreateFlags | null,
+            flags: CollectionCreateFlags,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -4379,7 +4379,7 @@ export namespace SecretUnstable {
         create_collection_dbus_path(
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             alias: string,
-            flags: CollectionCreateFlags | null,
+            flags: CollectionCreateFlags,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<string> | void;
@@ -4421,7 +4421,7 @@ export namespace SecretUnstable {
         create_collection_dbus_path_sync(
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             alias: string,
-            flags: CollectionCreateFlags | null,
+            flags: CollectionCreateFlags,
             cancellable: Gio.Cancellable,
         ): string;
         /**
@@ -4454,7 +4454,7 @@ export namespace SecretUnstable {
             collection_path: string,
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             value: Value,
-            flags: ItemCreateFlags | null,
+            flags: ItemCreateFlags,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<string>;
         /**
@@ -4488,7 +4488,7 @@ export namespace SecretUnstable {
             collection_path: string,
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             value: Value,
-            flags: ItemCreateFlags | null,
+            flags: ItemCreateFlags,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -4523,7 +4523,7 @@ export namespace SecretUnstable {
             collection_path: string,
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             value: Value,
-            flags: ItemCreateFlags | null,
+            flags: ItemCreateFlags,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<string> | void;
@@ -4565,7 +4565,7 @@ export namespace SecretUnstable {
             collection_path: string,
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             value: Value,
-            flags: ItemCreateFlags | null,
+            flags: ItemCreateFlags,
             cancellable: Gio.Cancellable,
         ): string;
         /**
@@ -5467,7 +5467,7 @@ export namespace SecretUnstable {
         search(
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable,
         ): globalThis.Promise<Item[]>;
         /**
@@ -5498,7 +5498,7 @@ export namespace SecretUnstable {
         search(
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable,
             callback: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -5530,7 +5530,7 @@ export namespace SecretUnstable {
         search(
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable,
             callback?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<Item[]> | void;
@@ -5674,7 +5674,7 @@ export namespace SecretUnstable {
         search_sync(
             schema: Secret.Schema,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable,
         ): Item[];
         /**
@@ -6493,7 +6493,7 @@ export namespace SecretUnstable {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6534,7 +6534,7 @@ export namespace SecretUnstable {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

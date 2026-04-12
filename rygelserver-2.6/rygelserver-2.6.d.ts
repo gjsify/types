@@ -1326,7 +1326,7 @@ export namespace RygelServer {
          * @param event_type
          * @param sub_tree_update
          */
-        updated(object: MediaObject | null, event_type: ObjectEventType | null, sub_tree_update: boolean): void;
+        updated(object: MediaObject | null, event_type: ObjectEventType, sub_tree_update: boolean): void;
         get_child_count(): number;
         /**
          * @param value
@@ -2046,7 +2046,7 @@ export namespace RygelServer {
          * @param event_type
          * @param sub_tree_update
          */
-        updated(object: MediaObject | null, event_type: ObjectEventType | null, sub_tree_update: boolean): void;
+        updated(object: MediaObject | null, event_type: ObjectEventType, sub_tree_update: boolean): void;
         get_child_count(): number;
         /**
          * @param value
@@ -2967,17 +2967,17 @@ export namespace RygelServer {
         /**
          * @param value
          */
-        set_dlna_conversion(value: GUPnPAV.DLNAConversion | null): void;
+        set_dlna_conversion(value: GUPnPAV.DLNAConversion): void;
         get_dlna_flags(): GUPnPAV.DLNAFlags;
         /**
          * @param value
          */
-        set_dlna_flags(value: GUPnPAV.DLNAFlags | null): void;
+        set_dlna_flags(value: GUPnPAV.DLNAFlags): void;
         get_dlna_operation(): GUPnPAV.DLNAOperation;
         /**
          * @param value
          */
-        set_dlna_operation(value: GUPnPAV.DLNAOperation | null): void;
+        set_dlna_operation(value: GUPnPAV.DLNAOperation): void;
     }
 
     namespace MediaServerPlugin {
@@ -4354,7 +4354,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4395,7 +4395,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4939,7 +4939,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4980,7 +4980,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5613,7 +5613,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5654,7 +5654,7 @@ export namespace RygelServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

@@ -220,7 +220,7 @@ export namespace Libinsane {
          * @param locations
          * @returns list of available devices (LibinsaneDeviceDescriptors objects)
          */
-        list_devices(locations: DeviceLocations | null): DeviceDescriptor[];
+        list_devices(locations: DeviceLocations): DeviceDescriptor[];
     }
 
     namespace DeviceDescriptor {
@@ -674,7 +674,7 @@ export namespace Libinsane {
          * @param lvl
          * @param msg
          */
-        log(lvl: LogLevel | null, msg: string): void;
+        log(lvl: LogLevel, msg: string): void;
     }
 
     export const Logger: LoggerNamespace & {

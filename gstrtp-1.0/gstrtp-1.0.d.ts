@@ -547,7 +547,7 @@ export namespace GstRtp {
      * @param flags flags for the mapping
      * @param rtcp resulting {@link GstRtp.RTCPBuffer}
      */
-    function rtcp_buffer_map(buffer: Gst.Buffer, flags: Gst.MapFlags | null, rtcp: RTCPBuffer): boolean;
+    function rtcp_buffer_map(buffer: Gst.Buffer, flags: Gst.MapFlags, rtcp: RTCPBuffer): boolean;
     /**
      * Create a new buffer for constructing RTCP packets. The packet will have a
      * maximum size of `mtu`.
@@ -630,7 +630,7 @@ export namespace GstRtp {
      * @param type a {@link GstRtp.RTCPSDESType}
      * @returns the string equivalent of `type`
      */
-    function rtcp_sdes_type_to_name(type: RTCPSDESType | null): string;
+    function rtcp_sdes_type_to_name(type: RTCPSDESType): string;
     /**
      * Converts a UNIX timestamp in nanoseconds to an NTP time. The caller should
      * pass a value with nanoseconds since 1970. The NTP time will, in the upper
@@ -735,7 +735,7 @@ export namespace GstRtp {
      * @param flags {@link Gst.MapFlags}
      * @returns `true` if `buffer` could be mapped.
      */
-    function rtp_buffer_map(buffer: Gst.Buffer, flags: Gst.MapFlags | null): [boolean, RTPBuffer];
+    function rtp_buffer_map(buffer: Gst.Buffer, flags: Gst.MapFlags): [boolean, RTPBuffer];
     /**
      * Allocate a new {@link Gst.Buffer} with enough data to hold an RTP packet with
      * `csrc_count` CSRCs, a payload length of `payload_len` and padding of `pad_len`.
@@ -1969,7 +1969,7 @@ export namespace GstRtp {
          * @param buffer a {@link Gst.Buffer} to modify if necessary
          * @returns whether the extension could be read from `data`
          */
-        read(read_flags: RTPHeaderExtensionFlags | null, data: Uint8Array | string, buffer: Gst.Buffer): boolean;
+        read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array | string, buffer: Gst.Buffer): boolean;
         /**
          * `gst_rtp_header_extension_set_id()` must have been called with a valid
          * extension id that is contained in these caps.
@@ -2009,7 +2009,7 @@ export namespace GstRtp {
          * extmap line in the SDP).
          * @param direction The direction
          */
-        set_direction(direction: RTPHeaderExtensionDirection | null): void;
+        set_direction(direction: RTPHeaderExtensionDirection): void;
         /**
          * sets the RTP extension id on `ext`
          * @param ext_id The id of this extension
@@ -2058,7 +2058,7 @@ export namespace GstRtp {
          */
         write(
             input_meta: Gst.Buffer,
-            write_flags: RTPHeaderExtensionFlags | null,
+            write_flags: RTPHeaderExtensionFlags,
             output: Gst.Buffer,
             data: Uint8Array | string,
         ): number;
@@ -2151,7 +2151,7 @@ export namespace GstRtp {
          * @param packet pointer to new packet
          * @returns `true` if the packet could be created. This function returns `false` if the max mtu is exceeded for the buffer.
          */
-        add_packet(type: RTCPType | null, packet: RTCPPacket): boolean;
+        add_packet(type: RTCPType, packet: RTCPPacket): boolean;
         /**
          * Initialize a new {@link GstRtp.RTCPPacket} pointer that points to the first packet in
          * `rtcp`.
@@ -2356,7 +2356,7 @@ export namespace GstRtp {
          * Set the feedback message type of the FB `packet`.
          * @param type the {@link GstRtp.RTCPFBType} to set
          */
-        fb_set_type(type: RTCPFBType | null): void;
+        fb_set_type(type: RTCPFBType): void;
         /**
          * Get the count field in `packet`.
          * @returns The count field in `packet` or -1 if `packet` does not point to a valid packet.
@@ -2424,7 +2424,7 @@ export namespace GstRtp {
          * @param data the data
          * @returns `true` if the item could be added, `false` if the MTU has been reached.
          */
-        sdes_add_entry(type: RTCPSDESType | null, data: Uint8Array | string): boolean;
+        sdes_add_entry(type: RTCPSDESType, data: Uint8Array | string): boolean;
         /**
          * Add a new SDES item for `ssrc` to `packet`.
          * @param ssrc the SSRC of the new item to add
@@ -2437,7 +2437,7 @@ export namespace GstRtp {
          * @param type result of the entry type
          * @returns `true` if there was valid data.
          */
-        sdes_copy_entry(type: RTCPSDESType | null): [boolean, Uint8Array];
+        sdes_copy_entry(type: RTCPSDESType): [boolean, Uint8Array];
         /**
          * Move to the first SDES entry in the current item.
          * @returns `true` if there was a first entry.
@@ -2459,7 +2459,7 @@ export namespace GstRtp {
          * @param type result of the entry type
          * @returns `true` if there was valid data.
          */
-        sdes_get_entry(type: RTCPSDESType | null): [boolean, Uint8Array];
+        sdes_get_entry(type: RTCPSDESType): [boolean, Uint8Array];
         /**
          * Get the number of items in the SDES packet `packet`.
          * @returns The number of items in `packet`.

@@ -206,7 +206,7 @@ export namespace AppStreamBuilder {
          * @param save_flags {@link AppStreamBuilder.AppSaveFlags}, e.g. {@link AppStreamBuilder.AppSaveFlags.SCREENSHOTS}
          * @returns `true` for success, `false` otherwise
          */
-        save_resources(save_flags: AppSaveFlags | null): boolean;
+        save_resources(save_flags: AppSaveFlags): boolean;
         /**
          * Sets the HiDPI mode for the application.
          * @param hidpi_enabled if HiDPI mode should be enabled
@@ -321,7 +321,7 @@ export namespace AppStreamBuilder {
          * @param flag A {@link AppStreamBuilder.ContextFlags}
          * @returns `true` if the flag was set
          */
-        get_flag(flag: ContextFlags | null): boolean;
+        get_flag(flag: ContextFlags): boolean;
         /**
          * Gets the build flags.
          * @returns {@link AppStreamBuilder.ContextFlags}
@@ -366,7 +366,7 @@ export namespace AppStreamBuilder {
          * Sets flags to be used when building the metadata.
          * @param flags {@link AppStreamBuilder.ContextFlags}, e.g. {@link AppStreamBuilder.ContextFlags.NO_NETWORK}
          */
-        set_flags(flags: ContextFlags | null): void;
+        set_flags(flags: ContextFlags): void;
         /**
          * Sets the icons directory to use when building metadata.
          * @param icons_dir directory
@@ -714,7 +714,7 @@ export namespace AppStreamBuilder {
          * Sets the package kind.
          * @param kind A {@link AppStreamBuilder.PackageKind}
          */
-        set_kind(kind: PackageKind | null): void;
+        set_kind(kind: PackageKind): void;
         /**
          * Sets the package license.
          * @param license license string

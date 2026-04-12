@@ -197,7 +197,7 @@ export namespace Totem {
         header: Gtk.Widget,
         button: Gtk.Widget,
         icon_name: string,
-        pack_type: Gtk.PackType | null,
+        pack_type: Gtk.PackType,
     ): Gtk.Widget;
     /**
      * Display a modal error dialogue with `title` as its primary error text, and `reason`
@@ -705,19 +705,19 @@ export namespace Totem {
          * @param cmd a {@link Totem.RemoteCommand}
          * @param url an MRL to play, or `null`
          */
-        remote_command(cmd: RemoteCommand | null, url: string): void;
+        remote_command(cmd: RemoteCommand, url: string): void;
         /**
          * Returns the value of `setting` for this instance of Totem.
          * @param setting a {@link Totem.RemoteSetting}
          * @returns `true` if the setting is enabled, `false` otherwise
          */
-        remote_get_setting(setting: RemoteSetting | null): boolean;
+        remote_get_setting(setting: RemoteSetting): boolean;
         /**
          * Sets `setting` to `value` on this instance of Totem.
          * @param setting a {@link Totem.RemoteSetting}
          * @param value the new value for the setting
          */
-        remote_set_setting(setting: RemoteSetting | null, value: boolean): void;
+        remote_set_setting(setting: RemoteSetting, value: boolean): void;
         /**
          * If a DVD is being played, goes to the next chapter. If a normal stream
          * is being played, plays the next entry in the playlist.
@@ -815,7 +815,7 @@ export namespace Totem {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -856,7 +856,7 @@ export namespace Totem {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

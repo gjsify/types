@@ -484,8 +484,8 @@ export namespace Mx {
     function allocate_align_fill(
         child: Clutter.Actor,
         childbox: Clutter.ActorBox,
-        x_alignment: Align | null,
-        y_alignment: Align | null,
+        x_alignment: Align,
+        y_alignment: Align,
         x_fill: boolean,
         y_fill: boolean,
     ): void;
@@ -512,7 +512,7 @@ export namespace Mx {
      * @returns A {@link Mx.FocusHint}
      * @since 1.2
      */
-    function focus_hint_from_direction(direction: FocusDirection | null): FocusHint;
+    function focus_hint_from_direction(direction: FocusDirection): FocusHint;
     /**
      * @param value
      * @param str
@@ -1023,7 +1023,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1064,7 +1064,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2646,7 +2646,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2687,7 +2687,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3290,7 +3290,7 @@ export namespace Mx {
          * @param box The allocation box of the parent actor.
          * @param flags {@link Clutter.AllocationFlags}, usually provided by the. clutter_actor_allocate function.
          */
-        allocate_child(box: Clutter.ActorBox, flags: Clutter.AllocationFlags | null): void;
+        allocate_child(box: Clutter.ActorBox, flags: Clutter.AllocationFlags): void;
         /**
          * Retrieves the horizontal and vertical alignment of the child
          * inside a {@link Mx.Bin}, as set by `mx_bin_set_alignment()`.
@@ -3311,7 +3311,7 @@ export namespace Mx {
          * @param x_align horizontal alignment
          * @param y_align vertical alignment
          */
-        set_alignment(x_align: Align | null, y_align: Align | null): void;
+        set_alignment(x_align: Align, y_align: Align): void;
         /**
          * Sets `child` as the child of `bin`.
          *
@@ -3346,14 +3346,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -3445,7 +3445,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -3561,7 +3561,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3602,7 +3602,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4206,7 +4206,7 @@ export namespace Mx {
          * @param child A {@link Clutter.Actor}
          * @param x_align An {@link Mx.Align}
          */
-        child_set_x_align(child: Clutter.Actor, x_align: Align | null): void;
+        child_set_x_align(child: Clutter.Actor, x_align: Align): void;
         /**
          * Set the value of the {@link Mx.BoxLayoutChild.x_fill} property.
          * @param child A {@link Clutter.Actor}
@@ -4218,7 +4218,7 @@ export namespace Mx {
          * @param child A {@link Clutter.Actor}
          * @param y_align An {@link Mx.Align}
          */
-        child_set_y_align(child: Clutter.Actor, y_align: Align | null): void;
+        child_set_y_align(child: Clutter.Actor, y_align: Align): void;
         /**
          * Set the value of the {@link Mx.BoxLayoutChild.y_fill} property.
          * @param child A {@link Clutter.Actor}
@@ -4260,7 +4260,7 @@ export namespace Mx {
          * Set the orientation of the box layout.
          * @param orientation orientation value for the layout
          */
-        set_orientation(orientation: Orientation | null): void;
+        set_orientation(orientation: Orientation): void;
         /**
          * Enables or disables automatic scrolling to the focused actor.
          * @param scroll_to_focused `TRUE` to enable automatically scrolling to the focused actor
@@ -4303,14 +4303,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -4424,7 +4424,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -4540,7 +4540,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4581,7 +4581,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5340,7 +5340,7 @@ export namespace Mx {
          * Sets the icon position, relative to the text on the button.
          * @param position A {@link Mx.Position}
          */
-        set_icon_position(position: Position | null): void;
+        set_icon_position(position: Position): void;
         /**
          * Sets the icon-size to use for the icon displayed inside the button. This will
          * override the icon-size set in the style. Setting a value of %0 resets to the
@@ -5395,14 +5395,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -5494,7 +5494,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -5610,7 +5610,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5651,7 +5651,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6474,14 +6474,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -6573,7 +6573,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -6689,7 +6689,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6730,7 +6730,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7311,14 +7311,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -7410,7 +7410,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -7526,7 +7526,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7567,7 +7567,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8258,14 +8258,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -8357,7 +8357,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -8473,7 +8473,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8514,7 +8514,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9173,7 +9173,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -9289,7 +9289,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9330,7 +9330,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10117,7 +10117,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -10233,7 +10233,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10274,7 +10274,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10735,7 +10735,7 @@ export namespace Mx {
          * Moves the current focus in the given direction.
          * @param direction The direction to move focus in
          */
-        move_focus(direction: FocusDirection | null): void;
+        move_focus(direction: FocusDirection): void;
         /**
          * Sets the currently focused actor, with an {@link Mx.FocusHint} of
          * {@link Mx.FocusHint.PRIOR}.
@@ -10753,7 +10753,7 @@ export namespace Mx {
          * @param focusable the object to set focus on
          * @param hint an {@link Mx.FocusHint}
          */
-        push_focus_with_hint(focusable: Focusable, hint: FocusHint | null): void;
+        push_focus_with_hint(focusable: Focusable, hint: FocusHint): void;
     }
 
     namespace Frame {
@@ -11004,7 +11004,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -11120,7 +11120,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11161,7 +11161,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11774,11 +11774,11 @@ export namespace Mx {
         /**
          * @param value
          */
-        set_child_x_align(value: Align | null): void;
+        set_child_x_align(value: Align): void;
         /**
          * @param value
          */
-        set_child_y_align(value: Align | null): void;
+        set_child_y_align(value: Align): void;
         /**
          * @param value
          */
@@ -11794,7 +11794,7 @@ export namespace Mx {
         /**
          * @param value
          */
-        set_line_alignment(value: Align | null): void;
+        set_line_alignment(value: Align): void;
         /**
          * @param value
          */
@@ -11802,7 +11802,7 @@ export namespace Mx {
         /**
          * @param orientation
          */
-        set_orientation(orientation: Orientation | null): void;
+        set_orientation(orientation: Orientation): void;
         /**
          * @param value
          */
@@ -11839,14 +11839,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -11960,7 +11960,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -12076,7 +12076,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12117,7 +12117,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12762,7 +12762,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -12878,7 +12878,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12919,7 +12919,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13660,7 +13660,7 @@ export namespace Mx {
          * @param duration duration of the animation in milliseconds
          * @param scale_mode The {@link Mx.ImageScaleMode} to set
          */
-        animate_scale_mode(mode: bigint | number, duration: number, scale_mode: ImageScaleMode | null): void;
+        animate_scale_mode(mode: bigint | number, duration: number, scale_mode: ImageScaleMode): void;
         /**
          * Clear the current image and set a blank, transparent image.
          * @returns static void
@@ -13750,7 +13750,7 @@ export namespace Mx {
          */
         set_from_data(
             data: Uint8Array | string,
-            pixel_format: Cogl.PixelFormat | null,
+            pixel_format: Cogl.PixelFormat,
             width: number,
             height: number,
             rowstride: number,
@@ -13802,7 +13802,7 @@ export namespace Mx {
          * Set the scale mode on `MxImage`
          * @param mode The {@link Mx.ImageScaleMode} to set
          */
-        set_scale_mode(mode: ImageScaleMode | null): void;
+        set_scale_mode(mode: ImageScaleMode): void;
         /**
          * Sets the threshold used to determine whether to scale the width of the
          * image. If a specific width is requested, the image width is allowed to
@@ -13911,7 +13911,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -14027,7 +14027,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -14068,7 +14068,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14695,14 +14695,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -14782,7 +14782,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -14823,7 +14823,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15553,7 +15553,7 @@ export namespace Mx {
          * possible axes of movement, and can affect the minimum size of the widget.
          * @param policy A {@link Mx.ScrollPolicy}
          */
-        set_scroll_policy(policy: ScrollPolicy | null): void;
+        set_scroll_policy(policy: ScrollPolicy): void;
         /**
          * Set whether to stop animations on step increments.
          * @param snap_on_page #true to stop animations on step increments
@@ -15609,14 +15609,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -15730,7 +15730,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -15846,7 +15846,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -15887,7 +15887,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16554,7 +16554,7 @@ export namespace Mx {
          * @param x_align x alignment value
          * @param y_align y alignment value
          */
-        set_alignment(x_align: Align | null, y_align: Align | null): void;
+        set_alignment(x_align: Align, y_align: Align): void;
         /**
          * Set whether to fade out the end of the label, instead of ellipsizing.
          * Enabling this mode will also set the {@link Clutter.Text.single_line_mode} and
@@ -16585,7 +16585,7 @@ export namespace Mx {
         /**
          * @param align
          */
-        set_x_align(align: Align | null): void;
+        set_x_align(align: Align): void;
         /**
          * @param args
          */
@@ -16594,7 +16594,7 @@ export namespace Mx {
         /**
          * @param align
          */
-        set_y_align(align: Align | null): void;
+        set_y_align(align: Align): void;
         /**
          * @param args
          */
@@ -16693,7 +16693,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -16809,7 +16809,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -16850,7 +16850,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17470,14 +17470,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -17557,7 +17557,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -17598,7 +17598,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18168,14 +18168,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -18233,7 +18233,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -18274,7 +18274,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18847,14 +18847,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -18946,7 +18946,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -19062,7 +19062,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -19103,7 +19103,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19705,14 +19705,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -19770,7 +19770,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -19811,7 +19811,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20434,14 +20434,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -20533,7 +20533,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -20649,7 +20649,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -20690,7 +20690,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21325,7 +21325,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -21441,7 +21441,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -21482,7 +21482,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22055,7 +22055,7 @@ export namespace Mx {
         /**
          * @param orientation
          */
-        set_orientation(orientation: Orientation | null): void;
+        set_orientation(orientation: Orientation): void;
         /** @category Inherited from Mx.Stylable */
         get style(): Style;
         set style(val: Style);
@@ -22149,7 +22149,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -22265,7 +22265,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -22306,7 +22306,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22871,11 +22871,11 @@ export namespace Mx {
         /**
          * @param policy
          */
-        set_scroll_policy(policy: ScrollPolicy | null): void;
+        set_scroll_policy(policy: ScrollPolicy): void;
         /**
          * @param visibility
          */
-        set_scroll_visibility(visibility: ScrollPolicy | null): void;
+        set_scroll_visibility(visibility: ScrollPolicy): void;
         /** @category Inherited from Mx.Stylable */
         get style(): Style;
         set style(val: Style);
@@ -22969,7 +22969,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -23085,7 +23085,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -23126,7 +23126,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23822,14 +23822,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -23921,7 +23921,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -24037,7 +24037,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -24078,7 +24078,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24728,7 +24728,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -24844,7 +24844,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -24885,7 +24885,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25463,7 +25463,7 @@ export namespace Mx {
          * @param child A {@link Clutter.Actor}
          * @param x_align An {@link Mx.Align}
          */
-        child_set_x_align(child: Clutter.Actor, x_align: Align | null): void;
+        child_set_x_align(child: Clutter.Actor, x_align: Align): void;
         /**
          * Set the value of the {@link Mx.StackChild.x_fill} property.
          * @param child A {@link Clutter.Actor}
@@ -25475,7 +25475,7 @@ export namespace Mx {
          * @param child A {@link Clutter.Actor}
          * @param y_align An {@link Mx.Align}
          */
-        child_set_y_align(child: Clutter.Actor, y_align: Align | null): void;
+        child_set_y_align(child: Clutter.Actor, y_align: Align): void;
         /**
          * Set the value of the {@link Mx.StackChild.y_fill} property.
          * @param child A {@link Clutter.Actor}
@@ -25502,14 +25502,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -25601,7 +25601,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -25717,7 +25717,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -25758,7 +25758,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26622,7 +26622,7 @@ export namespace Mx {
          * @param child A {@link Clutter.Actor}
          * @param align A {@link Mx.Align} value
          */
-        child_set_x_align(child: Clutter.Actor, align: Align | null): void;
+        child_set_x_align(child: Clutter.Actor, align: Align): void;
         /**
          * Set x-expand on the child. This causes the column which the child
          * resides in to be allocated any extra space if the allocation of the table is
@@ -26644,7 +26644,7 @@ export namespace Mx {
          * @param child A {@link Clutter.Actor}
          * @param align A {@link Mx.Align} value
          */
-        child_set_y_align(child: Clutter.Actor, align: Align | null): void;
+        child_set_y_align(child: Clutter.Actor, align: Align): void;
         /**
          * Set y-expand on the child. This causes the row which the child
          * resides in to be allocated any extra space if the allocation of the table is
@@ -26726,14 +26726,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -26825,7 +26825,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -26941,7 +26941,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -26982,7 +26982,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28403,7 +28403,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -28444,7 +28444,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29002,14 +29002,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -29101,7 +29101,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -29217,7 +29217,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -29258,7 +29258,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29841,14 +29841,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -29940,7 +29940,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -30056,7 +30056,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -30097,7 +30097,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30720,7 +30720,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -30761,7 +30761,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -31362,14 +31362,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
         /**
          * Accept the focus
          * @param hint A {@link Mx.FocusHint}
@@ -31449,7 +31449,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -31490,7 +31490,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -32710,7 +32710,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
@@ -32826,7 +32826,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -32867,7 +32867,7 @@ export namespace Mx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -33533,7 +33533,7 @@ export namespace Mx {
          * Set the rotation of the window.
          * @param rotation The {@link Mx.WindowRotation}
          */
-        set_window_rotation(rotation: WindowRotation | null): void;
+        set_window_rotation(rotation: WindowRotation): void;
         /**
          * Sets the size of the window, taking into account any window border. This
          * corresponds to the window's available area for its child, minus the area
@@ -34308,7 +34308,7 @@ export namespace Mx {
         /**
          * @param axis
          */
-        set_axis(axis: DragAxis | null): void;
+        set_axis(axis: DragAxis): void;
         /**
          * @param actor
          */
@@ -34454,14 +34454,14 @@ export namespace Mx {
          * @param hint A {@link Mx.FocusHint}
          * @returns the focusable
          */
-        accept_focus(hint: FocusHint | null): Focusable;
+        accept_focus(hint: FocusHint): Focusable;
         /**
          * Move the focus
          * @param direction A {@link Mx.FocusDirection}
          * @param from focusable to move the focus from
          * @returns the newly focused focusable
          */
-        move_focus(direction: FocusDirection | null, from: Focusable): Focusable;
+        move_focus(direction: FocusDirection, from: Focusable): Focusable;
     }
 
     export const Focusable: FocusableNamespace & {
@@ -34755,7 +34755,7 @@ export namespace Mx {
          * properties of the parent.
          * @param flags flags that control the style changing
          */
-        style_changed(flags: StyleChangedFlags | null): void;
+        style_changed(flags: StyleChangedFlags): void;
         /**
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.

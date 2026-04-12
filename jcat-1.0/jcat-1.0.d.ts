@@ -328,7 +328,7 @@ export namespace Jcat {
          * Sets the blob target.
          * @param target a {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          */
-        set_target(target: BlobKind | null): void;
+        set_target(target: BlobKind): void;
         /**
          * Sets the creation timestamp for the blob.
          * @param timestamp UTC timestamp
@@ -592,21 +592,21 @@ export namespace Jcat {
          * used in functions like `jcat_context_verify_blob()`.
          * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.GPG}
          */
-        blob_kind_allow(kind: BlobKind | null): void;
+        blob_kind_allow(kind: BlobKind): void;
         /**
          * Removes a blob kind from the allowlist. By default, JCat will use all signature and checksum
          * schemes compiled in at build time. Once this function has been called this `kind` will not be
          * used in functions like `jcat_context_verify_blob()`.
          * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.GPG}
          */
-        blob_kind_disallow(kind: BlobKind | null): void;
+        blob_kind_disallow(kind: BlobKind): void;
         /**
          * Gets the engine for a specific engine kind, setting up the context
          * automatically if required.
          * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.GPG}
          * @returns {@link Jcat.Engine}, or `null` for unavailable
          */
-        get_engine(kind: BlobKind | null): Engine;
+        get_engine(kind: BlobKind): Engine;
         /**
          * Gets the local state directory the engines are using.
          * @returns path
@@ -624,7 +624,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @returns {@link Jcat.Result}, or `null` for failed
          */
-        verify_blob(data: GLib.Bytes | Uint8Array, blob: Blob, flags: VerifyFlags | null): Result;
+        verify_blob(data: GLib.Bytes | Uint8Array, blob: Blob, flags: VerifyFlags): Result;
         /**
          * Verifies a {@link Jcat.Item} using the public keys added to the context. All
          * `verify=CHECKSUM` engines (e.g. SHA256) must verify correctly,
@@ -634,7 +634,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.REQUIRE_SIGNATURE}
          * @returns array of {@link Jcat.Result}, or `null` for failed
          */
-        verify_item(data: GLib.Bytes | Uint8Array, item: Item, flags: VerifyFlags | null): Result[];
+        verify_item(data: GLib.Bytes | Uint8Array, item: Item, flags: VerifyFlags): Result[];
         /**
          * Verifies a {@link Jcat.Item} using the target to an item. At least one `verify=CHECKSUM` (e.g. SHA256)
          * must exist and all checksum types that do exist must verify correctly.
@@ -643,7 +643,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.REQUIRE_SIGNATURE}
          * @returns results, or `null` for failed
          */
-        verify_target(item_target: Item, item: Item, flags: VerifyFlags | null): Result[];
+        verify_target(item_target: Item, item: Item, flags: VerifyFlags): Result[];
     }
 
     namespace Engine {
@@ -811,7 +811,7 @@ export namespace Jcat {
             blob: GLib.Bytes | Uint8Array,
             cert: GLib.Bytes | Uint8Array,
             privkey: GLib.Bytes | Uint8Array,
-            flags: SignFlags | null,
+            flags: SignFlags,
         ): Blob;
         /**
          * Verifies a chunk of data.
@@ -823,7 +823,7 @@ export namespace Jcat {
         pubkey_verify(
             blob: GLib.Bytes | Uint8Array,
             blob_signature: GLib.Bytes | Uint8Array,
-            flags: VerifyFlags | null,
+            flags: VerifyFlags,
         ): Result;
         /**
          * Signs a chunk of data.
@@ -831,7 +831,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
          * @returns {@link Jcat.Blob}, or `null` for failed
          */
-        self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags | null): Blob;
+        self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
         /**
          * Verifies a chunk of data.
          * @param blob {@link GLib.Bytes}
@@ -839,11 +839,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @returns {@link Jcat.Result}, or `null` for failed
          */
-        self_verify(
-            blob: GLib.Bytes | Uint8Array,
-            blob_signature: GLib.Bytes | Uint8Array,
-            flags: VerifyFlags | null,
-        ): Result;
+        self_verify(blob: GLib.Bytes | Uint8Array, blob_signature: GLib.Bytes | Uint8Array, flags: VerifyFlags): Result;
     }
 
     namespace File {
@@ -913,13 +909,13 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        export_file(gfile: Gio.File, flags: ExportFlags | null, cancellable?: Gio.Cancellable | null): boolean;
+        export_file(gfile: Gio.File, flags: ExportFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Exports a Jcat file to raw JSON.
          * @param flags a {@link Jcat.ExportFlags}, typically {@link Jcat.ExportFlags.NONE}
          * @returns JSON output, or `null` for error
          */
-        export_json(flags: ExportFlags | null): string;
+        export_json(flags: ExportFlags): string;
         /**
          * Exports a Jcat file to a compressed stream.
          * @param ostream {@link Gio.OutputStream}
@@ -927,11 +923,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        export_stream(
-            ostream: Gio.OutputStream,
-            flags: ExportFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
+        export_stream(ostream: Gio.OutputStream, flags: ExportFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Finds the item with the specified ID, falling back to the ID alias if set.
          * @param id An ID, typically a filename basename
@@ -966,14 +958,14 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        import_file(gfile: Gio.File, flags: ImportFlags | null, cancellable?: Gio.Cancellable | null): boolean;
+        import_file(gfile: Gio.File, flags: ImportFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Imports a Jcat file from raw JSON.
          * @param json JSON data
          * @param flags {@link Jcat.ImportFlags}, typically {@link Jcat.ImportFlags.NONE}
          * @returns `true` for success
          */
-        import_json(json: string, flags: ImportFlags | null): boolean;
+        import_json(json: string, flags: ImportFlags): boolean;
         /**
          * Imports a compressed Jcat file from a file.
          * @param istream {@link Gio.InputStream}
@@ -981,11 +973,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        import_stream(
-            istream: Gio.InputStream,
-            flags: ImportFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
+        import_stream(istream: Gio.InputStream, flags: ImportFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Converts the {@link Jcat.File} to a string.
          * @returns string
@@ -1069,7 +1057,7 @@ export namespace Jcat {
          * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          * @returns a blob, or `null`
          */
-        get_blob_by_kind(kind: BlobKind | null): Blob;
+        get_blob_by_kind(kind: BlobKind): Blob;
         /**
          * Gets all the blobs for this item.
          * @returns blobs
@@ -1080,7 +1068,7 @@ export namespace Jcat {
          * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          * @returns blobs
          */
-        get_blobs_by_kind(kind: BlobKind | null): Blob[];
+        get_blobs_by_kind(kind: BlobKind): Blob[];
         /**
          * Returns the item ID.
          * @returns string

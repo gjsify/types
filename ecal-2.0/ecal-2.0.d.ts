@@ -553,7 +553,7 @@ export namespace ECal {
      */
     function recur_describe_recurrence(
         icalcomp: ICalGLib.Component,
-        week_start_day: GLib.DateWeekday | null,
+        week_start_day: GLib.DateWeekday,
         flags: number,
     ): string | null;
     /**
@@ -577,7 +577,7 @@ export namespace ECal {
      */
     function recur_describe_recurrence_ex(
         icalcomp: ICalGLib.Component,
-        week_start_day: GLib.DateWeekday | null,
+        week_start_day: GLib.DateWeekday,
         flags: number,
         datetime_fmt_func?: RecurFormatDateTimeFunc | null,
     ): string | null;
@@ -874,7 +874,7 @@ export namespace ECal {
         comp: Component,
         detached_instances: Component[] | null,
         rid: ICalGLib.Time | null,
-        mod: ObjModType | null,
+        mod: ObjModType,
         tz_cb: RecurResolveTimezoneCb,
     ): boolean;
     /**
@@ -923,7 +923,7 @@ export namespace ECal {
      */
     function util_comp_time_to_zone(
         icomp: ICalGLib.Component,
-        prop_kind: ICalGLib.PropertyKind | null,
+        prop_kind: ICalGLib.PropertyKind,
         to_zone?: ICalGLib.Timezone | null,
         vcalendar?: ICalGLib.Component | null,
         tz_cache?: TimezoneCache | null,
@@ -955,7 +955,7 @@ export namespace ECal {
      */
     function util_component_find_property_for_locale(
         icalcomp: ICalGLib.Component,
-        prop_kind: ICalGLib.PropertyKind | null,
+        prop_kind: ICalGLib.PropertyKind,
         locale?: string | null,
     ): ICalGLib.Property | null;
     /**
@@ -979,7 +979,7 @@ export namespace ECal {
      */
     function util_component_find_property_for_locale_filtered(
         icalcomp: ICalGLib.Component,
-        prop_kind: ICalGLib.PropertyKind | null,
+        prop_kind: ICalGLib.PropertyKind,
         locale?: string | null,
         func?: UtilFilterPropertyFunc | null,
     ): ICalGLib.Property | null;
@@ -1025,10 +1025,7 @@ export namespace ECal {
      * @returns whether the `icalcomp` has a property of `prop_kind`
      * @since 3.34
      */
-    function util_component_has_property(
-        icalcomp: ICalGLib.Component,
-        prop_kind: ICalGLib.PropertyKind | null,
-    ): boolean;
+    function util_component_has_property(icalcomp: ICalGLib.Component, prop_kind: ICalGLib.PropertyKind): boolean;
     /**
      * Checks if an {@link ICalGLib.Component} has recurrence dates.
      * @param icalcomp An {@link ICalGLib.Component}.
@@ -1072,7 +1069,7 @@ export namespace ECal {
      */
     function util_component_remove_property_by_kind(
         icalcomp: ICalGLib.Component,
-        kind: ICalGLib.PropertyKind | null,
+        kind: ICalGLib.PropertyKind,
         all: boolean,
     ): number;
     /**
@@ -1101,9 +1098,7 @@ export namespace ECal {
      * @returns a bit-or of {@link ECal.OperationFlags}, corresponding to the `conflict_resolution`
      * @since 3.34
      */
-    function util_conflict_resolution_to_operation_flags(
-        conflict_resolution: EDataServer.ConflictResolution | null,
-    ): number;
+    function util_conflict_resolution_to_operation_flags(conflict_resolution: EDataServer.ConflictResolution): number;
     /**
      * This checks that `rid` indicates a valid recurrence of `icalcomp`, and
      * if so, generates a copy of `icalcomp` containing a RECURRENCE-ID of `rid`.
@@ -1182,7 +1177,7 @@ export namespace ECal {
         comp: Component,
         start: bigint | number,
         end: bigint | number,
-        omit: ComponentAlarmAction | null,
+        omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
     ): ComponentAlarms | null;
@@ -1205,7 +1200,7 @@ export namespace ECal {
         comps: Component[],
         start: bigint | number,
         end: bigint | number,
-        omit: ComponentAlarmAction | null,
+        omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
     ): [number, ComponentAlarms[]];
@@ -1237,7 +1232,7 @@ export namespace ECal {
         uid: string,
         start: bigint | number,
         end: bigint | number,
-        omit: ComponentAlarmAction | null,
+        omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
         def_reminder_before_start_seconds: number,
@@ -1265,7 +1260,7 @@ export namespace ECal {
         comp: Component,
         tz_cb: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
-        kind: ICalGLib.ComponentKind | null,
+        kind: ICalGLib.ComponentKind,
     ): [number, number];
     /**
      * Returns the real name and email address of the default mail identity,
@@ -1338,7 +1333,7 @@ export namespace ECal {
         comp: Component,
         start: bigint | number,
         end: bigint | number,
-        omit: ComponentAlarmAction | null,
+        omit: ComponentAlarmAction,
         resolve_tzid: RecurResolveTimezoneCb,
         default_timezone: ICalGLib.Timezone,
     ): boolean;
@@ -1443,7 +1438,7 @@ export namespace ECal {
      * @param kind Kind of the component to create, as {@link ICalGLib.ComponentKind}.
      * @returns the newly created component.
      */
-    function util_new_component(kind: ICalGLib.ComponentKind | null): ICalGLib.Component;
+    function util_new_component(kind: ICalGLib.ComponentKind): ICalGLib.Component;
     /**
      * Creates a new VCALENDAR component. Free it with `g_object_unref()`,
      * when no longer needed.
@@ -1511,7 +1506,7 @@ export namespace ECal {
      * @returns whether the `prop` has a parameter of `prop_kind`
      * @since 3.34
      */
-    function util_property_has_parameter(prop: ICalGLib.Property, param_kind: ICalGLib.ParameterKind | null): boolean;
+    function util_property_has_parameter(prop: ICalGLib.Property, param_kind: ICalGLib.ParameterKind): boolean;
     /**
      * Converts the time/date property `prop` to `to_zone`. When such property
      * does not contain DATE nor DATE-TIME value, the function returns -1
@@ -1541,7 +1536,7 @@ export namespace ECal {
      * @param mod How to interpret `rid`
      * @deprecated since 3.38: Use `e_cal_util_remove_instances_ex()` instead, with provided    timezone resolve function.
      */
-    function util_remove_instances(icalcomp: ICalGLib.Component, rid: ICalGLib.Time, mod: ObjModType | null): void;
+    function util_remove_instances(icalcomp: ICalGLib.Component, rid: ICalGLib.Time, mod: ObjModType): void;
     /**
      * Removes one or more instances from `icalcomp` according to `rid` and `mod`.
      * Uses `tz_cb` with `tz_cb_data` to resolve time zones when needed.
@@ -1554,7 +1549,7 @@ export namespace ECal {
     function util_remove_instances_ex(
         icalcomp: ICalGLib.Component,
         rid: ICalGLib.Time,
-        mod: ObjModType | null,
+        mod: ObjModType,
         tz_cb: RecurResolveTimezoneCb,
     ): void;
     /**
@@ -2235,7 +2230,7 @@ export namespace ECal {
          */
         create_object(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
@@ -2251,7 +2246,7 @@ export namespace ECal {
          */
         create_object(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2268,7 +2263,7 @@ export namespace ECal {
          */
         create_object(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
@@ -2293,7 +2288,7 @@ export namespace ECal {
          */
         create_object_sync(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string];
         /**
@@ -2308,7 +2303,7 @@ export namespace ECal {
          */
         create_objects(
             icalcomps: ICalGLib.Component[],
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<string[] | null>;
         /**
@@ -2324,7 +2319,7 @@ export namespace ECal {
          */
         create_objects(
             icalcomps: ICalGLib.Component[],
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2341,7 +2336,7 @@ export namespace ECal {
          */
         create_objects(
             icalcomps: ICalGLib.Component[],
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[] | null> | void;
@@ -2367,7 +2362,7 @@ export namespace ECal {
          */
         create_objects_sync(
             icalcomps: ICalGLib.Component[],
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[] | null];
         /**
@@ -2384,7 +2379,7 @@ export namespace ECal {
             uid: string,
             rid: string | null,
             auid: string,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -2402,7 +2397,7 @@ export namespace ECal {
             uid: string,
             rid: string | null,
             auid: string,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2421,7 +2416,7 @@ export namespace ECal {
             uid: string,
             rid: string | null,
             auid: string,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -2444,7 +2439,7 @@ export namespace ECal {
             uid: string,
             rid: string | null,
             auid: string,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3147,8 +3142,8 @@ export namespace ECal {
          */
         modify_object(
             icalcomp: ICalGLib.Component,
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -3170,8 +3165,8 @@ export namespace ECal {
          */
         modify_object(
             icalcomp: ICalGLib.Component,
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3194,8 +3189,8 @@ export namespace ECal {
          */
         modify_object(
             icalcomp: ICalGLib.Component,
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -3221,8 +3216,8 @@ export namespace ECal {
          */
         modify_object_sync(
             icalcomp: ICalGLib.Component,
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3243,8 +3238,8 @@ export namespace ECal {
          */
         modify_objects(
             icalcomps: ICalGLib.Component[],
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -3266,8 +3261,8 @@ export namespace ECal {
          */
         modify_objects(
             icalcomps: ICalGLib.Component[],
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3290,8 +3285,8 @@ export namespace ECal {
          */
         modify_objects(
             icalcomps: ICalGLib.Component[],
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -3317,8 +3312,8 @@ export namespace ECal {
          */
         modify_objects_sync(
             icalcomps: ICalGLib.Component[],
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3334,7 +3329,7 @@ export namespace ECal {
          */
         receive_objects(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -3351,7 +3346,7 @@ export namespace ECal {
          */
         receive_objects(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3369,7 +3364,7 @@ export namespace ECal {
          */
         receive_objects(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -3390,7 +3385,7 @@ export namespace ECal {
          */
         receive_objects_sync(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3411,8 +3406,8 @@ export namespace ECal {
         remove_object(
             uid: string,
             rid: string | null,
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -3434,8 +3429,8 @@ export namespace ECal {
         remove_object(
             uid: string,
             rid: string | null,
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3458,8 +3453,8 @@ export namespace ECal {
         remove_object(
             uid: string,
             rid: string | null,
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -3485,8 +3480,8 @@ export namespace ECal {
         remove_object_sync(
             uid: string,
             rid: string | null,
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3504,8 +3499,8 @@ export namespace ECal {
          */
         remove_objects(
             ids: ComponentId[],
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -3524,8 +3519,8 @@ export namespace ECal {
          */
         remove_objects(
             ids: ComponentId[],
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3545,8 +3540,8 @@ export namespace ECal {
          */
         remove_objects(
             ids: ComponentId[],
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -3569,8 +3564,8 @@ export namespace ECal {
          */
         remove_objects_sync(
             ids: ComponentId[],
-            mod: ObjModType | null,
-            opflags: OperationFlags | null,
+            mod: ObjModType,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3584,7 +3579,7 @@ export namespace ECal {
          */
         send_objects(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[string[], ICalGLib.Component]>;
         /**
@@ -3599,7 +3594,7 @@ export namespace ECal {
          */
         send_objects(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3615,7 +3610,7 @@ export namespace ECal {
          */
         send_objects(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string[], ICalGLib.Component]> | void;
@@ -3643,7 +3638,7 @@ export namespace ECal {
          */
         send_objects_sync(
             icalcomp: ICalGLib.Component,
-            opflags: OperationFlags | null,
+            opflags: OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[], ICalGLib.Component];
         /**
@@ -4005,7 +4000,7 @@ export namespace ECal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4046,7 +4041,7 @@ export namespace ECal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4581,7 +4576,7 @@ export namespace ECal {
          * Sets the `flags` which control the behaviour of `client_view`.
          * @param flags the {@link ECal.ClientViewFlags} for `client_view`
          */
-        set_flags(flags: ClientViewFlags | null): void;
+        set_flags(flags: ClientViewFlags): void;
         /**
          * Tells `client_view` to start processing events.
          */
@@ -4720,7 +4715,7 @@ export namespace ECal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4761,7 +4756,7 @@ export namespace ECal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5651,7 +5646,7 @@ export namespace ECal {
          * the property, specify E_CAL_COMPONENT_CLASS_NONE for `classif`.
          * @param classif Classification to use.
          */
-        set_classification(classif: ComponentClassification | null): void;
+        set_classification(classif: ComponentClassification): void;
         /**
          * Sets the comments of a calendar component object.  The comment property can
          * appear several times inside a calendar component, and so a list of
@@ -5750,7 +5745,7 @@ export namespace ECal {
          * that will be set in the new component will be its unique identifier.
          * @param type Type of calendar component to create.
          */
-        set_new_vtype(type: ComponentVType | null): void;
+        set_new_vtype(type: ComponentVType): void;
         /**
          * Sets the organizer of a calendar component object
          * @param organizer Value for the organizer property, as an {@link ECal.ComponentOrganizer}
@@ -5797,7 +5792,7 @@ export namespace ECal {
          * Sets the status property of a calendar component object.
          * @param status Status value, as an {@link ICalGLib.PropertyStatus}. Use {@link ICalGLib.PropertyStatus.NONE}, to unset the property
          */
-        set_status(status: ICalGLib.PropertyStatus | null): void;
+        set_status(status: ICalGLib.PropertyStatus): void;
         /**
          * Sets the summary of a calendar component object. The summaries can have each
          * different language, otherwise it's not allowed to have more than one summary property.
@@ -5818,7 +5813,7 @@ export namespace ECal {
          * Use {@link ECal.ComponentTransparency.NONE} to unset the property.
          * @param transp Time transparency value.
          */
-        set_transparency(transp: ComponentTransparency | null): void;
+        set_transparency(transp: ComponentTransparency): void;
         /**
          * Sets the unique identifier string of a calendar component object.
          * @param uid Unique identifier.
@@ -6694,7 +6689,7 @@ export namespace ECal {
          * Set the `alarm` action, as an {@link ECal.ComponentAlarmAction}.
          * @param action an {@link ECal.ComponentAlarmAction}
          */
-        set_action(action: ComponentAlarmAction | null): void;
+        set_action(action: ComponentAlarmAction): void;
         /**
          * Set the list of attachments, as a {@link GLib.SList} of an {@link ICalGLib.Attach}.
          * @param attachments a {@link GLib.SList}    of an {@link ICalGLib.Attach} objects to set as attachments, or `null` to unset
@@ -7005,7 +7000,7 @@ export namespace ECal {
          * `e_cal_component_alarm_trigger_set_absolute()`.
          * @param kind the kind to set, one of {@link ECal.ComponentAlarmTriggerKind}
          */
-        set_kind(kind: ComponentAlarmTriggerKind | null): void;
+        set_kind(kind: ComponentAlarmTriggerKind): void;
         /**
          * Set the `trigegr` with the given `kind` and `duration`. The `kind` can be any but
          * the {@link ECal.ComponentAlarmTriggerKind.ABSOLUTE}.
@@ -7013,7 +7008,7 @@ export namespace ECal {
          * @param kind an {@link ECal.ComponentAlarmTriggerKind}, any but the {@link ECal.ComponentAlarmTriggerKind.ABSOLUTE}
          * @param duration the duration relative to `kind`, as an {@link ICalGLib.Duration}
          */
-        set_relative(kind: ComponentAlarmTriggerKind | null, duration: ICalGLib.Duration): void;
+        set_relative(kind: ComponentAlarmTriggerKind, duration: ICalGLib.Duration): void;
     }
 
     /**
@@ -7204,7 +7199,7 @@ export namespace ECal {
          * Set the `attendee` type, as an {@link ICalGLib.ParameterCutype}.
          * @param cutype the value to set, as an {@link ICalGLib.ParameterCutype}
          */
-        set_cutype(cutype: ICalGLib.ParameterCutype | null): void;
+        set_cutype(cutype: ICalGLib.ParameterCutype): void;
         /**
          * Set the `attendee` delegatedfrom parameter. The `null`
          * and empty strings are treated as unset the value.
@@ -7239,12 +7234,12 @@ export namespace ECal {
          * Set the `attendee` status, as an {@link ICalGLib.ParameterPartstat}.
          * @param partstat the value to set, as an {@link ICalGLib.ParameterPartstat}
          */
-        set_partstat(partstat: ICalGLib.ParameterPartstat | null): void;
+        set_partstat(partstat: ICalGLib.ParameterPartstat): void;
         /**
          * Set the `attendee` role, as an {@link ICalGLib.ParameterRole}.
          * @param role the value to set, as an {@link ICalGLib.ParameterRole}
          */
-        set_role(role: ICalGLib.ParameterRole | null): void;
+        set_role(role: ICalGLib.ParameterRole): void;
         /**
          * Set the `attendee` RSVP.
          * @param rsvp the value to set
@@ -7686,7 +7681,7 @@ export namespace ECal {
          * @param kind an {@link ICalGLib.ParameterKind} to search for
          * @returns the index of the first parameter of the given `kind`, or value    out of bounds, if such parameter cannot be found
          */
-        get_first_by_kind(kind: ICalGLib.ParameterKind | null): number;
+        get_first_by_kind(kind: ICalGLib.ParameterKind): number;
         /**
          * Removes the {@link ICalGLib.Parameter} at the given `index`. If the `index` is
          * out of bounds (not lower than `e_cal_component_parameter_bag_get_count()`),
@@ -7700,7 +7695,7 @@ export namespace ECal {
          * @param all `true` to remove all parameters of the `kind`, or `false` to only the first
          * @returns how many parameters had been removed
          */
-        remove_by_kind(kind: ICalGLib.ParameterKind | null, all: boolean): number;
+        remove_by_kind(kind: ICalGLib.ParameterKind, all: boolean): number;
         /**
          * Fills the `bag` with parameters from the `property`, for which the `func`
          * returned `true`. When the `func` is `null`, all the parameters are included.
@@ -7893,7 +7888,7 @@ export namespace ECal {
          * @param kind an {@link ICalGLib.PropertyKind} to search for
          * @returns the index of the first property of the given `kind`, or value    out of bounds, if such property cannot be found
          */
-        get_first_by_kind(kind: ICalGLib.PropertyKind | null): number;
+        get_first_by_kind(kind: ICalGLib.PropertyKind): number;
         /**
          * Removes the {@link ICalGLib.Property} at the given `index`. If the `index` is
          * out of bounds (not lower than `e_cal_component_property_bag_get_count()`),
@@ -7907,7 +7902,7 @@ export namespace ECal {
          * @param all `true` to remove all properties of the `kind`, or `false` to only the first
          * @returns how many properties had been removed
          */
-        remove_by_kind(kind: ICalGLib.PropertyKind | null, all: boolean): number;
+        remove_by_kind(kind: ICalGLib.PropertyKind, all: boolean): number;
         /**
          * Fills the `bag` with properties from the `component`, for which the `func`
          * returned `true`. When the `func` is `null`, all the properties are included.
@@ -7967,7 +7962,7 @@ export namespace ECal {
          * Set the `kind` of the `range`.
          * @param kind an {@link ECal.ComponentRangeKind}
          */
-        set_kind(kind: ComponentRangeKind | null): void;
+        set_kind(kind: ComponentRangeKind): void;
     }
 
     /**

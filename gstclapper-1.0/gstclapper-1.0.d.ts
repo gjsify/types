@@ -167,20 +167,20 @@ export namespace GstClapper {
      * @param type a {@link GstClapper.ClapperColorBalanceType}
      * @returns a string with the name of the color balance type.
      */
-    function clapper_color_balance_type_get_name(type: ClapperColorBalanceType | null): string;
+    function clapper_color_balance_type_get_name(type: ClapperColorBalanceType): string;
     /**
      * Gets a string representing the given error.
      * @param error a {@link GstClapper.ClapperError}
      * @returns a string with the given error.
      */
-    function clapper_error_get_name(error: ClapperError | null): string;
+    function clapper_error_get_name(error: ClapperError): string;
     function clapper_error_quark(): GLib.Quark;
     /**
      * Gets a string representing the given state.
      * @param state a {@link GstClapper.ClapperState}
      * @returns a string with the name of the state.
      */
-    function clapper_state_get_name(state: ClapperState | null): string;
+    function clapper_state_get_name(state: ClapperState): string;
     /**
      * @gir-type Callback
      */
@@ -515,7 +515,7 @@ export namespace GstClapper {
          * @param type {@link GstClapper.ClapperColorBalanceType}
          * @returns The current value of `type`, between [0,1]. In case of   error -1 is returned.
          */
-        get_color_balance(type: ClapperColorBalanceType | null): number;
+        get_color_balance(type: ClapperColorBalanceType): number;
         /**
          * A Function to get current audio {@link GstClapper.ClapperAudioInfo} instance.
          * @returns current audio track. The caller should free it with `g_object_unref()`
@@ -610,7 +610,7 @@ export namespace GstClapper {
          * @param config Additional configuration
          * @returns Current video snapshot sample or `null` on failure
          */
-        get_video_snapshot(format: ClapperSnapshotFormat | null, config?: Gst.Structure | null): Gst.Sample;
+        get_video_snapshot(format: ClapperSnapshotFormat, config?: Gst.Structure | null): Gst.Sample;
         /**
          * Returns the current volume level, as a percentage between 0 and 1.5
          * @returns the cubic volume as percentage between 0 and 1.5
@@ -662,19 +662,19 @@ export namespace GstClapper {
          * @param type {@link GstClapper.ClapperColorBalanceType}
          * @param value The new value for the `type`, ranged [0,1]
          */
-        set_color_balance(type: ClapperColorBalanceType | null, value: number): void;
+        set_color_balance(type: ClapperColorBalanceType, value: number): void;
         /**
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param flags The new value for the `type`
          */
-        set_multiview_flags(flags: GstVideo.VideoMultiviewFlags | null): void;
+        set_multiview_flags(flags: GstVideo.VideoMultiviewFlags): void;
         /**
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param mode The new value for the `type`
          */
-        set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking | null): void;
+        set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking): void;
         /**
          * `true` if the currently-playing stream should be muted.
          * @param val Mute state the should be set
@@ -689,7 +689,7 @@ export namespace GstClapper {
          * Changes currently used clapper seek mode to the one of `mode`
          * @param mode {@link GstClapper.ClapperSeekMode}
          */
-        set_seek_mode(mode: ClapperSeekMode | null): void;
+        set_seek_mode(mode: ClapperSeekMode): void;
         /**
          * @param stream_index stream index
          * @returns `true` or `false` Sets the subtitle stack `stream_index`.
@@ -961,7 +961,7 @@ export namespace GstClapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1002,7 +1002,7 @@ export namespace GstClapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2079,7 +2079,7 @@ export namespace GstClapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2120,7 +2120,7 @@ export namespace GstClapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

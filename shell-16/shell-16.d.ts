@@ -158,7 +158,7 @@ export namespace Shell {
      */
     function util_create_pixbuf_from_data(
         data: Uint8Array | string,
-        colorspace: GdkPixbuf.Colorspace | null,
+        colorspace: GdkPixbuf.Colorspace,
         has_alpha: boolean,
         bits_per_sample: number,
         width: number,
@@ -221,7 +221,7 @@ export namespace Shell {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: GLib.SpawnFlags | null,
+        flags: GLib.SpawnFlags,
     ): GLib.Pid;
     /**
      * A wrapper around `g_spawn_async_with_fds()` with async-signal-safe
@@ -240,7 +240,7 @@ export namespace Shell {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: GLib.SpawnFlags | null,
+        flags: GLib.SpawnFlags,
         stdin_fd: number,
         stdout_fd: number,
         stderr_fd: number,
@@ -259,7 +259,7 @@ export namespace Shell {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: GLib.SpawnFlags | null,
+        flags: GLib.SpawnFlags,
     ): [GLib.Pid, number, number, number];
     /**
      * A wrapper around `g_spawn_async_with_pipes_and_fds()` with async-signal-safe
@@ -280,7 +280,7 @@ export namespace Shell {
         working_directory: string | null,
         argv: string[],
         envp: string[] | null,
-        flags: GLib.SpawnFlags | null,
+        flags: GLib.SpawnFlags,
         stdin_fd: number,
         stdout_fd: number,
         stderr_fd: number,
@@ -807,7 +807,7 @@ export namespace Shell {
          * @param workspace Start on this workspace, or -1 for default
          * @param gpu_pref the GPU to prefer launching on
          */
-        launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu | null): boolean;
+        launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu): boolean;
         /**
          * @param action_name the name of the action to launch (as obtained by               `g_desktop_app_info_list_actions()`)
          * @param timestamp Event timestamp, or 0 for current event timestamp
@@ -1131,7 +1131,7 @@ export namespace Shell {
         /**
          * @param mode
          */
-        set_mode(mode: BlurMode | null): void;
+        set_mode(mode: BlurMode): void;
         /**
          * @param radius
          */
@@ -2625,7 +2625,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2666,7 +2666,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3206,7 +3206,7 @@ export namespace Shell {
          * @param request_id
          * @param response
          */
-        respond(request_id: string, response: NetworkAgentResponse | null): void;
+        respond(request_id: string, response: NetworkAgentResponse): void;
         /**
          * @param service
          */
@@ -3566,7 +3566,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3607,7 +3607,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4790,7 +4790,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4831,7 +4831,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5385,7 +5385,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5426,7 +5426,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6011,7 +6011,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6052,7 +6052,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6885,7 +6885,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6926,7 +6926,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7708,7 +7708,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7749,7 +7749,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

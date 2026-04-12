@@ -125,14 +125,14 @@ export namespace GstTranscoder {
      * @param error a {@link GstTranscoder.TranscoderError}
      * @returns a string with the given error.
      */
-    function transcoder_error_get_name(error: TranscoderError | null): string;
+    function transcoder_error_get_name(error: TranscoderError): string;
     function transcoder_error_quark(): GLib.Quark;
     /**
      * Returns (transfer none): The message name
      * @param message a {@link GstTranscoder.TranscoderMessage}
      * @since 1.20
      */
-    function transcoder_message_get_name(message: TranscoderMessage | null): string;
+    function transcoder_message_get_name(message: TranscoderMessage): string;
     /**
      * Parse the given duration `msg` and extract the corresponding {@link Gst.ClockTime}
      * @param msg A {@link Gst.Message}
@@ -169,7 +169,7 @@ export namespace GstTranscoder {
      * @returns a string with the name of the state.
      * @since 1.20
      */
-    function transcoder_state_get_name(state: TranscoderState | null): string;
+    function transcoder_state_get_name(state: TranscoderState): string;
     namespace Transcoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {

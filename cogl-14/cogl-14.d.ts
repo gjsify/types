@@ -1433,7 +1433,7 @@ export namespace Cogl {
     /**
      * @param feature
      */
-    function clutter_winsys_has_feature(feature: WinsysFeature | null): boolean;
+    function clutter_winsys_has_feature(feature: WinsysFeature): boolean;
     /**
      * Compares two {@link Cogl.Color}s and checks if they are the same.
      *
@@ -1466,7 +1466,7 @@ export namespace Cogl {
      * @returns a new shader handle.
      * @deprecated since 1.16: Use {@link Cogl.Snippet} api
      */
-    function create_shader(shader_type: ShaderType | null): Shader;
+    function create_shader(shader_type: ShaderType): Shader;
     /**
      * Allows visualizing the operations that build up the given `entry`
      * for debugging purposes by printing to stdout.
@@ -1688,7 +1688,7 @@ export namespace Cogl {
      * @param feature A {@link Cogl.FeatureID}
      * @returns `true` if the `feature` is currently supported or `false` if not.
      */
-    function has_feature(context: Context, feature: FeatureID | null): boolean;
+    function has_feature(context: Context, feature: FeatureID): boolean;
     /**
      * Gets whether the given object references a {@link Cogl.Framebuffer}.
      * @param object A `CoglObject` pointer
@@ -1737,8 +1737,8 @@ export namespace Cogl {
         ty_1: number,
         tx_2: number,
         ty_2: number,
-        wrap_s: PipelineWrapMode | null,
-        wrap_t: PipelineWrapMode | null,
+        wrap_s: PipelineWrapMode,
+        wrap_t: PipelineWrapMode,
         callback: MetaTextureCallback,
     ): void;
     /**
@@ -1747,19 +1747,19 @@ export namespace Cogl {
      * @param plane The index of the plane (should not be more than the number of planes         in the given format).
      * @returns The number of bytes per pixel in the given format's given plane.
      */
-    function pixel_format_get_bytes_per_pixel(format: PixelFormat | null, plane: number): number;
+    function pixel_format_get_bytes_per_pixel(format: PixelFormat, plane: number): number;
     /**
      * Returns the number of planes the given CoglPixelFormat specifies.
      * @param format The format for which to get the number of planes
      * @returns The no. of planes of `format` (at most `COGL_PIXEL_FORMAT_MAX_PLANES`)
      */
-    function pixel_format_get_n_planes(format: PixelFormat | null): number;
+    function pixel_format_get_n_planes(format: PixelFormat): number;
     /**
      * Returns a string representation of `format`, useful for debugging purposes.
      * @param format a {@link Cogl.PixelFormat}
      * @returns A string representation of `format`.
      */
-    function pixel_format_to_string(format: PixelFormat | null): string;
+    function pixel_format_to_string(format: PixelFormat): string;
     /**
      * This should be called whenever an application is woken up from
      * going idle in its main loop. The `poll_fds` array should contain a
@@ -2541,7 +2541,7 @@ export namespace Cogl {
          * @param hints A mask of {@link Cogl.BufferMapHint}s that tell Cogl how   the data will be modified once mapped.
          * @returns A pointer to the mapped memory or        `null` is the call fails
          */
-        map(access: BufferAccess | null, hints: BufferMapHint | null): any | null;
+        map(access: BufferAccess, hints: BufferMapHint): any | null;
         /**
          * Maps a sub-region of the buffer into the application's address space
          * for direct access.
@@ -2567,8 +2567,8 @@ export namespace Cogl {
         map_range(
             offset: bigint | number,
             size: bigint | number,
-            access: BufferAccess | null,
-            hints: BufferMapHint | null,
+            access: BufferAccess,
+            hints: BufferMapHint,
         ): any | null;
         /**
          * Updates part of the buffer with new data from `data`. Where to put this new
@@ -2590,7 +2590,7 @@ export namespace Cogl {
          * of the available hints.
          * @param hint the new hint
          */
-        set_update_hint(hint: BufferUpdateHint | null): void;
+        set_update_hint(hint: BufferUpdateHint): void;
         /**
          * Unmaps a buffer previously mapped by {@link Cogl.Buffer.map}.
          */
@@ -3592,14 +3592,7 @@ export namespace Cogl {
          * @param pixels The address of the buffer to store the data in
          * @returns `true` if the read succeeded or `false` otherwise.
          */
-        read_pixels(
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-            format: PixelFormat | null,
-            pixels: number,
-        ): boolean;
+        read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): boolean;
         /**
          * This reads a rectangle of pixels from the given framebuffer where
          * position (0, 0) is the top left. The pixel at (x, y) is the first
@@ -3617,7 +3610,7 @@ export namespace Cogl {
          * @param bitmap The bitmap to store the results in.
          * @returns `true` if the read succeeded or `false` otherwise. The  function is only likely to fail if the bitmap points to a pixel  buffer and it could not be mapped.
          */
-        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags | null, bitmap: Bitmap): boolean;
+        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): boolean;
         /**
          * When point sample rendering (also known as multisample rendering)
          * has been enabled via `cogl_framebuffer_set_samples_per_pixel()`
@@ -3778,7 +3771,7 @@ export namespace Cogl {
          * `cogl_framebuffer_get_is_stereo()`.)
          * @param stereo_mode A {@link Cogl.StereoMode} specifying which stereo buffers               should be drawn tow.
          */
-        set_stereo_mode(stereo_mode: StereoMode | null): void;
+        set_stereo_mode(stereo_mode: StereoMode): void;
         /**
          * Defines a scale and offset for everything rendered relative to the
          * top-left of the destination framebuffer.
@@ -5171,7 +5164,7 @@ export namespace Cogl {
          * @param alpha_func A `CoglPipelineAlphaFunc` constant
          * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
          */
-        set_alpha_test_function(alpha_func: PipelineAlphaFunc | null, alpha_reference: number): void;
+        set_alpha_test_function(alpha_func: PipelineAlphaFunc, alpha_reference: number): void;
         /**
          * Blending occurs after the alpha test function, and combines fragments with
          * the framebuffer.
@@ -5257,7 +5250,7 @@ export namespace Cogl {
          * `cogl_pipeline_set_front_face_winding()`.
          * @param cull_face_mode The new mode to set
          */
-        set_cull_face_mode(cull_face_mode: PipelineCullFaceMode | null): void;
+        set_cull_face_mode(cull_face_mode: PipelineCullFaceMode): void;
         /**
          * This commits all the depth state configured in `state` struct to the
          * given `pipeline`. The configuration values are copied into the
@@ -5280,7 +5273,7 @@ export namespace Cogl {
          * {@link Cogl.Winding.COUNTER_CLOCKWISE}.
          * @param front_winding the winding order
          */
-        set_front_face_winding(front_winding: Winding | null): void;
+        set_front_face_winding(front_winding: Winding): void;
         /**
          * These are all the functions available for texture combining:
          *
@@ -5357,11 +5350,7 @@ export namespace Cogl {
          * @param min_filter the filter used when scaling a texture down.
          * @param mag_filter the filter used when magnifying a texture.
          */
-        set_layer_filters(
-            layer_index: number,
-            min_filter: PipelineFilter | null,
-            mag_filter: PipelineFilter | null,
-        ): void;
+        set_layer_filters(layer_index: number, min_filter: PipelineFilter, mag_filter: PipelineFilter): void;
         /**
          * This function lets you set a matrix that can be used to e.g. translate
          * and rotate a single layer of a pipeline used to fill your geometry.
@@ -5411,19 +5400,19 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode(layer_index: number, mode: PipelineWrapMode | null): void;
+        set_layer_wrap_mode(layer_index: number, mode: PipelineWrapMode): void;
         /**
          * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_s(layer_index: number, mode: PipelineWrapMode | null): void;
+        set_layer_wrap_mode_s(layer_index: number, mode: PipelineWrapMode): void;
         /**
          * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_t(layer_index: number, mode: PipelineWrapMode | null): void;
+        set_layer_wrap_mode_t(layer_index: number, mode: PipelineWrapMode): void;
         /**
          * Sets whether to use a per-vertex point size or to use the value set
          * by `cogl_pipeline_set_point_size()`. If per-vertex point size is
@@ -5814,7 +5803,7 @@ export namespace Cogl {
         /**
          * @param mode
          */
-        set_mode(mode: VerticesMode | null): void;
+        set_mode(mode: VerticesMode): void;
         /**
          * Specifies how many vertices should be read when drawing the given
          * `primitive`.
@@ -6033,7 +6022,7 @@ export namespace Cogl {
          * depend on to ensure maximum portability.
          * @param constraint A {@link Cogl.RendererConstraint} to add
          */
-        add_constraint(constraint: RendererConstraint | null): void;
+        add_constraint(constraint: RendererConstraint): void;
         bind_api(): void;
         /**
          * Tests if a given `onscreen_template` can be supported with the given
@@ -6085,7 +6074,7 @@ export namespace Cogl {
          * depend on to ensure maximum portability.
          * @param constraint A {@link Cogl.RendererConstraint} to remove
          */
-        remove_constraint(constraint: RendererConstraint | null): void;
+        remove_constraint(constraint: RendererConstraint): void;
         /**
          * Requests that Cogl should try to use a specific underlying driver
          * for rendering.
@@ -6098,7 +6087,7 @@ export namespace Cogl {
          * This may only be called on an un-connected {@link Cogl.Renderer}.
          * @param driver
          */
-        set_driver(driver: Driver | null): void;
+        set_driver(driver: Driver): void;
         /**
          * This allows you to explicitly select a winsys backend to use instead
          * of letting Cogl automatically select a backend.
@@ -6109,7 +6098,7 @@ export namespace Cogl {
          * This may only be called on an un-connected {@link Cogl.Renderer}.
          * @param winsys_id An ID of the winsys you explicitly want to use.
          */
-        set_winsys_id(winsys_id: WinsysID | null): void;
+        set_winsys_id(winsys_id: WinsysID): void;
     }
 
     namespace Scanout {
@@ -6929,7 +6918,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat | null, rowstride: number, data?: Uint8Array | null): number;
+        get_data(format: PixelFormat, rowstride: number, data?: Uint8Array | null): number;
         /**
          * @param args
          */
@@ -6997,7 +6986,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents | null): void;
+        set_components(components: TextureComponents): void;
         /**
          * `texture` a {@link Cogl.Texture}.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -7043,7 +7032,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
          */
-        set_data(format: PixelFormat | null, rowstride: number, data: Uint8Array | string, level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
         /**
          * @param args
          */
@@ -7101,7 +7090,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat | null,
+            format: PixelFormat,
             rowstride: number,
             data: Uint8Array | string,
         ): boolean;
@@ -7524,7 +7513,7 @@ export namespace Cogl {
          * `cogl_pipeline_set_depth_state()`
          * @param _function The {@link Cogl.DepthTestFunction} to set
          */
-        set_test_function(_function: DepthTestFunction | null): void;
+        set_test_function(_function: DepthTestFunction): void;
         /**
          * Enables or disables depth buffer writing according to the value of
          * `enable`. Normally when depth testing is enabled and the comparison

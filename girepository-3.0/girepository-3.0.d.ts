@@ -329,7 +329,7 @@ export namespace GIRepository {
      * @param hash_pointer a pointer, such as a {@link GLib.HashTable} data pointer
      * @since 2.80
      */
-    function type_tag_argument_from_hash_pointer(storage_type: TypeTag | null, hash_pointer: any | null): Argument;
+    function type_tag_argument_from_hash_pointer(storage_type: TypeTag, hash_pointer: any | null): Argument;
     /**
      * Convert a {@link GIRepository.Argument} to data pointer for use in a GLib
      * data structure.
@@ -351,14 +351,14 @@ export namespace GIRepository {
      * @returns A stuffed pointer, that can be stored in a {@link GLib.HashTable},   for example
      * @since 2.80
      */
-    function type_tag_hash_pointer_from_argument(storage_type: TypeTag | null, arg: Argument): any | null;
+    function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argument): any | null;
     /**
      * Obtain a string representation of `type`
      * @param type the type_tag
      * @returns the string
      * @since 2.80
      */
-    function type_tag_to_string(type: TypeTag | null): string;
+    function type_tag_to_string(type: TypeTag): string;
     /**
      * Flags for a {@link GIRepository.FieldInfo}.
      * @gir-type Flags
@@ -2296,7 +2296,7 @@ export namespace GIRepository {
          * @param flags flags affecting the loading operation
          * @returns namespace of the loaded typelib
          */
-        load_typelib(typelib: Typelib, flags: RepositoryLoadFlags | null): string;
+        load_typelib(typelib: Typelib, flags: RepositoryLoadFlags): string;
         /**
          * Prepends `directory` to the search path that is used to
          * search shared libraries referenced by imported namespaces.
@@ -2334,7 +2334,7 @@ export namespace GIRepository {
          * @param flags Set of {@link GIRepository.RepositoryLoadFlags}, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if   successful, `NULL` otherwise
          */
-        require(namespace_: string, version: string | null, flags: RepositoryLoadFlags | null): Typelib;
+        require(namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
         /**
          * Force the namespace `namespace_` to be loaded if it isn’t already.
          *
@@ -2352,7 +2352,7 @@ export namespace GIRepository {
             typelib_dir: string,
             namespace_: string,
             version: string | null,
-            flags: RepositoryLoadFlags | null,
+            flags: RepositoryLoadFlags,
         ): Typelib;
     }
 

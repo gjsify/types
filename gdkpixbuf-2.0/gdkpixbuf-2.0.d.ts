@@ -893,7 +893,7 @@ export namespace GdkPixbuf {
             offset_y: number,
             scale_x: number,
             scale_y: number,
-            interp_type: InterpType | null,
+            interp_type: InterpType,
             overall_alpha: number,
         ): void;
         /**
@@ -936,7 +936,7 @@ export namespace GdkPixbuf {
             offset_y: number,
             scale_x: number,
             scale_y: number,
-            interp_type: InterpType | null,
+            interp_type: InterpType,
             overall_alpha: number,
             check_x: number,
             check_y: number,
@@ -960,7 +960,7 @@ export namespace GdkPixbuf {
         composite_color_simple(
             dest_width: number,
             dest_height: number,
-            interp_type: InterpType | null,
+            interp_type: InterpType,
             overall_alpha: number,
             check_size: number,
             color1: number,
@@ -1165,7 +1165,7 @@ export namespace GdkPixbuf {
          * @param angle the angle to rotate by
          * @returns the new pixbuf
          */
-        rotate_simple(angle: PixbufRotation | null): Pixbuf | null;
+        rotate_simple(angle: PixbufRotation): Pixbuf | null;
         /**
          * Modifies saturation and optionally pixelates `src`, placing the result in
          * `dest`.
@@ -1320,7 +1320,7 @@ export namespace GdkPixbuf {
             offset_y: number,
             scale_x: number,
             scale_y: number,
-            interp_type: InterpType | null,
+            interp_type: InterpType,
         ): void;
         /**
          * Create a new pixbuf containing a copy of `src` scaled to
@@ -1346,7 +1346,7 @@ export namespace GdkPixbuf {
          * @param interp_type the interpolation type for the transformation.
          * @returns the new pixbuf
          */
-        scale_simple(dest_width: number, dest_height: number, interp_type: InterpType | null): Pixbuf | null;
+        scale_simple(dest_width: number, dest_height: number, interp_type: InterpType): Pixbuf | null;
         /**
          * Attaches a key/value pair as an option to a {@link GdkPixbuf.Pixbuf}.
          *
@@ -1543,7 +1543,7 @@ export namespace GdkPixbuf {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1584,7 +1584,7 @@ export namespace GdkPixbuf {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

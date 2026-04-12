@@ -619,7 +619,7 @@ export namespace AyatanaAppIndicator {
          * Wrapper function for property {@link AyatanaAppIndicator.Indicator.status}.
          * @param status The status to set for this indicator
          */
-        set_status(status: IndicatorStatus | null): void;
+        set_status(status: IndicatorStatus): void;
         /**
          * Sets the title of the application indicator, or how it should be referred
          * in a human readable form.  This string should be UTF-8 and localized as it

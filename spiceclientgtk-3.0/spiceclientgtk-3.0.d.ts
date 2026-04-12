@@ -359,7 +359,7 @@ export namespace SpiceClientGtk {
          * @param keyvals Keyval array
          * @param kind {@link SpiceClientGtk.DisplayKeyEvent} action
          */
-        send_keys(keyvals: number[], kind: DisplayKeyEvent | null): void;
+        send_keys(keyvals: number[], kind: DisplayKeyEvent): void;
         /**
          * Set the key combination to grab/ungrab the keyboard. The default is
          * "Control L + Alt L".
@@ -410,7 +410,7 @@ export namespace SpiceClientGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -451,7 +451,7 @@ export namespace SpiceClientGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1135,7 +1135,7 @@ export namespace SpiceClientGtk {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1180,7 +1180,7 @@ export namespace SpiceClientGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1221,7 +1221,7 @@ export namespace SpiceClientGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

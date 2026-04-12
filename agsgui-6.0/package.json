@@ -1,6 +1,6 @@
 {
     "name": "@girs/agsgui-6.0",
-    "version": "6.0.0-4.0.0-rc.1",
+    "version": "6.0.0-4.0.0-rc.2",
     "description": "GJS TypeScript type definitions for AgsGui-6.0, generated from library version 6.0.0",
     "type": "module",
     "module": "agsgui-6.0.js",

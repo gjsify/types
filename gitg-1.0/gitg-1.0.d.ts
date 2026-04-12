@@ -758,7 +758,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_state(value: RefState | null): void;
+        set_state(value: RefState): void;
         get_working(): boolean;
         /**
          * @param value
@@ -972,7 +972,7 @@ export namespace Gitg {
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the new branch or `null`.
          */
-        move(new_branch_name: string, flags: Ggit.CreateFlags | null): Ggit.Branch | null;
+        move(new_branch_name: string, flags: Ggit.CreateFlags): Ggit.Branch | null;
         /**
          * Sets the upstream branch, for a given local branch reference
          * @param upstream_branch_name name of the upstream branch; if `null` unsets it.
@@ -1432,7 +1432,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1473,7 +1473,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1975,7 +1975,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_sort_mode(value: Ggit.SortMode | null): void;
+        set_sort_mode(value: Ggit.SortMode): void;
         get_repository(): Repository;
         /**
          * @param value
@@ -2445,7 +2445,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2486,7 +2486,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2985,7 +2985,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_tag(value: LaneTag | null): void;
+        set_tag(value: LaneTag): void;
         get_mylane(): number;
         /**
          * @param value
@@ -3050,7 +3050,7 @@ export namespace Gitg {
          * @param username
          * @param allowed_types
          */
-        credentials(url: string, username: string | null, allowed_types: Ggit.Credtype | null): Ggit.Cred | null;
+        credentials(url: string, username: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
     }
 
     namespace Date {
@@ -3276,7 +3276,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3317,7 +3317,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5003,7 +5003,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_state(value: RefState | null): void;
+        set_state(value: RefState): void;
         get_working(): boolean;
         /**
          * @param value
@@ -5409,14 +5409,14 @@ export namespace Gitg {
          * @param direction
          * @param callbacks
          */
-        connect(direction: Ggit.Direction | null, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        connect(direction: Ggit.Direction, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
         /**
          * @param direction
          * @param callbacks
          * @param _callback_
          */
         connect(
-            direction: Ggit.Direction | null,
+            direction: Ggit.Direction,
             callbacks: Ggit.RemoteCallbacks | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5426,7 +5426,7 @@ export namespace Gitg {
          * @param _callback_
          */
         connect(
-            direction: Ggit.Direction | null,
+            direction: Ggit.Direction,
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
@@ -5727,7 +5727,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_mode(value: SelectionMode | null): void;
+        set_mode(value: SelectionMode): void;
         get_bookmarks_from_recent_files(): boolean;
         /**
          * @param value
@@ -5917,7 +5917,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_mode(value: SelectionMode | null): void;
+        set_mode(value: SelectionMode): void;
         get_selected(): boolean;
         /**
          * @param value
@@ -6096,7 +6096,7 @@ export namespace Gitg {
          * @param obj
          * @param flags
          */
-        create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags | null): Branch;
+        create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch;
         /**
          * @param args
          */
@@ -6424,7 +6424,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6465,7 +6465,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7279,7 +7279,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7320,7 +7320,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7893,7 +7893,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7934,7 +7934,7 @@ export namespace Gitg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8548,7 +8548,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
         ): globalThis.Promise<Ggit.OId | null>;
         /**
          * @param index
@@ -8567,7 +8567,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -8587,7 +8587,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.OId | null> | void;
         /**
@@ -8610,7 +8610,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
         ): globalThis.Promise<Ggit.OId | null>;
         /**
          * @param treeoid
@@ -8629,7 +8629,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -8649,7 +8649,7 @@ export namespace Gitg {
             author: Ggit.Signature,
             committer: Ggit.Signature,
             parents: Ggit.OId[] | null,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.OId | null> | void;
         /**
@@ -8666,7 +8666,7 @@ export namespace Gitg {
             message: string,
             author: Ggit.Signature,
             committer: Ggit.Signature,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
         ): globalThis.Promise<Ggit.OId | null>;
         /**
          * @param message
@@ -8679,7 +8679,7 @@ export namespace Gitg {
             message: string,
             author: Ggit.Signature,
             committer: Ggit.Signature,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -8693,7 +8693,7 @@ export namespace Gitg {
             message: string,
             author: Ggit.Signature,
             committer: Ggit.Signature,
-            options: StageCommitOptions | null,
+            options: StageCommitOptions,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.OId | null> | void;
         /**
@@ -9963,7 +9963,7 @@ export namespace Gitg {
         /**
          * @param value
          */
-        set_state(value: RefState | null): void;
+        set_state(value: RefState): void;
         get_working(): boolean;
         /**
          * @param value
@@ -10018,11 +10018,7 @@ export namespace Gitg {
          * @param username_from_url
          * @param allowed_types
          */
-        credentials(
-            url: string,
-            username_from_url: string | null,
-            allowed_types: Ggit.Credtype | null,
-        ): Ggit.Cred | null;
+        credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
     }
 
     export const CredentialsProvider: CredentialsProviderNamespace & {

@@ -356,7 +356,7 @@ export namespace AtrilDocument {
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
      */
-    function file_compress(uri: string, type: CompressionType | null): string;
+    function file_compress(uri: string, type: CompressionType): string;
     /**
      * Note: on unknown MIME types, this may return NULL without `error`
      * being filled in.
@@ -383,7 +383,7 @@ export namespace AtrilDocument {
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
      */
-    function file_uncompress(uri: string, type: CompressionType | null): string;
+    function file_uncompress(uri: string, type: CompressionType): string;
     function get_locale_dir(): string;
     /**
      * Initializes the atril document library.
@@ -1081,7 +1081,7 @@ export namespace AtrilDocument {
         /**
          * @param icon
          */
-        set_icon(icon: AnnotationTextIcon | null): boolean;
+        set_icon(icon: AnnotationTextIcon): boolean;
         /**
          * @param is_open
          */
@@ -3421,7 +3421,7 @@ export namespace AtrilDocument {
          * @param annot
          * @param mask
          */
-        save_annotation(annot: Annotation, mask: AnnotationsSaveMask | null): void;
+        save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
     }
 
     export const DocumentAnnotations: DocumentAnnotationsNamespace & {
@@ -4344,13 +4344,13 @@ export namespace AtrilDocument {
          * @param style
          * @param points
          */
-        get_selected_text(page: Page, style: SelectionStyle | null, points: Rectangle): string;
+        get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         /**
          * @param rc
          * @param style
          * @param points
          */
-        get_selection_region(rc: RenderContext, style: SelectionStyle | null, points: Rectangle): cairo.Region;
+        get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
         /**
          * @param rc
          * @param surface
@@ -4365,7 +4365,7 @@ export namespace AtrilDocument {
             surface: cairo.Surface,
             points: Rectangle,
             old_points: Rectangle,
-            style: SelectionStyle | null,
+            style: SelectionStyle,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;

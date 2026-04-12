@@ -205,7 +205,7 @@ export namespace Wp {
      * @returns A newly allocated string with the absolute, canonicalized file path, or NULL if the file was not found.
      * @since 0.5.0
      */
-    function base_dirs_find_file(flags: BaseDirsFlags | null, subdir: string | null, filename: string): string | null;
+    function base_dirs_find_file(flags: BaseDirsFlags, subdir: string | null, filename: string): string | null;
     /**
      * Creates an iterator to iterate over all files that match `suffix` within the `subdir` of the directories specified in `flags`.
      *
@@ -220,7 +220,7 @@ export namespace Wp {
      * @since 0.5.0
      */
     function base_dirs_new_files_iterator(
-        flags: BaseDirsFlags | null,
+        flags: BaseDirsFlags,
         subdir?: string | null,
         suffix?: string | null,
     ): Iterator;
@@ -244,7 +244,7 @@ export namespace Wp {
      * `flags` can modify which parts are initialized, in cases where you want to handle part of this initialization externally.
      * @param flags initialization flags
      */
-    function init(flags: InitFlags | null): void;
+    function init(flags: InitFlags): void;
     /**
      * Matches the given properties against a set of rules described in JSON and calls the given callback to perform actions on a successful match.
      *
@@ -291,7 +291,7 @@ export namespace Wp {
      * @param user_data
      */
     function log_writer_default(
-        log_level: GLib.LogLevelFlags | null,
+        log_level: GLib.LogLevelFlags,
         fields: GLib.LogField,
         n_fields: bigint | number,
         user_data?: any | null,
@@ -2847,7 +2847,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2888,7 +2888,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6355,20 +6355,20 @@ export namespace Wp {
          * @param callback the callback triggered when the settings change.
          * @returns the subscription ID (always greater than 0 for successful subscriptions)
          */
-        subscribe(pattern: string, callback: SettingsChangedCallback): never;
+        subscribe(pattern: string, callback: SettingsChangedCallback): number;
         /**
          * Subscribes callback for a given setting pattern(a glob-style pattern matched using g_pattern_match_simple), this allows clients to look for any changes made in settings through metadata.
          * @param pattern name of the pattern to match the settings with
          * @param closure a GAsyncReadyCallback wrapped in a GClosure
          * @returns the subscription ID (always greater than 0 for success)
          */
-        subscribe_closure(pattern: string, closure?: GObject.Closure | null): never;
+        subscribe_closure(pattern: string, closure?: GObject.Closure | null): number;
         /**
          * Unsubscribes callback for a given subscription_id.
          * @param subscription_id identifies the callback
          * @returns TRUE if success, FALSE otherwise
          */
-        unsubscribe(subscription_id: never): boolean;
+        unsubscribe(subscription_id: bigint | number): boolean;
     }
 
     namespace SiFactory {
@@ -7144,7 +7144,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7185,7 +7185,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7900,12 +7900,7 @@ export namespace Wp {
          * @param verb the operation that is performed to check the constraint
          * @param value the value to check for
          */
-        add_constraint(
-            type: ConstraintType | null,
-            subject: string,
-            verb: ConstraintVerb | null,
-            value?: GLib.Variant | null,
-        ): void;
+        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value?: GLib.Variant | null): void;
         /**
          * Finds all the defined constraint values for a subject in `self`.
          *
@@ -7915,7 +7910,7 @@ export namespace Wp {
          * @param subject the subject that the constraint applies to
          * @returns the defined constraint values for this object interest.
          */
-        find_defined_constraint_values(type: ConstraintType | null, subject: string): GLib.Variant[] | null;
+        find_defined_constraint_values(type: ConstraintType, subject: string): GLib.Variant[] | null;
         /**
          * Checks if the specified `object` matches the type and all the constraints that are described in `self`.
          *
@@ -7941,7 +7936,7 @@ export namespace Wp {
          * @returns flags that indicate which components of the interest match. WP_INTEREST_MATCH_ALL indicates a fully successful match; any other combination indicates a failure on the component(s) that do not appear on the flag set
          */
         matches_full(
-            flags: InterestMatchFlags | null,
+            flags: InterestMatchFlags,
             object_type: GObject.GType,
             object?: GObject.Object | null,
             pw_props?: Properties | null,

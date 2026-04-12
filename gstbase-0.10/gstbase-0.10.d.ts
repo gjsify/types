@@ -39,11 +39,7 @@ export namespace GstBase {
      * @param buf
      * @param prob
      */
-    function gst_type_find_helper_for_buffer(
-        obj: Gst.Object,
-        buf: Gst.Buffer,
-        prob: Gst.TypeFindProbability | null,
-    ): Gst.Caps;
+    function gst_type_find_helper_for_buffer(obj: Gst.Object, buf: Gst.Buffer, prob: Gst.TypeFindProbability): Gst.Caps;
     /**
      * @param obj
      * @param extension
@@ -59,7 +55,7 @@ export namespace GstBase {
         obj: Gst.Object,
         func: Gst.TypeFindHelperGetRangeFunction,
         size: number,
-        prob: Gst.TypeFindProbability | null,
+        prob: Gst.TypeFindProbability,
     ): Gst.Caps;
     /**
      * @param obj
@@ -73,7 +69,7 @@ export namespace GstBase {
         func: Gst.TypeFindHelperGetRangeFunction,
         size: number,
         extension: string,
-        prob: Gst.TypeFindProbability | null,
+        prob: Gst.TypeFindProbability,
     ): Gst.Caps;
     /**
      * @gir-type Callback
@@ -903,7 +899,7 @@ export namespace GstBase {
         /**
          * @param format
          */
-        set_format(format: Gst.Format | null): void;
+        set_format(format: Gst.Format): void;
         /**
          * @param min_latency
          * @param max_latency

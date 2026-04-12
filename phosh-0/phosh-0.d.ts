@@ -1186,7 +1186,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1227,7 +1227,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2312,7 +2312,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2353,7 +2353,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3008,7 +3008,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3049,7 +3049,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3644,13 +3644,13 @@ export namespace Phosh {
          * also be the page that is shown when the keypad idle timer is reached.
          * @param page
          */
-        set_default_page(page: LockscreenPage | null): void;
+        set_default_page(page: LockscreenPage): void;
         /**
          * Scrolls to a specific page in the carousel. The state of the deck
          * isn't changed.
          * @param page
          */
-        set_page(page: LockscreenPage | null): void;
+        set_page(page: LockscreenPage): void;
         /**
          * Sets the text displayed in the unlock status label.
          * @param status The status text
@@ -3706,7 +3706,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3747,7 +3747,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4207,7 +4207,7 @@ export namespace Phosh {
         /**
          * @param page
          */
-        set_page(page: LockscreenPage | null): boolean;
+        set_page(page: LockscreenPage): boolean;
     }
 
     namespace QuickSetting {
@@ -4526,7 +4526,7 @@ export namespace Phosh {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4571,7 +4571,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4612,7 +4612,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5679,7 +5679,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5720,7 +5720,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6825,7 +6825,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6866,7 +6866,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7439,7 +7439,7 @@ export namespace Phosh {
          * Set the size of status-icon.
          * @param size The size of icon
          */
-        set_icon_size(size: Gtk.IconSize | null): void;
+        set_icon_size(size: Gtk.IconSize): void;
         /**
          * @param info
          */
@@ -7492,7 +7492,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7533,7 +7533,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8120,7 +8120,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8161,7 +8161,7 @@ export namespace Phosh {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8653,7 +8653,7 @@ export namespace Phosh {
          */
         string_for_datetime(
             datetime: GLib.DateTime,
-            clock_format: GDesktopEnums.ClockFormat | null,
+            clock_format: GDesktopEnums.ClockFormat,
             show_full_date: boolean,
         ): string;
     }

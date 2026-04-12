@@ -691,12 +691,12 @@ export namespace GitgExt {
         /**
          * @param value
          */
-        set_message_type(value: Gtk.MessageType | null): void;
+        set_message_type(value: Gtk.MessageType): void;
         get_default_response(): Gtk.ResponseType;
         /**
          * @param value
          */
-        set_default_response(value: Gtk.ResponseType | null): void;
+        set_default_response(value: Gtk.ResponseType): void;
         get_default_is_destructive(): boolean;
         /**
          * @param value
@@ -1162,7 +1162,7 @@ export namespace GitgExt {
          * @param secondary_msg
          * @param type
          */
-        show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType | null): void;
+        show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void;
         /**
          * @param repository
          * @param hint
@@ -2027,7 +2027,7 @@ export namespace GitgExt {
         /**
          * @param value
          */
-        set_selectable_mode(value: SelectionMode | null): void;
+        set_selectable_mode(value: SelectionMode): void;
         get_selectable_available(): boolean;
         get_selectable_mode_tooltip(): string;
         get_action_widget(): Gtk.Widget | null;

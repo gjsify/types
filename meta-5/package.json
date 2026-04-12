@@ -1,6 +1,6 @@
 {
     "name": "@girs/meta-5",
-    "version": "3.34.5-4.0.0-rc.1",
+    "version": "3.34.5-4.0.0-rc.2",
     "description": "GJS TypeScript type definitions for Meta-5, generated from library version 3.34.5",
     "type": "module",
     "module": "meta-5.js",

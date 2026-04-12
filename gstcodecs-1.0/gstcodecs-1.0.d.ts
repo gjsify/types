@@ -1347,7 +1347,7 @@ export namespace GstCodecs {
          * @param latency_mode The required {@link GstCodecs.H264DpbBumpMode} for bumping.
          * @returns `true` if bumping is required
          */
-        needs_bump(to_insert: H264Picture, latency_mode: H264DpbBumpMode | null): boolean;
+        needs_bump(to_insert: H264Picture, latency_mode: H264DpbBumpMode): boolean;
         /**
          * @returns The number of referenced frames
          */

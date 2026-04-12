@@ -637,7 +637,7 @@ export namespace Notify {
          * Sets the urgency level of this notification.
          * @param urgency The urgency level.
          */
-        set_urgency(urgency: Urgency | null): void;
+        set_urgency(urgency: Urgency): void;
         /**
          * Tells the notification server to display the notification on the screen.
          * @returns `true` if successful. On error, this will return `false` and set   `error`.

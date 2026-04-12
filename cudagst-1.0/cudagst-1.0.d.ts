@@ -515,7 +515,7 @@ export namespace CudaGst {
     /**
      * @gir-type Alias
      */
-    type deviceptr = never;
+    type deviceptr = bigint | number;
     /**
      * @gir-type Alias
      */

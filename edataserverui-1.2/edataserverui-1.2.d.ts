@@ -56,7 +56,7 @@ export namespace EDataServerUI {
      * @returns A newly allocated string with text description  of `flags`. Free the returned pointer with `g_free()` when no longer needed.
      * @since 3.16
      */
-    function trust_prompt_describe_certificate_errors(flags: Gio.TlsCertificateFlags | null): string;
+    function trust_prompt_describe_certificate_errors(flags: Gio.TlsCertificateFlags): string;
     /**
      * Similar to `e_trust_prompt_run_modal()`, except it also manages all the necessary things
      * around the `source`<!-- -->'s SSL/TLS trust properties when it also contains `E_SOURCE_EXTENSION_WEBDAV`,
@@ -82,7 +82,7 @@ export namespace EDataServerUI {
         parent: Gtk.Window,
         source: EDataServer.Source,
         certificate_pem: string,
-        certificate_errors: Gio.TlsCertificateFlags | null,
+        certificate_errors: Gio.TlsCertificateFlags,
         error_text: string | null,
         allow_source_save: boolean,
         cancellable?: Gio.Cancellable | null,
@@ -113,7 +113,7 @@ export namespace EDataServerUI {
         parent: Gtk.Window,
         source: EDataServer.Source,
         certificate_pem: string,
-        certificate_errors: Gio.TlsCertificateFlags | null,
+        certificate_errors: Gio.TlsCertificateFlags,
         error_text: string | null,
         allow_source_save: boolean,
         cancellable: Gio.Cancellable | null,
@@ -145,7 +145,7 @@ export namespace EDataServerUI {
         parent: Gtk.Window,
         source: EDataServer.Source,
         certificate_pem: string,
-        certificate_errors: Gio.TlsCertificateFlags | null,
+        certificate_errors: Gio.TlsCertificateFlags,
         error_text: string | null,
         allow_source_save: boolean,
         cancellable?: Gio.Cancellable | null,
@@ -167,7 +167,7 @@ export namespace EDataServerUI {
     function trust_prompt_run_for_source_finish(
         source: EDataServer.Source,
         result: Gio.AsyncResult,
-        response: EDataServer.TrustPromptResponse | null,
+        response: EDataServer.TrustPromptResponse,
     ): boolean;
     /**
      * Runs modal (doesn't return until the dialog is closed) a trust prompt dialog,
@@ -197,7 +197,7 @@ export namespace EDataServerUI {
         source_display_name: string | null,
         host: string,
         certificate_pem: string,
-        certificate_errors: Gio.TlsCertificateFlags | null,
+        certificate_errors: Gio.TlsCertificateFlags,
         error_text?: string | null,
     ): EDataServer.TrustPromptResponse;
     /**
@@ -499,7 +499,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -540,7 +540,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1100,7 +1100,7 @@ export namespace EDataServerUI {
          */
         loop_prompt_sync(
             source: EDataServer.Source,
-            flags: CredentialsPrompterPromptFlags | null,
+            flags: CredentialsPrompterPromptFlags,
             func: CredentialsPrompterLoopPromptFunc,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -1131,7 +1131,7 @@ export namespace EDataServerUI {
         prompt(
             source: EDataServer.Source,
             error_text: string | null,
-            flags: CredentialsPrompterPromptFlags | null,
+            flags: CredentialsPrompterPromptFlags,
         ): globalThis.Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]>;
         /**
          * Asks the `prompter` to prompt for credentials, which are returned
@@ -1148,7 +1148,7 @@ export namespace EDataServerUI {
         prompt(
             source: EDataServer.Source,
             error_text: string | null,
-            flags: CredentialsPrompterPromptFlags | null,
+            flags: CredentialsPrompterPromptFlags,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
@@ -1166,7 +1166,7 @@ export namespace EDataServerUI {
         prompt(
             source: EDataServer.Source,
             error_text: string | null,
-            flags: CredentialsPrompterPromptFlags | null,
+            flags: CredentialsPrompterPromptFlags,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]> | void;
         /**
@@ -1294,7 +1294,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1335,7 +1335,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2206,7 +2206,7 @@ export namespace EDataServerUI {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2251,7 +2251,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2292,7 +2292,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2908,7 +2908,7 @@ export namespace EDataServerUI {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2953,7 +2953,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2994,7 +2994,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3561,7 +3561,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3602,7 +3602,7 @@ export namespace EDataServerUI {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

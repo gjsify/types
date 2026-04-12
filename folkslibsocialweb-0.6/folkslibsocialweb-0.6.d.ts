@@ -224,20 +224,17 @@ export namespace FolksLibsocialweb {
         /**
          * @param gender
          */
-        change_gender(gender: Folks.Gender | null): globalThis.Promise<void>;
+        change_gender(gender: Folks.Gender): globalThis.Promise<void>;
         /**
          * @param gender
          * @param _callback_
          */
-        change_gender(gender: Folks.Gender | null, _callback_: Gio.AsyncReadyCallback<this>): void;
+        change_gender(gender: Folks.Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
         /**
          * @param gender
          * @param _callback_
          */
-        change_gender(
-            gender: Folks.Gender | null,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_gender(gender: Folks.Gender, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
         /**
          * @param _res_
          */
@@ -246,7 +243,7 @@ export namespace FolksLibsocialweb {
         /**
          * @param value
          */
-        set_gender(value: Folks.Gender | null): void;
+        set_gender(value: Folks.Gender): void;
         /**
          * @param gender
          * @param _callback_
@@ -584,7 +581,7 @@ export namespace FolksLibsocialweb {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -625,7 +622,7 @@ export namespace FolksLibsocialweb {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

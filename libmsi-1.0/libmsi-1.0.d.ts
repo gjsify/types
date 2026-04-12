@@ -419,7 +419,7 @@ export namespace Libmsi {
          * @param info a {@link Libmsi.ColInfo} specifying the type of information to return
          * @returns a newly allocated {@link Libmsi.Record} containing informations or `null` on error.
          */
-        get_column_info(info: ColInfo | null): Record;
+        get_column_info(info: ColInfo): Record;
         /**
          * Call this to get more information on the last query error.
          */
@@ -644,12 +644,12 @@ export namespace Libmsi {
          * @param prop a {@link Libmsi.Property} to get
          * @returns the property value or 0 on failure
          */
-        get_filetime(prop: Property | null): number;
+        get_filetime(prop: Property): number;
         /**
          * @param prop a {@link Libmsi.Property} to get
          * @returns the property value or -1 on failure
          */
-        get_int(prop: Property | null): number;
+        get_int(prop: Property): number;
         /**
          * @returns a new {@link GLib.Array} with the list of set properties
          */
@@ -658,12 +658,12 @@ export namespace Libmsi {
          * @param prop a {@link Libmsi.Property} to get
          * @returns the property type associated for `prop`.
          */
-        get_property_type(prop: Property | null): PropertyType;
+        get_property_type(prop: Property): PropertyType;
         /**
          * @param prop a {@link Libmsi.Property} to get
          * @returns the property value or `null` on failure
          */
-        get_string(prop: Property | null): string;
+        get_string(prop: Property): string;
         /**
          * Save summary informations to the associated database.
          * @returns `true` on success
@@ -681,21 +681,21 @@ export namespace Libmsi {
          * @param value a value
          * @returns `true` on success
          */
-        set_filetime(prop: Property | null, value: bigint | number): boolean;
+        set_filetime(prop: Property, value: bigint | number): boolean;
         /**
          * Set integer property `prop`.
          * @param prop a {@link Libmsi.Property} to set
          * @param value a value
          * @returns `true` on success
          */
-        set_int(prop: Property | null, value: number): boolean;
+        set_int(prop: Property, value: number): boolean;
         /**
          * Set string property `prop`.
          * @param prop a {@link Libmsi.Property} to set
          * @param value a string value
          * @returns `true` on success
          */
-        set_string(prop: Property | null, value: string): boolean;
+        set_string(prop: Property, value: string): boolean;
     }
 
     /**

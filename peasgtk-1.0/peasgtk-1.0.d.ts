@@ -186,7 +186,7 @@ export namespace PeasGtk {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -231,7 +231,7 @@ export namespace PeasGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -272,7 +272,7 @@ export namespace PeasGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -918,7 +918,7 @@ export namespace PeasGtk {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -930,7 +930,7 @@ export namespace PeasGtk {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -984,7 +984,7 @@ export namespace PeasGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1025,7 +1025,7 @@ export namespace PeasGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

@@ -294,7 +294,7 @@ export namespace Zeitgeist {
      * @param month
      * @param year
      */
-    function timestamp_from_dmy(day: GLib.DateDay, month: GLib.DateMonth | null, year: GLib.DateYear): number;
+    function timestamp_from_dmy(day: GLib.DateDay, month: GLib.DateMonth, year: GLib.DateYear): number;
     /**
      * @param timestamp
      */
@@ -368,7 +368,7 @@ export namespace Zeitgeist {
     /**
      * @param result_type
      */
-    function result_type_is_sort_order_asc(result_type: ResultType | null): boolean;
+    function result_type_is_sort_order_asc(result_type: ResultType): boolean;
     /**
      * @param mimetype
      * @param interpretation_uri
@@ -660,7 +660,7 @@ export namespace Zeitgeist {
             event_templates: Event[],
             offset: number,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<ResultSet>;
         /**
@@ -679,7 +679,7 @@ export namespace Zeitgeist {
             event_templates: Event[],
             offset: number,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -699,7 +699,7 @@ export namespace Zeitgeist {
             event_templates: Event[],
             offset: number,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ResultSet> | void;
@@ -721,10 +721,10 @@ export namespace Zeitgeist {
             query: string,
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             offset: number,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[ResultSet, number[]]>;
         /**
@@ -742,10 +742,10 @@ export namespace Zeitgeist {
             query: string,
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             offset: number,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -764,10 +764,10 @@ export namespace Zeitgeist {
             query: string,
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             offset: number,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[ResultSet, number[]]> | void;
@@ -916,9 +916,9 @@ export namespace Zeitgeist {
         find_events(
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<ResultSet>;
         /**
@@ -933,9 +933,9 @@ export namespace Zeitgeist {
         find_events(
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -951,9 +951,9 @@ export namespace Zeitgeist {
         find_events(
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ResultSet> | void;
@@ -972,9 +972,9 @@ export namespace Zeitgeist {
         find_event_ids(
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<number[]>;
         /**
@@ -989,9 +989,9 @@ export namespace Zeitgeist {
         find_event_ids(
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1007,9 +1007,9 @@ export namespace Zeitgeist {
         find_event_ids(
             time_range: TimeRange,
             event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: ResultType | null,
+            result_type: ResultType,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number[]> | void;
@@ -1059,9 +1059,9 @@ export namespace Zeitgeist {
             time_range: TimeRange,
             event_templates: Event[],
             result_event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: RelevantResultType | null,
+            result_type: RelevantResultType,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<string[]>;
         /**
@@ -1078,9 +1078,9 @@ export namespace Zeitgeist {
             time_range: TimeRange,
             event_templates: Event[],
             result_event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: RelevantResultType | null,
+            result_type: RelevantResultType,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1098,9 +1098,9 @@ export namespace Zeitgeist {
             time_range: TimeRange,
             event_templates: Event[],
             result_event_templates: Event[],
-            storage_state: StorageState | null,
+            storage_state: StorageState,
             num_events: number,
-            result_type: RelevantResultType | null,
+            result_type: RelevantResultType,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
@@ -1399,7 +1399,7 @@ export namespace Zeitgeist {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1440,7 +1440,7 @@ export namespace Zeitgeist {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1896,7 +1896,7 @@ export namespace Zeitgeist {
         /**
          * @param err
          */
-        proxy_unavailable(err: Gio.IOErrorEnum | null): void;
+        proxy_unavailable(err: Gio.IOErrorEnum): void;
         process_queued_methods(): void;
         /**
          * @param pspec
@@ -2657,7 +2657,7 @@ export namespace Zeitgeist {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2698,7 +2698,7 @@ export namespace Zeitgeist {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

@@ -128,7 +128,7 @@ export namespace Gtk4LayerShell {
      * @param edge the edge to which the surface may or may not be anchored
      * @returns if this surface is anchored to the given edge.
      */
-    function get_anchor(window: Gtk.Window, edge: Edge | null): boolean;
+    function get_anchor(window: Gtk.Window, edge: Edge): boolean;
     /**
      * @param window A layer surface.
      * @returns the window's exclusive zone(which may have been set manually or automatically)
@@ -153,7 +153,7 @@ export namespace Gtk4LayerShell {
      * @param edge the margin edge to get
      * @returns the size of the margin for the given edge.
      */
-    function get_margin(window: Gtk.Window, edge: Edge | null): number;
+    function get_margin(window: Gtk.Window, edge: Edge): number;
     /**
      * @returns the micro/patch version number of the GTK Layer Shell library
      */
@@ -218,7 +218,7 @@ export namespace Gtk4LayerShell {
      * @param edge A {@link Gtk4LayerShell.Edge} this layer surface may be anchored to.
      * @param anchor_to_edge Whether or not to anchor this layer surface to `edge`.
      */
-    function set_anchor(window: Gtk.Window, edge: Edge | null, anchor_to_edge: boolean): void;
+    function set_anchor(window: Gtk.Window, edge: Edge, anchor_to_edge: boolean): void;
     /**
      * Has no effect unless the surface is anchored to an edge. Requests that the compositor
      * does not place other surfaces within the given exclusive zone of the anchored edge.
@@ -239,7 +239,7 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @param mode The type of keyboard interactivity requested.
      */
-    function set_keyboard_mode(window: Gtk.Window, mode: KeyboardMode | null): void;
+    function set_keyboard_mode(window: Gtk.Window, mode: KeyboardMode): void;
     /**
      * Set the "layer" on which the surface appears(controls if it is over top of or below other surfaces). The layer may
      * be changed on-the-fly in the current version of the layer shell protocol, but on compositors that only support an
@@ -249,7 +249,7 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @param layer The layer on which this surface appears.
      */
-    function set_layer(window: Gtk.Window, layer: Layer | null): void;
+    function set_layer(window: Gtk.Window, layer: Layer): void;
     /**
      * Set the margin for a specific `edge` of a `window`. Effects both surface's distance from
      * the edge and its exclusive zone size(if auto exclusive zone enabled).
@@ -259,7 +259,7 @@ export namespace Gtk4LayerShell {
      * @param edge The {@link Gtk4LayerShell.Edge} for which to set the margin.
      * @param margin_size The margin for `edge` to be set.
      */
-    function set_margin(window: Gtk.Window, edge: Edge | null, margin_size: number): void;
+    function set_margin(window: Gtk.Window, edge: Edge, margin_size: number): void;
     /**
      * Set the output for the window to be placed on, or `null` to let the compositor choose.
      * If the window is currently mapped, it will get remapped so the change can take effect.

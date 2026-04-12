@@ -828,7 +828,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -869,7 +869,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1617,7 +1617,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1658,7 +1658,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2597,7 +2597,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2638,7 +2638,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3283,7 +3283,7 @@ export namespace St {
          * Sets which mouse buttons `button` emits {@link St.Button.SignalSignatures.clicked | St.Button::clicked} for.
          * @param mask the mask of mouse buttons that `button` responds to
          */
-        set_button_mask(mask: ButtonMask | null): void;
+        set_button_mask(mask: ButtonMask): void;
         /**
          * Set the {@link St.Button.checked} property of the button. This is only really useful
          * if the button has {@link St.Button.toggle_mode} property set to `true`.
@@ -3523,7 +3523,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3564,7 +3564,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3999,20 +3999,20 @@ export namespace St {
          * @param mimetype The mimetype to get content for
          * @param callback function to be called when the type is retrieved
          */
-        get_content(type: ClipboardType | null, mimetype: string, callback: ClipboardContentCallbackFunc): void;
+        get_content(type: ClipboardType, mimetype: string, callback: ClipboardContentCallbackFunc): void;
         /**
          * Gets a list of the mimetypes supported by the default {@link St.Clipboard}.
          * @param type
          * @returns the supported mimetypes
          */
-        get_mimetypes(type: ClipboardType | null): string[];
+        get_mimetypes(type: ClipboardType): string[];
         /**
          * Request the data from the clipboard in text form. `callback` is executed
          * when the data is retrieved.
          * @param type The type of clipboard data you want
          * @param callback function to be called when the text is retrieved
          */
-        get_text(type: ClipboardType | null, callback: ClipboardCallbackFunc): void;
+        get_text(type: ClipboardType, callback: ClipboardCallbackFunc): void;
         /**
          * Sets the clipboard content to `bytes`.
          *
@@ -4021,13 +4021,13 @@ export namespace St {
          * @param mimetype content mimetype
          * @param bytes content data
          */
-        set_content(type: ClipboardType | null, mimetype: string, bytes: GLib.Bytes | Uint8Array): void;
+        set_content(type: ClipboardType, mimetype: string, bytes: GLib.Bytes | Uint8Array): void;
         /**
          * Sets text as the current contents of the clipboard.
          * @param type The type of clipboard that you want to set
          * @param text text to copy to the clipboard
          */
-        set_text(type: ClipboardType | null, text: string): void;
+        set_text(type: ClipboardType, text: string): void;
     }
 
     namespace DrawingArea {
@@ -4438,7 +4438,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4479,7 +4479,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5190,14 +5190,14 @@ export namespace St {
          * allows input methods to fine-tune their behaviour.
          * @param hints the hints
          */
-        set_input_hints(hints: Clutter.InputContentHintFlags | null): void;
+        set_input_hints(hints: Clutter.InputContentHintFlags): void;
         /**
          * Sets the {@link St.Entry.input_purpose} property which
          * can be used by on-screen keyboards and other input
          * methods to adjust their behaviour.
          * @param purpose the purpose
          */
-        set_input_purpose(purpose: Clutter.InputContentPurpose | null): void;
+        set_input_purpose(purpose: Clutter.InputContentPurpose): void;
         /**
          * Set the primary icon of the entry to `icon`.
          * @param icon a {@link Clutter.Actor}
@@ -5428,7 +5428,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5469,7 +5469,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6226,7 +6226,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6267,7 +6267,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7123,7 +7123,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7164,7 +7164,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7860,7 +7860,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} object containing information about the icon, or `null` if the icon wasn’t found.
          */
-        choose_icon(icon_names: string[], size: number, flags: IconLookupFlags | null): IconInfo | null;
+        choose_icon(icon_names: string[], size: number, flags: IconLookupFlags): IconInfo | null;
         /**
          * Looks up a named icon for a particular window scale and returns
          * a {@link St.IconInfo} containing information such as the filename of the
@@ -7881,7 +7881,7 @@ export namespace St {
             icon_names: string[],
             size: number,
             scale: number,
-            flags: IconLookupFlags | null,
+            flags: IconLookupFlags,
         ): IconInfo | null;
         /**
          * Returns an array of integers describing the sizes at which
@@ -7942,7 +7942,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon. Use `g_object_unref()` to release     your reference to the icon. `null` if the icon isn’t found.
          */
-        load_icon(icon_name: string, size: number, flags: IconLookupFlags | null): GdkPixbuf.Pixbuf | null;
+        load_icon(icon_name: string, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null;
         /**
          * Looks up an icon in an icon theme for a particular window scale,
          * scales it to the given size and renders it into a pixbuf. This is a
@@ -7967,7 +7967,7 @@ export namespace St {
             icon_name: string,
             size: number,
             scale: number,
-            flags: IconLookupFlags | null,
+            flags: IconLookupFlags,
         ): GdkPixbuf.Pixbuf | null;
         /**
          * Looks up an icon and returns a {@link St.IconInfo} containing information
@@ -7984,7 +7984,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} containing     information about the icon, or `null` if the icon wasn’t     found. Unref with `g_object_unref()`
          */
-        lookup_by_gicon(icon: Gio.Icon, size: number, flags: IconLookupFlags | null): IconInfo | null;
+        lookup_by_gicon(icon: Gio.Icon, size: number, flags: IconLookupFlags): IconInfo | null;
         /**
          * Looks up an icon and returns a {@link St.IconInfo} containing information
          * such as the filename of the icon. The icon can then be rendered into
@@ -7995,12 +7995,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} containing     information about the icon, or `null` if the icon wasn’t     found. Unref with `g_object_unref()`
          */
-        lookup_by_gicon_for_scale(
-            icon: Gio.Icon,
-            size: number,
-            scale: number,
-            flags: IconLookupFlags | null,
-        ): IconInfo | null;
+        lookup_by_gicon_for_scale(icon: Gio.Icon, size: number, scale: number, flags: IconLookupFlags): IconInfo | null;
         /**
          * Looks up a named icon and returns a {@link St.IconInfo} containing
          * information such as the filename of the icon. The icon
@@ -8018,7 +8013,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} object     containing information about the icon, or `null` if the     icon wasn’t found.
          */
-        lookup_icon(icon_name: string, size: number, flags: IconLookupFlags | null): IconInfo | null;
+        lookup_icon(icon_name: string, size: number, flags: IconLookupFlags): IconInfo | null;
         /**
          * Looks up a named icon for a particular window scale and returns a
          * {@link St.IconInfo} containing information such as the filename of the
@@ -8031,12 +8026,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} object     containing information about the icon, or `null` if the     icon wasn’t found.
          */
-        lookup_icon_for_scale(
-            icon_name: string,
-            size: number,
-            scale: number,
-            flags: IconLookupFlags | null,
-        ): IconInfo | null;
+        lookup_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags): IconInfo | null;
         /**
          * Prepends a directory to the search path.
          * See `st_icon_theme_set_search_path()`.
@@ -8419,7 +8409,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8460,7 +8450,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9235,7 +9225,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9276,7 +9266,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10063,7 +10053,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10104,7 +10094,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10882,7 +10872,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10923,7 +10913,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11583,7 +11573,7 @@ export namespace St {
          * @param hscroll Whether to enable horizontal scrolling
          * @param vscroll Whether to enable vertical scrolling
          */
-        set_policy(hscroll: PolicyType | null, vscroll: PolicyType | null): void;
+        set_policy(hscroll: PolicyType, vscroll: PolicyType): void;
         /**
          * Set the step increment of the vertical plane to `row_size`.
          * @param row_size vertical step increment
@@ -11809,7 +11799,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11850,7 +11840,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13102,7 +13092,7 @@ export namespace St {
          * Gets the color of `node`'s border on `side`
          * @param side a {@link St.Side}
          */
-        get_border_color(side: Side | null): Clutter.Color;
+        get_border_color(side: Side): Clutter.Color;
         /**
          * Gets the value for the border-image style property
          * @returns the border image, or `null`   if there is no border image.
@@ -13113,13 +13103,13 @@ export namespace St {
          * @param corner a {@link St.Corner}
          * @returns the border radius in physical pixels
          */
-        get_border_radius(corner: Corner | null): number;
+        get_border_radius(corner: Corner): number;
         /**
          * Get the border width for `node` on `side`, in physical pixels.
          * @param side a {@link St.Corner}
          * @returns the border width in physical pixels
          */
-        get_border_width(side: Side | null): number;
+        get_border_width(side: Side): number;
         /**
          * Gets the value for the box-shadow style property
          * @returns the node's shadow, or `null`   if node has no shadow
@@ -13237,7 +13227,7 @@ export namespace St {
          * @param side a {@link St.Side}
          * @returns the margin size in physical pixels
          */
-        get_margin(side: Side | null): number;
+        get_margin(side: Side): number;
         /**
          * Get the maximum height for `node`, in physical pixels.
          * @returns the maximum height in physical pixels
@@ -13273,7 +13263,7 @@ export namespace St {
          * @param side a {@link St.Side}
          * @returns the padding size in physical pixels
          */
-        get_padding(side: Side | null): number;
+        get_padding(side: Side): number;
         /**
          * Gets the box used to paint the actor, including the area occupied
          * by properties which paint outside the actor's assigned allocation.
@@ -13992,7 +13982,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -14033,7 +14023,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14716,7 +14706,7 @@ export namespace St {
          * the toggled state).
          * @param state {@link Atk.StateType} state to add
          */
-        add_accessible_state(state: Atk.StateType | null): void;
+        add_accessible_state(state: Atk.StateType): void;
         /**
          * Adds `style_class` to `actor`'s style class name list, if it is not
          * already present.
@@ -14849,7 +14839,7 @@ export namespace St {
          * @param wrap_around whether focus should wrap around
          * @returns `true` if `clutter_actor_grab_key_focus()` has been called on an actor. `false` if not.
          */
-        navigate_focus(from: Clutter.Actor | null, direction: DirectionType | null, wrap_around: boolean): boolean;
+        navigate_focus(from: Clutter.Actor | null, direction: DirectionType, wrap_around: boolean): boolean;
         /**
          * Paint the background of the widget. This is meant to be called by
          * subclasses of StWidget that need to paint the background without
@@ -14874,7 +14864,7 @@ export namespace St {
          * `widget`. See `st_widget_add_accessible_state()` for more information.
          * @param state {@link Atk.State} state to remove
          */
-        remove_accessible_state(state: Atk.StateType | null): void;
+        remove_accessible_state(state: Atk.StateType): void;
         /**
          * Removes `style_class` from `actor`'s style class name, if it is
          * present.
@@ -14933,7 +14923,7 @@ export namespace St {
          * and the accessible's default role will be used instead.
          * @param role The role to use
          */
-        set_accessible_role(role: Atk.Role | null): void;
+        set_accessible_role(role: Atk.Role): void;
         /**
          * Marks `widget` as being able to receive keyboard focus via
          * keyboard navigation.
@@ -15462,7 +15452,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -15503,7 +15493,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16138,7 +16128,7 @@ export namespace St {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
-        contains(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -16153,7 +16143,7 @@ export namespace St {
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_extents(coord_type: Atk.CoordType | null): [number, number, number, number];
+        get_extents(coord_type: Atk.CoordType): [number, number, number, number];
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
@@ -16173,7 +16163,7 @@ export namespace St {
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_position(coord_type: Atk.CoordType | null): [number, number];
+        get_position(coord_type: Atk.CoordType): [number, number];
         /**
          * Gets the size of the `component` in terms of width and height.
          *
@@ -16194,7 +16184,7 @@ export namespace St {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType | null): Atk.Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -16211,7 +16201,7 @@ export namespace St {
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
          */
-        scroll_to(type: Atk.ScrollType | null): boolean;
+        scroll_to(type: Atk.ScrollType): boolean;
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -16220,7 +16210,7 @@ export namespace St {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_to_point(coords: Atk.CoordType | null, x: number, y: number): boolean;
+        scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -16230,7 +16220,7 @@ export namespace St {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` whether the extents were set or not
          */
-        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType | null): boolean;
+        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
         /**
          * Sets the position of `component`.
          *
@@ -16241,7 +16231,7 @@ export namespace St {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
          * @returns `true` or `false` whether or not the position was set or not
          */
-        set_position(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -16424,7 +16414,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -16465,7 +16455,7 @@ export namespace St {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

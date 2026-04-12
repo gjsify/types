@@ -923,7 +923,7 @@ export namespace Msg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -964,7 +964,7 @@ export namespace Msg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1438,7 +1438,7 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -1555,7 +1555,7 @@ export namespace Msg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1596,7 +1596,7 @@ export namespace Msg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2190,7 +2190,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Msg.MailFolder}
          */
-        get_mail_folder(type: MessageMailFolderType | null, cancellable?: Gio.Cancellable | null): MailFolder;
+        get_mail_folder(type: MessageMailFolderType, cancellable?: Gio.Cancellable | null): MailFolder;
         /**
          * Get all folders for given service
          * @param cancellable a {@link Gio.Cancellable}
@@ -2392,7 +2392,7 @@ export namespace Msg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2433,7 +2433,7 @@ export namespace Msg {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

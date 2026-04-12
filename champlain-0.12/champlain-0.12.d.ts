@@ -493,7 +493,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -534,7 +534,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1146,7 +1146,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1187,7 +1187,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2599,7 +2599,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2640,7 +2640,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3407,7 +3407,7 @@ export namespace Champlain {
          * Sets the label's text alignment.
          * @param alignment The label's alignment
          */
-        set_alignment(alignment: Pango.Alignment | null): void;
+        set_alignment(alignment: Pango.Alignment): void;
         /**
          * Sets the label's text attributes.
          * @param list The label's text attributes.
@@ -3432,7 +3432,7 @@ export namespace Champlain {
          * Sets the label's text ellipsize mode.
          * @param mode The label's ellipsize mode.
          */
-        set_ellipsize(mode: Pango.EllipsizeMode | null): void;
+        set_ellipsize(mode: Pango.EllipsizeMode): void;
         /**
          * Sets the label's font name such as "Sans 12".
          * @param font_name The label's font name or NULL to reset the font to the default             value.
@@ -3472,7 +3472,7 @@ export namespace Champlain {
          * Sets the label's text wrap mode.
          * @param wrap_mode The label's wrap mode.
          */
-        set_wrap_mode(wrap_mode: Pango.WrapMode | null): void;
+        set_wrap_mode(wrap_mode: Pango.WrapMode): void;
         /**
          * The latitude coordonate
          * @since 0.10
@@ -3564,7 +3564,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3605,7 +3605,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4660,7 +4660,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4701,7 +4701,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5273,7 +5273,7 @@ export namespace Champlain {
          * Set the license's text alignment.
          * @param alignment The license's text alignment
          */
-        set_alignment(alignment: Pango.Alignment | null): void;
+        set_alignment(alignment: Pango.Alignment): void;
         /**
          * Show the additional license text on the map view.  The text will preceed the
          * map's licence when displayed. Use "\n" to separate the lines.
@@ -5788,7 +5788,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5829,7 +5829,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7695,7 +7695,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7736,7 +7736,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8337,7 +8337,7 @@ export namespace Champlain {
          * CHAMPLAIN_SELECTION_SINGLE will clear all previously selected markers.
          * @param mode a {@link Champlain.SelectionMode} value
          */
-        set_selection_mode(mode: SelectionMode | null): void;
+        set_selection_mode(mode: SelectionMode): void;
         /**
          * Shows all markers in the layer
          */
@@ -8418,7 +8418,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8459,7 +8459,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9793,7 +9793,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9834,7 +9834,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10518,7 +10518,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10559,7 +10559,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11226,7 +11226,7 @@ export namespace Champlain {
          * Sets the scale unit.
          * @param unit a {@link Champlain.Unit}
          */
-        set_unit(unit: Unit | null): void;
+        set_unit(unit: Unit): void;
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
          *
@@ -11735,7 +11735,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11776,7 +11776,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12484,7 +12484,7 @@ export namespace Champlain {
          * Sets the tile's {@link Champlain.State}
          * @param state a {@link Champlain.State}
          */
-        set_state(state: State | null): void;
+        set_state(state: State): void;
         /**
          * Sets the tile's x position
          * @param x the position
@@ -13036,7 +13036,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -13077,7 +13077,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13763,7 +13763,7 @@ export namespace Champlain {
          * Sets the tile source's projection.
          * @param projection a {@link Champlain.MapProjection}
          */
-        set_projection(projection: MapProjection | null): void;
+        set_projection(projection: MapProjection): void;
         /**
          * Sets the tile source's tile size.
          * @param tile_size the tile size
@@ -15301,11 +15301,7 @@ export namespace Champlain {
          * @param x_align x alignment
          * @param y_align y alignment
          */
-        bin_layout_add(
-            child: Clutter.Actor,
-            x_align: Clutter.BinAlignment | null,
-            y_align: Clutter.BinAlignment | null,
-        ): void;
+        bin_layout_add(child: Clutter.Actor, x_align: Clutter.BinAlignment, y_align: Clutter.BinAlignment): void;
         /**
          * Centers the map on these coordinates.
          * @param latitude the longitude to center the map at
@@ -16078,7 +16074,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -16119,7 +16115,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17208,7 +17204,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -17249,7 +17245,7 @@ export namespace Champlain {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

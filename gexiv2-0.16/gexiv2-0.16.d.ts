@@ -202,7 +202,7 @@ export namespace GExiv2 {
      * Messages below this level will not be logged.
      * @param level The {@link GExiv2.LogLevel} gexiv2 should respect.
      */
-    function log_set_level(level: LogLevel | null): void;
+    function log_set_level(level: LogLevel): void;
     /**
      * Make GExiv2 use GLib's logging mechanism.
      *
@@ -525,7 +525,7 @@ export namespace GExiv2 {
          * @param padding The padding before the closing `<?xpacket>` tag
          * @returns Encode the XMP packet and return as a `null`-terminated string.
          */
-        generate_xmp_packet(xmp_format_flags: XmpFormatFlags | null, padding: number): string | null;
+        generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
         /**
          * A composite accessor that uses the first available metadata field from a list of well-known
          * locations to find the photo's comment (or description).
@@ -556,7 +556,7 @@ export namespace GExiv2 {
          * @param byte_order Whether to export the data in little or big endian format
          * @returns The content of the EXIF data or `null` on error
          */
-        get_exif_data(byte_order: ByteOrder | null): GLib.Bytes | null;
+        get_exif_data(byte_order: ByteOrder): GLib.Bytes | null;
         /**
          * Fetch EXIF `tag` represented by a fraction. `nom` will contain the numerator,
          * `den` the denominator of the fraction on successful return.
@@ -861,7 +861,7 @@ export namespace GExiv2 {
          * The orientation must be valid and cannot be {@link GExiv2.Orientation.UNSPECIFIED}.
          * @param orientation The new {@link GExiv2.Orientation} for the image.
          */
-        set_orientation(orientation: Orientation | null): void;
+        set_orientation(orientation: Orientation): void;
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag name
@@ -900,7 +900,7 @@ export namespace GExiv2 {
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
          */
-        set_xmp_tag_struct(tag: string, type: StructureType | null): boolean;
+        set_xmp_tag_struct(tag: string, type: StructureType): boolean;
         /**
          * Check whether a tag supports multiple values.
          *
@@ -935,7 +935,7 @@ export namespace GExiv2 {
          * @param padding The padding before the closing `<?xpacket>` tag
          * @returns Encode the XMP packet and return as a `null`-terminated string.
          */
-        try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags | null, padding: number): string | null;
+        try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
         /**
          * A composite accessor that uses the first available metadata field from a list of well-known
          * locations to find the photo's comment (or description).
@@ -1134,7 +1134,7 @@ export namespace GExiv2 {
          * The orientation must be valid and cannot be [enum@GExiv2.Orientation.UNSPECIFIED.
          * @param orientation The new {@link GExiv2.Orientation} for the image.
          */
-        try_set_orientation(orientation: Orientation | null): void;
+        try_set_orientation(orientation: Orientation): void;
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag name
@@ -1171,7 +1171,7 @@ export namespace GExiv2 {
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
          */
-        try_set_xmp_tag_struct(tag: string, type: StructureType | null): boolean;
+        try_set_xmp_tag_struct(tag: string, type: StructureType): boolean;
         /**
          * Check whether a tag supports multiple values.
          *

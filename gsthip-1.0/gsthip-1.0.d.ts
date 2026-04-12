@@ -66,7 +66,7 @@ export namespace GstHip {
      */
     function hip_ensure_element_data(
         element: Gst.Element,
-        vendor: HipVendor | null,
+        vendor: HipVendor,
         device_id: number,
         device: HipDevice,
     ): [boolean, HipDevice];
@@ -94,7 +94,7 @@ export namespace GstHip {
     function hip_handle_set_context(
         element: Gst.Element,
         context: Gst.Context,
-        vendor: HipVendor | null,
+        vendor: HipVendor,
         device_id: number,
         device: HipDevice,
     ): [boolean, HipDevice];
@@ -104,7 +104,7 @@ export namespace GstHip {
      * @returns `true` if succeeded
      * @since 1.28
      */
-    function hip_load_library(vendor: HipVendor | null): boolean;
+    function hip_load_library(vendor: HipVendor): boolean;
     /**
      * Compiles `source` with given compile options
      * @param device a {@link GstHip.HipDevice}
@@ -121,7 +121,7 @@ export namespace GstHip {
      * @returns `true` if succeeded
      * @since 1.28
      */
-    function hip_rtc_load_library(vendor: HipVendor | null): boolean;
+    function hip_rtc_load_library(vendor: HipVendor): boolean;
     /**
      * @param mem a {@link Gst.Memory}
      * @returns `true` if `mem` is a {@link GstHip.HipMemory}

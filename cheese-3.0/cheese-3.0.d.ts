@@ -600,7 +600,7 @@ export namespace Cheese {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -641,7 +641,7 @@ export namespace Cheese {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1457,7 +1457,7 @@ export namespace Cheese {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1498,7 +1498,7 @@ export namespace Cheese {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2061,7 +2061,7 @@ export namespace Cheese {
          * @param mode the type of media to create a filename for
          * @returns a new filename
          */
-        get_new_media_filename(mode: MediaMode | null): string;
+        get_new_media_filename(mode: MediaMode): string;
         /**
          * Get the path where Cheese photo files are stored.
          * @returns the Cheese photo path

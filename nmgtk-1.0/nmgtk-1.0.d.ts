@@ -120,7 +120,7 @@ export namespace NMGtk {
      */
     function utils_setup_password_storage(
         passwd_entry: Gtk.Widget,
-        initial_flags: NetworkManager.SettingSecretFlags | null,
+        initial_flags: NetworkManager.SettingSecretFlags,
         setting: NetworkManager.Setting,
         password_flags_name: string,
         with_not_required: boolean,
@@ -136,7 +136,7 @@ export namespace NMGtk {
      */
     function utils_update_password_storage(
         passwd_entry: Gtk.Widget,
-        secret_flags: NetworkManager.SettingSecretFlags | null,
+        secret_flags: NetworkManager.SettingSecretFlags,
         setting: NetworkManager.Setting,
         password_flags_name: string,
     ): void;
@@ -609,7 +609,7 @@ export namespace NMGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -650,7 +650,7 @@ export namespace NMGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1242,7 +1242,7 @@ export namespace NMGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1283,7 +1283,7 @@ export namespace NMGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1852,7 +1852,7 @@ export namespace NMGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1893,7 +1893,7 @@ export namespace NMGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

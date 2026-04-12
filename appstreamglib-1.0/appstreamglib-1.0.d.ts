@@ -1661,7 +1661,7 @@ export namespace AppStreamGlib {
      * @returns string version of `id_kind`
      * @since 0.1.0
      */
-    function id_kind_to_string(id_kind: IdKind | null): string;
+    function id_kind_to_string(id_kind: IdKind): string;
     /**
      * @returns An error quark.
      * @since 0.3.7
@@ -1687,7 +1687,7 @@ export namespace AppStreamGlib {
      * @returns `true` for success
      * @since 0.3.5
      */
-    function inf_load_data(keyfile: GLib.KeyFile, data: string, flags: InfLoadFlags | null): boolean;
+    function inf_load_data(keyfile: GLib.KeyFile, data: string, flags: InfLoadFlags): boolean;
     /**
      * Repairs an .inf file and opens it as a keyfile.
      * @param keyfile a {@link GLib.KeyFile}
@@ -1696,7 +1696,7 @@ export namespace AppStreamGlib {
      * @returns `true` for success
      * @since 0.3.5
      */
-    function inf_load_file(keyfile: GLib.KeyFile, filename: string, flags: InfLoadFlags | null): boolean;
+    function inf_load_file(keyfile: GLib.KeyFile, filename: string, flags: InfLoadFlags): boolean;
     /**
      * Converts the text representation to an enumerated value.
      * @param kudo_kind the string.
@@ -1710,7 +1710,7 @@ export namespace AppStreamGlib {
      * @returns string version of `kudo_kind`
      * @since 0.2.2
      */
-    function kudo_kind_to_string(kudo_kind: KudoKind | null): string;
+    function kudo_kind_to_string(kudo_kind: KudoKind): string;
     /**
      * Converts an XML description into a printable form.
      * @param markup the text to copy.
@@ -1718,7 +1718,7 @@ export namespace AppStreamGlib {
      * @returns a newly allocated `null` terminated string
      * @since 0.3.5
      */
-    function markup_convert(markup: string, format: MarkupConvertFormat | null): string;
+    function markup_convert(markup: string, format: MarkupConvertFormat): string;
     /**
      * Converts an XML description into a printable form.
      * @param markup the text to copy.
@@ -1727,11 +1727,7 @@ export namespace AppStreamGlib {
      * @returns a newly allocated `null` terminated string
      * @since 0.3.5
      */
-    function markup_convert_full(
-        markup: string,
-        format: MarkupConvertFormat | null,
-        flags: MarkupConvertFlag | null,
-    ): string;
+    function markup_convert_full(markup: string, format: MarkupConvertFormat, flags: MarkupConvertFlag): string;
     /**
      * Converts an XML description into a printable form.
      * @param markup the text to copy.
@@ -1746,7 +1742,7 @@ export namespace AppStreamGlib {
      * @returns appstream markup, or `null` in event of an error
      * @since 0.5.11
      */
-    function markup_import(text: string, format: MarkupConvertFormat | null): string;
+    function markup_import(text: string, format: MarkupConvertFormat): string;
     /**
      * Splits up a long line into an array of smaller strings, each being no longer
      * than `line_len`. Words are not split.
@@ -1879,7 +1875,7 @@ export namespace AppStreamGlib {
         name: string,
         attr_key: string,
         hash: { [key: string]: any } | GLib.HashTable<any, any>,
-        insert_flags: NodeInsertFlags | null,
+        insert_flags: NodeInsertFlags,
     ): void;
     /**
      * Inserts a localized key into the DOM.
@@ -1893,7 +1889,7 @@ export namespace AppStreamGlib {
         parent: GLib.Node,
         name: string,
         localized: { [key: string]: any } | GLib.HashTable<any, any>,
-        insert_flags: NodeInsertFlags | null,
+        insert_flags: NodeInsertFlags,
     ): void;
     /**
      * Converts a node and it's children to XML.
@@ -1902,7 +1898,7 @@ export namespace AppStreamGlib {
      * @returns a {@link GLib.String}
      * @since 0.1.0
      */
-    function node_to_xml(node: GLib.Node, flags: NodeToXmlFlags | null): GLib.String;
+    function node_to_xml(node: GLib.Node, flags: NodeToXmlFlags): GLib.String;
     /**
      * Deallocates all notes in the tree.
      * @param node a {@link AppStreamGlib.Node}.
@@ -1922,7 +1918,7 @@ export namespace AppStreamGlib {
      * @returns string version of `size_kind`
      * @since 0.5.2
      */
-    function size_kind_to_string(size_kind: SizeKind | null): string;
+    function size_kind_to_string(size_kind: SizeKind): string;
     /**
      * Converts the text representation to an enumerated value.
      * @param tag the string.
@@ -1938,14 +1934,14 @@ export namespace AppStreamGlib {
      * @returns a %AsTag, or {@link AppStreamGlib.Tag.UNKNOWN} if not known.
      * @since 0.1.2
      */
-    function tag_from_string_full(tag: string, flags: TagFlags | null): Tag;
+    function tag_from_string_full(tag: string, flags: TagFlags): Tag;
     /**
      * Converts the enumerated value to an text representation.
      * @param tag the %AsTag value.
      * @returns string version of `tag`
      * @since 0.1.0
      */
-    function tag_to_string(tag: Tag | null): string;
+    function tag_to_string(tag: Tag): string;
     /**
      * Converts the text representation to an enumerated value.
      * @param urgency_kind the string.
@@ -1959,7 +1955,7 @@ export namespace AppStreamGlib {
      * @returns string version of `urgency_kind`
      * @since 0.5.1
      */
-    function urgency_kind_to_string(urgency_kind: UrgencyKind | null): string;
+    function urgency_kind_to_string(urgency_kind: UrgencyKind): string;
     /**
      * Converts the text representation to an enumerated value.
      * @param url_kind the string.
@@ -1973,7 +1969,7 @@ export namespace AppStreamGlib {
      * @returns string version of `url_kind`
      * @since 0.1.0
      */
-    function url_kind_to_string(url_kind: UrlKind | null): string;
+    function url_kind_to_string(url_kind: UrlKind): string;
     /**
      * Fixes a string to be a valid AppStream ID.
      *
@@ -2012,7 +2008,7 @@ export namespace AppStreamGlib {
      * @returns a newly allocated `null` terminated string
      * @since 0.3.1
      */
-    function utils_find_icon_filename_full(destdir: string, search: string, flags: UtilsFindIconFlag | null): string;
+    function utils_find_icon_filename_full(destdir: string, search: string, flags: UtilsFindIconFlag): string;
     /**
      * Returns a GUID for some data. This uses a hash and so even small
      * differences in the `data` will produce radically different return values.
@@ -2059,7 +2055,7 @@ export namespace AppStreamGlib {
      * @since 0.3.4
      */
     function utils_install_filename(
-        location: UtilsLocation | null,
+        location: UtilsLocation,
         filename: string,
         origin: string,
         destdir: string,
@@ -2170,10 +2166,10 @@ export namespace AppStreamGlib {
      * @since 0.6.1
      */
     function utils_unique_id_build(
-        scope: AppScope | null,
-        bundle_kind: BundleKind | null,
+        scope: AppScope,
+        bundle_kind: BundleKind,
         origin: string,
-        kind: AppKind | null,
+        kind: AppKind,
         id: string,
         branch: string,
     ): string;
@@ -2207,11 +2203,7 @@ export namespace AppStreamGlib {
      * @returns `true` if the ID's should be considered equal.
      * @since 0.7.8
      */
-    function utils_unique_id_match(
-        unique_id1: string,
-        unique_id2: string,
-        match_flags: UniqueIdMatchFlags | null,
-    ): boolean;
+    function utils_unique_id_match(unique_id1: string, unique_id2: string, match_flags: UniqueIdMatchFlags): boolean;
     /**
      * Checks if a unique ID is valid i.e. has the correct number of
      * sections.
@@ -2236,7 +2228,7 @@ export namespace AppStreamGlib {
      * @returns -1 if a < b, +1 if a > b, 0 if they are equal, and `G_MAXINT` on error
      * @since 0.7.15
      */
-    function utils_vercmp_full(version_a: string, version_b: string, flags: VersionCompareFlag | null): number;
+    function utils_vercmp_full(version_a: string, version_b: string, flags: VersionCompareFlag): number;
     /**
      * Returns a dotted decimal version string from a 16 bit number.
      * @param val A uint16le version number
@@ -2244,7 +2236,7 @@ export namespace AppStreamGlib {
      * @returns A version number, e.g. "1.3"
      * @since 0.5.2
      */
-    function utils_version_from_uint16(val: number, flags: VersionParseFlag | null): string;
+    function utils_version_from_uint16(val: number, flags: VersionParseFlag): string;
     /**
      * Returns a dotted decimal version string from a 32 bit number.
      * @param val A uint32le version number
@@ -2252,7 +2244,7 @@ export namespace AppStreamGlib {
      * @returns A version number, e.g. "1.0.3"
      * @since 0.5.2
      */
-    function utils_version_from_uint32(val: number, flags: VersionParseFlag | null): string;
+    function utils_version_from_uint32(val: number, flags: VersionParseFlag): string;
     /**
      * Returns a dotted decimal version string from a version string. The supported
      * formats are:
@@ -2911,7 +2903,7 @@ export namespace AppStreamGlib {
          * Sets the agreement kind.
          * @param kind the agreement kind, e.g. {@link AppStreamGlib.AgreementKind.EULA}
          */
-        set_kind(kind: AgreementKind | null): void;
+        set_kind(kind: AgreementKind): void;
         /**
          * Sets the agreement version identifier.
          * @param version_id the agreement version ID, e.g. "1.4a"
@@ -3184,7 +3176,7 @@ export namespace AppStreamGlib {
          * Add a kudo the application has obtained.
          * @param kudo_kind the {@link AppStreamGlib.KudoKind}.
          */
-        add_kudo_kind(kudo_kind: KudoKind | null): void;
+        add_kudo_kind(kudo_kind: KudoKind): void;
         /**
          * Adds a language to the application.
          * @param percentage the percentage completion of the translation, or 0 for unknown
@@ -3226,7 +3218,7 @@ export namespace AppStreamGlib {
          * Adds a specific attribute to an application.
          * @param quirk the {@link AppStreamGlib.AppQuirk}, e.g. {@link AppStreamGlib.AppQuirk.PROVENANCE}
          */
-        add_quirk(quirk: AppQuirk | null): void;
+        add_quirk(quirk: AppQuirk): void;
         /**
          * Adds a release to an application.
          * @param release a {@link AppStreamGlib.Release} instance.
@@ -3262,13 +3254,13 @@ export namespace AppStreamGlib {
          * @param url_kind the URL kind, e.g. {@link AppStreamGlib.UrlKind.HOMEPAGE}
          * @param url the full URL.
          */
-        add_url(url_kind: UrlKind | null, url: string): void;
+        add_url(url_kind: UrlKind, url: string): void;
         /**
          * Converts all the icons in the application to a specific kind.
          * @param kind the AsIconKind, e.g. {@link AppStreamGlib.IconKind.EMBEDDED}.
          * @returns `true` for success
          */
-        convert_icons(kind: IconKind | null): boolean;
+        convert_icons(kind: IconKind): boolean;
         /**
          * Compare one application with another for equality using the following
          * properties:
@@ -3293,7 +3285,7 @@ export namespace AppStreamGlib {
          * @param kind an agreement kind, e.g. {@link AppStreamGlib.AgreementKind.EULA}
          * @returns a {@link AppStreamGlib.Agreement} or NULL for not found
          */
-        get_agreement_by_kind(kind: AgreementKind | null): Agreement;
+        get_agreement_by_kind(kind: AgreementKind): Agreement;
         /**
          * Gets a privacy policys the application has defined of a specific type.
          * @returns a {@link AppStreamGlib.Agreement} or NULL for not found
@@ -3390,7 +3382,7 @@ export namespace AppStreamGlib {
          * @param kind a {@link AppStreamGlib.FormatKind}, e.g. {@link AppStreamGlib.FormatKind.APPDATA}
          * @returns A {@link AppStreamGlib.Format}, or `null` if not found
          */
-        get_format_by_kind(kind: FormatKind | null): Format;
+        get_format_by_kind(kind: FormatKind): Format;
         /**
          * Returns the default format.
          * @returns A {@link AppStreamGlib.Format}, or `null` if not found
@@ -3476,7 +3468,7 @@ export namespace AppStreamGlib {
          * @param kind a {@link AppStreamGlib.LaunchableKind}, e.g. {@link AppStreamGlib.FormatKind.APPDATA}
          * @returns A {@link AppStreamGlib.Launchable}, or `null` if not found
          */
-        get_launchable_by_kind(kind: LaunchableKind | null): Launchable;
+        get_launchable_by_kind(kind: LaunchableKind): Launchable;
         /**
          * Returns the default launchable.
          * @returns A {@link AppStreamGlib.Launchable}, or `null` if not found
@@ -3592,7 +3584,7 @@ export namespace AppStreamGlib {
          * @param value a string, or NULL, e.g. `bootloader`
          * @returns A {@link AppStreamGlib.Require}, or `null` for not found
          */
-        get_require_by_value(kind: RequireKind | null, value: string): Require;
+        get_require_by_value(kind: RequireKind, value: string): Require;
         /**
          * Gets any requires the application has defined. A requirement could be that
          * a firmware version has to be below a defined version or that another
@@ -3678,7 +3670,7 @@ export namespace AppStreamGlib {
          * @param url_kind the URL kind, e.g. {@link AppStreamGlib.UrlKind.HOMEPAGE}.
          * @returns string, or `null` if unset
          */
-        get_url_item(url_kind: UrlKind | null): string;
+        get_url_item(url_kind: UrlKind): string;
         /**
          * Gets the URLs set for the application.
          * @returns hash table of URLs
@@ -3712,7 +3704,7 @@ export namespace AppStreamGlib {
          * @param kudo a {@link AppStreamGlib.KudoKind}, e.g. {@link AppStreamGlib.KudoKind.SEARCH_PROVIDER}
          * @returns `true` if the application has got the specified kudo
          */
-        has_kudo_kind(kudo: KudoKind | null): boolean;
+        has_kudo_kind(kudo: KudoKind): boolean;
         /**
          * Searches the permission list for a specific item.
          * @param permission a permission string, e.g. "Network"
@@ -3724,7 +3716,7 @@ export namespace AppStreamGlib {
          * @param quirk the {@link AppStreamGlib.AppQuirk}, e.g. {@link AppStreamGlib.AppQuirk.PROVENANCE}
          * @returns `true` if the application has the attribute
          */
-        has_quirk(quirk: AppQuirk | null): boolean;
+        has_quirk(quirk: AppQuirk): boolean;
         /**
          * Parses an AppData file and populates the application state.
          * @param data data to parse.
@@ -3815,17 +3807,17 @@ export namespace AppStreamGlib {
          * Sets the application kind.
          * @param id_kind the {@link AppStreamGlib.AppKind}.
          */
-        set_id_kind(id_kind: IdKind | null): void;
+        set_id_kind(id_kind: IdKind): void;
         /**
          * Sets the application kind.
          * @param kind the {@link AppStreamGlib.AppKind}.
          */
-        set_kind(kind: AppKind | null): void;
+        set_kind(kind: AppKind): void;
         /**
          * Sets the merge kind of the application.
          * @param merge_kind the {@link AppStreamGlib.AppMergeKind}.
          */
-        set_merge_kind(merge_kind: AppMergeKind | null): void;
+        set_merge_kind(merge_kind: AppMergeKind): void;
         /**
          * Set the project license.
          * @param metadata_license the project license string.
@@ -3862,7 +3854,7 @@ export namespace AppStreamGlib {
          * Sets the scope of the application.
          * @param scope the {@link AppStreamGlib.AppScope}.
          */
-        set_scope(scope: AppScope | null): void;
+        set_scope(scope: AppScope): void;
         /**
          * Sets the token match fields. The bitfield given here is used to choose what
          * is included in the token cache.
@@ -3878,7 +3870,7 @@ export namespace AppStreamGlib {
          * Sets the source kind.
          * @param source_kind the {@link AppStreamGlib.FormatKind}.
          */
-        set_source_kind(source_kind: FormatKind | null): void;
+        set_source_kind(source_kind: FormatKind): void;
         /**
          * Set the project license.
          * @param source_pkgname the project license string.
@@ -3888,7 +3880,7 @@ export namespace AppStreamGlib {
          * Sets the application state.
          * @param state the {@link AppStreamGlib.AppState}.
          */
-        set_state(state: AppState | null): void;
+        set_state(state: AppState): void;
         /**
          * Sets the check flags, where {@link AppStreamGlib.AppTrustFlags.COMPLETE} is completely
          * trusted input.
@@ -4028,7 +4020,7 @@ export namespace AppStreamGlib {
          * Sets the bundle kind.
          * @param kind the {@link AppStreamGlib.BundleKind}, e.g. {@link AppStreamGlib.BundleKind.FLATPAK}.
          */
-        set_kind(kind: BundleKind | null): void;
+        set_kind(kind: BundleKind): void;
         /**
          * Sets the runtime required for this bundle.
          * @param runtime the URL.
@@ -4138,12 +4130,12 @@ export namespace AppStreamGlib {
          * Sets the checksum kind.
          * @param kind the {@link GLib.ChecksumType}, e.g. {@link GLib.ChecksumType.SHA1}.
          */
-        set_kind(kind: GLib.ChecksumType | null): void;
+        set_kind(kind: GLib.ChecksumType): void;
         /**
          * Sets the checksum target.
          * @param target the {@link GLib.ChecksumType}, e.g. {@link AppStreamGlib.ChecksumTarget.CONTAINER}.
          */
-        set_target(target: ChecksumTarget | null): void;
+        set_target(target: ChecksumTarget): void;
         /**
          * Sets the checksum value filename.
          * @param value the new filename value.
@@ -4292,7 +4284,7 @@ export namespace AppStreamGlib {
          * @param id a content rating ID, e.g. `money-gambling`.
          * @param value a {@link AppStreamGlib.ContentRatingValue}, e.g. {@link AppStreamGlib.ContentRatingValue.MODERATE}.
          */
-        add_attribute(id: string, value: ContentRatingValue | null): void;
+        add_attribute(id: string, value: ContentRatingValue): void;
         /**
          * Gets the content_rating kind.
          * @returns a string, e.g. "oars-1.0", or NULL
@@ -4429,7 +4421,7 @@ export namespace AppStreamGlib {
          * Sets the format kind.
          * @param kind the {@link AppStreamGlib.FormatKind}, e.g. {@link AppStreamGlib.FormatKind.APPDATA}.
          */
-        set_kind(kind: FormatKind | null): void;
+        set_kind(kind: FormatKind): void;
     }
 
     namespace Icon {
@@ -4506,7 +4498,7 @@ export namespace AppStreamGlib {
          * @param kind a %AsIconKind, e.g. #AS_ICON_KIND_EMBEDDED
          * @returns `true` for success
          */
-        convert_to_kind(kind: IconKind | null): boolean;
+        convert_to_kind(kind: IconKind): boolean;
         /**
          * Gets the absolute path on disk of the icon.
          * NOTE: This is only set for icons of type {@link AppStreamGlib.IconKind.LOCAL}
@@ -4559,7 +4551,7 @@ export namespace AppStreamGlib {
          * @param flags a {@link AppStreamGlib.IconLoadFlags}, e.g. {@link AppStreamGlib.IconLoadFlags.SEARCH_SIZE}
          * @returns `true` for success
          */
-        load(flags: IconLoadFlags | null): boolean;
+        load(flags: IconLoadFlags): boolean;
         /**
          * Sets the icon absolute filename.
          * @param filename the new icon URL.
@@ -4574,7 +4566,7 @@ export namespace AppStreamGlib {
          * Sets the icon kind.
          * @param kind the {@link AppStreamGlib.IconKind}, e.g. {@link AppStreamGlib.IconKind.STOCK}.
          */
-        set_kind(kind: IconKind | null): void;
+        set_kind(kind: IconKind): void;
         /**
          * Sets the basename to use for the icon.
          * @param name the icon name, e.g. "gimp.png"
@@ -4738,12 +4730,7 @@ export namespace AppStreamGlib {
          * @param flags a {@link AppStreamGlib.ImageLoadFlags}, e.g. {@link AppStreamGlib.ImageLoadFlags.NONE}
          * @returns `true` for success
          */
-        load_filename_full(
-            filename: string,
-            dest_size: number,
-            src_size_min: number,
-            flags: ImageLoadFlags | null,
-        ): boolean;
+        load_filename_full(filename: string, dest_size: number, src_size_min: number, flags: ImageLoadFlags): boolean;
         /**
          * Saves a pixbuf to a file.
          * @param filename filename to write to
@@ -4752,7 +4739,7 @@ export namespace AppStreamGlib {
          * @param flags some {@link AppStreamGlib.ImageSaveFlags} values, e.g. {@link AppStreamGlib.ImageSaveFlags.PAD_16_9}
          * @returns `true` for success
          */
-        save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags | null): boolean;
+        save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags): boolean;
         /**
          * Resamples a pixbuf to a specific size.
          * @param width target width, or 0 for default
@@ -4760,7 +4747,7 @@ export namespace AppStreamGlib {
          * @param flags some {@link AppStreamGlib.ImageSaveFlags} values, e.g. {@link AppStreamGlib.ImageSaveFlags.PAD_16_9}
          * @returns A {@link GdkPixbuf.Pixbuf} of the specified size
          */
-        save_pixbuf(width: number, height: number, flags: ImageSaveFlags | null): GdkPixbuf.Pixbuf;
+        save_pixbuf(width: number, height: number, flags: ImageSaveFlags): GdkPixbuf.Pixbuf;
         /**
          * Sets the image basename filename.
          * @param basename the new filename basename.
@@ -4775,7 +4762,7 @@ export namespace AppStreamGlib {
          * Sets the image kind.
          * @param kind the {@link AppStreamGlib.ImageKind}, e.g. {@link AppStreamGlib.ImageKind.THUMBNAIL}.
          */
-        set_kind(kind: ImageKind | null): void;
+        set_kind(kind: ImageKind): void;
         /**
          * Sets the image locale.
          * @param locale the new image locale, e.g. "en_GB" or `null`.
@@ -4880,7 +4867,7 @@ export namespace AppStreamGlib {
          * Sets the launchable kind.
          * @param kind the {@link AppStreamGlib.LaunchableKind}, e.g. {@link AppStreamGlib.LaunchableKind.DESKTOP_ID}.
          */
-        set_kind(kind: LaunchableKind | null): void;
+        set_kind(kind: LaunchableKind): void;
         /**
          * Sets the fully-qualified mirror URL to use for the launchable.
          * @param value the URL.
@@ -4970,7 +4957,7 @@ export namespace AppStreamGlib {
          * Sets the problem kind.
          * @param kind the {@link AppStreamGlib.ProblemKind}.
          */
-        set_kind(kind: ProblemKind | null): void;
+        set_kind(kind: ProblemKind): void;
         /**
          * Adds an line_number to the problem.
          * @param line_number a `guint` instance.
@@ -5065,7 +5052,7 @@ export namespace AppStreamGlib {
          * Sets the provide kind.
          * @param kind the {@link AppStreamGlib.ProvideKind}, e.g. {@link AppStreamGlib.ProvideKind.LIBRARY}.
          */
-        set_kind(kind: ProvideKind | null): void;
+        set_kind(kind: ProvideKind): void;
         /**
          * Sets the fully-qualified mirror URL to use for the provide.
          * @param value the URL.
@@ -5178,7 +5165,7 @@ export namespace AppStreamGlib {
          * @param target a {@link AppStreamGlib.ChecksumTarget}, e.g. {@link AppStreamGlib.ChecksumTarget.CONTAINER}
          * @returns an {@link AppStreamGlib.Checksum}, or `null` for not found
          */
-        get_checksum_by_target(target: ChecksumTarget | null): Checksum;
+        get_checksum_by_target(target: ChecksumTarget): Checksum;
         /**
          * Gets the release checksums.
          * @returns list of checksums
@@ -5215,7 +5202,7 @@ export namespace AppStreamGlib {
          * @param kind a {@link AppStreamGlib.SizeKind}, e.g. #AS_SIZE_KIND_DOWNLOAD
          * @returns The size in bytes, or 0 for unknown.
          */
-        get_size(kind: SizeKind | null): number;
+        get_size(kind: SizeKind): number;
         /**
          * Gets the release state.
          * @returns enumberated value, or {@link AppStreamGlib.ReleaseState.UNKNOWN} for not set or invalid
@@ -5236,7 +5223,7 @@ export namespace AppStreamGlib {
          * @param url_kind the URL kind, e.g. {@link AppStreamGlib.UrlKind.HOMEPAGE}.
          * @returns string, or `null` if unset
          */
-        get_url(url_kind: UrlKind | null): string;
+        get_url(url_kind: UrlKind): string;
         /**
          * Gets the release version.
          * @returns string, or `null` for not set or invalid
@@ -5265,18 +5252,18 @@ export namespace AppStreamGlib {
          * Sets the release kind.
          * @param kind the {@link AppStreamGlib.ReleaseKind}
          */
-        set_kind(kind: ReleaseKind | null): void;
+        set_kind(kind: ReleaseKind): void;
         /**
          * Sets the release size.
          * @param kind a {@link AppStreamGlib.SizeKind}, e.g. #AS_SIZE_KIND_DOWNLOAD
          * @param size a size in bytes, or 0 for unknown
          */
-        set_size(kind: SizeKind | null, size: bigint | number): void;
+        set_size(kind: SizeKind, size: bigint | number): void;
         /**
          * Sets the release state.
          * @param state the release state, e.g. {@link AppStreamGlib.ReleaseState.INSTALLED}
          */
-        set_state(state: ReleaseState | null): void;
+        set_state(state: ReleaseState): void;
         /**
          * Sets the release timestamp.
          * @param timestamp the timestamp value.
@@ -5286,13 +5273,13 @@ export namespace AppStreamGlib {
          * Sets the release urgency.
          * @param urgency the release urgency, e.g. {@link AppStreamGlib.UrgencyKind.CRITICAL}
          */
-        set_urgency(urgency: UrgencyKind | null): void;
+        set_urgency(urgency: UrgencyKind): void;
         /**
          * Adds some URL data to the application.
          * @param url_kind the URL kind, e.g. {@link AppStreamGlib.UrlKind.DETAILS}
          * @param url the full URL.
          */
-        set_url(url_kind: UrlKind | null, url: string): void;
+        set_url(url_kind: UrlKind, url: string): void;
         /**
          * Sets the release version.
          * @param version the version string.
@@ -5414,12 +5401,12 @@ export namespace AppStreamGlib {
          * Sets the require version comparison type.
          * @param compare the {@link AppStreamGlib.RequireKind}, e.g. {@link AppStreamGlib.RequireKind.ID}.
          */
-        set_compare(compare: RequireCompare | null): void;
+        set_compare(compare: RequireCompare): void;
         /**
          * Sets the require kind.
          * @param kind the {@link AppStreamGlib.RequireKind}, e.g. {@link AppStreamGlib.RequireKind.ID}.
          */
-        set_kind(kind: RequireKind | null): void;
+        set_kind(kind: RequireKind): void;
         /**
          * Sets the require value.
          * @param value an require version, e.g. `firmware`
@@ -5584,7 +5571,7 @@ export namespace AppStreamGlib {
          * Adds flags to an existing review without replacing the other flags.
          * @param flags a {@link AppStreamGlib.ReviewFlags}, e.g. {@link AppStreamGlib.ReviewFlags.SELF}
          */
-        add_flags(flags: ReviewFlags | null): void;
+        add_flags(flags: ReviewFlags): void;
         /**
          * Adds metadata to the review object.
          * It is left for the the plugin to use this method as required, but a
@@ -5679,7 +5666,7 @@ export namespace AppStreamGlib {
          * voted on the review or if the user wrote the review themselves.
          * @param flags a {@link AppStreamGlib.ReviewFlags}, e.g. {@link AppStreamGlib.ReviewFlags.SELF}
          */
-        set_flags(flags: ReviewFlags | null): void;
+        set_flags(flags: ReviewFlags): void;
         /**
          * Sets the review identifier that is unique to each review.
          * @param id review identifier, e.g. "deadbeef"
@@ -5866,7 +5853,7 @@ export namespace AppStreamGlib {
          * Sets the screenshot kind.
          * @param kind the {@link AppStreamGlib.ScreenshotKind}.
          */
-        set_kind(kind: ScreenshotKind | null): void;
+        set_kind(kind: ScreenshotKind): void;
         /**
          * Sets the screenshot priority. Higher numbers are better.
          * @param priority the priority value.
@@ -6012,7 +5999,7 @@ export namespace AppStreamGlib {
          * If no filter is set then all types of components are loaded.
          * @param kind a {@link AppStreamGlib.AppKind}, e.g. {@link AppStreamGlib.AppKind.FIRMWARE}
          */
-        add_filter(kind: AppKind | null): void;
+        add_filter(kind: AppKind): void;
         /**
          * Adds a metadata index key.
          *
@@ -6026,7 +6013,7 @@ export namespace AppStreamGlib {
          * @param kind the AsIconKind, e.g. {@link AppStreamGlib.IconKind.EMBEDDED}.
          * @returns `true` for success
          */
-        convert_icons(kind: IconKind | null): boolean;
+        convert_icons(kind: IconKind): boolean;
         /**
          * Gets an array of all the valid applications in the store.
          * @returns an array
@@ -6113,7 +6100,7 @@ export namespace AppStreamGlib {
          * @param value the provide value, e.g. "gimp.desktop"
          * @returns a {@link AppStreamGlib.App} or `null`
          */
-        get_app_by_launchable(kind: LaunchableKind | null, value: string): App;
+        get_app_by_launchable(kind: LaunchableKind, value: string): App;
         /**
          * Finds an application in the store by package name.
          * @param pkgname the package name.
@@ -6132,7 +6119,7 @@ export namespace AppStreamGlib {
          * @param value the provide value, e.g. "com.hughski.ColorHug2.firmware"
          * @returns a {@link AppStreamGlib.App} or `null`
          */
-        get_app_by_provide(kind: ProvideKind | null, value: string): App;
+        get_app_by_provide(kind: ProvideKind, value: string): App;
         /**
          * Finds an application in the store by matching the unique ID.
          * @param unique_id the application unique ID, e.g.      `user/flatpak/gnome-apps-nightly/app/gimp.desktop/master`
@@ -6171,7 +6158,7 @@ export namespace AppStreamGlib {
          * @param value the provide value, e.g. "com.hughski.ColorHug2.firmware"
          * @returns an array of applications
          */
-        get_apps_by_provide(kind: ProvideKind | null, value: string): App[];
+        get_apps_by_provide(kind: ProvideKind, value: string): App[];
         /**
          * Gets the metadata builder identifier, which is used to work out if old
          * metadata is compatible with this builder.
@@ -6222,7 +6209,7 @@ export namespace AppStreamGlib {
          * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        load_async(flags: StoreLoadFlags | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_async(flags: StoreLoadFlags, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously loads the store from the default locations.
          * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
@@ -6230,7 +6217,7 @@ export namespace AppStreamGlib {
          * @param callback A {@link Gio.AsyncReadyCallback}
          */
         load_async(
-            flags: StoreLoadFlags | null,
+            flags: StoreLoadFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -6241,7 +6228,7 @@ export namespace AppStreamGlib {
          * @param callback A {@link Gio.AsyncReadyCallback}
          */
         load_async(
-            flags: StoreLoadFlags | null,
+            flags: StoreLoadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -6327,7 +6314,7 @@ export namespace AppStreamGlib {
          * If all filters are removed then all types of components are loaded.
          * @param kind a {@link AppStreamGlib.AppKind}, e.g. {@link AppStreamGlib.AppKind.FIRMWARE}
          */
-        remove_filter(kind: AppKind | null): void;
+        remove_filter(kind: AppKind): void;
         /**
          * Sets the flags used when adding applications to the store.
          *
@@ -6483,7 +6470,7 @@ export namespace AppStreamGlib {
          * Sets the suggest kind.
          * @param kind the {@link AppStreamGlib.SuggestKind}, e.g. {@link AppStreamGlib.SuggestKind.UPSTREAM}.
          */
-        set_kind(kind: SuggestKind | null): void;
+        set_kind(kind: SuggestKind): void;
     }
 
     namespace Translation {
@@ -6573,7 +6560,7 @@ export namespace AppStreamGlib {
          * Sets the translation kind.
          * @param kind the {@link AppStreamGlib.TranslationKind}, e.g. `AS_TRANSLATION_KIND_THUMBNAIL`.
          */
-        set_kind(kind: TranslationKind | null): void;
+        set_kind(kind: TranslationKind): void;
     }
 
     /**

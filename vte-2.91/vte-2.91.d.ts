@@ -710,7 +710,7 @@ export namespace Vte {
      * @returns an ID for the termprop
      * @since 0.78
      */
-    function install_termprop(name: string, type: PropertyType | null, flags: PropertyFlags | null): number;
+    function install_termprop(name: string, type: PropertyType, flags: PropertyFlags): number;
     /**
      * Installs a new terminal property `name` as an alias for the terminal
      * property `target_name`.
@@ -757,7 +757,7 @@ export namespace Vte {
      * @returns `true` iff `str` is a valid string representation
      * @since 0.78
      */
-    function uuid_validate_string(str: string, len: bigint | number, fmt: UuidFormat | null): boolean;
+    function uuid_validate_string(str: string, len: bigint | number, fmt: UuidFormat): boolean;
     /**
      * @gir-type Callback
      */
@@ -1012,7 +1012,7 @@ export namespace Vte {
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
@@ -1036,7 +1036,7 @@ export namespace Vte {
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
@@ -1061,7 +1061,7 @@ export namespace Vte {
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
@@ -1123,7 +1123,7 @@ export namespace Vte {
             envv: string[] | null,
             fds: number[] | null,
             map_fds: number[] | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
@@ -1260,7 +1260,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1301,7 +1301,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4442,7 +4442,7 @@ export namespace Vte {
          * the start.
          * @param format a {@link Vte.Format}
          */
-        copy_clipboard_format(format: Format | null): void;
+        copy_clipboard_format(format: Format): void;
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_PRIMARY
          * selection.
@@ -4486,7 +4486,7 @@ export namespace Vte {
         event_check_gregex_simple(
             event: Gdk.Event,
             regexes: GLib.Regex[],
-            match_flags: GLib.RegexMatchFlags | null,
+            match_flags: GLib.RegexMatchFlags,
         ): [boolean, string[]];
         /**
          * Like `vte_terminal_event_check_regex_simple()`, but returns an array of strings,
@@ -4934,7 +4934,7 @@ export namespace Vte {
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated text string, or `null`.
          */
-        get_text_format(format: Format | null): string | null;
+        get_text_format(format: Format): string | null;
         /**
          * Extracts a view of the visible part of the terminal.
          *
@@ -4985,7 +4985,7 @@ export namespace Vte {
          * @returns a newly allocated string, or `null`.
          */
         get_text_range_format(
-            format: Format | null,
+            format: Format,
             start_row: bigint | number,
             start_col: bigint | number,
             end_row: bigint | number,
@@ -4997,13 +4997,13 @@ export namespace Vte {
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated string containing the selected text, or `null` if there is no selection or the format is not supported
          */
-        get_text_selected(format: Format | null): string | null;
+        get_text_selected(format: Format): string | null;
         /**
          * Gets the currently selected text in the format specified by `format`.
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated string containing the selected text, or `null` if there is no selection or the format is not supported
          */
-        get_text_selected_full(format: Format | null): [string | null, number];
+        get_text_selected_full(format: Format): [string | null, number];
         /**
          * @returns the window title, or `null`
          */
@@ -5050,7 +5050,7 @@ export namespace Vte {
          * @param gflags the {@link GLib.RegexMatchFlags} to use when matching the regex
          * @returns -1
          */
-        match_add_gregex(gregex: GLib.Regex, gflags: GLib.RegexMatchFlags | null): number;
+        match_add_gregex(gregex: GLib.Regex, gflags: GLib.RegexMatchFlags): number;
         /**
          * Adds the regular expression `regex` to the list of matching expressions.  When the
          * user moves the mouse cursor over a section of displayed text which matches
@@ -5122,7 +5122,7 @@ export namespace Vte {
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor_type a {@link Gdk.CursorType}
          */
-        match_set_cursor_type(tag: number, cursor_type: Gdk.CursorType | null): void;
+        match_set_cursor_type(tag: number, cursor_type: Gdk.CursorType): void;
         /**
          * Sends the contents of the #GDK_SELECTION_CLIPBOARD selection to the
          * terminal's child. It's called on paste menu item, or when
@@ -5153,7 +5153,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link Vte.Pty}
          */
-        pty_new_sync(flags: PtyFlags | null, cancellable?: Gio.Cancellable | null): Pty;
+        pty_new_sync(flags: PtyFlags, cancellable?: Gio.Cancellable | null): Pty;
         /**
          * Returns the value of a {@link Vte.PropertyType.DATA} termprop as a {@link GLib.Bytes}, or `null` if
          *   `prop` is unset, or `prop` is not a registered property.
@@ -5297,7 +5297,7 @@ export namespace Vte {
          * @param gregex a {@link GLib.Regex}, or `null`
          * @param gflags flags from {@link GLib.RegexMatchFlags}
          */
-        search_set_gregex(gregex: GLib.Regex | null, gflags: GLib.RegexMatchFlags | null): void;
+        search_set_gregex(gregex: GLib.Regex | null, gflags: GLib.RegexMatchFlags): void;
         /**
          * Sets the regex to search for. Unsets the search regex when passed `null`.
          *
@@ -5340,7 +5340,7 @@ export namespace Vte {
          * presses the backspace key.
          * @param binding a {@link Vte.EraseBinding} for the backspace key
          */
-        set_backspace_binding(binding: EraseBinding | null): void;
+        set_backspace_binding(binding: EraseBinding): void;
         /**
          * Sets whether the SGR 1 attribute also switches to the bright counterpart
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
@@ -5464,12 +5464,12 @@ export namespace Vte {
          * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
          * @param mode the {@link Vte.CursorBlinkMode} to use
          */
-        set_cursor_blink_mode(mode: CursorBlinkMode | null): void;
+        set_cursor_blink_mode(mode: CursorBlinkMode): void;
         /**
          * Sets the shape of the cursor drawn.
          * @param shape the {@link Vte.CursorShape} to use
          */
-        set_cursor_shape(shape: CursorShape | null): void;
+        set_cursor_shape(shape: CursorShape): void;
         /**
          * Reset the terminal palette to reasonable compiled-in default color.
          */
@@ -5480,7 +5480,7 @@ export namespace Vte {
          * presses the delete key.
          * @param binding a {@link Vte.EraseBinding} for the delete key
          */
-        set_delete_binding(binding: EraseBinding | null): void;
+        set_delete_binding(binding: EraseBinding): void;
         /**
          * Controls whether or not the terminal will communicate with a11y backends.
          * @param enable_a11y `true` to enable a11y support
@@ -5647,7 +5647,7 @@ export namespace Vte {
          * Controls whether or not the terminal will allow blinking text.
          * @param text_blink_mode the {@link Vte.TextBlinkMode} to use
          */
-        set_text_blink_mode(text_blink_mode: TextBlinkMode | null): void;
+        set_text_blink_mode(text_blink_mode: TextBlinkMode): void;
         /**
          * With this function you can provide a set of characters which will
          * be considered parts of a word when doing word-wise selection, in
@@ -5669,7 +5669,7 @@ export namespace Vte {
          *   like {@link Vte.Align.START}.
          * @param align alignment value from {@link Vte.Align}
          */
-        set_xalign(align: Align | null): void;
+        set_xalign(align: Align): void;
         /**
          * Sets the horizontal fillment of `terminal` within its allocation.
          *
@@ -5682,7 +5682,7 @@ export namespace Vte {
          * Sets the vertical alignment of `terminal` within its allocation.
          * @param align alignment value from {@link Vte.Align}
          */
-        set_yalign(align: Align | null): void;
+        set_yalign(align: Align): void;
         /**
          * Sets the vertical fillment of `terminal` within its allocation.
          * Note that yfill is only supported with yalign set to
@@ -5708,11 +5708,11 @@ export namespace Vte {
          * @param callback a {@link Vte.TerminalSpawnAsyncCallback}, or `null`
          */
         spawn_async(
-            pty_flags: PtyFlags | null,
+            pty_flags: PtyFlags,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
@@ -5753,11 +5753,11 @@ export namespace Vte {
          * @returns `true` on success, or `false` on error with `error` filled in
          */
         spawn_sync(
-            pty_flags: PtyFlags | null,
+            pty_flags: PtyFlags,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             child_setup?: GLib.SpawnChildSetupFunc | null,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, GLib.Pid | null];
@@ -5820,13 +5820,13 @@ export namespace Vte {
          * @param callback a {@link Vte.TerminalSpawnAsyncCallback}, or `null`
          */
         spawn_with_fds_async(
-            pty_flags: PtyFlags | null,
+            pty_flags: PtyFlags,
             working_directory: string | null,
             argv: string[],
             envv: string[] | null,
             fds: number[] | null,
             map_fds: number[] | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             child_setup: GLib.SpawnChildSetupFunc | null,
             child_setup_data_destroy: GLib.DestroyNotify | null,
             timeout: number,
@@ -5870,11 +5870,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` if there was an error
          */
-        write_contents_sync(
-            stream: Gio.OutputStream,
-            flags: WriteFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
+        write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Horizontal {@link Gtk.Adjustment} of the scrollable widget. This adjustment is
          * shared between the scrollable widget and its parent.
@@ -6149,7 +6145,7 @@ export namespace Vte {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -6161,7 +6157,7 @@ export namespace Vte {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -6215,7 +6211,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6256,7 +6252,7 @@ export namespace Vte {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6768,7 +6764,7 @@ export namespace Vte {
          * @param len a location to store the length of the returned string, or `null`
          * @returns a string representation of `uuid`
          */
-        free_to_string(fmt: UuidFormat | null, len: bigint | number): string;
+        free_to_string(fmt: UuidFormat, len: bigint | number): string;
         /**
          * Creates a new UUID for `ns` and `str`.
          * @param data string data
@@ -6781,7 +6777,7 @@ export namespace Vte {
          * @param fmt a {@link Vte.UuidFormat}
          * @returns a string representation of `uuid`
          */
-        to_string(fmt: UuidFormat | null): [string, number];
+        to_string(fmt: UuidFormat): [string, number];
     }
 
     /**

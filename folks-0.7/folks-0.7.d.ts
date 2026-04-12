@@ -1447,11 +1447,11 @@ export namespace Folks {
          * @param matchee
          * @param min_threshold
          */
-        get_potential_matches(matchee: Individual, min_threshold: MatchResult | null): Gee.Map;
+        get_potential_matches(matchee: Individual, min_threshold: MatchResult): Gee.Map;
         /**
          * @param min_threshold
          */
-        get_all_potential_matches(min_threshold: MatchResult | null): Gee.Map;
+        get_all_potential_matches(min_threshold: MatchResult): Gee.Map;
         /**
          * @param parent
          * @param persona_store
@@ -2345,18 +2345,18 @@ export namespace Folks {
         /**
          * @param gender
          */
-        change_gender(gender: Gender | null): globalThis.Promise<void>;
+        change_gender(gender: Gender): globalThis.Promise<void>;
         /**
          * @param gender
          * @param _callback_
          */
-        change_gender(gender: Gender | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param gender
          * @param _callback_
          */
         change_gender(
-            gender: Gender | null,
+            gender: Gender,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -2367,7 +2367,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_gender(value: Gender | null): void;
+        set_gender(value: Gender): void;
         /**
          * @param gender
          * @param _callback_
@@ -2818,7 +2818,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_presence_type(value: PresenceType | null): void;
+        set_presence_type(value: PresenceType): void;
         get_presence_message(): string;
         /**
          * @param value
@@ -3147,7 +3147,7 @@ export namespace Folks {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3188,7 +3188,7 @@ export namespace Folks {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4376,7 +4376,7 @@ export namespace Folks {
             removed: Gee.Set | null,
             message: string | null,
             actor: Persona | null,
-            reason: GroupDetailsChangeReason | null,
+            reason: GroupDetailsChangeReason,
         ): void;
         prepare(): globalThis.Promise<void>;
         /**
@@ -4470,7 +4470,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_trust_level(value: PersonaStoreTrust | null): void;
+        set_trust_level(value: PersonaStoreTrust): void;
         get_always_writeable_properties(): string[];
         get_is_primary_store(): boolean;
         get_is_user_set_default(): boolean;
@@ -6937,18 +6937,18 @@ export namespace Folks {
         /**
          * @param gender
          */
-        change_gender(gender: Gender | null): globalThis.Promise<void>;
+        change_gender(gender: Gender): globalThis.Promise<void>;
         /**
          * @param gender
          * @param _callback_
          */
-        change_gender(gender: Gender | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param gender
          * @param _callback_
          */
         change_gender(
-            gender: Gender | null,
+            gender: Gender,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -6959,7 +6959,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_gender(value: Gender | null): void;
+        set_gender(value: Gender): void;
     }
 
     export const GenderDetails: GenderDetailsNamespace & {
@@ -8006,7 +8006,7 @@ export namespace Folks {
         /**
          * @param value
          */
-        set_presence_type(value: PresenceType | null): void;
+        set_presence_type(value: PresenceType): void;
         get_presence_message(): string;
         /**
          * @param value

@@ -125,7 +125,7 @@ export namespace NMA4 {
      */
     function utils_setup_password_storage(
         passwd_entry: Gtk.Widget,
-        initial_flags: NM.SettingSecretFlags | null,
+        initial_flags: NM.SettingSecretFlags,
         setting: NM.Setting,
         password_flags_name: string,
         with_not_required: boolean,
@@ -141,7 +141,7 @@ export namespace NMA4 {
      */
     function utils_update_password_storage(
         passwd_entry: Gtk.Widget,
-        secret_flags: NM.SettingSecretFlags | null,
+        secret_flags: NM.SettingSecretFlags,
         setting: NM.Setting,
         password_flags_name: string,
     ): void;
@@ -359,7 +359,7 @@ export namespace NMA4 {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable&#x2019;s new orientation
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -404,7 +404,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -445,7 +445,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1041,7 +1041,7 @@ export namespace NMA4 {
          * @param value the path or URI of a certificate
          * @param scheme the scheme of the certificate path
          */
-        set_cert(value: string, scheme: NM.Setting8021xCKScheme | null): void;
+        set_cert(value: string, scheme: NM.Setting8021xCKScheme): void;
         /**
          * Sets the password or a PIN that might be required to access the certificate.
          * @param password the certificate PIN or password
@@ -1057,7 +1057,7 @@ export namespace NMA4 {
          * @param value the path or URI of a key
          * @param scheme the scheme of the key path
          */
-        set_key(value: string, scheme: NM.Setting8021xCKScheme | null): void;
+        set_key(value: string, scheme: NM.Setting8021xCKScheme): void;
         /**
          * Sets the password or a PIN that might be required to access the key.
          * @param password the key PIN or password
@@ -1078,7 +1078,7 @@ export namespace NMA4 {
          * @param ask_mode `true` if the entry is shown in ASK mode
          */
         setup_cert_password_storage(
-            initial_flags: NM.SettingSecretFlags | null,
+            initial_flags: NM.SettingSecretFlags,
             setting: NM.Setting,
             password_flags_name: string,
             with_not_required: boolean,
@@ -1094,7 +1094,7 @@ export namespace NMA4 {
          * @param ask_mode `true` if the entry is shown in ASK mode
          */
         setup_key_password_storage(
-            initial_flags: NM.SettingSecretFlags | null,
+            initial_flags: NM.SettingSecretFlags,
             setting: NM.Setting,
             password_flags_name: string,
             with_not_required: boolean,
@@ -1108,7 +1108,7 @@ export namespace NMA4 {
          * @param password_flags_name name of the secret flags (like psk-flags), or NULL
          */
         update_cert_password_storage(
-            secret_flags: NM.SettingSecretFlags | null,
+            secret_flags: NM.SettingSecretFlags,
             setting: NM.Setting,
             password_flags_name: string,
         ): void;
@@ -1120,7 +1120,7 @@ export namespace NMA4 {
          * @param password_flags_name name of the secret flags (like psk-flags), or NULL
          */
         update_key_password_storage(
-            secret_flags: NM.SettingSecretFlags | null,
+            secret_flags: NM.SettingSecretFlags,
             setting: NM.Setting,
             password_flags_name: string,
         ): void;
@@ -1146,7 +1146,7 @@ export namespace NMA4 {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable&#x2019;s new orientation
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1191,7 +1191,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1232,7 +1232,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2061,7 +2061,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2102,7 +2102,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3237,7 +3237,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3278,7 +3278,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3798,7 +3798,7 @@ export namespace NMA4 {
          * @param direction direction of focus movement
          * @returns true if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Computes the bounds for `widget` in the coordinate space of `target`.
          *
@@ -3833,7 +3833,7 @@ export namespace NMA4 {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Translates the given `point` in `widget`'s coordinates to coordinates
          * in `target`&#x2019;s coordinate system.
@@ -4441,7 +4441,7 @@ export namespace NMA4 {
          * @param orientation the orientation to query
          * @returns the size of `widget` in `orientation`
          */
-        get_size(orientation: Gtk.Orientation | null): number;
+        get_size(orientation: Gtk.Orientation): number;
         /**
          * Gets the size request that was explicitly set for the widget.
          *
@@ -4766,7 +4766,7 @@ export namespace NMA4 {
          * @param direction direction of focus movement
          * @returns true if stopping keyboard navigation is fine, false   if the emitting widget should try to handle the keyboard   navigation attempt in its parent widget
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Returns the widgets for which this widget is the target of a
          * mnemonic.
@@ -4800,7 +4800,7 @@ export namespace NMA4 {
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
-        measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
+        measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
         /**
          * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
@@ -4851,7 +4851,7 @@ export namespace NMA4 {
          * @param flags flags to influence what is picked
          * @returns the widget's descendant at (x, y)
          */
-        pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
+        pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null;
         /**
          * Flags the widget for a rerun of the {@link Gtk.Widget.size_allocate}
          * function.
@@ -5034,7 +5034,7 @@ export namespace NMA4 {
          * the value set by {@link Gtk.Widget.set_default_direction} will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Set the focus child of the widget.
          *
@@ -5096,7 +5096,7 @@ export namespace NMA4 {
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the `has-tooltip` property on the widget.
          * @param has_tooltip whether or not `widget` has a tooltip
@@ -5236,7 +5236,7 @@ export namespace NMA4 {
          * The default value is {@link Gtk.Overflow.VISIBLE}.
          * @param overflow desired overflow value
          */
-        set_overflow(overflow: Gtk.Overflow | null): void;
+        set_overflow(overflow: Gtk.Overflow): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -5318,7 +5318,7 @@ export namespace NMA4 {
          * @param flags state flags to turn on
          * @param clear whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Sets the contents of the tooltip for widget.
          *
@@ -5350,7 +5350,7 @@ export namespace NMA4 {
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -5471,7 +5471,7 @@ export namespace NMA4 {
          * This function is for use in widget implementations.
          * @param flags state flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * Computes whether a container should give this
          *   widget extra space when possible.
@@ -6417,7 +6417,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6458,7 +6458,7 @@ export namespace NMA4 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6978,7 +6978,7 @@ export namespace NMA4 {
          * @param direction direction of focus movement
          * @returns true if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Computes the bounds for `widget` in the coordinate space of `target`.
          *
@@ -7013,7 +7013,7 @@ export namespace NMA4 {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Translates the given `point` in `widget`'s coordinates to coordinates
          * in `target`&#x2019;s coordinate system.
@@ -7621,7 +7621,7 @@ export namespace NMA4 {
          * @param orientation the orientation to query
          * @returns the size of `widget` in `orientation`
          */
-        get_size(orientation: Gtk.Orientation | null): number;
+        get_size(orientation: Gtk.Orientation): number;
         /**
          * Gets the size request that was explicitly set for the widget.
          *
@@ -7946,7 +7946,7 @@ export namespace NMA4 {
          * @param direction direction of focus movement
          * @returns true if stopping keyboard navigation is fine, false   if the emitting widget should try to handle the keyboard   navigation attempt in its parent widget
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Returns the widgets for which this widget is the target of a
          * mnemonic.
@@ -7980,7 +7980,7 @@ export namespace NMA4 {
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
-        measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
+        measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
         /**
          * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
@@ -8031,7 +8031,7 @@ export namespace NMA4 {
          * @param flags flags to influence what is picked
          * @returns the widget's descendant at (x, y)
          */
-        pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
+        pick(x: number, y: number, flags: Gtk.PickFlags): Gtk.Widget | null;
         /**
          * Flags the widget for a rerun of the {@link Gtk.Widget.size_allocate}
          * function.
@@ -8214,7 +8214,7 @@ export namespace NMA4 {
          * the value set by {@link Gtk.Widget.set_default_direction} will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Set the focus child of the widget.
          *
@@ -8276,7 +8276,7 @@ export namespace NMA4 {
          * Sets the horizontal alignment of the widget.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the `has-tooltip` property on the widget.
          * @param has_tooltip whether or not `widget` has a tooltip
@@ -8416,7 +8416,7 @@ export namespace NMA4 {
          * The default value is {@link Gtk.Overflow.VISIBLE}.
          * @param overflow desired overflow value
          */
-        set_overflow(overflow: Gtk.Overflow | null): void;
+        set_overflow(overflow: Gtk.Overflow): void;
         /**
          * Sets the parent widget of the widget.
          *
@@ -8498,7 +8498,7 @@ export namespace NMA4 {
          * @param flags state flags to turn on
          * @param clear whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Sets the contents of the tooltip for widget.
          *
@@ -8530,7 +8530,7 @@ export namespace NMA4 {
          * Sets the vertical alignment of the widget.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -8651,7 +8651,7 @@ export namespace NMA4 {
          * This function is for use in widget implementations.
          * @param flags state flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * Computes whether a container should give this
          *   widget extra space when possible.

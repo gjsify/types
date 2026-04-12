@@ -191,7 +191,7 @@ export namespace AppStreamCompose {
      */
     function globals_add_hint_tag(
         tag: string,
-        severity: AppStream.IssueSeverity | null,
+        severity: AppStream.IssueSeverity,
         explanation: string,
         overrideExisting: boolean,
     ): boolean;
@@ -268,7 +268,7 @@ export namespace AppStreamCompose {
      * @param istate the {@link AppStreamCompose.IconState}.
      * @returns string version of `istate`
      */
-    function icon_state_to_string(istate: IconState | null): string;
+    function icon_state_to_string(istate: IconState): string;
     /**
      * @returns An error quark.
      */
@@ -290,7 +290,7 @@ export namespace AppStreamCompose {
      * @param format the %AscImageFormat.
      * @returns string version of `format`
      */
-    function image_format_to_string(format: ImageFormat | null): string;
+    function image_format_to_string(format: ImageFormat): string;
     /**
      * Renders SVG data from a stream to a file in a specific format.
      * @param stream Input stream with SVG data.
@@ -304,7 +304,7 @@ export namespace AppStreamCompose {
         stream: Gio.InputStream,
         width: number,
         height: number,
-        format: ImageFormat | null,
+        format: ImageFormat,
         filename: string,
     ): boolean;
     /**
@@ -474,7 +474,7 @@ export namespace AppStreamCompose {
          * Add compose flags.
          * @param flags The compose flags to add.
          */
-        add_flags(flags: ComposeFlags | null): void;
+        add_flags(flags: ComposeFlags): void;
         /**
          * Add an {@link AppStreamCompose.Unit} as data source for metadata processing.
          * @param unit The {@link AppStreamCompose.Unit} to add
@@ -574,7 +574,7 @@ export namespace AppStreamCompose {
          * Remove compose flags.
          * @param flags The compose flags to remove.
          */
-        remove_flags(flags: ComposeFlags | null): void;
+        remove_flags(flags: ComposeFlags): void;
         /**
          * Reset the results, units and run-specific settings so the
          * instance can be reused for another metadata generation run.
@@ -613,12 +613,12 @@ export namespace AppStreamCompose {
          * for this {@link AppStreamCompose.Compose}.
          * @param flags The compose flags bitfield.
          */
-        set_flags(flags: ComposeFlags | null): void;
+        set_flags(flags: ComposeFlags): void;
         /**
          * Set the format kind of the catalog metadata that we should generate.
          * @param kind The format, e.g. {@link AppStream.FormatKind.XML}
          */
-        set_format(kind: AppStream.FormatKind | null): void;
+        set_format(kind: AppStream.FormatKind): void;
         /**
          * Set an output location for HTML reports of issues generated
          * during a compose run.
@@ -850,7 +850,7 @@ export namespace AppStreamCompose {
          * Sets the issue severity of this hint.
          * @param severity
          */
-        set_severity(severity: AppStream.IssueSeverity | null): void;
+        set_severity(severity: AppStream.IssueSeverity): void;
         /**
          * Sets the unique tag for the type of this hint.
          * @param tag
@@ -924,7 +924,7 @@ export namespace AppStreamCompose {
          * @param icon_scale the icon scale factor, e.g. 1
          * @param state the designated {@link AppStreamCompose.IconState}
          */
-        set_policy(icon_size: number, icon_scale: number, state: IconState | null): void;
+        set_policy(icon_size: number, icon_scale: number, state: IconState): void;
         /**
          * Converts the current icon policy into a textual representation.
          * @returns The icon policy serialized into a string. Free with `g_free()`
@@ -1028,7 +1028,7 @@ export namespace AppStreamCompose {
             dest_width: number,
             dest_height: number,
             src_size_min: number,
-            flags: ImageLoadFlags | null,
+            flags: ImageLoadFlags,
         ): boolean;
         /**
          * Saves the image to a file.
@@ -1038,7 +1038,7 @@ export namespace AppStreamCompose {
          * @param flags some {@link AppStreamCompose.ImageSaveFlags} values, e.g. {@link AppStreamCompose.ImageSaveFlags.PAD_16_9}
          * @returns `true` for success
          */
-        save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags | null): boolean;
+        save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags): boolean;
         /**
          * Scale the image to the given size.
          * @param new_width The new width.
@@ -1257,7 +1257,7 @@ export namespace AppStreamCompose {
          * Sets the kind of the bundle these results are for.
          * @param kind
          */
-        set_bundle_kind(kind: AppStream.BundleKind | null): void;
+        set_bundle_kind(kind: AppStream.BundleKind): void;
         /**
          * @returns `true` if this result means the analyzed unit was ignored entirely.
          */
@@ -1435,7 +1435,7 @@ export namespace AppStreamCompose {
          * Sets the kind of the bundle this unit represents.
          * @param kind
          */
-        set_bundle_kind(kind: AppStream.BundleKind | null): void;
+        set_bundle_kind(kind: AppStream.BundleKind): void;
         /**
          * Set list of files this unit contains.
          * @param contents A list of files contained by this unit.

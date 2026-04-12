@@ -362,7 +362,7 @@ export namespace GstInterfaces {
      * @returns TRUE if the navigation command could be extracted, otherwise FALSE.
      * @since 0.10.23
      */
-    function navigation_event_parse_command(event: Gst.Event, command: NavigationCommand | null): boolean;
+    function navigation_event_parse_command(event: Gst.Event, command: NavigationCommand): boolean;
     /**
      * @param event A {@link Gst.Event} to inspect.
      * @param key A pointer to a location to receive the string identifying the key press. The returned string is owned by the event, and valid only until the event is unreffed.
@@ -464,7 +464,7 @@ export namespace GstInterfaces {
      * @returns `true` if the query could be successfully parsed. `false` if not.
      * @since 0.10.23
      */
-    function navigation_query_parse_commands_nth(query: Gst.Query, nth: number, cmd: NavigationCommand | null): boolean;
+    function navigation_query_parse_commands_nth(query: Gst.Query, nth: number, cmd: NavigationCommand): boolean;
     /**
      * Set the {@link GstInterfaces.Navigation} angles query result field in `query`.
      * @param query a {@link Gst.Query}
@@ -481,7 +481,7 @@ export namespace GstInterfaces {
      * @param cmds An array containing `n_cmds` `GstNavigationCommand` values.
      * @since 0.10.23
      */
-    function navigation_query_set_commandsv(query: Gst.Query, n_cmds: number, cmds: NavigationCommand | null): void;
+    function navigation_query_set_commandsv(query: Gst.Query, n_cmds: number, cmds: NavigationCommand): void;
     /**
      * @param from {@link GstInterfaces.StreamVolumeFormat} to convert from
      * @param to {@link GstInterfaces.StreamVolumeFormat} to convert to
@@ -489,11 +489,7 @@ export namespace GstInterfaces {
      * @returns the converted volume
      * @since 0.10.25
      */
-    function stream_volume_convert_volume(
-        from: StreamVolumeFormat | null,
-        to: StreamVolumeFormat | null,
-        val: number,
-    ): number;
+    function stream_volume_convert_volume(from: StreamVolumeFormat, to: StreamVolumeFormat, val: number): number;
     /**
      * @gir-type Flags
      */
@@ -1251,7 +1247,7 @@ export namespace GstInterfaces {
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
          */
-        send_command(command: NavigationCommand | null): void;
+        send_command(command: NavigationCommand): void;
         /**
          * @param structure
          */
@@ -1438,7 +1434,7 @@ export namespace GstInterfaces {
          * @param format {@link GstInterfaces.StreamVolumeFormat} which should be returned
          * @returns The current stream volume as linear factor
          */
-        get_volume(format: StreamVolumeFormat | null): number;
+        get_volume(format: StreamVolumeFormat): number;
         /**
          * @param mute Mute state that should be set
          */
@@ -1447,7 +1443,7 @@ export namespace GstInterfaces {
          * @param format {@link GstInterfaces.StreamVolumeFormat} of `val`
          * @param val Linear volume factor that should be set
          */
-        set_volume(format: StreamVolumeFormat | null, val: number): void;
+        set_volume(format: StreamVolumeFormat, val: number): void;
     }
 
     export const StreamVolume: StreamVolumeNamespace & {

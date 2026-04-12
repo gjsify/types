@@ -2525,7 +2525,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2566,7 +2566,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3453,7 +3453,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3494,7 +3494,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5499,7 +5499,7 @@ export namespace Kkc {
         /**
          * @param value
          */
-        set_modifiers(value: ModifierType | null): void;
+        set_modifiers(value: ModifierType): void;
     }
 
     namespace Keymap {
@@ -5905,12 +5905,12 @@ export namespace Kkc {
         /**
          * @param value
          */
-        set_kana_mode(value: KanaMode | null): void;
+        set_kana_mode(value: KanaMode): void;
         get_punctuation_style(): PunctuationStyle;
         /**
          * @param value
          */
-        set_punctuation_style(value: PunctuationStyle | null): void;
+        set_punctuation_style(value: PunctuationStyle): void;
         get_auto_correct(): boolean;
         /**
          * @param value
@@ -6097,7 +6097,7 @@ export namespace Kkc {
         /**
          * @param mode
          */
-        get_keymap(mode: InputMode | null): Keymap;
+        get_keymap(mode: InputMode): Keymap;
         get_metadata(): RuleMetadata;
         /**
          * @param value
@@ -6238,7 +6238,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6279,7 +6279,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6709,7 +6709,7 @@ export namespace Kkc {
         /**
          * @param input_mode
          */
-        write(input_mode: InputMode | null): void;
+        write(input_mode: InputMode): void;
     }
 
     namespace Context {
@@ -6890,12 +6890,12 @@ export namespace Kkc {
         /**
          * @param value
          */
-        set_input_mode(value: InputMode | null): void;
+        set_input_mode(value: InputMode): void;
         get_punctuation_style(): PunctuationStyle;
         /**
          * @param value
          */
-        set_punctuation_style(value: PunctuationStyle | null): void;
+        set_punctuation_style(value: PunctuationStyle): void;
         get_auto_correct(): boolean;
         /**
          * @param value
@@ -7056,7 +7056,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7097,7 +7097,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7610,7 +7610,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7651,7 +7651,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8164,7 +8164,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8205,7 +8205,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8707,7 +8707,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8748,7 +8748,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9290,7 +9290,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9331,7 +9331,7 @@ export namespace Kkc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

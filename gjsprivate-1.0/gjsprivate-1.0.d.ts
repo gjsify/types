@@ -64,7 +64,7 @@ export namespace GjsPrivate {
         source_property: string,
         target: GObject.Object,
         target_property: string,
-        flags: GObject.BindingFlags | null,
+        flags: GObject.BindingFlags,
         to_callback: BindingTransformFunc,
         from_callback: BindingTransformFunc,
     ): void;
@@ -82,7 +82,7 @@ export namespace GjsPrivate {
         source_property: string,
         target: GObject.Object,
         target_property: string,
-        flags: GObject.BindingFlags | null,
+        flags: GObject.BindingFlags,
         to_callback: BindingTransformFunc,
         from_callback: BindingTransformFunc,
     ): GObject.Binding;
@@ -144,21 +144,13 @@ export namespace GjsPrivate {
      * @param s
      * @param match_options
      */
-    function regex_match(
-        regex: GLib.Regex,
-        s: string,
-        match_options: GLib.RegexMatchFlags | null,
-    ): [boolean, MatchInfo];
+    function regex_match(regex: GLib.Regex, s: string, match_options: GLib.RegexMatchFlags): [boolean, MatchInfo];
     /**
      * @param regex
      * @param s
      * @param match_options
      */
-    function regex_match_all(
-        regex: GLib.Regex,
-        s: string,
-        match_options: GLib.RegexMatchFlags | null,
-    ): [boolean, MatchInfo];
+    function regex_match_all(regex: GLib.Regex, s: string, match_options: GLib.RegexMatchFlags): [boolean, MatchInfo];
     /**
      * @param regex
      * @param bytes
@@ -169,7 +161,7 @@ export namespace GjsPrivate {
         regex: GLib.Regex,
         bytes: Uint8Array | string,
         start_position: number,
-        match_options: GLib.RegexMatchFlags | null,
+        match_options: GLib.RegexMatchFlags,
     ): [boolean, MatchInfo];
     /**
      * @param regex
@@ -181,13 +173,13 @@ export namespace GjsPrivate {
         regex: GLib.Regex,
         bytes: Uint8Array | string,
         start_position: number,
-        match_options: GLib.RegexMatchFlags | null,
+        match_options: GLib.RegexMatchFlags,
     ): [boolean, MatchInfo];
     /**
      * @param category
      * @param locale
      */
-    function setlocale(category: LocaleCategory | null, locale: string): string;
+    function setlocale(category: LocaleCategory, locale: string): string;
     /**
      * @param domain
      */
@@ -392,7 +384,7 @@ export namespace GjsPrivate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -433,7 +425,7 @@ export namespace GjsPrivate {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

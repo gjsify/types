@@ -353,7 +353,7 @@ export namespace Unity {
     /**
      * @param val
      */
-    function category_renderer_to_string(val: CategoryRenderer | null): string;
+    function category_renderer_to_string(val: CategoryRenderer): string;
     /**
      * @param content_type
      */
@@ -361,11 +361,11 @@ export namespace Unity {
     /**
      * @param val
      */
-    function category_content_type_to_string(val: CategoryContentType | null): string;
+    function category_content_type_to_string(val: CategoryContentType): string;
     /**
      * @param renderer
      */
-    function filter_renderer_to_string(renderer: FilterRenderer | null): string;
+    function filter_renderer_to_string(renderer: FilterRenderer): string;
     /**
      * @param renderer_name
      */
@@ -589,12 +589,12 @@ export namespace Unity {
         /**
          * @param value
          */
-        set_category(value: CategoryType | null): void;
+        set_category(value: CategoryType): void;
         get_size_hint(): IconSizeHint;
         /**
          * @param value
          */
-        set_size_hint(value: IconSizeHint | null): void;
+        set_size_hint(value: IconSizeHint): void;
     }
 
     namespace Inspector {
@@ -902,7 +902,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -943,7 +943,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1653,7 +1653,7 @@ export namespace Unity {
         /**
          * @param value
          */
-        set_content_type(value: CategoryContentType | null): void;
+        set_content_type(value: CategoryContentType): void;
         get_renderer_hint(): string;
         /**
          * @param value
@@ -1849,7 +1849,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1890,7 +1890,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2461,7 +2461,7 @@ export namespace Unity {
         /**
          * @param value
          */
-        set_sort_type(value: OptionsFilterSortType | null): void;
+        set_sort_type(value: OptionsFilterSortType): void;
         get_show_all_button(): boolean;
         /**
          * @param value
@@ -2928,7 +2928,7 @@ export namespace Unity {
         /**
          * @param value
          */
-        set_remote_content_search(value: PreferencesManagerRemoteContent | null): void;
+        set_remote_content_search(value: PreferencesManagerRemoteContent): void;
         get_always_search(): string[];
         /**
          * @param value
@@ -3178,7 +3178,7 @@ export namespace Unity {
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType | null,
+            search_type: SearchType,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
         /**
@@ -3191,7 +3191,7 @@ export namespace Unity {
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType | null,
+            search_type: SearchType,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
@@ -3205,7 +3205,7 @@ export namespace Unity {
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType | null,
+            search_type: SearchType,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
@@ -3446,7 +3446,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3487,7 +3487,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4060,7 +4060,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4101,7 +4101,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4959,7 +4959,7 @@ export namespace Unity {
         /**
          * @param value
          */
-        set_preview_type(value: PaymentPreviewType | null): void;
+        set_preview_type(value: PaymentPreviewType): void;
     }
 
     namespace MoviePreview {
@@ -5675,7 +5675,7 @@ export namespace Unity {
          * @param schema
          * @param type
          */
-        add_field(name: string, schema: string, type: SchemaFieldType | null): void;
+        add_field(name: string, schema: string, type: SchemaFieldType): void;
         get_fields(): SchemaFieldInfo[];
     }
 
@@ -5986,7 +5986,7 @@ export namespace Unity {
         /**
          * @param serialization_type
          */
-        serialize_as(serialization_type: SerializationType | null): Uint8Array;
+        serialize_as(serialization_type: SerializationType): Uint8Array;
     }
 
     namespace ResultPreviewer {
@@ -6375,7 +6375,7 @@ export namespace Unity {
         /**
          * @param search_type
          */
-        results_invalidated(search_type: SearchType | null): void;
+        results_invalidated(search_type: SearchType): void;
     }
 
     namespace ScopeDBusConnector {
@@ -6770,7 +6770,7 @@ export namespace Unity {
         /**
          * @param search_type
          */
-        queue_search_changed(search_type: SearchType | null): void;
+        queue_search_changed(search_type: SearchType): void;
     }
 
     namespace AggregatorScope {
@@ -6901,7 +6901,7 @@ export namespace Unity {
          * @param field
          * @param flags
          */
-        add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags | null): void;
+        add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags): void;
         /**
          * @param category_index
          * @param field
@@ -6953,7 +6953,7 @@ export namespace Unity {
         /**
          * @param value
          */
-        set_merge_mode(value: AggregatorScopeMergeMode | null): void;
+        set_merge_mode(value: AggregatorScopeMergeMode): void;
         get_proxy_filter_hints(): boolean;
         /**
          * @param value
@@ -7821,7 +7821,7 @@ export namespace Unity {
         /**
          * @param value
          */
-        set_playback_state(value: PlaybackState | null): void;
+        set_playback_state(value: PlaybackState): void;
         get_current_playlist(): Playlist;
         /**
          * @param value

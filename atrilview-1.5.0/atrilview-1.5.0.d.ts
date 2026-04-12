@@ -330,7 +330,7 @@ export namespace AtrilView {
         /**
          * @param layout
          */
-        set_page_layout(layout: PageLayout | null): void;
+        set_page_layout(layout: PageLayout): void;
         /**
          * @param rotation
          */
@@ -342,7 +342,7 @@ export namespace AtrilView {
         /**
          * @param mode
          */
-        set_sizing_mode(mode: SizingMode | null): void;
+        set_sizing_mode(mode: SizingMode): void;
     }
 
     namespace Job {
@@ -451,15 +451,15 @@ export namespace AtrilView {
         /**
          * @param priority
          */
-        scheduler_push_job(priority: JobPriority | null): void;
+        scheduler_push_job(priority: JobPriority): void;
         /**
          * @param priority
          */
-        scheduler_update_job(priority: JobPriority | null): void;
+        scheduler_update_job(priority: JobPriority): void;
         /**
          * @param run_mode
          */
-        set_run_mode(run_mode: JobRunMode | null): void;
+        set_run_mode(run_mode: JobRunMode): void;
         succeeded(): void;
     }
 
@@ -1213,7 +1213,7 @@ export namespace AtrilView {
          */
         set_selection_info(
             selection_points: AtrilDocument.Rectangle,
-            selection_style: AtrilDocument.SelectionStyle | null,
+            selection_style: AtrilDocument.SelectionStyle,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;
@@ -1659,7 +1659,7 @@ export namespace AtrilView {
         /**
          * @param annot_type
          */
-        begin_add_annotation(annot_type: AtrilDocument.AnnotationType | null): void;
+        begin_add_annotation(annot_type: AtrilDocument.AnnotationType): void;
         can_zoom_in(): boolean;
         can_zoom_out(): boolean;
         cancel_add_annotation(): void;
@@ -1713,7 +1713,7 @@ export namespace AtrilView {
          * @param scroll
          * @param horizontal
          */
-        scroll(scroll: Gtk.ScrollType | null, horizontal: boolean): void;
+        scroll(scroll: Gtk.ScrollType, horizontal: boolean): void;
         select_all(): void;
         /**
          * @param page
@@ -1839,7 +1839,7 @@ export namespace AtrilView {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -1851,7 +1851,7 @@ export namespace AtrilView {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -1905,7 +1905,7 @@ export namespace AtrilView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1946,7 +1946,7 @@ export namespace AtrilView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2705,7 +2705,7 @@ export namespace AtrilView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2746,7 +2746,7 @@ export namespace AtrilView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3302,7 +3302,7 @@ export namespace AtrilView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3343,7 +3343,7 @@ export namespace AtrilView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

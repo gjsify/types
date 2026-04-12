@@ -403,11 +403,11 @@ export namespace Retro {
     /**
      * @param type
      */
-    function controller_type_get_id_count(type: ControllerType | null): number;
+    function controller_type_get_id_count(type: ControllerType): number;
     /**
      * @param type
      */
-    function controller_type_get_index_count(type: ControllerType | null): number;
+    function controller_type_get_index_count(type: ControllerType): number;
     /**
      * Logs an error or debugging message.
      *
@@ -418,12 +418,7 @@ export namespace Retro {
      * @param log_level the log level, either from {@link GLib.LogLevelFlags} or a user-defined level
      * @param message the message to log
      */
-    function g_log(
-        sender: Core,
-        log_domain: string | null,
-        log_level: GLib.LogLevelFlags | null,
-        message: string,
-    ): void;
+    function g_log(sender: Core, log_domain: string | null, log_level: GLib.LogLevelFlags, message: string): void;
     function gtk_get_resource(): Gio.Resource;
     /**
      * @param button_code a button code
@@ -434,7 +429,7 @@ export namespace Retro {
      * @param joypad_id a {@link Retro.JoypadId}
      * @returns the corresponding button code
      */
-    function joypad_id_to_button_code(joypad_id: JoypadId | null): number;
+    function joypad_id_to_button_code(joypad_id: JoypadId): number;
     /**
      * Gets the aspect ratio of `pixbuf` by reading the 'aspect-ratio' pixbuf option.
      * @param pixbuf a {@link GdkPixbuf.Pixbuf}
@@ -808,7 +803,7 @@ export namespace Retro {
          * @param memory_type the type of memory
          * @returns the size of a memory region
          */
-        get_memory_size(memory_type: MemoryType | null): number;
+        get_memory_size(memory_type: MemoryType): number;
         /**
          * Gets the option for the given key.
          * @param key the key of the option
@@ -873,7 +868,7 @@ export namespace Retro {
          * @param memory_type the type of memory
          * @param filename a file to load the data from
          */
-        load_memory(memory_type: MemoryType | null, filename: string): void;
+        load_memory(memory_type: MemoryType, filename: string): void;
         /**
          * Loads the state of the `self`.
          * @param filename the file to load the state from
@@ -902,7 +897,7 @@ export namespace Retro {
          * @param memory_type the type of memory
          * @param filename a file to save the data to
          */
-        save_memory(memory_type: MemoryType | null, filename: string): void;
+        save_memory(memory_type: MemoryType, filename: string): void;
         /**
          * Saves the state of `self`.
          * @param filename the file to save the state to
@@ -932,7 +927,7 @@ export namespace Retro {
          * @param controller_type a {@link Retro.ControllerType}
          * @param controller a {@link Retro.Controller}
          */
-        set_default_controller(controller_type: ControllerType | null, controller?: Controller | null): void;
+        set_default_controller(controller_type: ControllerType, controller?: Controller | null): void;
         /**
          * Sets the widget whose key events will be forwarded to `self`.
          * @param widget a {@link Gtk.Widget}, or `null`
@@ -1282,7 +1277,7 @@ export namespace Retro {
          * @param controller_type the controller type to expose `self` as
          * @returns a new {@link Retro.Controller}
          */
-        as_controller(controller_type: ControllerType | null): Controller;
+        as_controller(controller_type: ControllerType): Controller;
         /**
          * Gets whether the pointer should be grabbed when clicking on the view. This
          * allows `self` to work as a RETRO_CONTROLLER_TYPE_MOUSE instead of a
@@ -1344,7 +1339,7 @@ export namespace Retro {
          * Sets the video filter to use to render the core's video on `self`.
          * @param filter a {@link Retro.VideoFilter}
          */
-        set_filter(filter: VideoFilter | null): void;
+        set_filter(filter: VideoFilter): void;
         /**
          * Sets the key joypad mapping on `self`. If given mapping is `null`, then set to
          * an empty configuration.
@@ -1395,7 +1390,7 @@ export namespace Retro {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
         /**
          * Retrieves the accessible identifier for the accessible object.
          *
@@ -1452,22 +1447,22 @@ export namespace Retro {
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
-        reset_property(property: Gtk.AccessibleProperty | null): void;
+        reset_property(property: Gtk.AccessibleProperty): void;
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
-        reset_relation(relation: Gtk.AccessibleRelation | null): void;
+        reset_relation(relation: Gtk.AccessibleRelation): void;
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
-        reset_state(state: Gtk.AccessibleState | null): void;
+        reset_state(state: Gtk.AccessibleState): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -1498,7 +1493,7 @@ export namespace Retro {
          * states automatically.
          * @param state the platform state to update
          */
-        update_platform_state(state: Gtk.AccessiblePlatformState | null): void;
+        update_platform_state(state: Gtk.AccessiblePlatformState): void;
         /**
          * Updates an array of accessible properties.
          *
@@ -1509,7 +1504,7 @@ export namespace Retro {
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -1520,7 +1515,7 @@ export namespace Retro {
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -1531,7 +1526,7 @@ export namespace Retro {
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible identifier for the accessible object.
          *
@@ -1730,7 +1725,7 @@ export namespace Retro {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1771,7 +1766,7 @@ export namespace Retro {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2199,13 +2194,13 @@ export namespace Retro {
          * @param button joypad button id
          * @returns mapping key code
          */
-        get_button_key(button: JoypadId | null): number;
+        get_button_key(button: JoypadId): number;
         /**
          * Maps the joypad button id to mapping key code.
          * @param button joypad button id
          * @param hardware_keycode mapping key code
          */
-        set_button_key(button: JoypadId | null, hardware_keycode: number): void;
+        set_button_key(button: JoypadId, hardware_keycode: number): void;
     }
 
     namespace ModuleIterator {
@@ -2715,13 +2710,13 @@ export namespace Retro {
          * @param controller_type a {@link Retro.ControllerType}
          * @returns whether `self` has the capability
          */
-        has_capability(controller_type: ControllerType | null): boolean;
+        has_capability(controller_type: ControllerType): boolean;
         /**
          * Sets the rumble state of `self`.
          * @param effect the rumble effect
          * @param strength the rumble effect strength
          */
-        set_rumble_state(effect: RumbleEffect | null, strength: number): void;
+        set_rumble_state(effect: RumbleEffect, strength: number): void;
     }
 
     export const Controller: ControllerNamespace & {

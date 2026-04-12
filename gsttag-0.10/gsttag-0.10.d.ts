@@ -142,7 +142,7 @@ export namespace GstTag {
     function image_data_to_image_buffer(
         image_data: number[],
         image_data_len: number,
-        image_type: ImageType | null,
+        image_type: ImageType,
     ): Gst.Buffer;
     /**
      * @param tag_list

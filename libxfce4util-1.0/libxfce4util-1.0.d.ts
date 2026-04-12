@@ -227,7 +227,7 @@ export namespace Libxfce4util {
      * @param license_type an {@link Libxfce4util.LicenseTextType}.
      * @returns the license text for `license_type`.
      */
-    function get_license_text(license_type: LicenseTextType | null): string;
+    function get_license_text(license_type: LicenseTextType): string;
     /**
      * `paths` is a ':'-separated list of pathnames, with:
      *
@@ -248,7 +248,7 @@ export namespace Libxfce4util {
         size: bigint | number,
         paths: string,
         filename: string,
-        test: GLib.FileTest | null,
+        test: GLib.FileTest,
     ): string;
     /**
      * Safe way to retrieve the path to the user's ".xfce4" directory. The path
@@ -336,7 +336,7 @@ export namespace Libxfce4util {
      * @returns the newly created {@link Libxfce4util.Rc} object, or `null` on error.
      * @since 4.2
      */
-    function rc_config_open(type: ResourceType | null, resource: string, readonly: boolean): Rc;
+    function rc_config_open(type: ResourceType, resource: string, readonly: boolean): Rc;
     /**
      * Parses the resource config file specified by `filename`.
      *
@@ -367,7 +367,7 @@ export namespace Libxfce4util {
      * @returns list of possible directories for `type`.
      * @since 4.2
      */
-    function resource_dirs(type: ResourceType | null): string[];
+    function resource_dirs(type: ResourceType): string[];
     /**
      * Looks for a resource of the specified `type` whose relative path matches
      * `filename`. `filename` can either reference a regular file, in which case
@@ -381,7 +381,7 @@ export namespace Libxfce4util {
      * @returns the absolute path to the first file or directory in the               search path, that matches `filename` or `null` if no such               file or directory could be found.
      * @since 4.2
      */
-    function resource_lookup(type: ResourceType | null, filename: string): string;
+    function resource_lookup(type: ResourceType, filename: string): string;
     /**
      * Similar to `xfce_resource_lookup()`, but returns all resource of the specified `type`,
      * that whose name is `filename`.
@@ -393,7 +393,7 @@ export namespace Libxfce4util {
      * @returns list of possible resources for `type`.
      * @since 4.2
      */
-    function resource_lookup_all(type: ResourceType | null, filename: string): string[];
+    function resource_lookup_all(type: ResourceType, filename: string): string[];
     /**
      * Tries to find all resources with the specified `type`. The function will
      * look into all specified directories and return all filenames in these
@@ -414,7 +414,7 @@ export namespace Libxfce4util {
      * @returns string array of all the relative paths whose names matches the               given `pattern`. The return value has to be freed using               `g_strfreev()` when no longer needed.
      * @since 4.2
      */
-    function resource_match(type: ResourceType | null, pattern: string, unique: boolean): string[];
+    function resource_match(type: ResourceType, pattern: string, unique: boolean): string[];
     /**
      * Yet to be implemented!
      * @param type type of the resource to locate directories for.
@@ -423,7 +423,7 @@ export namespace Libxfce4util {
      * @returns The caller is responsible to free          the returned string array using `g_strfreev()` when no longer needed.
      * @since 4.2
      */
-    function resource_match_custom(type: ResourceType | null, unique: boolean, func: MatchFunc): string[];
+    function resource_match_custom(type: ResourceType, unique: boolean, func: MatchFunc): string[];
     /**
      * Undoes the effect of the latest call to `xfce_resource_push_path()`. You
      * should take special care to call `xfce_resource_pop_path()` exactly same
@@ -432,7 +432,7 @@ export namespace Libxfce4util {
      * @param type type of the resource which search list should be shrinked.
      * @since 4.2
      */
-    function resource_pop_path(type: ResourceType | null): void;
+    function resource_pop_path(type: ResourceType): void;
     /**
      * Appends `path` to the search path list for `type`. This function was
      * written primary for use within modules in larger applications, for example
@@ -446,7 +446,7 @@ export namespace Libxfce4util {
      * @param path search path to add.
      * @since 4.2
      */
-    function resource_push_path(type: ResourceType | null, path: string): void;
+    function resource_push_path(type: ResourceType, path: string): void;
     /**
      * If `relpath` contains a trailing slash ('/') character, `xfce_resource_save_location()`
      * finds the directory to save files into for the given type in the user's
@@ -466,7 +466,7 @@ export namespace Libxfce4util {
      * @returns the path where resources of the specified `type` should be               saved or `null` on error. The returned string should be freed               when no longer needed.
      * @since 4.2
      */
-    function resource_save_location(type: ResourceType | null, relpath: string, create: boolean): string;
+    function resource_save_location(type: ResourceType, relpath: string, create: boolean): string;
     /**
      * Searches `str` for occurances of `pattern` and replaces each
      * such occurance with `replacement`. Returns a newly allocated

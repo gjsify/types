@@ -3594,7 +3594,7 @@ export namespace GstCodecParsers {
     function h264_bit_writer_slice_hdr(
         slice: H264SliceHdr,
         start_code: boolean,
-        nal_type: H264NalUnitType | null,
+        nal_type: H264NalUnitType,
         is_ref: boolean,
         size: number,
     ): [H264BitWriterResult, number, number, number];
@@ -3943,7 +3943,7 @@ export namespace GstCodecParsers {
      * @returns the name for `slice_type` or `null` on error
      * @since 1.24
      */
-    function h264_slice_type_to_string(slice_type: H264SliceType | null): string | null;
+    function h264_slice_type_to_string(slice_type: H264SliceType): string | null;
     /**
      * Calculate framerate of a video sequence using `sps` VUI information,
      * `field_pic_flag` from a slice header and `pic_struct` from {@link GstCodecParsers.H264PicTiming} SEI
@@ -4055,7 +4055,7 @@ export namespace GstCodecParsers {
      * @returns the name for `profile` or `null` on error
      * @since 1.18
      */
-    function h265_profile_to_string(profile: H265Profile | null): string | null;
+    function h265_profile_to_string(profile: H265Profile): string | null;
     /**
      * Converts quantization matrix `quant` from uprightdiagonal scan order to
      * raster scan order and store the resulting factors into `out_quant`.
@@ -4157,7 +4157,7 @@ export namespace GstCodecParsers {
      * @returns the name for `slice_type` or `null` on error
      * @since 1.24
      */
-    function h265_slice_type_to_string(slice_type: H265SliceType | null): string | null;
+    function h265_slice_type_to_string(slice_type: H265SliceType): string | null;
     /**
      * Parses `data`, and fills the `aps` structure.
      * @param parser a {@link GstCodecParsers.H266Parser}
@@ -4206,7 +4206,7 @@ export namespace GstCodecParsers {
      * @returns the name for `profile` or `null` on error
      * @since 1.26
      */
-    function h266_profile_to_string(profile: H266Profile | null): string | null;
+    function h266_profile_to_string(profile: H266Profile): string | null;
     /**
      * @param colorspace_string
      */
@@ -4214,7 +4214,7 @@ export namespace GstCodecParsers {
     /**
      * @param colorspace
      */
-    function jpeg2000_colorspace_to_string(colorspace: JPEG2000Colorspace | null): string;
+    function jpeg2000_colorspace_to_string(colorspace: JPEG2000Colorspace): string;
     /**
      * @param sampling_string
      */
@@ -4222,19 +4222,19 @@ export namespace GstCodecParsers {
     /**
      * @param sampling
      */
-    function jpeg2000_sampling_is_mono(sampling: JPEG2000Sampling | null): boolean;
+    function jpeg2000_sampling_is_mono(sampling: JPEG2000Sampling): boolean;
     /**
      * @param sampling
      */
-    function jpeg2000_sampling_is_rgb(sampling: JPEG2000Sampling | null): boolean;
+    function jpeg2000_sampling_is_rgb(sampling: JPEG2000Sampling): boolean;
     /**
      * @param sampling
      */
-    function jpeg2000_sampling_is_yuv(sampling: JPEG2000Sampling | null): boolean;
+    function jpeg2000_sampling_is_yuv(sampling: JPEG2000Sampling): boolean;
     /**
      * @param sampling
      */
-    function jpeg2000_sampling_to_string(sampling: JPEG2000Sampling | null): string;
+    function jpeg2000_sampling_to_string(sampling: JPEG2000Sampling): string;
     /**
      * Generating the according JPEG bit stream by providing the frame header.
      * @param frame_hdr the frame header of {@link GstCodecParsers.JpegFrameHdr} to write
@@ -4245,7 +4245,7 @@ export namespace GstCodecParsers {
      */
     function jpeg_bit_writer_frame_header(
         frame_hdr: JpegFrameHdr,
-        marker: JpegMarker | null,
+        marker: JpegMarker,
         size: number,
     ): [JpegBitWriterResult, number, number];
     /**
@@ -4296,7 +4296,7 @@ export namespace GstCodecParsers {
      * @since 1.26
      */
     function jpeg_bit_writer_segment_with_data(
-        marker: JpegMarker | null,
+        marker: JpegMarker,
         seg_data: number | null,
         seg_size: number,
         size: number,

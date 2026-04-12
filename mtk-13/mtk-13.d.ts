@@ -33,7 +33,7 @@ export namespace Mtk {
      * @param rect A rectangle
      * @param rounding_strategy The rounding strategy
      */
-    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy | null): Rectangle;
+    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
     function x11_errors_deinit(): void;
     /**
      * @gir-type Struct

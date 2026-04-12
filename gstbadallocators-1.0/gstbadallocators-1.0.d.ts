@@ -31,7 +31,7 @@ export namespace GstBadAllocators {
      * @returns Physical memory address that is backing `mem`, or 0 if none
      * @since 1.12
      */
-    function phys_memory_get_phys_addr(mem: Gst.Memory): never;
+    function phys_memory_get_phys_addr(mem: Gst.Memory): number;
     /**
      * @gir-type Alias
      */
@@ -48,7 +48,7 @@ export namespace GstBadAllocators {
              * @param mem
              * @virtual
              */
-            vfunc_get_phys_addr(mem: Gst.Memory): never;
+            vfunc_get_phys_addr(mem: Gst.Memory): bigint | number;
         }
 
         // Constructor properties interface

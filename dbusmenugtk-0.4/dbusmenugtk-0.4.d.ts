@@ -89,7 +89,7 @@ export namespace DbusmenuGtk {
     function menuitem_property_set_shortcut(
         menuitem: Dbusmenu.Menuitem,
         key: number,
-        modifier: Gdk.ModifierType | null,
+        modifier: Gdk.ModifierType,
     ): boolean;
     /**
      * Takes the shortcut that is installed on a menu item and calls
@@ -384,7 +384,7 @@ export namespace DbusmenuGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -425,7 +425,7 @@ export namespace DbusmenuGtk {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

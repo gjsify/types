@@ -111,12 +111,12 @@ export namespace Polkit {
      */
     function implicit_authorization_from_string(
         string: string,
-        out_implicit_authorization: ImplicitAuthorization | null,
+        out_implicit_authorization: ImplicitAuthorization,
     ): boolean;
     /**
      * @param implicit_authorization
      */
-    function implicit_authorization_to_string(implicit_authorization: ImplicitAuthorization | null): string;
+    function implicit_authorization_to_string(implicit_authorization: ImplicitAuthorization): string;
     /**
      * Creates an object from `str` that implements the {@link Polkit.Subject}
      * interface.
@@ -573,7 +573,7 @@ export namespace Polkit {
             subject: Subject,
             action_id: string,
             details: Details | null,
-            flags: CheckAuthorizationFlags | null,
+            flags: CheckAuthorizationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<AuthorizationResult>;
         /**
@@ -612,7 +612,7 @@ export namespace Polkit {
             subject: Subject,
             action_id: string,
             details: Details | null,
-            flags: CheckAuthorizationFlags | null,
+            flags: CheckAuthorizationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -652,7 +652,7 @@ export namespace Polkit {
             subject: Subject,
             action_id: string,
             details: Details | null,
-            flags: CheckAuthorizationFlags | null,
+            flags: CheckAuthorizationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<AuthorizationResult> | void;
@@ -695,7 +695,7 @@ export namespace Polkit {
             subject: Subject,
             action_id: string,
             details: Details | null,
-            flags: CheckAuthorizationFlags | null,
+            flags: CheckAuthorizationFlags,
             cancellable?: Gio.Cancellable | null,
         ): AuthorizationResult;
         /**
@@ -1611,7 +1611,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1652,7 +1652,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2671,7 +2671,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2712,7 +2712,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3345,7 +3345,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3386,7 +3386,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4013,7 +4013,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4054,7 +4054,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4586,7 +4586,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4627,7 +4627,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5335,7 +5335,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5376,7 +5376,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6339,7 +6339,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6380,7 +6380,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6923,7 +6923,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6964,7 +6964,7 @@ export namespace Polkit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

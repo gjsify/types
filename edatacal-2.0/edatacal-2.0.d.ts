@@ -494,7 +494,7 @@ export namespace EDataCal {
          */
         create_objects(
             calobjs: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -510,7 +510,7 @@ export namespace EDataCal {
          */
         create_objects(
             calobjs: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -527,7 +527,7 @@ export namespace EDataCal {
          */
         create_objects(
             calobjs: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -558,7 +558,7 @@ export namespace EDataCal {
          */
         create_objects_sync(
             calobjs: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             out_uids: GLib.Queue,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -579,7 +579,7 @@ export namespace EDataCal {
             uid: string,
             rid: string | null,
             alarm_uid: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -600,7 +600,7 @@ export namespace EDataCal {
             uid: string,
             rid: string | null,
             alarm_uid: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -622,7 +622,7 @@ export namespace EDataCal {
             uid: string,
             rid: string | null,
             alarm_uid: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -650,7 +650,7 @@ export namespace EDataCal {
             uid: string,
             rid: string | null,
             alarm_uid: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1130,8 +1130,8 @@ export namespace EDataCal {
          */
         modify_objects(
             calobjs: string,
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1149,8 +1149,8 @@ export namespace EDataCal {
          */
         modify_objects(
             calobjs: string,
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1169,8 +1169,8 @@ export namespace EDataCal {
          */
         modify_objects(
             calobjs: string,
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1194,8 +1194,8 @@ export namespace EDataCal {
          */
         modify_objects_sync(
             calobjs: string,
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1325,7 +1325,7 @@ export namespace EDataCal {
          */
         receive_objects(
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1343,7 +1343,7 @@ export namespace EDataCal {
          */
         receive_objects(
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1362,7 +1362,7 @@ export namespace EDataCal {
          */
         receive_objects(
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1386,7 +1386,7 @@ export namespace EDataCal {
          */
         receive_objects_sync(
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1487,8 +1487,8 @@ export namespace EDataCal {
          */
         remove_objects(
             component_ids: ECal.ComponentId[],
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1506,8 +1506,8 @@ export namespace EDataCal {
          */
         remove_objects(
             component_ids: ECal.ComponentId[],
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1526,8 +1526,8 @@ export namespace EDataCal {
          */
         remove_objects(
             component_ids: ECal.ComponentId[],
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1551,8 +1551,8 @@ export namespace EDataCal {
          */
         remove_objects_sync(
             component_ids: ECal.ComponentId[],
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1590,7 +1590,7 @@ export namespace EDataCal {
          */
         send_objects(
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
@@ -1606,7 +1606,7 @@ export namespace EDataCal {
          */
         send_objects(
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1623,7 +1623,7 @@ export namespace EDataCal {
          */
         send_objects(
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
@@ -1659,7 +1659,7 @@ export namespace EDataCal {
          */
         send_objects_sync(
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             out_users: GLib.Queue,
             cancellable?: Gio.Cancellable | null,
         ): string;
@@ -1762,7 +1762,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1803,7 +1803,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2493,7 +2493,7 @@ export namespace EDataCal {
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             calobjs: string[],
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
         ): [string[], ECal.Component[]];
         /**
          * @param args
@@ -2515,7 +2515,7 @@ export namespace EDataCal {
             uid: string,
             rid: string,
             auid: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
         ): void;
         /**
          * @param args
@@ -2618,8 +2618,8 @@ export namespace EDataCal {
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             calobjs: string[],
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
         ): [ECal.Component[], ECal.Component[]];
         /**
          * @param args
@@ -2648,7 +2648,7 @@ export namespace EDataCal {
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
         ): void;
         /**
          * @param args
@@ -2678,8 +2678,8 @@ export namespace EDataCal {
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             ids: ECal.ComponentId[],
-            mod: ECal.ObjModType | null,
-            opflags: ECal.OperationFlags | null,
+            mod: ECal.ObjModType,
+            opflags: ECal.OperationFlags,
         ): [ECal.Component[], ECal.Component[]];
         /**
          * @param args
@@ -2698,7 +2698,7 @@ export namespace EDataCal {
             cal: DataCal,
             cancellable: Gio.Cancellable | null,
             calobj: string,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             users: string[],
         ): string;
         /**
@@ -2771,7 +2771,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2812,7 +2812,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3295,7 +3295,7 @@ export namespace EDataCal {
          * @param deleted_flag one of {@link EBackend.CacheDeletedFlag} enum
          * @returns Whether the object had been found.
          */
-        contains(uid: string, rid: string | null, deleted_flag: EBackend.CacheDeletedFlag | null): boolean;
+        contains(uid: string, rid: string | null, deleted_flag: EBackend.CacheDeletedFlag): boolean;
         /**
          * @param args
          */
@@ -3507,7 +3507,7 @@ export namespace EDataCal {
             component: ECal.Component,
             extra: string | null,
             custom_flags: number,
-            offline_flag: EBackend.CacheOfflineFlag | null,
+            offline_flag: EBackend.CacheOfflineFlag,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3528,7 +3528,7 @@ export namespace EDataCal {
             components: ECal.Component[],
             extras: string[] | null,
             custom_flags: number[] | null,
-            offline_flag: EBackend.CacheOfflineFlag | null,
+            offline_flag: EBackend.CacheOfflineFlag,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3558,7 +3558,7 @@ export namespace EDataCal {
             uid: string,
             rid: string | null,
             custom_flags: number,
-            offline_flag: EBackend.CacheOfflineFlag | null,
+            offline_flag: EBackend.CacheOfflineFlag,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3577,7 +3577,7 @@ export namespace EDataCal {
         remove_components(
             ids: ECal.ComponentId[],
             custom_flags: number[] | null,
-            offline_flag: EBackend.CacheOfflineFlag | null,
+            offline_flag: EBackend.CacheOfflineFlag,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -3768,7 +3768,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3809,7 +3809,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4777,11 +4777,11 @@ export namespace EDataCal {
          * @returns Whether succeeded.
          */
         remove_component_sync(
-            conflict_resolution: EDataServer.ConflictResolution | null,
+            conflict_resolution: EDataServer.ConflictResolution,
             uid: string,
             extra: string | null,
             object: string | null,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -4836,10 +4836,10 @@ export namespace EDataCal {
          */
         save_component_sync(
             overwrite_existing: boolean,
-            conflict_resolution: EDataServer.ConflictResolution | null,
+            conflict_resolution: EDataServer.ConflictResolution,
             instances: ECal.Component[],
             extra: string | null,
-            opflags: ECal.OperationFlags | null,
+            opflags: ECal.OperationFlags,
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string, string];
         /**
@@ -4994,7 +4994,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5035,7 +5035,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5772,7 +5772,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5813,7 +5813,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6369,7 +6369,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6410,7 +6410,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7131,7 +7131,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7172,7 +7172,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7803,7 +7803,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7844,7 +7844,7 @@ export namespace EDataCal {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

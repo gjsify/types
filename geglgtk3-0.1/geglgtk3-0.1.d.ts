@@ -248,7 +248,7 @@ export namespace GeglGtk3 {
          * Set the autoscaling policy
          * @param autoscale {@link GeglGtk3.ViewAutoscale} policy to use
          */
-        set_autoscale_policy(autoscale: ViewAutoscale | null): void;
+        set_autoscale_policy(autoscale: ViewAutoscale): void;
         /**
          * Change the {@link Gegl.Node} to display
          * @param node a {@link Gegl.Node} instance or `null`
@@ -313,7 +313,7 @@ export namespace GeglGtk3 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -354,7 +354,7 @@ export namespace GeglGtk3 {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

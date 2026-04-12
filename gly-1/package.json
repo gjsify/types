@@ -1,6 +1,6 @@
 {
     "name": "@girs/gly-1",
-    "version": "1.0.0-4.0.0-rc.1",
+    "version": "1.0.0-4.0.0-rc.2",
     "description": "GJS TypeScript type definitions for Gly-1, generated from library version 1.0.0",
     "type": "module",
     "module": "gly-1.js",

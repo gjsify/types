@@ -2156,7 +2156,7 @@ export namespace Snapd {
          */
         create_user_async(
             email: string,
-            flags: CreateUserFlags | null,
+            flags: CreateUserFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<UserInformation>;
         /**
@@ -2169,7 +2169,7 @@ export namespace Snapd {
          */
         create_user_async(
             email: string,
-            flags: CreateUserFlags | null,
+            flags: CreateUserFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2183,7 +2183,7 @@ export namespace Snapd {
          */
         create_user_async(
             email: string,
-            flags: CreateUserFlags | null,
+            flags: CreateUserFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserInformation> | void;
@@ -2201,11 +2201,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.UserInformation} or `null` on error.
          */
-        create_user_sync(
-            email: string,
-            flags: CreateUserFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): UserInformation;
+        create_user_sync(email: string, flags: CreateUserFlags, cancellable?: Gio.Cancellable | null): UserInformation;
         /**
          * Asynchronously create local user accounts using the system-user assertions that are valid for this device.
          * See `snapd_client_create_users_sync()` for more information.
@@ -2652,7 +2648,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         find_async(
-            flags: FindFlags | null,
+            flags: FindFlags,
             query: string,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[Snap[], string]>;
@@ -2665,7 +2661,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         find_async(
-            flags: FindFlags | null,
+            flags: FindFlags,
             query: string,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -2679,7 +2675,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         find_async(
-            flags: FindFlags | null,
+            flags: FindFlags,
             query: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2739,7 +2735,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         find_section_async(
-            flags: FindFlags | null,
+            flags: FindFlags,
             section?: string | null,
             query?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -2754,7 +2750,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         find_section_async(
-            flags: FindFlags | null,
+            flags: FindFlags,
             section: string | null,
             query: string | null,
             cancellable: Gio.Cancellable | null,
@@ -2770,7 +2766,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         find_section_async(
-            flags: FindFlags | null,
+            flags: FindFlags,
             section?: string | null,
             query?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -2792,7 +2788,7 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          */
         find_section_sync(
-            flags: FindFlags | null,
+            flags: FindFlags,
             section: string | null,
             query: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -2804,7 +2800,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          */
-        find_sync(flags: FindFlags | null, query: string, cancellable?: Gio.Cancellable | null): [Snap[], string];
+        find_sync(flags: FindFlags, query: string, cancellable?: Gio.Cancellable | null): [Snap[], string];
         /**
          * Asynchronously get the available aliases.
          * See `snapd_client_get_aliases_sync()` for more information.
@@ -2854,7 +2850,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         get_apps2_async(
-            flags: GetAppsFlags | null,
+            flags: GetAppsFlags,
             snaps?: string[] | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<App[]>;
@@ -2867,7 +2863,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_apps2_async(
-            flags: GetAppsFlags | null,
+            flags: GetAppsFlags,
             snaps: string[] | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -2881,7 +2877,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_apps2_async(
-            flags: GetAppsFlags | null,
+            flags: GetAppsFlags,
             snaps?: string[] | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2900,18 +2896,14 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.App} or `null` on error.
          */
-        get_apps2_sync(
-            flags: GetAppsFlags | null,
-            snaps?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
-        ): App[];
+        get_apps2_sync(flags: GetAppsFlags, snaps?: string[] | null, cancellable?: Gio.Cancellable | null): App[];
         /**
          * Asynchronously get information on installed apps.
          * See `snapd_client_get_apps_sync()` for more information.
          * @param flags a set of {@link Snapd.GetAppsFlags} to control what results are returned.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_apps_async(flags: GetAppsFlags | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<App[]>;
+        get_apps_async(flags: GetAppsFlags, cancellable?: Gio.Cancellable | null): globalThis.Promise<App[]>;
         /**
          * Asynchronously get information on installed apps.
          * See `snapd_client_get_apps_sync()` for more information.
@@ -2920,7 +2912,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_apps_async(
-            flags: GetAppsFlags | null,
+            flags: GetAppsFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2932,7 +2924,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_apps_async(
-            flags: GetAppsFlags | null,
+            flags: GetAppsFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<App[]> | void;
@@ -2949,7 +2941,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.App} or `null` on error.
          */
-        get_apps_sync(flags: GetAppsFlags | null, cancellable?: Gio.Cancellable | null): App[];
+        get_apps_sync(flags: GetAppsFlags, cancellable?: Gio.Cancellable | null): App[];
         /**
          * Asynchronously get assertions.
          * See `snapd_client_get_assertions_sync()` for more information.
@@ -3053,7 +3045,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         get_changes_async(
-            filter: ChangeFilter | null,
+            filter: ChangeFilter,
             snap_name?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Change[]>;
@@ -3066,7 +3058,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_changes_async(
-            filter: ChangeFilter | null,
+            filter: ChangeFilter,
             snap_name: string | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -3080,7 +3072,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_changes_async(
-            filter: ChangeFilter | null,
+            filter: ChangeFilter,
             snap_name?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -3100,7 +3092,7 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.Change} or `null` on error.
          */
         get_changes_sync(
-            filter: ChangeFilter | null,
+            filter: ChangeFilter,
             snap_name?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): Change[];
@@ -3113,7 +3105,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         get_connections2_async(
-            flags: GetConnectionsFlags | null,
+            flags: GetConnectionsFlags,
             snap?: string | null,
             _interface?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -3128,7 +3120,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_connections2_async(
-            flags: GetConnectionsFlags | null,
+            flags: GetConnectionsFlags,
             snap: string | null,
             _interface: string | null,
             cancellable: Gio.Cancellable | null,
@@ -3144,7 +3136,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_connections2_async(
-            flags: GetConnectionsFlags | null,
+            flags: GetConnectionsFlags,
             snap?: string | null,
             _interface?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -3168,7 +3160,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          */
         get_connections2_sync(
-            flags: GetConnectionsFlags | null,
+            flags: GetConnectionsFlags,
             snap?: string | null,
             _interface?: string | null,
             cancellable?: Gio.Cancellable | null,
@@ -3268,7 +3260,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         get_interfaces2_async(
-            flags: GetInterfacesFlags | null,
+            flags: GetInterfacesFlags,
             names?: string[] | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Interface[]>;
@@ -3281,7 +3273,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_interfaces2_async(
-            flags: GetInterfacesFlags | null,
+            flags: GetInterfacesFlags,
             names: string[] | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -3295,7 +3287,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_interfaces2_async(
-            flags: GetInterfacesFlags | null,
+            flags: GetInterfacesFlags,
             names?: string[] | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -3315,7 +3307,7 @@ export namespace Snapd {
          * @returns the available interfaces.
          */
         get_interfaces2_sync(
-            flags: GetInterfacesFlags | null,
+            flags: GetInterfacesFlags,
             names?: string[] | null,
             cancellable?: Gio.Cancellable | null,
         ): Interface[];
@@ -3509,7 +3501,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         get_snaps_async(
-            flags: GetSnapsFlags | null,
+            flags: GetSnapsFlags,
             names?: string[] | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Snap[]>;
@@ -3522,7 +3514,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_snaps_async(
-            flags: GetSnapsFlags | null,
+            flags: GetSnapsFlags,
             names: string[] | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -3536,7 +3528,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         get_snaps_async(
-            flags: GetSnapsFlags | null,
+            flags: GetSnapsFlags,
             names?: string[] | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -3560,11 +3552,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          */
-        get_snaps_sync(
-            flags: GetSnapsFlags | null,
-            names?: string[] | null,
-            cancellable?: Gio.Cancellable | null,
-        ): Snap[];
+        get_snaps_sync(flags: GetSnapsFlags, names?: string[] | null, cancellable?: Gio.Cancellable | null): Snap[];
         /**
          * Get the unix socket path to connect to snapd with.
          * @returns socket path.
@@ -3662,7 +3650,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         install2_async(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             name: string,
             channel?: string | null,
             revision?: string | null,
@@ -3681,7 +3669,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         install2_async(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             name: string,
             channel: string | null,
             revision: string | null,
@@ -3701,7 +3689,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         install2_async(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             name: string,
             channel?: string | null,
             revision?: string | null,
@@ -3727,7 +3715,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          */
         install2_sync(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             name: string,
             channel?: string | null,
             revision?: string | null,
@@ -3796,7 +3784,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         install_stream_async(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             stream: Gio.InputStream,
             progress_callback?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
@@ -3811,7 +3799,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         install_stream_async(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             stream: Gio.InputStream,
             progress_callback: ProgressCallback | null,
             cancellable: Gio.Cancellable | null,
@@ -3827,7 +3815,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         install_stream_async(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             stream: Gio.InputStream,
             progress_callback?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
@@ -3865,7 +3853,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          */
         install_stream_sync(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             stream: Gio.InputStream,
             progress_callback?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
@@ -4326,7 +4314,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
         remove2_async(
-            flags: RemoveFlags | null,
+            flags: RemoveFlags,
             name: string,
             progress_callback?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
@@ -4341,7 +4329,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         remove2_async(
-            flags: RemoveFlags | null,
+            flags: RemoveFlags,
             name: string,
             progress_callback: ProgressCallback | null,
             cancellable: Gio.Cancellable | null,
@@ -4357,7 +4345,7 @@ export namespace Snapd {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         remove2_async(
-            flags: RemoveFlags | null,
+            flags: RemoveFlags,
             name: string,
             progress_callback?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,
@@ -4379,7 +4367,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          */
         remove2_sync(
-            flags: RemoveFlags | null,
+            flags: RemoveFlags,
             name: string,
             progress_callback?: ProgressCallback | null,
             cancellable?: Gio.Cancellable | null,

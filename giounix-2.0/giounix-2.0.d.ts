@@ -687,7 +687,7 @@ export namespace GioUnix {
         launch_uris_as_manager(
             uris: string[],
             launch_context: Gio.AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             user_setup?: GLib.SpawnChildSetupFunc | null,
             pid_callback?: DesktopAppLaunchCallback | null,
         ): boolean;
@@ -711,7 +711,7 @@ export namespace GioUnix {
         launch_uris_as_manager_with_fds(
             uris: string[],
             launch_context: Gio.AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags | null,
+            spawn_flags: GLib.SpawnFlags,
             user_setup: GLib.SpawnChildSetupFunc | null,
             pid_callback: DesktopAppLaunchCallback | null,
             stdin_fd: number,
@@ -1241,7 +1241,7 @@ export namespace GioUnix {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1282,7 +1282,7 @@ export namespace GioUnix {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2843,7 +2843,7 @@ export namespace GioUnix {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2884,7 +2884,7 @@ export namespace GioUnix {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3854,7 +3854,7 @@ export namespace GioUnix {
          */
         splice(
             source: Gio.InputStream,
-            flags: Gio.OutputStreamSpliceFlags | null,
+            flags: Gio.OutputStreamSpliceFlags,
             cancellable?: Gio.Cancellable | null,
         ): number;
         /**
@@ -3872,7 +3872,7 @@ export namespace GioUnix {
          */
         splice_async(
             source: Gio.InputStream,
-            flags: Gio.OutputStreamSpliceFlags | null,
+            flags: Gio.OutputStreamSpliceFlags,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
@@ -3892,7 +3892,7 @@ export namespace GioUnix {
          */
         splice_async(
             source: Gio.InputStream,
-            flags: Gio.OutputStreamSpliceFlags | null,
+            flags: Gio.OutputStreamSpliceFlags,
             io_priority: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -3913,7 +3913,7 @@ export namespace GioUnix {
          */
         splice_async(
             source: Gio.InputStream,
-            flags: Gio.OutputStreamSpliceFlags | null,
+            flags: Gio.OutputStreamSpliceFlags,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -4906,7 +4906,7 @@ export namespace GioUnix {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4947,7 +4947,7 @@ export namespace GioUnix {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

@@ -747,7 +747,7 @@ export namespace JavaScriptCore {
         check_syntax(
             code: string,
             length: bigint | number,
-            mode: CheckSyntaxMode | null,
+            mode: CheckSyntaxMode,
             uri: string,
             line_number: number,
         ): [CheckSyntaxResult, Exception | null];
@@ -1218,11 +1218,7 @@ export namespace JavaScriptCore {
          * @param length number of array elements, or `-1`.
          * @returns a {@link JavaScriptCore.Value}
          */
-        new_typed_array_with_buffer(
-            type: TypedArrayType | null,
-            offset: bigint | number,
-            length: bigint | number,
-        ): Value;
+        new_typed_array_with_buffer(type: TypedArrayType, offset: bigint | number, length: bigint | number): Value;
         /**
          * Define or modify a property with `property_name` in object referenced by `value`. When the
          * property value needs to be getted or set, `getter` and `setter` callbacks will be called.
@@ -1246,7 +1242,7 @@ export namespace JavaScriptCore {
          */
         object_define_property_accessor(
             property_name: string,
-            flags: ValuePropertyFlags | null,
+            flags: ValuePropertyFlags,
             property_type: GObject.GType,
             getter?: GObject.Callback | null,
             setter?: GObject.Callback | null,
@@ -1261,7 +1257,7 @@ export namespace JavaScriptCore {
          */
         object_define_property_data(
             property_name: string,
-            flags: ValuePropertyFlags | null,
+            flags: ValuePropertyFlags,
             property_value?: Value | null,
         ): void;
         /**

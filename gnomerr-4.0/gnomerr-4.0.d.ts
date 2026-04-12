@@ -321,7 +321,7 @@ export namespace GnomeRR {
         /**
          * @param rotation
          */
-        set_rotation(rotation: Rotation | null): void;
+        set_rotation(rotation: Rotation): void;
         /**
          * @param underscanning
          */
@@ -329,7 +329,7 @@ export namespace GnomeRR {
         /**
          * @param rotation
          */
-        supports_rotation(rotation: Rotation | null): boolean;
+        supports_rotation(rotation: Rotation): boolean;
     }
 
     namespace Screen {
@@ -539,7 +539,7 @@ export namespace GnomeRR {
          * This method also disables the DPMS timeouts.
          * @param mode
          */
-        set_dpms_mode(mode: DpmsMode | null): boolean;
+        set_dpms_mode(mode: DpmsMode): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -871,7 +871,7 @@ export namespace GnomeRR {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -912,7 +912,7 @@ export namespace GnomeRR {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1324,7 +1324,7 @@ export namespace GnomeRR {
         /**
          * @param rotation
          */
-        supports_rotation(rotation: Rotation | null): boolean;
+        supports_rotation(rotation: Rotation): boolean;
     }
 
     /**

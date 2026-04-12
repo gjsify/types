@@ -344,10 +344,7 @@ export namespace Gcr {
      * @param checksum_type the type of fingerprint to create
      * @returns the          fingerprint or `null` if the input was invalid.
      */
-    function fingerprint_from_attributes(
-        attrs: Gck.Attributes,
-        checksum_type: GLib.ChecksumType | null,
-    ): Uint8Array | null;
+    function fingerprint_from_attributes(attrs: Gck.Attributes, checksum_type: GLib.ChecksumType): Uint8Array | null;
     /**
      * Create a key fingerprint for a DER encoded subjectPublicKeyInfo. The
      * fingerprint is created so that it will be identical for a key and its
@@ -362,7 +359,7 @@ export namespace Gcr {
      */
     function fingerprint_from_subject_public_key_info(
         key_info: Uint8Array | string,
-        checksum_type: GLib.ChecksumType | null,
+        checksum_type: GLib.ChecksumType,
     ): Uint8Array | null;
     /**
      * Get an appropriate icon for the token
@@ -1139,7 +1136,7 @@ export namespace Gcr {
         build(
             purpose: string,
             peer: string | null,
-            flags: CertificateChainFlags | null,
+            flags: CertificateChainFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -1180,7 +1177,7 @@ export namespace Gcr {
         build_async(
             purpose: string,
             peer: string | null,
-            flags: CertificateChainFlags | null,
+            flags: CertificateChainFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1222,7 +1219,7 @@ export namespace Gcr {
         build_async(
             purpose: string,
             peer: string | null,
-            flags: CertificateChainFlags | null,
+            flags: CertificateChainFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1265,7 +1262,7 @@ export namespace Gcr {
         build_async(
             purpose: string,
             peer: string | null,
-            flags: CertificateChainFlags | null,
+            flags: CertificateChainFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1699,7 +1696,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1740,7 +1737,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2274,18 +2271,18 @@ export namespace Gcr {
          * Disable parsing of the given format. Use {@link Gcr.DataFormat.ALL} to disable all the formats.
          * @param format The format identifier
          */
-        format_disable(format: DataFormat | null): void;
+        format_disable(format: DataFormat): void;
         /**
          * Enable parsing of the given format. Use {@link Gcr.DataFormat.ALL} to enable all the formats.
          * @param format The format identifier
          */
-        format_enable(format: DataFormat | null): void;
+        format_enable(format: DataFormat): void;
         /**
          * Check whether the given format is supported by the parser.
          * @param format The format identifier
          * @returns Whether the format is supported.
          */
-        format_supported(format: DataFormat | null): boolean;
+        format_supported(format: DataFormat): boolean;
         /**
          * Get the filename of the parser item.
          * @returns the filename set on the parser, or `null`
@@ -2617,7 +2614,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns the raw binary fingerprint
          */
-        get_fingerprint(type: GLib.ChecksumType | null): Uint8Array;
+        get_fingerprint(type: GLib.ChecksumType): Uint8Array;
         /**
          * Calculate the fingerprint for this certificate, and return it
          * as a hex string.
@@ -2627,7 +2624,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns an allocated hex string which contains the fingerprint.
          */
-        get_fingerprint_hex(type: GLib.ChecksumType | null): string;
+        get_fingerprint_hex(type: GLib.ChecksumType): string;
         /**
          * Get the issued date of this certificate.
          *
@@ -2831,7 +2828,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2872,7 +2869,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3545,7 +3542,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns the raw binary fingerprint
          */
-        get_fingerprint(type: GLib.ChecksumType | null): Uint8Array;
+        get_fingerprint(type: GLib.ChecksumType): Uint8Array;
         /**
          * Calculate the fingerprint for this certificate, and return it
          * as a hex string.
@@ -3555,7 +3552,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns an allocated hex string which contains the fingerprint.
          */
-        get_fingerprint_hex(type: GLib.ChecksumType | null): string;
+        get_fingerprint_hex(type: GLib.ChecksumType): string;
         /**
          * Get the issued date of this certificate.
          *
@@ -3759,7 +3756,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3800,7 +3797,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4334,7 +4331,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4375,7 +4372,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5988,7 +5985,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6029,7 +6026,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6726,7 +6723,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6767,7 +6764,7 @@ export namespace Gcr {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7488,7 +7485,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns the raw binary fingerprint
          */
-        get_fingerprint(type: GLib.ChecksumType | null): Uint8Array;
+        get_fingerprint(type: GLib.ChecksumType): Uint8Array;
         /**
          * Calculate the fingerprint for this certificate, and return it
          * as a hex string.
@@ -7498,7 +7495,7 @@ export namespace Gcr {
          * @param type the type of algorithm for the fingerprint.
          * @returns an allocated hex string which contains the fingerprint.
          */
-        get_fingerprint_hex(type: GLib.ChecksumType | null): string;
+        get_fingerprint_hex(type: GLib.ChecksumType): string;
         /**
          * Get the issued date of this certificate.
          *

@@ -909,7 +909,7 @@ export namespace Xdp {
          */
         access_camera(
             parent: Parent | null,
-            flags: CameraFlags | null,
+            flags: CameraFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -925,7 +925,7 @@ export namespace Xdp {
          */
         access_camera(
             parent: Parent | null,
-            flags: CameraFlags | null,
+            flags: CameraFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -942,7 +942,7 @@ export namespace Xdp {
          */
         access_camera(
             parent: Parent | null,
-            flags: CameraFlags | null,
+            flags: CameraFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -998,7 +998,7 @@ export namespace Xdp {
         add_notification(
             id: string,
             notification: GLib.Variant,
-            flags: NotificationFlags | null,
+            flags: NotificationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1042,7 +1042,7 @@ export namespace Xdp {
         add_notification(
             id: string,
             notification: GLib.Variant,
-            flags: NotificationFlags | null,
+            flags: NotificationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1087,7 +1087,7 @@ export namespace Xdp {
         add_notification(
             id: string,
             notification: GLib.Variant,
-            flags: NotificationFlags | null,
+            flags: NotificationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1123,7 +1123,7 @@ export namespace Xdp {
             subject: string | null,
             body: string | null,
             attachments: string[] | null,
-            flags: EmailFlags | null,
+            flags: EmailFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1151,7 +1151,7 @@ export namespace Xdp {
             subject: string | null,
             body: string | null,
             attachments: string[] | null,
-            flags: EmailFlags | null,
+            flags: EmailFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1180,7 +1180,7 @@ export namespace Xdp {
             subject: string | null,
             body: string | null,
             attachments: string[] | null,
-            flags: EmailFlags | null,
+            flags: EmailFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1202,10 +1202,10 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          */
         create_remote_desktop_session(
-            devices: DeviceType | null,
-            outputs: OutputType | null,
-            flags: RemoteDesktopFlags | null,
-            cursor_mode: CursorMode | null,
+            devices: DeviceType,
+            outputs: OutputType,
+            flags: RemoteDesktopFlags,
+            cursor_mode: CursorMode,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Session>;
         /**
@@ -1221,10 +1221,10 @@ export namespace Xdp {
          * @param callback a callback to call when the request is done
          */
         create_remote_desktop_session(
-            devices: DeviceType | null,
-            outputs: OutputType | null,
-            flags: RemoteDesktopFlags | null,
-            cursor_mode: CursorMode | null,
+            devices: DeviceType,
+            outputs: OutputType,
+            flags: RemoteDesktopFlags,
+            cursor_mode: CursorMode,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1241,10 +1241,10 @@ export namespace Xdp {
          * @param callback a callback to call when the request is done
          */
         create_remote_desktop_session(
-            devices: DeviceType | null,
-            outputs: OutputType | null,
-            flags: RemoteDesktopFlags | null,
-            cursor_mode: CursorMode | null,
+            devices: DeviceType,
+            outputs: OutputType,
+            flags: RemoteDesktopFlags,
+            cursor_mode: CursorMode,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Session> | void;
@@ -1267,10 +1267,10 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          */
         create_screencast_session(
-            outputs: OutputType | null,
-            flags: ScreencastFlags | null,
-            cursor_mode: CursorMode | null,
-            persist_mode: PersistMode | null,
+            outputs: OutputType,
+            flags: ScreencastFlags,
+            cursor_mode: CursorMode,
+            persist_mode: PersistMode,
             restore_token?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Session>;
@@ -1288,10 +1288,10 @@ export namespace Xdp {
          * @param callback a callback to call when the request is done
          */
         create_screencast_session(
-            outputs: OutputType | null,
-            flags: ScreencastFlags | null,
-            cursor_mode: CursorMode | null,
-            persist_mode: PersistMode | null,
+            outputs: OutputType,
+            flags: ScreencastFlags,
+            cursor_mode: CursorMode,
+            persist_mode: PersistMode,
             restore_token: string | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -1310,10 +1310,10 @@ export namespace Xdp {
          * @param callback a callback to call when the request is done
          */
         create_screencast_session(
-            outputs: OutputType | null,
-            flags: ScreencastFlags | null,
-            cursor_mode: CursorMode | null,
-            persist_mode: PersistMode | null,
+            outputs: OutputType,
+            flags: ScreencastFlags,
+            cursor_mode: CursorMode,
+            persist_mode: PersistMode,
             restore_token?: string | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -1391,7 +1391,7 @@ export namespace Xdp {
             parent: Parent | null,
             name: string,
             icon_v: GLib.Variant,
-            launcher_type: LauncherType | null,
+            launcher_type: LauncherType,
             target: string | null,
             editable_name: boolean,
             editable_icon: boolean,
@@ -1417,7 +1417,7 @@ export namespace Xdp {
             parent: Parent | null,
             name: string,
             icon_v: GLib.Variant,
-            launcher_type: LauncherType | null,
+            launcher_type: LauncherType,
             target: string | null,
             editable_name: boolean,
             editable_icon: boolean,
@@ -1444,7 +1444,7 @@ export namespace Xdp {
             parent: Parent | null,
             name: string,
             icon_v: GLib.Variant,
-            launcher_type: LauncherType | null,
+            launcher_type: LauncherType,
             target: string | null,
             editable_name: boolean,
             editable_icon: boolean,
@@ -1498,7 +1498,7 @@ export namespace Xdp {
         get_user_information(
             parent: Parent | null,
             reason: string | null,
-            flags: UserInformationFlags | null,
+            flags: UserInformationFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
@@ -1515,7 +1515,7 @@ export namespace Xdp {
         get_user_information(
             parent: Parent | null,
             reason: string | null,
-            flags: UserInformationFlags | null,
+            flags: UserInformationFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1533,7 +1533,7 @@ export namespace Xdp {
         get_user_information(
             parent: Parent | null,
             reason: string | null,
-            flags: UserInformationFlags | null,
+            flags: UserInformationFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
@@ -1579,8 +1579,8 @@ export namespace Xdp {
             parent: Parent | null,
             distance_threshold: number,
             time_threshold: number,
-            accuracy: LocationAccuracy | null,
-            flags: LocationMonitorFlags | null,
+            accuracy: LocationAccuracy,
+            flags: LocationMonitorFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1608,8 +1608,8 @@ export namespace Xdp {
             parent: Parent | null,
             distance_threshold: number,
             time_threshold: number,
-            accuracy: LocationAccuracy | null,
-            flags: LocationMonitorFlags | null,
+            accuracy: LocationAccuracy,
+            flags: LocationMonitorFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1638,8 +1638,8 @@ export namespace Xdp {
             parent: Parent | null,
             distance_threshold: number,
             time_threshold: number,
-            accuracy: LocationAccuracy | null,
-            flags: LocationMonitorFlags | null,
+            accuracy: LocationAccuracy,
+            flags: LocationMonitorFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1669,7 +1669,7 @@ export namespace Xdp {
         open_directory(
             parent: Parent,
             uri: string,
-            flags: OpenUriFlags | null,
+            flags: OpenUriFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1686,7 +1686,7 @@ export namespace Xdp {
         open_directory(
             parent: Parent,
             uri: string,
-            flags: OpenUriFlags | null,
+            flags: OpenUriFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1704,7 +1704,7 @@ export namespace Xdp {
         open_directory(
             parent: Parent,
             uri: string,
-            flags: OpenUriFlags | null,
+            flags: OpenUriFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1757,7 +1757,7 @@ export namespace Xdp {
             filters: GLib.Variant | null,
             current_filter: GLib.Variant | null,
             choices: GLib.Variant | null,
-            flags: OpenFileFlags | null,
+            flags: OpenFileFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
@@ -1802,7 +1802,7 @@ export namespace Xdp {
             filters: GLib.Variant | null,
             current_filter: GLib.Variant | null,
             choices: GLib.Variant | null,
-            flags: OpenFileFlags | null,
+            flags: OpenFileFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1848,7 +1848,7 @@ export namespace Xdp {
             filters: GLib.Variant | null,
             current_filter: GLib.Variant | null,
             choices: GLib.Variant | null,
-            flags: OpenFileFlags | null,
+            flags: OpenFileFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
@@ -1886,7 +1886,7 @@ export namespace Xdp {
         open_uri(
             parent: Parent,
             uri: string,
-            flags: OpenUriFlags | null,
+            flags: OpenUriFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1900,7 +1900,7 @@ export namespace Xdp {
         open_uri(
             parent: Parent,
             uri: string,
-            flags: OpenUriFlags | null,
+            flags: OpenUriFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1915,7 +1915,7 @@ export namespace Xdp {
         open_uri(
             parent: Parent,
             uri: string,
-            flags: OpenUriFlags | null,
+            flags: OpenUriFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1990,7 +1990,7 @@ export namespace Xdp {
             title: string,
             settings: GLib.Variant | null,
             page_setup: GLib.Variant | null,
-            flags: PrintFlags | null,
+            flags: PrintFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
@@ -2011,7 +2011,7 @@ export namespace Xdp {
             title: string,
             settings: GLib.Variant | null,
             page_setup: GLib.Variant | null,
-            flags: PrintFlags | null,
+            flags: PrintFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2033,7 +2033,7 @@ export namespace Xdp {
             title: string,
             settings: GLib.Variant | null,
             page_setup: GLib.Variant | null,
-            flags: PrintFlags | null,
+            flags: PrintFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
@@ -2071,7 +2071,7 @@ export namespace Xdp {
             title: string,
             token: number,
             file: string,
-            flags: PrintFlags | null,
+            flags: PrintFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -2096,7 +2096,7 @@ export namespace Xdp {
             title: string,
             token: number,
             file: string,
-            flags: PrintFlags | null,
+            flags: PrintFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2122,7 +2122,7 @@ export namespace Xdp {
             title: string,
             token: number,
             file: string,
-            flags: PrintFlags | null,
+            flags: PrintFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -2152,7 +2152,7 @@ export namespace Xdp {
             parent: Parent | null,
             reason: string | null,
             commandline: string[],
-            flags: BackgroundFlags | null,
+            flags: BackgroundFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -2171,7 +2171,7 @@ export namespace Xdp {
             parent: Parent | null,
             reason: string | null,
             commandline: string[],
-            flags: BackgroundFlags | null,
+            flags: BackgroundFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2191,7 +2191,7 @@ export namespace Xdp {
             parent: Parent | null,
             reason: string | null,
             commandline: string[],
-            flags: BackgroundFlags | null,
+            flags: BackgroundFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -2232,7 +2232,7 @@ export namespace Xdp {
             filters: GLib.Variant | null,
             current_filter: GLib.Variant | null,
             choices: GLib.Variant | null,
-            flags: SaveFileFlags | null,
+            flags: SaveFileFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
@@ -2265,7 +2265,7 @@ export namespace Xdp {
             filters: GLib.Variant | null,
             current_filter: GLib.Variant | null,
             choices: GLib.Variant | null,
-            flags: SaveFileFlags | null,
+            flags: SaveFileFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2299,7 +2299,7 @@ export namespace Xdp {
             filters: GLib.Variant | null,
             current_filter: GLib.Variant | null,
             choices: GLib.Variant | null,
-            flags: SaveFileFlags | null,
+            flags: SaveFileFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
@@ -2345,7 +2345,7 @@ export namespace Xdp {
             current_folder: string | null,
             files: GLib.Variant,
             choices: GLib.Variant | null,
-            flags: SaveFileFlags | null,
+            flags: SaveFileFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
         /**
@@ -2377,7 +2377,7 @@ export namespace Xdp {
             current_folder: string | null,
             files: GLib.Variant,
             choices: GLib.Variant | null,
-            flags: SaveFileFlags | null,
+            flags: SaveFileFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2410,7 +2410,7 @@ export namespace Xdp {
             current_folder: string | null,
             files: GLib.Variant,
             choices: GLib.Variant | null,
-            flags: SaveFileFlags | null,
+            flags: SaveFileFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
@@ -2447,7 +2447,7 @@ export namespace Xdp {
         session_inhibit(
             parent: Parent | null,
             reason: string | null,
-            flags: InhibitFlags | null,
+            flags: InhibitFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
@@ -2467,7 +2467,7 @@ export namespace Xdp {
         session_inhibit(
             parent: Parent | null,
             reason: string | null,
-            flags: InhibitFlags | null,
+            flags: InhibitFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2488,7 +2488,7 @@ export namespace Xdp {
         session_inhibit(
             parent: Parent | null,
             reason: string | null,
-            flags: InhibitFlags | null,
+            flags: InhibitFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
@@ -2526,7 +2526,7 @@ export namespace Xdp {
          */
         session_monitor_start(
             parent: Parent | null,
-            flags: SessionMonitorFlags | null,
+            flags: SessionMonitorFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -2543,7 +2543,7 @@ export namespace Xdp {
          */
         session_monitor_start(
             parent: Parent | null,
-            flags: SessionMonitorFlags | null,
+            flags: SessionMonitorFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2561,7 +2561,7 @@ export namespace Xdp {
          */
         session_monitor_start(
             parent: Parent | null,
-            flags: SessionMonitorFlags | null,
+            flags: SessionMonitorFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -2634,7 +2634,7 @@ export namespace Xdp {
         set_wallpaper(
             parent: Parent | null,
             uri: string,
-            flags: WallpaperFlags | null,
+            flags: WallpaperFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -2648,7 +2648,7 @@ export namespace Xdp {
         set_wallpaper(
             parent: Parent | null,
             uri: string,
-            flags: WallpaperFlags | null,
+            flags: WallpaperFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2663,7 +2663,7 @@ export namespace Xdp {
         set_wallpaper(
             parent: Parent | null,
             uri: string,
-            flags: WallpaperFlags | null,
+            flags: WallpaperFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -2697,7 +2697,7 @@ export namespace Xdp {
             fds: number[] | null,
             map_to: number[] | null,
             env: string[] | null,
-            flags: SpawnFlags | null,
+            flags: SpawnFlags,
             sandbox_expose?: string[] | null,
             sandbox_expose_ro?: string[] | null,
             cancellable?: Gio.Cancellable | null,
@@ -2725,7 +2725,7 @@ export namespace Xdp {
             fds: number[] | null,
             map_to: number[] | null,
             env: string[] | null,
-            flags: SpawnFlags | null,
+            flags: SpawnFlags,
             sandbox_expose: string[] | null,
             sandbox_expose_ro: string[] | null,
             cancellable: Gio.Cancellable | null,
@@ -2754,7 +2754,7 @@ export namespace Xdp {
             fds: number[] | null,
             map_to: number[] | null,
             env: string[] | null,
-            flags: SpawnFlags | null,
+            flags: SpawnFlags,
             sandbox_expose?: string[] | null,
             sandbox_expose_ro?: string[] | null,
             cancellable?: Gio.Cancellable | null,
@@ -2787,7 +2787,7 @@ export namespace Xdp {
          */
         take_screenshot(
             parent: Parent | null,
-            flags: ScreenshotFlags | null,
+            flags: ScreenshotFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<string | null>;
         /**
@@ -2802,7 +2802,7 @@ export namespace Xdp {
          */
         take_screenshot(
             parent: Parent | null,
-            flags: ScreenshotFlags | null,
+            flags: ScreenshotFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2818,7 +2818,7 @@ export namespace Xdp {
          */
         take_screenshot(
             parent: Parent | null,
-            flags: ScreenshotFlags | null,
+            flags: ScreenshotFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string | null> | void;
@@ -2880,7 +2880,7 @@ export namespace Xdp {
          */
         update_install(
             parent: Parent,
-            flags: UpdateInstallFlags | null,
+            flags: UpdateInstallFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -2898,7 +2898,7 @@ export namespace Xdp {
          */
         update_install(
             parent: Parent,
-            flags: UpdateInstallFlags | null,
+            flags: UpdateInstallFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2917,7 +2917,7 @@ export namespace Xdp {
          */
         update_install(
             parent: Parent,
-            flags: UpdateInstallFlags | null,
+            flags: UpdateInstallFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -2945,7 +2945,7 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          */
         update_monitor_start(
-            flags: UpdateMonitorFlags | null,
+            flags: UpdateMonitorFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -2960,7 +2960,7 @@ export namespace Xdp {
          * @param callback a callback to call when the request is done
          */
         update_monitor_start(
-            flags: UpdateMonitorFlags | null,
+            flags: UpdateMonitorFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2976,7 +2976,7 @@ export namespace Xdp {
          * @param callback a callback to call when the request is done
          */
         update_monitor_start(
-            flags: UpdateMonitorFlags | null,
+            flags: UpdateMonitorFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -3123,7 +3123,7 @@ export namespace Xdp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3164,7 +3164,7 @@ export namespace Xdp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3686,7 +3686,7 @@ export namespace Xdp {
          * @param key the keysym or keycode to change
          * @param state the new state
          */
-        keyboard_key(keysym: boolean, key: number, state: KeyState | null): void;
+        keyboard_key(keysym: boolean, key: number, state: KeyState): void;
         /**
          * Opens a file descriptor to the pipewire remote where the screencast
          * streams are available.
@@ -3717,7 +3717,7 @@ export namespace Xdp {
          * @param axis the axis to change
          * @param steps number of steps scrolled
          */
-        pointer_axis_discrete(axis: DiscreteAxis | null, steps: number): void;
+        pointer_axis_discrete(axis: DiscreteAxis, steps: number): void;
         /**
          * Changes the state of the button to `state`.
          *
@@ -3726,7 +3726,7 @@ export namespace Xdp {
          * @param button the button
          * @param state the new state
          */
-        pointer_button(button: number, state: ButtonState | null): void;
+        pointer_button(button: number, state: ButtonState): void;
         /**
          * Moves the pointer from its current position.
          *

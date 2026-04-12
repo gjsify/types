@@ -3861,7 +3861,7 @@ export namespace Gsk {
          * @param func the function to call for operations
          * @returns false if `func` returned false, true otherwise.
          */
-        foreach(flags: PathForeachFlags | null, func: PathForeachFunc): boolean;
+        foreach(flags: PathForeachFlags, func: PathForeachFunc): boolean;
         /**
          * Finds intersections between two paths.
          *
@@ -3948,7 +3948,7 @@ export namespace Gsk {
          * @param fill_rule the fill rule to follow
          * @returns true if `point` is inside
          */
-        in_fill(point: Graphene.Point, fill_rule: FillRule | null): boolean;
+        in_fill(point: Graphene.Point, fill_rule: FillRule): boolean;
         /**
          * Returns if the path represents a single closed contour.
          * @returns true if the path is closed
@@ -4564,7 +4564,7 @@ export namespace Gsk {
          * @param direction the direction for which to return the curvature
          * @returns the curvature of the path at the given point
          */
-        get_curvature(path: Path, direction: PathDirection | null): [number, Graphene.Point | null];
+        get_curvature(path: Path, direction: PathDirection): [number, Graphene.Point | null];
         /**
          * Returns the distance from the beginning of the path
          * to the point.
@@ -4588,7 +4588,7 @@ export namespace Gsk {
          * @param direction the direction for which to return the rotation
          * @returns the angle between the tangent and the X axis, in degrees
          */
-        get_rotation(path: Path, direction: PathDirection | null): number;
+        get_rotation(path: Path, direction: PathDirection): number;
         /**
          * Gets the tangent of the path at the point.
          *
@@ -4607,7 +4607,7 @@ export namespace Gsk {
          * @param path the path that `point` is on
          * @param direction the direction for which to return the tangent
          */
-        get_tangent(path: Path, direction: PathDirection | null): Graphene.Vec2;
+        get_tangent(path: Path, direction: PathDirection): Graphene.Vec2;
     }
 
     /**
@@ -4986,14 +4986,14 @@ export namespace Gsk {
          * See {@link Gsk.LineCap} for details.
          * @param line_cap the line cap
          */
-        set_line_cap(line_cap: LineCap | null): void;
+        set_line_cap(line_cap: LineCap): void;
         /**
          * Sets the line join to be used when stroking.
          *
          * See {@link Gsk.LineJoin} for details.
          * @param line_join the line join to use
          */
-        set_line_join(line_join: LineJoin | null): void;
+        set_line_join(line_join: LineJoin): void;
         /**
          * Sets the line width to be used when stroking.
          *

@@ -274,7 +274,7 @@ export namespace Secret {
      * @param cancellable optional cancellation object
      * @since 0.19.0
      */
-    function backend_get(flags: BackendFlags | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<Backend>;
+    function backend_get(flags: BackendFlags, cancellable?: Gio.Cancellable | null): globalThis.Promise<Backend>;
     /**
      * Get a {@link Secret.Backend} instance.
      *
@@ -290,9 +290,9 @@ export namespace Secret {
      * @since 0.19.0
      */
     function backend_get(
-        flags: BackendFlags | null,
+        flags: BackendFlags,
         cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<BackendFlags | null> | null,
+        callback: Gio.AsyncReadyCallback<BackendFlags> | null,
     ): void;
     /**
      * Get a {@link Secret.Backend} instance.
@@ -309,9 +309,9 @@ export namespace Secret {
      * @since 0.19.0
      */
     function backend_get(
-        flags: BackendFlags | null,
+        flags: BackendFlags,
         cancellable?: Gio.Cancellable | null,
-        callback?: Gio.AsyncReadyCallback<BackendFlags | null> | null,
+        callback?: Gio.AsyncReadyCallback<BackendFlags> | null,
     ): globalThis.Promise<Backend> | void;
     /**
      * Complete an asynchronous operation to get a {@link Secret.Backend}.
@@ -334,7 +334,7 @@ export namespace Secret {
      * @returns schema type
      * @since 0.18.6
      */
-    function get_schema(type: SchemaType | null): Schema;
+    function get_schema(type: SchemaType): Schema;
     /**
      * Finish an asynchronous operation to remove passwords from the secret
      * service.
@@ -518,7 +518,7 @@ export namespace Secret {
     function password_search(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        flags: SearchFlags | null,
+        flags: SearchFlags,
         cancellable?: Gio.Cancellable | null,
     ): globalThis.Promise<Retrievable[]>;
     /**
@@ -537,7 +537,7 @@ export namespace Secret {
     function password_search(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        flags: SearchFlags | null,
+        flags: SearchFlags,
         cancellable: Gio.Cancellable | null,
         callback: Gio.AsyncReadyCallback<Schema | null> | null,
     ): void;
@@ -557,7 +557,7 @@ export namespace Secret {
     function password_search(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        flags: SearchFlags | null,
+        flags: SearchFlags,
         cancellable?: Gio.Cancellable | null,
         callback?: Gio.AsyncReadyCallback<Schema | null> | null,
     ): globalThis.Promise<Retrievable[]> | void;
@@ -580,7 +580,7 @@ export namespace Secret {
     function password_search_sync(
         schema: Schema | null,
         attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-        flags: SearchFlags | null,
+        flags: SearchFlags,
         cancellable?: Gio.Cancellable | null,
     ): Retrievable[];
     /**
@@ -1375,7 +1375,7 @@ export namespace Secret {
         search(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Item[]>;
         /**
@@ -1403,7 +1403,7 @@ export namespace Secret {
         search(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1432,7 +1432,7 @@ export namespace Secret {
         search(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Item[]> | void;
@@ -1468,7 +1468,7 @@ export namespace Secret {
         search_sync(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable?: Gio.Cancellable | null,
         ): Item[];
         /**
@@ -1894,7 +1894,7 @@ export namespace Secret {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1935,7 +1935,7 @@ export namespace Secret {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3395,7 +3395,7 @@ export namespace Secret {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3436,7 +3436,7 @@ export namespace Secret {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4382,7 +4382,7 @@ export namespace Secret {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4423,7 +4423,7 @@ export namespace Secret {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5199,7 +5199,7 @@ export namespace Secret {
             collection_path: string,
             properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             value: Value,
-            flags: ItemCreateFlags | null,
+            flags: ItemCreateFlags,
             cancellable?: Gio.Cancellable | null,
         ): string;
         /**
@@ -5716,7 +5716,7 @@ export namespace Secret {
         search(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Item[]>;
         /**
@@ -5749,7 +5749,7 @@ export namespace Secret {
         search(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5783,7 +5783,7 @@ export namespace Secret {
         search(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Item[]> | void;
@@ -5826,7 +5826,7 @@ export namespace Secret {
         search_sync(
             schema: Schema | null,
             attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags | null,
+            flags: SearchFlags,
             cancellable?: Gio.Cancellable | null,
         ): Item[];
         /**
@@ -6612,7 +6612,7 @@ export namespace Secret {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6653,7 +6653,7 @@ export namespace Secret {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

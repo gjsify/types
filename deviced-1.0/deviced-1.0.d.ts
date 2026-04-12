@@ -1273,7 +1273,7 @@ export namespace Deviced {
         /**
          * @param kind
          */
-        set_kind(kind: DeviceKind | null): void;
+        set_kind(kind: DeviceKind): void;
         /**
          * Sets the {@link Deviced.Device.machine_id} for the local object instance.
          * @param machine_id the identifier of the machine, if known

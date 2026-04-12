@@ -1817,7 +1817,7 @@ export namespace Gsf {
          * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
          * @returns `true` on error.
          */
-        seek(offset: gsf_off_t, whence: GLib.SeekType | null): boolean;
+        seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
         /**
          * Emulate forward seeks by reading.
          * @param pos absolute position to seek to
@@ -2960,7 +2960,7 @@ export namespace Gsf {
         /**
          * @param method
          */
-        set_compression_method(method: ZipCompressionMethod | null): boolean;
+        set_compression_method(method: ZipCompressionMethod): boolean;
     }
 
     namespace Output {
@@ -3150,7 +3150,7 @@ export namespace Gsf {
          * @param whence What the offset is relative to.
          * @returns `false` on error.
          */
-        seek(offset: gsf_off_t, whence: GLib.SeekType | null): boolean;
+        seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>

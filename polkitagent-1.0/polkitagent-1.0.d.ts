@@ -310,7 +310,7 @@ export namespace PolkitAgent {
          * @returns `null` if `error` is set, otherwise a registration handle that can be used with `polkit_agent_listener_unregister()`.
          */
         register(
-            flags: RegisterFlags | null,
+            flags: RegisterFlags,
             subject: Polkit.Subject,
             object_path: string,
             cancellable?: Gio.Cancellable | null,
@@ -326,7 +326,7 @@ export namespace PolkitAgent {
          * @returns `null` if `error` is set, otherwise a registration handle that can be used with `polkit_agent_listener_unregister()`.
          */
         register_with_options(
-            flags: RegisterFlags | null,
+            flags: RegisterFlags,
             subject: Polkit.Subject,
             object_path: string,
             options?: GLib.Variant | null,
@@ -667,7 +667,7 @@ export namespace PolkitAgent {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -708,7 +708,7 @@ export namespace PolkitAgent {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

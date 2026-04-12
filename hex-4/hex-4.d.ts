@@ -942,7 +942,7 @@ export namespace Hex {
          * @param flags {@link Hex.SearchFlags} to specify match type
          * @returns a newly created {@link Hex.WidgetAutoHighlight}   structure, owned by the {@link Hex.Widget}
          */
-        insert_autohighlight_full(search: Uint8Array | string, flags: SearchFlags | null): WidgetAutoHighlight;
+        insert_autohighlight_full(search: Uint8Array | string, flags: SearchFlags): WidgetAutoHighlight;
         /**
          * Paste clipboard data to widget at position of cursor.
          *
@@ -992,7 +992,7 @@ export namespace Hex {
          * Set the group type of the {@link Hex.Widget}.
          * @param gt group type
          */
-        set_group_type(gt: WidgetGroupType | null): void;
+        set_group_type(gt: WidgetGroupType): void;
         /**
          * Set whether the {@link Hex.Widget} should be in insert or overwrite mode.
          * @param insert `true` if insert mode should be enabled, `false` if overwrite mode   should be enabled
@@ -1063,7 +1063,7 @@ export namespace Hex {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
         /**
          * Retrieves the accessible identifier for the accessible object.
          *
@@ -1120,22 +1120,22 @@ export namespace Hex {
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
-        reset_property(property: Gtk.AccessibleProperty | null): void;
+        reset_property(property: Gtk.AccessibleProperty): void;
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
-        reset_relation(relation: Gtk.AccessibleRelation | null): void;
+        reset_relation(relation: Gtk.AccessibleRelation): void;
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
-        reset_state(state: Gtk.AccessibleState | null): void;
+        reset_state(state: Gtk.AccessibleState): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -1166,7 +1166,7 @@ export namespace Hex {
          * states automatically.
          * @param state the platform state to update
          */
-        update_platform_state(state: Gtk.AccessiblePlatformState | null): void;
+        update_platform_state(state: Gtk.AccessiblePlatformState): void;
         /**
          * Updates an array of accessible properties.
          *
@@ -1177,7 +1177,7 @@ export namespace Hex {
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -1188,7 +1188,7 @@ export namespace Hex {
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -1199,7 +1199,7 @@ export namespace Hex {
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible identifier for the accessible object.
          *
@@ -1398,7 +1398,7 @@ export namespace Hex {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1439,7 +1439,7 @@ export namespace Hex {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

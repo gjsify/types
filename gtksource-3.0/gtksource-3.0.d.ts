@@ -934,7 +934,7 @@ export namespace GtkSource {
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
          */
-        change_case(case_type: ChangeCaseType | null, start: Gtk.TextIter, end: Gtk.TextIter): void;
+        change_case(case_type: ChangeCaseType, start: Gtk.TextIter, end: Gtk.TextIter): void;
         /**
          * Creates a source mark in the `buffer` of category `category`.  A source mark is
          * a {@link Gtk.TextMark} but organised into categories. Depending on the category
@@ -1199,7 +1199,7 @@ export namespace GtkSource {
          * @param flags {@link GtkSource.SortFlags} specifying how the sort should behave
          * @param column sort considering the text starting at the given column
          */
-        sort_lines(start: Gtk.TextIter, end: Gtk.TextIter, flags: SortFlags | null, column: number): void;
+        sort_lines(start: Gtk.TextIter, end: Gtk.TextIter, flags: SortFlags, column: number): void;
         /**
          * Undoes the last user action which modified the buffer.  Use
          * `gtk_source_buffer_can_undo()` to check whether a call to this
@@ -1837,7 +1837,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1878,7 +1878,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2581,7 +2581,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2622,7 +2622,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3339,7 +3339,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3380,7 +3380,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4152,7 +4152,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4193,7 +4193,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5195,7 +5195,7 @@ export namespace GtkSource {
          * {@link GtkSource.File}.
          * @param compression_type the new compression type.
          */
-        set_compression_type(compression_type: CompressionType | null): void;
+        set_compression_type(compression_type: CompressionType): void;
         /**
          * Sets the encoding. If `encoding` is `null`, the UTF-8 encoding will be set.
          * By default the encoding is taken from the {@link GtkSource.File}.
@@ -5205,13 +5205,13 @@ export namespace GtkSource {
         /**
          * @param flags the new flags.
          */
-        set_flags(flags: FileSaverFlags | null): void;
+        set_flags(flags: FileSaverFlags): void;
         /**
          * Sets the newline type. By default the newline type is taken from the
          * {@link GtkSource.File}.
          * @param newline_type the new newline type.
          */
-        set_newline_type(newline_type: NewlineType | null): void;
+        set_newline_type(newline_type: NewlineType): void;
     }
 
     namespace Gutter {
@@ -5743,7 +5743,7 @@ export namespace GtkSource {
             cell_area: Gdk.Rectangle,
             start: Gtk.TextIter,
             end: Gtk.TextIter,
-            state: GutterRendererState | null,
+            state: GutterRendererState,
         ): void;
         /**
          * Called when drawing a region of lines has ended.
@@ -5808,7 +5808,7 @@ export namespace GtkSource {
          * @param end a {@link Gtk.TextIter}.
          * @param state a {@link GtkSource.GutterRendererState}.
          */
-        query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState | null): void;
+        query_data(start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState): void;
         /**
          * Emits the {@link GtkSource.GutterRenderer.SignalSignatures.query_tooltip | GtkSource.GutterRenderer::query-tooltip} signal. This function is
          * called from {@link GtkSource.Gutter}. Implementations can override the default signal
@@ -5844,7 +5844,7 @@ export namespace GtkSource {
          * renderer is aligned (see :xalign and :yalign).
          * @param mode a {@link GtkSource.GutterRendererAlignmentMode}
          */
-        set_alignment_mode(mode: GutterRendererAlignmentMode | null): void;
+        set_alignment_mode(mode: GutterRendererAlignmentMode): void;
         /**
          * Set the background color of the renderer. If `color` is set to `null`, the
          * renderer will not have a background color.
@@ -6630,7 +6630,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6671,7 +6671,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7735,7 +7735,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the bottom margin.
          */
-        get_bottom_margin(unit: Gtk.Unit | null): number;
+        get_bottom_margin(unit: Gtk.Unit): number;
         /**
          * Gets the {@link GtkSource.Buffer} associated with the compositor. The returned
          * object reference is owned by the compositor object and
@@ -7767,7 +7767,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the left margin
          */
-        get_left_margin(unit: Gtk.Unit | null): number;
+        get_left_margin(unit: Gtk.Unit): number;
         /**
          * Returns the name of the font used to print line numbers on the left margin.
          * The returned string must be freed with `g_free()`.
@@ -7813,7 +7813,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the right margin.
          */
-        get_right_margin(unit: Gtk.Unit | null): number;
+        get_right_margin(unit: Gtk.Unit): number;
         /**
          * Returns the width of tabulation in characters for printed text.
          * @returns width of tab.
@@ -7824,7 +7824,7 @@ export namespace GtkSource {
          * @param unit the unit for the return value.
          * @returns the top margin.
          */
-        get_top_margin(unit: Gtk.Unit | null): number;
+        get_top_margin(unit: Gtk.Unit): number;
         /**
          * Gets the line wrapping mode for the printed text.
          * @returns the line wrap mode.
@@ -7913,7 +7913,7 @@ export namespace GtkSource {
          * @param margin the new bottom margin in units of `unit`.
          * @param unit the units for `margin`.
          */
-        set_bottom_margin(margin: number, unit: Gtk.Unit | null): void;
+        set_bottom_margin(margin: number, unit: Gtk.Unit): void;
         /**
          * Sets the font for printing the page footer. If
          * `null` is supplied, the default font (i.e. the one being used for the
@@ -8005,7 +8005,7 @@ export namespace GtkSource {
          * @param margin the new left margin in units of `unit`.
          * @param unit the units for `margin`.
          */
-        set_left_margin(margin: number, unit: Gtk.Unit | null): void;
+        set_left_margin(margin: number, unit: Gtk.Unit): void;
         /**
          * Sets the font for printing line numbers on the left margin.  If
          * `null` is supplied, the default font (i.e. the one being used for the
@@ -8066,7 +8066,7 @@ export namespace GtkSource {
          * @param margin the new right margin in units of `unit`.
          * @param unit the units for `margin`.
          */
-        set_right_margin(margin: number, unit: Gtk.Unit | null): void;
+        set_right_margin(margin: number, unit: Gtk.Unit): void;
         /**
          * Sets the width of tabulation in characters for printed text.
          *
@@ -8080,7 +8080,7 @@ export namespace GtkSource {
          * @param margin the new top margin in units of `unit`
          * @param unit the units for `margin`
          */
-        set_top_margin(margin: number, unit: Gtk.Unit | null): void;
+        set_top_margin(margin: number, unit: Gtk.Unit): void;
         /**
          * Sets the line wrapping mode for the printed text.
          *
@@ -8088,7 +8088,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param wrap_mode a {@link Gtk.WrapMode}.
          */
-        set_wrap_mode(wrap_mode: Gtk.WrapMode | null): void;
+        set_wrap_mode(wrap_mode: Gtk.WrapMode): void;
     }
 
     namespace Region {
@@ -9000,7 +9000,7 @@ export namespace GtkSource {
          * @param key the `settings` key to bind.
          * @param flags flags for the binding.
          */
-        bind_matrix_setting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags | null): void;
+        bind_matrix_setting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags): void;
         /**
          * @returns whether the {@link GtkSource.SpaceDrawer.matrix} property is enabled.
          */
@@ -9026,7 +9026,7 @@ export namespace GtkSource {
          * @param locations one or several {@link GtkSource.SpaceLocationFlags}.
          * @returns a combination of {@link GtkSource.SpaceTypeFlags}.
          */
-        get_types_for_locations(locations: SpaceLocationFlags | null): SpaceTypeFlags;
+        get_types_for_locations(locations: SpaceLocationFlags): SpaceTypeFlags;
         /**
          * Sets whether the {@link GtkSource.SpaceDrawer.matrix} property is enabled.
          * @param enable_matrix the new value.
@@ -9049,7 +9049,7 @@ export namespace GtkSource {
          * @param locations one or several {@link GtkSource.SpaceLocationFlags}.
          * @param types a combination of {@link GtkSource.SpaceTypeFlags}.
          */
-        set_types_for_locations(locations: SpaceLocationFlags | null, types: SpaceTypeFlags | null): void;
+        set_types_for_locations(locations: SpaceLocationFlags, types: SpaceTypeFlags): void;
     }
 
     namespace Style {
@@ -10367,7 +10367,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10408,7 +10408,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10799,8 +10799,8 @@ export namespace GtkSource {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -10808,7 +10808,7 @@ export namespace GtkSource {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -10886,7 +10886,7 @@ export namespace GtkSource {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -10923,7 +10923,7 @@ export namespace GtkSource {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -11010,7 +11010,7 @@ export namespace GtkSource {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -11050,7 +11050,7 @@ export namespace GtkSource {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -11162,22 +11162,14 @@ export namespace GtkSource {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -11259,9 +11251,9 @@ export namespace GtkSource {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -11720,7 +11712,7 @@ export namespace GtkSource {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -12354,7 +12346,7 @@ export namespace GtkSource {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -12415,7 +12407,7 @@ export namespace GtkSource {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -12434,7 +12426,7 @@ export namespace GtkSource {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -12454,7 +12446,7 @@ export namespace GtkSource {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -12496,7 +12488,7 @@ export namespace GtkSource {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -12505,7 +12497,7 @@ export namespace GtkSource {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -12535,7 +12527,7 @@ export namespace GtkSource {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -12702,11 +12694,7 @@ export namespace GtkSource {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -12955,7 +12943,7 @@ export namespace GtkSource {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -12971,7 +12959,7 @@ export namespace GtkSource {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -13041,7 +13029,7 @@ export namespace GtkSource {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -13304,7 +13292,7 @@ export namespace GtkSource {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -13322,7 +13310,7 @@ export namespace GtkSource {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -13372,7 +13360,7 @@ export namespace GtkSource {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -13583,7 +13571,7 @@ export namespace GtkSource {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -14550,7 +14538,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -14591,7 +14579,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15762,7 +15750,7 @@ export namespace GtkSource {
          * @param window_type the gutter window type.
          * @returns the {@link GtkSource.Gutter}.
          */
-        get_gutter(window_type: Gtk.TextWindowType | null): Gutter;
+        get_gutter(window_type: Gtk.TextWindowType): Gutter;
         /**
          * Returns whether the current line is highlighted.
          * @returns `true` if the current line is highlighted.
@@ -15865,7 +15853,7 @@ export namespace GtkSource {
          * Set if and how the background pattern should be displayed.
          * @param background_pattern the {@link GtkSource.BackgroundPatternType}.
          */
-        set_background_pattern(background_pattern: BackgroundPatternType | null): void;
+        set_background_pattern(background_pattern: BackgroundPatternType): void;
         /**
          * Set if and how the spaces should be visualized. Specifying `flags` as 0 will
          * disable display of spaces.
@@ -15874,7 +15862,7 @@ export namespace GtkSource {
          * {@link GtkSource.Tag.draw_spaces} property.
          * @param flags {@link GtkSource.DrawSpacesFlags} specifing how white spaces should be displayed
          */
-        set_draw_spaces(flags: DrawSpacesFlags | null): void;
+        set_draw_spaces(flags: DrawSpacesFlags): void;
         /**
          * If `highlight` is `true` the current line will be highlighted.
          * @param highlight whether to highlight the current line.
@@ -15962,7 +15950,7 @@ export namespace GtkSource {
          * are pressed.
          * @param smart_home_end the desired behavior among {@link GtkSource.SmartHomeEndType}.
          */
-        set_smart_home_end(smart_home_end: SmartHomeEndType | null): void;
+        set_smart_home_end(smart_home_end: SmartHomeEndType): void;
         /**
          * Sets the width of tabulation in characters. The {@link Gtk.TextBuffer} still contains
          * \t characters, but they can take a different visual width in a {@link GtkSource.View}
@@ -16065,7 +16053,7 @@ export namespace GtkSource {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -16077,7 +16065,7 @@ export namespace GtkSource {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -16131,7 +16119,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -16172,7 +16160,7 @@ export namespace GtkSource {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

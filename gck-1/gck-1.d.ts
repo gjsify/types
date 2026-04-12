@@ -164,7 +164,7 @@ export namespace Gck {
     function modules_enumerate_objects(
         modules: Module[],
         attrs: Attributes,
-        session_options: SessionOptions | null,
+        session_options: SessionOptions,
     ): Enumerator;
     /**
      * Enumerate objects that match a URI.
@@ -176,7 +176,7 @@ export namespace Gck {
      * @param session_options Options from GckSessionOptions
      * @returns A new {@link Gck.Enumerator}, or `null` if an error occurs.
      */
-    function modules_enumerate_uri(modules: Module[], uri: string, session_options: SessionOptions | null): Enumerator;
+    function modules_enumerate_uri(modules: Module[], uri: string, session_options: SessionOptions): Enumerator;
     /**
      * Get a list of slots for across all of the modules.
      * @param modules The modules
@@ -230,11 +230,7 @@ export namespace Gck {
      * @param session_options Options from GckSessionOptions
      * @returns A new {@link Gck.Object} which should be released with `g_object_unref()`, or `null` if no matching object was found.
      */
-    function modules_object_for_uri(
-        modules: Module[],
-        uri: string,
-        session_options: SessionOptions | null,
-    ): Object | null;
+    function modules_object_for_uri(modules: Module[], uri: string, session_options: SessionOptions): Object | null;
     /**
      * Find objects that match a URI.
      *
@@ -245,7 +241,7 @@ export namespace Gck {
      * @param session_options Options from GckSessionOptions
      * @returns A list of {@link Gck.Object} which should be released with `gck_list_unref_free()`, or `null` if no matching object was found.
      */
-    function modules_objects_for_uri(modules: Module[], uri: string, session_options: SessionOptions | null): Object[];
+    function modules_objects_for_uri(modules: Module[], uri: string, session_options: SessionOptions): Object[];
     /**
      * Lookup a token that matches the URI.
      * @param modules The modules
@@ -279,7 +275,7 @@ export namespace Gck {
      * @param options options for opening a session
      * @returns a new enumerator
      */
-    function slots_enumerate_objects(slots: Slot[], match: Attributes, options: SessionOptions | null): Enumerator;
+    function slots_enumerate_objects(slots: Slot[], match: Attributes, options: SessionOptions): Enumerator;
     /**
      * Build a PKCS#11 URI. The various parts relevant to the flags
      * specified will be used to build the URI.
@@ -287,7 +283,7 @@ export namespace Gck {
      * @param flags The context that the URI is for
      * @returns a newly allocated string containing a PKCS#11 URI.
      */
-    function uri_build(uri_data: UriData, flags: UriFlags | null): string;
+    function uri_build(uri_data: UriData, flags: UriFlags): string;
     function uri_error_get_quark(): GLib.Quark;
     /**
      * Parse a PKCS#11 URI for use in a given context.
@@ -299,7 +295,7 @@ export namespace Gck {
      * @param flags the context in which the URI will be used.
      * @returns a newly allocated {@link Gck.UriData}; which should be          freed with `gck_uri_data_free()`
      */
-    function uri_parse(string: string, flags: UriFlags | null): UriData;
+    function uri_parse(string: string, flags: UriFlags): UriData;
     /**
      * Convert `CK_BBOOL` type memory to a boolean.
      * @param value memory to convert
@@ -3136,7 +3132,7 @@ export namespace Gck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3177,7 +3173,7 @@ export namespace Gck {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3639,7 +3635,7 @@ export namespace Gck {
          * @param options options for opening a session
          * @returns a new enumerator
          */
-        enumerate_objects(match: Attributes, options: SessionOptions | null): Enumerator;
+        enumerate_objects(match: Attributes, options: SessionOptions): Enumerator;
         /**
          * Checks equality of two slots. Two GckSlot objects can point to the same
          * underlying PKCS#11 slot.
@@ -3707,7 +3703,7 @@ export namespace Gck {
          * @param cancellable An optional cancellation object, or `null`.
          * @returns a new session or `null` if an error occurs
          */
-        open_session(options: SessionOptions | null, cancellable?: Gio.Cancellable | null): Session;
+        open_session(options: SessionOptions, cancellable?: Gio.Cancellable | null): Session;
         /**
          * Open a session on the slot. If the 'auto reuse' setting is set,
          * then this may be a recycled session with the same flags.
@@ -3716,10 +3712,7 @@ export namespace Gck {
          * @param options The options to open the new session with.
          * @param cancellable Optional cancellation object, or `null`.
          */
-        open_session_async(
-            options: SessionOptions | null,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<Session>;
+        open_session_async(options: SessionOptions, cancellable?: Gio.Cancellable | null): globalThis.Promise<Session>;
         /**
          * Open a session on the slot. If the 'auto reuse' setting is set,
          * then this may be a recycled session with the same flags.
@@ -3730,7 +3723,7 @@ export namespace Gck {
          * @param callback Called when the operation completes.
          */
         open_session_async(
-            options: SessionOptions | null,
+            options: SessionOptions,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3744,7 +3737,7 @@ export namespace Gck {
          * @param callback Called when the operation completes.
          */
         open_session_async(
-            options: SessionOptions | null,
+            options: SessionOptions,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Session> | void;
@@ -4259,7 +4252,7 @@ export namespace Gck {
          * will be used for the various values of the attributes in the builder
          * @param flags the flags for the new builder
          */
-        init_full(flags: BuilderFlags | null): void;
+        init_full(flags: BuilderFlags): void;
         /**
          * Add a reference to a builder that was created with {@link Builder.new}. The
          * builder must later be unreferenced again with `gck_builder_unref()`.

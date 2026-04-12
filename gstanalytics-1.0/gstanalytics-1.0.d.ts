@@ -395,7 +395,7 @@ export namespace GstAnalytics {
      * @returns a constant string with the name of the data type
      * @since 1.28
      */
-    function tensor_data_type_get_name(data_type: TensorDataType | null): string;
+    function tensor_data_type_get_name(data_type: TensorDataType): string;
     /**
      * Get an id that represent tensor metadata type
      * @returns Opaque id of the {@link GstAnalytics.Mtd} type
@@ -592,10 +592,10 @@ export namespace GstAnalytics {
          * @returns The tensor name if found, or `null` otherwise.    The caller must free this with `g_free()` when done.
          */
         find_tensor_name(
-            dir: ModelInfoTensorDirection | null,
+            dir: ModelInfoTensorDirection,
             index: bigint | number,
             in_tensor_name: string | null,
-            data_type: TensorDataType | null,
+            data_type: TensorDataType,
             dims: (bigint | number)[],
         ): string | null;
         /**
@@ -897,7 +897,7 @@ export namespace GstAnalytics {
          */
         add_segmentation_mtd(
             buffer: Gst.Buffer,
-            segmentation_type: SegmentationType | null,
+            segmentation_type: SegmentationType,
             region_ids: number[],
             masks_loc_x: number,
             masks_loc_y: number,
@@ -922,9 +922,9 @@ export namespace GstAnalytics {
          */
         add_tensor_mtd_simple(
             id: GLib.Quark,
-            data_type: TensorDataType | null,
+            data_type: TensorDataType,
             data: Gst.Buffer,
-            dims_order: TensorDimOrder | null,
+            dims_order: TensorDimOrder,
             dims: (bigint | number)[],
         ): [boolean, TensorMtd | null];
         /**
@@ -948,7 +948,7 @@ export namespace GstAnalytics {
             an_meta_first_id: number,
             an_meta_second_id: number,
             max_relation_span: number,
-            cond_types: RelTypes | null,
+            cond_types: RelTypes,
         ): [boolean, number[] | null];
         /**
          * Fill `rlt` if a analytics-meta with id == `an_meta_id` exist in `meta` instance,
@@ -964,12 +964,7 @@ export namespace GstAnalytics {
          * @param state Opaque data to store state of the query.    If `state` point to NULL, the first analytics-metadata directly related    to `an_meta_id` will be set in `rlt_mtd`. Doesn't need to be free.
          * @returns TRUE if `rlt_mtd` was updated, other wise FALSE
          */
-        get_direct_related(
-            an_meta_id: number,
-            relation_type: RelTypes | null,
-            type: MtdType,
-            state: any,
-        ): [boolean, any, Mtd];
+        get_direct_related(an_meta_id: number, relation_type: RelTypes, type: MtdType, state: any): [boolean, any, Mtd];
         /**
          * Fill `rlt` if a analytics-meta with id == `an_meta_id` exist in `meta` instance,
          * otherwise this method return FALSE and `rlt` is invalid.
@@ -1031,7 +1026,7 @@ export namespace GstAnalytics {
          * @param an_meta_second_id second meta id
          * @returns TRUE on success and FALSE on failure.
          */
-        set_relation(type: RelTypes | null, an_meta_first_id: number, an_meta_second_id: number): boolean;
+        set_relation(type: RelTypes, an_meta_first_id: number, an_meta_second_id: number): boolean;
     }
 
     /**
@@ -1272,11 +1267,7 @@ export namespace GstAnalytics {
          * @param dims An optional array of dimensions, where G_MAXSIZE means ANY.
          * @returns TRUE if the {@link GstAnalytics.Tensor} has the reading order from the memory matching `order`, dimensions matching `num_dims`, data type matching `data_type` Otherwise FALSE will be returned.
          */
-        check_type(
-            data_type: TensorDataType | null,
-            order: TensorDimOrder | null,
-            dims?: (bigint | number)[] | null,
-        ): boolean;
+        check_type(data_type: TensorDataType, order: TensorDimOrder, dims?: (bigint | number)[] | null): boolean;
         /**
          * Create a copy of `tensor`.
          * @returns a new {@link GstAnalytics.Tensor}
@@ -1306,9 +1297,9 @@ export namespace GstAnalytics {
          */
         set_simple(
             id: GLib.Quark,
-            data_type: TensorDataType | null,
+            data_type: TensorDataType,
             data: Gst.Buffer,
-            dims_order: TensorDimOrder | null,
+            dims_order: TensorDimOrder,
             dims: (bigint | number)[],
         ): boolean;
     }
@@ -1358,8 +1349,8 @@ export namespace GstAnalytics {
          */
         get_typed_tensor(
             tensor_id: GLib.Quark,
-            data_type: TensorDataType | null,
-            order: TensorDimOrder | null,
+            data_type: TensorDataType,
+            order: TensorDimOrder,
             dims?: (bigint | number)[] | null,
         ): Tensor | null;
         /**
@@ -1445,7 +1436,7 @@ export namespace GstAnalytics {
      * Type of analytics meta data
      * @gir-type Alias
      */
-    type MtdType = never;
+    type MtdType = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
