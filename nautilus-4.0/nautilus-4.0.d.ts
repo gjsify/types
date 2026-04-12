@@ -89,7 +89,7 @@ export namespace Nautilus {
         update_complete: GObject.Closure,
         provider: InfoProvider,
         handle: OperationHandle,
-        result: OperationResult | null,
+        result: OperationResult,
     ): void;
     namespace Column {
         // Signal signatures

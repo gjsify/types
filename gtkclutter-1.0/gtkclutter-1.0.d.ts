@@ -760,7 +760,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -801,7 +801,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1366,7 +1366,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1407,7 +1407,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1948,7 +1948,7 @@ export namespace GtkClutter {
          * @param icon_size the icon size or -1
          * @returns `true` on success, `false` on failure
          */
-        set_from_icon_name(widget: Gtk.Widget | null, icon_name: string, icon_size: Gtk.IconSize | null): boolean;
+        set_from_icon_name(widget: Gtk.Widget | null, icon_name: string, icon_size: Gtk.IconSize): boolean;
         /**
          * Sets the contents of `texture` with a copy of `pixbuf`.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}
@@ -1963,7 +1963,7 @@ export namespace GtkClutter {
          * @param icon_size the size of the icon, or -1
          * @returns `true` on success, `false` on failure.
          */
-        set_from_stock(widget: Gtk.Widget, stock_id: string, icon_size: Gtk.IconSize | null): boolean;
+        set_from_stock(widget: Gtk.Widget, stock_id: string, icon_size: Gtk.IconSize): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2008,7 +2008,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2049,7 +2049,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2605,7 +2605,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2646,7 +2646,7 @@ export namespace GtkClutter {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

@@ -586,7 +586,7 @@ export namespace AccountsService {
          * Note this function is synchronous and ignores errors.
          * @param account_type a {@link AccountsService.UserAccountType}
          */
-        set_account_type(account_type: UserAccountType | null): void;
+        set_account_type(account_type: UserAccountType): void;
         /**
          * If enabled is set to `true` then this user will automatically be logged in
          * at boot up time.  Only one user can be configured to auto login at any given
@@ -676,7 +676,7 @@ export namespace AccountsService {
          * Note this function is synchronous and ignores errors.
          * @param password_mode a {@link AccountsService.UserPasswordMode}
          */
-        set_password_mode(password_mode: UserPasswordMode | null): void;
+        set_password_mode(password_mode: UserPasswordMode): void;
         /**
          * Assigns a new name for `user`.
          *
@@ -941,7 +941,7 @@ export namespace AccountsService {
          * @param accounttype a {@link AccountsService.UserAccountType}
          * @returns user object
          */
-        create_user(username: string, fullname: string, accounttype: UserAccountType | null): User;
+        create_user(username: string, fullname: string, accounttype: UserAccountType): User;
         /**
          * Asynchronously creates a user account on the system.
          *
@@ -955,7 +955,7 @@ export namespace AccountsService {
         create_user_async(
             username: string,
             fullname: string,
-            accounttype: UserAccountType | null,
+            accounttype: UserAccountType,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<User>;
         /**
@@ -972,7 +972,7 @@ export namespace AccountsService {
         create_user_async(
             username: string,
             fullname: string,
-            accounttype: UserAccountType | null,
+            accounttype: UserAccountType,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -990,7 +990,7 @@ export namespace AccountsService {
         create_user_async(
             username: string,
             fullname: string,
-            accounttype: UserAccountType | null,
+            accounttype: UserAccountType,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User> | void;

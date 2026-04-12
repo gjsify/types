@@ -402,11 +402,11 @@ export namespace Retro {
     /**
      * @param type
      */
-    function controller_type_get_id_count(type: ControllerType | null): number;
+    function controller_type_get_id_count(type: ControllerType): number;
     /**
      * @param type
      */
-    function controller_type_get_index_count(type: ControllerType | null): number;
+    function controller_type_get_index_count(type: ControllerType): number;
     /**
      * Logs an error or debugging message.
      *
@@ -417,12 +417,7 @@ export namespace Retro {
      * @param log_level the log level, either from {@link GLib.LogLevelFlags} or a user-defined level
      * @param message the message to log
      */
-    function g_log(
-        sender: Core,
-        log_domain: string | null,
-        log_level: GLib.LogLevelFlags | null,
-        message: string,
-    ): void;
+    function g_log(sender: Core, log_domain: string | null, log_level: GLib.LogLevelFlags, message: string): void;
     function gtk_get_resource(): Gio.Resource;
     /**
      * @param button_code a button code
@@ -433,7 +428,7 @@ export namespace Retro {
      * @param joypad_id a {@link Retro.JoypadId}
      * @returns the corresponding button code
      */
-    function joypad_id_to_button_code(joypad_id: JoypadId | null): number;
+    function joypad_id_to_button_code(joypad_id: JoypadId): number;
     /**
      * Gets the aspect ratio of `pixbuf` by reading the 'aspect-ratio' pixbuf option.
      * @param pixbuf a {@link GdkPixbuf.Pixbuf}
@@ -807,7 +802,7 @@ export namespace Retro {
          * @param memory_type the type of memory
          * @returns the size of a memory region
          */
-        get_memory_size(memory_type: MemoryType | null): number;
+        get_memory_size(memory_type: MemoryType): number;
         /**
          * Gets the option for the given key.
          * @param key the key of the option
@@ -872,7 +867,7 @@ export namespace Retro {
          * @param memory_type the type of memory
          * @param filename a file to load the data from
          */
-        load_memory(memory_type: MemoryType | null, filename: string): void;
+        load_memory(memory_type: MemoryType, filename: string): void;
         /**
          * Loads the state of the `self`.
          * @param filename the file to load the state from
@@ -901,7 +896,7 @@ export namespace Retro {
          * @param memory_type the type of memory
          * @param filename a file to save the data to
          */
-        save_memory(memory_type: MemoryType | null, filename: string): void;
+        save_memory(memory_type: MemoryType, filename: string): void;
         /**
          * Saves the state of `self`.
          * @param filename the file to save the state to
@@ -931,7 +926,7 @@ export namespace Retro {
          * @param controller_type a {@link Retro.ControllerType}
          * @param controller a {@link Retro.Controller}
          */
-        set_default_controller(controller_type: ControllerType | null, controller?: Controller | null): void;
+        set_default_controller(controller_type: ControllerType, controller?: Controller | null): void;
         /**
          * Sets the widget whose key events will be forwarded to `self`.
          * @param widget a {@link Gtk.Widget}, or `null`
@@ -1288,7 +1283,7 @@ export namespace Retro {
          * @param controller_type the controller type to expose `self` as
          * @returns a new {@link Retro.Controller}
          */
-        as_controller(controller_type: ControllerType | null): Controller;
+        as_controller(controller_type: ControllerType): Controller;
         /**
          * Gets whether the pointer should be grabbed when clicking on the view. This
          * allows `self` to work as a RETRO_CONTROLLER_TYPE_MOUSE instead of a
@@ -1350,7 +1345,7 @@ export namespace Retro {
          * Sets the video filter to use to render the core's video on `self`.
          * @param filter a {@link Retro.VideoFilter}
          */
-        set_filter(filter: VideoFilter | null): void;
+        set_filter(filter: VideoFilter): void;
         /**
          * Sets the key joypad mapping on `self`. If given mapping is `null`, then set to
          * an empty configuration.
@@ -1416,7 +1411,7 @@ export namespace Retro {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1457,7 +1452,7 @@ export namespace Retro {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1885,13 +1880,13 @@ export namespace Retro {
          * @param button joypad button id
          * @returns mapping key code
          */
-        get_button_key(button: JoypadId | null): number;
+        get_button_key(button: JoypadId): number;
         /**
          * Maps the joypad button id to mapping key code.
          * @param button joypad button id
          * @param hardware_keycode mapping key code
          */
-        set_button_key(button: JoypadId | null, hardware_keycode: number): void;
+        set_button_key(button: JoypadId, hardware_keycode: number): void;
     }
 
     namespace ModuleIterator {
@@ -2401,13 +2396,13 @@ export namespace Retro {
          * @param controller_type a {@link Retro.ControllerType}
          * @returns whether `self` has the capability
          */
-        has_capability(controller_type: ControllerType | null): boolean;
+        has_capability(controller_type: ControllerType): boolean;
         /**
          * Sets the rumble state of `self`.
          * @param effect the rumble effect
          * @param strength the rumble effect strength
          */
-        set_rumble_state(effect: RumbleEffect | null, strength: number): void;
+        set_rumble_state(effect: RumbleEffect, strength: number): void;
     }
 
     export const Controller: ControllerNamespace & {

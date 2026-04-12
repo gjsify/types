@@ -1063,11 +1063,7 @@ export namespace GstAudio {
      * @returns `true` if the map operation succeeded or `false` on failure
      * @since 1.16
      */
-    function audio_buffer_map(
-        info: AudioInfo,
-        gstbuffer: Gst.Buffer,
-        flags: Gst.MapFlags | null,
-    ): [boolean, AudioBuffer];
+    function audio_buffer_map(info: AudioInfo, gstbuffer: Gst.Buffer, flags: Gst.MapFlags): [boolean, AudioBuffer];
     /**
      * Reorders `buffer` from the channel positions `from` to the channel
      * positions `to`. `from` and `to` must contain the same number of
@@ -1081,9 +1077,9 @@ export namespace GstAudio {
      */
     function audio_buffer_reorder_channels(
         buffer: Gst.Buffer,
-        format: AudioFormat | null,
-        from: AudioChannelPosition[] | null,
-        to: AudioChannelPosition[] | null,
+        format: AudioFormat,
+        from: AudioChannelPosition[],
+        to: AudioChannelPosition[],
     ): boolean;
     /**
      * Truncate the buffer to finally have `samples` number of samples, removing
@@ -1134,7 +1130,7 @@ export namespace GstAudio {
      */
     function audio_channel_positions_from_mask(
         channel_mask: bigint | number,
-        position: AudioChannelPosition[] | null,
+        position: AudioChannelPosition[],
     ): boolean;
     /**
      * Convert the `position` array of `channels` channels to a bitmask.
@@ -1145,10 +1141,7 @@ export namespace GstAudio {
      * @param force_order Only consider the GStreamer channel order.
      * @returns `true` if the channel positions are valid and could be converted.
      */
-    function audio_channel_positions_to_mask(
-        position: AudioChannelPosition[] | null,
-        force_order: boolean,
-    ): [boolean, number];
+    function audio_channel_positions_to_mask(position: AudioChannelPosition[], force_order: boolean): [boolean, number];
     /**
      * Converts `position` to a human-readable string representation for
      * debugging purposes.
@@ -1156,14 +1149,14 @@ export namespace GstAudio {
      * @returns a newly allocated string representing `position`
      * @since 1.10
      */
-    function audio_channel_positions_to_string(position: AudioChannelPosition[] | null): string;
+    function audio_channel_positions_to_string(position: AudioChannelPosition[]): string;
     /**
      * Reorders the channel positions in `position` from any order to
      * the GStreamer channel order.
      * @param position The channel positions to   reorder to.
      * @returns `true` if the channel positions are valid and reordering was successful.
      */
-    function audio_channel_positions_to_valid_order(position: AudioChannelPosition[] | null): boolean;
+    function audio_channel_positions_to_valid_order(position: AudioChannelPosition[]): boolean;
     /**
      * Checks if `position` contains valid channel positions for
      * `channels` channels. If `force_order` is `true` it additionally
@@ -1172,10 +1165,7 @@ export namespace GstAudio {
      * @param force_order Only consider the GStreamer channel order.
      * @returns `true` if the channel positions are valid.
      */
-    function audio_check_valid_channel_positions(
-        position: AudioChannelPosition[] | null,
-        force_order: boolean,
-    ): boolean;
+    function audio_check_valid_channel_positions(position: AudioChannelPosition[], force_order: boolean): boolean;
     function audio_clipping_meta_api_get_type(): GObject.GType;
     function audio_clipping_meta_get_info(): Gst.MetaInfo;
     function audio_downmix_meta_api_get_type(): GObject.GType;
@@ -1207,12 +1197,12 @@ export namespace GstAudio {
      * @param format a {@link GstAudio.AudioFormat}
      * @returns The {@link GstAudio.AudioFormatInfo} for `format`.
      */
-    function audio_format_get_info(format: AudioFormat | null): AudioFormatInfo;
+    function audio_format_get_info(format: AudioFormat): AudioFormatInfo;
     function audio_format_info_get_type(): GObject.GType;
     /**
      * @param format
      */
-    function audio_format_to_string(format: AudioFormat | null): string;
+    function audio_format_to_string(format: AudioFormat): string;
     /**
      * Return all the raw audio formats supported by GStreamer.
      * @returns an array of {@link GstAudio.AudioFormat}
@@ -1234,8 +1224,8 @@ export namespace GstAudio {
      * @returns `true` if the channel positions are valid and reordering is possible.
      */
     function audio_get_channel_reorder_map(
-        from: AudioChannelPosition[] | null,
-        to: AudioChannelPosition[] | null,
+        from: AudioChannelPosition[],
+        to: AudioChannelPosition[],
         reorder_map: number[],
     ): boolean;
     /**
@@ -1292,7 +1282,7 @@ export namespace GstAudio {
      * @returns an audio `GstCaps`
      * @since 1.18
      */
-    function audio_make_raw_caps(formats: AudioFormat[] | null, layout: AudioLayout | null): Gst.Caps;
+    function audio_make_raw_caps(formats: AudioFormat[] | null, layout: AudioLayout): Gst.Caps;
     function audio_meta_api_get_type(): GObject.GType;
     function audio_meta_get_info(): Gst.MetaInfo;
     /**
@@ -1309,9 +1299,9 @@ export namespace GstAudio {
      */
     function audio_reorder_channels(
         data: Uint8Array | string,
-        format: AudioFormat | null,
-        from: AudioChannelPosition[] | null,
-        to: AudioChannelPosition[] | null,
+        format: AudioFormat,
+        from: AudioChannelPosition[],
+        to: AudioChannelPosition[],
     ): boolean;
     /**
      * Make a new resampler.
@@ -1325,9 +1315,9 @@ export namespace GstAudio {
      * @returns The new {@link GstAudio.AudioResampler}.
      */
     function audio_resampler_new(
-        method: AudioResamplerMethod | null,
-        flags: AudioResamplerFlags | null,
-        format: AudioFormat | null,
+        method: AudioResamplerMethod,
+        flags: AudioResamplerFlags,
+        format: AudioFormat,
         channels: number,
         in_rate: number,
         out_rate: number,
@@ -1343,7 +1333,7 @@ export namespace GstAudio {
      * @param options a {@link Gst.Structure}
      */
     function audio_resampler_options_set_quality(
-        method: AudioResamplerMethod | null,
+        method: AudioResamplerMethod,
         quality: number,
         in_rate: number,
         out_rate: number,
@@ -1360,7 +1350,7 @@ export namespace GstAudio {
      */
     function buffer_add_audio_clipping_meta(
         buffer: Gst.Buffer,
-        format: Gst.Format | null,
+        format: Gst.Format,
         start: bigint | number,
         end: bigint | number,
     ): AudioClippingMeta;
@@ -1379,8 +1369,8 @@ export namespace GstAudio {
      */
     function buffer_add_audio_downmix_meta(
         buffer: Gst.Buffer,
-        from_position: AudioChannelPosition[] | null,
-        to_position: AudioChannelPosition[] | null,
+        from_position: AudioChannelPosition[],
+        to_position: AudioChannelPosition[],
         matrix: number,
     ): AudioDownmixMeta;
     /**
@@ -1437,7 +1427,7 @@ export namespace GstAudio {
      */
     function buffer_get_audio_downmix_meta_for_channels(
         buffer: Gst.Buffer,
-        to_position: AudioChannelPosition[] | null,
+        to_position: AudioChannelPosition[],
     ): AudioDownmixMeta;
     /**
      * Find the {@link GstAudio.AudioLevelMeta} on `buffer`.
@@ -1452,11 +1442,7 @@ export namespace GstAudio {
      * @param val Volume in `from` format that should be converted
      * @returns the converted volume
      */
-    function stream_volume_convert_volume(
-        from: StreamVolumeFormat | null,
-        to: StreamVolumeFormat | null,
-        val: number,
-    ): number;
+    function stream_volume_convert_volume(from: StreamVolumeFormat, to: StreamVolumeFormat, val: number): number;
     /**
      * @gir-type Callback
      */
@@ -2350,7 +2336,7 @@ export namespace GstAudio {
          * Controls how clock slaving will be performed in `sink`.
          * @param method the new slave method
          */
-        set_slave_method(method: AudioBaseSinkSlaveMethod | null): void;
+        set_slave_method(method: AudioBaseSinkSlaveMethod): void;
     }
 
     namespace AudioBaseSrc {
@@ -2521,7 +2507,7 @@ export namespace GstAudio {
          * Controls how clock slaving will be performed in `src`.
          * @param method the new slave method
          */
-        set_slave_method(method: AudioBaseSrcSlaveMethod | null): void;
+        set_slave_method(method: AudioBaseSrcSlaveMethod): void;
     }
 
     namespace AudioCdSrc {
@@ -2751,7 +2737,7 @@ export namespace GstAudio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2792,7 +2778,7 @@ export namespace GstAudio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3659,7 +3645,7 @@ export namespace GstAudio {
          * @param tags a {@link Gst.TagList} to merge, or NULL
          * @param mode the {@link Gst.TagMergeMode} to use, usually #GST_TAG_MERGE_REPLACE
          */
-        merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode | null): void;
+        merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void;
         /**
          * Negotiate with downstream elements to currently configured {@link GstAudio.AudioInfo}.
          * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
@@ -4148,7 +4134,7 @@ export namespace GstAudio {
          * @param tags a {@link Gst.TagList} to merge, or NULL to unset     previously-set tags
          * @param mode the {@link Gst.TagMergeMode} to use, usually #GST_TAG_MERGE_REPLACE
          */
-        merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode | null): void;
+        merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void;
         /**
          * Negotiate with downstream elements to currently configured {@link Gst.Caps}.
          * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
@@ -4437,7 +4423,7 @@ export namespace GstAudio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4478,7 +4464,7 @@ export namespace GstAudio {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5227,7 +5213,7 @@ export namespace GstAudio {
          * @param dest_fmt the destination format
          * @returns TRUE if the conversion succeeded.
          */
-        convert(src_fmt: Gst.Format | null, src_val: bigint | number, dest_fmt: Gst.Format | null): [boolean, number];
+        convert(src_fmt: Gst.Format, src_val: bigint | number, dest_fmt: Gst.Format): [boolean, number];
         /**
          * Get the number of samples queued in the audio device. This is
          * usually less than the segment size but can be bigger when the
@@ -5332,7 +5318,7 @@ export namespace GstAudio {
          * be called in when the ringbuffer is acquired.
          * @param position the device channel positions
          */
-        set_channel_positions(position: AudioChannelPosition[] | null): void;
+        set_channel_positions(position: AudioChannelPosition[]): void;
         /**
          * Set the ringbuffer to flushing mode or normal mode.
          *
@@ -5954,7 +5940,7 @@ export namespace GstAudio {
          * @param _in input data
          * @returns `true` is the conversion could be performed.
          */
-        convert(flags: AudioConverterFlags | null, _in: Uint8Array | string): [boolean, Uint8Array];
+        convert(flags: AudioConverterFlags, _in: Uint8Array | string): [boolean, Uint8Array];
         /**
          * Free a previously allocated `convert` instance.
          */
@@ -6020,7 +6006,7 @@ export namespace GstAudio {
          * @returns `true` is the conversion could be performed.
          */
         samples(
-            flags: AudioConverterFlags | null,
+            flags: AudioConverterFlags,
             _in: any | null,
             in_frames: bigint | number,
             out: any | null,
@@ -6198,7 +6184,7 @@ export namespace GstAudio {
          * @param dest_fmt {@link Gst.Format} of the `dest_val`
          * @returns TRUE if the conversion was successful.
          */
-        convert(src_fmt: Gst.Format | null, src_val: bigint | number, dest_fmt: Gst.Format | null): [boolean, number];
+        convert(src_fmt: Gst.Format, src_val: bigint | number, dest_fmt: Gst.Format): [boolean, number];
         /**
          * Copy a GstAudioInfo structure.
          * @returns a new {@link GstAudio.AudioInfo}. free with gst_audio_info_free.
@@ -6224,12 +6210,7 @@ export namespace GstAudio {
          * @param channels the number of channels
          * @param position the channel positions
          */
-        set_format(
-            format: AudioFormat | null,
-            rate: number,
-            channels: number,
-            position?: AudioChannelPosition[] | null,
-        ): void;
+        set_format(format: AudioFormat, rate: number, channels: number, position?: AudioChannelPosition[] | null): void;
         /**
          * Convert the values of `info` into a {@link Gst.Caps}.
          * @returns the new {@link Gst.Caps} containing the          info of `info`.
@@ -6632,7 +6613,7 @@ export namespace GstAudio {
          * @param format {@link GstAudio.StreamVolumeFormat} which should be returned
          * @returns The current stream volume as linear factor
          */
-        get_volume(format: StreamVolumeFormat | null): number;
+        get_volume(format: StreamVolumeFormat): number;
         /**
          * @param mute Mute state that should be set
          */
@@ -6641,7 +6622,7 @@ export namespace GstAudio {
          * @param format {@link GstAudio.StreamVolumeFormat} of `val`
          * @param val Linear volume factor that should be set
          */
-        set_volume(format: StreamVolumeFormat | null, val: number): void;
+        set_volume(format: StreamVolumeFormat, val: number): void;
     }
 
     export const StreamVolume: StreamVolumeNamespace & {

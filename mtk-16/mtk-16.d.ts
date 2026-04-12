@@ -72,7 +72,7 @@ export namespace Mtk {
         width: number,
         height: number,
         scale: number,
-        transform: MonitorTransform | null,
+        transform: MonitorTransform,
         src_rect: Graphene.Rect,
     ): void;
     /**
@@ -82,24 +82,21 @@ export namespace Mtk {
     /**
      * @param transform
      */
-    function monitor_transform_invert(transform: MonitorTransform | null): MonitorTransform;
+    function monitor_transform_invert(transform: MonitorTransform): MonitorTransform;
     /**
      * @param transform
      */
-    function monitor_transform_to_string(transform: MonitorTransform | null): string;
+    function monitor_transform_to_string(transform: MonitorTransform): string;
     /**
      * @param transform
      * @param other
      */
-    function monitor_transform_transform(
-        transform: MonitorTransform | null,
-        other: MonitorTransform | null,
-    ): MonitorTransform;
+    function monitor_transform_transform(transform: MonitorTransform, other: MonitorTransform): MonitorTransform;
     /**
      * @param transform
      * @param matrix
      */
-    function monitor_transform_transform_matrix(transform: MonitorTransform | null, matrix: Graphene.Matrix): void;
+    function monitor_transform_transform_matrix(transform: MonitorTransform, matrix: Graphene.Matrix): void;
     /**
      * @param transform
      * @param area_width
@@ -108,7 +105,7 @@ export namespace Mtk {
      * @param point_y
      */
     function monitor_transform_transform_point(
-        transform: MonitorTransform | null,
+        transform: MonitorTransform,
         area_width: number,
         area_height: number,
         point_x: number,
@@ -118,7 +115,7 @@ export namespace Mtk {
      * @param rect A rectangle
      * @param rounding_strategy The rounding strategy
      */
-    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy | null): Rectangle;
+    function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
     function region_create(): Region;
     /**
      * @param rect
@@ -237,7 +234,7 @@ export namespace Mtk {
          * @param rounding_strategy
          * @param dest
          */
-        scale_double(scale: number, rounding_strategy: RoundingStrategy | null, dest: Rectangle): void;
+        scale_double(scale: number, rounding_strategy: RoundingStrategy, dest: Rectangle): void;
         /**
          * @returns Return a graphene_rect_t created from `rect`
          */
@@ -252,7 +249,7 @@ export namespace Mtk {
          * @param height the height of the target space
          * @param dest the transformed {@link Mtk.Rectangle}
          */
-        transform(transform: MonitorTransform | null, width: number, height: number, dest: Rectangle): void;
+        transform(transform: MonitorTransform, width: number, height: number, dest: Rectangle): void;
         /**
          * Computes the union of the two rectangles
          * @param rect2 another {@link Mtk.Rectangle}

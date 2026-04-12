@@ -417,7 +417,7 @@ export namespace SpiceClientGLib {
     function main_file_copy_async(
         channel: MainChannel,
         sources: Gio.File[],
-        flags: Gio.FileCopyFlags | null,
+        flags: Gio.FileCopyFlags,
         cancellable?: Gio.Cancellable | null,
         progress_callback?: Gio.FileProgressCallback | null,
     ): globalThis.Promise<boolean>;
@@ -434,7 +434,7 @@ export namespace SpiceClientGLib {
     function main_file_copy_async(
         channel: MainChannel,
         sources: Gio.File[],
-        flags: Gio.FileCopyFlags | null,
+        flags: Gio.FileCopyFlags,
         cancellable: Gio.Cancellable | null,
         progress_callback: Gio.FileProgressCallback | null,
         callback: Gio.AsyncReadyCallback<MainChannel> | null,
@@ -452,7 +452,7 @@ export namespace SpiceClientGLib {
     function main_file_copy_async(
         channel: MainChannel,
         sources: Gio.File[],
-        flags: Gio.FileCopyFlags | null,
+        flags: Gio.FileCopyFlags,
         cancellable?: Gio.Cancellable | null,
         progress_callback?: Gio.FileProgressCallback | null,
         callback?: Gio.AsyncReadyCallback<MainChannel> | null,
@@ -1077,7 +1077,7 @@ export namespace SpiceClientGLib {
          * #SPICE_CHANNEL_NONE.
          * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
          */
-        disconnect(reason: ChannelEvent | null): void;
+        disconnect(reason: ChannelEvent): void;
         /**
          * @param args
          */
@@ -2074,7 +2074,7 @@ export namespace SpiceClientGLib {
          */
         file_copy_async(
             sources: Gio.File[],
-            flags: Gio.FileCopyFlags | null,
+            flags: Gio.FileCopyFlags,
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
         ): globalThis.Promise<boolean>;
@@ -2110,7 +2110,7 @@ export namespace SpiceClientGLib {
          */
         file_copy_async(
             sources: Gio.File[],
-            flags: Gio.FileCopyFlags | null,
+            flags: Gio.FileCopyFlags,
             cancellable: Gio.Cancellable | null,
             progress_callback: Gio.FileProgressCallback | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -2147,7 +2147,7 @@ export namespace SpiceClientGLib {
          */
         file_copy_async(
             sources: Gio.File[],
-            flags: Gio.FileCopyFlags | null,
+            flags: Gio.FileCopyFlags,
             cancellable?: Gio.Cancellable | null,
             progress_callback?: Gio.FileProgressCallback | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -2601,10 +2601,7 @@ export namespace SpiceClientGLib {
          * @param action a VM action
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        vm_action_async(
-            action: QmpPortVmAction | null,
-            cancellable?: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        vm_action_async(action: QmpPortVmAction, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Request the VM to perform an action.
          * @param action a VM action
@@ -2612,7 +2609,7 @@ export namespace SpiceClientGLib {
          * @param callback callback to call when the action is complete
          */
         vm_action_async(
-            action: QmpPortVmAction | null,
+            action: QmpPortVmAction,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -2623,7 +2620,7 @@ export namespace SpiceClientGLib {
          * @param callback callback to call when the action is complete
          */
         vm_action_async(
-            action: QmpPortVmAction | null,
+            action: QmpPortVmAction,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -4106,7 +4103,7 @@ export namespace SpiceClientGLib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4147,7 +4144,7 @@ export namespace SpiceClientGLib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

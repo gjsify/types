@@ -555,7 +555,7 @@ export namespace Gdl {
          * @param item A {@link Gdl.DockItem} widget
          * @param placement A position for the widget
          */
-        add_item(item: DockItem, placement: DockPlacement | null): void;
+        add_item(item: DockItem, placement: DockPlacement): void;
         /**
          * Looks for an {@link Gdl.DockItem} widget bound to the master of the dock item. It
          * does not search only in the children of this particular dock widget.
@@ -655,7 +655,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -696,7 +696,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1209,12 +1209,12 @@ export namespace Gdl {
          * Set the orientation of the `dockbar`.
          * @param orientation the new orientation
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Set the style of the `dockbar`.
          * @param style the new style
          */
-        set_style(style: DockBarStyle | null): void;
+        set_style(style: DockBarStyle): void;
         /**
          * @param args
          */
@@ -1271,7 +1271,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1312,7 +1312,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1941,7 +1941,7 @@ export namespace Gdl {
          * @param position The position to dock #item, relative to #target.
          * @param docking_param This value is unused, and will be ignored.
          */
-        dock_to(target: DockItem | null, position: DockPlacement | null, docking_param: number): void;
+        dock_to(target: DockItem | null, position: DockPlacement, docking_param: number): void;
         /**
          * Retrieves the behavior of the item.
          * @returns the behavior of the item.
@@ -2042,7 +2042,7 @@ export namespace Gdl {
          * @param behavior Behavior flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_behavior_flags(behavior: DockItemBehavior | null, clear: boolean): void;
+        set_behavior_flags(behavior: DockItemBehavior, clear: boolean): void;
         /**
          * Set a new child for the {@link Gdl.DockItem}. This child is different from the
          * children using the {@link Gtk.Container} interface. It is a private child reserved
@@ -2066,7 +2066,7 @@ export namespace Gdl {
          * This function sets the layout of the dock item.
          * @param orientation The orientation to set the item to. If the orientation is set to #GTK_ORIENTATION_VERTICAL, the grip widget will be shown along the top of the edge of item (if it is not hidden). If the orientation is set to #GTK_ORIENTATION_HORIZONTAL, the grip widget will be shown down the left edge of the item (even if the widget text direction is set to RTL).
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Replaces the current tab label widget with another widget. Note that
          * this label widget is only visible when the "switcher-style" property
@@ -2096,7 +2096,7 @@ export namespace Gdl {
          * This function sets the behavior of the dock item.
          * @param behavior Behavior flags to turn off
          */
-        unset_behavior_flags(behavior: DockItemBehavior | null): void;
+        unset_behavior_flags(behavior: DockItemBehavior): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2141,7 +2141,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2182,7 +2182,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2880,7 +2880,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2921,7 +2921,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3467,7 +3467,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3508,7 +3508,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4339,7 +4339,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4380,7 +4380,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5031,7 +5031,7 @@ export namespace Gdl {
          * @param placement where to return the placement information
          * @returns `true` if `child` is a child of `object`.
          */
-        child_placement(child: DockObject, placement?: (DockPlacement | null) | null): boolean;
+        child_placement(child: DockObject, placement?: DockPlacement | null): boolean;
         /**
          * Dissociate a dock object from its parent, including or not its children.
          * @param recursive `true` to detach children
@@ -5043,7 +5043,7 @@ export namespace Gdl {
          * @param position The position for the child
          * @param other_data Optional data giving additional information depending on the dock object.
          */
-        dock(requestor: DockObject, position: DockPlacement | null, other_data?: GObject.Value | null): void;
+        dock(requestor: DockObject, position: DockPlacement, other_data?: GObject.Value | null): void;
         /**
          * Dock a dock widget in `object` at the defined position.
          * @param x X coordinate
@@ -5156,7 +5156,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @returns `true` if `child` has been moved
          */
-        reorder(child: DockObject, new_position: DockPlacement | null, other_data?: GObject.Value | null): boolean;
+        reorder(child: DockObject, new_position: DockPlacement, other_data?: GObject.Value | null): boolean;
         /**
          * Set the long name of the object. This name is an human readable string
          * which can be displayed in the user interface.
@@ -5238,7 +5238,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5279,7 +5279,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5812,7 +5812,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5853,7 +5853,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6459,7 +6459,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6500,7 +6500,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7051,7 +7051,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7092,7 +7092,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7646,7 +7646,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7687,7 +7687,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8260,7 +8260,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8301,7 +8301,7 @@ export namespace Gdl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

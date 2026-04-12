@@ -136,7 +136,7 @@ export namespace MetaTest {
         /**
          * @param flags
          */
-        run_tests(flags: TestRunFlags | null): number;
+        run_tests(flags: TestRunFlags): number;
         /**
          * @param color
          */

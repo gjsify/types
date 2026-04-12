@@ -407,13 +407,13 @@ export namespace Manette {
          * @param axis an axis
          * @returns whether the device has `axis`
          */
-        has_axis(axis: Axis | null): boolean;
+        has_axis(axis: Axis): boolean;
         /**
          * Gets whether the device has `button`.
          * @param button a button
          * @returns whether the device has `button`
          */
-        has_button(button: Button | null): boolean;
+        has_button(button: Button): boolean;
         /**
          * Gets whether the device has the given input.
          *

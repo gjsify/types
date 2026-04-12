@@ -65,7 +65,7 @@ export namespace GstPbutils {
     /**
      * @param ret
      */
-    function gst_install_plugins_return_get_name(ret: GstInstallPluginsReturn | null): string;
+    function gst_install_plugins_return_get_name(ret: GstInstallPluginsReturn): string;
     function gst_install_plugins_supported(): boolean;
     /**
      * @param details

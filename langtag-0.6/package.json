@@ -1,6 +1,6 @@
 {
     "name": "@girs/langtag-0.6",
-    "version": "0.6.0-4.0.0-rc.2",
+    "version": "0.6.0-4.0.0-rc.3",
     "description": "GJS TypeScript type definitions for LangTag-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "langtag-0.6.js",
@@ -31,9 +31,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.2",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.2"    },
+      "@girs/gjs": "4.0.0-rc.3",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"    },
     "devDependencies": {
       "typescript": "*"
     },

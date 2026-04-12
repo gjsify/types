@@ -1298,7 +1298,7 @@ export namespace Hs {
      * @param format a pixel format
      * @returns the size of a pixel
      */
-    function pixel_format_get_pixel_size(format: PixelFormat | null): number;
+    function pixel_format_get_pixel_size(format: PixelFormat): number;
     /**
      * Gets the base platform for `platform`.
      *
@@ -1312,7 +1312,7 @@ export namespace Hs {
      * @param platform a platform
      * @returns the base platform
      */
-    function platform_get_base_platform(platform: Platform | null): Platform;
+    function platform_get_base_platform(platform: Platform): Platform;
     /**
      * Gets the platform matching `name`.
      *
@@ -1329,7 +1329,7 @@ export namespace Hs {
      * @param platform a platform
      * @returns the platform name
      */
-    function platform_get_name(platform: Platform | null): string;
+    function platform_get_name(platform: Platform): string;
     /**
      * @gir-type Callback
      */
@@ -1853,12 +1853,7 @@ export namespace Hs {
          * @param flags additional parameters for the context
          * @returns a newly created OpenGL context
          */
-        create_gl_context(
-            profile: GLProfile | null,
-            major_version: number,
-            minor_version: number,
-            flags: GLFlags | null,
-        ): GLContext;
+        create_gl_context(profile: GLProfile, major_version: number, minor_version: number, flags: GLFlags): GLContext;
         /**
          * Creates a software rendering context for `self`.
          *
@@ -1875,7 +1870,7 @@ export namespace Hs {
          * @param format the pixel format
          * @returns a newly created software rendering context
          */
-        create_software_context(width: number, height: number, format: PixelFormat | null): SoftwareContext;
+        create_software_context(width: number, height: number, format: PixelFormat): SoftwareContext;
         /**
          * Gets the aspect ratio of `self`.
          * @returns the aspect ratio
@@ -2002,7 +1997,7 @@ export namespace Hs {
          * @param level the log level
          * @param message the message to log
          */
-        log_literal(level: LogLevel | null, message: string): void;
+        log_literal(level: LogLevel, message: string): void;
         /**
          * Called when the current media index changes.
          *
@@ -3116,12 +3111,7 @@ export namespace Hs {
          * @param flags additional parameters for the context
          * @returns a newly created OpenGL context
          */
-        create_gl_context(
-            profile: GLProfile | null,
-            major_version: number,
-            minor_version: number,
-            flags: GLFlags | null,
-        ): GLContext;
+        create_gl_context(profile: GLProfile, major_version: number, minor_version: number, flags: GLFlags): GLContext;
         /**
          * Creates a software rendering context.
          *
@@ -3138,7 +3128,7 @@ export namespace Hs {
          * @param format the pixel format
          * @returns a newly created software rendering context
          */
-        create_software_context(width: number, height: number, format: PixelFormat | null): SoftwareContext;
+        create_software_context(width: number, height: number, format: PixelFormat): SoftwareContext;
         /**
          * Gets the path to the cache location.
          *
@@ -3160,7 +3150,7 @@ export namespace Hs {
          * @param level the log level
          * @param message the message to log
          */
-        log(level: LogLevel | null, message: string): void;
+        log(level: LogLevel, message: string): void;
         /**
          * Plays provided audio samples.
          *
@@ -3451,7 +3441,7 @@ export namespace Hs {
          * Sets the Game Boy model.
          * @param model the new model
          */
-        set_model(model: GameBoyModel | null): void;
+        set_model(model: GameBoyModel): void;
         /**
          * Sets a palette to use for Game Boy games.
          *
@@ -3759,7 +3749,7 @@ export namespace Hs {
          * @param present whether a controller is plugged in
          * @param pak the extension plugged into the controller
          */
-        set_controller(player: number, present: boolean, pak: Nintendo64Pak | null): void;
+        set_controller(player: number, present: boolean, pak: Nintendo64Pak): void;
     }
 
     export const Nintendo64Core: Nintendo64CoreNamespace & {
@@ -3983,7 +3973,7 @@ export namespace Hs {
          * @param type The BIOS type
          * @param path the path to the BIOS
          */
-        set_bios_path(type: PlayStationBios | null, path: string): void;
+        set_bios_path(type: PlayStationBios, path: string): void;
         /**
          * Sets the mode DualShock is using for `player`.
          *
@@ -3992,7 +3982,7 @@ export namespace Hs {
          * @param mode the new mode
          * @returns whether the mode was changed
          */
-        set_dualshock_mode(player: number, mode: PlayStationDualShockMode | null): boolean;
+        set_dualshock_mode(player: number, mode: PlayStationDualShockMode): boolean;
     }
 
     export const PlayStationCore: PlayStationCoreNamespace & {
@@ -4070,13 +4060,13 @@ export namespace Hs {
          * @param type The BIOS type
          * @param path the path to the BIOS
          */
-        set_bios_path(type: SegaSaturnBios | null, path: string): void;
+        set_bios_path(type: SegaSaturnBios, path: string): void;
         /**
          * Sets the controller for `player`.
          * @param player the player
          * @param controller the controller to use for this player
          */
-        set_controller(player: number, controller: SegaSaturnController | null): void;
+        set_controller(player: number, controller: SegaSaturnController): void;
     }
 
     export const SegaSaturnCore: SegaSaturnCoreNamespace & {

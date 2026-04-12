@@ -2079,27 +2079,27 @@ export namespace Vips {
      * Return `TRUE` if `format` is uchar or schar.
      * @param format format to test
      */
-    function band_format_is8bit(format: BandFormat | null): boolean;
+    function band_format_is8bit(format: BandFormat): boolean;
     /**
      * Return `TRUE` if `fmt` is one of the complex types.
      * @param format format to test
      */
-    function band_format_iscomplex(format: BandFormat | null): boolean;
+    function band_format_iscomplex(format: BandFormat): boolean;
     /**
      * Return `TRUE` if `format` is one of the float types.
      * @param format format to test
      */
-    function band_format_isfloat(format: BandFormat | null): boolean;
+    function band_format_isfloat(format: BandFormat): boolean;
     /**
      * Return `TRUE` if `format` is one of the integer types.
      * @param format format to test
      */
-    function band_format_isint(format: BandFormat | null): boolean;
+    function band_format_isint(format: BandFormat): boolean;
     /**
      * Return `TRUE` if `format` is one of the unsigned integer types.
      * @param format format to test
      */
-    function band_format_isuint(format: BandFormat | null): boolean;
+    function band_format_isuint(format: BandFormat): boolean;
     /**
      * Like {@link Blob.new}, but take a copy of the data. Useful for bindings
      * which struggle with callbacks.
@@ -2357,7 +2357,7 @@ export namespace Vips {
      * @param coding required coding
      * @returns 0 on OK, or -1 on error.
      */
-    function check_coding(domain: string, im: Image, coding: Coding | null): number;
+    function check_coding(domain: string, im: Image, coding: Coding): number;
     /**
      * Check that the image is uncoded, LABQ coded or RAD coded.
      * If not, set an error message
@@ -2419,7 +2419,7 @@ export namespace Vips {
      * @param fmt format to test for
      * @returns 0 if OK, -1 otherwise.
      */
-    function check_format(domain: string, im: Image, fmt: BandFormat | null): number;
+    function check_format(domain: string, im: Image, fmt: BandFormat): number;
     /**
      * Check that the images have the same format.
      * If not, set an error message
@@ -2522,7 +2522,7 @@ export namespace Vips {
      * @param precision precision to check
      * @returns 0 on OK, or -1 on error.
      */
-    function check_precision_intfloat(domain: string, precision: Precision | null): number;
+    function check_precision_intfloat(domain: string, precision: Precision): number;
     /**
      * Separable matrix images must have width or height 1.
      * Return 0 if the image will pass, or -1 and
@@ -2992,7 +2992,7 @@ export namespace Vips {
      * @param format format type
      * @returns number of bytes for a band format.
      */
-    function format_sizeof(format: BandFormat | null): number;
+    function format_sizeof(format: BandFormat): number;
     /**
      * This function adds the {@link GLib.Error} to the vips error buffer and clears it. It's
      * the opposite of {@link error_g}.
@@ -3111,12 +3111,12 @@ export namespace Vips {
      * @param interpretation image to check
      * @returns the number of bands implied by this interpretation, or 0.
      */
-    function interpretation_bands(interpretation: Interpretation | null): number;
+    function interpretation_bands(interpretation: Interpretation): number;
     /**
      * @param interpretation image interpretation
      * @returns the maximum alpha value for an interpretation.
      */
-    function interpretation_max_alpha(interpretation: Interpretation | null): number;
+    function interpretation_max_alpha(interpretation: Interpretation): number;
     /**
      * @param a
      * @param b
@@ -5078,7 +5078,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -5195,7 +5195,7 @@ export namespace Vips {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5236,7 +5236,7 @@ export namespace Vips {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6027,7 +6027,7 @@ export namespace Vips {
          * @param coding coding to apply
          * @returns 0 on success, or -1 on error.
          */
-        encode(coding: Coding | null): [number, Image];
+        encode(coding: Coding): [number, Image];
         /**
          * @param processed
          */
@@ -6474,9 +6474,9 @@ export namespace Vips {
             xsize: number,
             ysize: number,
             bands: number,
-            format: BandFormat | null,
-            coding: Coding | null,
-            interpretation: Interpretation | null,
+            format: BandFormat,
+            coding: Coding,
+            interpretation: Interpretation,
             xres: number,
             yres: number,
         ): void;
@@ -7930,7 +7930,7 @@ export namespace Vips {
          * @param target {@link Rect} of pixels you need to copy
          * @param method method to use when generating target pixels
          */
-        shrink_method(to: Region, target: Rect, method: RegionShrink | null): [number, Region];
+        shrink_method(to: Region, target: Rect, method: RegionShrink): [number, Region];
         /**
          * @returns Width of the pixels held in region.
          */

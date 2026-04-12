@@ -160,7 +160,7 @@ export namespace GnomeBG {
          * @param primary
          * @param secondary
          */
-        get_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
+        get_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
         has_multiple_sizes(): boolean;
         /**
          * @param dest_width
@@ -182,13 +182,13 @@ export namespace GnomeBG {
         /**
          * @param placement
          */
-        set_placement(placement: GDesktopEnums.BackgroundStyle | null): void;
+        set_placement(placement: GDesktopEnums.BackgroundStyle): void;
         /**
          * @param type
          * @param primary
          * @param secondary
          */
-        set_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
+        set_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
     }
 
     namespace BGSlideShow {

@@ -124,7 +124,7 @@ export namespace NMA {
      */
     function utils_setup_password_storage(
         passwd_entry: Gtk.Widget,
-        initial_flags: NM.SettingSecretFlags | null,
+        initial_flags: NM.SettingSecretFlags,
         setting: NM.Setting,
         password_flags_name: string,
         with_not_required: boolean,
@@ -140,7 +140,7 @@ export namespace NMA {
      */
     function utils_update_password_storage(
         passwd_entry: Gtk.Widget,
-        secret_flags: NM.SettingSecretFlags | null,
+        secret_flags: NM.SettingSecretFlags,
         setting: NM.Setting,
         password_flags_name: string,
     ): void;
@@ -364,7 +364,7 @@ export namespace NMA {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -409,7 +409,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -450,7 +450,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1052,7 +1052,7 @@ export namespace NMA {
          * @param value the path or URI of a certificate
          * @param scheme the scheme of the certificate path
          */
-        set_cert(value: string, scheme: NM.Setting8021xCKScheme | null): void;
+        set_cert(value: string, scheme: NM.Setting8021xCKScheme): void;
         /**
          * Sets the password or a PIN that might be required to access the certificate.
          * @param password the certificate PIN or password
@@ -1068,7 +1068,7 @@ export namespace NMA {
          * @param value the path or URI of a key
          * @param scheme the scheme of the key path
          */
-        set_key(value: string, scheme: NM.Setting8021xCKScheme | null): void;
+        set_key(value: string, scheme: NM.Setting8021xCKScheme): void;
         /**
          * Sets the password or a PIN that might be required to access the key.
          * @param password the key PIN or password
@@ -1089,7 +1089,7 @@ export namespace NMA {
          * @param ask_mode `true` if the entry is shown in ASK mode
          */
         setup_cert_password_storage(
-            initial_flags: NM.SettingSecretFlags | null,
+            initial_flags: NM.SettingSecretFlags,
             setting: NM.Setting,
             password_flags_name: string,
             with_not_required: boolean,
@@ -1105,7 +1105,7 @@ export namespace NMA {
          * @param ask_mode `true` if the entry is shown in ASK mode
          */
         setup_key_password_storage(
-            initial_flags: NM.SettingSecretFlags | null,
+            initial_flags: NM.SettingSecretFlags,
             setting: NM.Setting,
             password_flags_name: string,
             with_not_required: boolean,
@@ -1119,7 +1119,7 @@ export namespace NMA {
          * @param password_flags_name name of the secret flags (like psk-flags), or NULL
          */
         update_cert_password_storage(
-            secret_flags: NM.SettingSecretFlags | null,
+            secret_flags: NM.SettingSecretFlags,
             setting: NM.Setting,
             password_flags_name: string,
         ): void;
@@ -1131,7 +1131,7 @@ export namespace NMA {
          * @param password_flags_name name of the secret flags (like psk-flags), or NULL
          */
         update_key_password_storage(
-            secret_flags: NM.SettingSecretFlags | null,
+            secret_flags: NM.SettingSecretFlags,
             setting: NM.Setting,
             password_flags_name: string,
         ): void;
@@ -1158,7 +1158,7 @@ export namespace NMA {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1203,7 +1203,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1244,7 +1244,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2073,7 +2073,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2114,7 +2114,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2763,7 +2763,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2804,7 +2804,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3379,7 +3379,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3420,7 +3420,7 @@ export namespace NMA {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

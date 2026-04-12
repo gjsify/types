@@ -466,7 +466,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -507,7 +507,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1136,7 +1136,7 @@ export namespace Thunarx {
             type_parent: GObject.GType,
             type_name: string,
             type_info: GObject.TypeInfo,
-            type_flags: GObject.TypeFlags | null,
+            type_flags: GObject.TypeFlags,
         ): GObject.GType;
         /**
          * This method is used to instruct the application that `plugin` must be
@@ -1272,7 +1272,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1313,7 +1313,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2162,7 +2162,7 @@ export namespace Thunarx {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2207,7 +2207,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2248,7 +2248,7 @@ export namespace Thunarx {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3213,7 +3213,7 @@ export namespace Thunarx {
             type_parent: GObject.GType,
             type_name: string,
             type_info: GObject.TypeInfo,
-            type_flags: GObject.TypeFlags | null,
+            type_flags: GObject.TypeFlags,
         ): GObject.GType;
         /**
          * This method is used to instruct the application that `plugin` must be

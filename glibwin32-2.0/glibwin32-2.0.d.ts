@@ -46,7 +46,7 @@ export namespace GLibWin32 {
      * @param spver
      * @param os_type
      */
-    function check_windows_version(major: number, minor: number, spver: number, os_type: OSType | null): boolean;
+    function check_windows_version(major: number, minor: number, spver: number, os_type: OSType): boolean;
     /**
      * @param error
      */

@@ -816,7 +816,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -857,7 +857,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2605,7 +2605,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2646,7 +2646,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3204,7 +3204,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3245,7 +3245,7 @@ export namespace Unity {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4451,7 +4451,7 @@ export namespace Unity {
          *  signal will be emitted immediately in case the Lens managing this scope is active, or as soon as it becomes active.</para>
          * @param search_type Type of search to queue.
          */
-        queue_search_changed(search_type: SearchType | null): void;
+        queue_search_changed(search_type: SearchType): void;
         /**
          * <para>Invalidates last search.</para>
          * <para>Invalidate last search, so that the next search request will trigger the {@link Unity.Scope.SignalSignatures.search_changed | Unity.Scope::search-changed} signal even if the search would be
@@ -4459,7 +4459,7 @@ export namespace Unity {
          * <para>See also: {@link Unity.Scope.SignalSignatures.generate_search_key | Unity.Scope::generate-search-key}</para>
          * @param search_type Type of search to invalidate.
          */
-        invalidate_search(search_type: SearchType | null): void;
+        invalidate_search(search_type: SearchType): void;
     }
 
     namespace TrackMetadata {

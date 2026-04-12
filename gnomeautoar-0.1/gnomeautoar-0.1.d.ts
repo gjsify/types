@@ -161,39 +161,39 @@ export namespace GnomeAutoar {
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns description about the filter
      */
-    function filter_get_description(filter: Filter | null): string;
+    function filter_get_description(filter: Filter): string;
     /**
      * Gets description of the filter from libarchive. This function creates
      * and destroys an archive object in order to get the description string.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns description about the filter. Free the returned string with `g_free()`.
      */
-    function filter_get_description_libarchive(filter: Filter | null): string;
+    function filter_get_description_libarchive(filter: Filter): string;
     /**
      * Gets the file name extension of the filter from the internal static data.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns a file name extension
      */
-    function filter_get_extension(filter: Filter | null): string;
+    function filter_get_extension(filter: Filter): string;
     /**
      * Gets the filter code used by libarchive. You can use the return value
      * as the argument for `archive_write_add_filter()`.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns an integer
      */
-    function filter_get_filter_libarchive(filter: Filter | null): number;
+    function filter_get_filter_libarchive(filter: Filter): number;
     /**
      * Gets the MIME type of the filter from the internal static data.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns an MIME type
      */
-    function filter_get_mime_type(filter: Filter | null): string;
+    function filter_get_mime_type(filter: Filter): string;
     /**
      * Checks whether an {@link GnomeAutoar.Filter} is valid.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns `true` if the value of `filter` is valid
      */
-    function filter_is_valid(filter: Filter | null): boolean;
+    function filter_is_valid(filter: Filter): boolean;
     /**
      * Gets the maximal allowed values of {@link GnomeAutoar.Filter}
      * @returns maximal allowed values of {@link GnomeAutoar.Filter}
@@ -206,7 +206,7 @@ export namespace GnomeAutoar {
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns description about the archive. Free the returned string with `g_free()`.
      */
-    function format_filter_get_description(format: Format | null, filter: Filter | null): string;
+    function format_filter_get_description(format: Format, filter: Filter): string;
     /**
      * Gets the file name extension for an archive `format` compressed by
      * `filter`. The first character of the returned string is always '.'
@@ -214,7 +214,7 @@ export namespace GnomeAutoar {
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns a file name extension. Free the returned string with `g_free()`.
      */
-    function format_filter_get_extension(format: Format | null, filter: Filter | null): string;
+    function format_filter_get_extension(format: Format, filter: Filter): string;
     /**
      * Gets the MIME type for an archive `format` compressed by
      * `filter`. This function always succeed, but it is not guaranteed
@@ -226,26 +226,26 @@ export namespace GnomeAutoar {
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns an MIME type. Free the returned string with `g_free()`.
      */
-    function format_filter_get_mime_type(format: Format | null, filter: Filter | null): string;
+    function format_filter_get_mime_type(format: Format, filter: Filter): string;
     /**
      * Gets description of the format from the internal static data.
      * @param format an {@link GnomeAutoar.Format}
      * @returns description about the format
      */
-    function format_get_description(format: Format | null): string;
+    function format_get_description(format: Format): string;
     /**
      * Gets description of the format from libarchive. This function creates
      * and destroys an archive object in order to get the description string.
      * @param format an {@link GnomeAutoar.Format}
      * @returns description about the format. Free the returned string with `g_free()`.
      */
-    function format_get_description_libarchive(format: Format | null): string;
+    function format_get_description_libarchive(format: Format): string;
     /**
      * Gets the file name extension of the format from the internal static data.
      * @param format an {@link GnomeAutoar.Format}
      * @returns a file name extension
      */
-    function format_get_extension(format: Format | null): string;
+    function format_get_extension(format: Format): string;
     /**
      * Gets the format code used by libarchive. You can use the return value
      * as the argument for `archive_read_support_format_by_code()` and
@@ -257,19 +257,19 @@ export namespace GnomeAutoar {
      * @param format an {@link GnomeAutoar.Format}
      * @returns an integer
      */
-    function format_get_format_libarchive(format: Format | null): number;
+    function format_get_format_libarchive(format: Format): number;
     /**
      * Gets the MIME type of the format from the internal static data.
      * @param format an {@link GnomeAutoar.Format}
      * @returns an MIME type
      */
-    function format_get_mime_type(format: Format | null): string;
+    function format_get_mime_type(format: Format): string;
     /**
      * Checks whether an {@link GnomeAutoar.Format} is valid.
      * @param format an {@link GnomeAutoar.Format}
      * @returns `true` if the value of `format` is valid
      */
-    function format_is_valid(format: Format | null): boolean;
+    function format_is_valid(format: Format): boolean;
     /**
      * Gets the maximal allowed values of {@link GnomeAutoar.Format}
      * @returns maximal allowed values of {@link GnomeAutoar.Format}

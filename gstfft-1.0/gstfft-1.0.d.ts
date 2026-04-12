@@ -120,7 +120,7 @@ export namespace GstFft {
          * @param timedata Time domain samples
          * @param window Window function to apply
          */
-        window(timedata: number, window: FFTWindow | null): void;
+        window(timedata: number, window: FFTWindow): void;
     }
 
     /**
@@ -211,7 +211,7 @@ export namespace GstFft {
          * @param timedata Time domain samples
          * @param window Window function to apply
          */
-        window(timedata: number, window: FFTWindow | null): void;
+        window(timedata: number, window: FFTWindow): void;
     }
 
     /**
@@ -302,7 +302,7 @@ export namespace GstFft {
          * @param timedata Time domain samples
          * @param window Window function to apply
          */
-        window(timedata: number, window: FFTWindow | null): void;
+        window(timedata: number, window: FFTWindow): void;
     }
 
     /**
@@ -393,7 +393,7 @@ export namespace GstFft {
          * @param timedata Time domain samples
          * @param window Window function to apply
          */
-        window(timedata: number, window: FFTWindow | null): void;
+        window(timedata: number, window: FFTWindow): void;
     }
 
     /**

@@ -271,7 +271,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_password_lookup_sync()` or `secret_service_search_sync()` instead.
      */
-    function find_items_sync(type: ItemType | null, attributes: AttributeList): [Result, Found[]];
+    function find_items_sync(type: ItemType, attributes: AttributeList): [Result, Found[]];
     /**
      * Find a previously stored network password. Searches all keyrings.
      *
@@ -370,7 +370,7 @@ export namespace GnomeKeyring {
      * @param value The new access rights.
      * @deprecated Not supported when using libsecret.
      */
-    function item_ac_set_access_type(ac: AccessControl, value: AccessType | null): void;
+    function item_ac_set_access_type(ac: AccessControl, value: AccessType): void;
     /**
      * Set the access control application's display name.
      * @param ac A {@link GnomeKeyring.AccessControl} pointer.
@@ -410,7 +410,7 @@ export namespace GnomeKeyring {
      */
     function item_create_sync(
         keyring: string | null,
-        type: ItemType | null,
+        type: ItemType,
         display_name: string,
         attributes: AttributeList,
         secret: string,
@@ -501,7 +501,7 @@ export namespace GnomeKeyring {
         display_name: string,
         full_path: string,
         id: number,
-        rights: AccessType | null,
+        rights: AccessType,
     ): Result;
     /**
      * @param keyring The name of the keyring in which the item exists, or           `null` for the default keyring.
@@ -606,7 +606,7 @@ export namespace GnomeKeyring {
      * @returns a string suitable for display to the user for a given {@link GnomeKeyring.Result}, or an empty string if the message wouldn't make sense to a user.
      * @deprecated libsecret returns errors as {@link GLib.Error} directly. Use the             error message field for a description.
      */
-    function result_to_message(res: Result | null): string;
+    function result_to_message(res: Result): string;
     /**
      * Change the default keyring.
      *
@@ -1046,7 +1046,7 @@ export namespace GnomeKeyring {
          * Set the type on an item info.
          * @param type The new item type
          */
-        set_type(type: ItemType | null): void;
+        set_type(type: ItemType): void;
     }
 
     /**

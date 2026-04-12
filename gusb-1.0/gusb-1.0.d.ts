@@ -484,13 +484,13 @@ export namespace GUsb {
          * else logs to standard error.
          * @param flags a GLogLevelFlags such as {@link GLib.LogLevelFlags.LEVEL_ERROR} | {@link GLib.LogLevelFlags.LEVEL_INFO}, or 0
          */
-        set_debug(flags: GLib.LogLevelFlags | null): void;
+        set_debug(flags: GLib.LogLevelFlags): void;
         /**
          * Sets the flags to use for the context. These should be set before
          * `g_usb_context_enumerate()` is called.
          * @param flags some {@link GUsb.ContextFlags}, e.g. {@link GUsb.ContextFlags.AUTO_OPEN_DEVICES}
          */
-        set_flags(flags: ContextFlags | null): void;
+        set_flags(flags: ContextFlags): void;
         /**
          * Sets the poll interval for platforms like Windows that do not support `LIBUSB_CAP_HAS_HOTPLUG`.
          * This defaults to 1000ms and can be changed before or after `g_usb_context_enumerate()` has been
@@ -644,7 +644,7 @@ export namespace GUsb {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -685,7 +685,7 @@ export namespace GUsb {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1221,7 +1221,7 @@ export namespace GUsb {
          * @param flags {@link GUsb.DeviceClaimInterfaceFlags}
          * @returns `true` on success
          */
-        claim_interface(iface: number, flags: DeviceClaimInterfaceFlags | null): boolean;
+        claim_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
         /**
          * Clear all the events saved by the device.
          */
@@ -1247,9 +1247,9 @@ export namespace GUsb {
          * @returns `true` on success
          */
         control_transfer(
-            direction: DeviceDirection | null,
-            request_type: DeviceRequestType | null,
-            recipient: DeviceRecipient | null,
+            direction: DeviceDirection,
+            request_type: DeviceRequestType,
+            recipient: DeviceRecipient,
             request: number,
             value: number,
             idx: number,
@@ -1270,9 +1270,9 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         control_transfer_async(
-            direction: DeviceDirection | null,
-            request_type: DeviceRequestType | null,
-            recipient: DeviceRecipient | null,
+            direction: DeviceDirection,
+            request_type: DeviceRequestType,
+            recipient: DeviceRecipient,
             request: number,
             value: number,
             idx: number,
@@ -1294,9 +1294,9 @@ export namespace GUsb {
          * @param callback the function to run on completion
          */
         control_transfer_async(
-            direction: DeviceDirection | null,
-            request_type: DeviceRequestType | null,
-            recipient: DeviceRecipient | null,
+            direction: DeviceDirection,
+            request_type: DeviceRequestType,
+            recipient: DeviceRecipient,
             request: number,
             value: number,
             idx: number,
@@ -1319,9 +1319,9 @@ export namespace GUsb {
          * @param callback the function to run on completion
          */
         control_transfer_async(
-            direction: DeviceDirection | null,
-            request_type: DeviceRequestType | null,
-            recipient: DeviceRecipient | null,
+            direction: DeviceDirection,
+            request_type: DeviceRequestType,
+            recipient: DeviceRecipient,
             request: number,
             value: number,
             idx: number,
@@ -1645,7 +1645,7 @@ export namespace GUsb {
          * @param flags {@link GUsb.DeviceClaimInterfaceFlags}
          * @returns `true` on success
          */
-        release_interface(iface: number, flags: DeviceClaimInterfaceFlags | null): boolean;
+        release_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
         /**
          * Removes a tag, which is included in the JSON log to identify the specific device.
          * @param tag a tag, for example `bootloader` or `runtime-reload`
@@ -1807,7 +1807,7 @@ export namespace GUsb {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1848,7 +1848,7 @@ export namespace GUsb {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

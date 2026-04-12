@@ -1382,7 +1382,7 @@ export namespace Fwupd {
      * @returns a checksum from the array, or `null` if not found
      * @since 0.9.4
      */
-    function checksum_get_by_kind(checksums: string[], kind: GLib.ChecksumType | null): string;
+    function checksum_get_by_kind(checksums: string[], kind: GLib.ChecksumType): string;
     /**
      * Guesses the checksum kind based on the length of the hash.
      * @param checksum a checksum
@@ -1396,7 +1396,7 @@ export namespace Fwupd {
      * @returns text, or `null` for invalid
      * @since 1.9.6
      */
-    function checksum_type_to_string_display(checksum_type: GLib.ChecksumType | null): string;
+    function checksum_type_to_string_display(checksum_type: GLib.ChecksumType): string;
     /**
      * Converts an array of objects, each deserialized from a {@link GLib.Variant} value.
      * @param value a JSON node
@@ -1417,7 +1417,7 @@ export namespace Fwupd {
         array: GObject.Object[],
         member_name: string,
         json_obj: JsonObject,
-        flags: CodecFlags | null,
+        flags: CodecFlags,
     ): void;
     /**
      * Converts an array of objects into a {@link GLib.Variant} value.
@@ -1426,7 +1426,7 @@ export namespace Fwupd {
      * @returns a {@link GLib.Variant}
      * @since 2.0.0
      */
-    function codec_array_to_variant(array: GObject.Object[], flags: CodecFlags | null): GLib.Variant;
+    function codec_array_to_variant(array: GObject.Object[], flags: CodecFlags): GLib.Variant;
     /**
      * Appends a key and value to a JSON object.
      *
@@ -1564,7 +1564,7 @@ export namespace Fwupd {
      * @returns identifier string
      * @since 0.7.0
      */
-    function error_to_string(error: Error | null): string;
+    function error_to_string(error: Error): string;
     /**
      * Converts a string to an enumerated value.
      * @param val a string, e.g. `can-report`
@@ -1578,7 +1578,7 @@ export namespace Fwupd {
      * @returns identifier string
      * @since 1.4.5
      */
-    function feature_flag_to_string(val: FeatureFlags | null): string;
+    function feature_flag_to_string(val: FeatureFlags): string;
     /**
      * Converts a string GUID into its binary encoding. All string GUIDs are
      * formatted as big endian but on-disk can be encoded in different ways.
@@ -1588,7 +1588,7 @@ export namespace Fwupd {
      * @returns `true` for success
      * @since 1.2.5
      */
-    function guid_from_string(guidstr: string, guid: number | null, flags: GuidFlags | null): boolean;
+    function guid_from_string(guidstr: string, guid: number | null, flags: GuidFlags): boolean;
     /**
      * Returns a GUID for some data. This uses a hash and so even small
      * differences in the `data` will produce radically different return values.
@@ -1601,7 +1601,7 @@ export namespace Fwupd {
      * @returns a new GUID, or `null` for internal error
      * @since 1.2.5
      */
-    function guid_hash_data(data: number, datasz: bigint | number, flags: GuidFlags | null): string;
+    function guid_hash_data(data: number, datasz: bigint | number, flags: GuidFlags): string;
     /**
      * Returns a GUID for a given string. This uses a hash and so even small
      * differences in the `str` will produce radically different return values.
@@ -1632,7 +1632,7 @@ export namespace Fwupd {
      * @returns a new GUID string
      * @since 1.2.5
      */
-    function guid_to_string(guid: number, flags: GuidFlags | null): string;
+    function guid_to_string(guid: number, flags: GuidFlags): string;
     /**
      * Converts a string to an enumerated value.
      * @param val a string, e.g. `allow-reinstall`
@@ -1646,14 +1646,14 @@ export namespace Fwupd {
      * @returns identifier string
      * @since 2.0.0
      */
-    function install_flags_to_string(val: InstallFlags | null): string;
+    function install_flags_to_string(val: InstallFlags): string;
     /**
      * Converts an enumerated value to a string.
      * @param val value, e.g. {@link Fwupd.JsonNodeKind.RAW}
      * @returns identifier string
      * @since 2.1.1
      */
-    function json_node_kind_to_string(val: JsonNodeKind | null): string;
+    function json_node_kind_to_string(val: JsonNodeKind): string;
     /**
      * Converts a string to an enumerated value.
      * @param val a string, e.g. `idle`
@@ -1667,7 +1667,7 @@ export namespace Fwupd {
      * @returns identifier string
      * @since 0.1.1
      */
-    function status_to_string(val: Status | null): string;
+    function status_to_string(val: Status): string;
     /**
      * Returns an untranslated string corresponding to the given error code, e.g. “no such process”.
      * @param errnum
@@ -1688,7 +1688,7 @@ export namespace Fwupd {
      * @returns identifier string
      * @since 0.7.0
      */
-    function update_state_to_string(val: UpdateState | null): string;
+    function update_state_to_string(val: UpdateState): string;
     /**
      * Converts a string to an enumerated value.
      * @param val a string, e.g. `plain`
@@ -1702,7 +1702,7 @@ export namespace Fwupd {
      * @returns identifier string
      * @since 1.2.9
      */
-    function version_format_to_string(val: VersionFormat | null): string;
+    function version_format_to_string(val: VersionFormat): string;
     /**
      * Gets the libfwupd installed runtime version.
      *
@@ -2697,7 +2697,7 @@ export namespace Fwupd {
          * Sets the BIOS setting type used by the kernel interface.
          * @param type a bios setting type, e.g. {@link Fwupd.BiosSettingKind.ENUMERATION}
          */
-        set_kind(type: BiosSettingKind | null): void;
+        set_kind(type: BiosSettingKind): void;
         /**
          * Sets the lower bound used for BIOS integer attributes or max
          * length for string attributes.
@@ -2769,13 +2769,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -2786,7 +2786,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
         /**
          * @param json_obj
          * @param flags
@@ -2873,7 +2873,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2914,7 +2914,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3815,11 +3815,7 @@ export namespace Fwupd {
          * @param cancellable optional {@link Gio.Cancellable}
          * @returns downloaded data, or `null` for error
          */
-        download_bytes(
-            url: string,
-            flags: ClientDownloadFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): GLib.Bytes;
+        download_bytes(url: string, flags: ClientDownloadFlags, cancellable?: Gio.Cancellable | null): GLib.Bytes;
         /**
          * Downloads data from a remote server. The {@link Client.set_user_agent} function
          * should be called before this method is used.
@@ -3836,7 +3832,7 @@ export namespace Fwupd {
          */
         download_bytes_async(
             url: string,
-            flags: ClientDownloadFlags | null,
+            flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes>;
         /**
@@ -3856,7 +3852,7 @@ export namespace Fwupd {
          */
         download_bytes_async(
             url: string,
-            flags: ClientDownloadFlags | null,
+            flags: ClientDownloadFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -3877,7 +3873,7 @@ export namespace Fwupd {
          */
         download_bytes_async(
             url: string,
-            flags: ClientDownloadFlags | null,
+            flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
@@ -3899,7 +3895,7 @@ export namespace Fwupd {
         download_file(
             url: string,
             file: Gio.File,
-            flags: ClientDownloadFlags | null,
+            flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -5099,7 +5095,7 @@ export namespace Fwupd {
         install(
             device_id: string,
             filename: string,
-            install_flags: InstallFlags | null,
+            install_flags: InstallFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -5116,7 +5112,7 @@ export namespace Fwupd {
         install_async(
             device_id: string,
             filename: string,
-            install_flags: InstallFlags | null,
+            install_flags: InstallFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -5134,7 +5130,7 @@ export namespace Fwupd {
         install_async(
             device_id: string,
             filename: string,
-            install_flags: InstallFlags | null,
+            install_flags: InstallFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5153,7 +5149,7 @@ export namespace Fwupd {
         install_async(
             device_id: string,
             filename: string,
-            install_flags: InstallFlags | null,
+            install_flags: InstallFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -5168,7 +5164,7 @@ export namespace Fwupd {
         install_bytes(
             device_id: string,
             bytes: GLib.Bytes | Uint8Array,
-            install_flags: InstallFlags | null,
+            install_flags: InstallFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -5185,7 +5181,7 @@ export namespace Fwupd {
         install_bytes_async(
             device_id: string,
             bytes: GLib.Bytes | Uint8Array,
-            install_flags: InstallFlags | null,
+            install_flags: InstallFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -5203,7 +5199,7 @@ export namespace Fwupd {
         install_bytes_async(
             device_id: string,
             bytes: GLib.Bytes | Uint8Array,
-            install_flags: InstallFlags | null,
+            install_flags: InstallFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5222,7 +5218,7 @@ export namespace Fwupd {
         install_bytes_async(
             device_id: string,
             bytes: GLib.Bytes | Uint8Array,
-            install_flags: InstallFlags | null,
+            install_flags: InstallFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -5250,8 +5246,8 @@ export namespace Fwupd {
         install_release(
             device: Device,
             release: Release,
-            install_flags: InstallFlags | null,
-            download_flags: ClientDownloadFlags | null,
+            install_flags: InstallFlags,
+            download_flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -5269,8 +5265,8 @@ export namespace Fwupd {
         install_release_async(
             device: Device,
             release: Release,
-            install_flags: InstallFlags | null,
-            download_flags: ClientDownloadFlags | null,
+            install_flags: InstallFlags,
+            download_flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -5289,8 +5285,8 @@ export namespace Fwupd {
         install_release_async(
             device: Device,
             release: Release,
-            install_flags: InstallFlags | null,
-            download_flags: ClientDownloadFlags | null,
+            install_flags: InstallFlags,
+            download_flags: ClientDownloadFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5310,8 +5306,8 @@ export namespace Fwupd {
         install_release_async(
             device: Device,
             release: Release,
-            install_flags: InstallFlags | null,
-            download_flags: ClientDownloadFlags | null,
+            install_flags: InstallFlags,
+            download_flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -5599,7 +5595,7 @@ export namespace Fwupd {
          */
         refresh_remote(
             remote: Remote,
-            download_flags: ClientDownloadFlags | null,
+            download_flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -5614,7 +5610,7 @@ export namespace Fwupd {
          */
         refresh_remote_async(
             remote: Remote,
-            download_flags: ClientDownloadFlags | null,
+            download_flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -5630,7 +5626,7 @@ export namespace Fwupd {
          */
         refresh_remote_async(
             remote: Remote,
-            download_flags: ClientDownloadFlags | null,
+            download_flags: ClientDownloadFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5647,7 +5643,7 @@ export namespace Fwupd {
          */
         refresh_remote_async(
             remote: Remote,
-            download_flags: ClientDownloadFlags | null,
+            download_flags: ClientDownloadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -5759,7 +5755,7 @@ export namespace Fwupd {
          * @param cancellable optional {@link Gio.Cancellable}
          * @returns a signature, or `null` for failure
          */
-        self_sign(value: string, flags: SelfSignFlags | null, cancellable?: Gio.Cancellable | null): string;
+        self_sign(value: string, flags: SelfSignFlags, cancellable?: Gio.Cancellable | null): string;
         /**
          * Signs the data using the client self-signed certificate.
          *
@@ -5771,7 +5767,7 @@ export namespace Fwupd {
          */
         self_sign_async(
             value: string,
-            flags: SelfSignFlags | null,
+            flags: SelfSignFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
@@ -5786,7 +5782,7 @@ export namespace Fwupd {
          */
         self_sign_async(
             value: string,
-            flags: SelfSignFlags | null,
+            flags: SelfSignFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5802,7 +5798,7 @@ export namespace Fwupd {
          */
         self_sign_async(
             value: string,
-            flags: SelfSignFlags | null,
+            flags: SelfSignFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
@@ -5915,7 +5911,7 @@ export namespace Fwupd {
          * @param cancellable optional {@link Gio.Cancellable}
          * @returns `true` for success
          */
-        set_feature_flags(feature_flags: FeatureFlags | null, cancellable?: Gio.Cancellable | null): boolean;
+        set_feature_flags(feature_flags: FeatureFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the features the client supports. This allows firmware to depend on
          * specific front-end features, for instance showing the user an image on
@@ -5924,7 +5920,7 @@ export namespace Fwupd {
          * @param cancellable optional {@link Gio.Cancellable}
          */
         set_feature_flags_async(
-            feature_flags: FeatureFlags | null,
+            feature_flags: FeatureFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -5936,7 +5932,7 @@ export namespace Fwupd {
          * @param callback the function to run on completion
          */
         set_feature_flags_async(
-            feature_flags: FeatureFlags | null,
+            feature_flags: FeatureFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -5949,7 +5945,7 @@ export namespace Fwupd {
          * @param callback the function to run on completion
          */
         set_feature_flags_async(
-            feature_flags: FeatureFlags | null,
+            feature_flags: FeatureFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -6238,7 +6234,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags | null,
+            flags: ClientUploadFlags,
             cancellable?: Gio.Cancellable | null,
         ): GLib.Bytes;
         /**
@@ -6261,7 +6257,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags | null,
+            flags: ClientUploadFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes>;
         /**
@@ -6285,7 +6281,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags | null,
+            flags: ClientUploadFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -6310,7 +6306,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags | null,
+            flags: ClientUploadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
@@ -6334,7 +6330,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags | null,
+            flags: ClientUploadFlags,
             cancellable?: Gio.Cancellable | null,
         ): string;
         /**
@@ -6357,7 +6353,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags | null,
+            flags: ClientUploadFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<string>;
         /**
@@ -6381,7 +6377,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags | null,
+            flags: ClientUploadFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -6406,7 +6402,7 @@ export namespace Fwupd {
             url: string,
             payload: string,
             signature: string | null,
-            flags: ClientUploadFlags | null,
+            flags: ClientUploadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
@@ -6777,7 +6773,7 @@ export namespace Fwupd {
          * Adds a specific device flag to the device.
          * @param flag the {@link Fwupd.DeviceFlags}
          */
-        add_flag(flag: DeviceFlags | null): void;
+        add_flag(flag: DeviceFlags): void;
         /**
          * Adds the GUID if it does not already exist.
          * @param guid the GUID, e.g. `2082b5e0-7a64-478a-b1b2-e3404fab6dad`
@@ -6802,7 +6798,7 @@ export namespace Fwupd {
          * Adds a specific device problem kind to the device.
          * @param problem the {@link Fwupd.DeviceProblem}, e.g. #FWUPD_DEVICE_PROBLEM_SYSTEM_POWER_TOO_LOW
          */
-        add_problem(problem: DeviceProblem | null): void;
+        add_problem(problem: DeviceProblem): void;
         /**
          * Adds a device protocol name.
          * @param protocol the protocol name, e.g. `com.hughski.colorhug`
@@ -6817,7 +6813,7 @@ export namespace Fwupd {
          * Adds a specific device request flag to the device.
          * @param request_flag the {@link Fwupd.RequestFlags}
          */
-        add_request_flag(request_flag: RequestFlags | null): void;
+        add_request_flag(request_flag: RequestFlags): void;
         /**
          * Adds a device vendor ID.
          * @param vendor_id the ID, e.g. 'USB:0x1234'
@@ -7065,7 +7061,7 @@ export namespace Fwupd {
          * @param flag the {@link Fwupd.DeviceFlags}
          * @returns `true` if the flag is set
          */
-        has_flag(flag: DeviceFlags | null): boolean;
+        has_flag(flag: DeviceFlags): boolean;
         /**
          * Finds out if the device has this specific GUID.
          * @param guid the GUID, e.g. `2082b5e0-7a64-478a-b1b2-e3404fab6dad`
@@ -7089,7 +7085,7 @@ export namespace Fwupd {
          * @param problem the {@link Fwupd.DeviceProblem}
          * @returns `true` if the problem is set
          */
-        has_problem(problem: DeviceProblem | null): boolean;
+        has_problem(problem: DeviceProblem): boolean;
         /**
          * Finds out if the device has this specific protocol name.
          * @param protocol the protocol name, e.g. `com.hughski.colorhug`
@@ -7101,7 +7097,7 @@ export namespace Fwupd {
          * @param request_flag the {@link Fwupd.RequestFlags}
          * @returns `true` if the request_flag is set
          */
-        has_request_flag(request_flag: RequestFlags | null): boolean;
+        has_request_flag(request_flag: RequestFlags): boolean;
         /**
          * Finds out if the device has this specific vendor ID.
          * @param vendor_id the vendor ID, e.g. 'USB:0x1234'
@@ -7119,7 +7115,7 @@ export namespace Fwupd {
          * @param exclude {@link Fwupd.DeviceFlags}, or {@link Fwupd.DeviceFlags.NONE}
          * @returns `true` if the device flags match
          */
-        match_flags(include: DeviceFlags | null, exclude: DeviceFlags | null): boolean;
+        match_flags(include: DeviceFlags, exclude: DeviceFlags): boolean;
         /**
          * Removes a child device.
          *
@@ -7139,17 +7135,17 @@ export namespace Fwupd {
          * Removes a specific device flag from the device.
          * @param flag the {@link Fwupd.DeviceFlags}
          */
-        remove_flag(flag: DeviceFlags | null): void;
+        remove_flag(flag: DeviceFlags): void;
         /**
          * Removes a specific device problem kind from the device.
          * @param problem the {@link Fwupd.DeviceProblem}, e.g. #FWUPD_DEVICE_PROBLEM_SYSTEM_POWER_TOO_LOW
          */
-        remove_problem(problem: DeviceProblem | null): void;
+        remove_problem(problem: DeviceProblem): void;
         /**
          * Removes a specific device request flag from the device.
          * @param request_flag the {@link Fwupd.RequestFlags}
          */
-        remove_request_flag(request_flag: RequestFlags | null): void;
+        remove_request_flag(request_flag: RequestFlags): void;
         /**
          * Sets the battery level, or `FWUPD_BATTERY_LEVEL_INVALID`.
          *
@@ -7251,7 +7247,7 @@ export namespace Fwupd {
          * Sets what the device is currently doing.
          * @param status the status value, e.g. {@link Fwupd.Status.DEVICE_WRITE}
          */
-        set_status(status: Status | null): void;
+        set_status(status: Status): void;
         /**
          * Sets the device summary.
          * @param summary the device one line summary
@@ -7266,7 +7262,7 @@ export namespace Fwupd {
          * Sets the update state.
          * @param update_state the state, e.g. {@link Fwupd.UpdateState.PENDING}
          */
-        set_update_state(update_state: UpdateState | null): void;
+        set_update_state(update_state: UpdateState): void;
         /**
          * Sets the device vendor.
          * @param vendor the vendor
@@ -7296,7 +7292,7 @@ export namespace Fwupd {
          * Sets the version format.
          * @param version_format the version format, e.g. {@link Fwupd.VersionFormat.NUMBER}
          */
-        set_version_format(version_format: VersionFormat | null): void;
+        set_version_format(version_format: VersionFormat): void;
         /**
          * Sets the lowest version of firmware the device will accept.
          * @param version_lowest the version
@@ -7341,13 +7337,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -7358,7 +7354,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
         /**
          * @param json_obj
          * @param flags
@@ -7445,7 +7441,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7486,7 +7482,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8035,7 +8031,7 @@ export namespace Fwupd {
          * Adds a specific plugin flag to the plugin.
          * @param flag the {@link Fwupd.PluginFlags}
          */
-        add_flag(flag: PluginFlags | null): void;
+        add_flag(flag: PluginFlags): void;
         /**
          * Gets the plugin flags.
          * @returns plugin flags, or 0 if unset
@@ -8051,12 +8047,12 @@ export namespace Fwupd {
          * @param flag a plugin flag
          * @returns `true` if the flag is set
          */
-        has_flag(flag: PluginFlags | null): boolean;
+        has_flag(flag: PluginFlags): boolean;
         /**
          * Removes a specific plugin flag from the plugin.
          * @param flag a plugin flag
          */
-        remove_flag(flag: PluginFlags | null): void;
+        remove_flag(flag: PluginFlags): void;
         /**
          * Sets the plugin flags.
          * @param flags plugin flags, e.g. {@link Fwupd.PluginFlags.CAPSULES_UNSUPPORTED}
@@ -8096,13 +8092,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -8113,7 +8109,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
         /**
          * @param json_obj
          * @param flags
@@ -8200,7 +8196,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8241,7 +8237,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8732,7 +8728,7 @@ export namespace Fwupd {
          * Adds a specific release flag to the release.
          * @param flag the {@link Fwupd.ReleaseFlags}
          */
-        add_flag(flag: ReleaseFlags | null): void;
+        add_flag(flag: ReleaseFlags): void;
         /**
          * Adds an resolved issue to this release.
          * @param issue the update issue, e.g. `CVE-2019-12345`
@@ -8955,7 +8951,7 @@ export namespace Fwupd {
          * @param flag the {@link Fwupd.ReleaseFlags}
          * @returns `true` if the flag is set
          */
-        has_flag(flag: ReleaseFlags | null): boolean;
+        has_flag(flag: ReleaseFlags): boolean;
         /**
          * Finds out if the release has a specific tag.
          * @param tag the update tag, e.g. `vendor-factory-2021q1`
@@ -8968,12 +8964,12 @@ export namespace Fwupd {
          * @param exclude {@link Fwupd.ReleaseFlags}, or {@link Fwupd.ReleaseFlags.NONE}
          * @returns `true` if the release flags match
          */
-        match_flags(include: ReleaseFlags | null, exclude: ReleaseFlags | null): boolean;
+        match_flags(include: ReleaseFlags, exclude: ReleaseFlags): boolean;
         /**
          * Removes a specific release flag from the release.
          * @param flag the {@link Fwupd.ReleaseFlags}
          */
-        remove_flag(flag: ReleaseFlags | null): void;
+        remove_flag(flag: ReleaseFlags): void;
         /**
          * Sets the AppStream ID.
          * @param appstream_id the AppStream component ID, e.g. `org.hughski.ColorHug2.firmware`
@@ -9018,7 +9014,7 @@ export namespace Fwupd {
          * Sets the release flags.
          * @param flags release flags, e.g. {@link Fwupd.ReleaseFlags.TRUSTED_PAYLOAD}
          */
-        set_flags(flags: ReleaseFlags | null): void;
+        set_flags(flags: ReleaseFlags): void;
         /**
          * Sets the update homepage URL.
          * @param homepage the URL
@@ -9093,7 +9089,7 @@ export namespace Fwupd {
          * Sets the release urgency.
          * @param urgency the release urgency, e.g. {@link Fwupd.ReleaseFlags.TRUSTED_PAYLOAD}
          */
-        set_urgency(urgency: ReleaseUrgency | null): void;
+        set_urgency(urgency: ReleaseUrgency): void;
         /**
          * Sets the update vendor.
          * @param vendor the vendor name, e.g. `Hughski Limited`
@@ -9133,13 +9129,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -9150,7 +9146,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
         /**
          * @param json_obj
          * @param flags
@@ -9237,7 +9233,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9278,7 +9274,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9808,7 +9804,7 @@ export namespace Fwupd {
          * Adds a specific attribute flag to the attribute.
          * @param flag the {@link Fwupd.RemoteFlags}, e.g. {@link Fwupd.RemoteFlags.APPROVAL_REQUIRED}
          */
-        add_flag(flag: RemoteFlags | null): void;
+        add_flag(flag: RemoteFlags): void;
         /**
          * Builds a URI for the URL using the username and password set for the remote,
          * including any basename URI substitution.
@@ -9966,7 +9962,7 @@ export namespace Fwupd {
          * @param flag the remote flag, e.g. {@link Fwupd.RemoteFlags.APPROVAL_REQUIRED}
          * @returns `true` if the flag is set
          */
-        has_flag(flag: RemoteFlags | null): boolean;
+        has_flag(flag: RemoteFlags): boolean;
         /**
          * Parses the signature, updating the metadata URI as appropriate.
          * @param filename a filename
@@ -9988,7 +9984,7 @@ export namespace Fwupd {
          * Removes a specific attribute flag from the remote.
          * @param flag the {@link Fwupd.RemoteFlags}, e.g. {@link Fwupd.RemoteFlags.APPROVAL_REQUIRED}
          */
-        remove_flag(flag: RemoteFlags | null): void;
+        remove_flag(flag: RemoteFlags): void;
         /**
          * Sets the remote agreement in AppStream markup format
          * @param agreement agreement markup text
@@ -10020,7 +10016,7 @@ export namespace Fwupd {
          * Sets the attribute flags.
          * @param flags remote attribute flags, e.g. {@link Fwupd.RemoteFlags.APPROVAL_REQUIRED}
          */
-        set_flags(flags: RemoteFlags | null): void;
+        set_flags(flags: RemoteFlags): void;
         /**
          * Sets the remote ID.
          *
@@ -10032,7 +10028,7 @@ export namespace Fwupd {
          * Sets the kind of the remote.
          * @param kind a {@link Fwupd.RemoteKind}, e.g. #FWUPD_REMOTE_KIND_LOCAL
          */
-        set_kind(kind: RemoteKind | null): void;
+        set_kind(kind: RemoteKind): void;
         /**
          * Sets the remote metadata URI.
          *
@@ -10130,13 +10126,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -10147,7 +10143,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
         /**
          * @param json_obj
          * @param flags
@@ -10234,7 +10230,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10275,7 +10271,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10731,7 +10727,7 @@ export namespace Fwupd {
          * Adds a specific report flag to the report.
          * @param flag the {@link Fwupd.ReportFlags}
          */
-        add_flag(flag: ReportFlags | null): void;
+        add_flag(flag: ReportFlags): void;
         /**
          * Sets a report metadata item.
          * @param key the key
@@ -10805,12 +10801,12 @@ export namespace Fwupd {
          * @param flag a report flag
          * @returns `true` if the flag is set
          */
-        has_flag(flag: ReportFlags | null): boolean;
+        has_flag(flag: ReportFlags): boolean;
         /**
          * Removes a specific report flag from the report.
          * @param flag a report flag
          */
-        remove_flag(flag: ReportFlags | null): void;
+        remove_flag(flag: ReportFlags): void;
         /**
          * Sets when the report was created.
          * @param created UTC timestamp in UNIX format
@@ -10891,13 +10887,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -10908,7 +10904,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
         /**
          * @param json_obj
          * @param flags
@@ -10995,7 +10991,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11036,7 +11032,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11562,7 +11558,7 @@ export namespace Fwupd {
          * Adds a specific flag to the request.
          * @param flag the {@link Fwupd.RequestFlags}
          */
-        add_flag(flag: RequestFlags | null): void;
+        add_flag(flag: RequestFlags): void;
         /**
          * Emits an `invalidate` signal to signify that the request is no longer valid, and any visible
          * UI components should be hidden.
@@ -11608,12 +11604,12 @@ export namespace Fwupd {
          * @param flag the {@link Fwupd.RequestFlags}
          * @returns `true` if the flag is set
          */
-        has_flag(flag: RequestFlags | null): boolean;
+        has_flag(flag: RequestFlags): boolean;
         /**
          * Removes a specific flag from the request.
          * @param flag the {@link Fwupd.RequestFlags}
          */
-        remove_flag(flag: RequestFlags | null): void;
+        remove_flag(flag: RequestFlags): void;
         /**
          * Sets when the request was created.
          * @param created the UNIX time
@@ -11628,7 +11624,7 @@ export namespace Fwupd {
          * Sets the request flags.
          * @param flags request flags, e.g. {@link Fwupd.RequestFlags.NONE}
          */
-        set_flags(flags: RequestFlags | null): void;
+        set_flags(flags: RequestFlags): void;
         /**
          * Sets the ID.
          * @param id the request ID, e.g. `USB:foo`
@@ -11643,7 +11639,7 @@ export namespace Fwupd {
          * Sets what the request is currently doing.
          * @param kind the kind value, e.g. `FWUPD_STATUS_REQUEST_WRITE`
          */
-        set_kind(kind: RequestKind | null): void;
+        set_kind(kind: RequestKind): void;
         /**
          * Sets the update message.
          * @param message the update message string
@@ -11678,13 +11674,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -11695,7 +11691,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
         /**
          * @param json_obj
          * @param flags
@@ -11782,7 +11778,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11823,7 +11819,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12277,7 +12273,7 @@ export namespace Fwupd {
          * Adds a specific attribute flag to the attribute.
          * @param flag the {@link Fwupd.SecurityAttrFlags}, e.g. {@link Fwupd.SecurityAttrFlags.OBSOLETED}
          */
-        add_flag(flag: SecurityAttrFlags | null): void;
+        add_flag(flag: SecurityAttrFlags): void;
         /**
          * Adds a device GUID to the attribute. This indicates the GUID in some way contributed to the
          * result decided.
@@ -12431,7 +12427,7 @@ export namespace Fwupd {
          * @param flag the attribute flag, e.g. {@link Fwupd.SecurityAttrFlags.OBSOLETED}
          * @returns `true` if the flag is set
          */
-        has_flag(flag: SecurityAttrFlags | null): boolean;
+        has_flag(flag: SecurityAttrFlags): boolean;
         /**
          * Finds out if a specific GUID was added to the attribute.
          * @param guid the attribute guid
@@ -12448,7 +12444,7 @@ export namespace Fwupd {
          * Removes a specific attribute flag from the attribute.
          * @param flag the {@link Fwupd.SecurityAttrFlags}, e.g. {@link Fwupd.SecurityAttrFlags.OBSOLETED}
          */
-        remove_flag(flag: SecurityAttrFlags | null): void;
+        remove_flag(flag: SecurityAttrFlags): void;
         /**
          * Sets the AppStream ID.
          * @param appstream_id the AppStream component ID, e.g. `com.intel.BiosGuard`
@@ -12484,7 +12480,7 @@ export namespace Fwupd {
          * Sets the attribute flags.
          * @param flags security attribute flags, e.g. {@link Fwupd.SecurityAttrFlags.OBSOLETED}
          */
-        set_flags(flags: SecurityAttrFlags | null): void;
+        set_flags(flags: SecurityAttrFlags): void;
         /**
          * Sets the fwupd version the attribute was added.
          * @param fwupd_version the fwupd version, e.g. `2.0.7`
@@ -12505,7 +12501,7 @@ export namespace Fwupd {
          * for the HSI calculation.
          * @param level a security attribute level, e.g. {@link Fwupd.SecurityAttrLevel.IMPORTANT}
          */
-        set_level(level: SecurityAttrLevel | null): void;
+        set_level(level: SecurityAttrLevel): void;
         /**
          * Sets the attribute name.
          * @param name the attribute name
@@ -12521,18 +12517,18 @@ export namespace Fwupd {
          * be a "success" when something is `locked` or may be "failed" if `found`.
          * @param result a security attribute result, e.g. `FWUPD_SECURITY_ATTR_LEVEL_LOCKED`
          */
-        set_result(result: SecurityAttrResult | null): void;
+        set_result(result: SecurityAttrResult): void;
         /**
          * Sets the optional fallback HSI result. The fallback may represent the old state, or a state
          * that may be considered equivalent.
          * @param result a security attribute, e.g. `FWUPD_SECURITY_ATTR_LEVEL_LOCKED`
          */
-        set_result_fallback(result: SecurityAttrResult | null): void;
+        set_result_fallback(result: SecurityAttrResult): void;
         /**
          * Sets the desired HSI result.
          * @param result a security attribute, e.g. `FWUPD_SECURITY_ATTR_LEVEL_LOCKED`
          */
-        set_result_success(result: SecurityAttrResult | null): void;
+        set_result_success(result: SecurityAttrResult): void;
         /**
          * Sets the attribute title.
          * @param title the attribute title
@@ -12572,13 +12568,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -12589,7 +12585,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
         /**
          * @param json_obj
          * @param flags
@@ -12676,7 +12672,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12717,7 +12713,7 @@ export namespace Fwupd {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13155,7 +13151,7 @@ export namespace Fwupd {
          * @param flags some {@link Fwupd.JsonExportFlags} e.g. #FWUPD_JSON_EXPORT_FLAG_INDENT
          * @returns a {@link GLib.String}
          */
-        to_string(flags: JsonExportFlags | null): GLib.String;
+        to_string(flags: JsonExportFlags): GLib.String;
         /**
          * Decreases the reference count of a JSON array.
          * @returns a {@link Fwupd.JsonArray}, or `null`
@@ -13200,7 +13196,7 @@ export namespace Fwupd {
          * @param flags some {@link Fwupd.JsonExportFlags} e.g. #FWUPD_JSON_EXPORT_FLAG_INDENT
          * @returns a {@link GLib.String}
          */
-        to_string(flags: JsonExportFlags | null): GLib.String;
+        to_string(flags: JsonExportFlags): GLib.String;
         /**
          * Destroys a JSON json_node.
          * @returns a {@link Fwupd.JsonArray}, or `null`
@@ -13332,13 +13328,13 @@ export namespace Fwupd {
          * @param flags some {@link Fwupd.JsonExportFlags} e.g. #FWUPD_JSON_EXPORT_FLAG_INDENT
          * @returns a {@link GLib.Bytes}
          */
-        to_bytes(flags: JsonExportFlags | null): GLib.Bytes;
+        to_bytes(flags: JsonExportFlags): GLib.Bytes;
         /**
          * Converts the JSON object to a string representation.
          * @param flags some {@link Fwupd.JsonExportFlags} e.g. #FWUPD_JSON_EXPORT_FLAG_INDENT
          * @returns a {@link GLib.String}
          */
-        to_string(flags: JsonExportFlags | null): GLib.String;
+        to_string(flags: JsonExportFlags): GLib.String;
         /**
          * Decreases the reference count of a JSON object.
          * @returns a {@link Fwupd.JsonObject}, or `null`
@@ -13589,13 +13585,13 @@ export namespace Fwupd {
          * @param json_obj a JSON builder
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          */
-        to_json(json_obj: JsonObject, flags: CodecFlags | null): void;
+        to_json(json_obj: JsonObject, flags: CodecFlags): void;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a JSON string.
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a string
          */
-        to_json_string(flags: CodecFlags | null): string;
+        to_json_string(flags: CodecFlags): string;
         /**
          * Converts an object that implements {@link Fwupd.Codec} to a debug string.
          * @returns a string
@@ -13606,7 +13602,7 @@ export namespace Fwupd {
          * @param flags a {@link Fwupd.CodecFlags}, e.g. {@link Fwupd.CodecFlags.TRUSTED}
          * @returns a {@link GLib.Variant}
          */
-        to_variant(flags: CodecFlags | null): GLib.Variant;
+        to_variant(flags: CodecFlags): GLib.Variant;
     }
 
     export const Codec: CodecNamespace & {

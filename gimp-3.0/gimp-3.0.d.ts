@@ -3197,11 +3197,7 @@ export namespace Gimp {
      * @param color2 current custom color and return location for the second color.
      * @since 3.0
      */
-    function checks_get_colors(
-        type: CheckType | null,
-        color1: Gegl.Color,
-        color2: Gegl.Color,
-    ): [Gegl.Color, Gegl.Color];
+    function checks_get_colors(type: CheckType, color1: Gegl.Color, color2: Gegl.Color): [Gegl.Color, Gegl.Color];
     /**
      * Clone from the source to the dest drawable using the current brush
      *
@@ -3228,7 +3224,7 @@ export namespace Gimp {
     function clone(
         drawable: Drawable,
         src_drawable: Drawable,
-        clone_type: CloneType | null,
+        clone_type: CloneType,
         src_x: number,
         src_y: number,
         strokes: number[],
@@ -3429,7 +3425,7 @@ export namespace Gimp {
      */
     function config_deserialize_return(
         scanner: GLib.Scanner,
-        expected_token: GLib.TokenType | null,
+        expected_token: GLib.TokenType,
         nest_level: number,
     ): boolean;
     /**
@@ -3445,7 +3441,7 @@ export namespace Gimp {
      * @returns a GList of differing GParamSpecs.
      * @since 2.4
      */
-    function config_diff(a: GObject.Object, b: GObject.Object, flags: GObject.ParamFlags | null): GObject.ParamSpec[];
+    function config_diff(a: GObject.Object, b: GObject.Object, flags: GObject.ParamFlags): GObject.ParamSpec[];
     /**
      * This function is never called directly. Use GIMP_CONFIG_ERROR() instead.
      * @returns the {@link GLib.Quark} that defines the GimpConfig error domain.
@@ -3513,7 +3509,7 @@ export namespace Gimp {
      * @returns `true` if `dest` was modified, `false` otherwise
      * @since 2.4
      */
-    function config_sync(src: GObject.Object, dest: GObject.Object, flags: GObject.ParamFlags | null): boolean;
+    function config_sync(src: GObject.Object, dest: GObject.Object, flags: GObject.ParamFlags): boolean;
     /**
      * This function is a fancy wrapper around `g_type_register_static()`.
      * It creates a new object type as subclass of `parent_type`, installs
@@ -4208,7 +4204,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.10
      */
-    function context_set_distance_metric(metric: Gegl.DistanceMetric | null): boolean;
+    function context_set_distance_metric(metric: Gegl.DistanceMetric): boolean;
     /**
      * Set the active paint dynamics.
      *
@@ -4304,7 +4300,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.10
      */
-    function context_set_gradient_blend_color_space(blend_color_space: GradientBlendColorSpace | null): boolean;
+    function context_set_gradient_blend_color_space(blend_color_space: GradientBlendColorSpace): boolean;
     /**
      * Sets the built-in FG-BG HSV (ccw) gradient as the active gradient.
      *
@@ -4349,7 +4345,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.10
      */
-    function context_set_gradient_repeat_mode(repeat_mode: RepeatMode | null): boolean;
+    function context_set_gradient_repeat_mode(repeat_mode: RepeatMode): boolean;
     /**
      * Set the gradient reverse setting.
      *
@@ -4395,7 +4391,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.8
      */
-    function context_set_ink_blob_type(type: InkBlobType | null): boolean;
+    function context_set_ink_blob_type(type: InkBlobType): boolean;
     /**
      * Set ink blob size in pixels.
      *
@@ -4447,7 +4443,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.8
      */
-    function context_set_interpolation(interpolation: InterpolationType | null): boolean;
+    function context_set_interpolation(interpolation: InterpolationType): boolean;
     /**
      * Set the line cap style setting.
      *
@@ -4460,7 +4456,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.10
      */
-    function context_set_line_cap_style(cap_style: CapStyle | null): boolean;
+    function context_set_line_cap_style(cap_style: CapStyle): boolean;
     /**
      * Set the line dash offset setting.
      *
@@ -4502,7 +4498,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.10
      */
-    function context_set_line_join_style(join_style: JoinStyle | null): boolean;
+    function context_set_line_join_style(join_style: JoinStyle): boolean;
     /**
      * Set the line miter limit setting.
      *
@@ -4585,7 +4581,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 3.2
      */
-    function context_set_paint_fade_repeat(fade_repeat: RepeatMode | null): boolean;
+    function context_set_paint_fade_repeat(fade_repeat: RepeatMode): boolean;
     /**
      * Set the active paint method.
      *
@@ -4606,7 +4602,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.2
      */
-    function context_set_paint_mode(paint_mode: LayerMode | null): boolean;
+    function context_set_paint_mode(paint_mode: LayerMode): boolean;
     /**
      * Set the active palette.
      *
@@ -4645,7 +4641,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.8
      */
-    function context_set_sample_criterion(sample_criterion: SelectCriterion | null): boolean;
+    function context_set_sample_criterion(sample_criterion: SelectCriterion): boolean;
     /**
      * Set the sample merged setting.
      *
@@ -4717,7 +4713,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.10
      */
-    function context_set_stroke_method(stroke_method: StrokeMethod | null): boolean;
+    function context_set_stroke_method(stroke_method: StrokeMethod): boolean;
     /**
      * Set the transform direction.
      *
@@ -4732,7 +4728,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.8
      */
-    function context_set_transform_direction(transform_direction: TransformDirection | null): boolean;
+    function context_set_transform_direction(transform_direction: TransformDirection): boolean;
     /**
      * Set the transform resize type.
      *
@@ -4751,7 +4747,7 @@ export namespace Gimp {
      * @returns TRUE on success.
      * @since 2.8
      */
-    function context_set_transform_resize(transform_resize: TransformResize | null): boolean;
+    function context_set_transform_resize(transform_resize: TransformResize): boolean;
     /**
      * Swap the current GIMP foreground and background colors.
      *
@@ -4775,12 +4771,7 @@ export namespace Gimp {
      * @param strokes Array of stroke coordinates: { s1.x, s1.y, s2.x, s2.y, ..., sn.x, sn.y }.
      * @returns TRUE on success.
      */
-    function convolve(
-        drawable: Drawable,
-        pressure: number,
-        convolve_type: ConvolveType | null,
-        strokes: number[],
-    ): boolean;
+    function convolve(drawable: Drawable, pressure: number, convolve_type: ConvolveType, strokes: number[]): boolean;
     /**
      * Convolve (Blur, Sharpen) using the current brush.
      *
@@ -4947,8 +4938,8 @@ export namespace Gimp {
     function dodgeburn(
         drawable: Drawable,
         exposure: number,
-        dodgeburn_type: DodgeBurnType | null,
-        dodgeburn_mode: TransferMode | null,
+        dodgeburn_type: DodgeBurnType,
+        dodgeburn_mode: TransferMode,
         strokes: number[],
     ): boolean;
     /**
@@ -5267,8 +5258,8 @@ export namespace Gimp {
     function eraser(
         drawable: Drawable,
         strokes: number[],
-        hardness: BrushApplicationMode | null,
-        method: PaintApplicationMode | null,
+        hardness: BrushApplicationMode,
+        method: PaintApplicationMode,
     ): boolean;
     /**
      * Erase using the current brush.
@@ -5404,7 +5395,7 @@ export namespace Gimp {
      * @param file The file to load.
      * @returns The output image.
      */
-    function file_load(run_mode: RunMode | null, file: Gio.File): Image;
+    function file_load(run_mode: RunMode, file: Gio.File): Image;
     /**
      * Loads an image file as a layer for an existing image.
      *
@@ -5418,7 +5409,7 @@ export namespace Gimp {
      * @returns The layer created when loading the image file.
      * @since 2.4
      */
-    function file_load_layer(run_mode: RunMode | null, image: Image, file: Gio.File): Layer;
+    function file_load_layer(run_mode: RunMode, image: Image, file: Gio.File): Layer;
     /**
      * Loads an image file as layers for an existing image.
      *
@@ -5432,7 +5423,7 @@ export namespace Gimp {
      * @returns The list of loaded layers.          The returned value must be freed with `g_free()`.
      * @since 2.4
      */
-    function file_load_layers(run_mode: RunMode | null, image: Image, file: Gio.File): Layer[];
+    function file_load_layers(run_mode: RunMode, image: Image, file: Gio.File): Layer[];
     /**
      * Expands `path` using `gimp_config_path_expand()` and returns a {@link Gio.File}
      * for the expanded path.
@@ -5457,7 +5448,7 @@ export namespace Gimp {
      * @param options Export option settings.
      * @returns TRUE on success.
      */
-    function file_save(run_mode: RunMode | null, image: Image, file: Gio.File, options?: ExportOptions | null): boolean;
+    function file_save(run_mode: RunMode, image: Image, file: Gio.File, options?: ExportOptions | null): boolean;
     /**
      * Shows `file` in the system file manager.
      * @param file a {@link Gio.File}
@@ -6041,7 +6032,7 @@ export namespace Gimp {
      * @param handler The new handler type.
      * @returns TRUE on success.
      */
-    function message_set_handler(handler: MessageHandlerType | null): boolean;
+    function message_set_handler(handler: MessageHandlerType): boolean;
     /**
      * Returns the monitor number to be used for plug-in windows.
      *
@@ -6073,7 +6064,7 @@ export namespace Gimp {
         drawable: Drawable,
         fade_out: number,
         strokes: number[],
-        method: PaintApplicationMode | null,
+        method: PaintApplicationMode,
         gradient_length: number,
     ): boolean;
     /**
@@ -6161,12 +6152,7 @@ export namespace Gimp {
      * @returns The newly created `GimpParamSpecArray`.
      * @since 3.0
      */
-    function param_spec_array(
-        name: string,
-        nick: string,
-        blurb: string,
-        flags: GObject.ParamFlags | null,
-    ): GObject.ParamSpec;
+    function param_spec_array(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecBrush` specifying a
      * {@link Brush} property. See also {@link Gimp.param_spec_resource}.
@@ -6187,7 +6173,7 @@ export namespace Gimp {
         none_ok: boolean,
         default_value: Brush | null,
         default_to_context: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecChannel` specifying a
@@ -6207,7 +6193,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecChoice` specifying a
@@ -6230,7 +6216,7 @@ export namespace Gimp {
         blurb: string,
         choice: Choice,
         default_value: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a `GimpParamSpecChoice` value.
@@ -6262,7 +6248,7 @@ export namespace Gimp {
         blurb: string,
         has_alpha: boolean,
         default_color: Gegl.Color,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
@@ -6280,7 +6266,7 @@ export namespace Gimp {
         blurb: string,
         has_alpha: boolean,
         default_color_string: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold an {@link Gegl.Color} value.
@@ -6305,9 +6291,9 @@ export namespace Gimp {
         name: string,
         nick: string,
         blurb: string,
-        type: ConfigPathType | null,
+        type: ConfigPathType,
         default_value: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Tells whether the path param encodes a filename,
@@ -6335,7 +6321,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         object_type: GObject.GType,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a `GimpParamSpecCoreObjectArray` value.
@@ -6361,7 +6347,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecDisplay` specifying a
@@ -6381,7 +6367,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gimp.Display} value.
@@ -6405,7 +6391,7 @@ export namespace Gimp {
         name: string,
         nick: string,
         blurb: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecDrawable` specifying a
@@ -6425,7 +6411,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecDrawableFilter` specifying a
@@ -6445,7 +6431,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gimp.DrawableFilter} value.
@@ -6469,7 +6455,7 @@ export namespace Gimp {
         name: string,
         nick: string,
         blurb: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a param spec to hold a file param.
@@ -6488,10 +6474,10 @@ export namespace Gimp {
         name: string,
         nick: string,
         blurb: string,
-        action: FileChooserAction | null,
+        action: FileChooserAction,
         none_ok: boolean,
         default_value: Gio.File | null,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gio.File} value.
@@ -6511,7 +6497,7 @@ export namespace Gimp {
      * @param action new action for `pspec`.
      * @since 3.0
      */
-    function param_spec_file_set_action(pspec: GObject.ParamSpec, action: FileChooserAction | null): void;
+    function param_spec_file_set_action(pspec: GObject.ParamSpec, action: FileChooserAction): void;
     /**
      * Creates a new `GimpParamSpecFont` specifying a
      * {@link Font} property. See also {@link Gimp.param_spec_resource}.
@@ -6532,7 +6518,7 @@ export namespace Gimp {
         none_ok: boolean,
         default_value: Font | null,
         default_to_context: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecGradient` specifying a
@@ -6554,7 +6540,7 @@ export namespace Gimp {
         none_ok: boolean,
         default_value: Gradient | null,
         default_to_context: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecGroupLayer` specifying a
@@ -6574,7 +6560,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecImage` specifying a
@@ -6594,7 +6580,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gimp.Image} value.
@@ -6618,7 +6604,7 @@ export namespace Gimp {
         name: string,
         nick: string,
         blurb: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecItem` specifying a
@@ -6638,7 +6624,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gimp.Item} value.
@@ -6664,7 +6650,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecLayerMask` specifying a
@@ -6684,7 +6670,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecLinkLayer` specifying a
@@ -6704,7 +6690,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a param spec to hold a {@link Gimp.Matrix2} value.
@@ -6722,7 +6708,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         default_value: Matrix2,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a param spec to hold a {@link Gimp.Matrix3} value.
@@ -6740,7 +6726,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         default_value: Matrix3,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a param spec to hold a memory size value.
@@ -6762,7 +6748,7 @@ export namespace Gimp {
         minimum: bigint | number,
         maximum: bigint | number,
         default_value: bigint | number,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * This function duplicates `pspec` appropriately, depending on the
@@ -6822,7 +6808,7 @@ export namespace Gimp {
         none_ok: boolean,
         default_value: Palette | null,
         default_to_context: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecParasite` specifying a
@@ -6840,7 +6826,7 @@ export namespace Gimp {
         name: string,
         nick: string,
         blurb: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecPath` specifying a
@@ -6860,7 +6846,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecPattern` specifying a
@@ -6882,7 +6868,7 @@ export namespace Gimp {
         none_ok: boolean,
         default_value: Pattern | null,
         default_to_context: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecRasterizable` specifying a
@@ -6902,7 +6888,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecResource` specifying a {@link Resource} property.
@@ -6932,7 +6918,7 @@ export namespace Gimp {
         none_ok: boolean,
         default_value: Resource | null,
         default_to_context: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec
@@ -6960,7 +6946,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new `GimpParamSpecTextLayer` specifying a
@@ -6980,7 +6966,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a param spec to hold a units param.
@@ -7002,7 +6988,7 @@ export namespace Gimp {
         allow_pixel: boolean,
         allow_percent: boolean,
         default_value: Unit,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold an {@link Gimp.Unit} value.
@@ -7034,7 +7020,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         element_spec: GObject.ParamSpec | null,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a `GimpParamSpecValueArray` value.
@@ -7060,7 +7046,7 @@ export namespace Gimp {
         nick: string,
         blurb: string,
         none_ok: boolean,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Close the pattern selection dialog.
@@ -8503,7 +8489,7 @@ export namespace Gimp {
          * @param shape_in The brush shape.
          * @returns TRUE on success.
          */
-        set_shape(shape_in: BrushGeneratedShape | null): [boolean, BrushGeneratedShape];
+        set_shape(shape_in: BrushGeneratedShape): [boolean, BrushGeneratedShape];
         /**
          * Sets the brush spacing.
          *
@@ -8569,7 +8555,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8610,7 +8596,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9064,7 +9050,7 @@ export namespace Gimp {
          * @param offy y offset between upper left corner of channels: (second - first).
          * @returns TRUE on success.
          */
-        combine_masks(channel2: Channel, operation: ChannelOps | null, offx: number, offy: number): boolean;
+        combine_masks(channel2: Channel, operation: ChannelOps, offx: number, offy: number): boolean;
         /**
          * Copy a channel.
          *
@@ -9497,7 +9483,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9538,7 +9524,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10006,7 +9992,7 @@ export namespace Gimp {
          * @param intent a {@link Gimp.ColorRenderingIntent}
          * @returns the new {@link Babl.Object} format.
          */
-        get_format(format: Babl.Object, intent: ColorRenderingIntent | null): Babl.Object;
+        get_format(format: Babl.Object, intent: ColorRenderingIntent): Babl.Object;
         /**
          * This function returns `profile` as ICC profile data. The returned
          * memory belongs to `profile` and must not be modified or freed.
@@ -10042,7 +10028,7 @@ export namespace Gimp {
          * @param intent a {@link Gimp.ColorRenderingIntent}
          * @returns the new {@link Babl.Object} space.
          */
-        get_space(intent: ColorRenderingIntent | null): Babl.Object;
+        get_space(intent: ColorRenderingIntent): Babl.Object;
         /**
          * This function return a string containing a multi-line summary of
          * `profile`'s description, model, manufacturer and copyright, to be
@@ -10519,7 +10505,7 @@ export namespace Gimp {
          *   will be cleared.
          * @param curve_type the new curve type.
          */
-        set_curve_type(curve_type: CurveType | null): void;
+        set_curve_type(curve_type: CurveType): void;
         /**
          * Sets the number of sample in a {@link Gimp.CurveType.FREE} `curve`.
          *
@@ -10545,7 +10531,7 @@ export namespace Gimp {
          * @param point a point identifier.
          * @param type a point type.
          */
-        set_point_type(point: number, type: CurvePointType | null): void;
+        set_point_type(point: number, type: CurvePointType): void;
         /**
          * Sets a sample in a {@link Gimp.CurveType.FREE} `curve`, with
          * coordinates `(x, y)`.
@@ -10818,7 +10804,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         color_balance(
-            transfer_mode: TransferMode | null,
+            transfer_mode: TransferMode,
             preserve_lum: boolean,
             cyan_red: number,
             magenta_green: number,
@@ -10850,7 +10836,7 @@ export namespace Gimp {
          * @param values The explicit curve.
          * @returns TRUE on success.
          */
-        curves_explicit(channel: HistogramChannel | null, values: number[]): boolean;
+        curves_explicit(channel: HistogramChannel, values: number[]): boolean;
         /**
          * Modifies the intensity curve(s) for specified drawable.
          *
@@ -10870,7 +10856,7 @@ export namespace Gimp {
          * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
          * @returns TRUE on success.
          */
-        curves_spline(channel: HistogramChannel | null, points: number[]): boolean;
+        curves_spline(channel: HistogramChannel, points: number[]): boolean;
         /**
          * Desaturate the contents of the specified drawable, with the
          * specified formula.
@@ -10881,7 +10867,7 @@ export namespace Gimp {
          * @param desaturate_mode The formula to use to desaturate.
          * @returns TRUE on success.
          */
-        desaturate(desaturate_mode: DesaturateMode | null): boolean;
+        desaturate(desaturate_mode: DesaturateMode): boolean;
         /**
          * Fill the area by a seed fill starting at the specified coordinates.
          *
@@ -10903,7 +10889,7 @@ export namespace Gimp {
          * @param y The y coordinate of this bucket fill's application.
          * @returns TRUE on success.
          */
-        edit_bucket_fill(fill_type: FillType | null, x: number, y: number): boolean;
+        edit_bucket_fill(fill_type: FillType, x: number, y: number): boolean;
         /**
          * Clear selected area of drawable.
          *
@@ -10933,7 +10919,7 @@ export namespace Gimp {
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
-        edit_fill(fill_type: FillType | null): boolean;
+        edit_fill(fill_type: FillType): boolean;
         /**
          * Draw a gradient between the starting and ending coordinates with the
          * specified gradient type.
@@ -10962,7 +10948,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         edit_gradient_fill(
-            gradient_type: GradientType | null,
+            gradient_type: GradientType,
             offset: number,
             supersample: boolean,
             supersample_max_depth: number,
@@ -11051,7 +11037,7 @@ export namespace Gimp {
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
-        fill(fill_type: FillType | null): boolean;
+        fill(fill_type: FillType): boolean;
         /**
          * Extract the foreground of a drawable using a given trimap.
          *
@@ -11062,7 +11048,7 @@ export namespace Gimp {
          * @param mask Tri-Map.
          * @returns TRUE on success.
          */
-        foreground_extract(mode: ForegroundExtractMode | null, mask: Drawable): boolean;
+        foreground_extract(mode: ForegroundExtractMode, mask: Drawable): boolean;
         /**
          * Free the specified drawable's shadow data (if it exists).
          *
@@ -11155,7 +11141,7 @@ export namespace Gimp {
             src_height: number,
             dest_width: number,
             dest_height: number,
-            alpha: PixbufTransparency | null,
+            alpha: PixbufTransparency,
         ): GdkPixbuf.Pixbuf;
         /**
          * Retrieves thumbnail data for the drawable identified by `drawable`.
@@ -11185,7 +11171,7 @@ export namespace Gimp {
          * @param alpha how to handle an alpha channel
          * @returns a new {@link GdkPixbuf.Pixbuf}
          */
-        get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
+        get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
         /**
          * Retrieves thumbnail data for the drawable identified by `drawable`.
          * The thumbnail will be not larger than the requested size.
@@ -11240,7 +11226,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         histogram(
-            channel: HistogramChannel | null,
+            channel: HistogramChannel,
             start_range: number,
             end_range: number,
         ): [boolean, number, number, number, number, number, number];
@@ -11260,7 +11246,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         hue_saturation(
-            hue_range: HueRange | null,
+            hue_range: HueRange,
             hue_offset: number,
             lightness: number,
             saturation: number,
@@ -11327,7 +11313,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         levels(
-            channel: HistogramChannel | null,
+            channel: HistogramChannel,
             low_input: number,
             high_input: number,
             clamp_input: boolean,
@@ -11429,7 +11415,7 @@ export namespace Gimp {
          */
         offset(
             wrap_around: boolean,
-            fill_type: OffsetType | null,
+            fill_type: OffsetType,
             color: Gegl.Color,
             offset_x: number,
             offset_y: number,
@@ -11491,7 +11477,7 @@ export namespace Gimp {
          * @param high_threshold The high threshold value.
          * @returns TRUE on success.
          */
-        threshold(channel: HistogramChannel | null, low_threshold: number, high_threshold: number): boolean;
+        threshold(channel: HistogramChannel, low_threshold: number, high_threshold: number): boolean;
         /**
          * Returns the drawable's type.
          *
@@ -11731,7 +11717,7 @@ export namespace Gimp {
          * Use {@link Gimp.Drawable.update} to trigger an actual update.
          * @param mode blend mode.
          */
-        set_blend_mode(mode: LayerMode | null): void;
+        set_blend_mode(mode: LayerMode): void;
         /**
          * This procedure sets the opacity of `filter` on a range from 0.0
          * (transparent) to 1.0 (opaque).
@@ -12140,7 +12126,7 @@ export namespace Gimp {
          * @param get_capabilities_data_destroy free function for `get_capabilities_data`, or `null`
          */
         set_capabilities(
-            capabilities: ExportCapabilities | null,
+            capabilities: ExportCapabilities,
             get_capabilities_func?: ExportGetCapabilitiesFunc | null,
             get_capabilities_data_destroy?: GLib.DestroyNotify | null,
         ): void;
@@ -12610,7 +12596,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12651,7 +12637,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13299,7 +13285,7 @@ export namespace Gimp {
         segment_range_set_blending_function(
             start_segment: number,
             end_segment: number,
-            blending_function: GradientSegmentType | null,
+            blending_function: GradientSegmentType,
         ): boolean;
         /**
          * Sets the coloring type of a range of segments
@@ -13315,7 +13301,7 @@ export namespace Gimp {
         segment_range_set_coloring_type(
             start_segment: number,
             end_segment: number,
-            coloring_type: GradientSegmentColor | null,
+            coloring_type: GradientSegmentColor,
         ): boolean;
         /**
          * Splits each segment in the segment range at midpoint
@@ -13449,7 +13435,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -13490,7 +13476,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14128,7 +14114,7 @@ export namespace Gimp {
          * @param bpc Black point compensation.
          * @returns `true` on success.
          */
-        convert_color_profile(profile: ColorProfile | null, intent: ColorRenderingIntent | null, bpc: boolean): boolean;
+        convert_color_profile(profile: ColorProfile | null, intent: ColorRenderingIntent, bpc: boolean): boolean;
         /**
          * Convert the image's layers to a color profile
          *
@@ -14141,7 +14127,7 @@ export namespace Gimp {
          * @param bpc Black point compensation.
          * @returns TRUE on success.
          */
-        convert_color_profile_from_file(file: Gio.File, intent: ColorRenderingIntent | null, bpc: boolean): boolean;
+        convert_color_profile_from_file(file: Gio.File, intent: ColorRenderingIntent, bpc: boolean): boolean;
         /**
          * Convert specified image to grayscale
          *
@@ -14175,8 +14161,8 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         convert_indexed(
-            dither_type: ConvertDitherType | null,
-            palette_type: ConvertPaletteType | null,
+            dither_type: ConvertDitherType,
+            palette_type: ConvertPaletteType,
             num_cols: number,
             alpha_dither: boolean,
             remove_unused: boolean,
@@ -14191,7 +14177,7 @@ export namespace Gimp {
          * @param precision The new precision.
          * @returns TRUE on success.
          */
-        convert_precision(precision: Precision | null): boolean;
+        convert_precision(precision: Precision): boolean;
         /**
          * Convert specified image to RGB color
          *
@@ -14334,7 +14320,7 @@ export namespace Gimp {
          * @param flip_type Type of flip.
          * @returns TRUE on success.
          */
-        flip(flip_type: OrientationType | null): boolean;
+        flip(flip_type: OrientationType): boolean;
         /**
          * Return the drawable the floating selection is attached to.
          *
@@ -14443,7 +14429,7 @@ export namespace Gimp {
          * @param component The image component.
          * @returns Component is active.
          */
-        get_component_active(component: ChannelType | null): boolean;
+        get_component_active(component: ChannelType): boolean;
         /**
          * Returns if the specified image's image component is visible.
          *
@@ -14455,7 +14441,7 @@ export namespace Gimp {
          * @param component The image component.
          * @returns Component is visible.
          */
-        get_component_visible(component: ChannelType | null): boolean;
+        get_component_visible(component: ChannelType): boolean;
         /**
          * Get the default mode for newly created layers of this image.
          *
@@ -14766,7 +14752,7 @@ export namespace Gimp {
          * @param alpha how to handle an alpha channel
          * @returns a new {@link GdkPixbuf.Pixbuf}
          */
-        get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
+        get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
         /**
          * Get a thumbnail of an image.
          *
@@ -14886,7 +14872,7 @@ export namespace Gimp {
          * @param style The image's grid style.
          * @returns TRUE on success.
          */
-        grid_set_style(style: GridStyle | null): boolean;
+        grid_set_style(style: GridStyle): boolean;
         /**
          * Import paths from an SVG file.
          *
@@ -15019,7 +15005,7 @@ export namespace Gimp {
          * @param merge_type The type of merge.
          * @returns The resulting layer.
          */
-        merge_down(merge_layer: Layer, merge_type: MergeType | null): Layer;
+        merge_down(merge_layer: Layer, merge_type: MergeType): Layer;
         /**
          * Merge the visible image layers into one.
          *
@@ -15034,7 +15020,7 @@ export namespace Gimp {
          * @param merge_type The type of merge.
          * @returns The resulting layer.
          */
-        merge_visible_layers(merge_type: MergeType | null): Layer;
+        merge_visible_layers(merge_type: MergeType): Layer;
         /**
          * Filters the `metadata` retrieved from the image with
          * {@link Gimp.Image.metadata_save_prepare}, taking into account the
@@ -15057,12 +15043,7 @@ export namespace Gimp {
          * @param file The file `image` was saved to or NULL if file was not saved yet
          * @returns Filtered metadata or `null` in case of failure.          Use [GObject.Object.unref] when returned metadata are no          longer needed
          */
-        metadata_save_filter(
-            mime_type: string,
-            metadata: Metadata,
-            flags: MetadataSaveFlags | null,
-            file: Gio.File,
-        ): Metadata;
+        metadata_save_filter(mime_type: string, metadata: Metadata, flags: MetadataSaveFlags, file: Gio.File): Metadata;
         /**
          * Gets the image metadata for storing it in an exported file.
          *
@@ -15091,7 +15072,7 @@ export namespace Gimp {
          * @param suggested_flags Suggested default values for the metadata to export.
          * @returns The image's metadata, prepared for saving.
          */
-        metadata_save_prepare(mime_type: string, suggested_flags: MetadataSaveFlags | null): Metadata;
+        metadata_save_prepare(mime_type: string, suggested_flags: MetadataSaveFlags): Metadata;
         /**
          * Determine the color at the given coordinates
          *
@@ -15285,7 +15266,7 @@ export namespace Gimp {
          * @param rotate_type Angle of rotation.
          * @returns TRUE on success.
          */
-        rotate(rotate_type: RotationType | null): boolean;
+        rotate(rotate_type: RotationType): boolean;
         /**
          * Scale the image using the default interpolation method.
          *
@@ -15324,7 +15305,7 @@ export namespace Gimp {
          * @param color The color to select.
          * @returns TRUE on success.
          */
-        select_color(operation: ChannelOps | null, drawable: Drawable, color: Gegl.Color): boolean;
+        select_color(operation: ChannelOps, drawable: Drawable, color: Gegl.Color): boolean;
         /**
          * Create a selection by selecting all pixels around specified
          * coordinates with the same (or similar) color to that at the
@@ -15360,7 +15341,7 @@ export namespace Gimp {
          * @param y y coordinate of initial seed fill point: (image coordinates).
          * @returns TRUE on success.
          */
-        select_contiguous_color(operation: ChannelOps | null, drawable: Drawable, x: number, y: number): boolean;
+        select_contiguous_color(operation: ChannelOps, drawable: Drawable, x: number, y: number): boolean;
         /**
          * Create an elliptical selection over the specified image.
          *
@@ -15378,7 +15359,7 @@ export namespace Gimp {
          * @param height The height of the ellipse.
          * @returns TRUE on success.
          */
-        select_ellipse(operation: ChannelOps | null, x: number, y: number, width: number, height: number): boolean;
+        select_ellipse(operation: ChannelOps, x: number, y: number, width: number, height: number): boolean;
         /**
          * Transforms the specified item into a selection
          *
@@ -15394,7 +15375,7 @@ export namespace Gimp {
          * @param item The item to render to the selection.
          * @returns TRUE on success.
          */
-        select_item(operation: ChannelOps | null, item: Item): boolean;
+        select_item(operation: ChannelOps, item: Item): boolean;
         /**
          * Create a polygonal selection over the specified image.
          *
@@ -15414,7 +15395,7 @@ export namespace Gimp {
          * @param segs Array of points: { p1.x, p1.y, p2.x, p2.y, ..., pn.x, pn.y}.
          * @returns TRUE on success.
          */
-        select_polygon(operation: ChannelOps | null, segs: number[]): boolean;
+        select_polygon(operation: ChannelOps, segs: number[]): boolean;
         /**
          * Create a rectangular selection over the specified image;
          *
@@ -15431,7 +15412,7 @@ export namespace Gimp {
          * @param height The height of the rectangle.
          * @returns TRUE on success.
          */
-        select_rectangle(operation: ChannelOps | null, x: number, y: number, width: number, height: number): boolean;
+        select_rectangle(operation: ChannelOps, x: number, y: number, width: number, height: number): boolean;
         /**
          * Create a rectangular selection with round corners over the specified
          * image;
@@ -15454,7 +15435,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         select_round_rectangle(
-            operation: ChannelOps | null,
+            operation: ChannelOps,
             x: number,
             y: number,
             width: number,
@@ -15495,7 +15476,7 @@ export namespace Gimp {
          * @param active Component is active.
          * @returns TRUE on success.
          */
-        set_component_active(component: ChannelType | null, active: boolean): boolean;
+        set_component_active(component: ChannelType, active: boolean): boolean;
         /**
          * Sets if the specified image's image component is visible.
          *
@@ -15507,7 +15488,7 @@ export namespace Gimp {
          * @param visible Component is visible.
          * @returns TRUE on success.
          */
-        set_component_visible(component: ChannelType | null, visible: boolean): boolean;
+        set_component_visible(component: ChannelType, visible: boolean): boolean;
         /**
          * Sets the specified XCF image's file.
          *
@@ -15597,7 +15578,7 @@ export namespace Gimp {
          * @param intent A GimpColorRenderingIntent.
          * @returns TRUE on success.
          */
-        set_simulation_intent(intent: ColorRenderingIntent | null): boolean;
+        set_simulation_intent(intent: ColorRenderingIntent): boolean;
         /**
          * This procedure sets the image's simulation color profile.
          *
@@ -16321,7 +16302,7 @@ export namespace Gimp {
          * @param color_tag The new item color tag.
          * @returns TRUE on success.
          */
-        set_color_tag(color_tag: ColorTag | null): boolean;
+        set_color_tag(color_tag: ColorTag): boolean;
         /**
          * Sets the expanded state of the item.
          *
@@ -16472,7 +16453,7 @@ export namespace Gimp {
          * @param axis coord. of flip axis.
          * @returns The flipped item.
          */
-        transform_flip_simple(flip_type: OrientationType | null, auto_center: boolean, axis: number): Item;
+        transform_flip_simple(flip_type: OrientationType, auto_center: boolean, axis: number): Item;
         /**
          * Transform the specified item in 2d.
          *
@@ -16625,7 +16606,7 @@ export namespace Gimp {
          * @returns The rotated item.
          */
         transform_rotate_simple(
-            rotate_type: RotationType | null,
+            rotate_type: RotationType,
             auto_center: boolean,
             center_x: number,
             center_y: number,
@@ -16685,7 +16666,7 @@ export namespace Gimp {
          * @param magnitude The magnitude of the shear.
          * @returns The sheared item.
          */
-        transform_shear(shear_type: OrientationType | null, magnitude: number): Item;
+        transform_shear(shear_type: OrientationType, magnitude: number): Item;
         /**
          * Translate the item by the specified offsets.
          *
@@ -16874,7 +16855,7 @@ export namespace Gimp {
          * @param mask_type The type of mask.
          * @returns The newly created mask.
          */
-        create_mask(mask_type: AddMaskType | null): LayerMask;
+        create_mask(mask_type: AddMaskType): LayerMask;
         /**
          * Remove the alpha channel from the layer if it has one.
          *
@@ -16981,7 +16962,7 @@ export namespace Gimp {
          * @param mode Removal mode.
          * @returns TRUE on success.
          */
-        remove_mask(mode: MaskApplyMode | null): boolean;
+        remove_mask(mode: MaskApplyMode): boolean;
         /**
          * Resize the layer to the specified extents.
          *
@@ -17037,7 +17018,7 @@ export namespace Gimp {
          * @param blend_space The new layer blend space.
          * @returns TRUE on success.
          */
-        set_blend_space(blend_space: LayerColorSpace | null): boolean;
+        set_blend_space(blend_space: LayerColorSpace): boolean;
         /**
          * Set the composite mode of the specified layer.
          *
@@ -17045,7 +17026,7 @@ export namespace Gimp {
          * @param composite_mode The new layer composite mode.
          * @returns TRUE on success.
          */
-        set_composite_mode(composite_mode: LayerCompositeMode | null): boolean;
+        set_composite_mode(composite_mode: LayerCompositeMode): boolean;
         /**
          * Set the composite space of the specified layer.
          *
@@ -17053,7 +17034,7 @@ export namespace Gimp {
          * @param composite_space The new layer composite space.
          * @returns TRUE on success.
          */
-        set_composite_space(composite_space: LayerColorSpace | null): boolean;
+        set_composite_space(composite_space: LayerColorSpace): boolean;
         /**
          * Set the edit mask setting of the specified layer.
          *
@@ -17081,7 +17062,7 @@ export namespace Gimp {
          * @param mode The new layer combination mode.
          * @returns TRUE on success.
          */
-        set_mode(mode: LayerMode | null): boolean;
+        set_mode(mode: LayerMode): boolean;
         /**
          * Set the layer offsets.
          *
@@ -17367,7 +17348,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         color_balance(
-            transfer_mode: TransferMode | null,
+            transfer_mode: TransferMode,
             preserve_lum: boolean,
             cyan_red: number,
             magenta_green: number,
@@ -17399,7 +17380,7 @@ export namespace Gimp {
          * @param values The explicit curve.
          * @returns TRUE on success.
          */
-        curves_explicit(channel: HistogramChannel | null, values: number[]): boolean;
+        curves_explicit(channel: HistogramChannel, values: number[]): boolean;
         /**
          * Modifies the intensity curve(s) for specified drawable.
          *
@@ -17419,7 +17400,7 @@ export namespace Gimp {
          * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
          * @returns TRUE on success.
          */
-        curves_spline(channel: HistogramChannel | null, points: number[]): boolean;
+        curves_spline(channel: HistogramChannel, points: number[]): boolean;
         /**
          * Desaturate the contents of the specified drawable, with the
          * specified formula.
@@ -17430,7 +17411,7 @@ export namespace Gimp {
          * @param desaturate_mode The formula to use to desaturate.
          * @returns TRUE on success.
          */
-        desaturate(desaturate_mode: DesaturateMode | null): boolean;
+        desaturate(desaturate_mode: DesaturateMode): boolean;
         /**
          * Fill the area by a seed fill starting at the specified coordinates.
          *
@@ -17452,7 +17433,7 @@ export namespace Gimp {
          * @param y The y coordinate of this bucket fill's application.
          * @returns TRUE on success.
          */
-        edit_bucket_fill(fill_type: FillType | null, x: number, y: number): boolean;
+        edit_bucket_fill(fill_type: FillType, x: number, y: number): boolean;
         /**
          * Clear selected area of drawable.
          *
@@ -17482,7 +17463,7 @@ export namespace Gimp {
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
-        edit_fill(fill_type: FillType | null): boolean;
+        edit_fill(fill_type: FillType): boolean;
         /**
          * Draw a gradient between the starting and ending coordinates with the
          * specified gradient type.
@@ -17511,7 +17492,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         edit_gradient_fill(
-            gradient_type: GradientType | null,
+            gradient_type: GradientType,
             offset: number,
             supersample: boolean,
             supersample_max_depth: number,
@@ -17600,7 +17581,7 @@ export namespace Gimp {
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
-        fill(fill_type: FillType | null): boolean;
+        fill(fill_type: FillType): boolean;
         /**
          * Extract the foreground of a drawable using a given trimap.
          *
@@ -17611,7 +17592,7 @@ export namespace Gimp {
          * @param mask Tri-Map.
          * @returns TRUE on success.
          */
-        foreground_extract(mode: ForegroundExtractMode | null, mask: Drawable): boolean;
+        foreground_extract(mode: ForegroundExtractMode, mask: Drawable): boolean;
         /**
          * Free the specified drawable's shadow data (if it exists).
          *
@@ -17704,7 +17685,7 @@ export namespace Gimp {
             src_height: number,
             dest_width: number,
             dest_height: number,
-            alpha: PixbufTransparency | null,
+            alpha: PixbufTransparency,
         ): GdkPixbuf.Pixbuf;
         /**
          * Retrieves thumbnail data for the drawable identified by `drawable`.
@@ -17734,7 +17715,7 @@ export namespace Gimp {
          * @param alpha how to handle an alpha channel
          * @returns a new {@link GdkPixbuf.Pixbuf}
          */
-        get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
+        get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
         /**
          * Retrieves thumbnail data for the drawable identified by `drawable`.
          * The thumbnail will be not larger than the requested size.
@@ -17789,7 +17770,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         histogram(
-            channel: HistogramChannel | null,
+            channel: HistogramChannel,
             start_range: number,
             end_range: number,
         ): [boolean, number, number, number, number, number, number];
@@ -17809,7 +17790,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         hue_saturation(
-            hue_range: HueRange | null,
+            hue_range: HueRange,
             hue_offset: number,
             lightness: number,
             saturation: number,
@@ -17876,7 +17857,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         levels(
-            channel: HistogramChannel | null,
+            channel: HistogramChannel,
             low_input: number,
             high_input: number,
             clamp_input: boolean,
@@ -17978,7 +17959,7 @@ export namespace Gimp {
          */
         offset(
             wrap_around: boolean,
-            fill_type: OffsetType | null,
+            fill_type: OffsetType,
             color: Gegl.Color,
             offset_x: number,
             offset_y: number,
@@ -18040,7 +18021,7 @@ export namespace Gimp {
          * @param high_threshold The high threshold value.
          * @returns TRUE on success.
          */
-        threshold(channel: HistogramChannel | null, low_threshold: number, high_threshold: number): boolean;
+        threshold(channel: HistogramChannel, low_threshold: number, high_threshold: number): boolean;
         /**
          * Returns the drawable's type.
          *
@@ -18374,7 +18355,7 @@ export namespace Gimp {
          * Exif.Canon.ColorSpace of `metadata`.
          * @param colorspace The color space.
          */
-        set_colorspace(colorspace: MetadataColorspace | null): void;
+        set_colorspace(colorspace: MetadataColorspace): void;
         /**
          * Sets `Iptc.Application2.DateCreated`, `Iptc.Application2.TimeCreated`,
          * `Exif.Image.DateTime`, `Exif.Image.DateTimeOriginal`,
@@ -18651,7 +18632,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -18692,7 +18673,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19295,7 +19276,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -19336,7 +19317,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20095,7 +20076,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -20136,7 +20117,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21519,7 +21500,7 @@ export namespace Gimp {
          * @param axis axis coordinate about which to flip, in pixels.
          * @returns TRUE on success.
          */
-        stroke_flip(stroke_id: number, flip_type: OrientationType | null, axis: number): boolean;
+        stroke_flip(stroke_id: number, flip_type: OrientationType, axis: number): boolean;
         /**
          * flips the given stroke about an arbitrary axis.
          *
@@ -21598,7 +21579,7 @@ export namespace Gimp {
          * @param closed Whether the stroke is to be closed or not.
          * @returns The stroke ID of the newly created stroke.
          */
-        stroke_new_from_points(type: PathStrokeType | null, controlpoints: number[], closed: boolean): number;
+        stroke_new_from_points(type: PathStrokeType, controlpoints: number[], closed: boolean): number;
         /**
          * reverses the specified stroke.
          *
@@ -21781,7 +21762,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -21822,7 +21803,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22584,7 +22565,7 @@ export namespace Gimp {
          * error message or by forwarding it in its own return values.
          * @param handler Who is responsible for handling procedure call errors.
          */
-        set_pdb_error_handler(handler: PDBErrorHandler | null): void;
+        set_pdb_error_handler(handler: PDBErrorHandler): void;
     }
 
     namespace Procedure {
@@ -22732,7 +22713,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             value: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new boolean auxiliary argument to `procedure`.
@@ -22747,7 +22728,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             value: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new boolean return value to `procedure`.
@@ -22762,7 +22743,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             value: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Brush} argument to `procedure`.
@@ -22781,7 +22762,7 @@ export namespace Gimp {
             none_ok: boolean,
             default_value: Brush | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Brush} auxiliary argument to `procedure`.
@@ -22798,7 +22779,7 @@ export namespace Gimp {
             blurb: string | null,
             default_value: Brush | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Brush} return value to `procedure`.
@@ -22807,12 +22788,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_brush_return_value(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_brush_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link GLib.Bytes} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -22820,7 +22796,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags | null): void;
+        add_bytes_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link GLib.Bytes} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -22828,12 +22804,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_aux_argument(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_bytes_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link GLib.Bytes} return value to `procedure`.
          * @param name the name of the argument to be created.
@@ -22841,12 +22812,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_return_value(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_bytes_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link Gimp.Channel} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -22860,7 +22826,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Channel} auxiliary argument to `procedure`.
@@ -22875,7 +22841,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Channel} return value to `procedure`.
@@ -22890,7 +22856,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Choice} argument to `procedure`.
@@ -22907,7 +22873,7 @@ export namespace Gimp {
             blurb: string | null,
             choice: Choice,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Choice} auxiliary argument to `procedure`.
@@ -22924,7 +22890,7 @@ export namespace Gimp {
             blurb: string | null,
             choice: Choice,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Choice} return value to `procedure`.
@@ -22941,7 +22907,7 @@ export namespace Gimp {
             blurb: string | null,
             choice: Choice,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gegl.Color} argument to `procedure`.
@@ -22958,7 +22924,7 @@ export namespace Gimp {
             blurb: string | null,
             has_alpha: boolean,
             value: Gegl.Color,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gegl.Color} auxiliary argument to `procedure`.
@@ -22975,7 +22941,7 @@ export namespace Gimp {
             blurb: string | null,
             has_alpha: boolean,
             value: Gegl.Color,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gegl.Color} argument to `procedure` from a string representation.
@@ -22992,7 +22958,7 @@ export namespace Gimp {
             blurb: string | null,
             has_alpha: boolean,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gegl.Color} auxiliary argument to `procedure` from a string representation.
@@ -23009,7 +22975,7 @@ export namespace Gimp {
             blurb: string | null,
             has_alpha: boolean,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gegl.Color} return value to `procedure` from a string representation.
@@ -23026,7 +22992,7 @@ export namespace Gimp {
             blurb: string | null,
             has_alpha: boolean,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gegl.Color} return value to `procedure`.
@@ -23043,7 +23009,7 @@ export namespace Gimp {
             blurb: string | null,
             has_alpha: boolean,
             value: Gegl.Color,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new object array argument to `procedure`.
@@ -23058,7 +23024,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             object_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new object array auxiliary argument to `procedure`.
@@ -23073,7 +23039,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             object_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new object array return value to `procedure`.
@@ -23088,7 +23054,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             object_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Display} argument to `procedure`.
@@ -23103,7 +23069,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Display} auxiliary argument to `procedure`.
@@ -23118,7 +23084,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Display} return value to `procedure`.
@@ -23133,7 +23099,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new floating-point in double precision argument to `procedure`.
@@ -23152,7 +23118,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new double array argument to `procedure`.
@@ -23161,12 +23127,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_double_array_argument(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_double_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new double array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -23178,7 +23139,7 @@ export namespace Gimp {
             name: string,
             nick: string,
             blurb: string | null,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new double array return value to `procedure`.
@@ -23191,7 +23152,7 @@ export namespace Gimp {
             name: string,
             nick: string,
             blurb: string | null,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new floating-point in double precision auxiliary argument to `procedure`.
@@ -23210,7 +23171,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new floating-point in double precision return value to `procedure`.
@@ -23229,7 +23190,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Drawable} argument to `procedure`.
@@ -23244,7 +23205,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Drawable} auxiliary argument to `procedure`.
@@ -23259,7 +23220,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Drawable} return value to `procedure`.
@@ -23274,7 +23235,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new enum argument to `procedure`.
@@ -23291,7 +23252,7 @@ export namespace Gimp {
             blurb: string | null,
             enum_type: GObject.GType,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new enum auxiliary argument to `procedure`.
@@ -23308,7 +23269,7 @@ export namespace Gimp {
             blurb: string | null,
             enum_type: GObject.GType,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new enum return value to `procedure`.
@@ -23325,7 +23286,7 @@ export namespace Gimp {
             blurb: string | null,
             enum_type: GObject.GType,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gio.File} argument to `procedure`.
@@ -23341,10 +23302,10 @@ export namespace Gimp {
             name: string,
             nick: string,
             blurb: string | null,
-            action: FileChooserAction | null,
+            action: FileChooserAction,
             none_ok: boolean,
             default_file: Gio.File | null,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gio.File} auxiliary argument to `procedure`.
@@ -23360,10 +23321,10 @@ export namespace Gimp {
             name: string,
             nick: string,
             blurb: string | null,
-            action: FileChooserAction | null,
+            action: FileChooserAction,
             none_ok: boolean,
             default_file: Gio.File | null,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gio.File} return value to `procedure`.
@@ -23372,7 +23333,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_file_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags | null): void;
+        add_file_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link Gimp.Font} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -23390,7 +23351,7 @@ export namespace Gimp {
             none_ok: boolean,
             default_value: Font | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Font} auxiliary argument to `procedure`.
@@ -23407,7 +23368,7 @@ export namespace Gimp {
             blurb: string | null,
             default_value: Font | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Font} return value to `procedure`.
@@ -23416,7 +23377,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_font_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags | null): void;
+        add_font_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link Gimp.Gradient} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -23434,7 +23395,7 @@ export namespace Gimp {
             none_ok: boolean,
             default_value: Gradient | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Gradient} auxiliary argument to `procedure`.
@@ -23451,7 +23412,7 @@ export namespace Gimp {
             blurb: string | null,
             default_value: Gradient | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Gradient} return value to `procedure`.
@@ -23460,12 +23421,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_gradient_return_value(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_gradient_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link GroupLayer} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -23479,7 +23435,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link GroupLayer} auxiliary argument to `procedure`.
@@ -23494,7 +23450,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link GroupLayer} return value to `procedure`.
@@ -23509,7 +23465,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Image} argument to `procedure`.
@@ -23524,7 +23480,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Image} auxiliary argument to `procedure`.
@@ -23539,7 +23495,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Image} return value to `procedure`.
@@ -23554,7 +23510,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new integer array argument to `procedure`.
@@ -23563,12 +23519,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_argument(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_int32_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new integer array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -23576,12 +23527,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_aux_argument(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_int32_array_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new integer array return value to `procedure`.
          * @param name the name of the argument to be created.
@@ -23589,12 +23535,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_return_value(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_int32_array_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new integer argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -23612,7 +23553,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new integer auxiliary argument to `procedure`.
@@ -23631,7 +23572,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new integer return value to `procedure`.
@@ -23650,7 +23591,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Item} argument to `procedure`.
@@ -23665,7 +23606,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Item} auxiliary argument to `procedure`.
@@ -23680,7 +23621,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Item} return value to `procedure`.
@@ -23695,7 +23636,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Layer} argument to `procedure`.
@@ -23710,7 +23651,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Layer} auxiliary argument to `procedure`.
@@ -23725,7 +23666,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.LayerMask} argument to `procedure`.
@@ -23740,7 +23681,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.LayerMask} auxiliary argument to `procedure`.
@@ -23755,7 +23696,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.LayerMask} return value to `procedure`.
@@ -23770,7 +23711,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Layer} return value to `procedure`.
@@ -23785,7 +23726,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.LinkLayer} argument to `procedure`.
@@ -23800,7 +23741,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.LinkLayer} auxiliary argument to `procedure`.
@@ -23815,7 +23756,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.LinkLayer} return value to `procedure`.
@@ -23830,7 +23771,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Adds a menu path to the procedure. Only procedures which have a menu
@@ -23882,7 +23823,7 @@ export namespace Gimp {
             none_ok: boolean,
             default_value: Palette | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Palette} auxiliary argument to `procedure`.
@@ -23899,7 +23840,7 @@ export namespace Gimp {
             blurb: string | null,
             default_value: Palette | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Palette} return value to `procedure`.
@@ -23908,12 +23849,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_palette_return_value(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_palette_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new param argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -23927,7 +23863,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             param_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new param auxiliary argument to `procedure`.
@@ -23942,7 +23878,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             param_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new param return value to `procedure`.
@@ -23957,7 +23893,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             param_type: GObject.GType,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Parasite} argument to `procedure`.
@@ -23966,7 +23902,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags | null): void;
+        add_parasite_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link Gimp.Parasite} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -23974,12 +23910,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_aux_argument(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_parasite_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link Gimp.Parasite} return value to `procedure`.
          * @param name the name of the argument to be created.
@@ -23987,12 +23918,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_return_value(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_parasite_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link Gimp.Path} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -24006,7 +23932,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Path} auxiliary argument to `procedure`.
@@ -24021,7 +23947,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Path} return value to `procedure`.
@@ -24036,7 +23962,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Pattern} argument to `procedure`.
@@ -24055,7 +23981,7 @@ export namespace Gimp {
             none_ok: boolean,
             default_value: Pattern | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Pattern} auxiliary argument to `procedure`.
@@ -24072,7 +23998,7 @@ export namespace Gimp {
             blurb: string | null,
             default_value: Pattern | null,
             default_to_context: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Pattern} return value to `procedure`.
@@ -24081,12 +24007,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_pattern_return_value(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_pattern_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link Gimp.Resource} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -24102,7 +24023,7 @@ export namespace Gimp {
             blurb: string | null,
             none_ok: boolean,
             default_value: Resource | null,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Resource} auxiliary argument to `procedure`.
@@ -24117,7 +24038,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             default_value: Resource | null,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Resource} return value to `procedure`.
@@ -24126,12 +24047,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_resource_return_value(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_resource_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new {@link Gimp.Selection} argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -24145,7 +24061,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Selection} auxiliary argument to `procedure`.
@@ -24160,7 +24076,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Selection} return value to `procedure`.
@@ -24175,7 +24091,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new string argument to `procedure`.
@@ -24190,7 +24106,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new string array argument to `procedure`.
@@ -24199,12 +24115,7 @@ export namespace Gimp {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_string_array_argument(
-            name: string,
-            nick: string,
-            blurb: string | null,
-            flags: GObject.ParamFlags | null,
-        ): void;
+        add_string_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
         /**
          * Add a new string array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
@@ -24216,7 +24127,7 @@ export namespace Gimp {
             name: string,
             nick: string,
             blurb: string | null,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new string array return value to `procedure`.
@@ -24229,7 +24140,7 @@ export namespace Gimp {
             name: string,
             nick: string,
             blurb: string | null,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new string auxiliary argument to `procedure`.
@@ -24244,7 +24155,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new string return value to `procedure`.
@@ -24259,7 +24170,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             value: string,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.TextLayer} argument to `procedure`.
@@ -24274,7 +24185,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.TextLayer} auxiliary argument to `procedure`.
@@ -24289,7 +24200,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.TextLayer} return value to `procedure`.
@@ -24304,7 +24215,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new unsigned integer argument to `procedure`.
@@ -24323,7 +24234,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new unsigned integer auxiliary argument to `procedure`.
@@ -24342,7 +24253,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new unsigned integer return value to `procedure`.
@@ -24361,7 +24272,7 @@ export namespace Gimp {
             min: number,
             max: number,
             value: number,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Unit} argument to `procedure`.
@@ -24380,7 +24291,7 @@ export namespace Gimp {
             show_pixels: boolean,
             show_percent: boolean,
             value: Unit,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Unit} auxiliary argument to `procedure`.
@@ -24399,7 +24310,7 @@ export namespace Gimp {
             show_pixels: boolean,
             show_percent: boolean,
             value: Unit,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.Unit} return value to `procedure`.
@@ -24418,7 +24329,7 @@ export namespace Gimp {
             show_pixels: boolean,
             show_percent: boolean,
             value: Unit,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.VectorLayer} argument to `procedure`.
@@ -24433,7 +24344,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.VectorLayer} auxiliary argument to `procedure`.
@@ -24448,7 +24359,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Add a new {@link Gimp.VectorLayer} return value to `procedure`.
@@ -24463,7 +24374,7 @@ export namespace Gimp {
             nick: string,
             blurb: string | null,
             none_ok: boolean,
-            flags: GObject.ParamFlags | null,
+            flags: GObject.ParamFlags,
         ): void;
         /**
          * Create a {@link Gimp.Config} with properties that match `procedure`'s arguments, to be
@@ -24598,7 +24509,7 @@ export namespace Gimp {
          * @param error an optional {@link GLib.Error}. This parameter should be set if             `status` is either #GIMP_PDB_EXECUTION_ERROR or             #GIMP_PDB_CALLING_ERROR.
          * @returns the expected {@link Gimp.ValueArray} as could be returned by a {@link RunFunc}.
          */
-        new_return_values(status: PDBStatusType | null, error?: GLib.Error | null): ValueArray;
+        new_return_values(status: PDBStatusType, error?: GLib.Error | null): ValueArray;
         /**
          * Notify the main GIMP application that the persistent procedure has
          * been properly initialized and is ready to run.
@@ -24638,7 +24549,7 @@ export namespace Gimp {
          * @param arg_name the name of one of `procedure`'s arguments or auxiliary arguments.
          * @param sync how to sync the argument or auxiliary argument.
          */
-        set_argument_sync(arg_name: string, sync: ArgumentSync | null): void;
+        set_argument_sync(arg_name: string, sync: ArgumentSync): void;
         /**
          * Sets various attribution strings on `procedure`.
          * @param authors The `procedure`'s author(s).
@@ -25153,7 +25064,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -25194,7 +25105,7 @@ export namespace Gimp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26056,7 +25967,7 @@ export namespace Gimp {
          * @param direction The base direction of the text.
          * @returns TRUE on success.
          */
-        set_base_direction(direction: TextDirection | null): boolean;
+        set_base_direction(direction: TextDirection): boolean;
         /**
          * Set the color of the text in the text layer.
          *
@@ -26092,7 +26003,7 @@ export namespace Gimp {
          * @param style The new hint style.
          * @returns TRUE on success.
          */
-        set_hint_style(style: TextHintStyle | null): boolean;
+        set_hint_style(style: TextHintStyle): boolean;
         /**
          * Set the indentation of the first line in a text layer.
          *
@@ -26110,7 +26021,7 @@ export namespace Gimp {
          * @param justify The justification for your text.
          * @returns TRUE on success.
          */
-        set_justification(justify: TextJustification | null): boolean;
+        set_justification(justify: TextJustification): boolean;
         /**
          * Enable/disable kerning in a text layer.
          *
@@ -26167,7 +26078,7 @@ export namespace Gimp {
          * @param outline The type of outline in the text layer.
          * @returns TRUE on success.
          */
-        set_outline(outline: TextOutline | null): boolean;
+        set_outline(outline: TextOutline): boolean;
         /**
          * Set the outline antialias setting from a text layer.
          *
@@ -26185,7 +26096,7 @@ export namespace Gimp {
          * @param outline_cap_style The cap style of the outline in the text layer.
          * @returns TRUE on success.
          */
-        set_outline_cap_style(outline_cap_style: CapStyle | null): boolean;
+        set_outline_cap_style(outline_cap_style: CapStyle): boolean;
         /**
          * Set the color of the text outline in the text layer.
          *
@@ -26211,7 +26122,7 @@ export namespace Gimp {
          * @param outline_direction The direction of the outline in the text layer.
          * @returns TRUE on success.
          */
-        set_outline_direction(outline_direction: TextOutlineDirection | null): boolean;
+        set_outline_direction(outline_direction: TextOutlineDirection): boolean;
         /**
          * Set the outline join style for the text layer.
          *
@@ -26220,7 +26131,7 @@ export namespace Gimp {
          * @param outline_join_style The join style of the outline in the text layer.
          * @returns TRUE on success.
          */
-        set_outline_join_style(outline_join_style: JoinStyle | null): boolean;
+        set_outline_join_style(outline_join_style: JoinStyle): boolean;
         /**
          * Set the outline miter limit from a text layer.
          *
@@ -26335,7 +26246,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         color_balance(
-            transfer_mode: TransferMode | null,
+            transfer_mode: TransferMode,
             preserve_lum: boolean,
             cyan_red: number,
             magenta_green: number,
@@ -26367,7 +26278,7 @@ export namespace Gimp {
          * @param values The explicit curve.
          * @returns TRUE on success.
          */
-        curves_explicit(channel: HistogramChannel | null, values: number[]): boolean;
+        curves_explicit(channel: HistogramChannel, values: number[]): boolean;
         /**
          * Modifies the intensity curve(s) for specified drawable.
          *
@@ -26387,7 +26298,7 @@ export namespace Gimp {
          * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
          * @returns TRUE on success.
          */
-        curves_spline(channel: HistogramChannel | null, points: number[]): boolean;
+        curves_spline(channel: HistogramChannel, points: number[]): boolean;
         /**
          * Desaturate the contents of the specified drawable, with the
          * specified formula.
@@ -26398,7 +26309,7 @@ export namespace Gimp {
          * @param desaturate_mode The formula to use to desaturate.
          * @returns TRUE on success.
          */
-        desaturate(desaturate_mode: DesaturateMode | null): boolean;
+        desaturate(desaturate_mode: DesaturateMode): boolean;
         /**
          * Fill the area by a seed fill starting at the specified coordinates.
          *
@@ -26420,7 +26331,7 @@ export namespace Gimp {
          * @param y The y coordinate of this bucket fill's application.
          * @returns TRUE on success.
          */
-        edit_bucket_fill(fill_type: FillType | null, x: number, y: number): boolean;
+        edit_bucket_fill(fill_type: FillType, x: number, y: number): boolean;
         /**
          * Clear selected area of drawable.
          *
@@ -26450,7 +26361,7 @@ export namespace Gimp {
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
-        edit_fill(fill_type: FillType | null): boolean;
+        edit_fill(fill_type: FillType): boolean;
         /**
          * Draw a gradient between the starting and ending coordinates with the
          * specified gradient type.
@@ -26479,7 +26390,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         edit_gradient_fill(
-            gradient_type: GradientType | null,
+            gradient_type: GradientType,
             offset: number,
             supersample: boolean,
             supersample_max_depth: number,
@@ -26568,7 +26479,7 @@ export namespace Gimp {
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
-        fill(fill_type: FillType | null): boolean;
+        fill(fill_type: FillType): boolean;
         /**
          * Extract the foreground of a drawable using a given trimap.
          *
@@ -26579,7 +26490,7 @@ export namespace Gimp {
          * @param mask Tri-Map.
          * @returns TRUE on success.
          */
-        foreground_extract(mode: ForegroundExtractMode | null, mask: Drawable): boolean;
+        foreground_extract(mode: ForegroundExtractMode, mask: Drawable): boolean;
         /**
          * Free the specified drawable's shadow data (if it exists).
          *
@@ -26672,7 +26583,7 @@ export namespace Gimp {
             src_height: number,
             dest_width: number,
             dest_height: number,
-            alpha: PixbufTransparency | null,
+            alpha: PixbufTransparency,
         ): GdkPixbuf.Pixbuf;
         /**
          * Retrieves thumbnail data for the drawable identified by `drawable`.
@@ -26702,7 +26613,7 @@ export namespace Gimp {
          * @param alpha how to handle an alpha channel
          * @returns a new {@link GdkPixbuf.Pixbuf}
          */
-        get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
+        get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
         /**
          * Retrieves thumbnail data for the drawable identified by `drawable`.
          * The thumbnail will be not larger than the requested size.
@@ -26757,7 +26668,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         histogram(
-            channel: HistogramChannel | null,
+            channel: HistogramChannel,
             start_range: number,
             end_range: number,
         ): [boolean, number, number, number, number, number, number];
@@ -26777,7 +26688,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         hue_saturation(
-            hue_range: HueRange | null,
+            hue_range: HueRange,
             hue_offset: number,
             lightness: number,
             saturation: number,
@@ -26844,7 +26755,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         levels(
-            channel: HistogramChannel | null,
+            channel: HistogramChannel,
             low_input: number,
             high_input: number,
             clamp_input: boolean,
@@ -26946,7 +26857,7 @@ export namespace Gimp {
          */
         offset(
             wrap_around: boolean,
-            fill_type: OffsetType | null,
+            fill_type: OffsetType,
             color: Gegl.Color,
             offset_x: number,
             offset_y: number,
@@ -27008,7 +26919,7 @@ export namespace Gimp {
          * @param high_threshold The high threshold value.
          * @returns TRUE on success.
          */
-        threshold(channel: HistogramChannel | null, low_threshold: number, high_threshold: number): boolean;
+        threshold(channel: HistogramChannel, low_threshold: number, high_threshold: number): boolean;
         /**
          * Returns the drawable's type.
          *
@@ -27603,7 +27514,7 @@ export namespace Gimp {
          * @param cap_style The stroke cap style.
          * @returns TRUE on success.
          */
-        set_stroke_cap_style(cap_style: CapStyle | null): boolean;
+        set_stroke_cap_style(cap_style: CapStyle): boolean;
         /**
          * Set the color of the stroke in the vector layer.
          *
@@ -27635,7 +27546,7 @@ export namespace Gimp {
          * @param join_style The stroke join style.
          * @returns TRUE on success.
          */
-        set_stroke_join_style(join_style: JoinStyle | null): boolean;
+        set_stroke_join_style(join_style: JoinStyle): boolean;
         /**
          * Set the stroke miter limit of a vector layer.
          *
@@ -27747,7 +27658,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         color_balance(
-            transfer_mode: TransferMode | null,
+            transfer_mode: TransferMode,
             preserve_lum: boolean,
             cyan_red: number,
             magenta_green: number,
@@ -27779,7 +27690,7 @@ export namespace Gimp {
          * @param values The explicit curve.
          * @returns TRUE on success.
          */
-        curves_explicit(channel: HistogramChannel | null, values: number[]): boolean;
+        curves_explicit(channel: HistogramChannel, values: number[]): boolean;
         /**
          * Modifies the intensity curve(s) for specified drawable.
          *
@@ -27799,7 +27710,7 @@ export namespace Gimp {
          * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
          * @returns TRUE on success.
          */
-        curves_spline(channel: HistogramChannel | null, points: number[]): boolean;
+        curves_spline(channel: HistogramChannel, points: number[]): boolean;
         /**
          * Desaturate the contents of the specified drawable, with the
          * specified formula.
@@ -27810,7 +27721,7 @@ export namespace Gimp {
          * @param desaturate_mode The formula to use to desaturate.
          * @returns TRUE on success.
          */
-        desaturate(desaturate_mode: DesaturateMode | null): boolean;
+        desaturate(desaturate_mode: DesaturateMode): boolean;
         /**
          * Fill the area by a seed fill starting at the specified coordinates.
          *
@@ -27832,7 +27743,7 @@ export namespace Gimp {
          * @param y The y coordinate of this bucket fill's application.
          * @returns TRUE on success.
          */
-        edit_bucket_fill(fill_type: FillType | null, x: number, y: number): boolean;
+        edit_bucket_fill(fill_type: FillType, x: number, y: number): boolean;
         /**
          * Clear selected area of drawable.
          *
@@ -27862,7 +27773,7 @@ export namespace Gimp {
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
-        edit_fill(fill_type: FillType | null): boolean;
+        edit_fill(fill_type: FillType): boolean;
         /**
          * Draw a gradient between the starting and ending coordinates with the
          * specified gradient type.
@@ -27891,7 +27802,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         edit_gradient_fill(
-            gradient_type: GradientType | null,
+            gradient_type: GradientType,
             offset: number,
             supersample: boolean,
             supersample_max_depth: number,
@@ -27980,7 +27891,7 @@ export namespace Gimp {
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
-        fill(fill_type: FillType | null): boolean;
+        fill(fill_type: FillType): boolean;
         /**
          * Extract the foreground of a drawable using a given trimap.
          *
@@ -27991,7 +27902,7 @@ export namespace Gimp {
          * @param mask Tri-Map.
          * @returns TRUE on success.
          */
-        foreground_extract(mode: ForegroundExtractMode | null, mask: Drawable): boolean;
+        foreground_extract(mode: ForegroundExtractMode, mask: Drawable): boolean;
         /**
          * Free the specified drawable's shadow data (if it exists).
          *
@@ -28084,7 +27995,7 @@ export namespace Gimp {
             src_height: number,
             dest_width: number,
             dest_height: number,
-            alpha: PixbufTransparency | null,
+            alpha: PixbufTransparency,
         ): GdkPixbuf.Pixbuf;
         /**
          * Retrieves thumbnail data for the drawable identified by `drawable`.
@@ -28114,7 +28025,7 @@ export namespace Gimp {
          * @param alpha how to handle an alpha channel
          * @returns a new {@link GdkPixbuf.Pixbuf}
          */
-        get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
+        get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
         /**
          * Retrieves thumbnail data for the drawable identified by `drawable`.
          * The thumbnail will be not larger than the requested size.
@@ -28169,7 +28080,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         histogram(
-            channel: HistogramChannel | null,
+            channel: HistogramChannel,
             start_range: number,
             end_range: number,
         ): [boolean, number, number, number, number, number, number];
@@ -28189,7 +28100,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         hue_saturation(
-            hue_range: HueRange | null,
+            hue_range: HueRange,
             hue_offset: number,
             lightness: number,
             saturation: number,
@@ -28256,7 +28167,7 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         levels(
-            channel: HistogramChannel | null,
+            channel: HistogramChannel,
             low_input: number,
             high_input: number,
             clamp_input: boolean,
@@ -28358,7 +28269,7 @@ export namespace Gimp {
          */
         offset(
             wrap_around: boolean,
-            fill_type: OffsetType | null,
+            fill_type: OffsetType,
             color: Gegl.Color,
             offset_x: number,
             offset_y: number,
@@ -28420,7 +28331,7 @@ export namespace Gimp {
          * @param high_threshold The high threshold value.
          * @returns TRUE on success.
          */
-        threshold(channel: HistogramChannel | null, low_threshold: number, high_threshold: number): boolean;
+        threshold(channel: HistogramChannel, low_threshold: number, high_threshold: number): boolean;
         /**
          * Returns the drawable's type.
          *
@@ -28623,7 +28534,7 @@ export namespace Gimp {
          * @param flags a mask of GParamFlags
          * @returns `true` if `dest` was modified, `false` otherwise
          */
-        copy(dest: Config, flags: GObject.ParamFlags | null): boolean;
+        copy(dest: Config, flags: GObject.ParamFlags): boolean;
         /**
          * Deserialize the {@link Gimp.Config} object.
          * @param scanner the {@link GLib.Scanner} to use.
@@ -29575,7 +29486,7 @@ export namespace Gimp {
          * @param token the {@link GLib.TokenType} expected as next token.
          * @returns `true` if the next token is `token`, `false` otherwise.
          */
-        parse_token(token: GLib.TokenType | null): boolean;
+        parse_token(token: GLib.TokenType): boolean;
         /**
          * Adds a reference to a {@link Gimp.Scanner}.
          * @returns the same `scanner`.

@@ -125,7 +125,7 @@ export namespace Entangle {
      */
     function pixbuf_open_image(
         image: Image,
-        slot: PixbufImageSlot | null,
+        slot: PixbufImageSlot,
         applyOrientation: boolean,
         metadata?: GExiv2.Metadata | null,
     ): GdkPixbuf.Pixbuf;
@@ -296,7 +296,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -337,7 +337,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1338,7 +1338,7 @@ export namespace Entangle {
          * @param step how much to change focus by
          * @returns TRUE if autofocus was achieved, FALSE on error
          */
-        manualfocus(step: CameraManualFocusStep | null): boolean;
+        manualfocus(step: CameraManualFocusStep): boolean;
         /**
          * Trigger the focus mechanism on the camera, to move
          * by `step`.
@@ -1352,7 +1352,7 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
         manualfocus_async(
-            step: CameraManualFocusStep | null,
+            step: CameraManualFocusStep,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1369,7 +1369,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         manualfocus_async(
-            step: CameraManualFocusStep | null,
+            step: CameraManualFocusStep,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1387,7 +1387,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         manualfocus_async(
-            step: CameraManualFocusStep | null,
+            step: CameraManualFocusStep,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1677,7 +1677,7 @@ export namespace Entangle {
          * @param target the capture target
          * @returns TRUE if the capture target was changed, FALSE on error
          */
-        set_capture_target(target: CameraCaptureTarget | null): boolean;
+        set_capture_target(target: CameraCaptureTarget): boolean;
         /**
          * Set the destination for storing captured images
          * to `target`.
@@ -1691,7 +1691,7 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
         set_capture_target_async(
-            target: CameraCaptureTarget | null,
+            target: CameraCaptureTarget,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -1708,7 +1708,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         set_capture_target_async(
-            target: CameraCaptureTarget | null,
+            target: CameraCaptureTarget,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -1726,7 +1726,7 @@ export namespace Entangle {
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
         set_capture_target_async(
-            target: CameraCaptureTarget | null,
+            target: CameraCaptureTarget,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -3141,7 +3141,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3182,7 +3182,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3747,7 +3747,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3788,7 +3788,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4436,7 +4436,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4477,7 +4477,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5639,7 +5639,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5680,7 +5680,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6568,7 +6568,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6609,7 +6609,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7270,7 +7270,7 @@ export namespace Entangle {
         /**
          * @param mode
          */
-        set_grid_display(mode: ImageDisplayGrid | null): void;
+        set_grid_display(mode: ImageDisplayGrid): void;
         /**
          * Set the image to be displayed by the widget. This is a
          * shortcut for setting an image list of length 1.
@@ -7348,7 +7348,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7389,7 +7389,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7921,7 +7921,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7962,7 +7962,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8738,7 +8738,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8779,7 +8779,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9286,7 +9286,7 @@ export namespace Entangle {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -9331,7 +9331,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9372,7 +9372,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10286,7 +10286,7 @@ export namespace Entangle {
          * Set the rendering intent for displaying images
          * @param intent the new rendering intent
          */
-        cms_set_rendering_intent(intent: ColourProfileIntent | null): void;
+        cms_set_rendering_intent(intent: ColourProfileIntent): void;
         /**
          * Set the colour profile that represents the RGB working space
          * @param prof the new rgb profile
@@ -10664,7 +10664,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10705,7 +10705,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11336,7 +11336,7 @@ export namespace Entangle {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -11381,7 +11381,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11422,7 +11422,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12267,7 +12267,7 @@ export namespace Entangle {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -12279,7 +12279,7 @@ export namespace Entangle {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -12333,7 +12333,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12374,7 +12374,7 @@ export namespace Entangle {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

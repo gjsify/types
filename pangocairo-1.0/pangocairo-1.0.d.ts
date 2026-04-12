@@ -182,7 +182,7 @@ export namespace PangoCairo {
      * @returns the newly allocated   {@link Pango.FontMap} of suitable type which should be freed with   `g_object_unref()`, or `null` if the requested cairo font backend   is not supported / compiled in.
      * @since 1.18
      */
-    function font_map_new_for_font_type(fonttype: cairo.FontType | null): Pango.FontMap | null;
+    function font_map_new_for_font_type(fonttype: cairo.FontType): Pango.FontMap | null;
     /**
      * Adds the glyphs in `glyphs` to the current path in the specified
      * cairo context.

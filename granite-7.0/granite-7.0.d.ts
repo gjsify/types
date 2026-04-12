@@ -733,7 +733,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_color_scheme(value: SettingsColorScheme | null): void;
+        set_color_scheme(value: SettingsColorScheme): void;
         get_display(): Gdk.Display;
     }
 
@@ -882,7 +882,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_status_type(value: SettingsPageStatusType | null): void;
+        set_status_type(value: SettingsPageStatusType): void;
         get_display_widget(): Gtk.Widget | null;
         get_header(): string | null;
         get_status(): string;
@@ -1546,7 +1546,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_child_spacing(value: BoxSpacing | null): void;
+        set_child_spacing(value: BoxSpacing): void;
     }
 
     namespace DatePicker {
@@ -1747,7 +1747,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1788,7 +1788,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2442,12 +2442,12 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_size(value: HeaderLabelSize | null): void;
+        set_size(value: HeaderLabelSize): void;
         get_ellipsize(): Pango.EllipsizeMode;
         /**
          * @param value
          */
-        set_ellipsize(value: Pango.EllipsizeMode | null): void;
+        set_ellipsize(value: Pango.EllipsizeMode): void;
         get_secondary_text(): string | null;
         /**
          * @param value
@@ -4036,7 +4036,7 @@ export namespace Granite {
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
-        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
         /**
          * Retrieves the accessible identifier for the accessible object.
          *
@@ -4093,22 +4093,22 @@ export namespace Granite {
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
-        get_platform_state(state: Gtk.AccessiblePlatformState | null): boolean;
+        get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
-        reset_property(property: Gtk.AccessibleProperty | null): void;
+        reset_property(property: Gtk.AccessibleProperty): void;
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
-        reset_relation(relation: Gtk.AccessibleRelation | null): void;
+        reset_relation(relation: Gtk.AccessibleRelation): void;
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
-        reset_state(state: Gtk.AccessibleState | null): void;
+        reset_state(state: Gtk.AccessibleState): void;
         /**
          * Sets the parent and sibling of an accessible object.
          *
@@ -4139,7 +4139,7 @@ export namespace Granite {
          * states automatically.
          * @param state the platform state to update
          */
-        update_platform_state(state: Gtk.AccessiblePlatformState | null): void;
+        update_platform_state(state: Gtk.AccessiblePlatformState): void;
         /**
          * Updates an array of accessible properties.
          *
@@ -4150,7 +4150,7 @@ export namespace Granite {
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
-        update_property(properties: Gtk.AccessibleProperty[] | null, values: (GObject.Value | any)[]): void;
+        update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible relations.
          *
@@ -4161,7 +4161,7 @@ export namespace Granite {
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
-        update_relation(relations: Gtk.AccessibleRelation[] | null, values: (GObject.Value | any)[]): void;
+        update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
         /**
          * Updates an array of accessible states.
          *
@@ -4172,7 +4172,7 @@ export namespace Granite {
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
-        update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
+        update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
         /**
          * Retrieves the accessible identifier for the accessible object.
          *
@@ -4269,7 +4269,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4310,7 +4310,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

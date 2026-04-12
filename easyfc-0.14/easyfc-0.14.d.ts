@@ -662,7 +662,7 @@ export namespace Easyfc {
          * Set a hintstyle for `font`.
          * @param hintstyle a {@link Easyfc.FontHintstyle}.
          */
-        set_hintstyle(hintstyle: FontHintstyle | null): void;
+        set_hintstyle(hintstyle: FontHintstyle): void;
         /**
          * Set `pattern` as the font pattern. `font` keeps a duplicate instance of
          * `pattern`.
@@ -681,7 +681,7 @@ export namespace Easyfc {
          * @param mode a {@link Easyfc.FontSubpixelRender}.
          * @returns `true` if the sub-pixel rendering is enabled. otherwise `false`.
          */
-        set_subpixel_rendering(mode: FontSubpixelRender | null): boolean;
+        set_subpixel_rendering(mode: FontSubpixelRender): boolean;
         /**
          * Decreases the reference count of `font`. when its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).

@@ -928,7 +928,7 @@ export namespace Cogl {
     /**
      * @param feature
      */
-    function clutter_winsys_has_feature_CLUTTER(feature: WinsysFeature | null): boolean;
+    function clutter_winsys_has_feature_CLUTTER(feature: WinsysFeature): boolean;
     /**
      * Compares two {@link Cogl.Color}<!-- -->s and checks if they are the same.
      *
@@ -963,7 +963,7 @@ export namespace Cogl {
      * @returns a new shader handle.
      * @deprecated since 1.16: Use `CoglSnippet` api
      */
-    function create_shader(shader_type: ShaderType | null): Handle;
+    function create_shader(shader_type: ShaderType): Handle;
     /**
      * Prints the contents of a {@link Cogl.Matrix} to stdout.
      * @param matrix A {@link Cogl.Matrix}
@@ -1009,7 +1009,7 @@ export namespace Cogl {
      * @returns `true` if the features are available, `false` otherwise.
      * @deprecated since 1.10: Use `cogl_has_feature()` instead
      */
-    function features_available(features: FeatureFlags | null): boolean;
+    function features_available(features: FeatureFlags): boolean;
     /**
      * This function should only need to be called in exceptional circumstances.
      *
@@ -1672,7 +1672,7 @@ export namespace Cogl {
      * @param z_far Position along Z axis where full fogging should be applied
      * @deprecated since 1.16: Use `CoglSnippet` shader api for fog
      */
-    function set_fog(fog_color: Color, mode: FogMode | null, density: number, z_near: number, z_far: number): void;
+    function set_fog(fog_color: Color, mode: FogMode, density: number, z_near: number, z_far: number): void;
     /**
      * Loads `matrix` as the new model-view matrix.
      * @param matrix the new model-view matrix
@@ -1840,11 +1840,7 @@ export namespace Cogl {
      * @since 1.0
      * @deprecated since 1.18: Use specific constructors such as                   `cogl_texture_2d_new_from_bitmap()`
      */
-    function texture_new_from_bitmap(
-        bitmap: Bitmap,
-        flags: TextureFlags | null,
-        internal_format: PixelFormat | null,
-    ): Texture;
+    function texture_new_from_bitmap(bitmap: Bitmap, flags: TextureFlags, internal_format: PixelFormat): Texture;
     /**
      * Creates a new {@link Cogl.Texture} based on data residing in memory.
      * @param width width of texture in pixels
@@ -1861,9 +1857,9 @@ export namespace Cogl {
     function texture_new_from_data(
         width: number,
         height: number,
-        flags: TextureFlags | null,
-        format: PixelFormat | null,
-        internal_format: PixelFormat | null,
+        flags: TextureFlags,
+        format: PixelFormat,
+        internal_format: PixelFormat,
         rowstride: number,
         data: number,
     ): Texture;
@@ -1876,11 +1872,7 @@ export namespace Cogl {
      * @since 0.8
      * @deprecated since 1.18: Use specific constructors such as                   `cogl_texture_2d_new_from_file()`
      */
-    function texture_new_from_file(
-        filename: string,
-        flags: TextureFlags | null,
-        internal_format: PixelFormat | null,
-    ): Texture;
+    function texture_new_from_file(filename: string, flags: TextureFlags, internal_format: PixelFormat): Texture;
     /**
      * Creates a {@link Cogl.Texture} based on an existing OpenGL texture; the
      * width, height and format are passed along since it is not always
@@ -1910,7 +1902,7 @@ export namespace Cogl {
         height: number,
         x_pot_waste: number,
         y_pot_waste: number,
-        format: PixelFormat | null,
+        format: PixelFormat,
     ): Texture;
     /**
      * Creates a new {@link Cogl.Texture} with the specified dimensions and pixel format.
@@ -1925,8 +1917,8 @@ export namespace Cogl {
     function texture_new_with_size(
         width: number,
         height: number,
-        flags: TextureFlags | null,
-        internal_format: PixelFormat | null,
+        flags: TextureFlags,
+        internal_format: PixelFormat,
     ): Texture;
     /**
      * Multiplies the current model-view matrix by the given matrix.
@@ -1988,7 +1980,7 @@ export namespace Cogl {
         handle: Handle,
         attribute_name: string,
         n_components: number,
-        type: AttributeType | null,
+        type: AttributeType,
         normalized: boolean,
         stride: number,
         pointer?: any | null,
@@ -2028,7 +2020,7 @@ export namespace Cogl {
      * @param count Specifies the number of vertices you want to draw.
      * @deprecated since 1.16: Use the `CoglPrimitive` api instead
      */
-    function vertex_buffer_draw(handle: Handle, mode: VerticesMode | null, first: number, count: number): void;
+    function vertex_buffer_draw(handle: Handle, mode: VerticesMode, first: number, count: number): void;
     /**
      * This function lets you use an array of indices to specify the vertices
      * within your vertex buffer that you want to draw. The indices themselves
@@ -2047,7 +2039,7 @@ export namespace Cogl {
      */
     function vertex_buffer_draw_elements(
         handle: Handle,
-        mode: VerticesMode | null,
+        mode: VerticesMode,
         indices: Handle,
         min_index: number,
         max_index: number,
@@ -3316,14 +3308,7 @@ export namespace Cogl {
          * @param pixels The address of the buffer to store the data in
          * @returns `true` if the read succeeded or `false` otherwise.
          */
-        read_pixels(
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-            format: PixelFormat | null,
-            pixels: number,
-        ): boolean;
+        read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): boolean;
         /**
          * This reads a rectangle of pixels from the given framebuffer where
          * position (0, 0) is the top left. The pixel at (x, y) is the first
@@ -3341,7 +3326,7 @@ export namespace Cogl {
          * @param bitmap The bitmap to store the results in.
          * @returns `true` if the read succeeded or `false` otherwise. The  function is only likely to fail if the bitmap points to a pixel  buffer and it could not be mapped.
          */
-        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags | null, bitmap: Bitmap): boolean;
+        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): boolean;
         /**
          * When point sample rendering (also known as multisample rendering)
          * has been enabled via `cogl_framebuffer_set_samples_per_pixel()`
@@ -3431,7 +3416,7 @@ export namespace Cogl {
          * color will be written.
          * @param color_mask A {@link Cogl.ColorMask} of which color channels to write to              the current framebuffer.
          */
-        set_color_mask(color_mask: ColorMask | null): void;
+        set_color_mask(color_mask: ColorMask): void;
         /**
          * If `enabled` is `TRUE`, the depth buffer used when rendering to `framebuffer`
          * is available as a texture. You can retrieve the texture with
@@ -3529,7 +3514,7 @@ export namespace Cogl {
          * `cogl_framebuffer_get_is_stereo()`.)
          * @param stereo_mode A {@link Cogl.StereoMode} specifying which stereo buffers               should be drawn tow.
          */
-        set_stereo_mode(stereo_mode: StereoMode | null): void;
+        set_stereo_mode(stereo_mode: StereoMode): void;
         /**
          * Defines a scale and offset for everything rendered relative to the
          * top-left of the destination framebuffer.
@@ -4445,14 +4430,7 @@ export namespace Cogl {
          * @param pixels The address of the buffer to store the data in
          * @returns `true` if the read succeeded or `false` otherwise.
          */
-        read_pixels(
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-            format: PixelFormat | null,
-            pixels: number,
-        ): boolean;
+        read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): boolean;
         /**
          * This reads a rectangle of pixels from the given framebuffer where
          * position (0, 0) is the top left. The pixel at (x, y) is the first
@@ -4470,7 +4448,7 @@ export namespace Cogl {
          * @param bitmap The bitmap to store the results in.
          * @returns `true` if the read succeeded or `false` otherwise. The  function is only likely to fail if the bitmap points to a pixel  buffer and it could not be mapped.
          */
-        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags | null, bitmap: Bitmap): boolean;
+        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): boolean;
         /**
          * When point sample rendering (also known as multisample rendering)
          * has been enabled via `cogl_framebuffer_set_samples_per_pixel()`
@@ -4560,7 +4538,7 @@ export namespace Cogl {
          * color will be written.
          * @param color_mask A {@link Cogl.ColorMask} of which color channels to write to              the current framebuffer.
          */
-        set_color_mask(color_mask: ColorMask | null): void;
+        set_color_mask(color_mask: ColorMask): void;
         /**
          * If `enabled` is `TRUE`, the depth buffer used when rendering to `framebuffer`
          * is available as a texture. You can retrieve the texture with
@@ -4658,7 +4636,7 @@ export namespace Cogl {
          * `cogl_framebuffer_get_is_stereo()`.)
          * @param stereo_mode A {@link Cogl.StereoMode} specifying which stereo buffers               should be drawn tow.
          */
-        set_stereo_mode(stereo_mode: StereoMode | null): void;
+        set_stereo_mode(stereo_mode: StereoMode): void;
         /**
          * Defines a scale and offset for everything rendered relative to the
          * top-left of the destination framebuffer.
@@ -4916,7 +4894,7 @@ export namespace Cogl {
          * @param alpha_func A `CoglPipelineAlphaFunc` constant
          * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
          */
-        set_alpha_test_function(alpha_func: PipelineAlphaFunc | null, alpha_reference: number): void;
+        set_alpha_test_function(alpha_func: PipelineAlphaFunc, alpha_reference: number): void;
         /**
          * Sets the pipeline's ambient color, in the standard OpenGL lighting
          * model. The ambient color affects the overall color of the object.
@@ -5053,7 +5031,7 @@ export namespace Cogl {
          * color will be written.
          * @param color_mask A {@link Cogl.ColorMask} of which color channels to write to              the current framebuffer.
          */
-        set_color_mask(color_mask: ColorMask | null): void;
+        set_color_mask(color_mask: ColorMask): void;
         /**
          * Sets which faces will be culled when drawing. Face culling can be
          * used to increase efficiency by avoiding drawing faces that would
@@ -5071,7 +5049,7 @@ export namespace Cogl {
          * Status: Unstable
          * @param cull_face_mode The new mode to set
          */
-        set_cull_face_mode(cull_face_mode: PipelineCullFaceMode | null): void;
+        set_cull_face_mode(cull_face_mode: PipelineCullFaceMode): void;
         /**
          * Sets the pipeline's diffuse color, in the standard OpenGL lighting
          * model. The diffuse color is most intense where the light hits the
@@ -5102,7 +5080,7 @@ export namespace Cogl {
          * Status: Unstable
          * @param front_winding the winding order
          */
-        set_front_face_winding(front_winding: Winding | null): void;
+        set_front_face_winding(front_winding: Winding): void;
         /**
          * If not already familiar; you can refer
          * <link linkend="cogl-Blend-Strings">here</link> for an overview of what blend
@@ -5204,11 +5182,7 @@ export namespace Cogl {
          * @param min_filter the filter used when scaling a texture down.
          * @param mag_filter the filter used when magnifying a texture.
          */
-        set_layer_filters(
-            layer_index: number,
-            min_filter: PipelineFilter | null,
-            mag_filter: PipelineFilter | null,
-        ): void;
+        set_layer_filters(layer_index: number, min_filter: PipelineFilter, mag_filter: PipelineFilter): void;
         /**
          * This function lets you set a matrix that can be used to e.g. translate
          * and rotate a single layer of a pipeline used to fill your geometry.
@@ -5231,7 +5205,7 @@ export namespace Cogl {
          * @param layer_index The layer number to modify
          * @param texture_type The type of the default texture to use
          */
-        set_layer_null_texture(layer_index: number, texture_type: TextureType | null): void;
+        set_layer_null_texture(layer_index: number, texture_type: TextureType): void;
         /**
          * When rendering points, if `enable` is `true` then the texture
          * coordinates for this layer will be replaced with coordinates that
@@ -5262,26 +5236,26 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode(layer_index: number, mode: PipelineWrapMode | null): void;
+        set_layer_wrap_mode(layer_index: number, mode: PipelineWrapMode): void;
         /**
          * Sets the wrap mode for the 'p' coordinate of texture lookups on
          * this layer. 'p' is the third coordinate.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_p(layer_index: number, mode: PipelineWrapMode | null): void;
+        set_layer_wrap_mode_p(layer_index: number, mode: PipelineWrapMode): void;
         /**
          * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_s(layer_index: number, mode: PipelineWrapMode | null): void;
+        set_layer_wrap_mode_s(layer_index: number, mode: PipelineWrapMode): void;
         /**
          * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_t(layer_index: number, mode: PipelineWrapMode | null): void;
+        set_layer_wrap_mode_t(layer_index: number, mode: PipelineWrapMode): void;
         /**
          * Sets whether to use a per-vertex point size or to use the value set
          * by `cogl_pipeline_set_point_size()`. If per-vertex point size is
@@ -5564,7 +5538,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
+        get_data(format: PixelFormat, rowstride: number, data: number): number;
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
          *
@@ -5645,7 +5619,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents | null): void;
+        set_components(components: TextureComponents): void;
         /**
          * `texture` a {@link Cogl.Texture}.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -5695,7 +5669,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
          */
-        set_data(format: PixelFormat | null, rowstride: number, data: number, level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: number, level: number): boolean;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -5748,7 +5722,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat | null,
+            format: PixelFormat,
             rowstride: number,
             data: number,
         ): boolean;
@@ -5852,7 +5826,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
+        get_data(format: PixelFormat, rowstride: number, data: number): number;
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
          *
@@ -5933,7 +5907,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents | null): void;
+        set_components(components: TextureComponents): void;
         /**
          * `texture` a {@link Cogl.Texture}.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -5983,7 +5957,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
          */
-        set_data(format: PixelFormat | null, rowstride: number, data: number, level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: number, level: number): boolean;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -6036,7 +6010,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat | null,
+            format: PixelFormat,
             rowstride: number,
             data: number,
         ): boolean;
@@ -6486,7 +6460,7 @@ export namespace Cogl {
          * @param alpha_func A `CoglMaterialAlphaFunc` constant
          * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
          */
-        set_alpha_test_function(alpha_func: MaterialAlphaFunc | null, alpha_reference: number): void;
+        set_alpha_test_function(alpha_func: MaterialAlphaFunc, alpha_reference: number): void;
         /**
          * Sets the material's ambient color, in the standard OpenGL lighting
          * model. The ambient color affects the overall color of the object.
@@ -6748,11 +6722,7 @@ export namespace Cogl {
          * @param min_filter the filter used when scaling a texture down.
          * @param mag_filter the filter used when magnifying a texture.
          */
-        set_layer_filters(
-            layer_index: number,
-            min_filter: MaterialFilter | null,
-            mag_filter: MaterialFilter | null,
-        ): void;
+        set_layer_filters(layer_index: number, min_filter: MaterialFilter, mag_filter: MaterialFilter): void;
         /**
          * This function lets you set a matrix that can be used to e.g. translate
          * and rotate a single layer of a material used to fill your geometry.
@@ -6785,26 +6755,26 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode(layer_index: number, mode: MaterialWrapMode | null): void;
+        set_layer_wrap_mode(layer_index: number, mode: MaterialWrapMode): void;
         /**
          * Sets the wrap mode for the 'p' coordinate of texture lookups on
          * this layer. 'p' is the third coordinate.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_p(layer_index: number, mode: MaterialWrapMode | null): void;
+        set_layer_wrap_mode_p(layer_index: number, mode: MaterialWrapMode): void;
         /**
          * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_s(layer_index: number, mode: MaterialWrapMode | null): void;
+        set_layer_wrap_mode_s(layer_index: number, mode: MaterialWrapMode): void;
         /**
          * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
          */
-        set_layer_wrap_mode_t(layer_index: number, mode: MaterialWrapMode | null): void;
+        set_layer_wrap_mode_t(layer_index: number, mode: MaterialWrapMode): void;
         /**
          * Changes the size of points drawn when {@link Cogl.VerticesMode.POINTS} is
          * used with the vertex buffer API. Note that typically the GPU will
@@ -8114,14 +8084,7 @@ export namespace Cogl {
          * @param pixels The address of the buffer to store the data in
          * @returns `true` if the read succeeded or `false` otherwise.
          */
-        read_pixels(
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-            format: PixelFormat | null,
-            pixels: number,
-        ): boolean;
+        read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): boolean;
         /**
          * This reads a rectangle of pixels from the given framebuffer where
          * position (0, 0) is the top left. The pixel at (x, y) is the first
@@ -8139,7 +8102,7 @@ export namespace Cogl {
          * @param bitmap The bitmap to store the results in.
          * @returns `true` if the read succeeded or `false` otherwise. The  function is only likely to fail if the bitmap points to a pixel  buffer and it could not be mapped.
          */
-        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags | null, bitmap: Bitmap): boolean;
+        read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): boolean;
         /**
          * When point sample rendering (also known as multisample rendering)
          * has been enabled via `cogl_framebuffer_set_samples_per_pixel()`
@@ -8229,7 +8192,7 @@ export namespace Cogl {
          * color will be written.
          * @param color_mask A {@link Cogl.ColorMask} of which color channels to write to              the current framebuffer.
          */
-        set_color_mask(color_mask: ColorMask | null): void;
+        set_color_mask(color_mask: ColorMask): void;
         /**
          * If `enabled` is `TRUE`, the depth buffer used when rendering to `framebuffer`
          * is available as a texture. You can retrieve the texture with
@@ -8327,7 +8290,7 @@ export namespace Cogl {
          * `cogl_framebuffer_get_is_stereo()`.)
          * @param stereo_mode A {@link Cogl.StereoMode} specifying which stereo buffers               should be drawn tow.
          */
-        set_stereo_mode(stereo_mode: StereoMode | null): void;
+        set_stereo_mode(stereo_mode: StereoMode): void;
         /**
          * Defines a scale and offset for everything rendered relative to the
          * top-left of the destination framebuffer.
@@ -8483,7 +8446,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat | null, rowstride: number, data: number): number;
+        get_data(format: PixelFormat, rowstride: number, data: number): number;
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
          *
@@ -8564,7 +8527,7 @@ export namespace Cogl {
          * as the texture's components.
          * @param components
          */
-        set_components(components: TextureComponents | null): void;
+        set_components(components: TextureComponents): void;
         /**
          * `texture` a {@link Cogl.Texture}.
          * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -8614,7 +8577,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
          */
-        set_data(format: PixelFormat | null, rowstride: number, data: number, level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: number, level: number): boolean;
         /**
          * Affects the internal storage format for this texture by specifying
          * whether red, green and blue color components should be stored as
@@ -8667,7 +8630,7 @@ export namespace Cogl {
             dst_height: number,
             width: number,
             height: number,
-            format: PixelFormat | null,
+            format: PixelFormat,
             rowstride: number,
             data: number,
         ): boolean;

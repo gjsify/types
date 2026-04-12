@@ -222,7 +222,7 @@ export namespace FolksDummy {
         /**
          * @param gender
          */
-        update_gender(gender: Folks.Gender | null): void;
+        update_gender(gender: Folks.Gender): void;
         /**
          * @param calendar_event_id
          */
@@ -798,18 +798,18 @@ export namespace FolksDummy {
         /**
          * @param gender
          */
-        change_gender(gender: Folks.Gender | null): globalThis.Promise<void>;
+        change_gender(gender: Folks.Gender): globalThis.Promise<void>;
         /**
          * @param gender
          * @param _callback_
          */
-        change_gender(gender: Folks.Gender | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        change_gender(gender: Folks.Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * @param gender
          * @param _callback_
          */
         change_gender(
-            gender: Folks.Gender | null,
+            gender: Folks.Gender,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
@@ -820,7 +820,7 @@ export namespace FolksDummy {
         /**
          * @param value
          */
-        set_gender(value: Folks.Gender | null): void;
+        set_gender(value: Folks.Gender): void;
         /**
          * @param gender
          * @param _callback_
@@ -1507,7 +1507,7 @@ export namespace FolksDummy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1548,7 +1548,7 @@ export namespace FolksDummy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2012,9 +2012,9 @@ export namespace FolksDummy {
          * @param can_remove_personas
          */
         update_capabilities(
-            can_add_personas: Folks.MaybeBool | null,
-            can_alias_personas: Folks.MaybeBool | null,
-            can_remove_personas: Folks.MaybeBool | null,
+            can_add_personas: Folks.MaybeBool,
+            can_alias_personas: Folks.MaybeBool,
+            can_remove_personas: Folks.MaybeBool,
         ): void;
         freeze_personas_changed(): void;
         thaw_personas_changed(): void;
@@ -2034,7 +2034,7 @@ export namespace FolksDummy {
         /**
          * @param trust_level
          */
-        update_trust_level(trust_level: Folks.PersonaStoreTrust | null): void;
+        update_trust_level(trust_level: Folks.PersonaStoreTrust): void;
         /**
          * @param mock
          */

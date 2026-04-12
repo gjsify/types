@@ -1268,7 +1268,7 @@ export namespace GooCanvas {
          */
         pointer_grab(
             item: CanvasItem,
-            event_mask: Gdk.EventMask | null,
+            event_mask: Gdk.EventMask,
             cursor: Gdk.Cursor | null,
             time: number,
         ): Gdk.GrabStatus;
@@ -1493,7 +1493,7 @@ export namespace GooCanvas {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -1505,7 +1505,7 @@ export namespace GooCanvas {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -1559,7 +1559,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1600,7 +1600,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2268,7 +2268,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -3004,7 +3004,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3045,7 +3045,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3630,7 +3630,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -3973,7 +3973,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4014,7 +4014,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4842,7 +4842,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -5578,7 +5578,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5619,7 +5619,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6396,7 +6396,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -6739,7 +6739,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6780,7 +6780,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7371,7 +7371,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -8107,7 +8107,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8148,7 +8148,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8707,7 +8707,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -9050,7 +9050,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9091,7 +9091,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9698,7 +9698,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -10434,7 +10434,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10475,7 +10475,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11055,7 +11055,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -11398,7 +11398,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11439,7 +11439,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12186,7 +12186,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -12529,7 +12529,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12570,7 +12570,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13269,7 +13269,7 @@ export namespace GooCanvas {
          * @param pointer_events specifies which parts of the path to check.
          * @returns `true` if the given point is in the current path.
          */
-        check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents | null): boolean;
+        check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean;
         /**
          * This function is intended to be used by subclasses of {@link GooCanvas.CanvasItemSimple},
          * typically in their `update()` or `get_requested_area()` methods.
@@ -13428,7 +13428,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -14159,7 +14159,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -14200,7 +14200,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14795,7 +14795,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -15531,7 +15531,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -15572,7 +15572,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -16136,7 +16136,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -16479,7 +16479,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -16520,7 +16520,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17149,7 +17149,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -17885,7 +17885,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -17926,7 +17926,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18529,7 +18529,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -18872,7 +18872,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -18913,7 +18913,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19564,7 +19564,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -20300,7 +20300,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -20341,7 +20341,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20964,7 +20964,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -21307,7 +21307,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -21348,7 +21348,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22056,7 +22056,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -22097,7 +22097,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -22674,7 +22674,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -22715,7 +22715,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23338,7 +23338,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -24074,7 +24074,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -24115,7 +24115,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24695,7 +24695,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.
@@ -25038,7 +25038,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -25079,7 +25079,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25678,7 +25678,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -26414,7 +26414,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -26455,7 +26455,7 @@ export namespace GooCanvas {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27940,7 +27940,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * This function is only intended to be used when implementing new canvas
@@ -28533,7 +28533,7 @@ export namespace GooCanvas {
             absolute: boolean,
             duration: number,
             step_time: number,
-            type: CanvasAnimateType | null,
+            type: CanvasAnimateType,
         ): void;
         /**
          * Attempts to find the given child with the container's stack.

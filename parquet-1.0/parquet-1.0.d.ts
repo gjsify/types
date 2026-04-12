@@ -334,7 +334,7 @@ export namespace Parquet {
          * @param compression_type A {@link Arrow.CompressionType}.
          * @param path The column path as dot string.
          */
-        set_compression(compression_type: Arrow.CompressionType | null, path?: string | null): void;
+        set_compression(compression_type: Arrow.CompressionType, path?: string | null): void;
         /**
          * @param data_page_size The data page size.
          */

@@ -1513,7 +1513,7 @@ export namespace ECalendar {
          * Sets the `flags` which control the behaviour of `view`.
          * @param flags the {@link ECalendar.CalClientViewFlags} for `view`.
          */
-        set_flags(flags: CalClientViewFlags | null): void;
+        set_flags(flags: CalClientViewFlags): void;
         /**
          * Starts a live query to the calendar/tasks backend.
          */
@@ -1743,7 +1743,7 @@ export namespace ECalendar {
          * #E_CAL_COMPONENT_CLASS_NONE.
          * @param classif Return value for the classification.
          */
-        get_classification(classif: CalComponentClassification | null): void;
+        get_classification(classif: CalComponentClassification): void;
         /**
          * Queries the comments of a calendar component object.  The comment property can
          * appear several times inside a calendar component, and so a list of
@@ -1865,7 +1865,7 @@ export namespace ECalendar {
          * Queries the time transparency of a calendar component object.
          * @param transp Return value for the time transparency.
          */
-        get_transparency(transp: CalComponentTransparency | null): void;
+        get_transparency(transp: CalComponentTransparency): void;
         /**
          * Queries the unique identifier of a calendar component object.
          * @param uid Return value for the UID string.
@@ -1995,7 +1995,7 @@ export namespace ECalendar {
          * the property, specify E_CAL_COMPONENT_CLASS_NONE for `classif`.
          * @param classif Classification to use.
          */
-        set_classification(classif: CalComponentClassification | null): void;
+        set_classification(classif: CalComponentClassification): void;
         /**
          * Sets the comments of a calendar component object.  The comment property can
          * appear several times inside a calendar component, and so a list of
@@ -2082,7 +2082,7 @@ export namespace ECalendar {
          * that will be set in the new component will be its unique identifier.
          * @param type Type of calendar component to create.
          */
-        set_new_vtype(type: CalComponentVType | null): void;
+        set_new_vtype(type: CalComponentVType): void;
         /**
          * Sets the organizer of a calendar component object
          * @param organizer Value for the organizer property
@@ -2128,7 +2128,7 @@ export namespace ECalendar {
          * Sets the time transparency of a calendar component object.
          * @param transp Time transparency value.
          */
-        set_transparency(transp: CalComponentTransparency | null): void;
+        set_transparency(transp: CalComponentTransparency): void;
         /**
          * Sets the unique identifier string of a calendar component object.
          * @param uid Unique identifier.
@@ -2337,7 +2337,7 @@ export namespace ECalendar {
          * Queries the action type of an alarm.
          * @param action Return value for the alarm's action type.
          */
-        get_action(action: CalComponentAlarmAction | null): void;
+        get_action(action: CalComponentAlarmAction): void;
         /**
          * Gets the list of attendees associated with an alarm.
          */
@@ -2371,7 +2371,7 @@ export namespace ECalendar {
          * Sets the action type for an alarm.
          * @param action Action type.
          */
-        set_action(action: CalComponentAlarmAction | null): void;
+        set_action(action: CalComponentAlarmAction): void;
         /**
          * Sets the list of attendees for an alarm.
          * @param attendee_list List of attendees.

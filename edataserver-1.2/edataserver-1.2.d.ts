@@ -1105,7 +1105,7 @@ export namespace EDataServer {
         source_property: string,
         target: GObject.Object,
         target_property: string,
-        flags: GObject.BindingFlags | null,
+        flags: GObject.BindingFlags,
     ): GObject.Binding;
     /**
      * Thread safe variant of `g_object_bind_property_with_closures()`. See its
@@ -1125,7 +1125,7 @@ export namespace EDataServer {
         source_property: string,
         target: GObject.Object,
         target_property: string,
-        flags: GObject.BindingFlags | null,
+        flags: GObject.BindingFlags,
         transform_to?: GObject.Closure | null,
         transform_from?: GObject.Closure | null,
     ): GObject.Binding;
@@ -1543,7 +1543,7 @@ export namespace EDataServer {
      * @param value a Task::status property value
      * @since 3.46
      */
-    function gdata_task_add_status(builder: Json.Builder, value: GDataTaskStatus | null): void;
+    function gdata_task_add_status(builder: Json.Builder, value: GDataTaskStatus): void;
     /**
      * Adds a Task::title property `value` into the `builder`, which
      * should have started an object member.
@@ -2097,7 +2097,7 @@ export namespace EDataServer {
      */
     function util_change_uri_component(
         inout_uri: GLib.Uri,
-        component: Soup.URIComponent | null,
+        component: Soup.URIComponent,
         value?: string | null,
     ): GLib.Uri;
     /**
@@ -2713,7 +2713,7 @@ export namespace EDataServer {
      * @param type The value type to use as a key in the hash table.
      * @returns The newly-created {@link GLib.HashTable} representation of `doc`.
      */
-    function xml_to_hash(doc: libxml2.Doc, type: XmlHashType | null): GLib.HashTable<string, string>;
+    function xml_to_hash(doc: libxml2.Doc, type: XmlHashType): GLib.HashTable<string, string>;
     /**
      * Adds a new key/value pair to the {@link EDataServer.XmlHash} `hash`.
      * @param hash the {@link EDataServer.XmlHash} to add an entry to
@@ -4322,7 +4322,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4363,7 +4363,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5351,7 +5351,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5392,7 +5392,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6418,7 +6418,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6459,7 +6459,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7431,7 +7431,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7472,7 +7472,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8442,7 +8442,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8483,7 +8483,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9035,7 +9035,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9076,7 +9076,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10552,9 +10552,9 @@ export namespace EDataServer {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          */
         emit_credentials_required(
-            reason: SourceCredentialsReason | null,
+            reason: SourceCredentialsReason,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags | null,
+            certificate_errors: Gio.TlsCertificateFlags,
             op_error?: GLib.Error | null,
         ): void;
         /**
@@ -10872,9 +10872,9 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
         invoke_credentials_required(
-            reason: SourceCredentialsReason | null,
+            reason: SourceCredentialsReason,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags | null,
+            certificate_errors: Gio.TlsCertificateFlags,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
@@ -10892,9 +10892,9 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         invoke_credentials_required(
-            reason: SourceCredentialsReason | null,
+            reason: SourceCredentialsReason,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags | null,
+            certificate_errors: Gio.TlsCertificateFlags,
             op_error: GLib.Error | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -10913,9 +10913,9 @@ export namespace EDataServer {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         invoke_credentials_required(
-            reason: SourceCredentialsReason | null,
+            reason: SourceCredentialsReason,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags | null,
+            certificate_errors: Gio.TlsCertificateFlags,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -10955,9 +10955,9 @@ export namespace EDataServer {
          * @returns `true` on success, `false` on error
          */
         invoke_credentials_required_sync(
-            reason: SourceCredentialsReason | null,
+            reason: SourceCredentialsReason,
             certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags | null,
+            certificate_errors: Gio.TlsCertificateFlags,
             op_error?: GLib.Error | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
@@ -11594,7 +11594,7 @@ export namespace EDataServer {
          * Set's current connection status of the `source`.
          * @param connection_status one of the {@link EDataServer.SourceConnectionStatus}
          */
-        set_connection_status(connection_status: SourceConnectionStatus | null): void;
+        set_connection_status(connection_status: SourceConnectionStatus): void;
         /**
          * Sets the display name for `source`.  The `display_name` argument must be a
          * valid UTF-8 string.  Use the display name to represent the {@link EDataServer.Source} in a
@@ -12069,7 +12069,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12110,7 +12110,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14410,7 +14410,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -14451,7 +14451,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15597,7 +15597,7 @@ export namespace EDataServer {
         /**
          * @param authentication
          */
-        set_authentication(authentication: SourceLDAPAuthentication | null): void;
+        set_authentication(authentication: SourceLDAPAuthentication): void;
         /**
          * @param can_browse
          */
@@ -15617,11 +15617,11 @@ export namespace EDataServer {
         /**
          * @param scope
          */
-        set_scope(scope: SourceLDAPScope | null): void;
+        set_scope(scope: SourceLDAPScope): void;
         /**
          * @param security
          */
-        set_security(security: SourceLDAPSecurity | null): void;
+        set_security(security: SourceLDAPSecurity): void;
     }
 
     namespace SourceLocal {
@@ -15860,7 +15860,7 @@ export namespace EDataServer {
          * Disposition Notification requests when receiving mail messages.
          * @param response_policy the {@link EDataServer.MdnResponsePolicy}
          */
-        set_response_policy(response_policy: MdnResponsePolicy | null): void;
+        set_response_policy(response_policy: MdnResponsePolicy): void;
     }
 
     namespace SourceMailAccount {
@@ -16073,7 +16073,7 @@ export namespace EDataServer {
          * global option.
          * @param mark_seen an {@link EDataServer.ThreeState} as the value to set
          */
-        set_mark_seen(mark_seen: ThreeState | null): void;
+        set_mark_seen(mark_seen: ThreeState): void;
         /**
          * Sets the `timeout` in milliseconds for marking messages
          * as seen in this account. Whether the timeout is used
@@ -16396,7 +16396,7 @@ export namespace EDataServer {
          * use the {@link EDataServer.SourceMailCompositionReplyStyle.DEFAULT}.
          * @param reply_style an {@link EDataServer.SourceMailCompositionReplyStyle}
          */
-        set_reply_style(reply_style: SourceMailCompositionReplyStyle | null): void;
+        set_reply_style(reply_style: SourceMailCompositionReplyStyle): void;
         /**
          * Sets whether outgoing iMIP messages such as meeting requests should
          * also be signed.  This is primarily intended as a workaround for certain
@@ -16409,7 +16409,7 @@ export namespace EDataServer {
          * To unset the preference, use the {@link EDataServer.ThreeState.INCONSISTENT}.
          * @param start_bottom an {@link EDataServer.ThreeState}
          */
-        set_start_bottom(start_bottom: ThreeState | null): void;
+        set_start_bottom(start_bottom: ThreeState): void;
         /**
          * Sets the preferred folder for message templates by an identifier string.
          * The format of the identifier string is defined by the client application.
@@ -16425,7 +16425,7 @@ export namespace EDataServer {
          * To unset the preference, use the {@link EDataServer.ThreeState.INCONSISTENT}.
          * @param top_signature an {@link EDataServer.ThreeState}
          */
-        set_top_signature(top_signature: ThreeState | null): void;
+        set_top_signature(top_signature: ThreeState): void;
     }
 
     namespace SourceMailIdentity {
@@ -18061,7 +18061,7 @@ export namespace EDataServer {
          * `e_source_proxy_lookup()`.
          * @param method the proxy configuration method
          */
-        set_method(method: ProxyMethod | null): void;
+        set_method(method: ProxyMethod): void;
         /**
          * Sets the machine name to use as a SOCKS proxy when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
@@ -19369,7 +19369,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -19410,7 +19410,7 @@ export namespace EDataServer {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20843,7 +20843,7 @@ export namespace EDataServer {
         /**
          * @param units
          */
-        set_units(units: SourceWeatherUnits | null): void;
+        set_units(units: SourceWeatherUnits): void;
     }
 
     namespace SourceWebDAVNotes {
@@ -21373,7 +21373,7 @@ export namespace EDataServer {
          * is used as the `response`.
          * @param response an {@link EDataServer.TrustPromptResponse} to set
          */
-        set_ssl_trust_response(response: TrustPromptResponse | null): void;
+        set_ssl_trust_response(response: TrustPromptResponse): void;
         /**
          * Set the connection timeout, in seconds.
          * @param timeout a timeout, in seconds
@@ -21400,7 +21400,7 @@ export namespace EDataServer {
          * @param cert the invalid certificate of the connection over which `host` is about        to be sent
          * @param response user's response from a trust prompt for `cert`
          */
-        update_ssl_trust(host: string, cert: Gio.TlsCertificate, response: TrustPromptResponse | null): void;
+        update_ssl_trust(host: string, cert: Gio.TlsCertificate, response: TrustPromptResponse): void;
         /**
          * Verifies SSL/TLS trust for the given `host` and `cert`, as previously stored in the `extension`
          * with `e_source_webdav_update_ssl_trust()`.
@@ -21411,7 +21411,7 @@ export namespace EDataServer {
         verify_ssl_trust(
             host: string,
             cert: Gio.TlsCertificate,
-            cert_errors: Gio.TlsCertificateFlags | null,
+            cert_errors: Gio.TlsCertificateFlags,
         ): TrustPromptResponse;
     }
 
@@ -21824,7 +21824,7 @@ export namespace EDataServer {
          */
         lock_resource_sync(
             uri: string | null,
-            lock_scope: WebDAVLockScope | null,
+            lock_scope: WebDAVLockScope,
             lock_timeout: number,
             owner: string | null,
             cancellable?: Gio.Cancellable | null,

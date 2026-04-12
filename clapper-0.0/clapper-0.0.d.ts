@@ -742,7 +742,7 @@ export namespace Clapper {
          * Set the {@link Clapper.DiscovererDiscoveryMode} of `discoverer`.
          * @param mode a {@link Clapper.DiscovererDiscoveryMode}
          */
-        set_discovery_mode(mode: DiscovererDiscoveryMode | null): void;
+        set_discovery_mode(mode: DiscovererDiscoveryMode): void;
     }
 
     namespace EnhancerProxy {
@@ -1296,7 +1296,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1337,7 +1337,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2021,7 +2021,7 @@ export namespace Clapper {
          * @param start entry start time in seconds
          * @param end entry end time in seconds or -1 if none
          */
-        toc_add(type: Gst.TocEntryType | null, title: string, start: number, end: number): void;
+        toc_add(type: Gst.TocEntryType, title: string, start: number, end: number): void;
     }
 
     namespace Marker {
@@ -3925,7 +3925,7 @@ export namespace Clapper {
          * @param details a {@link Gst.DebugGraphDetails} level
          * @returns current pipeline description in dot format.
          */
-        make_pipeline_graph(details: Gst.DebugGraphDetails | null): string;
+        make_pipeline_graph(details: Gst.DebugGraphDetails): string;
         /**
          * Pause the playback of current media item.
          *
@@ -3956,7 +3956,7 @@ export namespace Clapper {
          * @param msg a {@link Gst.Message}
          * @param destination a {@link Clapper.PlayerMessageDestination}
          */
-        post_message(msg: Gst.Message, destination: PlayerMessageDestination | null): void;
+        post_message(msg: Gst.Message, destination: PlayerMessageDestination): void;
         /**
          * Request the player to perform a seek operation.
          *
@@ -3979,7 +3979,7 @@ export namespace Clapper {
          * @param position a decimal number with position to seek to (in seconds)
          * @param method a {@link Clapper.PlayerSeekMethod}
          */
-        seek_custom(position: number, method: PlayerSeekMethod | null): void;
+        seek_custom(position: number, method: PlayerSeekMethod): void;
         /**
          * Set maximal bitrate to select for adaptive streaming
          * such as DASH or HLS.
@@ -4398,7 +4398,7 @@ export namespace Clapper {
          * see {@link Clapper.QueueProgressionMode} documentation.
          * @param mode a {@link Clapper.QueueProgressionMode}
          */
-        set_progression_mode(mode: QueueProgressionMode | null): void;
+        set_progression_mode(mode: QueueProgressionMode): void;
         /**
          * Removes {@link Clapper.MediaItem} at `index` from the queue.
          * @param index an item index
@@ -4546,7 +4546,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4587,7 +4587,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5537,7 +5537,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5578,7 +5578,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6380,7 +6380,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6421,7 +6421,7 @@ export namespace Clapper {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

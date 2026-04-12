@@ -277,7 +277,7 @@ export namespace GstRtspServer {
         info: SDPInfo,
         stream: RTSPStream,
         caps: Gst.Caps,
-        profile: GstRtsp.RTSPProfile | null,
+        profile: GstRtsp.RTSPProfile,
     ): boolean;
     /**
      * @gir-type Callback
@@ -474,7 +474,7 @@ export namespace GstRtspServer {
          * @param n_ports the amount of ports
          * @returns a {@link GstRtspServer.RTSPAddress} that should be freed with gst_rtsp_address_free after use or `null` when no address could be acquired.
          */
-        acquire_address(flags: RTSPAddressFlags | null, n_ports: number): RTSPAddress | null;
+        acquire_address(flags: RTSPAddressFlags, n_ports: number): RTSPAddress | null;
         /**
          * Adds the addresses from `min_addess` to `max_address` (inclusive)
          * to `pool`. The valid port range for the addresses will be from `min_port` to
@@ -724,14 +724,14 @@ export namespace GstRtspServer {
          * Sets the supported authentication `methods` for `auth`.
          * @param methods supported methods
          */
-        set_supported_methods(methods: GstRtsp.RTSPAuthMethod | null): void;
+        set_supported_methods(methods: GstRtsp.RTSPAuthMethod): void;
         /**
          * The {@link Gio.TlsAuthenticationMode} to set on the underlying GTlsServerConnection.
          * When set to another value than {@link Gio.TlsAuthenticationMode.NONE},
          * {@link GstRtspServer.RTSPAuth.SignalSignatures.accept_certificate | GstRtspServer.RTSPAuth::accept-certificate} signal will be emitted and must be handled.
          * @param mode a {@link Gio.TlsAuthenticationMode}
          */
-        set_tls_authentication_mode(mode: Gio.TlsAuthenticationMode | null): void;
+        set_tls_authentication_mode(mode: Gio.TlsAuthenticationMode): void;
         /**
          * Set the TLS certificate for the auth. Client connections will only
          * be accepted when TLS is negotiated.
@@ -1883,7 +1883,7 @@ export namespace GstRtspServer {
          * @param unit the unit to use for the string
          * @returns The range as a string, `g_free()` after usage.
          */
-        get_range_string(play: boolean, unit: GstRtsp.RTSPRangeUnit | null): string | null;
+        get_range_string(play: boolean, unit: GstRtsp.RTSPRangeUnit): string | null;
         /**
          * @returns whether `media` will follow the Rate-Control=no behaviour as specified in the ONVIF replay spec.
          */
@@ -2024,7 +2024,7 @@ export namespace GstRtspServer {
          * @param flags The minimal set of {@link Gst.SeekFlags} to use
          * @returns `true` on success.
          */
-        seek_full(range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags | null): boolean;
+        seek_full(range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags): boolean;
         /**
          * Seek the pipeline of `media` to `range` with the given `flags` and `rate`,
          * and `trickmode_interval`.
@@ -2039,7 +2039,7 @@ export namespace GstRtspServer {
          */
         seek_trickmode(
             range: GstRtsp.RTSPTimeRange,
-            flags: Gst.SeekFlags | null,
+            flags: Gst.SeekFlags,
             rate: number,
             trickmode_interval: Gst.ClockTime,
         ): boolean;
@@ -2111,22 +2111,22 @@ export namespace GstRtspServer {
          * Set the state of the pipeline managed by `media` to `state`
          * @param state the target state of the pipeline
          */
-        set_pipeline_state(state: Gst.State | null): void;
+        set_pipeline_state(state: Gst.State): void;
         /**
          * Configure the allowed lower transport for `media`.
          * @param profiles the new flags
          */
-        set_profiles(profiles: GstRtsp.RTSPProfile | null): void;
+        set_profiles(profiles: GstRtsp.RTSPProfile): void;
         /**
          * Configure the allowed lower transport for `media`.
          * @param protocols the new flags
          */
-        set_protocols(protocols: GstRtsp.RTSPLowerTrans | null): void;
+        set_protocols(protocols: GstRtsp.RTSPLowerTrans): void;
         /**
          * Sets if and how the media clock should be published according to RFC7273.
          * @param mode the clock publish mode
          */
-        set_publish_clock_mode(mode: RTSPPublishClockMode | null): void;
+        set_publish_clock_mode(mode: RTSPPublishClockMode): void;
         /**
          * Define whether `media` will follow the Rate-Control=no behaviour as specified
          * in the ONVIF replay spec.
@@ -2159,7 +2159,7 @@ export namespace GstRtspServer {
          * @param transports a {@link GLib.PtrArray} of {@link GstRtspServer.RTSPStreamTransport} pointers
          * @returns `true` on success.
          */
-        set_state(state: Gst.State | null, transports: RTSPStreamTransport[]): boolean;
+        set_state(state: Gst.State, transports: RTSPStreamTransport[]): boolean;
         /**
          * Set or unset if the pipeline for `media` should be stopped when a
          * client disconnects without sending TEARDOWN.
@@ -2173,12 +2173,12 @@ export namespace GstRtspServer {
          * Media must be unprepared when setting the suspend mode.
          * @param mode the new {@link GstRtspServer.RTSPSuspendMode}
          */
-        set_suspend_mode(mode: RTSPSuspendMode | null): void;
+        set_suspend_mode(mode: RTSPSuspendMode): void;
         /**
          * Sets if the media pipeline can work in PLAY or RECORD mode
          * @param mode the new value
          */
-        set_transport_mode(mode: RTSPTransportMode | null): void;
+        set_transport_mode(mode: RTSPTransportMode): void;
         /**
          * Add `media` specific info to `sdp`. `info` is used to configure the connection
          * information in the SDP.
@@ -2675,17 +2675,17 @@ export namespace GstRtspServer {
          * Configure the allowed profiles for `factory`.
          * @param profiles the new flags
          */
-        set_profiles(profiles: GstRtsp.RTSPProfile | null): void;
+        set_profiles(profiles: GstRtsp.RTSPProfile): void;
         /**
          * Configure the allowed lower transport for `factory`.
          * @param protocols the new flags
          */
-        set_protocols(protocols: GstRtsp.RTSPLowerTrans | null): void;
+        set_protocols(protocols: GstRtsp.RTSPLowerTrans): void;
         /**
          * Sets if and how the media clock should be published according to RFC7273.
          * @param mode the clock publish mode
          */
-        set_publish_clock_mode(mode: RTSPPublishClockMode | null): void;
+        set_publish_clock_mode(mode: RTSPPublishClockMode): void;
         /**
          * Configure the time to store for possible retransmission
          * @param time a {@link Gst.ClockTime}
@@ -2706,12 +2706,12 @@ export namespace GstRtspServer {
          * Configure how media created from this factory will be suspended.
          * @param mode the new {@link GstRtspServer.RTSPSuspendMode}
          */
-        set_suspend_mode(mode: RTSPSuspendMode | null): void;
+        set_suspend_mode(mode: RTSPSuspendMode): void;
         /**
          * Configure if this factory creates media for PLAY or RECORD modes.
          * @param mode the new value
          */
-        set_transport_mode(mode: RTSPTransportMode | null): void;
+        set_transport_mode(mode: RTSPTransportMode): void;
     }
 
     namespace RTSPMediaFactoryURI {
@@ -3878,13 +3878,13 @@ export namespace GstRtspServer {
          * Set the RTSP state of `media` to `state`.
          * @param state a {@link GstRtsp.RTSPState}
          */
-        set_rtsp_state(state: GstRtsp.RTSPState | null): void;
+        set_rtsp_state(state: GstRtsp.RTSPState): void;
         /**
          * Tell the media object `media` to change to `state`.
          * @param state the new state
          * @returns `true` on success.
          */
-        set_state(state: Gst.State | null): boolean;
+        set_state(state: Gst.State): boolean;
         /**
          * Configure the transport for `stream` to `tr` in `media`.
          * @param stream a {@link GstRtspServer.RTSPStream}
@@ -4150,7 +4150,7 @@ export namespace GstRtspServer {
             destination: string,
             rtp_port: number,
             rtcp_port: number,
-            family: Gio.SocketFamily | null,
+            family: Gio.SocketFamily,
         ): boolean;
         /**
          * Add the transport in `trans` to `stream`. The media of `stream` will
@@ -4172,7 +4172,7 @@ export namespace GstRtspServer {
          * @returns `true` if the RTP and RTCP sockets have been succeccully allocated.
          */
         allocate_udp_sockets(
-            family: Gio.SocketFamily | null,
+            family: Gio.SocketFamily,
             transport: GstRtsp.RTSPTransport,
             use_client_settings: boolean,
         ): boolean;
@@ -4236,7 +4236,7 @@ export namespace GstRtspServer {
          * @param family the {@link Gio.SocketFamily}
          * @returns the {@link GstRtspServer.RTSPAddress} of `stream` or `null` when no address could be allocated. `gst_rtsp_address_free()` after usage.
          */
-        get_multicast_address(family: Gio.SocketFamily | null): RTSPAddress | null;
+        get_multicast_address(family: Gio.SocketFamily): RTSPAddress | null;
         /**
          * Get all multicast client addresses that RTP data will be sent to
          * @returns A comma separated list of host:port pairs with destinations
@@ -4291,7 +4291,7 @@ export namespace GstRtspServer {
          * @param family the socket family
          * @returns the multicast RTCP socket or `null` if no socket could be allocated for `family`. Unref after usage
          */
-        get_rtcp_multicast_socket(family: Gio.SocketFamily | null): Gio.Socket | null;
+        get_rtcp_multicast_socket(family: Gio.SocketFamily): Gio.Socket | null;
         /**
          * Get the RTCP socket from `stream` for a `family`.
          *
@@ -4299,13 +4299,13 @@ export namespace GstRtspServer {
          * @param family the socket family
          * @returns the RTCP socket or `null` if no socket could be allocated for `family`. Unref after usage
          */
-        get_rtcp_socket(family: Gio.SocketFamily | null): Gio.Socket | null;
+        get_rtcp_socket(family: Gio.SocketFamily): Gio.Socket | null;
         /**
          * Get the multicast RTP socket from `stream` for a `family`.
          * @param family the socket family
          * @returns the multicast RTP socket or `null` if no socket could be allocated for `family`. Unref after usage
          */
-        get_rtp_multicast_socket(family: Gio.SocketFamily | null): Gio.Socket | null;
+        get_rtp_multicast_socket(family: Gio.SocketFamily): Gio.Socket | null;
         /**
          * Get the RTP socket from `stream` for a `family`.
          *
@@ -4313,7 +4313,7 @@ export namespace GstRtspServer {
          * @param family the socket family
          * @returns the RTP socket or `null` if no socket could be allocated for `family`. Unref after usage
          */
-        get_rtp_socket(family: Gio.SocketFamily | null): Gio.Socket | null;
+        get_rtp_socket(family: Gio.SocketFamily): Gio.Socket | null;
         /**
          * Retrieve the current rtptime, seq and running-time. This is used to
          * construct a RTPInfo reply header.
@@ -4330,7 +4330,7 @@ export namespace GstRtspServer {
          * only be called when `stream` has been joined.
          * @param family the port family to get
          */
-        get_server_port(family: Gio.SocketFamily | null): GstRtsp.RTSPRange;
+        get_server_port(family: Gio.SocketFamily): GstRtsp.RTSPRange;
         /**
          * Get the sinkpad associated with `stream`.
          * @returns the sinkpad. Unref after usage.
@@ -4419,7 +4419,7 @@ export namespace GstRtspServer {
          * @param state the target state of the new elements
          * @returns `true` on success.
          */
-        join_bin(bin: Gst.Bin, rtpbin: Gst.Element, state: Gst.State | null): boolean;
+        join_bin(bin: Gst.Bin, rtpbin: Gst.Element, state: Gst.State): boolean;
         /**
          * Remove the elements of `stream` from `bin`.
          * @param bin a {@link Gst.Bin}
@@ -4571,12 +4571,12 @@ export namespace GstRtspServer {
          * Configure the allowed profiles for `stream`.
          * @param profiles the new profiles
          */
-        set_profiles(profiles: GstRtsp.RTSPProfile | null): void;
+        set_profiles(profiles: GstRtsp.RTSPProfile): void;
         /**
          * Configure the allowed lower transport for `stream`.
          * @param protocols the new flags
          */
-        set_protocols(protocols: GstRtsp.RTSPLowerTrans | null): void;
+        set_protocols(protocols: GstRtsp.RTSPLowerTrans): void;
         /**
          * Configure a pt map between `pt` and `caps`.
          * @param pt the pt
@@ -4587,7 +4587,7 @@ export namespace GstRtspServer {
          * Sets if and how the stream clock should be published according to RFC7273.
          * @param mode the clock publish mode
          */
-        set_publish_clock_mode(mode: RTSPPublishClockMode | null): void;
+        set_publish_clock_mode(mode: RTSPPublishClockMode): void;
         /**
          * Define whether `stream` will follow the Rate-Control=no behaviour as specified
          * in the ONVIF replay spec.
@@ -4965,7 +4965,7 @@ export namespace GstRtspServer {
          * @param ctx a {@link GstRtspServer.RTSPContext}
          * @returns a new {@link GstRtspServer.RTSPThread}, `gst_rtsp_thread_stop()` after usage
          */
-        get_thread(type: RTSPThreadType | null, ctx: RTSPContext): RTSPThread | null;
+        get_thread(type: RTSPThreadType, ctx: RTSPContext): RTSPThread | null;
         /**
          * Set the maximum threads used by the pool to handle client requests.
          * A value of 0 will use the pool mainloop, a value of -1 will use an

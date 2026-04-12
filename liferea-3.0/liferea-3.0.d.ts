@@ -166,7 +166,7 @@ export namespace Liferea {
      * @param icon the icon
      * @returns GIcon
      */
-    function icon_get(icon: lifereaIcon | null): Gio.Icon;
+    function icon_get(icon: lifereaIcon): Gio.Icon;
     /**
      * Interactive node adding (e.g. feed menu->new subscription),
      * launches some dialog that upon success adds a feed of the
@@ -478,7 +478,7 @@ export namespace Liferea {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -519,7 +519,7 @@ export namespace Liferea {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1647,7 +1647,7 @@ export namespace Liferea {
          * @param sortType new sort type
          * @param sortReversed TRUE for ascending order
          */
-        set_sort_column(sortType: nodeViewSortType | null, sortReversed: boolean): void;
+        set_sort_column(sortType: nodeViewSortType, sortReversed: boolean): void;
     }
 
     namespace ItemView {
@@ -2096,7 +2096,7 @@ export namespace Liferea {
          * @param reversed TRUE if order should be reversed
          * @returns TRUE if the passed settings were different from the previous ones
          */
-        set_sort_column(sortColumn: nodeViewSortType | null, reversed: boolean): boolean;
+        set_sort_column(sortColumn: nodeViewSortType, reversed: boolean): boolean;
         /**
          * Attaches the subscription to the given node.
          * @param subscription the subscription

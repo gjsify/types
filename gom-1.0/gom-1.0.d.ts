@@ -1494,7 +1494,7 @@ export namespace Gom {
          * @param property_name A string.
          * @param sorting_mode A {@link Gom.SortingMode}.
          */
-        add(resource_type: GObject.GType, property_name: string, sorting_mode: SortingMode | null): void;
+        add(resource_type: GObject.GType, property_name: string, sorting_mode: SortingMode): void;
         /**
          * @param table_map A {@link GLib.HashTable}.
          * @returns A string containing the SQL query corresponding                           to this `sorting`.

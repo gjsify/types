@@ -349,7 +349,7 @@ export namespace MatePanelApplet {
         /**
          * @param flags
          */
-        set_flags(flags: AppletFlags | null): void;
+        set_flags(flags: AppletFlags): void;
         /**
          * @param size_hints List of integers
          * @param base_size base_size
@@ -428,7 +428,7 @@ export namespace MatePanelApplet {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -469,7 +469,7 @@ export namespace MatePanelApplet {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

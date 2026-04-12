@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/metatest-16)
 
 
-GJS TypeScript type definitions for MetaTest-16, generated from library version 16.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-rc.2.
+GJS TypeScript type definitions for MetaTest-16, generated from library version 16.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-rc.3.
 
 ## Install
 

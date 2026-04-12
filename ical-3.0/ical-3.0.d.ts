@@ -1041,7 +1041,7 @@ export namespace ICal {
      * @param component
      * @param kind
      */
-    function icalcomponent_count_components(component: component, kind: component_kind | null): number;
+    function icalcomponent_count_components(component: component, kind: component_kind): number;
     /**
      * @param component
      */
@@ -1050,7 +1050,7 @@ export namespace ICal {
      * @param component
      * @param kind
      */
-    function icalcomponent_count_properties(component: component, kind: property_kind | null): number;
+    function icalcomponent_count_properties(component: component, kind: property_kind): number;
     /**
      * @param comp
      * @param start
@@ -1154,11 +1154,11 @@ export namespace ICal {
     /**
      * @param kind
      */
-    function icalcomponent_kind_is_valid(kind: component_kind | null): number;
+    function icalcomponent_kind_is_valid(kind: component_kind): number;
     /**
      * @param kind
      */
-    function icalcomponent_kind_to_string(kind: component_kind | null): string;
+    function icalcomponent_kind_to_string(kind: component_kind): string;
     /**
      * @param comp
      * @param comp_to_merge
@@ -1222,7 +1222,7 @@ export namespace ICal {
      * @param comp
      * @param method
      */
-    function icalcomponent_set_method(comp: component, method: property_method | null): void;
+    function icalcomponent_set_method(comp: component, method: property_method): void;
     /**
      * @param component
      * @param parent
@@ -1304,23 +1304,23 @@ export namespace ICal {
     /**
      * @param stat
      */
-    function icalenum_reqstat_code(stat: requeststatus | null): string;
+    function icalenum_reqstat_code(stat: requeststatus): string;
     /**
      * @param stat
      */
-    function icalenum_reqstat_code_r(stat: requeststatus | null): string;
+    function icalenum_reqstat_code_r(stat: requeststatus): string;
     /**
      * @param stat
      */
-    function icalenum_reqstat_desc(stat: requeststatus | null): string;
+    function icalenum_reqstat_desc(stat: requeststatus): string;
     /**
      * @param stat
      */
-    function icalenum_reqstat_major(stat: requeststatus | null): number;
+    function icalenum_reqstat_major(stat: requeststatus): number;
     /**
      * @param stat
      */
-    function icalenum_reqstat_minor(stat: requeststatus | null): number;
+    function icalenum_reqstat_minor(stat: requeststatus): number;
     function icalerrno_return(): errorenum;
     /**
      * }
@@ -1335,23 +1335,23 @@ export namespace ICal {
     /**
      * @param error
      */
-    function icalerror_get_error_state(error: errorenum | null): errorstate;
+    function icalerror_get_error_state(error: errorenum): errorstate;
     function icalerror_get_errors_are_fatal(): number;
     function icalerror_perror(): string;
     /**
      * @param error
      * @param es
      */
-    function icalerror_restore(error: string, es: errorstate | null): void;
+    function icalerror_restore(error: string, es: errorstate): void;
     /**
      * @param x
      */
-    function icalerror_set_errno(x: errorenum | null): void;
+    function icalerror_set_errno(x: errorenum): void;
     /**
      * @param error
      * @param state
      */
-    function icalerror_set_error_state(error: errorenum | null, state: errorstate | null): void;
+    function icalerror_set_error_state(error: errorenum, state: errorstate): void;
     /**
      * @param fatal
      */
@@ -1360,7 +1360,7 @@ export namespace ICal {
     /**
      * @param e
      */
-    function icalerror_strerror(e: errorenum | null): string;
+    function icalerror_strerror(e: errorenum): string;
     /**
      * @param error
      */
@@ -1707,16 +1707,16 @@ export namespace ICal {
     /**
      * @param kind
      */
-    function icalparameter_kind_is_valid(kind: parameter_kind | null): number;
+    function icalparameter_kind_is_valid(kind: parameter_kind): number;
     /**
      * @param kind
      */
-    function icalparameter_kind_to_string(kind: parameter_kind | null): string;
+    function icalparameter_kind_to_string(kind: parameter_kind): string;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_actionparam(value: parameter, v: parameter_action | null): void;
+    function icalparameter_set_actionparam(value: parameter, v: parameter_action): void;
     /**
      * @param value
      * @param v
@@ -1736,7 +1736,7 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_cutype(value: parameter, v: parameter_cutype | null): void;
+    function icalparameter_set_cutype(value: parameter, v: parameter_cutype): void;
     /**
      * @param value
      * @param v
@@ -1756,7 +1756,7 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_display(value: parameter, v: parameter_display | null): void;
+    function icalparameter_set_display(value: parameter, v: parameter_display): void;
     /**
      * @param value
      * @param v
@@ -1766,22 +1766,22 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_enable(value: parameter, v: parameter_enable | null): void;
+    function icalparameter_set_enable(value: parameter, v: parameter_enable): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_encoding(value: parameter, v: parameter_encoding | null): void;
+    function icalparameter_set_encoding(value: parameter, v: parameter_encoding): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_fbtype(value: parameter, v: parameter_fbtype | null): void;
+    function icalparameter_set_fbtype(value: parameter, v: parameter_fbtype): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_feature(value: parameter, v: parameter_feature | null): void;
+    function icalparameter_set_feature(value: parameter, v: parameter_feature): void;
     /**
      * @param value
      * @param v
@@ -1831,7 +1831,7 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_local(value: parameter, v: parameter_local | null): void;
+    function icalparameter_set_local(value: parameter, v: parameter_local): void;
     /**
      * @param value
      * @param v
@@ -1866,12 +1866,12 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_partstat(value: parameter, v: parameter_partstat | null): void;
+    function icalparameter_set_partstat(value: parameter, v: parameter_partstat): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_patchaction(value: parameter, v: parameter_patchaction | null): void;
+    function icalparameter_set_patchaction(value: parameter, v: parameter_patchaction): void;
     /**
      * @param value
      * @param v
@@ -1881,7 +1881,7 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_range(value: parameter, v: parameter_range | null): void;
+    function icalparameter_set_range(value: parameter, v: parameter_range): void;
     /**
      * @param value
      * @param v
@@ -1891,17 +1891,17 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_related(value: parameter, v: parameter_related | null): void;
+    function icalparameter_set_related(value: parameter, v: parameter_related): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_reltype(value: parameter, v: parameter_reltype | null): void;
+    function icalparameter_set_reltype(value: parameter, v: parameter_reltype): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_required(value: parameter, v: parameter_required | null): void;
+    function icalparameter_set_required(value: parameter, v: parameter_required): void;
     /**
      * @param value
      * @param v
@@ -1911,22 +1911,22 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_role(value: parameter, v: parameter_role | null): void;
+    function icalparameter_set_role(value: parameter, v: parameter_role): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_rsvp(value: parameter, v: parameter_rsvp | null): void;
+    function icalparameter_set_rsvp(value: parameter, v: parameter_rsvp): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_scheduleagent(value: parameter, v: parameter_scheduleagent | null): void;
+    function icalparameter_set_scheduleagent(value: parameter, v: parameter_scheduleagent): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_scheduleforcesend(value: parameter, v: parameter_scheduleforcesend | null): void;
+    function icalparameter_set_scheduleforcesend(value: parameter, v: parameter_scheduleforcesend): void;
     /**
      * @param value
      * @param v
@@ -1946,12 +1946,12 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_stayinformed(value: parameter, v: parameter_stayinformed | null): void;
+    function icalparameter_set_stayinformed(value: parameter, v: parameter_stayinformed): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_substate(value: parameter, v: parameter_substate | null): void;
+    function icalparameter_set_substate(value: parameter, v: parameter_substate): void;
     /**
      * @param value
      * @param v
@@ -1961,7 +1961,7 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_value(value: parameter, v: parameter_value | null): void;
+    function icalparameter_set_value(value: parameter, v: parameter_value): void;
     /**
      * @param value
      * @param v
@@ -1971,12 +1971,12 @@ export namespace ICal {
      * @param value
      * @param v
      */
-    function icalparameter_set_xliccomparetype(value: parameter, v: parameter_xliccomparetype | null): void;
+    function icalparameter_set_xliccomparetype(value: parameter, v: parameter_xliccomparetype): void;
     /**
      * @param value
      * @param v
      */
-    function icalparameter_set_xlicerrortype(value: parameter, v: parameter_xlicerrortype | null): void;
+    function icalparameter_set_xlicerrortype(value: parameter, v: parameter_xlicerrortype): void;
     /**
      * @param param
      * @param v
@@ -1998,7 +1998,7 @@ export namespace ICal {
     /**
      * @param value
      */
-    function icalparameter_value_to_value_kind(value: parameter_value | null): value_kind;
+    function icalparameter_value_to_value_kind(value: parameter_value): value_kind;
     /**
      * @param parser
      */
@@ -2060,7 +2060,7 @@ export namespace ICal {
      * @param kind
      * @param e
      */
-    function icalproperty_enum_belongs_to_property(kind: property_kind | null, e: number): number;
+    function icalproperty_enum_belongs_to_property(kind: property_kind, e: number): number;
     /**
      * @param e
      */
@@ -2608,19 +2608,19 @@ export namespace ICal {
     /**
      * @param kind
      */
-    function icalproperty_kind_is_valid(kind: property_kind | null): number;
+    function icalproperty_kind_is_valid(kind: property_kind): number;
     /**
      * @param kind
      */
-    function icalproperty_kind_to_string(kind: property_kind | null): string;
+    function icalproperty_kind_to_string(kind: property_kind): string;
     /**
      * @param kind
      */
-    function icalproperty_kind_to_value_kind(kind: property_kind | null): value_kind;
+    function icalproperty_kind_to_value_kind(kind: property_kind): value_kind;
     /**
      * @param method
      */
-    function icalproperty_method_to_string(method: property_method | null): string;
+    function icalproperty_method_to_string(method: property_method): string;
     /**
      * @param prop
      */
@@ -2635,7 +2635,7 @@ export namespace ICal {
      * @param prop
      * @param kind
      */
-    function icalproperty_remove_parameter_by_kind(prop: property, kind: parameter_kind | null): void;
+    function icalproperty_remove_parameter_by_kind(prop: property, kind: parameter_kind): void;
     /**
      * @param prop
      * @param name
@@ -3297,7 +3297,7 @@ export namespace ICal {
     /**
      * @param arg0
      */
-    function icalproperty_status_to_string(arg0: property_status | null): string;
+    function icalproperty_status_to_string(arg0: property_status): string;
     /**
      * @param string
      */
@@ -3313,7 +3313,7 @@ export namespace ICal {
     /**
      * @param kind
      */
-    function icalproperty_value_kind_to_kind(kind: value_kind | null): property_kind;
+    function icalproperty_value_kind_to_kind(kind: value_kind): property_kind;
     /**
      * @param rule
      * @param start
@@ -3329,7 +3329,7 @@ export namespace ICal {
     /**
      * @param kind
      */
-    function icalrecur_freq_to_string(kind: recurrencetype_frequency | null): string;
+    function icalrecur_freq_to_string(kind: recurrencetype_frequency): string;
     /**
      * @param arg0
      */
@@ -3346,7 +3346,7 @@ export namespace ICal {
     /**
      * @param kind
      */
-    function icalrecur_skip_to_string(kind: recurrencetype_skip | null): string;
+    function icalrecur_skip_to_string(kind: recurrencetype_skip): string;
     /**
      * @param str
      */
@@ -3362,7 +3362,7 @@ export namespace ICal {
     /**
      * @param kind
      */
-    function icalrecur_weekday_to_string(kind: recurrencetype_weekday | null): string;
+    function icalrecur_weekday_to_string(kind: recurrencetype_weekday): string;
     /**
      * @param recur
      */
@@ -3416,7 +3416,7 @@ export namespace ICal {
      * @param restr
      * @param count
      */
-    function icalrestriction_compare(restr: restriction_kind | null, count: number): number;
+    function icalrestriction_compare(restr: restriction_kind, count: number): number;
     /**
      * @param t
      * @param d
@@ -3930,11 +3930,11 @@ export namespace ICal {
     /**
      * @param kind
      */
-    function icalvalue_kind_is_valid(kind: value_kind | null): number;
+    function icalvalue_kind_is_valid(kind: value_kind): number;
     /**
      * @param kind
      */
-    function icalvalue_kind_to_string(kind: value_kind | null): string;
+    function icalvalue_kind_to_string(kind: value_kind): string;
     /**
      * @param value
      */
@@ -4187,7 +4187,7 @@ export namespace ICal {
     /**
      * @param newSetting
      */
-    function set_unknown_token_handling_setting(newSetting: _unknown_token_handling | null): void;
+    function set_unknown_token_handling_setting(newSetting: _unknown_token_handling): void;
     /**
      * @param path
      */

@@ -369,7 +369,7 @@ export namespace GtkosxApplication {
         /**
          * @param type
          */
-        attention_request(type: ApplicationAttentionType | null): number;
+        attention_request(type: ApplicationAttentionType): number;
         /**
          * @param id
          */

@@ -2332,12 +2332,12 @@ export namespace Skk {
         /**
          * @param value
          */
-        set_kana_mode(value: KanaMode | null): void;
+        set_kana_mode(value: KanaMode): void;
         get_period_style(): PeriodStyle;
         /**
          * @param value
          */
-        set_period_style(value: PeriodStyle | null): void;
+        set_period_style(value: PeriodStyle): void;
         get_output(): string;
         get_preedit(): string;
     }
@@ -2847,7 +2847,7 @@ export namespace Skk {
         /**
          * @param value
          */
-        set_modifiers(value: ModifierType | null): void;
+        set_modifiers(value: ModifierType): void;
     }
 
     namespace KeyEventFilter {
@@ -3165,7 +3165,7 @@ export namespace Skk {
         /**
          * @param value
          */
-        set_input_mode(value: InputMode | null): void;
+        set_input_mode(value: InputMode): void;
         get_auto_start_henkan_keywords(): string[];
         /**
          * @param value
@@ -3180,7 +3180,7 @@ export namespace Skk {
         /**
          * @param value
          */
-        set_period_style(value: PeriodStyle | null): void;
+        set_period_style(value: PeriodStyle): void;
         get_typing_rule(): Rule;
         /**
          * @param value

@@ -362,7 +362,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
-        contains(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -377,7 +377,7 @@ export namespace Cally {
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_extents(coord_type: Atk.CoordType | null): [number, number, number, number];
+        get_extents(coord_type: Atk.CoordType): [number, number, number, number];
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
@@ -397,7 +397,7 @@ export namespace Cally {
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_position(coord_type: Atk.CoordType | null): [number, number];
+        get_position(coord_type: Atk.CoordType): [number, number];
         /**
          * Gets the size of the `component` in terms of width and height.
          *
@@ -418,7 +418,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType | null): Atk.Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -435,7 +435,7 @@ export namespace Cally {
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
          */
-        scroll_to(type: Atk.ScrollType | null): boolean;
+        scroll_to(type: Atk.ScrollType): boolean;
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -444,7 +444,7 @@ export namespace Cally {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_to_point(coords: Atk.CoordType | null, x: number, y: number): boolean;
+        scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -454,7 +454,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` whether the extents were set or not
          */
-        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType | null): boolean;
+        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
         /**
          * Sets the position of `component`.
          *
@@ -465,7 +465,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
          * @returns `true` or `false` whether or not the position was set or not
          */
-        set_position(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -648,7 +648,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -689,7 +689,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1329,7 +1329,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
-        contains(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -1344,7 +1344,7 @@ export namespace Cally {
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_extents(coord_type: Atk.CoordType | null): [number, number, number, number];
+        get_extents(coord_type: Atk.CoordType): [number, number, number, number];
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
@@ -1364,7 +1364,7 @@ export namespace Cally {
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_position(coord_type: Atk.CoordType | null): [number, number];
+        get_position(coord_type: Atk.CoordType): [number, number];
         /**
          * Gets the size of the `component` in terms of width and height.
          *
@@ -1385,7 +1385,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType | null): Atk.Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -1402,7 +1402,7 @@ export namespace Cally {
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
          */
-        scroll_to(type: Atk.ScrollType | null): boolean;
+        scroll_to(type: Atk.ScrollType): boolean;
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -1411,7 +1411,7 @@ export namespace Cally {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_to_point(coords: Atk.CoordType | null, x: number, y: number): boolean;
+        scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -1421,7 +1421,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` whether the extents were set or not
          */
-        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType | null): boolean;
+        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
         /**
          * Sets the position of `component`.
          *
@@ -1432,7 +1432,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
          * @returns `true` or `false` whether or not the position was set or not
          */
-        set_position(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -1615,7 +1615,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1656,7 +1656,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2296,7 +2296,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
-        contains(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -2311,7 +2311,7 @@ export namespace Cally {
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_extents(coord_type: Atk.CoordType | null): [number, number, number, number];
+        get_extents(coord_type: Atk.CoordType): [number, number, number, number];
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
@@ -2331,7 +2331,7 @@ export namespace Cally {
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_position(coord_type: Atk.CoordType | null): [number, number];
+        get_position(coord_type: Atk.CoordType): [number, number];
         /**
          * Gets the size of the `component` in terms of width and height.
          *
@@ -2352,7 +2352,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType | null): Atk.Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -2369,7 +2369,7 @@ export namespace Cally {
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
          */
-        scroll_to(type: Atk.ScrollType | null): boolean;
+        scroll_to(type: Atk.ScrollType): boolean;
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -2378,7 +2378,7 @@ export namespace Cally {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_to_point(coords: Atk.CoordType | null, x: number, y: number): boolean;
+        scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -2388,7 +2388,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` whether the extents were set or not
          */
-        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType | null): boolean;
+        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
         /**
          * Sets the position of `component`.
          *
@@ -2399,7 +2399,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
          * @returns `true` or `false` whether or not the position was set or not
          */
-        set_position(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -2582,7 +2582,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2623,7 +2623,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3263,7 +3263,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
-        contains(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -3278,7 +3278,7 @@ export namespace Cally {
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_extents(coord_type: Atk.CoordType | null): [number, number, number, number];
+        get_extents(coord_type: Atk.CoordType): [number, number, number, number];
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
@@ -3298,7 +3298,7 @@ export namespace Cally {
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_position(coord_type: Atk.CoordType | null): [number, number];
+        get_position(coord_type: Atk.CoordType): [number, number];
         /**
          * Gets the size of the `component` in terms of width and height.
          *
@@ -3319,7 +3319,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType | null): Atk.Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -3336,7 +3336,7 @@ export namespace Cally {
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
          */
-        scroll_to(type: Atk.ScrollType | null): boolean;
+        scroll_to(type: Atk.ScrollType): boolean;
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -3345,7 +3345,7 @@ export namespace Cally {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_to_point(coords: Atk.CoordType | null, x: number, y: number): boolean;
+        scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -3355,7 +3355,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` whether the extents were set or not
          */
-        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType | null): boolean;
+        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
         /**
          * Sets the position of `component`.
          *
@@ -3366,7 +3366,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
          * @returns `true` or `false` whether or not the position was set or not
          */
-        set_position(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -3549,7 +3549,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3590,7 +3590,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4315,7 +4315,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4356,7 +4356,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4726,7 +4726,7 @@ export namespace Cally {
          * @param target The {@link Atk.Object} which is to be the target of the relation.
          * @returns TRUE if the relationship is added.
          */
-        add_relationship(relationship: Atk.RelationType | null, target: Atk.Object): boolean;
+        add_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean;
         /**
          * Gets the accessible id of the accessible.
          * @returns a character string representing the accessible id of the object, or NULL if no such string was set.
@@ -4868,7 +4868,7 @@ export namespace Cally {
          * @param target The {@link Atk.Object} which is the target of the relation to be removed.
          * @returns TRUE if the relationship is removed.
          */
-        remove_relationship(relationship: Atk.RelationType | null, target: Atk.Object): boolean;
+        remove_relationship(relationship: Atk.RelationType, target: Atk.Object): boolean;
         /**
          * Sets the accessible ID of the accessible.  This is not meant to be presented
          * to the user, but to be an ID which is stable over application development.
@@ -4917,7 +4917,7 @@ export namespace Cally {
          * Sets the role of the accessible.
          * @param role an {@link Atk.Role} to be set as the role
          */
-        set_role(role: Atk.Role | null): void;
+        set_role(role: Atk.Role): void;
         /**
          * @param child
          * @virtual
@@ -5370,7 +5370,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
-        contains(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -5385,7 +5385,7 @@ export namespace Cally {
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_extents(coord_type: Atk.CoordType | null): [number, number, number, number];
+        get_extents(coord_type: Atk.CoordType): [number, number, number, number];
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
@@ -5405,7 +5405,7 @@ export namespace Cally {
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_position(coord_type: Atk.CoordType | null): [number, number];
+        get_position(coord_type: Atk.CoordType): [number, number];
         /**
          * Gets the size of the `component` in terms of width and height.
          *
@@ -5426,7 +5426,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType | null): Atk.Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -5443,7 +5443,7 @@ export namespace Cally {
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
          */
-        scroll_to(type: Atk.ScrollType | null): boolean;
+        scroll_to(type: Atk.ScrollType): boolean;
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -5452,7 +5452,7 @@ export namespace Cally {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_to_point(coords: Atk.CoordType | null, x: number, y: number): boolean;
+        scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -5462,7 +5462,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` whether the extents were set or not
          */
-        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType | null): boolean;
+        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
         /**
          * Sets the position of `component`.
          *
@@ -5473,7 +5473,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
          * @returns `true` or `false` whether or not the position was set or not
          */
-        set_position(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -5731,9 +5731,9 @@ export namespace Cally {
          */
         get_bounded_ranges(
             rect: Atk.TextRectangle,
-            coord_type: Atk.CoordType | null,
-            x_clip_type: Atk.TextClipType | null,
-            y_clip_type: Atk.TextClipType | null,
+            coord_type: Atk.CoordType,
+            x_clip_type: Atk.TextClipType,
+            y_clip_type: Atk.TextClipType,
         ): Atk.TextRange[];
         /**
          * Gets the offset of the position of the caret (cursor).
@@ -5760,7 +5760,7 @@ export namespace Cally {
          * @param offset The offset of the text character for which bounding information is required.
          * @param coords specify whether coordinates are relative to the screen or widget window
          */
-        get_character_extents(offset: number, coords: Atk.CoordType | null): [number, number, number, number];
+        get_character_extents(offset: number, coords: Atk.CoordType): [number, number, number, number];
         /**
          * Creates an {@link Atk.AttributeSet} which consists of the default values of
          * attributes for the text. See the enum AtkTextAttribute for types of text
@@ -5783,7 +5783,7 @@ export namespace Cally {
          * @param coords specify whether coordinates are relative to the screen or widget window
          * @returns the offset to the character which is located at  the specified          `x` and `y` coordinates of -1 in case of failure.
          */
-        get_offset_at_point(x: number, y: number, coords: Atk.CoordType | null): number;
+        get_offset_at_point(x: number, y: number, coords: Atk.CoordType): number;
         /**
          * Get the bounding box for text within the specified range.
          *
@@ -5793,11 +5793,7 @@ export namespace Cally {
          * @param end_offset The offset of the text character after the last character        for which boundary information is required.
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
          */
-        get_range_extents(
-            start_offset: number,
-            end_offset: number,
-            coord_type: Atk.CoordType | null,
-        ): Atk.TextRectangle;
+        get_range_extents(start_offset: number, end_offset: number, coord_type: Atk.CoordType): Atk.TextRectangle;
         /**
          * Creates an {@link Atk.AttributeSet} which consists of the attributes explicitly
          * set at the position `offset` in the text. `start_offset` and `end_offset` are
@@ -5851,7 +5847,7 @@ export namespace Cally {
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
          */
-        get_string_at_offset(offset: number, granularity: Atk.TextGranularity | null): [string | null, number, number];
+        get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [string | null, number, number];
         /**
          * Gets the specified text.
          * @param start_offset a starting character offset within `text`
@@ -5865,7 +5861,7 @@ export namespace Cally {
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text after `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
-        get_text_after_offset(offset: number, boundary_type: Atk.TextBoundary | null): [string, number, number];
+        get_text_after_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
         /**
          * Gets the specified text.
          *
@@ -5895,14 +5891,14 @@ export namespace Cally {
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text at `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
-        get_text_at_offset(offset: number, boundary_type: Atk.TextBoundary | null): [string, number, number];
+        get_text_at_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
         /**
          * Gets the specified text.
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text before `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
-        get_text_before_offset(offset: number, boundary_type: Atk.TextBoundary | null): [string, number, number];
+        get_text_before_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
         /**
          * Removes the specified selection.
          * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
@@ -5916,7 +5912,7 @@ export namespace Cally {
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
          */
-        scroll_substring_to(start_offset: number, end_offset: number, type: Atk.ScrollType | null): boolean;
+        scroll_substring_to(start_offset: number, end_offset: number, type: Atk.ScrollType): boolean;
         /**
          * Move the top-left of a substring of `text` to a given position of the screen
          * by scrolling all necessary parents.
@@ -5930,7 +5926,7 @@ export namespace Cally {
         scroll_substring_to_point(
             start_offset: number,
             end_offset: number,
-            coords: Atk.CoordType | null,
+            coords: Atk.CoordType,
             x: number,
             y: number,
         ): boolean;
@@ -6278,7 +6274,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6319,7 +6315,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6959,7 +6955,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
-        contains(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -6974,7 +6970,7 @@ export namespace Cally {
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_extents(coord_type: Atk.CoordType | null): [number, number, number, number];
+        get_extents(coord_type: Atk.CoordType): [number, number, number, number];
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
@@ -6994,7 +6990,7 @@ export namespace Cally {
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
-        get_position(coord_type: Atk.CoordType | null): [number, number];
+        get_position(coord_type: Atk.CoordType): [number, number];
         /**
          * Gets the size of the `component` in terms of width and height.
          *
@@ -7015,7 +7011,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType | null): Atk.Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -7032,7 +7028,7 @@ export namespace Cally {
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
          */
-        scroll_to(type: Atk.ScrollType | null): boolean;
+        scroll_to(type: Atk.ScrollType): boolean;
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -7041,7 +7037,7 @@ export namespace Cally {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_to_point(coords: Atk.CoordType | null, x: number, y: number): boolean;
+        scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -7051,7 +7047,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns `true` or `false` whether the extents were set or not
          */
-        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType | null): boolean;
+        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
         /**
          * Sets the position of `component`.
          *
@@ -7062,7 +7058,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
          * @returns `true` or `false` whether or not the position was set or not
          */
-        set_position(x: number, y: number, coord_type: Atk.CoordType | null): boolean;
+        set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -7245,7 +7241,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7286,7 +7282,7 @@ export namespace Cally {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

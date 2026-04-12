@@ -199,7 +199,7 @@ export namespace Wp {
      * @returns An allocated string with the configuration file path or NULL if the file was not found.
      * @since 0.4.2
      */
-    function find_file(dirs: LookupDirs | null, filename: string, subdir?: string | null): string;
+    function find_file(dirs: LookupDirs, filename: string, subdir?: string | null): string;
     /**
      * Gets the full path to the WirePlumber configuration directory.
      * @returns The WirePlumber configuration directory
@@ -236,13 +236,13 @@ export namespace Wp {
      * `flags` can modify which parts are initialized, in cases where you want to handle part of this initialization externally.
      * @param flags initialization flags
      */
-    function init(flags: InitFlags | null): void;
+    function init(flags: InitFlags): void;
     /**
      * Use this to figure out if a debug message is going to be printed or not, so that you can avoid allocating resources just for debug logging purposes.
      * @param log_level a log level
      * @returns whether the log level is currently enabled
      */
-    function log_level_is_enabled(log_level: GLib.LogLevelFlags | null): boolean;
+    function log_level_is_enabled(log_level: GLib.LogLevelFlags): boolean;
     /**
      * Configures the log level and enabled categories.
      * @param level_str a log level description string as it would appear in the WIREPLUMBER_DEBUG environment variable "level:category1,category2"
@@ -259,7 +259,7 @@ export namespace Wp {
      * @param user_data
      */
     function log_writer_default(
-        log_level: GLib.LogLevelFlags | null,
+        log_level: GLib.LogLevelFlags,
         fields: GLib.LogField,
         n_fields: bigint | number,
         user_data?: any | null,
@@ -276,7 +276,7 @@ export namespace Wp {
      * @returns a new iterator iterating over strings which are absolute paths to the configuration files found
      * @since 0.4.2
      */
-    function new_files_iterator(dirs: LookupDirs | null, subdir?: string | null, suffix?: string | null): Iterator;
+    function new_files_iterator(dirs: LookupDirs, subdir?: string | null, suffix?: string | null): Iterator;
     /**
      * Gets the key from a properties iterator item.
      * @param item a GValue that was returned from the WpIterator of `wp_properties_new_iterator()`
@@ -2773,7 +2773,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2814,7 +2814,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7117,7 +7117,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7158,7 +7158,7 @@ export namespace Wp {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7692,12 +7692,7 @@ export namespace Wp {
          * @param verb the operation that is performed to check the constraint
          * @param value the value to check for
          */
-        add_constraint(
-            type: ConstraintType | null,
-            subject: string,
-            verb: ConstraintVerb | null,
-            value?: GLib.Variant | null,
-        ): void;
+        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value?: GLib.Variant | null): void;
         /**
          * Checks if the specified `object` matches the type and all the constraints that are described in `self`.
          *
@@ -7723,7 +7718,7 @@ export namespace Wp {
          * @returns flags that indicate which components of the interest match. WP_INTEREST_MATCH_ALL indicates a fully successful match; any other combination indicates a failure on the component(s) that do not appear on the flag set
          */
         matches_full(
-            flags: InterestMatchFlags | null,
+            flags: InterestMatchFlags,
             object_type: GObject.GType,
             object?: GObject.Object | null,
             pw_props?: Properties | null,

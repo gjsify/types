@@ -77,16 +77,16 @@ export namespace Epc {
     /**
      * @param value
      */
-    function address_family_to_string(value: AddressFamily | null): string;
+    function address_family_to_string(value: AddressFamily): string;
     /**
      * @param value
      */
-    function auth_flags_to_string(value: AuthFlags | null): string;
+    function auth_flags_to_string(value: AuthFlags): string;
     function avahi_error_quark(): GLib.Quark;
     /**
      * @param value
      */
-    function collision_handling_to_string(value: CollisionHandling | null): string;
+    function collision_handling_to_string(value: CollisionHandling): string;
     function http_error_quark(): GLib.Quark;
     /**
      * @param protocol
@@ -94,24 +94,24 @@ export namespace Epc {
      * @param port
      * @param path
      */
-    function protocol_build_uri(protocol: Protocol | null, hostname: string, port: number, path: string): string;
+    function protocol_build_uri(protocol: Protocol, hostname: string, port: number, path: string): string;
     /**
      * @param name
      * @param fallback
      */
-    function protocol_from_name(name: string, fallback: Protocol | null): Protocol;
+    function protocol_from_name(name: string, fallback: Protocol): Protocol;
     /**
      * @param protocol
      */
-    function protocol_get_service_type(protocol: Protocol | null): string;
+    function protocol_get_service_type(protocol: Protocol): string;
     /**
      * @param protocol
      */
-    function protocol_get_uri_scheme(protocol: Protocol | null): string;
+    function protocol_get_uri_scheme(protocol: Protocol): string;
     /**
      * @param value
      */
-    function protocol_to_string(value: Protocol | null): string;
+    function protocol_to_string(value: Protocol): string;
     /**
      * @param type
      */
@@ -124,7 +124,7 @@ export namespace Epc {
      * @param protocol
      * @param application
      */
-    function service_type_new(protocol: Protocol | null, application: string): string;
+    function service_type_new(protocol: Protocol, application: string): string;
     function shell_get_debug_level(): number;
     function shell_get_host_name(): string;
     /**
@@ -353,7 +353,7 @@ export namespace Epc {
         /**
          * @param protocol
          */
-        set_protocol(protocol: Protocol | null): void;
+        set_protocol(protocol: Protocol): void;
         /**
          * @param username
          */
@@ -449,7 +449,7 @@ export namespace Epc {
         /**
          * @param method
          */
-        set_collision_handling(method: CollisionHandling | null): void;
+        set_collision_handling(method: CollisionHandling): void;
         /**
          * @param cookie
          */
@@ -644,7 +644,7 @@ export namespace Epc {
         /**
          * @param flags
          */
-        set_auth_flags(flags: AuthFlags | null): void;
+        set_auth_flags(flags: AuthFlags): void;
         /**
          * @param key
          * @param handler
@@ -653,7 +653,7 @@ export namespace Epc {
         /**
          * @param method
          */
-        set_collision_handling(method: CollisionHandling | null): void;
+        set_collision_handling(method: CollisionHandling): void;
         /**
          * @param path
          */
@@ -666,7 +666,7 @@ export namespace Epc {
         /**
          * @param protocol
          */
-        set_protocol(protocol: Protocol | null): void;
+        set_protocol(protocol: Protocol): void;
         /**
          * @param cookie
          */

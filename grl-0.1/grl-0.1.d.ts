@@ -222,7 +222,7 @@ export namespace Grl {
     function multiple_get_media_from_uri(
         uri: string,
         keys: KeyID[],
-        flags: MetadataResolutionFlags | null,
+        flags: MetadataResolutionFlags,
         callback: MediaSourceMetadataCb,
     ): void;
     /**
@@ -246,7 +246,7 @@ export namespace Grl {
         text: string,
         keys: GObject.ParamSpec[],
         count: number,
-        flags: MetadataResolutionFlags | null,
+        flags: MetadataResolutionFlags,
         callback: MediaSourceResultCb,
     ): number;
     /**
@@ -266,7 +266,7 @@ export namespace Grl {
         text: string,
         keys: GObject.ParamSpec[],
         count: number,
-        flags: MetadataResolutionFlags | null,
+        flags: MetadataResolutionFlags,
     ): Media[];
     /**
      * Cancel an operation.
@@ -1998,7 +1998,7 @@ export namespace Grl {
             keys: GObject.ParamSpec[],
             skip: number,
             count: number,
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
             callback: MediaSourceResultCb,
         ): number;
         /**
@@ -2021,7 +2021,7 @@ export namespace Grl {
             keys: GObject.ParamSpec[],
             skip: number,
             count: number,
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
         ): Media[];
         /**
          * Cancel a running method.
@@ -2059,7 +2059,7 @@ export namespace Grl {
         get_media_from_uri(
             uri: string,
             keys: KeyID[],
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
             callback: MediaSourceMetadataCb,
         ): number;
         /**
@@ -2076,7 +2076,7 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a filled {@link Grl.Media}
          */
-        get_media_from_uri_sync(uri: string, keys: KeyID[], flags: MetadataResolutionFlags | null): Media;
+        get_media_from_uri_sync(uri: string, keys: KeyID[], flags: MetadataResolutionFlags): Media;
         /**
          * Obtains the previously attached data
          * @param operation_id the identifier of a running operation
@@ -2097,7 +2097,7 @@ export namespace Grl {
         metadata(
             media: Media,
             keys: GObject.ParamSpec[],
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
             callback: MediaSourceMetadataCb,
         ): number;
         /**
@@ -2110,7 +2110,7 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a filled {@link Grl.Media}
          */
-        metadata_sync(media: Media, keys: GObject.ParamSpec[], flags: MetadataResolutionFlags | null): Media;
+        metadata_sync(media: Media, keys: GObject.ParamSpec[], flags: MetadataResolutionFlags): Media;
         /**
          * Emits "content-changed" signal to notify subscribers that a change ocurred
          * in `source`.
@@ -2126,7 +2126,7 @@ export namespace Grl {
          * @param change_type the type of change
          * @param location_unknown if change has happened in `media` or any descendant
          */
-        notify_change(media: Media, change_type: MediaSourceChangeType | null, location_unknown: boolean): void;
+        notify_change(media: Media, change_type: MediaSourceChangeType, location_unknown: boolean): void;
         /**
          * Emits "content-changed" signal to notify subscribers that a change ocurred
          * in `source`.
@@ -2148,7 +2148,7 @@ export namespace Grl {
          */
         notify_change_list(
             changed_medias: Media[],
-            change_type: MediaSourceChangeType | null,
+            change_type: MediaSourceChangeType,
             location_unknown: boolean,
         ): void;
         /**
@@ -2187,7 +2187,7 @@ export namespace Grl {
             keys: GObject.ParamSpec[],
             skip: number,
             count: number,
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
             callback: MediaSourceResultCb,
         ): number;
         /**
@@ -2210,7 +2210,7 @@ export namespace Grl {
             keys: GObject.ParamSpec[],
             skip: number,
             count: number,
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
         ): Media[];
         /**
          * Remove a `media` from the `source` repository.
@@ -2250,7 +2250,7 @@ export namespace Grl {
             keys: GObject.ParamSpec[],
             skip: number,
             count: number,
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
             callback: MediaSourceResultCb,
         ): number;
         /**
@@ -2278,7 +2278,7 @@ export namespace Grl {
             keys: GObject.ParamSpec[],
             skip: number,
             count: number,
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
         ): Media[];
         /**
          * TBD
@@ -2802,7 +2802,7 @@ export namespace Grl {
         resolve(
             keys: GObject.ParamSpec[],
             media: Media,
-            flags: MetadataResolutionFlags | null,
+            flags: MetadataResolutionFlags,
             callback: MetadataSourceResolveCb,
         ): number;
         /**
@@ -2815,7 +2815,7 @@ export namespace Grl {
          * @param flags bitwise mask of {@link Grl.MetadataResolutionFlags} with the resolution strategy
          * @returns the updated {@link Grl.Media}
          */
-        resolve_sync(keys: GObject.ParamSpec[], media: Media, flags: MetadataResolutionFlags | null): Media;
+        resolve_sync(keys: GObject.ParamSpec[], media: Media, flags: MetadataResolutionFlags): Media;
         /**
          * This is the main method of the {@link Grl.MetadataSource} class. It will
          * get the values for `keys` from `media` and store it permanently. After
@@ -2831,7 +2831,7 @@ export namespace Grl {
         set_metadata(
             media: Media,
             keys: GObject.ParamSpec[],
-            flags: MetadataWritingFlags | null,
+            flags: MetadataWritingFlags,
             callback: MetadataSourceSetMetadataCb,
         ): void;
         /**
@@ -2847,11 +2847,7 @@ export namespace Grl {
          * @param keys a list of {@link Grl.KeyID} whose values we want to change
          * @param flags Flags to configure specific behaviors of the operation.
          */
-        set_metadata_sync(
-            media: Media,
-            keys: GObject.ParamSpec[],
-            flags: MetadataWritingFlags | null,
-        ): GObject.ParamSpec[];
+        set_metadata_sync(media: Media, keys: GObject.ParamSpec[], flags: MetadataWritingFlags): GObject.ParamSpec[];
         /**
          * @param operation_id
          */
@@ -3031,7 +3027,7 @@ export namespace Grl {
          * @param ranked whether the returned list shall be returned ordered by rank
          * @returns a {@link GLib.List} of
          */
-        get_sources_by_operations(ops: SupportedOps | null, ranked: boolean): MediaPlugin[];
+        get_sources_by_operations(ops: SupportedOps, ranked: boolean): MediaPlugin[];
         /**
          * Loads a module from shared object file stored in `path`
          * @param library_filename the path to the so file

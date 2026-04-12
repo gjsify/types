@@ -1266,7 +1266,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1307,7 +1307,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1690,8 +1690,8 @@ export namespace Handy {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -1699,7 +1699,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -1777,7 +1777,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -1814,7 +1814,7 @@ export namespace Handy {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -1901,7 +1901,7 @@ export namespace Handy {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -1941,7 +1941,7 @@ export namespace Handy {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -2053,22 +2053,14 @@ export namespace Handy {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -2150,9 +2142,9 @@ export namespace Handy {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -2611,7 +2603,7 @@ export namespace Handy {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -3245,7 +3237,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -3306,7 +3298,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -3325,7 +3317,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -3345,7 +3337,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -3387,7 +3379,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -3396,7 +3388,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -3426,7 +3418,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -3593,11 +3585,7 @@ export namespace Handy {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -3846,7 +3834,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -3862,7 +3850,7 @@ export namespace Handy {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -3932,7 +3920,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -4195,7 +4183,7 @@ export namespace Handy {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -4213,7 +4201,7 @@ export namespace Handy {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -4263,7 +4251,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -4474,7 +4462,7 @@ export namespace Handy {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -5984,7 +5972,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6025,7 +6013,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6760,7 +6748,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6801,7 +6789,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8045,7 +8033,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Emits `Handy.Swipeable::child-switched` signal.
          *
@@ -8097,7 +8085,7 @@ export namespace Handy {
          * @param navigation_direction the direction of the swipe
          * @param is_drag whether the swipe is caused by a dragging gesture
          */
-        get_swipe_area(navigation_direction: NavigationDirection | null, is_drag: boolean): Gdk.Rectangle;
+        get_swipe_area(navigation_direction: NavigationDirection, is_drag: boolean): Gdk.Rectangle;
         /**
          * Gets the {@link SwipeTracker} used by this swipeable widget.
          * @returns the swipe tracker
@@ -8212,7 +8200,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8253,7 +8241,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8644,8 +8632,8 @@ export namespace Handy {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -8653,7 +8641,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -8731,7 +8719,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -8768,7 +8756,7 @@ export namespace Handy {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -8855,7 +8843,7 @@ export namespace Handy {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -8895,7 +8883,7 @@ export namespace Handy {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -9007,22 +8995,14 @@ export namespace Handy {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -9104,9 +9084,9 @@ export namespace Handy {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -9565,7 +9545,7 @@ export namespace Handy {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -10199,7 +10179,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -10260,7 +10240,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -10279,7 +10259,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -10299,7 +10279,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -10341,7 +10321,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -10350,7 +10330,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -10380,7 +10360,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -10547,11 +10527,7 @@ export namespace Handy {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -10800,7 +10776,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -10816,7 +10792,7 @@ export namespace Handy {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -10886,7 +10862,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -11149,7 +11125,7 @@ export namespace Handy {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -11167,7 +11143,7 @@ export namespace Handy {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -11217,7 +11193,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -11428,7 +11404,7 @@ export namespace Handy {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -12364,7 +12340,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12409,7 +12385,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12450,7 +12426,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12973,7 +12949,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13018,7 +12994,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -13059,7 +13035,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13649,7 +13625,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13694,7 +13670,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -13735,7 +13711,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14884,7 +14860,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -14925,7 +14901,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15321,8 +15297,8 @@ export namespace Handy {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -15330,7 +15306,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -15408,7 +15384,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -15445,7 +15421,7 @@ export namespace Handy {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -15532,7 +15508,7 @@ export namespace Handy {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -15572,7 +15548,7 @@ export namespace Handy {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -15684,22 +15660,14 @@ export namespace Handy {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -15781,9 +15749,9 @@ export namespace Handy {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -16242,7 +16210,7 @@ export namespace Handy {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -16876,7 +16844,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -16937,7 +16905,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -16956,7 +16924,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -16976,7 +16944,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -17018,7 +16986,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -17027,7 +16995,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -17057,7 +17025,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -17224,11 +17192,7 @@ export namespace Handy {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -17477,7 +17441,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -17493,7 +17457,7 @@ export namespace Handy {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -17563,7 +17527,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -17826,7 +17790,7 @@ export namespace Handy {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -17844,7 +17808,7 @@ export namespace Handy {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -17894,7 +17858,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -18105,7 +18069,7 @@ export namespace Handy {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -19183,7 +19147,7 @@ export namespace Handy {
          * @param direction the direction
          * @returns the previous or next child
          */
-        get_adjacent_child(direction: NavigationDirection | null): Gtk.Widget | null;
+        get_adjacent_child(direction: NavigationDirection): Gtk.Widget | null;
         /**
          * Gets whether swipe gestures for navigating backward are enabled.
          * @returns Whether swipe gestures are enabled.
@@ -19207,7 +19171,7 @@ export namespace Handy {
          * @param orientation the orientation
          * @returns whether `self` is homogeneous for the given orientation
          */
-        get_homogeneous(orientation: Gtk.Orientation | null): boolean;
+        get_homogeneous(orientation: Gtk.Orientation): boolean;
         /**
          * Gets whether `self` will interpolate its size when changing the visible child.
          * @returns whether child sizes are interpolated
@@ -19253,7 +19217,7 @@ export namespace Handy {
          * @param direction the direction
          * @returns whether the visible child was changed
          */
-        navigate(direction: NavigationDirection | null): boolean;
+        navigate(direction: NavigationDirection): boolean;
         /**
          * Inserts `child` at the first position in `self`.
          * @param child the widget to prepend
@@ -19285,7 +19249,7 @@ export namespace Handy {
          * @param orientation the orientation
          * @param homogeneous `TRUE` to make `self` homogeneous
          */
-        set_homogeneous(orientation: Gtk.Orientation | null, homogeneous: boolean): void;
+        set_homogeneous(orientation: Gtk.Orientation, homogeneous: boolean): void;
         /**
          * Sets whether `self` will interpolate its size when changing the visible child.
          *
@@ -19308,7 +19272,7 @@ export namespace Handy {
          * current.
          * @param transition the new transition type
          */
-        set_transition_type(transition: DeckTransitionType | null): void;
+        set_transition_type(transition: DeckTransitionType): void;
         /**
          * Sets the currently visible widget.
          * @param visible_child the new child
@@ -19811,7 +19775,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Emits `Handy.Swipeable::child-switched` signal.
          *
@@ -19863,7 +19827,7 @@ export namespace Handy {
          * @param navigation_direction the direction of the swipe
          * @param is_drag whether the swipe is caused by a dragging gesture
          */
-        get_swipe_area(navigation_direction: NavigationDirection | null, is_drag: boolean): Gdk.Rectangle;
+        get_swipe_area(navigation_direction: NavigationDirection, is_drag: boolean): Gdk.Rectangle;
         /**
          * Gets the {@link SwipeTracker} used by this swipeable widget.
          * @returns the swipe tracker
@@ -19978,7 +19942,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -20019,7 +19983,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20410,8 +20374,8 @@ export namespace Handy {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -20419,7 +20383,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -20497,7 +20461,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -20534,7 +20498,7 @@ export namespace Handy {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -20621,7 +20585,7 @@ export namespace Handy {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -20661,7 +20625,7 @@ export namespace Handy {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -20773,22 +20737,14 @@ export namespace Handy {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -20870,9 +20826,9 @@ export namespace Handy {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -21331,7 +21287,7 @@ export namespace Handy {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -21965,7 +21921,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -22026,7 +21982,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -22045,7 +22001,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -22065,7 +22021,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -22107,7 +22063,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -22116,7 +22072,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -22146,7 +22102,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -22313,11 +22269,7 @@ export namespace Handy {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -22566,7 +22518,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -22582,7 +22534,7 @@ export namespace Handy {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -22652,7 +22604,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -22915,7 +22867,7 @@ export namespace Handy {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -22933,7 +22885,7 @@ export namespace Handy {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -22983,7 +22935,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -23194,7 +23146,7 @@ export namespace Handy {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -24853,7 +24805,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -24894,7 +24846,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25285,8 +25237,8 @@ export namespace Handy {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -25294,7 +25246,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -25372,7 +25324,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -25409,7 +25361,7 @@ export namespace Handy {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -25496,7 +25448,7 @@ export namespace Handy {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -25536,7 +25488,7 @@ export namespace Handy {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -25648,22 +25600,14 @@ export namespace Handy {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -25745,9 +25689,9 @@ export namespace Handy {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -26206,7 +26150,7 @@ export namespace Handy {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -26840,7 +26784,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -26901,7 +26845,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -26920,7 +26864,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -26940,7 +26884,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -26982,7 +26926,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -26991,7 +26935,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -27021,7 +26965,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -27188,11 +27132,7 @@ export namespace Handy {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -27441,7 +27381,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -27457,7 +27397,7 @@ export namespace Handy {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -27527,7 +27467,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -27790,7 +27730,7 @@ export namespace Handy {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -27808,7 +27748,7 @@ export namespace Handy {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -27858,7 +27798,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -28069,7 +28009,7 @@ export namespace Handy {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -29336,7 +29276,7 @@ export namespace Handy {
          * Sets the flap position for `self`.
          * @param position the new value
          */
-        set_flap_position(position: Gtk.PackType | null): void;
+        set_flap_position(position: Gtk.PackType): void;
         /**
          * Sets the duration that fold transitions will take.
          * @param duration the new duration, in milliseconds
@@ -29346,7 +29286,7 @@ export namespace Handy {
          * Sets the current fold policy for `self`.
          * @param policy a fold policy
          */
-        set_fold_policy(policy: FlapFoldPolicy | null): void;
+        set_fold_policy(policy: FlapFoldPolicy): void;
         /**
          * Sets whether `self` is locked.
          *
@@ -29399,7 +29339,7 @@ export namespace Handy {
          * Sets the type of animation used for reveal and fold transitions in `self`.
          * @param transition_type the new transition type
          */
-        set_transition_type(transition_type: FlapTransitionType | null): void;
+        set_transition_type(transition_type: FlapTransitionType): void;
         /**
          * The orientation of the orientable.
          * @since 2.16
@@ -29890,7 +29830,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Emits `Handy.Swipeable::child-switched` signal.
          *
@@ -29942,7 +29882,7 @@ export namespace Handy {
          * @param navigation_direction the direction of the swipe
          * @param is_drag whether the swipe is caused by a dragging gesture
          */
-        get_swipe_area(navigation_direction: NavigationDirection | null, is_drag: boolean): Gdk.Rectangle;
+        get_swipe_area(navigation_direction: NavigationDirection, is_drag: boolean): Gdk.Rectangle;
         /**
          * Gets the {@link SwipeTracker} used by this swipeable widget.
          * @returns the swipe tracker
@@ -30057,7 +29997,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -30098,7 +30038,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -30489,8 +30429,8 @@ export namespace Handy {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -30498,7 +30438,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -30576,7 +30516,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -30613,7 +30553,7 @@ export namespace Handy {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -30700,7 +30640,7 @@ export namespace Handy {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -30740,7 +30680,7 @@ export namespace Handy {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -30852,22 +30792,14 @@ export namespace Handy {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -30949,9 +30881,9 @@ export namespace Handy {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -31410,7 +31342,7 @@ export namespace Handy {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -32044,7 +31976,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -32105,7 +32037,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -32124,7 +32056,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -32144,7 +32076,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -32186,7 +32118,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -32195,7 +32127,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -32225,7 +32157,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -32392,11 +32324,7 @@ export namespace Handy {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -32645,7 +32573,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -32661,7 +32589,7 @@ export namespace Handy {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -32731,7 +32659,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -32994,7 +32922,7 @@ export namespace Handy {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -33012,7 +32940,7 @@ export namespace Handy {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -33062,7 +32990,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -33273,7 +33201,7 @@ export namespace Handy {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -34459,7 +34387,7 @@ export namespace Handy {
          * Sets the policy `self` must follow to horizontally align its center widget.
          * @param centering_policy the centering policy
          */
-        set_centering_policy(centering_policy: CenteringPolicy | null): void;
+        set_centering_policy(centering_policy: CenteringPolicy): void;
         /**
          * Sets a custom title for the header bar.
          *
@@ -34562,7 +34490,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -34603,7 +34531,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -35382,7 +35310,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -35423,7 +35351,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -36206,7 +36134,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -36247,7 +36175,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -36994,7 +36922,7 @@ export namespace Handy {
          * @param direction the direction
          * @returns the previous or next child
          */
-        get_adjacent_child(direction: NavigationDirection | null): Gtk.Widget | null;
+        get_adjacent_child(direction: NavigationDirection): Gtk.Widget | null;
         /**
          * Gets whether swipe gestures switch to the previous navigatable child.
          * @returns `TRUE` if back swipe is enabled
@@ -37034,7 +36962,7 @@ export namespace Handy {
          * @param orientation the orientation
          * @returns whether `self` is homogeneous for the given fold and orientation
          */
-        get_homogeneous(folded: boolean, orientation: Gtk.Orientation | null): boolean;
+        get_homogeneous(folded: boolean, orientation: Gtk.Orientation): boolean;
         /**
          * Gets whether to interpolate between the sizes of children on page switches.
          * @returns `TRUE` if child sizes are interpolated
@@ -37076,7 +37004,7 @@ export namespace Handy {
          * @param direction the direction
          * @returns whether the visible child was changed
          */
-        navigate(direction: NavigationDirection | null): boolean;
+        navigate(direction: NavigationDirection): boolean;
         /**
          * Inserts `child` at the first position in `self`.
          * @param child the widget to prepend
@@ -37116,7 +37044,7 @@ export namespace Handy {
          * @param orientation the orientation
          * @param homogeneous `TRUE` to make `self` homogeneous
          */
-        set_homogeneous(folded: boolean, orientation: Gtk.Orientation | null, homogeneous: boolean): void;
+        set_homogeneous(folded: boolean, orientation: Gtk.Orientation, homogeneous: boolean): void;
         /**
          * Sets whether `self` will interpolate its size when changing the visible child.
          *
@@ -37140,7 +37068,7 @@ export namespace Handy {
          * become current.
          * @param transition the new transition type
          */
-        set_transition_type(transition: LeafletTransitionType | null): void;
+        set_transition_type(transition: LeafletTransitionType): void;
         /**
          * Sets the currently visible widget when the leaflet is folded.
          * @param visible_child the new child
@@ -37643,7 +37571,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Emits `Handy.Swipeable::child-switched` signal.
          *
@@ -37695,7 +37623,7 @@ export namespace Handy {
          * @param navigation_direction the direction of the swipe
          * @param is_drag whether the swipe is caused by a dragging gesture
          */
-        get_swipe_area(navigation_direction: NavigationDirection | null, is_drag: boolean): Gdk.Rectangle;
+        get_swipe_area(navigation_direction: NavigationDirection, is_drag: boolean): Gdk.Rectangle;
         /**
          * Gets the {@link SwipeTracker} used by this swipeable widget.
          * @returns the swipe tracker
@@ -37810,7 +37738,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -37851,7 +37779,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -38242,8 +38170,8 @@ export namespace Handy {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -38251,7 +38179,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -38329,7 +38257,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -38366,7 +38294,7 @@ export namespace Handy {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -38453,7 +38381,7 @@ export namespace Handy {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -38493,7 +38421,7 @@ export namespace Handy {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -38605,22 +38533,14 @@ export namespace Handy {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -38702,9 +38622,9 @@ export namespace Handy {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -39163,7 +39083,7 @@ export namespace Handy {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -39797,7 +39717,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -39858,7 +39778,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -39877,7 +39797,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -39897,7 +39817,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -39939,7 +39859,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -39948,7 +39868,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -39978,7 +39898,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -40145,11 +40065,7 @@ export namespace Handy {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -40398,7 +40314,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -40414,7 +40330,7 @@ export namespace Handy {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -40484,7 +40400,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -40747,7 +40663,7 @@ export namespace Handy {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -40765,7 +40681,7 @@ export namespace Handy {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -40815,7 +40731,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -41026,7 +40942,7 @@ export namespace Handy {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -42027,7 +41943,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -42068,7 +41984,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -42633,7 +42549,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -42674,7 +42590,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -43855,7 +43771,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -43896,7 +43812,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -44287,8 +44203,8 @@ export namespace Handy {
             accel_signal: string,
             accel_group: Gtk.AccelGroup,
             accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-            accel_flags: Gtk.AccelFlags | null,
+            accel_mods: Gdk.ModifierType,
+            accel_flags: Gtk.AccelFlags,
         ): void;
         /**
          * Adds the device events in the bitfield `events` to the event mask for
@@ -44296,7 +44212,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events an event mask, see {@link Gdk.EventMask}
          */
-        add_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        add_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Adds the events in the bitfield `events` to the event mask for
          * `widget`. See `gtk_widget_set_events()` and the
@@ -44374,7 +44290,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if focus ended up inside `widget`
          */
-        child_focus(direction: Gtk.DirectionType | null): boolean;
+        child_focus(direction: Gtk.DirectionType): boolean;
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
          * [child property][child-properties] `child_property`
@@ -44411,7 +44327,7 @@ export namespace Handy {
          * @param orientation expand direction
          * @returns whether widget tree rooted here should be expanded
          */
-        compute_expand(orientation: Gtk.Orientation | null): boolean;
+        compute_expand(orientation: Gtk.Orientation): boolean;
         /**
          * Creates a new {@link Pango.Context} with the appropriate font map,
          * font options, font description, and base direction for drawing
@@ -44498,7 +44414,7 @@ export namespace Handy {
          */
         drag_begin(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event?: Gdk.Event | null,
         ): Gdk.DragContext;
@@ -44538,7 +44454,7 @@ export namespace Handy {
          */
         drag_begin_with_coordinates(
             targets: Gtk.TargetList,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
             button: number,
             event: Gdk.Event | null,
             x: number,
@@ -44650,22 +44566,14 @@ export namespace Handy {
          * @param targets a pointer to an array of     `GtkTargetEntrys` indicating the drop types that this `widget` will     accept, or `null`. Later you can access the list with     `gtk_drag_dest_get_target_list()` and `gtk_drag_dest_find_target()`.
          * @param actions a bitmask of possible actions for a drop onto this `widget`.
          */
-        drag_dest_set(
-            flags: Gtk.DestDefaults | null,
-            targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
-        ): void;
+        drag_dest_set(flags: Gtk.DestDefaults, targets: Gtk.TargetEntry[] | null, actions: Gdk.DragAction): void;
         /**
          * Sets this widget as a proxy for drops to another window.
          * @param proxy_window the window to which to forward drag events
          * @param protocol the drag protocol which the `proxy_window` accepts   (You can use `gdk_drag_get_protocol()` to determine this)
          * @param use_coordinates If `true`, send the same coordinates to the   destination, because it is an embedded   subwindow.
          */
-        drag_dest_set_proxy(
-            proxy_window: Gdk.Window,
-            protocol: Gdk.DragProtocol | null,
-            use_coordinates: boolean,
-        ): void;
+        drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean): void;
         /**
          * Sets the target types that this widget can accept from drag-and-drop.
          * The widget must first be made into a drag destination with
@@ -44747,9 +44655,9 @@ export namespace Handy {
          * @param actions the bitmask of possible actions for a drag from this widget
          */
         drag_source_set(
-            start_button_mask: Gdk.ModifierType | null,
+            start_button_mask: Gdk.ModifierType,
             targets: Gtk.TargetEntry[] | null,
-            actions: Gdk.DragAction | null,
+            actions: Gdk.DragAction,
         ): void;
         /**
          * Sets the icon that will be used for drags from a particular source
@@ -45208,7 +45116,7 @@ export namespace Handy {
          * @param intent the use case for the modifier mask
          * @returns the modifier mask used for `intent`.
          */
-        get_modifier_mask(intent: Gdk.ModifierIntent | null): Gdk.ModifierType;
+        get_modifier_mask(intent: Gdk.ModifierIntent): Gdk.ModifierType;
         /**
          * Returns the current modifier style for the widget. (As set by
          * `gtk_widget_modify_style()`.) If no style has previously set, a new
@@ -45842,7 +45750,7 @@ export namespace Handy {
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
          */
-        keynav_failed(direction: Gtk.DirectionType | null): boolean;
+        keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Lists the closures used by `widget` for accelerator group connections
          * with `gtk_accel_group_connect_by_path()` or `gtk_accel_group_connect()`.
@@ -45903,7 +45811,7 @@ export namespace Handy {
          * @param state the state for which to set the base color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_base()`.
          */
-        modify_base(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_base(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color for a widget in a particular state.
          *
@@ -45922,7 +45830,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign (does not need     to be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_bg()`.
          */
-        modify_bg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_bg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the {@link Gtk.Widget}
          * cursor-color and secondary-cursor-color
@@ -45942,7 +45850,7 @@ export namespace Handy {
          * @param state the state for which to set the foreground color
          * @param color the color to assign (does not need to be allocated),     or `null` to undo the effect of previous calls to     of `gtk_widget_modify_fg()`.
          */
-        modify_fg(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_fg(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the font to use for a widget.
          *
@@ -45984,7 +45892,7 @@ export namespace Handy {
          * @param state the state for which to set the text color
          * @param color the color to assign (does not need to     be allocated), or `null` to undo the effect of previous     calls to of `gtk_widget_modify_text()`.
          */
-        modify_text(state: Gtk.StateType | null, color?: Gdk.Color | null): void;
+        modify_text(state: Gtk.StateType, color?: Gdk.Color | null): void;
         /**
          * Sets the background color to use for a widget.
          *
@@ -45993,7 +45901,7 @@ export namespace Handy {
          * @param state the state for which to set the background color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_background_color()`
          */
-        override_background_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_background_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the color to use for a widget.
          *
@@ -46023,7 +45931,7 @@ export namespace Handy {
          * @param state the state for which to set the color
          * @param color the color to assign, or `null` to undo the effect     of previous calls to `gtk_widget_override_color()`
          */
-        override_color(state: Gtk.StateFlags | null, color?: Gdk.RGBA | null): void;
+        override_color(state: Gtk.StateFlags, color?: Gdk.RGBA | null): void;
         /**
          * Sets the cursor color to use in a widget, overriding the
          * cursor-color and secondary-cursor-color
@@ -46190,11 +46098,7 @@ export namespace Handy {
          * @param accel_mods modifier key combination of the accelerator
          * @returns whether an accelerator was installed and could be removed
          */
-        remove_accelerator(
-            accel_group: Gtk.AccelGroup,
-            accel_key: number,
-            accel_mods: Gdk.ModifierType | null,
-        ): boolean;
+        remove_accelerator(accel_group: Gtk.AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
         /**
          * Removes a widget from the list of mnemonic labels for
          * this widget. (See `gtk_widget_list_mnemonic_labels()`). The widget
@@ -46443,7 +46347,7 @@ export namespace Handy {
          * @param device a {@link Gdk.Device}
          * @param events event mask
          */
-        set_device_events(device: Gdk.Device, events: Gdk.EventMask | null): void;
+        set_device_events(device: Gdk.Device, events: Gdk.EventMask): void;
         /**
          * Sets the reading direction on a particular widget. This direction
          * controls the primary direction for widgets containing text,
@@ -46459,7 +46363,7 @@ export namespace Handy {
          * set by `gtk_widget_set_default_direction()` will be used.
          * @param dir the new direction
          */
-        set_direction(dir: Gtk.TextDirection | null): void;
+        set_direction(dir: Gtk.TextDirection): void;
         /**
          * Widgets are double buffered by default; you can use this function
          * to turn off the buffering. “Double buffered” simply means that
@@ -46529,7 +46433,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.halign} property.
          * @param align the horizontal alignment
          */
-        set_halign(align: Gtk.Align | null): void;
+        set_halign(align: Gtk.Align): void;
         /**
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * {@link Gtk.Widget.has_tooltip} for more information.
@@ -46792,7 +46696,7 @@ export namespace Handy {
          * the state using wrapper functions such as `gtk_widget_set_sensitive()`.
          * @param state new state for `widget`
          */
-        set_state(state: Gtk.StateType | null): void;
+        set_state(state: Gtk.StateType): void;
         /**
          * This function is for use in widget implementations. Turns on flag
          * values in the current widget state (insensitive, prelighted, etc.).
@@ -46810,7 +46714,7 @@ export namespace Handy {
          * @param flags State flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
-        set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
+        set_state_flags(flags: Gtk.StateFlags, clear: boolean): void;
         /**
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
@@ -46860,7 +46764,7 @@ export namespace Handy {
          * See the {@link Gtk.Widget.valign} property.
          * @param align the vertical alignment
          */
-        set_valign(align: Gtk.Align | null): void;
+        set_valign(align: Gtk.Align): void;
         /**
          * Sets whether the widget would like any available extra vertical
          * space.
@@ -47071,7 +46975,7 @@ export namespace Handy {
          * See `gtk_widget_set_state_flags()`.
          * @param flags State flags to turn off
          */
-        unset_state_flags(flags: Gtk.StateFlags | null): void;
+        unset_state_flags(flags: Gtk.StateFlags): void;
         /**
          * @param baseline
          * @virtual
@@ -48108,7 +48012,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -48149,7 +48053,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -48793,7 +48697,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -48834,7 +48738,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -49543,7 +49447,7 @@ export namespace Handy {
          * Sets the animation type that will be used for transitions between children.
          * @param transition the new transition type
          */
-        set_transition_type(transition: SqueezerTransitionType | null): void;
+        set_transition_type(transition: SqueezerTransitionType): void;
         /**
          * Sets the horizontal alignment.
          * @param xalign the new xalign value, between 0 and 1
@@ -49570,7 +49474,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -49615,7 +49519,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -49656,7 +49560,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -50239,7 +50143,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -50280,7 +50184,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -50923,7 +50827,7 @@ export namespace Handy {
          * effective appearance.
          * @param color_scheme the color scheme
          */
-        set_color_scheme(color_scheme: ColorScheme | null): void;
+        set_color_scheme(color_scheme: ColorScheme): void;
     }
 
     namespace SwipeGroup {
@@ -51259,7 +51163,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -51300,7 +51204,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -51911,7 +51815,7 @@ export namespace Handy {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -51956,7 +51860,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -51997,7 +51901,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -52805,7 +52709,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -52846,7 +52750,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -54300,7 +54204,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -54341,7 +54245,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -54899,7 +54803,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -54940,7 +54844,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -55587,12 +55491,12 @@ export namespace Handy {
          * Sets the mode used to ellipsize the text in narrow mode.
          * @param mode a {@link Pango.EllipsizeMode}
          */
-        set_narrow_ellipsize(mode: Pango.EllipsizeMode | null): void;
+        set_narrow_ellipsize(mode: Pango.EllipsizeMode): void;
         /**
          * Sets the policy of `self`.
          * @param policy the new policy
          */
-        set_policy(policy: ViewSwitcherPolicy | null): void;
+        set_policy(policy: ViewSwitcherPolicy): void;
         /**
          * Sets the {@link Gtk.Stack} to control.
          * @param stack a stack
@@ -55642,7 +55546,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -55683,7 +55587,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -56246,7 +56150,7 @@ export namespace Handy {
          * Sets the policy of `self`.
          * @param policy the new policy
          */
-        set_policy(policy: ViewSwitcherPolicy | null): void;
+        set_policy(policy: ViewSwitcherPolicy): void;
         /**
          * Sets whether `self` should be revealed or not.
          * @param reveal `TRUE` to reveal `self`
@@ -56301,7 +56205,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -56342,7 +56246,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -56979,7 +56883,7 @@ export namespace Handy {
          * Sets the policy of `self`.
          * @param policy the new policy
          */
-        set_policy(policy: ViewSwitcherPolicy | null): void;
+        set_policy(policy: ViewSwitcherPolicy): void;
         /**
          * Sets the {@link Gtk.Stack} to control.
          * @param stack a stack
@@ -57044,7 +56948,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -57085,7 +56989,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -57683,7 +57587,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -57724,7 +57628,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -58250,7 +58154,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -58291,7 +58195,7 @@ export namespace Handy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -58949,7 +58853,7 @@ export namespace Handy {
          * @param navigation_direction the direction of the swipe
          * @param is_drag whether the swipe is caused by a dragging gesture
          */
-        get_swipe_area(navigation_direction: NavigationDirection | null, is_drag: boolean): Gdk.Rectangle;
+        get_swipe_area(navigation_direction: NavigationDirection, is_drag: boolean): Gdk.Rectangle;
         /**
          * Gets the {@link SwipeTracker} used by this swipeable widget.
          * @returns the swipe tracker

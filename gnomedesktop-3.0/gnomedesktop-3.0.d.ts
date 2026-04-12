@@ -110,7 +110,7 @@ export namespace GnomeDesktop {
      * @returns an absolute filename
      * @since 2.2
      */
-    function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize | null): string;
+    function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize): string;
     /**
      * Gets all locales.
      * @returns a newly allocated `null`-terminated string array containing the   all locales. Free with `g_strfreev()`.
@@ -473,7 +473,7 @@ export namespace GnomeDesktop {
          * @param primary
          * @param secondary
          */
-        get_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
+        get_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
         has_multiple_sizes(): boolean;
         /**
          * @param dest_width
@@ -495,13 +495,13 @@ export namespace GnomeDesktop {
         /**
          * @param placement
          */
-        set_placement(placement: GDesktopEnums.BackgroundStyle | null): void;
+        set_placement(placement: GDesktopEnums.BackgroundStyle): void;
         /**
          * @param type
          * @param primary
          * @param secondary
          */
-        set_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
+        set_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
     }
 
     namespace BGCrossfade {
@@ -1279,7 +1279,7 @@ export namespace GnomeDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1320,7 +1320,7 @@ export namespace GnomeDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1964,7 +1964,7 @@ export namespace GnomeDesktop {
         /**
          * @param rotation
          */
-        set_rotation(rotation: RRRotation | null): void;
+        set_rotation(rotation: RRRotation): void;
         /**
          * @param underscanning
          */
@@ -1972,7 +1972,7 @@ export namespace GnomeDesktop {
         /**
          * @param rotation
          */
-        supports_rotation(rotation: RRRotation | null): boolean;
+        supports_rotation(rotation: RRRotation): boolean;
     }
 
     namespace RRScreen {
@@ -2170,7 +2170,7 @@ export namespace GnomeDesktop {
          * This method also disables the DPMS timeouts.
          * @param mode
          */
-        set_dpms_mode(mode: RRDpmsMode | null): boolean;
+        set_dpms_mode(mode: RRDpmsMode): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2502,7 +2502,7 @@ export namespace GnomeDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2543,7 +2543,7 @@ export namespace GnomeDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3040,7 +3040,7 @@ export namespace GnomeDesktop {
          */
         string_for_datetime(
             now: GLib.DateTime,
-            clock_format: GDesktopEnums.ClockFormat | null,
+            clock_format: GDesktopEnums.ClockFormat,
             show_weekday: boolean,
             show_full_date: boolean,
             show_seconds: boolean,
@@ -3294,7 +3294,7 @@ export namespace GnomeDesktop {
         /**
          * @param rotation
          */
-        supports_rotation(rotation: RRRotation | null): boolean;
+        supports_rotation(rotation: RRRotation): boolean;
     }
 
     /**

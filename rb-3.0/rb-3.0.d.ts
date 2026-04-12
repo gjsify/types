@@ -1235,7 +1235,7 @@ export namespace RB {
     function file_chooser_new(
         title: string,
         parent: Gtk.Window,
-        action: Gtk.FileChooserAction | null,
+        action: Gtk.FileChooserAction,
         local_only: boolean,
     ): Gtk.Widget;
     /**
@@ -1431,7 +1431,7 @@ export namespace RB {
     function gst_process_tag_string(
         taglist: Gst.TagList,
         tag: string,
-        field: MetaDataField | null,
+        field: MetaDataField,
         value: GObject.Value | any,
     ): boolean;
     /**
@@ -1614,7 +1614,7 @@ export namespace RB {
      * @param size a stock icon size
      * @returns scaled {@link GdkPixbuf.Pixbuf}
      */
-    function scale_pixbuf_to_size(pixbuf: GdkPixbuf.Pixbuf, size: Gtk.IconSize | null): GdkPixbuf.Pixbuf;
+    function scale_pixbuf_to_size(pixbuf: GdkPixbuf.Pixbuf, size: Gtk.IconSize): GdkPixbuf.Pixbuf;
     /**
      * Returns a case-folded and punctuation-stripped version of `original`, useful
      * for performing text searches.
@@ -2165,7 +2165,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2206,7 +2206,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2837,7 +2837,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2878,7 +2878,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3445,7 +3445,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3486,7 +3486,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4007,7 +4007,7 @@ export namespace RB {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4052,7 +4052,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4093,7 +4093,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5068,7 +5068,7 @@ export namespace RB {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5113,7 +5113,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5154,7 +5154,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5726,7 +5726,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5767,7 +5767,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6803,7 +6803,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6844,7 +6844,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7412,7 +7412,7 @@ export namespace RB {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7457,7 +7457,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7498,7 +7498,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8288,7 +8288,7 @@ export namespace RB {
          * @param coltype type of column to append
          * @param always_visible if TRUE, ignore the user's column visibility settings
          */
-        append_column(coltype: EntryViewColumn | null, always_visible: boolean): void;
+        append_column(coltype: EntryViewColumn, always_visible: boolean): void;
         /**
          * Appends a custom column to the entry view.
          * @param column a {@link Gtk.TreeViewColumn} to append
@@ -8315,7 +8315,7 @@ export namespace RB {
          * @param coltype type of column to retrieve
          * @returns a {@link Gtk.TreeViewColumn} instance, or NULL
          */
-        get_column(coltype: EntryViewColumn | null): Gtk.TreeViewColumn;
+        get_column(coltype: EntryViewColumn): Gtk.TreeViewColumn;
         /**
          * Determines whether a specified entry is present in the view.
          * @param entry a {@link RB.RhythmDBEntry} to check
@@ -8401,7 +8401,7 @@ export namespace RB {
          * @param column a {@link RB.EntryViewColumn} to update
          * @param editable `true` to make the column editable, `false` otherwise
          */
-        set_column_editable(column: EntryViewColumn | null, editable: boolean): void;
+        set_column_editable(column: EntryViewColumn, editable: boolean): void;
         /**
          * Makes the headers for sortable columns (those for which a sort function was
          * provided) clickable, so the user can set the sort order.
@@ -8442,7 +8442,7 @@ export namespace RB {
          * and RB_ENTRY_VIEW_NOT_PLAYING otherwise.
          * @param state the new playing entry state
          */
-        set_state(state: EntryViewState | null): void;
+        set_state(state: EntryViewState): void;
         /**
          * @param args
          */
@@ -8471,7 +8471,7 @@ export namespace RB {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8516,7 +8516,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8557,7 +8557,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9084,7 +9084,7 @@ export namespace RB {
          * @param source_type metadata source type
          * @param data data to store
          */
-        store(key: ExtDBKey, source_type: ExtDBSourceType | null, data?: GObject.Value | null): void;
+        store(key: ExtDBKey, source_type: ExtDBSourceType, data?: GObject.Value | null): void;
         /**
          * Stores an item in the metadata store so that lookpus matching `key`
          * will return it.  `data` should contain the data to be written to the
@@ -9093,7 +9093,7 @@ export namespace RB {
          * @param source_type metadata source type
          * @param data data to store
          */
-        store_raw(key: ExtDBKey, source_type: ExtDBSourceType | null, data?: GObject.Value | null): void;
+        store_raw(key: ExtDBKey, source_type: ExtDBSourceType, data?: GObject.Value | null): void;
         /**
          * Stores an item identified by `uri` in the metadata store so that
          * lookups matching `key` will return it.
@@ -9101,7 +9101,7 @@ export namespace RB {
          * @param source_type metadata source type
          * @param uri URI of the item to store
          */
-        store_uri(key: ExtDBKey, source_type: ExtDBSourceType | null, uri?: string | null): void;
+        store_uri(key: ExtDBKey, source_type: ExtDBSourceType, uri?: string | null): void;
     }
 
     namespace FadingImage {
@@ -9480,7 +9480,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9521,7 +9521,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10310,7 +10310,7 @@ export namespace RB {
          * @param type the property
          * @returns {@link RB.PropertyView} widget, or NULL
          */
-        get_property_view(type: RhythmDBPropType | null): PropertyView;
+        get_property_view(type: RhythmDBPropType): PropertyView;
         /**
          * Retrieves the property view widgets from the browser.
          * @returns a {@link GLib.List} containing the {@link RB.PropertyView} widgets in the browser.
@@ -10340,7 +10340,7 @@ export namespace RB {
          * @param type the property for which to set the selection
          * @param selection a list of strings to select
          */
-        set_selection(type: RhythmDBPropType | null, selection: string[]): void;
+        set_selection(type: RhythmDBPropType, selection: string[]): void;
         /**
          * The orientation of the orientable.
          * @since 2.16
@@ -10357,7 +10357,7 @@ export namespace RB {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -10402,7 +10402,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10443,7 +10443,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11261,7 +11261,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11302,7 +11302,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11750,7 +11750,7 @@ export namespace RB {
          * @param field the {@link RB.MetaDataField} to retrieve
          * @returns TRUE if a value was returned
          */
-        get(field: MetaDataField | null): [boolean, unknown];
+        get(field: MetaDataField): [boolean, unknown];
         /**
          * Returns the type of the file from which metadata was read.
          * This may look like a MIME type, but it isn't.
@@ -11807,7 +11807,7 @@ export namespace RB {
          * @param val the value to set
          * @returns TRUE if the field is valid
          */
-        set(field: MetaDataField | null, val: GObject.Value | any): boolean;
+        set(field: MetaDataField, val: GObject.Value | any): boolean;
         /**
          * @param args
          */
@@ -12545,7 +12545,7 @@ export namespace RB {
          * @param uri destination URI
          * @param export_type format to save in
          */
-        save_playlist(uri: string, export_type: PlaylistExportType | null): void;
+        save_playlist(uri: string, export_type: PlaylistExportType): void;
         /**
          * Converts the playlist to XML format, below the specified
          * parent node.
@@ -12613,7 +12613,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -12654,7 +12654,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -13633,7 +13633,7 @@ export namespace RB {
          * The default selection mode is single.
          * @param mode the new {@link Gtk.SelectionMode} for the property view
          */
-        set_selection_mode(mode: Gtk.SelectionMode | null): void;
+        set_selection_mode(mode: Gtk.SelectionMode): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13678,7 +13678,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -13719,7 +13719,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -14461,7 +14461,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -14502,7 +14502,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -15604,7 +15604,7 @@ export namespace RB {
          * @param propid the id of the property to get.
          * @param val return location for the property value.
          */
-        entry_get(entry: RhythmDBEntry, propid: RhythmDBPropType | null, val: GObject.Value | any): void;
+        entry_get(entry: RhythmDBEntry, propid: RhythmDBPropType, val: GObject.Value | any): void;
         /**
          * Adds a keyword to an entry.
          * @param entry a {@link RB.RhythmDBEntry}.
@@ -15745,7 +15745,7 @@ export namespace RB {
          * @param propid property ID
          * @returns property ID name, must not be freed
          */
-        nice_elt_name_from_propid(propid: RhythmDBPropType | null): libxml2.Char;
+        nice_elt_name_from_propid(propid: RhythmDBPropType): libxml2.Char;
         /**
          * Converts a property name returned by `rhythmdb_propid_from_nice_elt_name`
          * back to a {@link RB.RhythmDBPropType}.  If the name does not match a property ID,
@@ -15763,8 +15763,8 @@ export namespace RB {
          */
         query_append_params(
             query: RhythmDBQuery,
-            type: RhythmDBQueryType | null,
-            prop: RhythmDBPropType | null,
+            type: RhythmDBQueryType,
+            prop: RhythmDBPropType,
             value: GObject.Value | any,
         ): void;
         /**
@@ -15776,7 +15776,7 @@ export namespace RB {
          */
         query_append_prop_multiple(
             query: RhythmDBQuery,
-            propid: RhythmDBPropType | null,
+            propid: RhythmDBPropType,
             items: (GObject.Value | any)[],
         ): void;
         /**
@@ -16348,7 +16348,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -16389,7 +16389,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17342,7 +17342,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -17383,7 +17383,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18711,7 +18711,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -18752,7 +18752,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19268,7 +19268,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -19309,7 +19309,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19907,7 +19907,7 @@ export namespace RB {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -19952,7 +19952,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -19993,7 +19993,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -20756,7 +20756,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -20797,7 +20797,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -21558,7 +21558,7 @@ export namespace RB {
          * @param expand whether the widget should be given extra space
          * @param fill whether the widget should fill all space allocated to it
          */
-        add_widget(widget: Gtk.Widget, location: ShellUILocation | null, expand: boolean, fill: boolean): void;
+        add_widget(widget: Gtk.Widget, location: ShellUILocation, expand: boolean, fill: boolean): void;
         /**
          * Adds a new display page to the shell.
          * @param page the new {@link RB.DisplayPage}
@@ -21643,7 +21643,7 @@ export namespace RB {
          * @param widget the {@link Gtk.Widget} to remove from the main window
          * @param location the UI location to which the widget was originally added
          */
-        remove_widget(widget: Gtk.Widget, location: ShellUILocation | null): void;
+        remove_widget(widget: Gtk.Widget, location: ShellUILocation): void;
         /**
          * Attempts to set a property of a database entry identified by its URI.
          * If the URI identifies a file and the property is one associated with a
@@ -22291,7 +22291,7 @@ export namespace RB {
          * @param expand whether the widget should be given extra space
          * @param fill whether the widget should fill all space allocated to it
          */
-        add_widget(widget: Gtk.Widget, location: ShellPrefsUILocation | null, expand: boolean, fill: boolean): void;
+        add_widget(widget: Gtk.Widget, location: ShellPrefsUILocation, expand: boolean, fill: boolean): void;
         /**
          * Appends a new page to the preferences dialog notebook.
          * @param name name of the page to append
@@ -22303,7 +22303,7 @@ export namespace RB {
          * @param widget the {@link Gtk.Widget} to remove from the preferences window
          * @param location the UI location to which the widget was originally added
          */
-        remove_widget(widget: Gtk.Widget, location: ShellPrefsUILocation | null): void;
+        remove_widget(widget: Gtk.Widget, location: ShellPrefsUILocation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -22348,7 +22348,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -22389,7 +22389,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -23054,7 +23054,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -23095,7 +23095,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -24064,7 +24064,7 @@ export namespace RB {
          * @param prop property for which to gather selection
          * @returns list of property values
          */
-        gather_selected_properties(prop: RhythmDBPropType | null): string[];
+        gather_selected_properties(prop: RhythmDBPropType): string[];
         /**
          * Returns a translated label for the 'delete' menu item, allowing
          * sources to better describe what happens to deleted entries.
@@ -24217,7 +24217,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -24258,7 +24258,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25040,7 +25040,7 @@ export namespace RB {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -25085,7 +25085,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -25126,7 +25126,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -25728,7 +25728,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -25769,7 +25769,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -26323,7 +26323,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -26364,7 +26364,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27070,7 +27070,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -27111,7 +27111,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -27911,7 +27911,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -27952,7 +27952,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -28652,7 +28652,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -28693,7 +28693,7 @@ export namespace RB {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -29653,7 +29653,7 @@ export namespace RB {
          * @param prop the primary {@link RB.RhythmDBPropType} for metadata lookups
          * @returns the new {@link RB.ExtDBKey}
          */
-        create_ext_db_key(prop: RhythmDBPropType | null): ExtDBKey;
+        create_ext_db_key(prop: RhythmDBPropType): ExtDBKey;
         /**
          * Calls the entry type's post-creation method for `entry`.
          */
@@ -29661,19 +29661,19 @@ export namespace RB {
         /**
          * @param propid
          */
-        dup_string(propid: RhythmDBPropType | null): string;
+        dup_string(propid: RhythmDBPropType): string;
         /**
          * Returns the value of a boolean property of `entry`.
          * @param propid property to return
          * @returns property value
          */
-        get_boolean(propid: RhythmDBPropType | null): boolean;
+        get_boolean(propid: RhythmDBPropType): boolean;
         /**
          * Returns the value of a double-precision floating point property of `value`.
          * @param propid the property to return
          * @returns property value
          */
-        get_double(propid: RhythmDBPropType | null): number;
+        get_double(propid: RhythmDBPropType): number;
         /**
          * Returns the {@link RB.RhythmDBEntryType} for `entry`.  This is used to access
          * entry type properties, to check that entries are of the same type,
@@ -29686,7 +29686,7 @@ export namespace RB {
          * @param propid the property to return
          * @returns property value
          */
-        get_object<T = GObject.Object>(propid: RhythmDBPropType | null): T;
+        get_object<T = GObject.Object>(propid: RhythmDBPropType): T;
         /**
          * Returns an allocated string containing the playback URI for `entry`,
          * or NULL if the entry cannot be played.
@@ -29698,13 +29698,13 @@ export namespace RB {
          * @param propid the property to return
          * @returns a {@link RB.RefString}, must be unreffed by caller.
          */
-        get_refstring(propid: RhythmDBPropType | null): RefString;
+        get_refstring(propid: RhythmDBPropType): RefString;
         /**
          * Returns the value of a string property of #entry.
          * @param propid the {@link RB.RhythmDBPropType} to return
          * @returns property value, must not be freed
          */
-        get_string(propid: RhythmDBPropType | null): string;
+        get_string(propid: RhythmDBPropType): string;
         /**
          * Retrieves a pointer to the entry's type-specific data, checking that
          * the size of the data structure matches what is expected.
@@ -29719,13 +29719,13 @@ export namespace RB {
          * @param propid property to return
          * @returns property value
          */
-        get_uint64(propid: RhythmDBPropType | null): number;
+        get_uint64(propid: RhythmDBPropType): number;
         /**
          * Returns the value of an unsigned long integer property of `entry`.
          * @param propid property to return
          * @returns property value
          */
-        get_ulong(propid: RhythmDBPropType | null): number;
+        get_ulong(propid: RhythmDBPropType): number;
         /**
          * Checks if `entry` represents a file that is losslessly encoded.
          * An entry is considered lossless if it has no bitrate value and
@@ -29757,7 +29757,7 @@ export namespace RB {
          * Updates `entry` to reflect its new availability.
          * @param avail an availability event
          */
-        update_availability(avail: RhythmDBEntryAvailability | null): void;
+        update_availability(avail: RhythmDBEntryAvailability): void;
     }
 
     /**
@@ -30526,7 +30526,7 @@ export namespace RB {
          * @param crossfade requested crossfade duration (nanoseconds)
          * @returns `true` if playback started successfully
          */
-        play(play_type: PlayerPlayType | null, crossfade: bigint | number): boolean;
+        play(play_type: PlayerPlayType, crossfade: bigint | number): boolean;
         /**
          * Determines whether the player is currently playing a stream.
          * A stream is playing if it's not paused or being faded out.

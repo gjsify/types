@@ -3104,7 +3104,7 @@ export namespace LibvirtGObject {
          * @param flags the flags
          * @returns `TRUE` success, `FALSE` otherwise
          */
-        resize(capacity: bigint | number, flags: StorageVolResizeFlags | null): boolean;
+        resize(capacity: bigint | number, flags: StorageVolResizeFlags): boolean;
         /**
          * @param stream stream to use as input
          * @param offset position in `vol` to start to write to
@@ -3189,7 +3189,7 @@ export namespace LibvirtGObject {
          * @param func the function to call when the condition is satisfied
          * @returns the event source id
          */
-        add_watch(priority: number, cond: StreamIOCondition | null, func: StreamIOFunc): number;
+        add_watch(priority: number, cond: StreamIOCondition, func: StreamIOFunc): number;
         /**
          * Receive data (up to `size` bytes) from a stream.
          * On error -1 is returned and `error` is set accordingly.

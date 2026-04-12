@@ -863,7 +863,7 @@ export namespace EBookContacts {
      * @returns a new {@link GLib.Error} containing an E_BOOK_CLIENT_ERROR of the given `code`. If the `custom_msg` is NULL, then the error message is the one returned from `e_book_client_error_to_string()` for the `code`, otherwise the given message is used. Returned pointer should be freed with `g_error_free()`.
      * @since 3.2
      */
-    function book_client_error_create(code: BookClientError | null, custom_msg?: string | null): GLib.Error;
+    function book_client_error_create(code: BookClientError, custom_msg?: string | null): GLib.Error;
     function book_client_error_quark(): GLib.Quark;
     /**
      * Get localized human readable description of the given error code.
@@ -871,7 +871,7 @@ export namespace EBookContacts {
      * @returns Localized human readable description of the given error code
      * @since 3.2
      */
-    function book_client_error_to_string(code: BookClientError | null): string;
+    function book_client_error_to_string(code: BookClientError): string;
     /**
      * Returns whether the `self` considers contacts stored in the ascending order.
      * @param self an {@link EBookContacts.BookIndicesUpdater}
@@ -907,7 +907,7 @@ export namespace EBookContacts {
      * @param field an {@link EBookContacts.ContactField}
      * @returns the new {@link EBookContacts.BookQuery}
      */
-    function book_query_field_exists(field: ContactField | null): BookQuery;
+    function book_query_field_exists(field: ContactField): BookQuery;
     /**
      * Creates a new {@link EBookContacts.BookQuery} which tests `field` for `value` using the test `test`.
      * @param field an {@link EBookContacts.ContactField} to test
@@ -915,7 +915,7 @@ export namespace EBookContacts {
      * @param value the value to test for
      * @returns the new {@link EBookContacts.BookQuery}
      */
-    function book_query_field_test(field: ContactField | null, test: BookQueryTest | null, value: string): BookQuery;
+    function book_query_field_test(field: ContactField, test: BookQueryTest, value: string): BookQuery;
     /**
      * Parse `query_string` and return a new {@link EBookContacts.BookQuery} representing it.
      * @param query_string the query
@@ -945,7 +945,7 @@ export namespace EBookContacts {
      * @returns the new {@link EBookContacts.BookQuery}
      * @since 2.22
      */
-    function book_query_vcard_field_test(field: string, test: BookQueryTest | null, value: string): BookQuery;
+    function book_query_vcard_field_test(field: string, test: BookQueryTest, value: string): BookQuery;
     /**
      * Encodes the {@link EDataServer.ConflictResolution} into the bit-or of {@link EBookContacts.BookOperationFlags}.
      * The returned value can be bit-or-ed with other {@link EBookContacts.BookOperationFlags} values.
@@ -954,7 +954,7 @@ export namespace EBookContacts {
      * @since 3.34
      */
     function book_util_conflict_resolution_to_operation_flags(
-        conflict_resolution: EDataServer.ConflictResolution | null,
+        conflict_resolution: EDataServer.ConflictResolution,
     ): number;
     /**
      * Compares list of categories on the `old_contact` with the list of categories
@@ -1035,7 +1035,7 @@ export namespace EBookContacts {
      * @returns A new {@link EBookContacts.ContactDateTime} struct.
      * @since 3.60
      */
-    function contact_date_time_from_string(str: string, flags: ContactDateTimeFlags | null): ContactDateTime;
+    function contact_date_time_from_string(str: string, flags: ContactDateTimeFlags): ContactDateTime;
     /**
      * Converts a string into an {@link EBookContacts.ContactGenderSex}. Unrecognized values
      * are returned as {@link EBookContacts.ContactGenderSex.NOT_SET}.
@@ -1050,7 +1050,7 @@ export namespace EBookContacts {
      * @returns a vCard string representation of the `sex`, or `null`,    when the value is not recognized
      * @since 3.60
      */
-    function contact_gender_sex_to_string(sex: ContactGenderSex | null): string | null;
+    function contact_gender_sex_to_string(sex: ContactGenderSex): string | null;
     /**
      * Creates a new {@link EBookContacts.ContactGeo}, which has set latitude
      * and longitude from the provided strings.
@@ -1164,7 +1164,7 @@ export namespace EBookContacts {
      * @returns a text representation of the `version`,    or `null` for unknown values.
      * @since 3.60
      */
-    function vcard_version_to_string(version: VCardVersion | null): string;
+    function vcard_version_to_string(version: VCardVersion): string;
     /**
      * @gir-type Callback
      */
@@ -2637,7 +2637,7 @@ export namespace EBookContacts {
          * @param to_version the requested vCard version, one of {@link EBookContacts.VCardVersion}
          * @returns the `self` converted to `to_version`,    or `null`, when it is in this version already
          */
-        convert(to_version: VCardVersion | null): Contact | null;
+        convert(to_version: VCardVersion): Contact | null;
         /**
          * Creates a copy of `contact`.
          * @returns A new {@link EBookContacts.Contact} identical to `contact`.
@@ -2648,7 +2648,7 @@ export namespace EBookContacts {
          * @param field_id an {@link EBookContacts.ContactField}
          * @returns Depends on the field's type, owned by the caller. This may be `null` if the field isn't set.
          */
-        get(field_id: ContactField | null): any | null;
+        get(field_id: ContactField): any | null;
         /**
          * Gets the value of `contact`'s field specified by `field_id`, caching
          * the result so it can be freed later. Use `e_contact_field_is_string()`
@@ -2656,7 +2656,7 @@ export namespace EBookContacts {
          * @param field_id an {@link EBookContacts.ContactField}
          * @returns Depends on the field's type, owned by the {@link EBookContacts.Contact}.
          */
-        get_const(field_id: ContactField | null): any | null;
+        get_const(field_id: ContactField): any | null;
         /**
          * Tries to modify any {@link EBookContacts.ContactPhoto} fields which are
          * stored on the local file system as type {@link EBookContacts.ContactPhotoType.URI}
@@ -2669,7 +2669,7 @@ export namespace EBookContacts {
          * @param field_id an {@link EBookContacts.ContactField}
          * @param value a value whose type depends on the `field_id`
          */
-        set(field_id: ContactField | null, value?: any | null): void;
+        set(field_id: ContactField, value?: any | null): void;
         /**
          * @param args
          */
@@ -2795,7 +2795,7 @@ export namespace EBookContacts {
          * @param types The array of `EBookIndexTypes` defining what types of indexes to create
          * @param n_fields The number elements in the passed `fields`, `rule_types` and `rules` arrays.
          */
-        set_indexed_fieldsv(fields: ContactField | null, types: BookIndexType | null, n_fields: number): void;
+        set_indexed_fieldsv(fields: ContactField, types: BookIndexType, n_fields: number): void;
         /**
          * Sets the summary fields configured for the given addressbook.
          *
@@ -2810,7 +2810,7 @@ export namespace EBookContacts {
          * @param fields The array of `EContactFields` to set as summary fields
          * @param n_fields The number of `EContactFields` in `fields`
          */
-        set_summary_fieldsv(fields: ContactField | null, n_fields: number): void;
+        set_summary_fieldsv(fields: ContactField, n_fields: number): void;
     }
 
     namespace VCard {
@@ -2988,14 +2988,14 @@ export namespace EBookContacts {
          * @param to_version the requested vCard version, one of {@link EBookContacts.VCardVersion}
          * @returns the `self` converted to `to_version`,    or `null`, when it is in this version already
          */
-        convert(to_version: VCardVersion | null): VCard | null;
+        convert(to_version: VCardVersion): VCard | null;
         /**
          * Exports `evc` to a string representation conforming to vCard
          * version `version`.
          * @param version the vCard version to export to
          * @returns A newly allocated string representing the vCard    in version `version`.
          */
-        convert_to_string(version: VCardVersion | null): string;
+        convert_to_string(version: VCardVersion): string;
         /**
          * Prints a dump of `evc`'s structure to stdout. Used for
          * debugging.
@@ -3007,7 +3007,7 @@ export namespace EBookContacts {
          * @param flags a bit-or of {@link EBookContacts.VCardForeachFlags}
          * @param func an {@link EBookContacts.VCardForeachFunc} callback function
          */
-        foreach(flags: VCardForeachFlags | null, func: VCardForeachFunc): void;
+        foreach(flags: VCardForeachFlags, func: VCardForeachFunc): void;
         /**
          * Removes all attributes the `func` returns `true` for.
          * @param func an {@link EBookContacts.VCardForeachFunc} callback function
@@ -3466,7 +3466,7 @@ export namespace EBookContacts {
          * @param to_version one of {@link EBookContacts.VCardVersion}
          * @param destination a destination {@link EBookContacts.VCardAttribute}
          */
-        write_attr(to_version: VCardVersion | null, destination: VCardAttribute): void;
+        write_attr(to_version: VCardVersion, destination: VCardAttribute): void;
     }
 
     /**
@@ -3523,7 +3523,7 @@ export namespace EBookContacts {
          * @param for_version an {@link EBookContacts.VCardVersion}
          * @returns A date string, owned by the caller.
          */
-        to_string(for_version: VCardVersion | null): string;
+        to_string(for_version: VCardVersion): string;
     }
 
     /**
@@ -3597,7 +3597,7 @@ export namespace EBookContacts {
          * @param flags bit-or of {@link EBookContacts.ContactDateTimeFlags}
          * @returns a new date/time string, or `null`,    when `self` is `null` or when all members are unset.
          */
-        to_string(for_version: VCardVersion | null, flags: ContactDateTimeFlags | null): string | null;
+        to_string(for_version: VCardVersion, flags: ContactDateTimeFlags): string | null;
     }
 
     /**
@@ -3972,7 +3972,7 @@ export namespace EBookContacts {
          * @param source an optional location for storing the phone number's origin, or `null`
          * @returns A valid country calling code, or zero if no code is known.
          */
-        get_country_code(source?: (PhoneNumberCountrySource | null) | null): number;
+        get_country_code(source?: PhoneNumberCountrySource | null): number;
         /**
          * Queries the national portion of `phone_number` without any call-out
          * prefixes. For instance when parsing "+1-617-5423789" this function would
@@ -3985,7 +3985,7 @@ export namespace EBookContacts {
          * @param format the phone number format to apply
          * @returns A formatted string for `phone_number`.
          */
-        to_string(format: PhoneNumberFormat | null): string;
+        to_string(format: PhoneNumberFormat): string;
     }
 
     /**

@@ -1832,7 +1832,7 @@ export namespace Ggit {
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the new branch or `null`.
          */
-        move(new_branch_name: string, flags: CreateFlags | null): Branch | null;
+        move(new_branch_name: string, flags: CreateFlags): Branch | null;
         /**
          * Sets the upstream branch, for a given local branch reference
          * @param upstream_branch_name name of the upstream branch; if `null` unsets it.
@@ -2106,7 +2106,7 @@ export namespace Ggit {
          * Set the checkout notify flags.
          * @param flags a {@link Ggit.CheckoutNotifyFlags}.
          */
-        set_notify_flags(flags: CheckoutNotifyFlags | null): void;
+        set_notify_flags(flags: CheckoutNotifyFlags): void;
         /**
          * Set the checkout our label.
          * @param label the our label.
@@ -2122,7 +2122,7 @@ export namespace Ggit {
          * Set the checkout strategy.
          * @param strategy a {@link Ggit.CheckoutStrategy}.
          */
-        set_strategy(strategy: CheckoutStrategy | null): void;
+        set_strategy(strategy: CheckoutStrategy): void;
         /**
          * Set the checkout target directory.
          * @param directory the target directory.
@@ -2362,7 +2362,7 @@ export namespace Ggit {
          * but use a normal fetch for file:// URIs.
          * @param local the local clone setting.
          */
-        set_local(local: CloneLocal | null): void;
+        set_local(local: CloneLocal): void;
     }
 
     namespace Commit {
@@ -2694,7 +2694,7 @@ export namespace Ggit {
          * @param level a {@link Ggit.ConfigLevel}.
          * @param force if a config file already exists for the given priority level, replace it.
          */
-        add_file(file: Gio.File, level: ConfigLevel | null, force: boolean): void;
+        add_file(file: Gio.File, level: ConfigLevel, force: boolean): void;
         /**
          * Delete a config variable from the config file.
          * @param name the configuration value.
@@ -2757,7 +2757,7 @@ export namespace Ggit {
          * @param level the level to open.
          * @returns the configuration at `level`, or `null`.
          */
-        open_level(level: ConfigLevel | null): Config;
+        open_level(level: ConfigLevel): Config;
         /**
          * Set a boolean value.
          * @param name the name of the configuration value.
@@ -3056,7 +3056,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3097,7 +3097,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3670,7 +3670,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3711,7 +3711,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4282,7 +4282,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4323,7 +4323,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4891,7 +4891,7 @@ export namespace Ggit {
          * @param type a {@link Ggit.DiffFormatType}.
          * @param print_cb a {@link Ggit.DiffLineCallback}.
          */
-        print(type: DiffFormatType | null, print_cb: DiffLineCallback): void;
+        print(type: DiffFormatType, print_cb: DiffLineCallback): void;
     }
 
     namespace DiffFindOptions {
@@ -5033,7 +5033,7 @@ export namespace Ggit {
          * Set the find options flags.
          * @param flags a {@link Ggit.DiffFindFlags}.
          */
-        set_flags(flags: DiffFindFlags | null): void;
+        set_flags(flags: DiffFindFlags): void;
         /**
          * Set the find options metric.
          * @param metric a {@link Ggit.DiffSimilarityMetric}.
@@ -5201,7 +5201,7 @@ export namespace Ggit {
          * Set the flags.
          * @param flags a {@link Ggit.DiffFormatEmailFlags}.
          */
-        set_flags(flags: DiffFormatEmailFlags | null): void;
+        set_flags(flags: DiffFormatEmailFlags): void;
         /**
          * Set the object id.
          * @param id a {@link Ggit.OId}.
@@ -5358,7 +5358,7 @@ export namespace Ggit {
          * Set the diff flags.
          * @param flags a {@link Ggit.DiffOption}.
          */
-        set_flags(flags: DiffOption | null): void;
+        set_flags(flags: DiffOption): void;
         /**
          * Set the number of context lines to include in the diff.
          * @param n the number of lines.
@@ -5678,7 +5678,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5719,7 +5719,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7003,7 +7003,7 @@ export namespace Ggit {
          * @param custom_headers extra HTTP headers to use in this connection.
          */
         connect(
-            direction: Direction | null,
+            direction: Direction,
             callbacks: RemoteCallbacks,
             proxy_options?: ProxyOptions | null,
             custom_headers?: string | null,
@@ -7086,7 +7086,7 @@ export namespace Ggit {
         update_tips(
             callbacks: RemoteCallbacks,
             update_fetch_head: boolean,
-            tags_type: RemoteDownloadTagsType | null,
+            tags_type: RemoteDownloadTagsType,
             message?: string | null,
         ): boolean;
         /**
@@ -7484,7 +7484,7 @@ export namespace Ggit {
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the reference to which the branch                                        points, or `null` in case of an error.
          */
-        create_branch(branch_name: string, target: Object, flags: CreateFlags | null): Branch | null;
+        create_branch(branch_name: string, target: Object, flags: CreateFlags): Branch | null;
         /**
          * Create a new commit. If `update_ref` is not `null`, the given reference will
          * be updated to point to the newly created commit. Use "HEAD" to update the
@@ -7663,7 +7663,7 @@ export namespace Ggit {
             target: Object,
             tagger: Signature,
             message: string,
-            flags: CreateFlags | null,
+            flags: CreateFlags,
         ): OId | null;
         /**
          * Creates a new annotated tag.
@@ -7681,7 +7681,7 @@ export namespace Ggit {
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the id to which the tag points, or                                        `null` in case of an error.
          */
-        create_tag_from_buffer(tag: string, flags: CreateFlags | null): OId | null;
+        create_tag_from_buffer(tag: string, flags: CreateFlags): OId | null;
         /**
          * Creates a new lightweight tag.
          * @param tag_name the name of the tag.
@@ -7689,7 +7689,7 @@ export namespace Ggit {
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the id to which the tag points, or                                        `null` in case of an error.
          */
-        create_tag_lightweight(tag_name: string, target: Object, flags: CreateFlags | null): OId | null;
+        create_tag_lightweight(tag_name: string, target: Object, flags: CreateFlags): OId | null;
         /**
          * Create a new tree builder.
          * @returns a new {@link Ggit.TreeBuilder}, or `null` if there was an error.
@@ -7719,7 +7719,7 @@ export namespace Ggit {
          * @param list_type a {@link Ggit.BranchType}.
          * @returns a branch enumerator.
          */
-        enumerate_branches(list_type: BranchType | null): BranchEnumerator | null;
+        enumerate_branches(list_type: BranchType): BranchEnumerator | null;
         /**
          * Gets the file status for a single file.
          * @param location the file to retrieve status for, rooted at the repository working dir.
@@ -7757,7 +7757,7 @@ export namespace Ggit {
          * @param flags a {@link Ggit.AttributeCheckFlags}.
          * @returns the attribute value, or `null`.
          */
-        get_attribute(path: string, name: string, flags: AttributeCheckFlags | null): string | null;
+        get_attribute(path: string, name: string, flags: AttributeCheckFlags): string | null;
         /**
          * Get the config for a specific repository.
          * @returns a {@link Ggit.Config}.
@@ -7806,7 +7806,7 @@ export namespace Ggit {
          * @param ignore the ignore rules to follow.
          * @returns the {@link Ggit.SubmoduleStatus} for `submodule`.
          */
-        get_submodule_status(name: string, ignore: SubmoduleIgnore | null): SubmoduleStatus;
+        get_submodule_status(name: string, ignore: SubmoduleIgnore): SubmoduleStatus;
         /**
          * Gets the working directory of the repository.
          * @returns the location of the working directory of the repository.
@@ -7879,7 +7879,7 @@ export namespace Ggit {
          * @param branch_type a {@link Ggit.BranchType}.
          * @returns a branch by its name in a repository.
          */
-        lookup_branch(branch_name: string, branch_type: BranchType | null): Branch | null;
+        lookup_branch(branch_name: string, branch_type: BranchType): Branch | null;
         /**
          * Lookups a branch by its name in a repository.
          * @param oid a {@link Ggit.OId}.
@@ -8058,7 +8058,7 @@ export namespace Ggit {
          * @param reset_type the {@link Ggit.ResetType} to perform.
          * @param checkout_options the {@link Ggit.CheckoutOptions} to be used for a HARD reset.
          */
-        reset(target: Object, reset_type: ResetType | null, checkout_options: CheckoutOptions): void;
+        reset(target: Object, reset_type: ResetType, checkout_options: CheckoutOptions): void;
         /**
          * Update some entries in the index from the target commit tree. The scope of
          * the updated entries is determined by the paths specified in `pathspecs`.
@@ -8092,7 +8092,7 @@ export namespace Ggit {
          * @param flags a {@link Ggit.StashFlags} to control the stashing process.
          * @returns a new object id of the commit containing the stashed state.
          */
-        save_stash(stasher: Signature, message: string, flags: StashFlags | null): OId | null;
+        save_stash(stasher: Signature, message: string, flags: StashFlags): OId | null;
         /**
          * @param ref_name canonical name of the reference HEAD should point to.
          * @returns `true` if head was successfully set, `false` otherwise.
@@ -8116,21 +8116,21 @@ export namespace Ggit {
          * @param name the name of the submodule.
          * @param fetch_recurse_submodules a {@link Ggit.SubmoduleRecurse}.
          */
-        set_submodule_fetch_recurse(name: string, fetch_recurse_submodules: SubmoduleRecurse | null): void;
+        set_submodule_fetch_recurse(name: string, fetch_recurse_submodules: SubmoduleRecurse): void;
         /**
          * Sets the ignore rule for the submodule in the configuration.
          * This does not affect any currently-loaded instances..
          * @param name the name of the submodule.
          * @param ignore a {@link Ggit.SubmoduleIgnore}.
          */
-        set_submodule_ignore(name: string, ignore: SubmoduleIgnore | null): void;
+        set_submodule_ignore(name: string, ignore: SubmoduleIgnore): void;
         /**
          * Sets the update rule for the submodule in the configuration.
          * This setting won't affect any existing instances.
          * @param name the name of the submodule.
          * @param update a {@link Ggit.SubmoduleUpdate}.
          */
-        set_submodule_update(name: string, update: SubmoduleUpdate | null): void;
+        set_submodule_update(name: string, update: SubmoduleUpdate): void;
         /**
          * Sets the URL for the submodule in the configuration.
          *
@@ -8264,7 +8264,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8305,7 +8305,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8840,7 +8840,7 @@ export namespace Ggit {
          * Changing the sorting mode resets the walker.
          * @param sort_mode a {@link Ggit.SortMode} value.
          */
-        set_sort_mode(sort_mode: SortMode | null): void;
+        set_sort_mode(sort_mode: SortMode): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -8971,7 +8971,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9012,7 +9012,7 @@ export namespace Ggit {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9760,7 +9760,7 @@ export namespace Ggit {
          * @param mode the walking order.
          * @param callback the callback to call for each entry.
          */
-        walk(mode: TreeWalkMode | null, callback: TreeWalkCallback): void;
+        walk(mode: TreeWalkMode, callback: TreeWalkCallback): void;
     }
 
     namespace TreeBuilder {
@@ -9841,7 +9841,7 @@ export namespace Ggit {
          * @param file_mode a {@link Ggit.FileMode}.
          * @returns a {@link Ggit.TreeEntry} or `null`.
          */
-        insert(filename: string, oid: OId, file_mode: FileMode | null): TreeEntry | null;
+        insert(filename: string, oid: OId, file_mode: FileMode): TreeEntry | null;
         /**
          * Remove an entry from the builder by path.
          * @param path the path to remove.
@@ -10550,7 +10550,7 @@ export namespace Ggit {
          * Set how tags are being handled when fetching/downloading.
          * @param download_tags a {@link Ggit.RemoteDownloadTagsType}.
          */
-        set_download_tags(download_tags: RemoteDownloadTagsType | null): void;
+        set_download_tags(download_tags: RemoteDownloadTagsType): void;
         /**
          * Set the fetch options object.
          * @param callbacks a {@link Ggit.RemoteCallbacks} or `null`.
@@ -10915,16 +10915,16 @@ export namespace Ggit {
          * Set flags for handling conflicting content.
          * @param file_favor the file favor.
          */
-        set_file_favor(file_favor: MergeFileFavor | null): void;
+        set_file_favor(file_favor: MergeFileFavor): void;
         /**
          * Set file merging flags.
          * @param file_flags the file flags.
          */
-        set_file_flags(file_flags: MergeFileFlags | null): void;
+        set_file_flags(file_flags: MergeFileFlags): void;
         /**
          * @param flags
          */
-        set_flags(flags: MergeFlags | null): void;
+        set_flags(flags: MergeFlags): void;
         /**
          * Set the rename threshold (defaults to 50). If `GGIT_MERGE_TREE_FIND_RENAMES`
          * is enabled, added files will be compared with deleted files to

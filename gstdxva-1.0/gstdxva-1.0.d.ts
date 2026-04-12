@@ -43,7 +43,7 @@ export namespace GstDxva {
      * @returns the string representation of `codec`
      * @since 1.24
      */
-    function dxva_codec_to_string(codec: DxvaCodec | null): string;
+    function dxva_codec_to_string(codec: DxvaCodec): string;
     namespace DxvaAV1Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.AV1Decoder.SignalSignatures {

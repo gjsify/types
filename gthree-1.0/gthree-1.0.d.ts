@@ -477,7 +477,7 @@ export namespace Gthree {
          * @param loop_mode
          * @param repetitions
          */
-        set_loop_mode(loop_mode: LoopMode | null, repetitions: number): void;
+        set_loop_mode(loop_mode: LoopMode, repetitions: number): void;
         /**
          * @param paused
          */
@@ -1781,7 +1781,7 @@ export namespace Gthree {
         /**
          * @param style
          */
-        set_style(style: FogStyle | null): void;
+        set_style(style: FogStyle): void;
     }
 
     namespace FullscreenQuadPass {
@@ -2315,11 +2315,11 @@ export namespace Gthree {
         /**
          * @param mode
          */
-        set_end_ending_mode(mode: EndingMode | null): void;
+        set_end_ending_mode(mode: EndingMode): void;
         /**
          * @param mode
          */
-        set_start_ending_mode(mode: EndingMode | null): void;
+        set_start_ending_mode(mode: EndingMode): void;
     }
 
     namespace KeyframeTrack {
@@ -2387,7 +2387,7 @@ export namespace Gthree {
         /**
          * @param interpolation
          */
-        set_interpolation(interpolation: InterpolationMode | null): void;
+        set_interpolation(interpolation: InterpolationMode): void;
         /**
          * @param start_time
          * @param end_time
@@ -3082,7 +3082,7 @@ export namespace Gthree {
          * @param src_factor
          * @param dst_factor
          */
-        set_blend_mode(mode: BlendMode | null, equation: number, src_factor: number, dst_factor: number): void;
+        set_blend_mode(mode: BlendMode, equation: number, src_factor: number, dst_factor: number): void;
         /**
          * @param clip_intersection
          */
@@ -3134,7 +3134,7 @@ export namespace Gthree {
         /**
          * @param side
          */
-        set_side(side: Side | null): void;
+        set_side(side: Side): void;
         /**
          * @param uniforms
          * @param camera
@@ -3236,7 +3236,7 @@ export namespace Gthree {
         /**
          * @param mode
          */
-        set_draw_mode(mode: DrawMode | null): void;
+        set_draw_mode(mode: DrawMode): void;
         /**
          * @param index
          * @param material
@@ -3353,7 +3353,7 @@ export namespace Gthree {
         /**
          * @param combine
          */
-        set_combine(combine: Operation | null): void;
+        set_combine(combine: Operation): void;
         /**
          * @param texture
          */
@@ -3443,7 +3443,7 @@ export namespace Gthree {
         /**
          * @param format
          */
-        set_depth_packing_format(format: DepthPackingFormat | null): void;
+        set_depth_packing_format(format: DepthPackingFormat): void;
     }
 
     namespace MeshDistanceMaterial {
@@ -3650,7 +3650,7 @@ export namespace Gthree {
         /**
          * @param combine
          */
-        set_combine(combine: Operation | null): void;
+        set_combine(combine: Operation): void;
         /**
          * @param color
          */
@@ -3864,7 +3864,7 @@ export namespace Gthree {
         /**
          * @param shading_type
          */
-        set_shading_type(shading_type: ShadingType | null): void;
+        set_shading_type(shading_type: ShadingType): void;
     }
 
     namespace MeshPhongMaterial {
@@ -4027,7 +4027,7 @@ export namespace Gthree {
         /**
          * @param combine
          */
-        set_combine(combine: Operation | null): void;
+        set_combine(combine: Operation): void;
         /**
          * @param color
          */
@@ -4055,7 +4055,7 @@ export namespace Gthree {
         /**
          * @param type
          */
-        set_normal_map_type(type: NormalMapType | null): void;
+        set_normal_map_type(type: NormalMapType): void;
         /**
          * @param reflectivity
          */
@@ -4411,7 +4411,7 @@ export namespace Gthree {
         /**
          * @param type
          */
-        set_normal_map_type(type: NormalMapType | null): void;
+        set_normal_map_type(type: NormalMapType): void;
         /**
          * @param ratio
          */
@@ -4756,7 +4756,7 @@ export namespace Gthree {
         /**
          * @param type
          */
-        set_normal_map_type(type: NormalMapType | null): void;
+        set_normal_map_type(type: NormalMapType): void;
         /**
          * @param ratio
          */
@@ -5047,7 +5047,7 @@ export namespace Gthree {
         /**
          * @param type
          */
-        set_normal_map_type(type: NormalMapType | null): void;
+        set_normal_map_type(type: NormalMapType): void;
     }
 
     namespace NumberKeyframeTrack {
@@ -7100,7 +7100,7 @@ export namespace Gthree {
         /**
          * @param shading_type
          */
-        set_shading_type(shading_type: ShadingType | null): void;
+        set_shading_type(shading_type: ShadingType): void;
         /**
          * @param use_lights
          */
@@ -7380,7 +7380,7 @@ export namespace Gthree {
         /**
          * @param bind_mode
          */
-        set_bind_mode(bind_mode: BindMode | null): void;
+        set_bind_mode(bind_mode: BindMode): void;
     }
 
     namespace SpotLight {
@@ -7862,11 +7862,11 @@ export namespace Gthree {
         /**
          * @param type
          */
-        set_data_type(type: DataType | null): void;
+        set_data_type(type: DataType): void;
         /**
          * @param encoding
          */
-        set_encoding(encoding: EncodingFormat | null): void;
+        set_encoding(encoding: EncodingFormat): void;
         /**
          * @param flip_y
          */
@@ -7874,7 +7874,7 @@ export namespace Gthree {
         /**
          * @param format
          */
-        set_format(format: TextureFormat | null): void;
+        set_format(format: TextureFormat): void;
         /**
          * @param generate_mipmaps
          */
@@ -7882,15 +7882,15 @@ export namespace Gthree {
         /**
          * @param mag_filter
          */
-        set_mag_filter(mag_filter: Filter | null): void;
+        set_mag_filter(mag_filter: Filter): void;
         /**
          * @param mapping
          */
-        set_mapping(mapping: Mapping | null): void;
+        set_mapping(mapping: Mapping): void;
         /**
          * @param min_filter
          */
-        set_min_filter(min_filter: Filter | null): void;
+        set_min_filter(min_filter: Filter): void;
         /**
          * @param name
          */
@@ -7911,11 +7911,11 @@ export namespace Gthree {
         /**
          * @param wrap_s
          */
-        set_wrap_s(wrap_s: Wrapping | null): void;
+        set_wrap_s(wrap_s: Wrapping): void;
         /**
          * @param wrap_t
          */
-        set_wrap_t(wrap_t: Wrapping | null): void;
+        set_wrap_t(wrap_t: Wrapping): void;
     }
 
     namespace Uniforms {

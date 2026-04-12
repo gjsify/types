@@ -891,7 +891,7 @@ export namespace Grl {
          * Sets the supported filter capability.
          * @param filter a {@link Grl.TypeFilter}
          */
-        set_type_filter(filter: TypeFilter | null): void;
+        set_type_filter(filter: TypeFilter): void;
         /**
          * Checks whether (`key`, `value`) are authorized by `caps`.
          * @param key a key to test
@@ -2498,7 +2498,7 @@ export namespace Grl {
          * @param flags the resolution flags to be set for an operation. See {@link Grl.ResolutionFlags} for possible values.
          * @returns `true` if `flags` could be set, `false` otherwise.
          */
-        set_resolution_flags(flags: ResolutionFlags | null): boolean;
+        set_resolution_flags(flags: ResolutionFlags): boolean;
         /**
          * Set the skip option for an operation. Will only succeed if `skip` obeys to the
          * inherent capabilities of `options`.
@@ -2513,7 +2513,7 @@ export namespace Grl {
          * @param filter the type of media to get
          * @returns `true` if `flags` could be set, `false` otherwise
          */
-        set_type_filter(filter: TypeFilter | null): boolean;
+        set_type_filter(filter: TypeFilter): boolean;
     }
 
     namespace Plugin {
@@ -2786,7 +2786,7 @@ export namespace Grl {
          * @param ranked whether the returned list shall be returned ordered by rank
          * @returns a {@link GLib.List} of available {@link Grl.Source}<!-- -->s. The content of the list should not be modified or freed. Use `g_list_free()` when done using the list.
          */
-        get_sources_by_operations(ops: SupportedOps | null, ranked: boolean): Source[];
+        get_sources_by_operations(ops: SupportedOps, ranked: boolean): Source[];
         /**
          * Load all the modules available in the default directory path.
          *
@@ -3578,7 +3578,7 @@ export namespace Grl {
          * @param operation a supported operation. Even though the type allows to specify several operations, only one should be provided here.
          * @returns The capabilities
          */
-        get_caps(operation: SupportedOps | null): Caps;
+        get_caps(operation: SupportedOps): Caps;
         /**
          * @returns the description of the `source`
          */
@@ -3674,7 +3674,7 @@ export namespace Grl {
          * @param change_type the type of change
          * @param location_unknown if change has happened in `media` or any descendant
          */
-        notify_change(media: Media | null, change_type: SourceChangeType | null, location_unknown: boolean): void;
+        notify_change(media: Media | null, change_type: SourceChangeType, location_unknown: boolean): void;
         /**
          * Emits "content-changed" signal to notify subscribers that a change ocurred
          * in `source`.
@@ -3694,11 +3694,7 @@ export namespace Grl {
          * @param change_type the type of change
          * @param location_unknown if change has happpened in `media` or any descendant
          */
-        notify_change_list(
-            changed_medias: Media[],
-            change_type: SourceChangeType | null,
-            location_unknown: boolean,
-        ): void;
+        notify_change_list(changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean): void;
         /**
          * Starts emitting ::content-changed signals when `source` discovers changes in
          * the content. This instructs `source` to setup the machinery needed to be aware
@@ -3842,7 +3838,7 @@ export namespace Grl {
          * @param flags flags to configure specific behaviour of the operation
          * @param callback the user defined callback
          */
-        store(parent: Media | null, media: Media, flags: WriteFlags | null, callback: SourceStoreCb): void;
+        store(parent: Media | null, media: Media, flags: WriteFlags, callback: SourceStoreCb): void;
         /**
          * Get the values for `keys` from `media` and store it permanently. After
          * calling this method, future queries that return this media object
@@ -3854,7 +3850,7 @@ export namespace Grl {
          * @param flags Flags to configure specific behaviors of the operation.
          * @param callback the callback to execute when the operation is finished.
          */
-        store_metadata(media: Media, keys: KeyID[] | null, flags: WriteFlags | null, callback: SourceStoreCb): void;
+        store_metadata(media: Media, keys: KeyID[] | null, flags: WriteFlags, callback: SourceStoreCb): void;
         /**
          * Update `keys` values from `media` in the `source`. After calling this method,
          * future queries that return this media object shall return this new value for
@@ -3866,7 +3862,7 @@ export namespace Grl {
          * @param flags Flags to configure specific behaviors of the operation.
          * @returns a {@link GLib.List} of keys that could not be updated, or `NULL`
          */
-        store_metadata_sync(media: Media, keys: KeyID[] | null, flags: WriteFlags | null): KeyID[];
+        store_metadata_sync(media: Media, keys: KeyID[] | null, flags: WriteFlags): KeyID[];
         /**
          * Store the `media` into the `parent` container.
          *
@@ -3875,7 +3871,7 @@ export namespace Grl {
          * @param media a {@link Grl.Media} data transfer object
          * @param flags flags to configure specific behaviour of the operation
          */
-        store_sync(parent: Media | null, media: Media, flags: WriteFlags | null): void;
+        store_sync(parent: Media | null, media: Media, flags: WriteFlags): void;
         /**
          * Get a list of {@link Grl.KeyID}, which describe a metadata types that this
          * source can fetch and store.

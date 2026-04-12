@@ -210,7 +210,7 @@ export namespace SugarGestures {
          * @param widget
          * @param flags
          */
-        attach(widget: Gtk.Widget, flags: EventControllerFlags | null): boolean;
+        attach(widget: Gtk.Widget, flags: EventControllerFlags): boolean;
         /**
          * @param widget
          */

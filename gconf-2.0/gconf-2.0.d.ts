@@ -328,7 +328,7 @@ export namespace GConf {
          * @param dir
          * @param preload
          */
-        add_dir(dir: string, preload: ClientPreloadType | null): void;
+        add_dir(dir: string, preload: ClientPreloadType): void;
         /**
          * Lists the subdirectories in `dir`. The returned list contains
          * allocated strings. Each string is the absolute path of a
@@ -404,8 +404,8 @@ export namespace GConf {
          */
         get_pair(
             key: string,
-            car_type: ValueType | null,
-            cdr_type: ValueType | null,
+            car_type: ValueType,
+            cdr_type: ValueType,
             car_retloc?: any | null,
             cdr_retloc?: any | null,
         ): boolean;
@@ -439,12 +439,12 @@ export namespace GConf {
          * @param dirname
          * @param type
          */
-        preload(dirname: string, type: ClientPreloadType | null): void;
+        preload(dirname: string, type: ClientPreloadType): void;
         /**
          * @param key
          * @param flags
          */
-        recursive_unset(key: string, flags: UnsetFlags | null): boolean;
+        recursive_unset(key: string, flags: UnsetFlags): boolean;
         /**
          * @param dir
          */
@@ -471,7 +471,7 @@ export namespace GConf {
         /**
          * @param mode
          */
-        set_error_handling(mode: ClientErrorHandlingMode | null): void;
+        set_error_handling(mode: ClientErrorHandlingMode): void;
         /**
          * @param key
          * @param val
@@ -491,8 +491,8 @@ export namespace GConf {
          */
         set_pair(
             key: string,
-            car_type: ValueType | null,
-            cdr_type: ValueType | null,
+            car_type: ValueType,
+            cdr_type: ValueType,
             address_of_car?: any | null,
             address_of_cdr?: any | null,
         ): boolean;
@@ -585,8 +585,8 @@ export namespace GConf {
          */
         set_pair(
             key: string,
-            car_type: ValueType | null,
-            cdr_type: ValueType | null,
+            car_type: ValueType,
+            cdr_type: ValueType,
             address_of_car?: any | null,
             address_of_cdr?: any | null,
         ): void;
@@ -765,7 +765,7 @@ export namespace GConf {
         /**
          * @param type
          */
-        set_list_type(type: ValueType | null): void;
+        set_list_type(type: ValueType): void;
         /**
          * @param the_str
          */

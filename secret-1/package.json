@@ -1,6 +1,6 @@
 {
     "name": "@girs/secret-1",
-    "version": "0.21.7-4.0.0-rc.2",
+    "version": "0.21.7-4.0.0-rc.3",
     "description": "GJS TypeScript type definitions for Secret-1, generated from library version 0.21.7",
     "type": "module",
     "module": "secret-1.js",
@@ -31,11 +31,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.2",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2"    },
+      "@girs/gjs": "4.0.0-rc.3",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3"    },
     "devDependencies": {
       "typescript": "*"
     },

@@ -187,7 +187,7 @@ export namespace Shell {
      */
     function util_create_pixbuf_from_data(
         data: Uint8Array | string,
-        colorspace: GdkPixbuf.Colorspace | null,
+        colorspace: GdkPixbuf.Colorspace,
         has_alpha: boolean,
         bits_per_sample: number,
         width: number,
@@ -686,7 +686,7 @@ export namespace Shell {
          * @param workspace Start on this workspace, or -1 for default
          * @param gpu_pref the GPU to prefer launching on
          */
-        launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu | null): boolean;
+        launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu): boolean;
         /**
          * @param action_name the name of the action to launch (as obtained by               `g_desktop_app_info_list_actions()`)
          * @param timestamp Event timestamp, or 0 for current event timestamp
@@ -987,7 +987,7 @@ export namespace Shell {
         /**
          * @param mode
          */
-        set_mode(mode: BlurMode | null): void;
+        set_mode(mode: BlurMode): void;
         /**
          * @param sigma
          */
@@ -1137,7 +1137,7 @@ export namespace Shell {
          * @param code GLSL code
          * @param is_replace whether Cogl code should be replaced by the custom shader
          */
-        add_glsl_snippet(hook: SnippetHook | null, declarations: string, code: string, is_replace: boolean): void;
+        add_glsl_snippet(hook: SnippetHook, declarations: string, code: string, is_replace: boolean): void;
         /**
          * @param name the uniform name
          * @returns the location of the uniform named `name`, that can be          passed to `shell_glsl_effect_set_uniform_float()`.
@@ -2424,7 +2424,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2465,7 +2465,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2990,7 +2990,7 @@ export namespace Shell {
          * @param request_id
          * @param response
          */
-        respond(request_id: string, response: NetworkAgentResponse | null): void;
+        respond(request_id: string, response: NetworkAgentResponse): void;
         /**
          * @param service
          */
@@ -3350,7 +3350,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3391,7 +3391,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4724,7 +4724,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4765,7 +4765,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5485,7 +5485,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5526,7 +5526,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6277,7 +6277,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6318,7 +6318,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7316,7 +7316,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7357,7 +7357,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8296,7 +8296,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8337,7 +8337,7 @@ export namespace Shell {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

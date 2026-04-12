@@ -217,7 +217,7 @@ export namespace Gly {
      * @returns Returns `TRUE` if the memory format has an alpha channel
      * @since 1.0
      */
-    function memory_format_has_alpha(memory_format: MemoryFormat | null): boolean;
+    function memory_format_has_alpha(memory_format: MemoryFormat): boolean;
     /**
      * Whether a memory format as an alpha channel an the color values are
      * premultiplied with the alpha value
@@ -225,7 +225,7 @@ export namespace Gly {
      * @returns Returns `TRUE` if color channels are premultiplied
      * @since 1.0
      */
-    function memory_format_is_premultiplied(memory_format: MemoryFormat | null): boolean;
+    function memory_format_is_premultiplied(memory_format: MemoryFormat): boolean;
     namespace Frame {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -560,7 +560,7 @@ export namespace Gly {
          * Selects which sandbox mechanism should be used. The default without calling this function is {@link SandboxSelector}`.AUTO`.
          * @param sandbox_selector Method by which the sandbox mechanism is selected
          */
-        set_sandbox_selector(sandbox_selector: SandboxSelector | null): void;
+        set_sandbox_selector(sandbox_selector: SandboxSelector): void;
     }
 
     /**

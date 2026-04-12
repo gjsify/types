@@ -404,7 +404,7 @@ export namespace Nice {
      * @returns a static string with the candidate transport
      * @since 0.1.19
      */
-    function candidate_transport_to_string(transport: CandidateTransport | null): string;
+    function candidate_transport_to_string(transport: CandidateTransport): string;
     /**
      * Useful for debugging functions, just returns a static string with the
      * candidate type.
@@ -412,7 +412,7 @@ export namespace Nice {
      * @returns a static string with the candidate type
      * @since 0.1.19
      */
-    function candidate_type_to_string(type: CandidateType | null): string;
+    function candidate_type_to_string(type: CandidateType): string;
     /**
      * Returns a string representation of the state, generally to use in debug
      * messages.
@@ -420,7 +420,7 @@ export namespace Nice {
      * @returns a string representation of `state`
      * @since 0.1.6
      */
-    function component_state_to_string(state: ComponentState | null): string;
+    function component_state_to_string(state: ComponentState): string;
     /**
      * Disables libnice debug output to the terminal
      * @param with_stun Also disable stun debugging messages
@@ -464,7 +464,7 @@ export namespace Nice {
      * @param level The level of debug to set
      * @since 0.0.11
      */
-    function pseudo_tcp_set_debug_level(level: PseudoTcpDebugLevel | null): void;
+    function pseudo_tcp_set_debug_level(level: PseudoTcpDebugLevel): void;
     /**
      * @gir-type Callback
      */
@@ -1868,7 +1868,7 @@ export namespace Nice {
             server_port: number,
             username: string,
             password: string,
-            type: RelayType | null,
+            type: RelayType,
         ): boolean;
         /**
          * Sets, adds or updates the remote candidates for a component of a stream.
@@ -2301,7 +2301,7 @@ export namespace Nice {
          * {@link Nice.PseudoTcpShutdown.RDWR} is equivalent to calling `pseudo_tcp_socket_close()`.
          * @param how The directions of the connection to shut down.
          */
-        shutdown(how: PseudoTcpShutdown | null): void;
+        shutdown(how: PseudoTcpShutdown): void;
     }
 
     /**

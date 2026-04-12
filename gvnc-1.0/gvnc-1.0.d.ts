@@ -399,7 +399,7 @@ export namespace GVnc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -440,7 +440,7 @@ export namespace GVnc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1164,7 +1164,7 @@ export namespace GVnc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1205,7 +1205,7 @@ export namespace GVnc {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2036,7 +2036,7 @@ export namespace GVnc {
          * @param action
          * @returns TRUE if the action was sent, FALSE if power control is not supported
          */
-        power_control(action: ConnectionPowerAction | null): boolean;
+        power_control(action: ConnectionPowerAction): boolean;
         /**
          * Set the audio sink to use for playing back audio from
          * the remote session.

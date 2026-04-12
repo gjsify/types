@@ -959,14 +959,14 @@ export namespace Libosinfo {
          * @param relshp the product relationship
          * @returns a list of operating systems
          */
-        unique_values_for_os_relationship(relshp: ProductRelationship | null): OsList;
+        unique_values_for_os_relationship(relshp: ProductRelationship): OsList;
         /**
          * Get all platforms that are the referee
          * in an platform relationship.
          * @param relshp the product relationship
          * @returns a list of virtualization platforms
          */
-        unique_values_for_platform_relationship(relshp: ProductRelationship | null): PlatformList;
+        unique_values_for_platform_relationship(relshp: ProductRelationship): PlatformList;
         /**
          * Get all unique values for a named property amongst all
          * deployments in the database
@@ -3646,7 +3646,7 @@ export namespace Libosinfo {
          * Set the installation source to be used with the `script`.
          * @param source one of the installation sources: OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_MEDIA, OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_NETWORK
          */
-        set_installation_source(source: InstallScriptInstallationSource | null): void;
+        set_installation_source(source: InstallScriptInstallationSource): void;
         /**
          * Mind that not all installers support any name for the installer scripts.
          * @param prefix a prefix to be added to the file generated
@@ -3656,7 +3656,7 @@ export namespace Libosinfo {
          * Set the preferred injection method to be used with the `script`
          * @param method one of the injection methods: OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_CDROM, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_FLOPPY, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_INITRD, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_WEB
          */
-        set_preferred_injection_method(method: InstallScriptInjectionMethod | null): void;
+        set_preferred_injection_method(method: InstallScriptInjectionMethod): void;
     }
 
     namespace InstallScriptList {
@@ -5409,7 +5409,7 @@ export namespace Libosinfo {
          * @param relshp the relationship
          * @param otherproduct the product to relate to
          */
-        add_related(relshp: ProductRelationship | null, otherproduct: Product): void;
+        add_related(relshp: ProductRelationship, otherproduct: Product): void;
         /**
          * @returns The product's codename, or NULL.
          */
@@ -5430,7 +5430,7 @@ export namespace Libosinfo {
          * @param relshp the relationship to query
          * @returns a list of related products
          */
-        get_related(relshp: ProductRelationship | null): ProductList;
+        get_related(relshp: ProductRelationship): ProductList;
         /**
          * @returns A {@link GLib.Date} representing the product's release date,                           or NULL.
          */
@@ -5512,7 +5512,7 @@ export namespace Libosinfo {
          * @param relshp the relationship to filter on
          * @param product the target product to filter on
          */
-        add_product_constraint(relshp: ProductRelationship | null, product: Product): number;
+        add_product_constraint(relshp: ProductRelationship, product: Product): number;
         /**
          * @param when
          */
@@ -5521,7 +5521,7 @@ export namespace Libosinfo {
          * Remove all constraints for the relationship `relshp`
          * @param relshp the relationship to clear
          */
-        clear_product_constraint(relshp: ProductRelationship | null): void;
+        clear_product_constraint(relshp: ProductRelationship): void;
         /**
          * Remove all relationship constraints
          */
@@ -5533,7 +5533,7 @@ export namespace Libosinfo {
          * @param relshp a relationship to query
          * @returns a list of operating systems
          */
-        get_product_constraint_values(relshp: ProductRelationship | null): Product[];
+        get_product_constraint_values(relshp: ProductRelationship): Product[];
     }
 
     namespace ProductList {

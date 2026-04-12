@@ -1,6 +1,6 @@
 {
     "name": "@girs/anthy-9000",
-    "version": "9000.0.0-4.0.0-rc.2",
+    "version": "9000.0.0-4.0.0-rc.3",
     "description": "GJS TypeScript type definitions for Anthy-9000, generated from library version 9000.0.0",
     "type": "module",
     "module": "anthy-9000.js",
@@ -31,9 +31,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.2",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.2"    },
+      "@girs/gjs": "4.0.0-rc.3",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"    },
     "devDependencies": {
       "typescript": "*"
     },

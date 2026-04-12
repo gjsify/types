@@ -513,7 +513,7 @@ export namespace Budgie {
          *
          * @param action Action to invoke
          */
-        invoke_action(action: PanelAction | null): void;
+        invoke_action(action: PanelAction): void;
         /**
          * Utility function for Python usage. See: {@link Budgie.Applet.settings_prefix}
          * @param prefix
@@ -590,7 +590,7 @@ export namespace Budgie {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -631,7 +631,7 @@ export namespace Budgie {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1278,7 +1278,7 @@ export namespace Budgie {
          * Set the positioning policy employed by the popover
          * @param policy New policy to set
          */
-        set_position_policy(policy: PopoverPositionPolicy | null): void;
+        set_position_policy(policy: PopoverPositionPolicy): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1323,7 +1323,7 @@ export namespace Budgie {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1364,7 +1364,7 @@ export namespace Budgie {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

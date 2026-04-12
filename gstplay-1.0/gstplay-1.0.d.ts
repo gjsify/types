@@ -213,14 +213,14 @@ export namespace GstPlay {
      * @returns a string with the name of the color   balance type.
      * @since 1.20
      */
-    function play_color_balance_type_get_name(type: PlayColorBalanceType | null): string;
+    function play_color_balance_type_get_name(type: PlayColorBalanceType): string;
     /**
      * Gets a string representing the given error.
      * @param error a {@link GstPlay.PlayError}
      * @returns a string with the given error.
      * @since 1.20
      */
-    function play_error_get_name(error: PlayError | null): string;
+    function play_error_get_name(error: PlayError): string;
     /**
      * @since 1.20
      */
@@ -230,7 +230,7 @@ export namespace GstPlay {
      * @returns a string with the name of the message.
      * @since 1.20
      */
-    function play_message_get_name(message_type: PlayMessage | null): string;
+    function play_message_get_name(message_type: PlayMessage): string;
     /**
      * Parse the given buffering-percent `msg` and extract the corresponding value
      * @param msg A {@link Gst.Message}
@@ -303,7 +303,7 @@ export namespace GstPlay {
      * @returns a string with the name of the state.
      * @since 1.20
      */
-    function play_state_get_name(state: PlayState | null): string;
+    function play_state_get_name(state: PlayState): string;
     namespace Play {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
@@ -562,7 +562,7 @@ export namespace GstPlay {
          * @param type {@link GstPlay.PlayColorBalanceType}
          * @returns The current value of `type`, between [0,1]. In case of   error -1 is returned.
          */
-        get_color_balance(type: PlayColorBalanceType | null): number;
+        get_color_balance(type: PlayColorBalanceType): number;
         /**
          * Get a copy of the current configuration of the play. This configuration
          * can either be modified and used for the `gst_play_set_config()` call
@@ -667,7 +667,7 @@ export namespace GstPlay {
          * @param config Additional configuration
          * @returns Current video snapshot sample or `null` on failure
          */
-        get_video_snapshot(format: PlaySnapshotFormat | null, config?: Gst.Structure | null): Gst.Sample | null;
+        get_video_snapshot(format: PlaySnapshotFormat, config?: Gst.Structure | null): Gst.Sample | null;
         /**
          * Returns the current volume level, as a percentage between 0 and 1.
          * @returns the volume as percentage between 0 and 1.
@@ -713,7 +713,7 @@ export namespace GstPlay {
          * @param type {@link GstPlay.PlayColorBalanceType}
          * @param value The new value for the `type`, ranged [0,1]
          */
-        set_color_balance(type: PlayColorBalanceType | null, value: number): void;
+        set_color_balance(type: PlayColorBalanceType, value: number): void;
         /**
          * Set the configuration of the play. If the play is already configured, and
          * the configuration haven't change, this function will return `true`. If the
@@ -733,13 +733,13 @@ export namespace GstPlay {
          * value.
          * @param flags The new value for the `type`
          */
-        set_multiview_flags(flags: GstVideo.VideoMultiviewFlags | null): void;
+        set_multiview_flags(flags: GstVideo.VideoMultiviewFlags): void;
         /**
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param mode The new value for the `type`
          */
-        set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking | null): void;
+        set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking): void;
         /**
          * `true` if the currently-playing stream should be muted.
          * @param val Mute state the should be set
@@ -1544,7 +1544,7 @@ export namespace GstPlay {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1585,7 +1585,7 @@ export namespace GstPlay {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

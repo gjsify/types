@@ -1859,7 +1859,7 @@ export namespace IAnjuta {
          * @param command_id Command to get override.
          * @returns The overridden command. NULL if no override set.
          */
-        get_command(command_id: BuildableCommand | null): string;
+        get_command(command_id: BuildableCommand): string;
         /**
          * fixme
          * @param uri fixme
@@ -1874,7 +1874,7 @@ export namespace IAnjuta {
          * @param command_id Command to override.
          * @param command Build command to override.
          */
-        set_command(command_id: BuildableCommand | null, command: string): void;
+        set_command(command_id: BuildableCommand, command: string): void;
     }
 
     export const Buildable: BuildableNamespace & {
@@ -4236,7 +4236,7 @@ export namespace IAnjuta {
          * characters in the buffer to `mode` line end characters.
          * @param mode Line mode to convert.
          */
-        convert(mode: EditorLineModeType | null): void;
+        convert(mode: EditorLineModeType): void;
         /**
          * Convert EOL characters to majority of line mode. This is helpful
          * when the buffer contains mixed line modes and we want to fix it.
@@ -4253,7 +4253,7 @@ export namespace IAnjuta {
          * texts will have `mode` line end characters.
          * @param mode Line mode to set.
          */
-        set(mode: EditorLineModeType | null): void;
+        set(mode: EditorLineModeType): void;
         /**
          * @param args
          */
@@ -5205,7 +5205,7 @@ export namespace IAnjuta {
          * @param end_location Location where the indication should end
          * @param indicator the indicator to use
          */
-        set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator | null): void;
+        set(begin_location: Iterable, end_location: Iterable, indicator: IndicableIndicator): void;
         /**
          * @param args
          */
@@ -5768,14 +5768,14 @@ export namespace IAnjuta {
          * Delete the `marker` from all locations.
          * @param marker Marker to delete.
          */
-        delete_all_markers(marker: MarkableMarker | null): void;
+        delete_all_markers(marker: MarkableMarker): void;
         /**
          * Check if the `marker` is set at the given `location`.
          * @param location Location to check.
          * @param marker Marker to check.
          * @returns TRUE if the marker is set at the location, other false.
          */
-        is_marker_set(location: number, marker: MarkableMarker | null): boolean;
+        is_marker_set(location: number, marker: MarkableMarker): boolean;
         /**
          * Location where a marker is set could have moved by some operation in
          * the implementation. To retrieve the correct location where the marker
@@ -5794,13 +5794,13 @@ export namespace IAnjuta {
          * @param tooltip optional tooltip displayed with the marker
          * @returns Handle of the location marked. Can be used later to obtain new location, if it has been moved due to addetions/deletions in the implementor object.
          */
-        mark(location: number, marker: MarkableMarker | null, tooltip?: string | null): number;
+        mark(location: number, marker: MarkableMarker, tooltip?: string | null): number;
         /**
          * Clears the `marker` at given `location`.
          * @param location Location where the marker is set.
          * @param marker The marker to unset.
          */
-        unmark(location: number, marker: MarkableMarker | null): void;
+        unmark(location: number, marker: MarkableMarker): void;
     }
 
     export const Markable: MarkableNamespace & {
@@ -5979,7 +5979,7 @@ export namespace IAnjuta {
          * @param summary summary of the message
          * @param details details of the message
          */
-        append(type: MessageViewType | null, summary: string, details: string): void;
+        append(type: MessageViewType, summary: string, details: string): void;
         /**
          * Appends the text in buffer. Flushes the buffer where a newline is found.
          * by emiiting buffer_flushed signal. The string is expected to be utf8.
@@ -6287,7 +6287,7 @@ export namespace IAnjuta {
         add_node_after(
             parent: Anjuta.ProjectNode,
             sibling: Anjuta.ProjectNode | null,
-            type: Anjuta.ProjectNodeType | null,
+            type: Anjuta.ProjectNodeType,
             file?: Gio.File | null,
             name?: string | null,
         ): Anjuta.ProjectNode;
@@ -6303,7 +6303,7 @@ export namespace IAnjuta {
         add_node_before(
             parent: Anjuta.ProjectNode,
             sibling: Anjuta.ProjectNode | null,
-            type: Anjuta.ProjectNodeType | null,
+            type: Anjuta.ProjectNodeType,
             file?: Gio.File | null,
             name?: string | null,
         ): Anjuta.ProjectNode;
@@ -6691,7 +6691,7 @@ export namespace IAnjuta {
          * @param child_type Select one element type: source, group or target
          * @returns TRUE if sucessful, other FALSE.
          */
-        set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType | null): boolean;
+        set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean;
     }
 
     export const ProjectChooser: ProjectChooserNamespace & {
@@ -6938,7 +6938,7 @@ export namespace IAnjuta {
          * @param element_type Select one element type: source, group or target
          * @returns Get list of {@link Gio.File} corresponding to all valid elements or `null` if there are no elements of this type. Free the returned list with `g_list_free()` and the files with `g_object_unref()`.
          */
-        get_elements(element_type: Anjuta.ProjectNodeType | null): Gio.File[];
+        get_elements(element_type: Anjuta.ProjectNodeType): Gio.File[];
         /**
          * @returns the list of pkg-config packages that the current project requires in it's configure.ac. Can be NULL if there is no project opened currently or no package is required.
          */
@@ -6959,7 +6959,7 @@ export namespace IAnjuta {
          * @param target_type type of the target
          * @returns A list of {@link Gio.File} corresponding to each target of the requested type or `null` if none exists. Free the returned list with `g_list_free()` and the files with `g_object_unref()`.
          */
-        get_targets(target_type: Anjuta.ProjectNodeType | null): Gio.File[];
+        get_targets(target_type: Anjuta.ProjectNodeType): Gio.File[];
         /**
          * Gets whether a project is currently opened.
          * @returns `true` if a project is opened.
@@ -7305,7 +7305,7 @@ export namespace IAnjuta {
          * @param field The field to retrieve.
          * @returns The boolean
          */
-        get_boolean(field: SymbolField | null): boolean;
+        get_boolean(field: SymbolField): boolean;
         /**
          * A convenience method to get a small icon (16x16) representing the symbol
          * kind. You *need* a query with fields #IANJUTA_SYMBOL_FIELD_ACCESS and
@@ -7318,13 +7318,13 @@ export namespace IAnjuta {
          * @param field The field to retrieve.
          * @returns The integer
          */
-        get_int(field: SymbolField | null): number;
+        get_int(field: SymbolField): number;
         /**
          * Retreives the string value of a string `field`.
          * @param field The field to retrieve.
          * @returns The string
          */
-        get_string(field: SymbolField | null): string;
+        get_string(field: SymbolField): string;
         /**
          * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
          * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
@@ -7514,12 +7514,12 @@ export namespace IAnjuta {
          * @param n_fields Then number of fields to retrieve.
          * @param fields The fields to retrieve in the query. The array length must   be `n_fields`.
          */
-        set_fields(n_fields: number, fields: SymbolField | null): void;
+        set_fields(n_fields: number, fields: SymbolField): void;
         /**
          * Sets the filescope search of Query.
          * @param filescope_search The filescope to search.
          */
-        set_file_scope(filescope_search: SymbolQueryFileScope | null): void;
+        set_file_scope(filescope_search: SymbolQueryFileScope): void;
         /**
          * Sets the bit mask of symbol type filters. if `include_types` is TRUE,
          * symbols satisfying the given symbol types are selected, otherwise
@@ -7527,13 +7527,13 @@ export namespace IAnjuta {
          * @param filters The mode of query.
          * @param include_types TRUE if filter is positive, FALSE if reversed.
          */
-        set_filters(filters: SymbolType | null, include_types: boolean): void;
+        set_filters(filters: SymbolType, include_types: boolean): void;
         /**
          * Sets the field with which result of query is grouped. As a result
          * there will be no duplicates of with this field.
          * @param field The field to group results.
          */
-        set_group_by(field: SymbolField | null): void;
+        set_group_by(field: SymbolField): void;
         /**
          * Sets the limit of Query results. No more than `limit` results are
          * returned.
@@ -7544,7 +7544,7 @@ export namespace IAnjuta {
          * Sets the mode of Query.
          * @param mode The mode of query.
          */
-        set_mode(mode: SymbolQueryMode | null): void;
+        set_mode(mode: SymbolQueryMode): void;
         /**
          * Sets the offset index of Query results.
          * @param offset Offset of the resultset.
@@ -7554,7 +7554,7 @@ export namespace IAnjuta {
          * Sets the field with which result of query is ordered.
          * @param field The field to order the result.
          */
-        set_order_by(field: SymbolField | null): void;
+        set_order_by(field: SymbolField): void;
     }
 
     export const SymbolQuery: SymbolQueryNamespace & {

@@ -259,7 +259,7 @@ export namespace GSystem {
     function file_linkcopy(
         src: Gio.File,
         dest: Gio.File,
-        flags: Gio.FileCopyFlags | null,
+        flags: Gio.FileCopyFlags,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -274,7 +274,7 @@ export namespace GSystem {
     function file_linkcopy_sync_data(
         src: Gio.File,
         dest: Gio.File,
-        flags: Gio.FileCopyFlags | null,
+        flags: Gio.FileCopyFlags,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
@@ -918,7 +918,7 @@ export namespace GSystem {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -959,7 +959,7 @@ export namespace GSystem {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1460,7 +1460,7 @@ export namespace GSystem {
         /**
          * @param disposition
          */
-        set_stderr_disposition(disposition: SubprocessStreamDisposition | null): void;
+        set_stderr_disposition(disposition: SubprocessStreamDisposition): void;
         /**
          * @param fd
          */
@@ -1472,7 +1472,7 @@ export namespace GSystem {
         /**
          * @param disposition
          */
-        set_stdin_disposition(disposition: SubprocessStreamDisposition | null): void;
+        set_stdin_disposition(disposition: SubprocessStreamDisposition): void;
         /**
          * @param fd
          */
@@ -1484,7 +1484,7 @@ export namespace GSystem {
         /**
          * @param disposition
          */
-        set_stdout_disposition(disposition: SubprocessStreamDisposition | null): void;
+        set_stdout_disposition(disposition: SubprocessStreamDisposition): void;
         /**
          * @param fd
          */

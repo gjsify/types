@@ -1377,7 +1377,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1418,7 +1418,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2433,7 +2433,7 @@ export namespace Mirage {
          * </note>
          * @param medium_type medium type
          */
-        set_medium_type(medium_type: MediumType | null): void;
+        set_medium_type(medium_type: MediumType): void;
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
          * streams on top of it.
@@ -2564,7 +2564,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2605,7 +2605,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3167,7 +3167,7 @@ export namespace Mirage {
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: bigint | number, type: GLib.SeekType | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType): boolean;
         /**
          * Retrieves the current position within the stream.
          * @returns the offset from the beginning of the stream.
@@ -3276,7 +3276,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3317,7 +3317,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3958,7 +3958,7 @@ export namespace Mirage {
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: bigint | number, type: GLib.SeekType | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType): boolean;
         /**
          * Retrieves the current position within the stream.
          * @returns the offset from the beginning of the stream.
@@ -4039,7 +4039,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4080,7 +4080,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4819,7 +4819,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4860,7 +4860,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5432,7 +5432,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5473,7 +5473,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5907,7 +5907,7 @@ export namespace Mirage {
          * @param pack_type pack type
          * @returns `true` on success, `false` on failure
          */
-        get_pack_data(pack_type: LanguagePackType | null): [boolean, Uint8Array | null];
+        get_pack_data(pack_type: LanguagePackType): [boolean, Uint8Array | null];
         /**
          * Sets language's language code.
          * @param code language code
@@ -5920,7 +5920,7 @@ export namespace Mirage {
          * @param pack_data pack data
          * @returns `true` on success, `false` on failure
          */
-        set_pack_data(pack_type: LanguagePackType | null, pack_data: Uint8Array | string): boolean;
+        set_pack_data(pack_type: LanguagePackType, pack_data: Uint8Array | string): boolean;
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
          * streams on top of it.
@@ -6051,7 +6051,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6092,7 +6092,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6662,7 +6662,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6703,7 +6703,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7310,7 +7310,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7351,7 +7351,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7866,7 +7866,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7907,7 +7907,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8365,10 +8365,10 @@ export namespace Mirage {
          */
         feed_data(
             address: number,
-            type: SectorType | null,
+            type: SectorType,
             main_data: number,
             main_data_length: number,
-            subchannel_format: SectorSubchannelFormat | null,
+            subchannel_format: SectorSubchannelFormat,
             subchannel_data: number | null,
             subchannel_data_length: number,
             ignore_data_mask: number,
@@ -8422,7 +8422,7 @@ export namespace Mirage {
          * @param format subchannel format
          * @returns `true` on success, `false` on failure
          */
-        get_subchannel(format: SectorSubchannelFormat | null): [boolean, Uint8Array | null];
+        get_subchannel(format: SectorSubchannelFormat): [boolean, Uint8Array | null];
         /**
          * Retrieves sector's subheader. The pointer to appropriate location in
          * sector's data buffer is stored into `ret_buf`;  therefore, the buffer should not
@@ -8477,7 +8477,7 @@ export namespace Mirage {
          * @param buf buffer containing subchannel data
          * @returns `true` on success, `false` on failure
          */
-        set_subchannel(format: SectorSubchannelFormat | null, buf: Uint8Array | string): boolean;
+        set_subchannel(format: SectorSubchannelFormat, buf: Uint8Array | string): boolean;
         /**
          * Sets sector's subheader to that stored in `buf`.
          * @param buf buffer containing subheader
@@ -8652,7 +8652,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8693,7 +8693,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -9426,7 +9426,7 @@ export namespace Mirage {
          * Sets session type. `type` must be one of {@link Mirage.SessionType}.
          * @param type session type
          */
-        set_session_type(type: SessionType | null): void;
+        set_session_type(type: SessionType): void;
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
          * streams on top of it.
@@ -9557,7 +9557,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9598,7 +9598,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10377,7 +10377,7 @@ export namespace Mirage {
          * Sets sector type. `mode` must be one of {@link Mirage.SectorType}.
          * @param sector_type type of sectors comprising the track
          */
-        set_sector_type(sector_type: SectorType | null): void;
+        set_sector_type(sector_type: SectorType): void;
         /**
          * Sets track start address. `track_start` is a track-relative address at which track's
          * pregap ends and track "logically" starts (i.e. where index changes from 00 to 01). Note that
@@ -10516,7 +10516,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10557,7 +10557,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -11067,7 +11067,7 @@ export namespace Mirage {
          * @param role fragment role
          * @returns pointer to created fragment object on success, `null` on failure
          */
-        create_fragment(track: Track, role: FragmentRole | null): Fragment;
+        create_fragment(track: Track, role: FragmentRole): Fragment;
         /**
          * Finalizes the image, possibly creating the image descriptor file if
          * necessary.
@@ -11283,7 +11283,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -11324,7 +11324,7 @@ export namespace Mirage {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -12253,7 +12253,7 @@ export namespace Mirage {
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: bigint | number, type: GLib.SeekType | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType): boolean;
         /**
          * Retrieves the current position within the stream.
          * @returns the offset from the beginning of the stream.

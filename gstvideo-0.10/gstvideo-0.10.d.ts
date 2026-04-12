@@ -125,14 +125,14 @@ export namespace GstVideo {
      * @param dest_format
      */
     function format_convert(
-        format: Format | null,
+        format: Format,
         width: number,
         height: number,
         fps_n: number,
         fps_d: number,
-        src_format: Gst.Format | null,
+        src_format: Gst.Format,
         src_value: number,
-        dest_format: Gst.Format | null,
+        dest_format: Gst.Format,
     ): [boolean, number];
     /**
      * @param fourcc
@@ -143,54 +143,49 @@ export namespace GstVideo {
      * @param component
      * @param height
      */
-    function format_get_component_height(format: Format | null, component: number, height: number): number;
+    function format_get_component_height(format: Format, component: number, height: number): number;
     /**
      * @param format
      * @param component
      * @param width
      * @param height
      */
-    function format_get_component_offset(
-        format: Format | null,
-        component: number,
-        width: number,
-        height: number,
-    ): number;
+    function format_get_component_offset(format: Format, component: number, width: number, height: number): number;
     /**
      * @param format
      * @param component
      * @param width
      */
-    function format_get_component_width(format: Format | null, component: number, width: number): number;
+    function format_get_component_width(format: Format, component: number, width: number): number;
     /**
      * @param format
      * @param component
      */
-    function format_get_pixel_stride(format: Format | null, component: number): number;
+    function format_get_pixel_stride(format: Format, component: number): number;
     /**
      * @param format
      * @param component
      * @param width
      */
-    function format_get_row_stride(format: Format | null, component: number, width: number): number;
+    function format_get_row_stride(format: Format, component: number, width: number): number;
     /**
      * @param format
      * @param width
      * @param height
      */
-    function format_get_size(format: Format | null, width: number, height: number): number;
+    function format_get_size(format: Format, width: number, height: number): number;
     /**
      * @param format
      */
-    function format_has_alpha(format: Format | null): boolean;
+    function format_has_alpha(format: Format): boolean;
     /**
      * @param format
      */
-    function format_is_rgb(format: Format | null): boolean;
+    function format_is_rgb(format: Format): boolean;
     /**
      * @param format
      */
-    function format_is_yuv(format: Format | null): boolean;
+    function format_is_yuv(format: Format): boolean;
     /**
      * @param format
      * @param width
@@ -201,7 +196,7 @@ export namespace GstVideo {
      * @param par_d
      */
     function format_new_caps(
-        format: Format | null,
+        format: Format,
         width: number,
         height: number,
         framerate_n: number,
@@ -220,7 +215,7 @@ export namespace GstVideo {
      * @param interlaced
      */
     function format_new_caps_interlaced(
-        format: Format | null,
+        format: Format,
         width: number,
         height: number,
         framerate_n: number,
@@ -233,7 +228,7 @@ export namespace GstVideo {
      * @param caps
      * @param format
      */
-    function format_parse_caps(caps: Gst.Caps, format: Format | null): [boolean, number, number];
+    function format_parse_caps(caps: Gst.Caps, format: Format): [boolean, number, number];
     /**
      * @param caps
      */
@@ -241,7 +236,7 @@ export namespace GstVideo {
     /**
      * @param format
      */
-    function format_to_fourcc(format: Format | null): number;
+    function format_to_fourcc(format: Format): number;
     /**
      * @param pad
      */

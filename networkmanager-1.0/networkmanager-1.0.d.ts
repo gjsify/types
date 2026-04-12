@@ -3010,10 +3010,7 @@ export namespace NetworkManager {
      * @returns `true` if the device capabilities are compatible with the desired `type`, `false` if they are not.
      * @since 0.9.8
      */
-    function utils_ap_mode_security_valid(
-        type: UtilsSecurityType | null,
-        wifi_caps: DeviceWifiCapabilities | null,
-    ): boolean;
+    function utils_ap_mode_security_valid(type: UtilsSecurityType, wifi_caps: DeviceWifiCapabilities): boolean;
     /**
      * Converts a byte-array `bytes` into a hexadecimal string.
      * If `final_len` is greater than -1, the returned string is terminated at
@@ -3081,7 +3078,7 @@ export namespace NetworkManager {
         progname: string,
         try_first: string | null,
         paths: string | null,
-        file_test_flags: GLib.FileTest | null,
+        file_test_flags: GLib.FileTest,
         predicate: UtilsFileSearchInPathsPredicate,
     ): string;
     /**
@@ -3359,8 +3356,8 @@ export namespace NetworkManager {
      * @returns `true` if the device capabilities and AP capabilities intersect and are compatible with the desired `type`, `false` if they are not
      */
     function utils_security_valid(
-        type: UtilsSecurityType | null,
-        wifi_caps: DeviceWifiCapabilities | null,
+        type: UtilsSecurityType,
+        wifi_caps: DeviceWifiCapabilities,
         have_ap: boolean,
         adhoc: boolean,
         ap_flags: __80211ApFlags,
@@ -3411,7 +3408,7 @@ export namespace NetworkManager {
      * @returns `true` if `key` is a WEP key, `false` if not
      * @since 0.9.8
      */
-    function utils_wep_key_valid(key: string, wep_type: WepKeyType | null): boolean;
+    function utils_wep_key_valid(key: string, wep_type: WepKeyType): boolean;
     /**
      * Utility function to translate a Wi-Fi channel to its corresponding frequency.
      * @param channel channel
@@ -3826,7 +3823,7 @@ export namespace NetworkManager {
          * @param flags compare flags, e.g. {@link NetworkManager.SettingCompareFlags.EXACT}
          * @returns `true` if the comparison succeeds, `false` if it does not
          */
-        compare(b: Connection, flags: SettingCompareFlags | null): boolean;
+        compare(b: Connection, flags: SettingCompareFlags): boolean;
         /**
          * Compares two {@link NetworkManager.Connection} objects for similarity, with comparison behavior
          * modified by a set of flags.  See `nm_setting_compare()` for a description of
@@ -3840,7 +3837,7 @@ export namespace NetworkManager {
          */
         diff(
             b: Connection,
-            flags: SettingCompareFlags | null,
+            flags: SettingCompareFlags,
             out_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>,
         ): boolean;
         /**
@@ -4114,7 +4111,7 @@ export namespace NetworkManager {
          * @param flags hash flags, e.g. {@link NetworkManager.SettingHashFlags.ALL}
          * @returns a new {@link GLib.HashTable} describing the connection, its settings, and each setting's properties.  The caller owns the hash table and must unref the hash table with `g_hash_table_unref()` when it is no longer needed.
          */
-        to_hash(flags: SettingHashFlags | null): GLib.HashTable<string, GLib.HashTable>;
+        to_hash(flags: SettingHashFlags): GLib.HashTable<string, GLib.HashTable>;
         /**
          * Update the specified setting's secrets, given a hash table of secrets
          * intended for that setting (deserialized from D-Bus for example).  Will also
@@ -4282,7 +4279,7 @@ export namespace NetworkManager {
          * @param flags compare flags, e.g. {@link NetworkManager.SettingCompareFlags.EXACT}
          * @returns `true` if the comparison succeeds, `false` if it does not
          */
-        compare(b: Setting, flags: SettingCompareFlags | null): boolean;
+        compare(b: Setting, flags: SettingCompareFlags): boolean;
         /**
          * Compares two {@link NetworkManager.Setting} objects for similarity, with comparison behavior
          * modified by a set of flags.  See the documentation for {@link NetworkManager.SettingCompareFlags}
@@ -4297,7 +4294,7 @@ export namespace NetworkManager {
          */
         diff(
             b: Setting,
-            flags: SettingCompareFlags | null,
+            flags: SettingCompareFlags,
             invert_results: boolean,
             results: { [key: string]: any } | GLib.HashTable<string, number>,
         ): [boolean, GLib.HashTable<string, number>];
@@ -4324,7 +4321,7 @@ export namespace NetworkManager {
          * @param out_flags on success, the {@link NetworkManager.SettingSecretFlags} for the secret
          * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
          */
-        get_secret_flags(secret_name: string, out_flags: SettingSecretFlags | null): boolean;
+        get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean;
         /**
          * Returns the name of the virtual kernel interface which the connection
          * needs to use if specified in the settings.
@@ -4346,7 +4343,7 @@ export namespace NetworkManager {
          * @param flags the {@link NetworkManager.SettingSecretFlags} for the secret
          * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
          */
-        set_secret_flags(secret_name: string, flags: SettingSecretFlags | null): boolean;
+        set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean;
         /**
          * Converts the {@link NetworkManager.Setting} into a {@link GLib.HashTable} mapping each setting property
          * name to a GValue describing that property, suitable for marshalling over
@@ -4354,7 +4351,7 @@ export namespace NetworkManager {
          * @param flags hash flags, e.g. {@link NetworkManager.SettingHashFlags.ALL}
          * @returns a new {@link GLib.HashTable} describing the setting's properties
          */
-        to_hash(flags: SettingHashFlags | null): GLib.HashTable<string, GObject.Value>;
+        to_hash(flags: SettingHashFlags): GLib.HashTable<string, GObject.Value>;
         /**
          * Convert the setting into a string.  For debugging purposes ONLY, should NOT
          * be used for serialization of the setting, or machine-parsed in any way. The
@@ -5208,11 +5205,7 @@ export namespace NetworkManager {
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_ca_cert(
-            cert_path: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
-        ): boolean;
+        set_ca_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
         /**
          * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.client_cert}
          * property with the raw certificate data if using the
@@ -5227,11 +5220,7 @@ export namespace NetworkManager {
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_client_cert(
-            cert_path: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
-        ): boolean;
+        set_client_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
         /**
          * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.phase2_ca_cert}
          * property with the raw certificate data if using the
@@ -5242,11 +5231,7 @@ export namespace NetworkManager {
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_phase2_ca_cert(
-            cert_path: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
-        ): boolean;
+        set_phase2_ca_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
         /**
          * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.phase2_client_cert}
          * property with the raw certificate data if using the
@@ -5263,8 +5248,8 @@ export namespace NetworkManager {
          */
         set_phase2_client_cert(
             cert_path: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
+            scheme: Setting8021xCKScheme,
+            out_format: Setting8021xCKFormat,
         ): boolean;
         /**
          * Private keys are used to authenticate the connecting client to the network
@@ -5297,8 +5282,8 @@ export namespace NetworkManager {
         set_phase2_private_key(
             key_path: string,
             password: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
+            scheme: Setting8021xCKScheme,
+            out_format: Setting8021xCKFormat,
         ): boolean;
         /**
          * Private keys are used to authenticate the connecting client to the network
@@ -5331,8 +5316,8 @@ export namespace NetworkManager {
         set_private_key(
             key_path: string,
             password: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
+            scheme: Setting8021xCKScheme,
+            out_format: Setting8021xCKFormat,
         ): boolean;
     }
 
@@ -9295,7 +9280,7 @@ export namespace NetworkManager {
          * @param to the priority to map `from` to
          * @returns `true` if the new priority mapping was successfully added to the list, `false` if error
          */
-        add_priority(map: VlanPriorityMap | null, from: number, to: number): boolean;
+        add_priority(map: VlanPriorityMap, from: number, to: number): boolean;
         /**
          * Adds a priority map entry into either the {@link NetworkManager.SettingVlan.ingress_priority_map}
          * or the {@link NetworkManager.SettingVlan.egress_priority_map} properties.  The priority map maps
@@ -9304,13 +9289,13 @@ export namespace NetworkManager {
          * @param str the string which contains a priority map, like "3:7"
          * @returns `true` if the entry was successfully added to the list, or it overwrote the old value, `false` if error
          */
-        add_priority_str(map: VlanPriorityMap | null, str: string): boolean;
+        add_priority_str(map: VlanPriorityMap, str: string): boolean;
         /**
          * Clear all the entries from {@link NetworkManager.SettingVlan.ingress_priority_map} or
          * {@link NetworkManager.SettingVlan.egress_priority_map} properties.
          * @param map the type of priority map
          */
-        clear_priorities(map: VlanPriorityMap | null): void;
+        clear_priorities(map: VlanPriorityMap): void;
         /**
          * @returns the {@link NetworkManager.SettingVlan.flags} property of the setting
          */
@@ -9330,7 +9315,7 @@ export namespace NetworkManager {
          * @param map the type of priority map
          * @returns return the number of ingress/egress priority entries, -1 if error
          */
-        get_num_priorities(map: VlanPriorityMap | null): number;
+        get_num_priorities(map: VlanPriorityMap): number;
         /**
          * @returns the {@link NetworkManager.SettingVlan.parent} property of the setting
          */
@@ -9342,7 +9327,7 @@ export namespace NetworkManager {
          * @param idx the zero-based index of the ingress/egress priority map entry
          * @returns `true` if a priority map was returned, `false` if error
          */
-        get_priority(map: VlanPriorityMap | null, idx: number): [boolean, number, number];
+        get_priority(map: VlanPriorityMap, idx: number): [boolean, number, number];
         /**
          * Removes the priority map at index `idx` from the
          * {@link NetworkManager.SettingVlan.ingress_priority_map} or {@link NetworkManager.SettingVlan.egress_priority_map}
@@ -9350,7 +9335,7 @@ export namespace NetworkManager {
          * @param map the type of priority map
          * @param idx the zero-based index of the priority map to remove
          */
-        remove_priority(map: VlanPriorityMap | null, idx: number): void;
+        remove_priority(map: VlanPriorityMap, idx: number): void;
         /**
          * Removes the priority map `form`:`to` from the {@link NetworkManager.SettingVlan.ingress_priority_map}
          * or {@link NetworkManager.SettingVlan.egress_priority_map} (according to `map` argument)
@@ -9360,7 +9345,7 @@ export namespace NetworkManager {
          * @param to the priority to map `from` to
          * @returns `true` if the priority mapping was found and removed; `false` if it was not.
          */
-        remove_priority_by_value(map: VlanPriorityMap | null, from: number, to: number): boolean;
+        remove_priority_by_value(map: VlanPriorityMap, from: number, to: number): boolean;
         /**
          * Removes the priority map `str` from the {@link NetworkManager.SettingVlan.ingress_priority_map}
          * or {@link NetworkManager.SettingVlan.egress_priority_map} (according to `map` argument)
@@ -9369,7 +9354,7 @@ export namespace NetworkManager {
          * @param str the string which contains a priority map, like "3:7"
          * @returns `true` if the priority mapping was found and removed; `false` if it was not.
          */
-        remove_priority_str_by_value(map: VlanPriorityMap | null, str: string): boolean;
+        remove_priority_str_by_value(map: VlanPriorityMap, str: string): boolean;
     }
 
     namespace SettingWimax {

@@ -931,7 +931,7 @@ export namespace GMime {
      * @param encoding a {@link GMime.ContentEncoding}
      * @returns the encoding type as a string or `null` on error. Available values for the encoding are: #GMIME_CONTENT_ENCODING_DEFAULT, #GMIME_CONTENT_ENCODING_7BIT, #GMIME_CONTENT_ENCODING_8BIT, #GMIME_CONTENT_ENCODING_BINARY, #GMIME_CONTENT_ENCODING_BASE64, #GMIME_CONTENT_ENCODING_QUOTEDPRINTABLE and #GMIME_CONTENT_ENCODING_UUENCODE.
      */
-    function content_encoding_to_string(encoding: ContentEncoding | null): string;
+    function content_encoding_to_string(encoding: ContentEncoding): string;
     /**
      * Decodes a chunk of base64 encoded data.
      * @param inbuf input buffer
@@ -1628,7 +1628,7 @@ export namespace GMime {
          * @param result the decryption result
          * @returns the decrypted MIME part on success or `null` on fail. If the decryption fails, an exception will be set on `err` to provide information as to why the failure occurred.
          */
-        decrypt(flags: DecryptFlags | null, session_key: string, result: DecryptResult): Object | null;
+        decrypt(flags: DecryptFlags, session_key: string, result: DecryptResult): Object | null;
         /**
          * Gets the smime-type value of the Content-Type header.
          * @returns the smime-type value.
@@ -1640,7 +1640,7 @@ export namespace GMime {
          * @param flags a {@link GMime.VerifyFlags}
          * @returns a new {@link GMime.SignatureList} object on success or `null` on fail. If the verification fails, an exception will be set on `err` to provide information as to why the failure occurred.
          */
-        verify(flags: VerifyFlags | null): [SignatureList | null, Object];
+        verify(flags: VerifyFlags): [SignatureList | null, Object];
     }
 
     namespace AutocryptHeader {
@@ -1786,7 +1786,7 @@ export namespace GMime {
          * Set the encryption preference associated with the Autocrypt header.
          * @param pref a {@link GMime.AutocryptPreferEncrypt} value
          */
-        set_prefer_encrypt(pref: AutocryptPreferEncrypt | null): void;
+        set_prefer_encrypt(pref: AutocryptPreferEncrypt): void;
         /**
          * Gets the string representation of the Autocrypt header, or `null` on
          * error.  For example, it might return:
@@ -2076,7 +2076,7 @@ export namespace GMime {
          * Set the digest algorithm used by the certificate.
          * @param algo a {@link GMime.DigestAlgo}
          */
-        set_digest_algo(algo: DigestAlgo | null): void;
+        set_digest_algo(algo: DigestAlgo): void;
         /**
          * Set the email address associated with the
          * certificate. (e.g. "jane\`example`.org")
@@ -2097,7 +2097,7 @@ export namespace GMime {
          * Set the validity associated with the certificate's name, email, and user_id.
          * @param validity a {@link GMime.Validity} representing the validity of the certificate's identity information.
          */
-        set_id_validity(validity: Validity | null): void;
+        set_id_validity(validity: Validity): void;
         /**
          * Set the certificate's issuer name.
          * @param issuer_name certificate's issuer name
@@ -2124,12 +2124,12 @@ export namespace GMime {
          * Set the public-key algorithm used by the certificate.
          * @param algo a {@link GMime.PubKeyAlgo}
          */
-        set_pubkey_algo(algo: PubKeyAlgo | null): void;
+        set_pubkey_algo(algo: PubKeyAlgo): void;
         /**
          * Set the certificate trust.
          * @param trust a {@link GMime.Trust} value
          */
-        set_trust(trust: Trust | null): void;
+        set_trust(trust: Trust): void;
         /**
          * Set the certificate's full User ID.  By convention, this is usually
          * a mail name-addr as described in RFC 5322.  (e.g. "Jane Doe
@@ -2722,12 +2722,7 @@ export namespace GMime {
          * @param ostream output/cleartext stream
          * @returns a {@link GMime.DecryptResult} on success or `null` on error.
          */
-        decrypt(
-            flags: DecryptFlags | null,
-            session_key: string | null,
-            istream: Stream,
-            ostream: Stream,
-        ): DecryptResult;
+        decrypt(flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream): DecryptResult;
         /**
          * Gets the digest id based on the digest name.
          * @param name digest name
@@ -2739,7 +2734,7 @@ export namespace GMime {
          * @param digest digest id
          * @returns the equivalent digest name or `null` on fail.
          */
-        digest_name(digest: DigestAlgo | null): string | null;
+        digest_name(digest: DigestAlgo): string | null;
         /**
          * Encrypts (and optionally signs) the cleartext input stream and
          * writes the resulting ciphertext to the output stream.
@@ -2754,7 +2749,7 @@ export namespace GMime {
         encrypt(
             sign: boolean,
             userid: string | null,
-            flags: EncryptFlags | null,
+            flags: EncryptFlags,
             recipients: string[],
             istream: Stream,
             ostream: Stream,
@@ -2814,7 +2809,7 @@ export namespace GMime {
          * @returns a {@link GMime.SignatureList} object containing the status of each signature or `null` on error.
          */
         verify(
-            flags: VerifyFlags | null,
+            flags: VerifyFlags,
             istream: Stream,
             sigstream?: Stream | null,
             ostream?: Stream | null,
@@ -2908,7 +2903,7 @@ export namespace GMime {
          * Sets the encoding type of the internal stream.
          * @param encoding encoding
          */
-        set_encoding(encoding: ContentEncoding | null): void;
+        set_encoding(encoding: ContentEncoding): void;
         /**
          * Replaces the wrapper's internal stream with `stream`. Don't forget,
          * if `stream` is not of the same encoding as the old stream, you'll
@@ -3021,12 +3016,12 @@ export namespace GMime {
          * Set the cipher algorithm used.
          * @param cipher a {@link GMime.CipherAlgo}
          */
-        set_cipher(cipher: CipherAlgo | null): void;
+        set_cipher(cipher: CipherAlgo): void;
         /**
          * Set the mdc digest algorithm used.
          * @param mdc a {@link GMime.DigestAlgo}
          */
-        set_mdc(mdc: DigestAlgo | null): void;
+        set_mdc(mdc: DigestAlgo): void;
         /**
          * Sets the list of certificates that the stream had been encrypted to.
          * @param recipients A {@link GMime.CertificateList}
@@ -3317,7 +3312,7 @@ export namespace GMime {
          * @param constraint a {@link GMime.EncodingConstraint}
          * @returns the best encoding for the content filtered by `best`.
          */
-        encoding(constraint: EncodingConstraint | null): ContentEncoding;
+        encoding(constraint: EncodingConstraint): ContentEncoding;
     }
 
     namespace FilterCharset {
@@ -5101,7 +5096,7 @@ export namespace GMime {
          * @param name The name of the mailbox (or `null`)
          * @param addr The address of the mailbox
          */
-        add_mailbox(type: AddressType | null, name: string | null, addr: string): void;
+        add_mailbox(type: AddressType, name: string | null, addr: string): void;
         /**
          * Recursively calls `callback` on each of the mime parts in the mime message.
          * @param callback function to call on each of the mime parts   contained by the mime message
@@ -5112,7 +5107,7 @@ export namespace GMime {
          * @param type A {@link GMime.AddressType}
          * @returns a list of addresses of the specified `type` from the `message`.
          */
-        get_addresses(type: AddressType | null): InternetAddressList;
+        get_addresses(type: AddressType): InternetAddressList;
         /**
          * Gets the complete list of recipients for `message`.
          * @returns a newly allocated {@link GMime.InternetAddressList} containing all recipients of the message or `null` if no recipients are set.
@@ -5142,7 +5137,7 @@ export namespace GMime {
          */
         get_autocrypt_gossip_headers(
             now: GLib.DateTime | null,
-            flags: DecryptFlags | null,
+            flags: DecryptFlags,
             session_key?: string | null,
         ): AutocryptHeaderList | null;
         /**
@@ -5823,7 +5818,7 @@ export namespace GMime {
          * @param session_key session key to use or `null`
          * @returns the decrypted MIME part on success or `null` on fail. If the decryption fails, an exception will be set on `err` to provide information as to why the failure occurred.
          */
-        decrypt(flags: DecryptFlags | null, session_key: string | null): [Object | null, DecryptResult];
+        decrypt(flags: DecryptFlags, session_key: string | null): [Object | null, DecryptResult];
     }
 
     namespace MultipartSigned {
@@ -5904,7 +5899,7 @@ export namespace GMime {
          * @param flags a {@link GMime.VerifyFlags}
          * @returns a new {@link GMime.SignatureList} object on success or `null` on fail. If the verification fails, an exception will be set on `err` to provide information as to why the failure occurred.
          */
-        verify(flags: VerifyFlags | null): SignatureList | null;
+        verify(flags: VerifyFlags): SignatureList | null;
     }
 
     namespace Object {
@@ -6053,7 +6048,7 @@ export namespace GMime {
          * provided.
          * @param constraint a {@link GMime.EncodingConstraint}
          */
-        encode(constraint: EncodingConstraint | null): void;
+        encode(constraint: EncodingConstraint): void;
         /**
          * Creates a new {@link GMime.AutocryptHeaderList} of relevant headers of the
          * given type based on the `addresses` of an `mime_part`.
@@ -6331,7 +6326,7 @@ export namespace GMime {
          * Sets the encoding method used for encoding the value.
          * @param method a {@link GMime.ParamEncodingMethod}
          */
-        set_encoding_method(method: ParamEncodingMethod | null): void;
+        set_encoding_method(method: ParamEncodingMethod): void;
         /**
          * Sets the parameter language specifier used for encoding the value.
          * @param lang the language specifier
@@ -6599,7 +6594,7 @@ export namespace GMime {
          * Sets the format that the parser should expect the stream to be in.
          * @param format a {@link GMime.Format}
          */
-        set_format(format: Format | null): void;
+        set_format(format: Format): void;
         /**
          * Sets whether or not the `parser`'s underlying stream is persistent.
          *
@@ -6720,7 +6715,7 @@ export namespace GMime {
          * @param constraint a {@link GMime.EncodingConstraint}
          * @returns the best content encoding for the specified mime part.
          */
-        get_best_content_encoding(constraint: EncodingConstraint | null): ContentEncoding;
+        get_best_content_encoding(constraint: EncodingConstraint): ContentEncoding;
         /**
          * Gets the internal data-wrapper of the specified mime part, or `null`
          * on error.
@@ -6781,7 +6776,7 @@ export namespace GMime {
          * @param session_key the session key to use or `null`
          * @returns a {@link GMime.DecryptResult} on success or `null` on error.
          */
-        openpgp_decrypt(flags: DecryptFlags | null, session_key?: string | null): DecryptResult | null;
+        openpgp_decrypt(flags: DecryptFlags, session_key?: string | null): DecryptResult | null;
         /**
          * Encrypts (and optionally signs) the content of the `mime_part` and then replaces
          * the content with the new, encrypted, content.
@@ -6791,12 +6786,7 @@ export namespace GMime {
          * @param recipients an array of recipient key ids and/or email addresses
          * @returns `true` on success or `false` on error.
          */
-        openpgp_encrypt(
-            sign: boolean,
-            userid: string | null,
-            flags: EncryptFlags | null,
-            recipients: string[],
-        ): boolean;
+        openpgp_encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[]): boolean;
         /**
          * Signs the content of the `mime_part` and then replaces the content with
          * the new, signed, content.
@@ -6810,7 +6800,7 @@ export namespace GMime {
          * @param flags a set of {@link GMime.VerifyFlags}
          * @returns a {@link GMime.SignatureList} on success or `null` on error.
          */
-        openpgp_verify(flags: VerifyFlags | null): SignatureList | null;
+        openpgp_verify(flags: VerifyFlags): SignatureList | null;
         /**
          * Sets the content on the mime part.
          * @param content a {@link GMime.DataWrapper} content object
@@ -6825,7 +6815,7 @@ export namespace GMime {
          * Set the content encoding for the specified mime part.
          * @param encoding a {@link GMime.ContentEncoding}
          */
-        set_content_encoding(encoding: ContentEncoding | null): void;
+        set_content_encoding(encoding: ContentEncoding): void;
         /**
          * Set the content id for the specified mime part.
          * @param content_id content id
@@ -6854,7 +6844,7 @@ export namespace GMime {
          * within the {@link GMime.Part}.
          * @param data a {@link GMime.OpenPGPData}
          */
-        set_openpgp_data(data: OpenPGPData | null): void;
+        set_openpgp_data(data: OpenPGPData): void;
         /**
          * Verify the content md5 for the specified mime part.
          * @returns `true` if the md5 is valid or `false` otherwise. Note: will return `false` if the mime part does not contain a Content-MD5.
@@ -7033,7 +7023,7 @@ export namespace GMime {
          * Set the status on the signature.
          * @param status a {@link GMime.SignatureStatus}
          */
-        set_status(status: SignatureStatus | null): void;
+        set_status(status: SignatureStatus): void;
     }
 
     namespace SignatureList {
@@ -7352,7 +7342,7 @@ export namespace GMime {
          * @param whence seek directive
          * @returns the resultant position on success or %-1 on fail.
          */
-        seek(offset: bigint | number, whence: SeekWhence | null): number;
+        seek(offset: bigint | number, whence: SeekWhence): number;
         /**
          * Set the bounds on a stream.
          * @param start start boundary
@@ -8654,13 +8644,13 @@ export namespace GMime {
          * `encoding`.
          * @param encoding a {@link GMime.ContentEncoding} to use
          */
-        init_decode(encoding: ContentEncoding | null): void;
+        init_decode(encoding: ContentEncoding): void;
         /**
          * Initializes a {@link GMime.Encoding} state machine for encoding to
          * `encoding`.
          * @param encoding a {@link GMime.ContentEncoding} to use
          */
-        init_encode(encoding: ContentEncoding | null): void;
+        init_encode(encoding: ContentEncoding): void;
         /**
          * Given the input length, `inlen`, calculate the needed output length
          * to perform an encoding or decoding step.
@@ -8829,7 +8819,7 @@ export namespace GMime {
          * Sets the new-line format that should be used when writing headers and messages.
          * @param newline a {@link GMime.NewLineFormat}
          */
-        set_newline_format(newline: NewLineFormat | null): void;
+        set_newline_format(newline: NewLineFormat): void;
         /**
          * Sets the parameter encoding method to use when encoding parameters which
          * do not have an encoding method specified.
@@ -8837,7 +8827,7 @@ export namespace GMime {
          * Note: #GMIME_PARAM_ENCODING_METHOD_DEFAULT is not allowed.
          * @param method a {@link GMime.ParamEncodingMethod}
          */
-        set_param_encoding_method(method: ParamEncodingMethod | null): void;
+        set_param_encoding_method(method: ParamEncodingMethod): void;
     }
 
     /**
@@ -9015,7 +9005,7 @@ export namespace GMime {
          * deal with garbage input.
          * @param mode a {@link GMime.RfcComplianceMode}
          */
-        set_address_compliance_mode(mode: RfcComplianceMode | null): void;
+        set_address_compliance_mode(mode: RfcComplianceMode): void;
         /**
          * Sets whether the rfc822 address parser should allow addresses without a domain.
          *
@@ -9051,7 +9041,7 @@ export namespace GMime {
          * to deal with garbage input.
          * @param mode a {@link GMime.RfcComplianceMode}
          */
-        set_parameter_compliance_mode(mode: RfcComplianceMode | null): void;
+        set_parameter_compliance_mode(mode: RfcComplianceMode): void;
         /**
          * Sets the compliance mode that should be used when parsing rfc2047 encoded words.
          *
@@ -9064,7 +9054,7 @@ export namespace GMime {
          * to deal with garbage input.
          * @param mode a {@link GMime.RfcComplianceMode}
          */
-        set_rfc2047_compliance_mode(mode: RfcComplianceMode | null): void;
+        set_rfc2047_compliance_mode(mode: RfcComplianceMode): void;
         /**
          * Registers the callback function being called if the parser detects any issues.
          * @param warning_cb a {@link GMime.ParserWarningFunc} or `null` to clear the callback

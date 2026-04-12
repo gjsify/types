@@ -523,36 +523,36 @@ export namespace GWeather {
      * @param level a {@link GWeather.LocationLevel}
      * @returns a string
      */
-    function location_level_to_string(level: LocationLevel | null): string;
+    function location_level_to_string(level: LocationLevel): string;
     /**
      * @param sky
      */
-    function sky_to_string(sky: Sky | null): string;
+    function sky_to_string(sky: Sky): string;
     /**
      * @param sky
      * @param options
      */
-    function sky_to_string_full(sky: Sky | null, options: FormatOptions | null): string;
+    function sky_to_string_full(sky: Sky, options: FormatOptions): string;
     /**
      * Creates a human-readable, localized representation of `unit`
      * @param unit a speed unit, or {@link GWeather.SpeedUnit.DEFAULT}
      */
-    function speed_unit_to_string(unit: SpeedUnit | null): string;
+    function speed_unit_to_string(unit: SpeedUnit): string;
     /**
      * Resolve `unit` into a real temperature unit, potentially considering
      * locale defaults.
      * @param unit a tempeature unit, or {@link GWeather.TemperatureUnit.DEFAULT}
      */
-    function temperature_unit_to_real(unit: TemperatureUnit | null): TemperatureUnit;
+    function temperature_unit_to_real(unit: TemperatureUnit): TemperatureUnit;
     /**
      * @param wind
      */
-    function wind_direction_to_string(wind: WindDirection | null): string;
+    function wind_direction_to_string(wind: WindDirection): string;
     /**
      * @param wind
      * @param options
      */
-    function wind_direction_to_string_full(wind: WindDirection | null, options: FormatOptions | null): string;
+    function wind_direction_to_string_full(wind: WindDirection, options: FormatOptions): string;
     /**
      * @gir-type Callback
      */
@@ -825,7 +825,7 @@ export namespace GWeather {
          * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
          * @returns TRUE is `value` is valid, FALSE otherwise.
          */
-        get_value_apparent(unit: TemperatureUnit | null): [boolean, number];
+        get_value_apparent(unit: TemperatureUnit): [boolean, number];
         /**
          * Fills out `phenomenon` and `qualifier` with current weather conditions.
          * @returns TRUE is out arguments are valid, FALSE otherwise.
@@ -835,7 +835,7 @@ export namespace GWeather {
          * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
          * @returns TRUE is `value` is valid, FALSE otherwise.
          */
-        get_value_dew(unit: TemperatureUnit | null): [boolean, number];
+        get_value_dew(unit: TemperatureUnit): [boolean, number];
         /**
          * @returns TRUE is `value` is valid, FALSE otherwise.
          */
@@ -844,7 +844,7 @@ export namespace GWeather {
          * @param unit the desired unit, as a {@link GWeather.PressureUnit}
          * @returns TRUE if `value` is valid, FALSE otherwise.
          */
-        get_value_pressure(unit: PressureUnit | null): [boolean, number];
+        get_value_pressure(unit: PressureUnit): [boolean, number];
         /**
          * Fills out `sky` with current sky conditions.
          * @returns TRUE is `sky` is valid, FALSE otherwise.
@@ -862,17 +862,17 @@ export namespace GWeather {
          * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
          * @returns TRUE is `value` is valid, FALSE otherwise.
          */
-        get_value_temp(unit: TemperatureUnit | null): [boolean, number];
+        get_value_temp(unit: TemperatureUnit): [boolean, number];
         /**
          * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
          * @returns TRUE is `value` is valid, FALSE otherwise.
          */
-        get_value_temp_max(unit: TemperatureUnit | null): [boolean, number];
+        get_value_temp_max(unit: TemperatureUnit): [boolean, number];
         /**
          * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
          * @returns TRUE is `value` is valid, FALSE otherwise.
          */
-        get_value_temp_min(unit: TemperatureUnit | null): [boolean, number];
+        get_value_temp_min(unit: TemperatureUnit): [boolean, number];
         /**
          * Note that `value` may be 0 if `info` has not yet been updated.
          * @returns TRUE is `value` is valid, FALSE otherwise.
@@ -882,12 +882,12 @@ export namespace GWeather {
          * @param unit the desired unit, as a {@link GWeather.DistanceUnit}
          * @returns TRUE if `value` is valid, FALSE otherwise.
          */
-        get_value_visibility(unit: DistanceUnit | null): [boolean, number];
+        get_value_visibility(unit: DistanceUnit): [boolean, number];
         /**
          * @param unit the desired unit, as a {@link GWeather.SpeedUnit}
          * @returns TRUE if `speed` and `direction` are valid, FALSE otherwise.
          */
-        get_value_wind(unit: SpeedUnit | null): [boolean, number, WindDirection];
+        get_value_wind(unit: SpeedUnit): [boolean, number, WindDirection];
         get_visibility(): string;
         /**
          * @returns a summary for current weather conditions.
@@ -933,7 +933,7 @@ export namespace GWeather {
          * not set to a valid value.
          * @param providers a bitmask of {@link GWeather.Provider}
          */
-        set_enabled_providers(providers: Provider | null): void;
+        set_enabled_providers(providers: Provider): void;
         /**
          * Changes the location of the weather report.
          *
@@ -1310,7 +1310,7 @@ export namespace GWeather {
         /**
          * @param options
          */
-        to_string_full(options: FormatOptions | null): string;
+        to_string_full(options: FormatOptions): string;
     }
 
     /**

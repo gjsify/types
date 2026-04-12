@@ -310,7 +310,7 @@ export namespace Libxfce4windowing {
      * @param client_type A {@link Libxfce4windowing.ClientType}
      * @since 4.19.3
      */
-    function set_client_type(client_type: ClientType | null): void;
+    function set_client_type(client_type: ClientType): void;
     /**
      * Determines the windowing environment that is currently active.
      * @returns A value from the {@link Libxfce4windowing.Windowing} enum.
@@ -1989,7 +1989,7 @@ export namespace Libxfce4windowing {
          * @param direction an {@link Libxfce4windowing.Direction}.
          * @returns a {@link Libxfce4windowing.Workspace}, owned by the parent `group`, or `null` if no workspace exists in `direction`.
          */
-        get_neighbor(direction: Direction | null): Workspace | null;
+        get_neighbor(direction: Direction): Workspace | null;
         /**
          * Fetches the ordinal number of this workspace.
          *

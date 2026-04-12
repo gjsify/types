@@ -323,11 +323,11 @@ export namespace DMAP {
     /**
      * @param code
      */
-    function content_code_dmap_type(code: ContentCode | null): Type;
+    function content_code_dmap_type(code: ContentCode): Type;
     /**
      * @param code
      */
-    function content_code_name(code: ContentCode | null): string;
+    function content_code_name(code: ContentCode): string;
     /**
      * @param buf
      */
@@ -335,7 +335,7 @@ export namespace DMAP {
     /**
      * @param code
      */
-    function content_code_string(code: ContentCode | null): string;
+    function content_code_string(code: ContentCode): string;
     /**
      * @param str
      */
@@ -728,7 +728,7 @@ export namespace DMAP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: bigint | number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
@@ -845,7 +845,7 @@ export namespace DMAP {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -886,7 +886,7 @@ export namespace DMAP {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

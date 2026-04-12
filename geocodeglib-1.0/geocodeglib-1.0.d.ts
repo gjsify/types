@@ -837,7 +837,7 @@ export namespace GeocodeGlib {
          * @param scheme the scheme of the requested URI
          * @returns a URI representing the location. The returned string should be freed with `g_free()` when no longer needed.
          */
-        to_uri(scheme: LocationURIScheme | null): string;
+        to_uri(scheme: LocationURIScheme): string;
     }
 
     namespace MockBackend {
@@ -1294,7 +1294,7 @@ export namespace GeocodeGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1335,7 +1335,7 @@ export namespace GeocodeGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2198,7 +2198,7 @@ export namespace GeocodeGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2239,7 +2239,7 @@ export namespace GeocodeGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

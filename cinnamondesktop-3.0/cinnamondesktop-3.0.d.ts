@@ -150,7 +150,7 @@ export namespace CinnamonDesktop {
      * @returns an absolute filename
      * @since 2.2
      */
-    function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize | null): string;
+    function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize): string;
     /**
      * Scales the pixbuf to the desired size. This function
      * is a lot faster than gdk-pixbuf when scaling down by
@@ -552,7 +552,7 @@ export namespace CinnamonDesktop {
          * @param primary
          * @param secondary
          */
-        get_color(type: CDesktopEnums.BackgroundShading | null, primary: Gdk.Color, secondary: Gdk.Color): void;
+        get_color(type: CDesktopEnums.BackgroundShading, primary: Gdk.Color, secondary: Gdk.Color): void;
         get_filename(): string;
         /**
          * @param factory
@@ -588,7 +588,7 @@ export namespace CinnamonDesktop {
          * @param primary
          * @param secondary
          */
-        set_color(type: CDesktopEnums.BackgroundShading | null, primary: Gdk.Color, secondary: Gdk.Color): void;
+        set_color(type: CDesktopEnums.BackgroundShading, primary: Gdk.Color, secondary: Gdk.Color): void;
         /**
          * @param filename
          */
@@ -596,7 +596,7 @@ export namespace CinnamonDesktop {
         /**
          * @param placement
          */
-        set_placement(placement: CDesktopEnums.BackgroundStyle | null): void;
+        set_placement(placement: CDesktopEnums.BackgroundStyle): void;
     }
 
     namespace BGCrossfade {
@@ -1061,7 +1061,7 @@ export namespace CinnamonDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1102,7 +1102,7 @@ export namespace CinnamonDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1827,7 +1827,7 @@ export namespace CinnamonDesktop {
         /**
          * @param rotation
          */
-        set_rotation(rotation: RRRotation | null): void;
+        set_rotation(rotation: RRRotation): void;
         /**
          * @param underscanning
          */
@@ -1835,7 +1835,7 @@ export namespace CinnamonDesktop {
         /**
          * @param rotation
          */
-        supports_rotation(rotation: RRRotation | null): boolean;
+        supports_rotation(rotation: RRRotation): boolean;
     }
 
     namespace RRScreen {
@@ -2033,7 +2033,7 @@ export namespace CinnamonDesktop {
          * This method also disables the DPMS timeouts.
          * @param mode
          */
-        set_dpms_mode(mode: RRDpmsMode | null): boolean;
+        set_dpms_mode(mode: RRDpmsMode): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
@@ -2365,7 +2365,7 @@ export namespace CinnamonDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2406,7 +2406,7 @@ export namespace CinnamonDesktop {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3137,7 +3137,7 @@ export namespace CinnamonDesktop {
         /**
          * @param rotation
          */
-        supports_rotation(rotation: RRRotation | null): boolean;
+        supports_rotation(rotation: RRRotation): boolean;
     }
 
     /**

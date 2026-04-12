@@ -1013,7 +1013,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.BtrfsTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function btrfs_is_tech_avail(tech: BtrfsTech | null, mode: bigint | number): boolean;
+    function btrfs_is_tech_avail(tech: BtrfsTech, mode: bigint | number): boolean;
     /**
      * @param device a device that is part of the queried btrfs volume
      * @returns information about the devices that are part of the btrfs volume containing `device` or `null` in case of error Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.QUERY}
@@ -1200,7 +1200,7 @@ export namespace BlockDev {
         name: string,
         algorithm: string,
         context: CryptoKeyslotContext | null,
-        flags: CryptoIntegrityOpenFlags | null,
+        flags: CryptoIntegrityOpenFlags,
         extra?: CryptoIntegrityExtra | null,
     ): boolean;
     /**
@@ -1208,7 +1208,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.CryptoTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function crypto_is_tech_avail(tech: CryptoTech | null, mode: bigint | number): boolean;
+    function crypto_is_tech_avail(tech: CryptoTech, mode: bigint | number): boolean;
     /**
      * @param key_desc kernel keyring key description
      * @param key_data a key to add to kernel keyring (may contain arbitrary binary data)
@@ -1249,7 +1249,7 @@ export namespace BlockDev {
      * @param target_version the LUKS version to convert to
      * @returns whether the `device` was converted to `target_version`.          False, if the `device` is already in the `target_version` format. Warning: LUKS header loss is possible. See `bd_crypto_luks_header_backup()` and `bd_crypto_luks_header_restore()` Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
      */
-    function crypto_luks_convert(device: string, target_version: CryptoLUKSVersion | null): boolean;
+    function crypto_luks_convert(device: string, target_version: CryptoLUKSVersion): boolean;
     /**
      * Formats the given `device` as LUKS according to the other parameters given. If
      * `min_entropy` is specified (greater than 0), the function waits for enough
@@ -1272,7 +1272,7 @@ export namespace BlockDev {
         key_size: bigint | number,
         context: CryptoKeyslotContext,
         min_entropy: bigint | number,
-        luks_version: CryptoLUKSVersion | null,
+        luks_version: CryptoLUKSVersion,
         extra?: CryptoLUKSExtra | null,
     ): boolean;
     /**
@@ -1348,7 +1348,7 @@ export namespace BlockDev {
      * @param flags flags to set
      * @returns whether the given `flags` were successfully set or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
      */
-    function crypto_luks_set_persistent_flags(device: string, flags: CryptoLUKSPersistentFlags | null): boolean;
+    function crypto_luks_set_persistent_flags(device: string, flags: CryptoLUKSPersistentFlags): boolean;
     /**
      * @param device device to set UUID on
      * @param uuid UUID to set or `null` to generate a new one
@@ -1394,7 +1394,7 @@ export namespace BlockDev {
         key_size: bigint | number,
         context: CryptoKeyslotContext,
         min_entropy: bigint | number,
-        hw_encryption: CryptoLUKSHWEncryptionType | null,
+        hw_encryption: CryptoLUKSHWEncryptionType,
         opal_context: CryptoKeyslotContext,
         extra?: CryptoLUKSExtra | null,
     ): boolean;
@@ -1463,7 +1463,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.DMTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function dm_is_tech_avail(tech: DMTech | null, mode: bigint | number): boolean;
+    function dm_is_tech_avail(tech: DMTech, mode: bigint | number): boolean;
     /**
      * @param map_name name of the queried map
      * @param live_only whether to go through the live maps only or not
@@ -2014,7 +2014,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.FSTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function fs_is_tech_avail(tech: FSTech | null, mode: bigint | number): boolean;
+    function fs_is_tech_avail(tech: FSTech, mode: bigint | number): boolean;
     /**
      * This is a helper function for creating filesystems with extra options.
      * This is the same as running a filesystem-specific function like %bd_fs_ext4_mkfs
@@ -2376,12 +2376,12 @@ export namespace BlockDev {
      * @param plugin the queried plugin
      * @returns name of the plugin
      */
-    function get_plugin_name(plugin: Plugin | null): string;
+    function get_plugin_name(plugin: Plugin): string;
     /**
      * @param plugin the queried plugin
      * @returns name of the shared object loaded for the plugin or `null` if none is loaded
      */
-    function get_plugin_soname(plugin: Plugin | null): string;
+    function get_plugin_soname(plugin: Plugin): string;
     /**
      * @param require_plugins `null`-terminated list                 of plugins that should be loaded (if no so_name is specified                 for the plugin, the default is used) or `null` to load all                 plugins
      * @param log_func logging function to use
@@ -2396,7 +2396,7 @@ export namespace BlockDev {
      * @param plugin the queried plugin
      * @returns whether the given plugin is available or not
      */
-    function is_plugin_available(plugin: Plugin | null): boolean;
+    function is_plugin_available(plugin: Plugin): boolean;
     function loop_error_quark(): GLib.Quark;
     /**
      * @param file path of the backing file to get loop name for
@@ -2413,7 +2413,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.LoopTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function loop_is_tech_avail(tech: LoopTech | null, mode: bigint | number): boolean;
+    function loop_is_tech_avail(tech: LoopTech, mode: bigint | number): boolean;
     /**
      * @param loop path or name of the loop device
      * @param autoclear whether to set or unset the autoclear flag
@@ -2516,8 +2516,8 @@ export namespace BlockDev {
         data_size: bigint | number,
         cache_size: bigint | number,
         md_size: bigint | number,
-        mode: LVMCacheMode | null,
-        flags: LVMCachePoolFlags | null,
+        mode: LVMCacheMode,
+        flags: LVMCachePoolFlags,
         slow_pvs: string[],
         fast_pvs: string[],
     ): boolean;
@@ -2536,8 +2536,8 @@ export namespace BlockDev {
         pool_name: string,
         pool_size: bigint | number,
         md_size: bigint | number,
-        mode: LVMCacheMode | null,
-        flags: LVMCachePoolFlags | null,
+        mode: LVMCacheMode,
+        flags: LVMCachePoolFlags,
         fast_pvs: string[],
     ): boolean;
     /**
@@ -2562,7 +2562,7 @@ export namespace BlockDev {
      * @param mode mode to get the string representation for
      * @returns string representation of `mode` or `null` in case of error Tech category: always provided/supported
      */
-    function lvm_cache_get_mode_str(mode: LVMCacheMode | null): string;
+    function lvm_cache_get_mode_str(mode: LVMCacheMode): string;
     /**
      * Converts the `data_lv` and `metadata_lv` into a new cache pool in the `vg_name`
      * VG.
@@ -2689,17 +2689,17 @@ export namespace BlockDev {
      * @param state state to get the string representation for
      * @returns string representation of `state` or `null` in case of error Tech category: always provided/supported
      */
-    function lvm_get_vdo_compression_state_str(state: LVMVDOCompressionState | null): string;
+    function lvm_get_vdo_compression_state_str(state: LVMVDOCompressionState): string;
     /**
      * @param state state to get the string representation for
      * @returns string representation of `state` or `null` in case of error Tech category: always provided/supported
      */
-    function lvm_get_vdo_index_state_str(state: LVMVDOIndexState | null): string;
+    function lvm_get_vdo_index_state_str(state: LVMVDOIndexState): string;
     /**
      * @param mode mode to get the string representation for
      * @returns string representation of `mode` or `null` in case of error Tech category: always provided/supported
      */
-    function lvm_get_vdo_operating_mode_str(mode: LVMVDOOperatingMode | null): string;
+    function lvm_get_vdo_operating_mode_str(mode: LVMVDOOperatingMode): string;
     /**
      * @param policy_str string representation of a policy
      * @returns write policy for the `policy_str` or {@link BlockDev.LVMVDOWritePolicy.UNKNOWN} if          failed to determine Tech category: always provided/supported
@@ -2709,7 +2709,7 @@ export namespace BlockDev {
      * @param policy policy to get the string representation for
      * @returns string representation of `policy` or `null` in case of error Tech category: always provided/supported
      */
-    function lvm_get_vdo_write_policy_str(policy: LVMVDOWritePolicy | null): string;
+    function lvm_get_vdo_write_policy_str(policy: LVMVDOWritePolicy): string;
     /**
      * @param size size (in bytes) to test
      * @returns whether the given size is supported physical extent size or not Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
@@ -2720,7 +2720,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.LVMTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function lvm_is_tech_avail(tech: LVMTech | null, mode: bigint | number): boolean;
+    function lvm_is_tech_avail(tech: LVMTech, mode: bigint | number): boolean;
     /**
      * @param size the size to be tested
      * @param discard whether discard/TRIM is required to be supported or not
@@ -3068,7 +3068,7 @@ export namespace BlockDev {
         index_memory: bigint | number,
         compression: boolean,
         deduplication: boolean,
-        write_policy: LVMVDOWritePolicy | null,
+        write_policy: LVMVDOWritePolicy,
         extra?: ExtraArg[] | null,
     ): boolean;
     /**
@@ -3093,7 +3093,7 @@ export namespace BlockDev {
         index_memory: bigint | number,
         compression: boolean,
         deduplication: boolean,
-        write_policy: LVMVDOWritePolicy | null,
+        write_policy: LVMVDOWritePolicy,
         extra?: ExtraArg[] | null,
     ): boolean;
     /**
@@ -3363,7 +3363,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function md_is_tech_avail(tech: MDTech | null, mode: bigint | number): boolean;
+    function md_is_tech_avail(tech: MDTech, mode: bigint | number): boolean;
     /**
      * @param node path of the MD RAID's device node
      * @returns `name` of the MD RAID the device node belongs to or `null` in case of error Tech category: always available
@@ -3423,7 +3423,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function mpath_is_tech_avail(tech: MpathTech | null, mode: bigint | number): boolean;
+    function mpath_is_tech_avail(tech: MpathTech, mode: bigint | number): boolean;
     /**
      * @param enabled whether friendly names should be enabled or not
      * @returns if successfully set or not Tech category: {@link BlockDev.MpathTech.FRIENDLY_NAMES}-{@link BlockDev.MpathTechMode.MODIFY}
@@ -3436,7 +3436,7 @@ export namespace BlockDev {
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
-    function nvdimm_is_tech_avail(tech: NVDIMMTech | null, mode: bigint | number): boolean;
+    function nvdimm_is_tech_avail(tech: NVDIMMTech, mode: bigint | number): boolean;
     /**
      * @param bus return only namespaces on given bus (specified by name),                     `null` may be specified to return namespaces from all buses
      * @param region return only namespaces on given region (specified by regionX name or region id),                        `null` may be specified to return namespaces from all regions
@@ -3482,13 +3482,13 @@ export namespace BlockDev {
      * @returns string representation of `mode` or `null` in case of error Tech category: always available
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
-    function nvdimm_namespace_get_mode_str(mode: NVDIMMNamespaceMode | null): string;
+    function nvdimm_namespace_get_mode_str(mode: NVDIMMNamespaceMode): string;
     /**
      * @param mode namespace mode
      * @returns list of supported sector sizes for `mode` Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.QUERY}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
      */
-    function nvdimm_namespace_get_supported_sector_sizes(mode: NVDIMMNamespaceMode | null): number[];
+    function nvdimm_namespace_get_supported_sector_sizes(mode: NVDIMMNamespaceMode): number[];
     /**
      * @param namespace namespace to get information about
      * @param extra extra options (currently unused)
@@ -3506,7 +3506,7 @@ export namespace BlockDev {
      */
     function nvdimm_namespace_reconfigure(
         namespace: string,
-        mode: NVDIMMNamespaceMode | null,
+        mode: NVDIMMNamespaceMode,
         force: boolean,
         extra?: ExtraArg[] | null,
     ): boolean;
@@ -3590,7 +3590,7 @@ export namespace BlockDev {
      * @param action self-test action to take.
      * @returns `true` if the device self-test command was issued successfully,          `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.MANAGE}
      */
-    function nvme_device_self_test(device: string, action: NVMESelfTestAction | null): boolean;
+    function nvme_device_self_test(device: string, action: NVMESelfTestAction): boolean;
     /**
      * Disconnects and removes one or more existing NVMe over Fabrics controllers.
      * This may disconnect multiple controllers with matching `subsysnqn` and `true`
@@ -3650,7 +3650,7 @@ export namespace BlockDev {
         device: string,
         lba_data_size: number,
         metadata_size: number,
-        secure_erase: NVMEFormatSecureErase | null,
+        secure_erase: NVMEFormatSecureErase,
     ): boolean;
     /**
      * Compute new Host NQN (NVM Qualified Name) value for the current system. This
@@ -3728,7 +3728,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.NVMETechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function nvme_is_tech_avail(tech: NVMETech | null, mode: bigint | number): boolean;
+    function nvme_is_tech_avail(tech: NVMETech, mode: bigint | number): boolean;
     /**
      * Starts a sanitize operation or recovers from a previously failed sanitize operation.
      * By definition, a sanitize operation alters all user data in the NVM subsystem such
@@ -3769,7 +3769,7 @@ export namespace BlockDev {
      */
     function nvme_sanitize(
         device: string,
-        action: NVMESanitizeAction | null,
+        action: NVMESanitizeAction,
         no_dealloc: boolean,
         overwrite_pass_count: number,
         overwrite_pattern: number,
@@ -3779,7 +3779,7 @@ export namespace BlockDev {
      * @param result A %BDNVMESelfTestResult.
      * @returns A string representation of `result` for use as an identifier string                           or `null` when the code is unknown.
      */
-    function nvme_self_test_result_to_string(result: NVMESelfTestResult | null): string;
+    function nvme_self_test_result_to_string(result: NVMESelfTestResult): string;
     /**
      * Writes the Host ID value to the system `/etc/nvme/hostid` file.
      * No validation of the string is performed.
@@ -3804,10 +3804,10 @@ export namespace BlockDev {
      */
     function part_create_part(
         disk: string,
-        type: PartTypeReq | null,
+        type: PartTypeReq,
         start: bigint | number,
         size: bigint | number,
-        align: PartAlign | null,
+        align: PartAlign,
     ): PartSpec;
     /**
      * @param disk path of the disk block device to create partition table on
@@ -3815,7 +3815,7 @@ export namespace BlockDev {
      * @param ignore_existing whether to ignore/overwrite the existing table or not                   (reports an error if `false` and there's some table on `disk`)
      * @returns whether the partition table was successfully created or not Tech category: {@link BlockDev.PartTechMode.CREATE_TABLE} + the tech according to `type`
      */
-    function part_create_table(disk: string, type: PartTableType | null, ignore_existing: boolean): boolean;
+    function part_create_table(disk: string, type: PartTableType, ignore_existing: boolean): boolean;
     /**
      * @param disk disk to remove the partition from
      * @param part partition to remove
@@ -3829,7 +3829,7 @@ export namespace BlockDev {
      * @param size size of the partition to be added
      * @returns spec of the best free region on `disk` for a new partition of type `type`                           with the size of `size` or `null` if there is none such region or if                           there was an error (`error` gets populated) Note: For the `type` {@link BlockDev.PartType.NORMAL}, the smallest possible space that *is not* in an extended partition       is found. For the `type` {@link BlockDev.PartType.LOGICAL}, the smallest possible space that *is* in an extended       partition is found. For {@link BlockDev.PartType.EXTENDED}, the biggest possible space is found as long as there       is no other extended partition (there can only be one). Tech category: {@link BlockDev.PartTechMode.QUERY_TABLE} + the tech according to the partition table type
      */
-    function part_get_best_free_region(disk: string, type: PartType | null, size: bigint | number): PartSpec;
+    function part_get_best_free_region(disk: string, type: PartType, size: bigint | number): PartSpec;
     /**
      * @param disk disk to get free regions for
      * @returns specs of the free regions from `disk` or `null` in case of error Tech category: {@link BlockDev.PartTechMode.QUERY_TABLE} + the tech according to the partition table type
@@ -3861,18 +3861,18 @@ export namespace BlockDev {
      * @param type table type to get string representation for
      * @returns string representation of `table_type` Tech category: the tech according to `type`
      */
-    function part_get_part_table_type_str(type: PartTableType | null): string;
+    function part_get_part_table_type_str(type: PartTableType): string;
     /**
      * @param type type to get string representation for
      * @returns string representation of `type` Tech category: always available
      */
-    function part_get_type_str(type: PartType | null): string;
+    function part_get_type_str(type: PartType): string;
     /**
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.PartTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function part_is_tech_avail(tech: PartTech | null, mode: bigint | number): boolean;
+    function part_is_tech_avail(tech: PartTech, mode: bigint | number): boolean;
     /**
      * @param disk disk containing the partition
      * @param part partition to resize
@@ -3880,7 +3880,7 @@ export namespace BlockDev {
      * @param align alignment to use for the partition end
      * @returns whether the `part` partition was successfully resized on `disk` to `size` NOTE: The resulting partition may be slightly bigger than requested due to alignment. Tech category: {@link BlockDev.PartTechMode.MODIFY_TABLE} + the tech according to the partition table type
      */
-    function part_resize_part(disk: string, part: string, size: bigint | number, align: PartAlign | null): boolean;
+    function part_resize_part(disk: string, part: string, size: bigint | number, align: PartAlign): boolean;
     /**
      * @param disk device the partition belongs to
      * @param part partition the attributes should be set for
@@ -3950,18 +3950,14 @@ export namespace BlockDev {
      * @param extra extra options to pass through.
      * @returns `true` when the self-test was triggered successfully or `false` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.ATA}-{@link BlockDev.SmartTechMode.SELFTEST}
      */
-    function smart_device_self_test(
-        device: string,
-        operation: SmartSelfTestOp | null,
-        extra?: ExtraArg[] | null,
-    ): boolean;
+    function smart_device_self_test(device: string, operation: SmartSelfTestOp, extra?: ExtraArg[] | null): boolean;
     function smart_error_quark(): GLib.Quark;
     /**
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.SmartTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function smart_is_tech_avail(tech: SmartTechMode | null, mode: bigint | number): boolean;
+    function smart_is_tech_avail(tech: SmartTechMode, mode: bigint | number): boolean;
     /**
      * Retrieve SMART information from SCSI or SAS-compliant drive.
      * @param device device to check.
@@ -3993,7 +3989,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.SwapTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      */
-    function swap_is_tech_avail(tech: SwapTech | null, mode: bigint | number): boolean;
+    function swap_is_tech_avail(tech: SwapTech, mode: bigint | number): boolean;
     /**
      * @param device a device to create swap space on
      * @param label a label for the swap space device
@@ -4089,7 +4085,7 @@ export namespace BlockDev {
      */
     function utils_dbus_service_available(
         connection: Gio.DBusConnection | null,
-        bus_type: Gio.BusType | null,
+        bus_type: Gio.BusType,
         bus_name: string,
         obj_prefix: string,
     ): boolean;

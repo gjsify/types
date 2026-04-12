@@ -371,7 +371,7 @@ export namespace Flatpak {
      * @param kind a {@link Flatpak.TransactionOperationType}
      * @returns a string representing `kind`
      */
-    function transaction_operation_type_to_string(kind: TransactionOperationType | null): string;
+    function transaction_operation_type_to_string(kind: TransactionOperationType): string;
     /**
      * @gir-type Callback
      */
@@ -819,7 +819,7 @@ export namespace Flatpak {
          */
         fetch_remote_ref_sync(
             remote_name: string,
-            kind: RefKind | null,
+            kind: RefKind,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -838,11 +838,11 @@ export namespace Flatpak {
          */
         fetch_remote_ref_sync_full(
             remote_name: string,
-            kind: RefKind | null,
+            kind: RefKind,
             name: string,
             arch: string | null,
             branch: string | null,
-            flags: QueryFlags | null,
+            flags: QueryFlags,
             cancellable?: Gio.Cancellable | null,
         ): RemoteRef;
         /**
@@ -928,7 +928,7 @@ export namespace Flatpak {
          * @returns an {@link Flatpak.InstalledRef}, or `null` if an error occurred
          */
         get_installed_ref(
-            kind: RefKind | null,
+            kind: RefKind,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -1000,7 +1000,7 @@ export namespace Flatpak {
          */
         install(
             remote_name: string,
-            kind: RefKind | null,
+            kind: RefKind,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -1050,9 +1050,9 @@ export namespace Flatpak {
          * @returns The ref for the newly installed app or `null` on failure
          */
         install_full(
-            flags: InstallFlags | null,
+            flags: InstallFlags,
             remote_name: string,
-            kind: RefKind | null,
+            kind: RefKind,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -1118,7 +1118,7 @@ export namespace Flatpak {
          * @returns `true`, unless an error occurred
          */
         launch_full(
-            flags: LaunchFlags | null,
+            flags: LaunchFlags,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -1138,7 +1138,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          */
-        list_installed_refs_by_kind(kind: RefKind | null, cancellable?: Gio.Cancellable | null): InstalledRef[];
+        list_installed_refs_by_kind(kind: RefKind, cancellable?: Gio.Cancellable | null): InstalledRef[];
         /**
          * Lists the installed apps and runtimes that have an update available, either
          * from the configured remote or locally available but not deployed (see
@@ -1207,7 +1207,7 @@ export namespace Flatpak {
          */
         list_remote_refs_sync_full(
             remote_or_uri: string,
-            flags: QueryFlags | null,
+            flags: QueryFlags,
             cancellable?: Gio.Cancellable | null,
         ): RemoteRef[];
         /**
@@ -1283,7 +1283,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.Remote} instances
          */
-        list_remotes_by_type(types: RemoteType[] | null, cancellable?: Gio.Cancellable | null): Remote[];
+        list_remotes_by_type(types: RemoteType[], cancellable?: Gio.Cancellable | null): Remote[];
         /**
          * Lists the installed references that are not 'used'.
          *
@@ -1409,7 +1409,7 @@ export namespace Flatpak {
          * @returns `true` on success
          */
         uninstall(
-            kind: RefKind | null,
+            kind: RefKind,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -1432,8 +1432,8 @@ export namespace Flatpak {
          * @returns `true` on success
          */
         uninstall_full(
-            flags: UninstallFlags | null,
-            kind: RefKind | null,
+            flags: UninstallFlags,
+            kind: RefKind,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -1462,8 +1462,8 @@ export namespace Flatpak {
          * @returns The ref for the newly updated app or `null` on failure
          */
         update(
-            flags: UpdateFlags | null,
-            kind: RefKind | null,
+            flags: UpdateFlags,
+            kind: RefKind,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -1524,8 +1524,8 @@ export namespace Flatpak {
          * @returns The ref for the newly updated app or `null` on failure
          */
         update_full(
-            flags: UpdateFlags | null,
-            kind: RefKind | null,
+            flags: UpdateFlags,
+            kind: RefKind,
             name: string,
             arch?: string | null,
             branch?: string | null,
@@ -3577,7 +3577,7 @@ export namespace Flatpak {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3618,7 +3618,7 @@ export namespace Flatpak {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

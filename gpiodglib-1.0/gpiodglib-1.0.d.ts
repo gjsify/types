@@ -546,7 +546,7 @@ export namespace Gpiodglib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -587,7 +587,7 @@ export namespace Gpiodglib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1793,7 +1793,7 @@ export namespace Gpiodglib {
          * @param value Return location for the value.
          * @returns TRUE on success, FALSE on failure.
          */
-        get_value(offset: number, value: LineValue | null): boolean;
+        get_value(offset: number, value: LineValue): boolean;
         /**
          * Get the values of all requested lines.
          * @param values Array in which the values will be stored. Can be NULL in which case a new array will be created and its location stored here.
@@ -1832,7 +1832,7 @@ export namespace Gpiodglib {
          * @param value Value to set.
          * @returns TRUE on success, FALSE on failure.
          */
-        set_value(offset: number, value: LineValue | null): boolean;
+        set_value(offset: number, value: LineValue): boolean;
         /**
          * Set the values of all lines associated with a request.
          * @param values Array containing the values to set. Must be sized to contain the number of values equal to the number of requested lines. Each value is associated with the line identified by the corresponding entry in the offset array filled by `gpiodglib_line_request_get_requested_offsets`.
@@ -2047,7 +2047,7 @@ export namespace Gpiodglib {
          * Set bias.
          * @param bias New bias.
          */
-        set_bias(bias: LineBias | null): void;
+        set_bias(bias: LineBias): void;
         /**
          * Set debounce period.
          * @param period New debounce period in microseconds.
@@ -2057,27 +2057,27 @@ export namespace Gpiodglib {
          * Set direction.
          * @param direction New direction.
          */
-        set_direction(direction: LineDirection | null): void;
+        set_direction(direction: LineDirection): void;
         /**
          * Set drive.
          * @param drive New drive setting.
          */
-        set_drive(drive: LineDrive | null): void;
+        set_drive(drive: LineDrive): void;
         /**
          * Set edge detection.
          * @param edge New edge detection setting.
          */
-        set_edge_detection(edge: LineEdge | null): void;
+        set_edge_detection(edge: LineEdge): void;
         /**
          * Set event clock.
          * @param event_clock New event clock.
          */
-        set_event_clock(event_clock: LineClock | null): void;
+        set_event_clock(event_clock: LineClock): void;
         /**
          * Set the output value.
          * @param value New output value.
          */
-        set_output_value(value: LineValue | null): void;
+        set_output_value(value: LineValue): void;
     }
 
     namespace RequestConfig {

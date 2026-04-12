@@ -1123,7 +1123,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1164,7 +1164,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2638,7 +2638,7 @@ export namespace Tepl {
          * {@link Tepl.File}.
          * @param compression_type the new compression type.
          */
-        set_compression_type(compression_type: CompressionType | null): void;
+        set_compression_type(compression_type: CompressionType): void;
         /**
          * Sets the encoding. If `encoding` is `null`, the UTF-8 encoding will be set.
          * By default the encoding is taken from the {@link Tepl.File}.
@@ -2648,13 +2648,13 @@ export namespace Tepl {
         /**
          * @param flags the new flags.
          */
-        set_flags(flags: FileSaverFlags | null): void;
+        set_flags(flags: FileSaverFlags): void;
         /**
          * Sets the newline type. By default the newline type is taken from the
          * {@link Tepl.File}.
          * @param newline_type the new newline type.
          */
-        set_newline_type(newline_type: NewlineType | null): void;
+        set_newline_type(newline_type: NewlineType): void;
     }
 
     namespace FoldRegion {
@@ -2836,7 +2836,7 @@ export namespace Tepl {
          * chaining-up to its parent's draw method.
          * @param state a {@link Tepl.GutterRendererFoldsState}.
          */
-        set_state(state: GutterRendererFoldsState | null): void;
+        set_state(state: GutterRendererFoldsState): void;
     }
 
     namespace InfoBar {
@@ -3007,7 +3007,7 @@ export namespace Tepl {
          * also follows the original design of {@link Gtk.InfoBar}.
          * @param buttons_orientation the desired orientation.
          */
-        set_buttons_orientation(buttons_orientation: Gtk.Orientation | null): void;
+        set_buttons_orientation(buttons_orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3052,7 +3052,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3093,7 +3093,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3920,7 +3920,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3961,7 +3961,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4648,7 +4648,7 @@ export namespace Tepl {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
@@ -4763,7 +4763,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4804,7 +4804,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5328,7 +5328,7 @@ export namespace Tepl {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5373,7 +5373,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5414,7 +5414,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6013,7 +6013,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6054,7 +6054,7 @@ export namespace Tepl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

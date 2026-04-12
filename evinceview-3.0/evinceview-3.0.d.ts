@@ -389,7 +389,7 @@ export namespace EvinceView {
          * Sets the document model's page layout to `layout`.
          * @param layout a {@link EvinceView.PageLayout}
          */
-        set_page_layout(layout: PageLayout | null): void;
+        set_page_layout(layout: PageLayout): void;
         /**
          * @param rotation
          */
@@ -405,7 +405,7 @@ export namespace EvinceView {
         /**
          * @param mode
          */
-        set_sizing_mode(mode: SizingMode | null): void;
+        set_sizing_mode(mode: SizingMode): void;
     }
 
     namespace Job {
@@ -519,15 +519,15 @@ export namespace EvinceView {
         /**
          * @param priority
          */
-        scheduler_push_job(priority: JobPriority | null): void;
+        scheduler_push_job(priority: JobPriority): void;
         /**
          * @param priority
          */
-        scheduler_update_job(priority: JobPriority | null): void;
+        scheduler_update_job(priority: JobPriority): void;
         /**
          * @param run_mode
          */
-        set_run_mode(run_mode: JobRunMode | null): void;
+        set_run_mode(run_mode: JobRunMode): void;
         succeeded(): void;
     }
 
@@ -818,7 +818,7 @@ export namespace EvinceView {
         /**
          * @param options
          */
-        set_options(options: EvinceDocument.FindOptions | null): void;
+        set_options(options: EvinceDocument.FindOptions): void;
     }
 
     namespace JobFonts {
@@ -1164,7 +1164,7 @@ export namespace EvinceView {
         /**
          * @param flags
          */
-        set_load_flags(flags: EvinceDocument.DocumentLoadFlags | null): void;
+        set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void;
         /**
          * @param mime_type
          */
@@ -1252,7 +1252,7 @@ export namespace EvinceView {
         /**
          * @param flags
          */
-        set_load_flags(flags: EvinceDocument.DocumentLoadFlags | null): void;
+        set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void;
         /**
          * @param password
          */
@@ -1325,7 +1325,7 @@ export namespace EvinceView {
         /**
          * @param flags
          */
-        set_load_flags(flags: EvinceDocument.DocumentLoadFlags | null): void;
+        set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void;
         /**
          * @param mime_type
          */
@@ -1557,7 +1557,7 @@ export namespace EvinceView {
          */
         set_selection_info(
             selection_points: EvinceDocument.Rectangle,
-            selection_style: EvinceDocument.SelectionStyle | null,
+            selection_style: EvinceDocument.SelectionStyle,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;
@@ -1704,7 +1704,7 @@ export namespace EvinceView {
          * Set the desired output format for the generated thumbnail
          * @param format a {@link EvinceView.JobThumbnailFormat}
          */
-        set_output_format(format: JobThumbnailFormat | null): void;
+        set_output_format(format: JobThumbnailFormat): void;
     }
 
     namespace PrintOperation {
@@ -2084,7 +2084,7 @@ export namespace EvinceView {
         /**
          * @param annot_type
          */
-        begin_add_annotation(annot_type: EvinceDocument.AnnotationType | null): void;
+        begin_add_annotation(annot_type: EvinceDocument.AnnotationType): void;
         cancel_add_annotation(): void;
         copy(): void;
         /**
@@ -2094,7 +2094,7 @@ export namespace EvinceView {
         /**
          * @param type
          */
-        current_event_is_type(type: Gdk.EventType | null): boolean;
+        current_event_is_type(type: Gdk.EventType): boolean;
         find_cancel(): void;
         find_next(): void;
         find_previous(): void;
@@ -2166,7 +2166,7 @@ export namespace EvinceView {
          * @param scroll
          * @param horizontal
          */
-        scroll(scroll: Gtk.ScrollType | null, horizontal: boolean): void;
+        scroll(scroll: Gtk.ScrollType, horizontal: boolean): void;
         select_all(): void;
         /**
          * @param allowed
@@ -2299,7 +2299,7 @@ export namespace EvinceView {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -2311,7 +2311,7 @@ export namespace EvinceView {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -2365,7 +2365,7 @@ export namespace EvinceView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2406,7 +2406,7 @@ export namespace EvinceView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3161,7 +3161,7 @@ export namespace EvinceView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3202,7 +3202,7 @@ export namespace EvinceView {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

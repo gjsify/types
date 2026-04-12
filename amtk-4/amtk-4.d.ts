@@ -651,7 +651,7 @@ export namespace Amtk {
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.CheckMenuItem} for `action_name`.
          */
-        create_check_menu_item_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
+        create_check_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
         /**
          * Creates a new {@link Gtk.MenuItem} for `action_name` with the
          * {@link Amtk.Factory.default_flags}.
@@ -666,7 +666,7 @@ export namespace Amtk {
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.MenuItem} for `action_name`.
          */
-        create_menu_item_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
+        create_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
         /**
          * Creates a new {@link Gtk.MenuToolButton} for `action_name` with the
          * {@link Amtk.Factory.default_flags}.
@@ -687,7 +687,7 @@ export namespace Amtk {
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.MenuToolButton} for `action_name`.
          */
-        create_menu_tool_button_full(action_name: string, flags: FactoryFlags | null): Gtk.MenuToolButton;
+        create_menu_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.MenuToolButton;
         /**
          * Creates a new {@link Gtk.ToolButton} for `action_name` with the
          * {@link Amtk.Factory.default_flags}.
@@ -702,7 +702,7 @@ export namespace Amtk {
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.ToolButton} for `action_name`.
          */
-        create_tool_button_full(action_name: string, flags: FactoryFlags | null): Gtk.ToolItem;
+        create_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.ToolItem;
         /**
          * @returns the {@link Amtk.Factory.application}.
          */
@@ -715,7 +715,7 @@ export namespace Amtk {
          * Sets the {@link Amtk.Factory.default_flags} property.
          * @param default_flags the new value.
          */
-        set_default_flags(default_flags: FactoryFlags | null): void;
+        set_default_flags(default_flags: FactoryFlags): void;
     }
 
     namespace MenuShell {

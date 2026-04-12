@@ -611,7 +611,7 @@ export namespace Cvc {
          * @param id
          * @param choices
          */
-        set_headset_port(id: number, choices: HeadsetPortChoice | null): void;
+        set_headset_port(id: number, choices: HeadsetPortChoice): void;
     }
 
     namespace MixerEventRole {
@@ -1285,7 +1285,7 @@ export namespace Cvc {
         /**
          * @param state
          */
-        set_state(state: MixerStreamState | null): boolean;
+        set_state(state: MixerStreamState): boolean;
         /**
          * @param sysfs_path
          */

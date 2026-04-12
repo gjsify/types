@@ -985,7 +985,7 @@ export namespace FolksTelepathy {
         /**
          * @param value
          */
-        set_presence_type(value: Folks.PresenceType | null): void;
+        set_presence_type(value: Folks.PresenceType): void;
         get_presence_message(): string;
         /**
          * @param value
@@ -1124,7 +1124,7 @@ export namespace FolksTelepathy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1165,7 +1165,7 @@ export namespace FolksTelepathy {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

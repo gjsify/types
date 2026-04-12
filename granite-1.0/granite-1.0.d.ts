@@ -455,7 +455,7 @@ export namespace Granite {
      * @param label
      * @deprecated since 0.4.2
      */
-    function widgets_utils_apply_text_style_to_label(text_style: TextStyle | null, label: Gtk.Label): void;
+    function widgets_utils_apply_text_style_to_label(text_style: TextStyle, label: Gtk.Label): void;
     /**
      * @deprecated since 5.5.0
      */
@@ -468,14 +468,12 @@ export namespace Granite {
      * @param description
      */
     function widgets_storage_bar_item_description_get_class(
-        description: WidgetsStorageBarItemDescription | null,
+        description: WidgetsStorageBarItemDescription,
     ): string | null;
     /**
      * @param description
      */
-    function widgets_storage_bar_item_description_get_name(
-        description: WidgetsStorageBarItemDescription | null,
-    ): string;
+    function widgets_storage_bar_item_description_get_name(description: WidgetsStorageBarItemDescription): string;
     function text_style_get_stylesheet(): [string, string];
     /**
      * @param accel
@@ -807,7 +805,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -848,7 +846,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2471,7 +2469,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_collapse_mode(value: CollapseMode | null): void;
+        set_collapse_mode(value: CollapseMode): void;
     }
 
     namespace WidgetsCompositedWindow {
@@ -2649,7 +2647,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2690,7 +2688,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3285,7 +3283,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3326,7 +3324,7 @@ export namespace Granite {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3945,7 +3943,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_ellipsize_mode(value: Pango.EllipsizeMode | null): void;
+        set_ellipsize_mode(value: Pango.EllipsizeMode): void;
         get_menu(): Gtk.Menu;
         /**
          * @param value
@@ -4309,7 +4307,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_tab_bar_behavior(value: WidgetsDynamicNotebookTabBarBehavior | null): void;
+        set_tab_bar_behavior(value: WidgetsDynamicNotebookTabBarBehavior): void;
         get_menu(): Gtk.Menu;
         /**
          * @param tab
@@ -4496,7 +4494,7 @@ export namespace Granite {
          * @param icon_name
          * @param size
          */
-        append_icon(icon_name: string, size: Gtk.IconSize | null): number;
+        append_icon(icon_name: string, size: Gtk.IconSize): number;
         /**
          * @param w
          */
@@ -4840,7 +4838,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_ellipsize_mode(value: Pango.EllipsizeMode | null): void;
+        set_ellipsize_mode(value: Pango.EllipsizeMode): void;
         get_editing(): boolean;
         /**
          * @param item
@@ -4870,7 +4868,7 @@ export namespace Granite {
          * @param dest_entries
          * @param actions
          */
-        enable_drag_dest(dest_entries: Gtk.TargetEntry[], actions: Gdk.DragAction | null): void;
+        enable_drag_dest(dest_entries: Gtk.TargetEntry[], actions: Gdk.DragAction): void;
         disable_drag_dest(): void;
         /**
          * @param item
@@ -5407,7 +5405,7 @@ export namespace Granite {
          * @param description
          * @param size
          */
-        update_block_size(description: WidgetsStorageBarItemDescription | null, size: bigint | number): void;
+        update_block_size(description: WidgetsStorageBarItemDescription, size: bigint | number): void;
     }
 
     namespace WidgetsTimePicker {
@@ -6336,7 +6334,7 @@ export namespace Granite {
         /**
          * @param value
          */
-        set_status_type(value: SettingsPageStatusType | null): void;
+        set_status_type(value: SettingsPageStatusType): void;
         get_display_widget(): Gtk.Widget | null;
         get_header(): string | null;
         get_status(): string;
@@ -6923,7 +6921,7 @@ export namespace Granite {
          */
         set_from_icon_name_async(
             icon_name: string,
-            icon_size: Gtk.IconSize | null,
+            icon_size: Gtk.IconSize,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<void>;
         /**
@@ -6934,7 +6932,7 @@ export namespace Granite {
          */
         set_from_icon_name_async(
             icon_name: string,
-            icon_size: Gtk.IconSize | null,
+            icon_size: Gtk.IconSize,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -6946,7 +6944,7 @@ export namespace Granite {
          */
         set_from_icon_name_async(
             icon_name: string,
-            icon_size: Gtk.IconSize | null,
+            icon_size: Gtk.IconSize,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;

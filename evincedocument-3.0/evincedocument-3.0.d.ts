@@ -406,7 +406,7 @@ export namespace EvinceDocument {
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
      */
-    function file_compress(uri: string, type: CompressionType | null): string;
+    function file_compress(uri: string, type: CompressionType): string;
     /**
      * Performs a `g_file_copy_attributes()` with {@link Gio.FileCopyFlags.ALL_METADATA}
      * from `from` to `to`.
@@ -445,7 +445,7 @@ export namespace EvinceDocument {
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
      */
-    function file_uncompress(uri: string, type: CompressionType | null): string;
+    function file_uncompress(uri: string, type: CompressionType): string;
     function get_locale_dir(): string;
     /**
      * Initializes the evince document library, and binds the evince
@@ -1261,7 +1261,7 @@ export namespace EvinceDocument {
         /**
          * @param icon
          */
-        set_icon(icon: AnnotationTextIcon | null): boolean;
+        set_icon(icon: AnnotationTextIcon): boolean;
         /**
          * @param is_open
          */
@@ -1560,7 +1560,7 @@ export namespace EvinceDocument {
         /**
          * @param markup_type
          */
-        set_markup_type(markup_type: AnnotationTextMarkupType | null): boolean;
+        set_markup_type(markup_type: AnnotationTextMarkupType): boolean;
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
@@ -2390,7 +2390,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_fd(fd: number, flags: DocumentLoadFlags | null, cancellable?: Gio.Cancellable | null): boolean;
+        load_fd(fd: number, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Loads `document` from `uri`.
          *
@@ -2404,7 +2404,7 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @returns `true` on success, or `false` on failure.
          */
-        load_full(uri: string, flags: DocumentLoadFlags | null): boolean;
+        load_full(uri: string, flags: DocumentLoadFlags): boolean;
         /**
          * Synchronously loads the document from `file`.
          * See `ev_document_load()` for more information.
@@ -2413,7 +2413,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_gfile(file: Gio.File, flags: DocumentLoadFlags | null, cancellable?: Gio.Cancellable | null): boolean;
+        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Synchronously loads the document from `stream`.
          * See `ev_document_load()` for more information.
@@ -2422,11 +2422,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_stream(
-            stream: Gio.InputStream,
-            flags: DocumentLoadFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
+        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * @param rc
          */
@@ -4486,7 +4482,7 @@ export namespace EvinceDocument {
          * @param annot
          * @param mask
          */
-        save_annotation(annot: Annotation, mask: AnnotationsSaveMask | null): void;
+        save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
     }
 
     export const DocumentAnnotations: DocumentAnnotationsNamespace & {
@@ -4600,14 +4596,14 @@ export namespace EvinceDocument {
          * @param options a set of {@link EvinceDocument.FindOptions}
          * @returns a list of results
          */
-        find_text_extended(page: Page, text: string, options: FindOptions | null): FindRectangle[];
+        find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[];
         /**
          * @param page an {@link EvinceDocument.Page}
          * @param text text to find
          * @param options a set of {@link EvinceDocument.FindOptions}
          * @returns a list of results
          */
-        find_text_with_options(page: Page, text: string, options: FindOptions | null): Rectangle[];
+        find_text_with_options(page: Page, text: string, options: FindOptions): Rectangle[];
         get_supported_options(): FindOptions;
     }
 
@@ -5442,13 +5438,13 @@ export namespace EvinceDocument {
          * @param style
          * @param points
          */
-        get_selected_text(page: Page, style: SelectionStyle | null, points: Rectangle): string;
+        get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         /**
          * @param rc
          * @param style
          * @param points
          */
-        get_selection_region(rc: RenderContext, style: SelectionStyle | null, points: Rectangle): cairo.Region;
+        get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
         /**
          * @param rc
          * @param surface
@@ -5463,7 +5459,7 @@ export namespace EvinceDocument {
             surface: cairo.Surface,
             points: Rectangle,
             old_points: Rectangle,
-            style: SelectionStyle | null,
+            style: SelectionStyle,
             text: Gdk.Color,
             base: Gdk.Color,
         ): void;

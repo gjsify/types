@@ -673,7 +673,7 @@ export namespace GstWebRTC {
      * @param type a {@link GstWebRTC.WebRTCSDPType}
      * @returns the string representation of `type` or "unknown" when `type` is not      recognized.
      */
-    function webrtc_sdp_type_to_string(type: WebRTCSDPType | null): string;
+    function webrtc_sdp_type_to_string(type: WebRTCSDPType): string;
     /**
      * @gir-type Callback
      */
@@ -1250,7 +1250,7 @@ export namespace GstWebRTC {
          * @param component The {@link GstWebRTC.WebRTCICEComponent}
          * @returns The {@link GstWebRTC.WebRTCICETransport}, or `null`
          */
-        find_transport(stream: WebRTCICEStream, component: WebRTCICEComponent | null): WebRTCICETransport | null;
+        find_transport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null;
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @returns FALSE on error, TRUE otherwise
@@ -1421,7 +1421,7 @@ export namespace GstWebRTC {
          * @param component The {@link GstWebRTC.WebRTCICEComponent}
          * @returns the {@link GstWebRTC.WebRTCICETransport}, or `null`
          */
-        find_transport(component: WebRTCICEComponent | null): WebRTCICETransport | null;
+        find_transport(component: WebRTCICEComponent): WebRTCICETransport | null;
         /**
          * @returns FALSE on error, TRUE otherwise
          */
@@ -1537,17 +1537,17 @@ export namespace GstWebRTC {
         /**
          * @param new_state
          */
-        connection_state_change(new_state: WebRTCICEConnectionState | null): void;
+        connection_state_change(new_state: WebRTCICEConnectionState): void;
         /**
          * @param new_state
          */
-        gathering_state_change(new_state: WebRTCICEGatheringState | null): void;
+        gathering_state_change(new_state: WebRTCICEGatheringState): void;
         /**
          * @param stream_id
          * @param component
          * @param attr
          */
-        new_candidate(stream_id: number, component: WebRTCICEComponent | null, attr: string): void;
+        new_candidate(stream_id: number, component: WebRTCICEComponent, attr: string): void;
         selected_pair_change(): void;
     }
 
@@ -1706,7 +1706,7 @@ export namespace GstWebRTC {
          * This also sets the Traffic Class field of IPv6.
          * @param priority The priority of this sender
          */
-        set_priority(priority: WebRTCPriorityType | null): void;
+        set_priority(priority: WebRTCPriorityType): void;
     }
 
     namespace WebRTCRTPTransceiver {

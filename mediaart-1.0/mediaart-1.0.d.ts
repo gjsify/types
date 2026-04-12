@@ -292,8 +292,8 @@ export namespace MediaArt {
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
         buffer(
-            type: Type | null,
-            flags: ProcessFlags | null,
+            type: Type,
+            flags: ProcessFlags,
             related_file: Gio.File,
             buffer: Uint8Array | null,
             mime: string,
@@ -335,13 +335,7 @@ export namespace MediaArt {
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
-        file(
-            type: Type | null,
-            flags: ProcessFlags | null,
-            file: Gio.File,
-            artist?: string | null,
-            title?: string | null,
-        ): boolean;
+        file(type: Type, flags: ProcessFlags, file: Gio.File, artist?: string | null, title?: string | null): boolean;
         /**
          * This function calls `media_art_process_file()`, but takes the `uri` as
          * a string rather than a {@link Gio.File} object. Either `artist` OR `title` can be
@@ -353,13 +347,7 @@ export namespace MediaArt {
          * @param title The title for `uri` or `null`
          * @returns `true` if `uri` could be processed or `false` if `error` is set.
          */
-        uri(
-            type: Type | null,
-            flags: ProcessFlags | null,
-            uri: string,
-            artist?: string | null,
-            title?: string | null,
-        ): boolean;
+        uri(type: Type, flags: ProcessFlags, uri: string, artist?: string | null, title?: string | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
@@ -490,7 +478,7 @@ export namespace MediaArt {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -531,7 +519,7 @@ export namespace MediaArt {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

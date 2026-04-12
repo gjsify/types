@@ -4851,7 +4851,7 @@ export namespace NM {
      */
     function ip_routing_rule_from_string(
         str: string,
-        to_string_flags: IPRoutingRuleAsStringFlags | null,
+        to_string_flags: IPRoutingRuleAsStringFlags,
         extra_args?: GLib.HashTable<any, any> | null,
     ): IPRoutingRule;
     /**
@@ -4867,7 +4867,7 @@ export namespace NM {
     function keyfile_read(
         keyfile: GLib.KeyFile,
         base_dir: string,
-        handler_flags: KeyfileHandlerFlags | null,
+        handler_flags: KeyfileHandlerFlags,
         handler?: KeyfileReadHandler | null,
     ): Connection;
     /**
@@ -4883,7 +4883,7 @@ export namespace NM {
      */
     function keyfile_write(
         connection: Connection,
-        handler_flags: KeyfileHandlerFlags | null,
+        handler_flags: KeyfileHandlerFlags,
         handler?: KeyfileWriteHandler | null,
     ): GLib.KeyFile;
     function manager_error_quark(): GLib.Quark;
@@ -4914,10 +4914,7 @@ export namespace NM {
      * @param wifi_caps bitfield of the capabilities of the specific Wi-Fi device, e.g. #NM_WIFI_DEVICE_CAP_CIPHER_WEP40
      * @returns `true` if the device capabilities are compatible with the desired `type`, `false` if they are not.
      */
-    function utils_ap_mode_security_valid(
-        type: UtilsSecurityType | null,
-        wifi_caps: DeviceWifiCapabilities | null,
-    ): boolean;
+    function utils_ap_mode_security_valid(type: UtilsSecurityType, wifi_caps: DeviceWifiCapabilities): boolean;
     /**
      * @param base64_key the (possibly invalid) base64 encode key.
      * @param required_key_len the expected (binary) length of the key after   decoding. If the length does not match, the validation fails.
@@ -5078,7 +5075,7 @@ export namespace NM {
         progname: string,
         try_first: string | null,
         paths: string | null,
-        file_test_flags: GLib.FileTest | null,
+        file_test_flags: GLib.FileTest,
         predicate: UtilsFileSearchInPathsPredicate,
     ): string;
     /**
@@ -5525,8 +5522,8 @@ export namespace NM {
      * @returns `true` if the device capabilities and AP capabilities intersect and are compatible with the desired `type`, `false` if they are not
      */
     function utils_security_valid(
-        type: UtilsSecurityType | null,
-        wifi_caps: DeviceWifiCapabilities | null,
+        type: UtilsSecurityType,
+        wifi_caps: DeviceWifiCapabilities,
         have_ap: boolean,
         adhoc: boolean,
         ap_flags: __80211ApFlags,
@@ -5638,7 +5635,7 @@ export namespace NM {
      * @param wep_type the {@link NM.WepKeyType} type of the WEP key
      * @returns `true` if `key` is a WEP key, `false` if not
      */
-    function utils_wep_key_valid(key: string, wep_type: WepKeyType | null): boolean;
+    function utils_wep_key_valid(key: string, wep_type: WepKeyType): boolean;
     /**
      * Utility function to return 2.4 GHz Wi-Fi frequencies (802.11bg band).
      * @returns zero-terminated array of frequencies numbers (in MHz)
@@ -9060,7 +9057,7 @@ export namespace NM {
          */
         add_connection2(
             settings: GLib.Variant,
-            flags: SettingsAddConnection2Flags | null,
+            flags: SettingsAddConnection2Flags,
             args: GLib.Variant | null,
             ignore_out_result: boolean,
             cancellable?: Gio.Cancellable | null,
@@ -9076,7 +9073,7 @@ export namespace NM {
          */
         add_connection2(
             settings: GLib.Variant,
-            flags: SettingsAddConnection2Flags | null,
+            flags: SettingsAddConnection2Flags,
             args: GLib.Variant | null,
             ignore_out_result: boolean,
             cancellable: Gio.Cancellable | null,
@@ -9093,7 +9090,7 @@ export namespace NM {
          */
         add_connection2(
             settings: GLib.Variant,
-            flags: SettingsAddConnection2Flags | null,
+            flags: SettingsAddConnection2Flags,
             args: GLib.Variant | null,
             ignore_out_result: boolean,
             cancellable?: Gio.Cancellable | null,
@@ -9295,7 +9292,7 @@ export namespace NM {
         checkpoint_create(
             devices: Device[],
             rollback_timeout: number,
-            flags: CheckpointCreateFlags | null,
+            flags: CheckpointCreateFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Checkpoint>;
         /**
@@ -9312,7 +9309,7 @@ export namespace NM {
         checkpoint_create(
             devices: Device[],
             rollback_timeout: number,
-            flags: CheckpointCreateFlags | null,
+            flags: CheckpointCreateFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -9330,7 +9327,7 @@ export namespace NM {
         checkpoint_create(
             devices: Device[],
             rollback_timeout: number,
-            flags: CheckpointCreateFlags | null,
+            flags: CheckpointCreateFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Checkpoint> | void;
@@ -9788,7 +9785,7 @@ export namespace NM {
          * @param permission the permission for which to return the result, one of {@link NM.ClientPermission}
          * @returns the permission's result, one of {@link NM.ClientPermissionResult}
          */
-        get_permission_result(permission: ClientPermission | null): ClientPermissionResult;
+        get_permission_result(permission: ClientPermission): ClientPermissionResult;
         /**
          * @returns the state of the cached permissions. {@link NM.Ternary.DEFAULT}   means that no permissions result was yet received. All permissions   are unknown. {@link NM.Ternary.TRUE} means that the permissions got received   and are cached. %{@link NM.Ternary.FALSE} means that permissions are cached,   but they are invalided as "CheckPermissions" signal was received   in the meantime.
          */
@@ -9921,7 +9918,7 @@ export namespace NM {
          * @param flags flags indicating what to reload.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        reload(flags: ManagerReloadFlags | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        reload(flags: ManagerReloadFlags, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Reload NetworkManager's configuration and perform certain updates, like
          * flushing caches or rewriting external state to disk. This is similar to
@@ -9933,7 +9930,7 @@ export namespace NM {
          * @param callback callback to be called when the add operation completes
          */
         reload(
-            flags: ManagerReloadFlags | null,
+            flags: ManagerReloadFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -9948,7 +9945,7 @@ export namespace NM {
          * @param callback callback to be called when the add operation completes
          */
         reload(
-            flags: ManagerReloadFlags | null,
+            flags: ManagerReloadFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -10489,7 +10486,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10530,7 +10527,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -17418,7 +17415,7 @@ export namespace NM {
          */
         update2(
             settings: GLib.Variant | null,
-            flags: SettingsUpdate2Flags | null,
+            flags: SettingsUpdate2Flags,
             args?: GLib.Variant | null,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Variant>;
@@ -17432,7 +17429,7 @@ export namespace NM {
          */
         update2(
             settings: GLib.Variant | null,
-            flags: SettingsUpdate2Flags | null,
+            flags: SettingsUpdate2Flags,
             args: GLib.Variant | null,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
@@ -17447,7 +17444,7 @@ export namespace NM {
          */
         update2(
             settings: GLib.Variant | null,
-            flags: SettingsUpdate2Flags | null,
+            flags: SettingsUpdate2Flags,
             args?: GLib.Variant | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
@@ -17488,7 +17485,7 @@ export namespace NM {
          * @param flags compare flags, e.g. {@link NM.SettingCompareFlags.EXACT}
          * @returns `true` if the comparison succeeds, `false` if it does not
          */
-        compare(b: Connection, flags: SettingCompareFlags | null): boolean;
+        compare(b: Connection, flags: SettingCompareFlags): boolean;
         /**
          * Print the connection (including secrets!) to stdout. For debugging
          * purposes ONLY, should NOT be used for serialization of the setting,
@@ -17828,7 +17825,7 @@ export namespace NM {
          * @param flags serialization flags, e.g. {@link NM.ConnectionSerializationFlags.ALL}
          * @returns a new floating {@link GLib.Variant} describing the connection, its settings, and each setting's properties.
          */
-        to_dbus(flags: ConnectionSerializationFlags | null): GLib.Variant;
+        to_dbus(flags: ConnectionSerializationFlags): GLib.Variant;
         /**
          * Update the specified setting's secrets, given a dictionary of secrets
          * intended for that setting (deserialized from D-Bus for example).  Will also
@@ -17919,7 +17916,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -17960,7 +17957,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -18619,7 +18616,7 @@ export namespace NM {
             connection: Connection,
             setting_name: string,
             hints: string[],
-            flags: SecretAgentGetSecretsFlags | null,
+            flags: SecretAgentGetSecretsFlags,
             callback: SecretAgentOldGetSecretsFunc,
         ): void;
         /**
@@ -19085,7 +19082,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -19126,7 +19123,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -19588,7 +19585,7 @@ export namespace NM {
          * @param flags compare flags, e.g. {@link NM.SettingCompareFlags.EXACT}
          * @returns `true` if the comparison succeeds, `false` if it does not
          */
-        compare(b: Setting, flags: SettingCompareFlags | null): boolean;
+        compare(b: Setting, flags: SettingCompareFlags): boolean;
         /**
          * Compares two {@link NM.Setting} objects for similarity, with comparison behavior
          * modified by a set of flags.  See the documentation for {@link NM.SettingCompareFlags}
@@ -19603,7 +19600,7 @@ export namespace NM {
          */
         diff(
             b: Setting,
-            flags: SettingCompareFlags | null,
+            flags: SettingCompareFlags,
             invert_results: boolean,
             results: { [key: string]: any } | GLib.HashTable<string, number>,
         ): [boolean, GLib.HashTable<string, number>];
@@ -19637,7 +19634,7 @@ export namespace NM {
          * @param out_flags on success, the {@link NM.SettingSecretFlags} for the secret
          * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
          */
-        get_secret_flags(secret_name: string, out_flags: SettingSecretFlags | null): boolean;
+        get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean;
         /**
          * @param predicate the predicate for which names   should be clear.   If the predicate returns `true` for an option name, the option   gets removed. If `null`, all options will be removed.
          */
@@ -19693,7 +19690,7 @@ export namespace NM {
          * @param flags the {@link NM.SettingSecretFlags} for the secret
          * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
          */
-        set_secret_flags(secret_name: string, flags: SettingSecretFlags | null): boolean;
+        set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean;
         /**
          * Convert the setting (including secrets!) into a string. For debugging
          * purposes ONLY, should NOT be used for serialization of the setting,
@@ -21494,11 +21491,7 @@ export namespace NM {
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_ca_cert(
-            value: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
-        ): boolean;
+        set_ca_cert(value: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
         /**
          * Reads a certificate from disk and sets the {@link NM.Setting8021x.client_cert}
          * property with the raw certificate data if using the
@@ -21513,11 +21506,7 @@ export namespace NM {
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_client_cert(
-            value: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
-        ): boolean;
+        set_client_cert(value: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
         /**
          * Reads a certificate from disk and sets the {@link NM.Setting8021x.phase2_ca_cert}
          * property with the raw certificate data if using the
@@ -21528,11 +21517,7 @@ export namespace NM {
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_phase2_ca_cert(
-            value: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
-        ): boolean;
+        set_phase2_ca_cert(value: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
         /**
          * Reads a certificate from disk and sets the {@link NM.Setting8021x.phase2_client_cert}
          * property with the raw certificate data if using the
@@ -21547,11 +21532,7 @@ export namespace NM {
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_phase2_client_cert(
-            value: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
-        ): boolean;
+        set_phase2_client_cert(value: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
         /**
          * Private keys are used to authenticate the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -21583,8 +21564,8 @@ export namespace NM {
         set_phase2_private_key(
             value: string,
             password: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
+            scheme: Setting8021xCKScheme,
+            out_format: Setting8021xCKFormat,
         ): boolean;
         /**
          * Private keys are used to authenticate the connecting client to the network
@@ -21617,8 +21598,8 @@ export namespace NM {
         set_private_key(
             value: string,
             password: string,
-            scheme: Setting8021xCKScheme | null,
-            out_format: Setting8021xCKFormat | null,
+            scheme: Setting8021xCKScheme,
+            out_format: Setting8021xCKFormat,
         ): boolean;
     }
 
@@ -24805,7 +24786,7 @@ export namespace NM {
          * @param optname option name of the offload feature to get
          * @param value the new value to set. The special value {@link NM.Ternary.DEFAULT}   means to clear the offload feature setting.
          */
-        set_feature(optname: string, value: Ternary | null): void;
+        set_feature(optname: string, value: Ternary): void;
     }
 
     namespace SettingGeneric {
@@ -33075,7 +33056,7 @@ export namespace NM {
          * @param to the priority to map `from` to
          * @returns `true`.
          */
-        add_priority(map: VlanPriorityMap | null, from: number, to: number): boolean;
+        add_priority(map: VlanPriorityMap, from: number, to: number): boolean;
         /**
          * Adds a priority map entry into either the {@link NM.SettingVlan.ingress_priority_map}
          * or the {@link NM.SettingVlan.egress_priority_map} properties.  The priority map maps
@@ -33084,13 +33065,13 @@ export namespace NM {
          * @param str the string which contains a priority map, like "3:7"
          * @returns `true` if the entry was successfully added to the list, or it overwrote the old value, `false` if `str` is not a valid mapping.
          */
-        add_priority_str(map: VlanPriorityMap | null, str: string): boolean;
+        add_priority_str(map: VlanPriorityMap, str: string): boolean;
         /**
          * Clear all the entries from {@link NM.SettingVlan.ingress_priority_map} or
          * {@link NM.SettingVlan.egress_priority_map} properties.
          * @param map the type of priority map
          */
-        clear_priorities(map: VlanPriorityMap | null): void;
+        clear_priorities(map: VlanPriorityMap): void;
         /**
          * @returns the {@link NM.SettingVlan.flags} property of the setting
          */
@@ -33106,7 +33087,7 @@ export namespace NM {
          * @param map the type of priority map
          * @returns return the number of ingress/egress priority entries.
          */
-        get_num_priorities(map: VlanPriorityMap | null): number;
+        get_num_priorities(map: VlanPriorityMap): number;
         /**
          * @returns the {@link NM.SettingVlan.parent} property of the setting
          */
@@ -33118,7 +33099,7 @@ export namespace NM {
          * @param idx the zero-based index of the ingress/egress priority map entry
          * @returns returns `true` if `idx` is in range. Otherwise, `false`.
          */
-        get_priority(map: VlanPriorityMap | null, idx: number): [boolean, number, number];
+        get_priority(map: VlanPriorityMap, idx: number): [boolean, number, number];
         /**
          * @returns the {@link NM.SettingVlan.protocol} property of the setting
          */
@@ -33130,7 +33111,7 @@ export namespace NM {
          * @param map the type of priority map
          * @param idx the zero-based index of the priority map to remove
          */
-        remove_priority(map: VlanPriorityMap | null, idx: number): void;
+        remove_priority(map: VlanPriorityMap, idx: number): void;
         /**
          * Removes the priority map `form`:`to` from the {@link NM.SettingVlan.ingress_priority_map}
          * or {@link NM.SettingVlan.egress_priority_map} (according to `map` argument)
@@ -33140,7 +33121,7 @@ export namespace NM {
          * @param to the priority to map `from` to
          * @returns `true` if the priority mapping was found and removed; `false` if it was not.
          */
-        remove_priority_by_value(map: VlanPriorityMap | null, from: number, to: number): boolean;
+        remove_priority_by_value(map: VlanPriorityMap, from: number, to: number): boolean;
         /**
          * Removes the priority map `str` from the {@link NM.SettingVlan.ingress_priority_map}
          * or {@link NM.SettingVlan.egress_priority_map} (according to `map` argument)
@@ -33149,7 +33130,7 @@ export namespace NM {
          * @param str the string which contains a priority map, like "3:7"
          * @returns `true` if the priority mapping was found and removed; `false` if it was not.
          */
-        remove_priority_str_by_value(map: VlanPriorityMap | null, str: string): boolean;
+        remove_priority_str_by_value(map: VlanPriorityMap, str: string): boolean;
     }
 
     namespace SettingVpn {
@@ -36467,7 +36448,7 @@ export namespace NM {
          * @param flags compare flags, e.g. {@link NM.SettingCompareFlags.EXACT}
          * @returns `true` if the comparison succeeds, `false` if it does not
          */
-        compare(b: Connection, flags: SettingCompareFlags | null): boolean;
+        compare(b: Connection, flags: SettingCompareFlags): boolean;
         /**
          * Print the connection (including secrets!) to stdout. For debugging
          * purposes ONLY, should NOT be used for serialization of the setting,
@@ -36807,7 +36788,7 @@ export namespace NM {
          * @param flags serialization flags, e.g. {@link NM.ConnectionSerializationFlags.ALL}
          * @returns a new floating {@link GLib.Variant} describing the connection, its settings, and each setting's properties.
          */
-        to_dbus(flags: ConnectionSerializationFlags | null): GLib.Variant;
+        to_dbus(flags: ConnectionSerializationFlags): GLib.Variant;
         /**
          * Update the specified setting's secrets, given a dictionary of secrets
          * intended for that setting (deserialized from D-Bus for example).  Will also
@@ -36898,7 +36879,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -36939,7 +36920,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -37764,7 +37745,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -37805,7 +37786,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -38384,7 +38365,7 @@ export namespace NM {
         /**
          * @param reason
          */
-        failure(reason: VpnPluginFailure | null): void;
+        failure(reason: VpnPluginFailure): void;
         get_connection(): Gio.DBusConnection;
         get_state(): VpnServiceState;
         /**
@@ -38408,7 +38389,7 @@ export namespace NM {
         /**
          * @param state
          */
-        set_state(state: VpnServiceState | null): void;
+        set_state(state: VpnServiceState): void;
         /**
          * Initializes the object implementing the interface.
          *
@@ -38539,7 +38520,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -38580,7 +38561,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -39170,7 +39151,7 @@ export namespace NM {
         /**
          * @param reason
          */
-        failure(reason: VpnPluginFailure | null): void;
+        failure(reason: VpnPluginFailure): void;
         get_connection(): Gio.DBusConnection;
         /**
          * Called by VPN plugin implementations to signal to NetworkManager that secrets
@@ -39337,7 +39318,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -39378,7 +39359,7 @@ export namespace NM {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -40429,7 +40410,7 @@ export namespace NM {
          * @param cmp_flags the {@link NM.IPAddressCmpFlags} that indicate what to compare.
          * @returns 0 if the two objects have the same values (according to their flags)   or a integer indicating the compare order.
          */
-        cmp_full(b: IPAddress, cmp_flags: IPAddressCmpFlags | null): number;
+        cmp_full(b: IPAddress, cmp_flags: IPAddressCmpFlags): number;
         /**
          * Creates a copy of `address`
          * @returns a copy of `address` This API was part of public headers before 1.32.0 but was erroneously not exported in the ABI. It is thus only usable since 1.32.0.
@@ -40877,10 +40858,7 @@ export namespace NM {
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          * @returns the string representation or `null` on error.
          */
-        to_string(
-            to_string_flags: IPRoutingRuleAsStringFlags | null,
-            extra_args?: GLib.HashTable<any, any> | null,
-        ): string;
+        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args?: GLib.HashTable<any, any> | null): string;
         /**
          * Decreases the reference count of the instance and destroys
          * the instance if the reference count reaches zero.
@@ -41445,7 +41423,7 @@ export namespace NM {
          * @param vlan_id the VLAN id
          * @param protocol the VLAN protocol
          */
-        set_vlan_protocol(vlan_id: number, protocol: SriovVFVlanProtocol | null): void;
+        set_vlan_protocol(vlan_id: number, protocol: SriovVFVlanProtocol): void;
         /**
          * Sets a QoS value for the given VLAN.
          * @param vlan_id the VLAN id
@@ -41847,7 +41825,7 @@ export namespace NM {
          * @param compare_flags {@link NM.SettingCompareFlags} to affect the comparison.
          * @returns zero of the two instances are equivalent or   a non-zero integer otherwise. This defines a total ordering   over the peers. Whether a peer is sealed or not, does not   affect the comparison.
          */
-        cmp(b: WireGuardPeer | null, compare_flags: SettingCompareFlags | null): number;
+        cmp(b: WireGuardPeer | null, compare_flags: SettingCompareFlags): number;
         /**
          * @param idx the index from zero to (allowed-ips-len - 1) to   retrieve.
          * @param out_is_valid `true` if the returned value is a valid allowed-ip   setting.   This parameter is wrongly not marked as (out) argument, it is   thus not accessible via introspection. This cannot be fixed without   breaking API for introspection users.
@@ -41947,7 +41925,7 @@ export namespace NM {
          * It is a bug trying to modify a sealed {@link NM.WireGuardPeer} instance.
          * @param preshared_key_flags the secret flags to set.
          */
-        set_preshared_key_flags(preshared_key_flags: SettingSecretFlags | null): void;
+        set_preshared_key_flags(preshared_key_flags: SettingSecretFlags): void;
         /**
          * Reset the public key. Note that if the public key is valid, it
          * will be normalized (which may or may not modify the set value).
@@ -42040,7 +42018,7 @@ export namespace NM {
          * @param flags compare flags, e.g. {@link NM.SettingCompareFlags.EXACT}
          * @returns `true` if the comparison succeeds, `false` if it does not
          */
-        compare(b: Connection, flags: SettingCompareFlags | null): boolean;
+        compare(b: Connection, flags: SettingCompareFlags): boolean;
         /**
          * Print the connection (including secrets!) to stdout. For debugging
          * purposes ONLY, should NOT be used for serialization of the setting,
@@ -42380,7 +42358,7 @@ export namespace NM {
          * @param flags serialization flags, e.g. {@link NM.ConnectionSerializationFlags.ALL}
          * @returns a new floating {@link GLib.Variant} describing the connection, its settings, and each setting's properties.
          */
-        to_dbus(flags: ConnectionSerializationFlags | null): GLib.Variant;
+        to_dbus(flags: ConnectionSerializationFlags): GLib.Variant;
         /**
          * Update the specified setting's secrets, given a dictionary of secrets
          * intended for that setting (deserialized from D-Bus for example).  Will also

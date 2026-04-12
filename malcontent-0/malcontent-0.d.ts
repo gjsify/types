@@ -449,11 +449,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns app filter for the queried user
          */
-        get_app_filter(
-            user_id: never,
-            flags: ManagerGetValueFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): AppFilter;
+        get_app_filter(user_id: never, flags: ManagerGetValueFlags, cancellable?: Gio.Cancellable | null): AppFilter;
         /**
          * Asynchronously get a snapshot of the app filter settings for the given
          * `user_id`.
@@ -466,7 +462,7 @@ export namespace Malcontent {
          */
         get_app_filter_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<AppFilter>;
         /**
@@ -482,7 +478,7 @@ export namespace Malcontent {
          */
         get_app_filter_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -499,7 +495,7 @@ export namespace Malcontent {
          */
         get_app_filter_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<AppFilter> | void;
@@ -519,7 +515,7 @@ export namespace Malcontent {
          */
         get_session_limits(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): SessionLimits;
         /**
@@ -535,7 +531,7 @@ export namespace Malcontent {
          */
         get_session_limits_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<SessionLimits>;
         /**
@@ -552,7 +548,7 @@ export namespace Malcontent {
          */
         get_session_limits_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -570,7 +566,7 @@ export namespace Malcontent {
          */
         get_session_limits_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SessionLimits> | void;
@@ -588,11 +584,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns web filter for the queried user
          */
-        get_web_filter(
-            user_id: never,
-            flags: ManagerGetValueFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): WebFilter;
+        get_web_filter(user_id: never, flags: ManagerGetValueFlags, cancellable?: Gio.Cancellable | null): WebFilter;
         /**
          * Asynchronously get a snapshot of the web filter settings for the given
          * `user_id`.
@@ -606,7 +598,7 @@ export namespace Malcontent {
          */
         get_web_filter_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<WebFilter>;
         /**
@@ -623,7 +615,7 @@ export namespace Malcontent {
          */
         get_web_filter_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -641,7 +633,7 @@ export namespace Malcontent {
          */
         get_web_filter_async(
             user_id: never,
-            flags: ManagerGetValueFlags | null,
+            flags: ManagerGetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<WebFilter> | void;
@@ -663,7 +655,7 @@ export namespace Malcontent {
         set_app_filter(
             user_id: never,
             app_filter: AppFilter,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -683,7 +675,7 @@ export namespace Malcontent {
         set_app_filter_async(
             user_id: never,
             app_filter: AppFilter,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -704,7 +696,7 @@ export namespace Malcontent {
         set_app_filter_async(
             user_id: never,
             app_filter: AppFilter,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -726,7 +718,7 @@ export namespace Malcontent {
         set_app_filter_async(
             user_id: never,
             app_filter: AppFilter,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -748,7 +740,7 @@ export namespace Malcontent {
         set_session_limits(
             user_id: never,
             session_limits: SessionLimits,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -767,7 +759,7 @@ export namespace Malcontent {
         set_session_limits_async(
             user_id: never,
             session_limits: SessionLimits,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -787,7 +779,7 @@ export namespace Malcontent {
         set_session_limits_async(
             user_id: never,
             session_limits: SessionLimits,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -808,7 +800,7 @@ export namespace Malcontent {
         set_session_limits_async(
             user_id: never,
             session_limits: SessionLimits,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -830,7 +822,7 @@ export namespace Malcontent {
         set_web_filter(
             user_id: never,
             web_filter: WebFilter,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -849,7 +841,7 @@ export namespace Malcontent {
         set_web_filter_async(
             user_id: never,
             web_filter: WebFilter,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
@@ -869,7 +861,7 @@ export namespace Malcontent {
         set_web_filter_async(
             user_id: never,
             web_filter: WebFilter,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -890,7 +882,7 @@ export namespace Malcontent {
         set_web_filter_async(
             user_id: never,
             web_filter: WebFilter,
-            flags: ManagerSetValueFlags | null,
+            flags: ManagerSetValueFlags,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
@@ -1805,7 +1797,7 @@ export namespace Malcontent {
          * @param oars_section name of the OARS section to set the value for
          * @param value value to set for the `oars_section`
          */
-        set_oars_value(oars_section: string, value: AppFilterOarsValue | null): void;
+        set_oars_value(oars_section: string, value: AppFilterOarsValue): void;
     }
 
     /**
@@ -2379,7 +2371,7 @@ export namespace Malcontent {
          * Set the type of web filter to apply to the user.
          * @param filter_type type of web filter
          */
-        set_filter_type(filter_type: WebFilterType | null): void;
+        set_filter_type(filter_type: WebFilterType): void;
         /**
          * Sets the safe search preference for the {@link Malcontent.WebFilter}.
          *

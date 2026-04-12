@@ -858,7 +858,7 @@ export namespace OsmGpsMap {
          * @param key a #OsmGpsMapKey_t
          * @param keyval a keyval to bind
          */
-        set_keyboard_shortcut(key: MapKey_t | null, keyval: number): void;
+        set_keyboard_shortcut(key: MapKey_t, keyval: number): void;
         /**
          * Set map zoom to the desired zoom level
          * @param zoom Desired zoom level
@@ -946,7 +946,7 @@ export namespace OsmGpsMap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -987,7 +987,7 @@ export namespace OsmGpsMap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1768,7 +1768,7 @@ export namespace OsmGpsMap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1809,7 +1809,7 @@ export namespace OsmGpsMap {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

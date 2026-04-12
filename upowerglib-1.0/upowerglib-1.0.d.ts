@@ -685,7 +685,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -726,7 +726,7 @@ export namespace UPowerGlib {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1817,7 +1817,7 @@ export namespace UPowerGlib {
          * Sets the item state.
          * @param state the new value
          */
-        set_state(state: DeviceState | null): void;
+        set_state(state: DeviceState): void;
         /**
          * Sets the item time.
          * @param time the new value

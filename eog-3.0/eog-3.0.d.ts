@@ -348,7 +348,7 @@ export namespace Eog {
      * @param line
      * @param _function
      */
-    function debug(section: Debug | null, file: string, line: number, _function: string): void;
+    function debug(section: Debug, file: string, line: number, _function: string): void;
     function debug_init(): void;
     /**
      * Takes a date string formatted after Exif specifications and generates a
@@ -556,7 +556,7 @@ export namespace Eog {
          * @param flags A set of {@link Eog.StartupFlags} influencing a new windows' state.
          * @returns Currently always `true`.
          */
-        open_file_list(file_list: Gio.File[], timestamp: number, flags: StartupFlags | null): boolean;
+        open_file_list(file_list: Gio.File[], timestamp: number, flags: StartupFlags): boolean;
         /**
          * Opens a list of images, from a list of URIs. See
          * `eog_application_open_file_list()` for details.
@@ -565,7 +565,7 @@ export namespace Eog {
          * @param flags A set of {@link Eog.StartupFlags} influencing a new windows' state.
          * @returns Currently always `true`.
          */
-        open_uri_list(uri_list: string[], timestamp: number, flags: StartupFlags | null): boolean;
+        open_uri_list(uri_list: string[], timestamp: number, flags: StartupFlags): boolean;
         /**
          * Opens a list of images, from a list of URI strings. See
          * `eog_application_open_file_list()` for details.
@@ -574,7 +574,7 @@ export namespace Eog {
          * @param flags A set of {@link Eog.StartupFlags} influencing a new windows' state.
          * @returns Currently always `true`.
          */
-        open_uris(uris: string, timestamp: number, flags: StartupFlags | null): boolean;
+        open_uris(uris: string, timestamp: number, flags: StartupFlags): boolean;
         /**
          * Opens and presents an empty {@link Eog.Window} to the user. If there is
          * an empty window already open, this will be used. Otherwise, a
@@ -583,7 +583,7 @@ export namespace Eog {
          * @param flags A set of {@link Eog.StartupFlags} influencing a new windows' state.
          * @returns `false` if `application` is invalid, `true` otherwise
          */
-        open_window(timestamp: number, flags: StartupFlags | null): boolean;
+        open_window(timestamp: number, flags: StartupFlags): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -628,7 +628,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -669,7 +669,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -1304,7 +1304,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -1345,7 +1345,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -2249,7 +2249,7 @@ export namespace Eog {
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param action the action that the file selector is performing
          */
-        set_action(action: Gtk.FileChooserAction | null): void;
+        set_action(action: Gtk.FileChooserAction): void;
         /**
          * Selects an option in a 'choice' that has been added with
          * `gtk_file_chooser_add_choice()`. For a boolean choice, the
@@ -2591,7 +2591,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2632,7 +2632,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3183,7 +3183,7 @@ export namespace Eog {
         /**
          * @param data
          */
-        has_data(data: ImageData | null): boolean;
+        has_data(data: ImageData): boolean;
         /**
          * Checks whether a given image is animated.
          * @returns `TRUE` if it is an animated image, `FALSE` otherwise.
@@ -3209,7 +3209,7 @@ export namespace Eog {
          * @param data2read
          * @param job
          */
-        load(data2read: ImageData | null, job: Job): boolean;
+        load(data2read: ImageData, job: Job): boolean;
         modified(): void;
         /**
          * @param source
@@ -3416,7 +3416,7 @@ export namespace Eog {
         /**
          * @param priority
          */
-        scheduler_add_job_with_priority(priority: JobPriority | null): void;
+        scheduler_add_job_with_priority(priority: JobPriority): void;
         /**
          * @param progress
          */
@@ -4740,7 +4740,7 @@ export namespace Eog {
          * @param sort_column_id the sort column id to set
          * @param order The sort order of the column
          */
-        set_sort_column_id(sort_column_id: number, order: Gtk.SortType | null): void;
+        set_sort_column_id(sort_column_id: number, order: Gtk.SortType): void;
         /**
          * Sets the comparison function used when sorting to be `sort_func`. If the
          * current sort column id of `sortable` is the same as `sort_column_id`, then
@@ -4866,7 +4866,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -4907,7 +4907,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -5503,7 +5503,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -5544,7 +5544,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -6244,7 +6244,7 @@ export namespace Eog {
         /**
          * @param style
          */
-        set_transparency(style: TransparencyStyle | null): void;
+        set_transparency(style: TransparencyStyle): void;
         /**
          * @param color
          */
@@ -6260,7 +6260,7 @@ export namespace Eog {
         /**
          * @param mode
          */
-        set_zoom_mode(mode: ZoomMode | null): void;
+        set_zoom_mode(mode: ZoomMode): void;
         /**
          * @param multiplier
          */
@@ -6366,7 +6366,7 @@ export namespace Eog {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -6378,7 +6378,7 @@ export namespace Eog {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -6432,7 +6432,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -6473,7 +6473,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7020,7 +7020,7 @@ export namespace Eog {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7065,7 +7065,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7106,7 +7106,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -7631,7 +7631,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -7672,7 +7672,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8187,7 +8187,7 @@ export namespace Eog {
          * Sets the navigation mode in `nav`. See {@link Eog.ThumbNavMode} for details.
          * @param mode One of {@link Eog.ThumbNavMode}.
          */
-        set_mode(mode: ThumbNavMode | null): void;
+        set_mode(mode: ThumbNavMode): void;
         /**
          * Sets whether the navigation buttons to the left and right of the
          * widget should be visible.
@@ -8210,7 +8210,7 @@ export namespace Eog {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8255,7 +8255,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -8296,7 +8296,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -8822,7 +8822,7 @@ export namespace Eog {
          * the first thumbnail will be selected.
          * @param change A {@link Eog.ThumbViewSelectionChange}, describing the desired selection change.
          */
-        select_single(change: ThumbViewSelectionChange | null): void;
+        select_single(change: ThumbViewSelectionChange): void;
         /**
          * Changes the status of a image, marking it as currently selected.
          * If `deselect_other` is `true`, all other selected images will be
@@ -9076,7 +9076,7 @@ export namespace Eog {
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -9117,7 +9117,7 @@ export namespace Eog {
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
-        set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
@@ -9129,7 +9129,7 @@ export namespace Eog {
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
-        set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
+        set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -9183,7 +9183,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -9224,7 +9224,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -10090,7 +10090,7 @@ export namespace Eog {
          * See {@link Eog.WindowMode} for details.
          * @param mode an {@link Eog.WindowMode} value.
          */
-        set_mode(mode: WindowMode | null): void;
+        set_mode(mode: WindowMode): void;
         show_about_dialog(): void;
         show_preferences_dialog(): void;
         /**
@@ -10673,7 +10673,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -10714,7 +10714,7 @@ export namespace Eog {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,

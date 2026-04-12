@@ -294,7 +294,7 @@ export namespace Gegl {
      * @param format
      * @param variant
      */
-    function babl_variant(format: Babl.Object, variant: BablVariant | null): Babl.Object;
+    function babl_variant(format: Babl.Object, variant: BablVariant): Babl.Object;
     /**
      * Disable OpenCL
      */
@@ -432,7 +432,7 @@ export namespace Gegl {
     function parallel_distribute_area(
         area: Rectangle,
         thread_cost: number,
-        split_strategy: SplitStrategy | null,
+        split_strategy: SplitStrategy,
         func: ParallelDistributeAreaFunc,
     ): void;
     /**
@@ -460,7 +460,7 @@ export namespace Gegl {
         name: string,
         nick: string,
         blurb: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
@@ -476,7 +476,7 @@ export namespace Gegl {
         nick: string,
         blurb: string,
         default_color: Color,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
@@ -492,7 +492,7 @@ export namespace Gegl {
         nick: string,
         blurb: string,
         default_color_string: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Get the default color value of the param spec
@@ -514,7 +514,7 @@ export namespace Gegl {
         nick: string,
         blurb: string,
         default_curve: Curve,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link Gegl.ParamSpecDouble} instance.
@@ -540,7 +540,7 @@ export namespace Gegl {
         ui_minimum: number,
         ui_maximum: number,
         ui_gamma: number,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link Gegl.ParamSpecEnum} instance.
@@ -558,7 +558,7 @@ export namespace Gegl {
         blurb: string,
         enum_type: GObject.GType,
         default_value: number,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link Gegl.ParamSpecFilePath} instance.
@@ -578,7 +578,7 @@ export namespace Gegl {
         no_validate: boolean,
         null_ok: boolean,
         default_value: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link Gegl.ParamSpecFormat} instance specifying a Babl format.
@@ -588,12 +588,7 @@ export namespace Gegl {
      * @param flags flags for the property specified
      * @returns a newly created parameter specification
      */
-    function param_spec_format(
-        name: string,
-        nick: string,
-        blurb: string,
-        flags: GObject.ParamFlags | null,
-    ): GObject.ParamSpec;
+    function param_spec_format(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec;
     /**
      * @param pspec
      * @param key_name
@@ -623,7 +618,7 @@ export namespace Gegl {
         ui_minimum: number,
         ui_maximum: number,
         ui_gamma: number,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Path} property.
@@ -639,7 +634,7 @@ export namespace Gegl {
         nick: string,
         blurb: string,
         default_path: Path,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link Gegl.ParamSpecSeed} instance specifying an integer random seed.
@@ -649,12 +644,7 @@ export namespace Gegl {
      * @param flags flags for the property specified
      * @returns a newly created parameter specification
      */
-    function param_spec_seed(
-        name: string,
-        nick: string,
-        blurb: string,
-        flags: GObject.ParamFlags | null,
-    ): GObject.ParamSpec;
+    function param_spec_seed(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec;
     /**
      * @param pspec
      * @param key_name
@@ -679,7 +669,7 @@ export namespace Gegl {
         no_validate: boolean,
         null_ok: boolean,
         default_value: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Creates a new {@link Gegl.ParamSpecUri} instance.
@@ -699,7 +689,7 @@ export namespace Gegl {
         no_validate: boolean,
         null_ok: boolean,
         default_value: string,
-        flags: GObject.ParamFlags | null,
+        flags: GObject.ParamFlags,
     ): GObject.ParamSpec;
     /**
      * Returns a GeglRectangle that represents an infininte plane.
@@ -716,7 +706,7 @@ export namespace Gegl {
      * @param basepath top-level absolute path to turn into relative root
      * @param serialize_flags anded together combination of: GEGL_SERIALIZE_TRIM_DEFAULTS, GEGL_SERIALIZE_VERSION, GEGL_SERIALIZE_INDENT.
      */
-    function serialize(start: Node, end: Node, basepath: string, serialize_flags: SerializeFlag | null): string;
+    function serialize(start: Node, end: Node, basepath: string, serialize_flags: SerializeFlag): string;
     /**
      * Returns a GeglStats object with properties that can be read to monitor
      * GEGL statistics.
@@ -1199,7 +1189,7 @@ export namespace Gegl {
          * @param dst destination buffer.
          * @param dst_rect position of upper left destination pixel (or NULL to match `src_rect`)
          */
-        copy(src_rect: Rectangle, repeat_mode: AbyssPolicy | null, dst: Buffer, dst_rect: Rectangle): void;
+        copy(src_rect: Rectangle, repeat_mode: AbyssPolicy, dst: Buffer, dst_rect: Rectangle): void;
         /**
          * Create a new sub GeglBuffer, that is a view on a larger buffer.
          * @param extent coordinates of new buffer.
@@ -1252,7 +1242,7 @@ export namespace Gegl {
          * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
          * @returns A copy of the requested data
          */
-        get(rect: Rectangle, scale: number, format_name: string | null, repeat_mode: AbyssPolicy | null): Uint8Array;
+        get(rect: Rectangle, scale: number, format_name: string | null, repeat_mode: AbyssPolicy): Uint8Array;
         /**
          * Store a linear raster buffer into the GeglBuffer.
          * @param rect the rectangle to write.
@@ -1850,7 +1840,7 @@ export namespace Gegl {
          * @param y Y resolution return location
          * @returns `true` if successful.
          */
-        get_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
+        get_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
          * Retrieve image file metadata from the application.  Intended for use by the
          * image file writer. If the operation fails it returns `false` and `value` is
@@ -1908,7 +1898,7 @@ export namespace Gegl {
          * @param y Y resolution
          * @returns `true` if successful.
          */
-        set_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
+        set_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
          * Unregister the file module mappings and any further mappings added or
          * modified by the application.  This should be called after the file module
@@ -2030,7 +2020,7 @@ export namespace Gegl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -2071,7 +2061,7 @@ export namespace Gegl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -3344,7 +3334,7 @@ export namespace Gegl {
          * Set the units used for the resolution (density) values.
          * @param unit Units as a {@link Gegl.ResolutionUnit}
          */
-        set_resolution_unit(unit: ResolutionUnit | null): void;
+        set_resolution_unit(unit: ResolutionUnit): void;
         /**
          * Set the X resolution or density in dots per unit.
          * @param resolution_x X resolution or density
@@ -3414,7 +3404,7 @@ export namespace Gegl {
          * @param y Y resolution return location
          * @returns `true` if successful.
          */
-        get_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
+        get_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
          * Retrieve image file metadata from the application.  Intended for use by the
          * image file writer. If the operation fails it returns `false` and `value` is
@@ -3472,7 +3462,7 @@ export namespace Gegl {
          * @param y Y resolution
          * @returns `true` if successful.
          */
-        set_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
+        set_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
          * Unregister the file module mappings and any further mappings added or
          * modified by the application.  This should be called after the file module
@@ -3594,7 +3584,7 @@ export namespace Gegl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
          * Complete version of `g_object_bind_property()`.
@@ -3635,7 +3625,7 @@ export namespace Gegl {
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
             transform_to?: GObject.BindingTransformFunc | null,
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
@@ -4122,12 +4112,7 @@ export namespace Gegl {
          * @param level mipmap level to render (0 for all)
          * @param abyss_policy
          */
-        blit_buffer(
-            buffer: Buffer | null,
-            roi: Rectangle | null,
-            level: number,
-            abyss_policy: AbyssPolicy | null,
-        ): void;
+        blit_buffer(buffer: Buffer | null, roi: Rectangle | null, level: number, abyss_policy: AbyssPolicy): void;
         /**
          * Makes a connection between the pads of two nodes, one pad should
          * be a source pad the other a sink pad, order does not matter.
@@ -5989,7 +5974,7 @@ export namespace Gegl {
          * @param tile a {@link Gegl.Rectangle}
          * @param alignment a {@link Gegl.RectangleAlignment} value
          */
-        align(rectangle: Rectangle, tile: Rectangle, alignment: RectangleAlignment | null): boolean;
+        align(rectangle: Rectangle, tile: Rectangle, alignment: RectangleAlignment): boolean;
         /**
          * Aligns `rectangle` to the tile grid of `buffer`, and stores the result in
          * `destination`.
@@ -6003,7 +5988,7 @@ export namespace Gegl {
          * @param buffer a {@link Gegl.Buffer}
          * @param alignment a {@link Gegl.RectangleAlignment} value
          */
-        align_to_buffer(rectangle: Rectangle, buffer: Buffer, alignment: RectangleAlignment | null): boolean;
+        align_to_buffer(rectangle: Rectangle, buffer: Buffer, alignment: RectangleAlignment): boolean;
         /**
          * Computes the bounding box of the rectangles `source1` and `source2` and stores the
          * resulting bounding box in `destination`.
@@ -6137,7 +6122,7 @@ export namespace Gegl {
          * @param output memory location for output data.
          * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
          */
-        get(x: number, y: number, scale: BufferMatrix2, output: any | null, repeat_mode: AbyssPolicy | null): void;
+        get(x: number, y: number, scale: BufferMatrix2, output: any | null, repeat_mode: AbyssPolicy): void;
         /**
          * @returns The context rectangle of the given `sampler`.
          */
@@ -6297,7 +6282,7 @@ export namespace Gegl {
          * @param y Y resolution return location
          * @returns `true` if successful.
          */
-        get_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
+        get_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
          * Retrieve image file metadata from the application.  Intended for use by the
          * image file writer. If the operation fails it returns `false` and `value` is
@@ -6355,7 +6340,7 @@ export namespace Gegl {
          * @param y Y resolution
          * @returns `true` if successful.
          */
-        set_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
+        set_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
          * Unregister the file module mappings and any further mappings added or
          * modified by the application.  This should be called after the file module

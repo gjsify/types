@@ -701,13 +701,13 @@ export namespace Ipuz {
      * @param direction The {@link Ipuz.ClueDirection} to evaluate
      * @returns The direction orthoganol to `direction`
      */
-    function clue_direction_switch(direction: ClueDirection | null): ClueDirection;
+    function clue_direction_switch(direction: ClueDirection): ClueDirection;
     /**
      * Returns a string representation of `direction`.
      * @param direction An {@link Ipuz.ClueDirection}
      * @returns a string representation of `direction`.
      */
-    function clue_direction_to_string(direction: ClueDirection | null): string;
+    function clue_direction_to_string(direction: ClueDirection): string;
     /**
      * @param c
      */
@@ -724,7 +724,7 @@ export namespace Ipuz {
     /**
      * @param kind
      */
-    function puzzle_kind_to_gtype(kind: PuzzleKind | null): GObject.GType;
+    function puzzle_kind_to_gtype(kind: PuzzleKind): GObject.GType;
     /**
      * Returns a lowercase name of the kind field. The returned string is
      * not translated. This function is intended for debugging or
@@ -732,35 +732,35 @@ export namespace Ipuz {
      * @param kind An [enum@
      * @returns A lowercase name of the kind field
      */
-    function puzzle_kind_to_string(kind: PuzzleKind | null): string;
+    function puzzle_kind_to_string(kind: PuzzleKind): string;
     /**
      * @param shapebg
      */
-    function style_shape_get_display_name(shapebg: StyleShape | null): string;
+    function style_shape_get_display_name(shapebg: StyleShape): string;
     /**
      * @param side
      */
-    function style_side_opposite(side: StyleSides | null): StyleSides;
+    function style_side_opposite(side: StyleSides): StyleSides;
     /**
      * @param sides
      */
-    function style_sides_flip_horiz(sides: StyleSides | null): StyleSides;
+    function style_sides_flip_horiz(sides: StyleSides): StyleSides;
     /**
      * @param sides
      */
-    function style_sides_flip_vert(sides: StyleSides | null): StyleSides;
+    function style_sides_flip_vert(sides: StyleSides): StyleSides;
     /**
      * @param sides
      */
-    function style_sides_rotate_180(sides: StyleSides | null): StyleSides;
+    function style_sides_rotate_180(sides: StyleSides): StyleSides;
     /**
      * @param sides
      */
-    function style_sides_rotate_lt(sides: StyleSides | null): StyleSides;
+    function style_sides_rotate_lt(sides: StyleSides): StyleSides;
     /**
      * @param sides
      */
-    function style_sides_rotate_rt(sides: StyleSides | null): StyleSides;
+    function style_sides_rotate_rt(sides: StyleSides): StyleSides;
     /**
      * Calculates the coordinate opposite of `coord` as defined by
      * `symmetry` and `symmetry_offset`. If `symmetry` is quarter rotational,
@@ -780,8 +780,8 @@ export namespace Ipuz {
         mirror_coord: CellCoord,
         puzzle_width: number,
         puzzle_height: number,
-        symmetry: Symmetry | null,
-        symmetry_offset: SymmetryOffset | null,
+        symmetry: Symmetry,
+        symmetry_offset: SymmetryOffset,
     ): void;
     /**
      * @gir-type Callback
@@ -1276,7 +1276,7 @@ export namespace Ipuz {
          * {@link Ipuz.Acrostic.set_clue_answers}.
          * @param label_mode How to fix the labels
          */
-        fix_labels(label_mode: AcrosticLabelMode | null): void;
+        fix_labels(label_mode: AcrosticLabelMode): void;
         /**
          * Syncs the grid and the quote string, in the direction of
          * `sync_direction`.
@@ -1311,7 +1311,7 @@ export namespace Ipuz {
          *     will likely make many clues invalid.
          * @param sync_direction direction to sync the quote
          */
-        fix_quote(sync_direction: AcrosticSyncDirection | null): void;
+        fix_quote(sync_direction: AcrosticSyncDirection): void;
         /**
          * Makes sure that clues and source string are in sync.
          *
@@ -1329,7 +1329,7 @@ export namespace Ipuz {
          *     clear one.
          * @param sync_direction direction to sync the source
          */
-        fix_source(sync_direction: AcrosticSyncDirection | null): void;
+        fix_source(sync_direction: AcrosticSyncDirection): void;
         /**
          * @param coord
          */
@@ -1485,7 +1485,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection | null, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -1515,7 +1515,7 @@ export namespace Ipuz {
          * @param direction the direction of the clue set
          * @returns The label of the clueset at `direction`
          */
-        clue_set_get_label(direction: ClueDirection | null): string;
+        clue_set_get_label(direction: ClueDirection): string;
         /**
          * Returns the next clue set visible in `clues` after `direction`.
          *
@@ -1533,7 +1533,7 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The next direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_next_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_next_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * Returns the previous clue set visible in `clues` after `direction`.
          *
@@ -1551,20 +1551,20 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The previous direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_prev_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_prev_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * [ RETHINK THIS FUNCTION. CANT WE GET IT FROM THE CELL?]
          * @param direction
          * @param coord
          */
-        find_clue_by_coord(direction: ClueDirection | null, coord: CellCoord): Clue;
+        find_clue_by_coord(direction: ClueDirection, coord: CellCoord): Clue;
         /**
          * Searches for and returns the clue with `direction` and `label`.
          * @param direction The direction to search
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection | null, label: string): Clue | null;
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
         /**
          * Searches for and returns the clue with `direction` and `number`.
          *
@@ -1575,7 +1575,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection | null, number: number): Clue | null;
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
          * @param func The function to call for each clue
@@ -1600,7 +1600,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to search
          * @returns an array of all clues in the direction of `direction`
          */
-        get_clues(direction: ClueDirection | null): Clue[];
+        get_clues(direction: ClueDirection): Clue[];
         /**
          * Returns a string containing the guess in the puzzle for a given
          * clue. This string will have '?' characters embedded within it if
@@ -1628,7 +1628,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to count
          * @returns The number of clues in `direction`
          */
-        get_n_clues(direction: ClueDirection | null): number;
+        get_n_clues(direction: ClueDirection): number;
         /**
          * Removes `clue` from `clues`. The clue will also be unlinked from the
          * grid.
@@ -1640,7 +1640,7 @@ export namespace Ipuz {
          * associated with that clue set will be unreffed.
          * @param direction the direction of the clue set to remove
          */
-        remove_clue_set(direction: ClueDirection | null): void;
+        remove_clue_set(direction: ClueDirection): void;
         /**
          * Unlinks `clue` from the grid. That is to say, any of the cells that
          * `clue` pointed to will no longer refer to it.
@@ -1823,7 +1823,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType | null): boolean;
+        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Invokes the operation determined by `check_type` on the stride guess
          * determined by `direction` and `index`.
@@ -1849,12 +1849,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_stride(
-            direction: ClueDirection | null,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType | null,
-        ): boolean;
+        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
          * the current state of the grid.
@@ -2126,7 +2121,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection | null, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -2156,7 +2151,7 @@ export namespace Ipuz {
          * @param direction the direction of the clue set
          * @returns The label of the clueset at `direction`
          */
-        clue_set_get_label(direction: ClueDirection | null): string;
+        clue_set_get_label(direction: ClueDirection): string;
         /**
          * Returns the next clue set visible in `clues` after `direction`.
          *
@@ -2174,7 +2169,7 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The next direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_next_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_next_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * Returns the previous clue set visible in `clues` after `direction`.
          *
@@ -2192,20 +2187,20 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The previous direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_prev_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_prev_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * [ RETHINK THIS FUNCTION. CANT WE GET IT FROM THE CELL?]
          * @param direction
          * @param coord
          */
-        find_clue_by_coord(direction: ClueDirection | null, coord: CellCoord): Clue;
+        find_clue_by_coord(direction: ClueDirection, coord: CellCoord): Clue;
         /**
          * Searches for and returns the clue with `direction` and `label`.
          * @param direction The direction to search
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection | null, label: string): Clue | null;
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
         /**
          * Searches for and returns the clue with `direction` and `number`.
          *
@@ -2216,7 +2211,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection | null, number: number): Clue | null;
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
          * @param func The function to call for each clue
@@ -2241,7 +2236,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to search
          * @returns an array of all clues in the direction of `direction`
          */
-        get_clues(direction: ClueDirection | null): Clue[];
+        get_clues(direction: ClueDirection): Clue[];
         /**
          * Returns a string containing the guess in the puzzle for a given
          * clue. This string will have '?' characters embedded within it if
@@ -2269,7 +2264,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to count
          * @returns The number of clues in `direction`
          */
-        get_n_clues(direction: ClueDirection | null): number;
+        get_n_clues(direction: ClueDirection): number;
         /**
          * Removes `clue` from `clues`. The clue will also be unlinked from the
          * grid.
@@ -2281,7 +2276,7 @@ export namespace Ipuz {
          * associated with that clue set will be unreffed.
          * @param direction the direction of the clue set to remove
          */
-        remove_clue_set(direction: ClueDirection | null): void;
+        remove_clue_set(direction: ClueDirection): void;
         /**
          * Unlinks `clue` from the grid. That is to say, any of the cells that
          * `clue` pointed to will no longer refer to it.
@@ -2464,7 +2459,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType | null): boolean;
+        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Invokes the operation determined by `check_type` on the stride guess
          * determined by `direction` and `index`.
@@ -2490,12 +2485,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_stride(
-            direction: ClueDirection | null,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType | null,
-        ): boolean;
+        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
          * the current state of the grid.
@@ -2821,7 +2811,7 @@ export namespace Ipuz {
          * @param symmetry The symmetry to respect
          * @returns The new sides of the cell at `coord`
          */
-        calculate_side_toggle(coord: CellCoord, side: StyleSides | null, symmetry: Symmetry | null): StyleSides;
+        calculate_side_toggle(coord: CellCoord, side: StyleSides, symmetry: Symmetry): StyleSides;
         /**
          * Returns the orientation of any bars set around the cell at
          * `coord`. This function will inspect the style at `coord` — as well as
@@ -2842,7 +2832,7 @@ export namespace Ipuz {
          * @param sides The location of the bars to be set. May contain multiple values ORed together.
          * @returns `true`, if the cell at `coord` has new sides
          */
-        set_cell_bars(coord: CellCoord, sides: StyleSides | null): boolean;
+        set_cell_bars(coord: CellCoord, sides: StyleSides): boolean;
         /**
          * The {@link Ipuz.Guesses} associated with the grid.
          * @category Inherited from Ipuz.Grid
@@ -2880,7 +2870,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection | null, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -2910,7 +2900,7 @@ export namespace Ipuz {
          * @param direction the direction of the clue set
          * @returns The label of the clueset at `direction`
          */
-        clue_set_get_label(direction: ClueDirection | null): string;
+        clue_set_get_label(direction: ClueDirection): string;
         /**
          * Returns the next clue set visible in `clues` after `direction`.
          *
@@ -2928,7 +2918,7 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The next direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_next_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_next_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * Returns the previous clue set visible in `clues` after `direction`.
          *
@@ -2946,20 +2936,20 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The previous direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_prev_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_prev_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * [ RETHINK THIS FUNCTION. CANT WE GET IT FROM THE CELL?]
          * @param direction
          * @param coord
          */
-        find_clue_by_coord(direction: ClueDirection | null, coord: CellCoord): Clue;
+        find_clue_by_coord(direction: ClueDirection, coord: CellCoord): Clue;
         /**
          * Searches for and returns the clue with `direction` and `label`.
          * @param direction The direction to search
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection | null, label: string): Clue | null;
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
         /**
          * Searches for and returns the clue with `direction` and `number`.
          *
@@ -2970,7 +2960,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection | null, number: number): Clue | null;
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
          * @param func The function to call for each clue
@@ -2995,7 +2985,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to search
          * @returns an array of all clues in the direction of `direction`
          */
-        get_clues(direction: ClueDirection | null): Clue[];
+        get_clues(direction: ClueDirection): Clue[];
         /**
          * Returns a string containing the guess in the puzzle for a given
          * clue. This string will have '?' characters embedded within it if
@@ -3023,7 +3013,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to count
          * @returns The number of clues in `direction`
          */
-        get_n_clues(direction: ClueDirection | null): number;
+        get_n_clues(direction: ClueDirection): number;
         /**
          * Removes `clue` from `clues`. The clue will also be unlinked from the
          * grid.
@@ -3035,7 +3025,7 @@ export namespace Ipuz {
          * associated with that clue set will be unreffed.
          * @param direction the direction of the clue set to remove
          */
-        remove_clue_set(direction: ClueDirection | null): void;
+        remove_clue_set(direction: ClueDirection): void;
         /**
          * Unlinks `clue` from the grid. That is to say, any of the cells that
          * `clue` pointed to will no longer refer to it.
@@ -3218,7 +3208,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType | null): boolean;
+        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Invokes the operation determined by `check_type` on the stride guess
          * determined by `direction` and `index`.
@@ -3244,12 +3234,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_stride(
-            direction: ClueDirection | null,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType | null,
-        ): boolean;
+        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
          * the current state of the grid.
@@ -3752,8 +3737,8 @@ export namespace Ipuz {
         check_mirror(
             src_coord: CellCoord,
             dest_coord: CellCoord,
-            symmetry: Symmetry | null,
-            symmetry_offset: SymmetryOffset | null,
+            symmetry: Symmetry,
+            symmetry_offset: SymmetryOffset,
         ): boolean;
         /**
          * Returns `true` if the down clue crossing `coord` can be continued
@@ -3850,7 +3835,7 @@ export namespace Ipuz {
          * @param symmetry the symmetry condition to enforce
          * @param symmetry_coords A {@link GLib.Array} of `IpuzCellCoords`
          */
-        fix_symmetry(symmetry: Symmetry | null, symmetry_coords: CellCoord[]): void;
+        fix_symmetry(symmetry: Symmetry, symmetry_coords: CellCoord[]): void;
         /**
          * Returns an indication of how to display the clues relative to the grid.
          * @returns An indication of how to display the clues relative to the grid
@@ -3893,8 +3878,8 @@ export namespace Ipuz {
         mirror_cell(
             src_coord: CellCoord,
             dest_coord: CellCoord,
-            symmetry: Symmetry | null,
-            symmetry_offset: SymmetryOffset | null,
+            symmetry: Symmetry,
+            symmetry_offset: SymmetryOffset,
         ): void;
         /**
          * Prints out a text version of `self` to the terminal for debugging
@@ -3905,7 +3890,7 @@ export namespace Ipuz {
          * Sets an indication of how to display the clues relative to the grid.
          * @param clue_placement The placement of the clues
          */
-        set_clue_placement(clue_placement: CluePlacement | null): void;
+        set_clue_placement(clue_placement: CluePlacement): void;
         /**
          * Sets whether `self` should be displayed with enumerations.
          * @param show_enumerations whether `self` should be displayed with enumerations
@@ -3948,7 +3933,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection | null, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -3978,7 +3963,7 @@ export namespace Ipuz {
          * @param direction the direction of the clue set
          * @returns The label of the clueset at `direction`
          */
-        clue_set_get_label(direction: ClueDirection | null): string;
+        clue_set_get_label(direction: ClueDirection): string;
         /**
          * Returns the next clue set visible in `clues` after `direction`.
          *
@@ -3996,7 +3981,7 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The next direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_next_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_next_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * Returns the previous clue set visible in `clues` after `direction`.
          *
@@ -4014,20 +3999,20 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The previous direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_prev_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_prev_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * [ RETHINK THIS FUNCTION. CANT WE GET IT FROM THE CELL?]
          * @param direction
          * @param coord
          */
-        find_clue_by_coord(direction: ClueDirection | null, coord: CellCoord): Clue;
+        find_clue_by_coord(direction: ClueDirection, coord: CellCoord): Clue;
         /**
          * Searches for and returns the clue with `direction` and `label`.
          * @param direction The direction to search
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection | null, label: string): Clue | null;
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
         /**
          * Searches for and returns the clue with `direction` and `number`.
          *
@@ -4038,7 +4023,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection | null, number: number): Clue | null;
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
          * @param func The function to call for each clue
@@ -4063,7 +4048,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to search
          * @returns an array of all clues in the direction of `direction`
          */
-        get_clues(direction: ClueDirection | null): Clue[];
+        get_clues(direction: ClueDirection): Clue[];
         /**
          * Returns a string containing the guess in the puzzle for a given
          * clue. This string will have '?' characters embedded within it if
@@ -4091,7 +4076,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to count
          * @returns The number of clues in `direction`
          */
-        get_n_clues(direction: ClueDirection | null): number;
+        get_n_clues(direction: ClueDirection): number;
         /**
          * Removes `clue` from `clues`. The clue will also be unlinked from the
          * grid.
@@ -4103,7 +4088,7 @@ export namespace Ipuz {
          * associated with that clue set will be unreffed.
          * @param direction the direction of the clue set to remove
          */
-        remove_clue_set(direction: ClueDirection | null): void;
+        remove_clue_set(direction: ClueDirection): void;
         /**
          * Unlinks `clue` from the grid. That is to say, any of the cells that
          * `clue` pointed to will no longer refer to it.
@@ -4286,7 +4271,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType | null): boolean;
+        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Invokes the operation determined by `check_type` on the stride guess
          * determined by `direction` and `index`.
@@ -4312,12 +4297,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_stride(
-            direction: ClueDirection | null,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType | null,
-        ): boolean;
+        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
          * the current state of the grid.
@@ -4636,7 +4616,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection | null, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -4666,7 +4646,7 @@ export namespace Ipuz {
          * @param direction the direction of the clue set
          * @returns The label of the clueset at `direction`
          */
-        clue_set_get_label(direction: ClueDirection | null): string;
+        clue_set_get_label(direction: ClueDirection): string;
         /**
          * Returns the next clue set visible in `clues` after `direction`.
          *
@@ -4684,7 +4664,7 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The next direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_next_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_next_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * Returns the previous clue set visible in `clues` after `direction`.
          *
@@ -4702,20 +4682,20 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The previous direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_prev_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_prev_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * [ RETHINK THIS FUNCTION. CANT WE GET IT FROM THE CELL?]
          * @param direction
          * @param coord
          */
-        find_clue_by_coord(direction: ClueDirection | null, coord: CellCoord): Clue;
+        find_clue_by_coord(direction: ClueDirection, coord: CellCoord): Clue;
         /**
          * Searches for and returns the clue with `direction` and `label`.
          * @param direction The direction to search
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection | null, label: string): Clue | null;
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
         /**
          * Searches for and returns the clue with `direction` and `number`.
          *
@@ -4726,7 +4706,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection | null, number: number): Clue | null;
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
          * @param func The function to call for each clue
@@ -4751,7 +4731,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to search
          * @returns an array of all clues in the direction of `direction`
          */
-        get_clues(direction: ClueDirection | null): Clue[];
+        get_clues(direction: ClueDirection): Clue[];
         /**
          * Returns a string containing the guess in the puzzle for a given
          * clue. This string will have '?' characters embedded within it if
@@ -4779,7 +4759,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to count
          * @returns The number of clues in `direction`
          */
-        get_n_clues(direction: ClueDirection | null): number;
+        get_n_clues(direction: ClueDirection): number;
         /**
          * Removes `clue` from `clues`. The clue will also be unlinked from the
          * grid.
@@ -4791,7 +4771,7 @@ export namespace Ipuz {
          * associated with that clue set will be unreffed.
          * @param direction the direction of the clue set to remove
          */
-        remove_clue_set(direction: ClueDirection | null): void;
+        remove_clue_set(direction: ClueDirection): void;
         /**
          * Unlinks `clue` from the grid. That is to say, any of the cells that
          * `clue` pointed to will no longer refer to it.
@@ -4974,7 +4954,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType | null): boolean;
+        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Invokes the operation determined by `check_type` on the stride guess
          * determined by `direction` and `index`.
@@ -5000,12 +4980,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_stride(
-            direction: ClueDirection | null,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType | null,
-        ): boolean;
+        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
          * the current state of the grid.
@@ -5268,7 +5243,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection | null, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -5298,7 +5273,7 @@ export namespace Ipuz {
          * @param direction the direction of the clue set
          * @returns The label of the clueset at `direction`
          */
-        clue_set_get_label(direction: ClueDirection | null): string;
+        clue_set_get_label(direction: ClueDirection): string;
         /**
          * Returns the next clue set visible in `clues` after `direction`.
          *
@@ -5316,7 +5291,7 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The next direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_next_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_next_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * Returns the previous clue set visible in `clues` after `direction`.
          *
@@ -5334,20 +5309,20 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The previous direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_prev_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_prev_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * [ RETHINK THIS FUNCTION. CANT WE GET IT FROM THE CELL?]
          * @param direction
          * @param coord
          */
-        find_clue_by_coord(direction: ClueDirection | null, coord: CellCoord): Clue;
+        find_clue_by_coord(direction: ClueDirection, coord: CellCoord): Clue;
         /**
          * Searches for and returns the clue with `direction` and `label`.
          * @param direction The direction to search
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection | null, label: string): Clue | null;
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
         /**
          * Searches for and returns the clue with `direction` and `number`.
          *
@@ -5358,7 +5333,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection | null, number: number): Clue | null;
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
          * @param func The function to call for each clue
@@ -5383,7 +5358,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to search
          * @returns an array of all clues in the direction of `direction`
          */
-        get_clues(direction: ClueDirection | null): Clue[];
+        get_clues(direction: ClueDirection): Clue[];
         /**
          * Returns a string containing the guess in the puzzle for a given
          * clue. This string will have '?' characters embedded within it if
@@ -5411,7 +5386,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to count
          * @returns The number of clues in `direction`
          */
-        get_n_clues(direction: ClueDirection | null): number;
+        get_n_clues(direction: ClueDirection): number;
         /**
          * Removes `clue` from `clues`. The clue will also be unlinked from the
          * grid.
@@ -5423,7 +5398,7 @@ export namespace Ipuz {
          * associated with that clue set will be unreffed.
          * @param direction the direction of the clue set to remove
          */
-        remove_clue_set(direction: ClueDirection | null): void;
+        remove_clue_set(direction: ClueDirection): void;
         /**
          * Unlinks `clue` from the grid. That is to say, any of the cells that
          * `clue` pointed to will no longer refer to it.
@@ -5606,7 +5581,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType | null): boolean;
+        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Invokes the operation determined by `check_type` on the stride guess
          * determined by `direction` and `index`.
@@ -5632,12 +5607,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_stride(
-            direction: ClueDirection | null,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType | null,
-        ): boolean;
+        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
          * the current state of the grid.
@@ -6010,7 +5980,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType | null): boolean;
+        check_cell(cell: Cell, coord: CellCoord, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Invokes the operation determined by `check_type` on the stride guess
          * determined by `direction` and `index`.
@@ -6036,12 +6006,7 @@ export namespace Ipuz {
          * @param check_type The operation to perform at `coord`
          * @returns `true`, if the condition determined by %check_type is met
          */
-        check_stride(
-            direction: ClueDirection | null,
-            index: number,
-            guesses: Guesses,
-            check_type: GridCheckType | null,
-        ): boolean;
+        check_stride(direction: ClueDirection, index: number, guesses: Guesses, check_type: GridCheckType): boolean;
         /**
          * Creates a fresh {@link Ipuz.Guesses}. It will be initialized to
          * the current state of the grid.
@@ -6377,7 +6342,7 @@ export namespace Ipuz {
          * @param index Index of the row or column
          * @returns An array containing the run of {@link Ipuz.NonogramClue} segments
          */
-        get_clues(direction: ClueDirection | null, index: number): NonogramClue[];
+        get_clues(direction: ClueDirection, index: number): NonogramClue[];
         /**
          * Returns `true` if the number identified by the arguments should be
          * crossed off. This function is essentially a wrapper around parsing
@@ -6387,7 +6352,7 @@ export namespace Ipuz {
          * @param count_index The index of the number within those clues to set
          * @returns `true`, if the number identified by the arguments should be crossed off
          */
-        get_count_crossed_off(direction: ClueDirection | null, index: number, count_index: number): boolean;
+        get_count_crossed_off(direction: ClueDirection, index: number, count_index: number): boolean;
         /**
          * Returns the group at `index`.
          *
@@ -6467,12 +6432,7 @@ export namespace Ipuz {
          * @param count_index The index of the number within those clues to set
          * @param crossed_off whether to cross off the number
          */
-        set_count_crossed_off(
-            direction: ClueDirection | null,
-            index: number,
-            count_index: number,
-            crossed_off: boolean,
-        ): void;
+        set_count_crossed_off(direction: ClueDirection, index: number, count_index: number, crossed_off: boolean): void;
         /**
          * Sets the text value that represents a _space_. That is to say, a
          * cell that has been eliminated from possibly being a block.
@@ -7932,7 +7892,7 @@ export namespace Ipuz {
          * Clears the clue in the `direction` direction.
          * @param direction The direction to clear
          */
-        clear_clue_direction(direction: ClueDirection | null): void;
+        clear_clue_direction(direction: ClueDirection): void;
         /**
          * Removes all clues associated with `cell`.
          */
@@ -7951,7 +7911,7 @@ export namespace Ipuz {
          * @param preferred_direction The preferred direction to find a clue
          * @returns A clue associated with `cell`, or `null`
          */
-        find_clue(preferred_direction: ClueDirection | null): Clue | null;
+        find_clue(preferred_direction: ClueDirection): Clue | null;
         /**
          * Returns the {@link Ipuz.CellType} of `cell`.
          * @returns the {@link Ipuz.CellType} of `cell`
@@ -7963,7 +7923,7 @@ export namespace Ipuz {
          * @param direction The direction to find a cell
          * @returns The clue of `cell`, or `null`
          */
-        get_clue(direction: ClueDirection | null): Clue | null;
+        get_clue(direction: ClueDirection): Clue | null;
         /**
          * Returns the initial value of `cell`.
          *
@@ -8036,7 +7996,7 @@ export namespace Ipuz {
          * Sets the {@link Ipuz.CellType} of `cell` to be `cell_type`.
          * @param cell_type The new {@link Ipuz.CellType} of `cell`
          */
-        set_cell_type(cell_type: CellType | null): void;
+        set_cell_type(cell_type: CellType): void;
         /**
          * Sets the clue associated with `cell` in the `direction`
          * direction.
@@ -8785,7 +8745,7 @@ export namespace Ipuz {
          * Sets the direction of `clue` to `direction`.
          * @param direction the direction of clue
          */
-        set_direction(direction: ClueDirection | null): void;
+        set_direction(direction: ClueDirection): void;
         /**
          * Sets the enumeration of `clue` to be `enumeration`.
          * @param enumeration The enumeration of `clue`
@@ -9144,7 +9104,7 @@ export namespace Ipuz {
          * @param index index of the row (IPUZ_CLUE_DIRECTION_ACROSS) or column (IPUZ_CLUE_DIRECTION_DOWN) with which to associate the data.
          * @returns The guess set previously with `ipuz_guesses_set_stride_guess()`, or `null` if the data is not set.
          */
-        get_stride_guess(direction: ClueDirection | null, index: number): string | null;
+        get_stride_guess(direction: ClueDirection, index: number): string | null;
         /**
          * Returns the width of `guesses`.
          * @returns The width of `guesses`
@@ -9181,7 +9141,7 @@ export namespace Ipuz {
          * @param coord
          * @param cell_type
          */
-        set_cell_type(coord: CellCoord, cell_type: CellType | null): void;
+        set_cell_type(coord: CellCoord, cell_type: CellType): void;
         /**
          * Sets the user's guess at `coord` to be `guess`. If `null`, the guess
          * is cleared.
@@ -9201,7 +9161,7 @@ export namespace Ipuz {
          * @param index index of the row (IPUZ_CLUE_DIRECTION_ACROSS) or column (IPUZ_CLUE_DIRECTION_DOWN) with which to associate the data.
          * @param data string that will be associated to the row or column.
          */
-        set_stride_guess(direction: ClueDirection | null, index: number, data?: string | null): void;
+        set_stride_guess(direction: ClueDirection, index: number, data?: string | null): void;
         /**
          * Unrefs `guesses`, which will be freed when the reference count reaches 0.
          */
@@ -9403,7 +9363,7 @@ export namespace Ipuz {
         /**
          * @param barred
          */
-        set_barred(barred: StyleSides | null): void;
+        set_barred(barred: StyleSides): void;
         /**
          * @param bg_color
          */
@@ -9419,23 +9379,23 @@ export namespace Ipuz {
         /**
          * @param dashed
          */
-        set_dashed(dashed: StyleSides | null): void;
+        set_dashed(dashed: StyleSides): void;
         /**
          * @param divided
          */
-        set_divided(divided: StyleDivided | null): void;
+        set_divided(divided: StyleDivided): void;
         /**
          * @param dotted
          */
-        set_dotted(dotted: StyleSides | null): void;
+        set_dotted(dotted: StyleSides): void;
         /**
          * @param equal
          */
-        set_equal(equal: StyleSides | null): void;
+        set_equal(equal: StyleSides): void;
         /**
          * @param greaterthan
          */
-        set_greaterthan(greaterthan: StyleSides | null): void;
+        set_greaterthan(greaterthan: StyleSides): void;
         /**
          * @param highlight
          */
@@ -9455,7 +9415,7 @@ export namespace Ipuz {
         /**
          * @param lessthan
          */
-        set_lessthan(lessthan: StyleSides | null): void;
+        set_lessthan(lessthan: StyleSides): void;
         /**
          * Sets a label for a particular mark's location.  Pass `NULL` as the
          * label to unset a mark.  The label will be drawn at the specified `mark`
@@ -9463,7 +9423,7 @@ export namespace Ipuz {
          * @param mark single {@link Ipuz.StyleMark} value, bitmasks are not allowed
          * @param label label to set for the specified `mark`, or `NULL` to remove a label
          */
-        set_mark(mark: StyleMark | null, label: string): void;
+        set_mark(mark: StyleMark, label: string): void;
         /**
          * @param named
          */
@@ -9471,7 +9431,7 @@ export namespace Ipuz {
         /**
          * @param shapebg
          */
-        set_shapebg(shapebg: StyleShape | null): void;
+        set_shapebg(shapebg: StyleShape): void;
         /**
          * @param style_name
          */
@@ -9769,7 +9729,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection | null, label?: string | null): ClueDirection;
+        add_clue_set(direction: ClueDirection, label?: string | null): ClueDirection;
         /**
          * Removes all the clues and clue sets of `clues`.
          */
@@ -9799,7 +9759,7 @@ export namespace Ipuz {
          * @param direction the direction of the clue set
          * @returns The label of the clueset at `direction`
          */
-        clue_set_get_label(direction: ClueDirection | null): string;
+        clue_set_get_label(direction: ClueDirection): string;
         /**
          * Returns the next clue set visible in `clues` after `direction`.
          *
@@ -9817,7 +9777,7 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The next direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_next_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_next_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * Returns the previous clue set visible in `clues` after `direction`.
          *
@@ -9835,20 +9795,20 @@ export namespace Ipuz {
          * @param wrap Whether to wrap around
          * @returns The previous direction logically in `clues`, or {@link Ipuz.ClueDirection.NONE}
          */
-        clue_set_prev_direction(direction: ClueDirection | null, wrap: boolean): ClueDirection;
+        clue_set_prev_direction(direction: ClueDirection, wrap: boolean): ClueDirection;
         /**
          * [ RETHINK THIS FUNCTION. CANT WE GET IT FROM THE CELL?]
          * @param direction
          * @param coord
          */
-        find_clue_by_coord(direction: ClueDirection | null, coord: CellCoord): Clue;
+        find_clue_by_coord(direction: ClueDirection, coord: CellCoord): Clue;
         /**
          * Searches for and returns the clue with `direction` and `label`.
          * @param direction The direction to search
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection | null, label: string): Clue | null;
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
         /**
          * Searches for and returns the clue with `direction` and `number`.
          *
@@ -9859,7 +9819,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection | null, number: number): Clue | null;
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
          * @param func The function to call for each clue
@@ -9884,7 +9844,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to search
          * @returns an array of all clues in the direction of `direction`
          */
-        get_clues(direction: ClueDirection | null): Clue[];
+        get_clues(direction: ClueDirection): Clue[];
         /**
          * Returns a string containing the guess in the puzzle for a given
          * clue. This string will have '?' characters embedded within it if
@@ -9912,7 +9872,7 @@ export namespace Ipuz {
          * @param direction The direction of clues to count
          * @returns The number of clues in `direction`
          */
-        get_n_clues(direction: ClueDirection | null): number;
+        get_n_clues(direction: ClueDirection): number;
         /**
          * Removes `clue` from `clues`. The clue will also be unlinked from the
          * grid.
@@ -9924,7 +9884,7 @@ export namespace Ipuz {
          * associated with that clue set will be unreffed.
          * @param direction the direction of the clue set to remove
          */
-        remove_clue_set(direction: ClueDirection | null): void;
+        remove_clue_set(direction: ClueDirection): void;
         /**
          * Unlinks `clue` from the grid. That is to say, any of the cells that
          * `clue` pointed to will no longer refer to it.
