@@ -38,16 +38,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # This also setups a .npmrc file to publish to npm
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@girs'
 
-      - name: Fix .npmrc (remove deprecated always-auth)
-        run: sed -i '/^always-auth/d' ~/.npmrc
+      - name: Configure npm authentication
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Publish
         run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts --continue-on-error
