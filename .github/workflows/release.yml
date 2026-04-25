@@ -13,15 +13,15 @@ concurrency:
 
 env:
   node-version: 24.x
-  # Tuned for speed while staying under npm rate limits; overridable per-run
-  NPM_BATCH_SIZE: 5
-  NPM_BATCH_DELAY_MS: 3000
-  NPM_PUBLISH_DELAY_MS: 500
+  # Serialized publishing (batch=1) avoids E429 from concurrent provenance signing
+  NPM_BATCH_SIZE: 1
+  NPM_BATCH_DELAY_MS: 5000
+  NPM_PUBLISH_DELAY_MS: 1000
   NPM_STATUS_CONCURRENCY: 20
-  NPM_MAX_RETRIES: 8
+  NPM_MAX_RETRIES: 10
   NPM_STATUS_MAX_RETRIES: 5
-  NPM_RETRY_BASE_MS: 2000
-  NPM_RETRY_MAX_MS: 60000
+  NPM_RETRY_BASE_MS: 5000
+  NPM_RETRY_MAX_MS: 300000
   NPM_TIMEOUT_SEC: 600
 
 jobs:
@@ -46,7 +46,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@girs'
 
-      - name: Publish 
+      - name: Fix .npmrc (remove deprecated always-auth)
+        run: sed -i '/^always-auth/d' ~/.npmrc
+
+      - name: Publish
         run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts --continue-on-error
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
