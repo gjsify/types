@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/glibwin32-2.0)
 
 
-GJS TypeScript type definitions for GLibWin32-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-rc.5.
+GJS TypeScript type definitions for GLibWin32-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-rc.6.
 
 ## Install
 
