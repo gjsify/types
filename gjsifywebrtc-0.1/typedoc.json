@@ -1,9 +1,0 @@
-{
-    "entryPoints": ["./gjsifywebrtc-0.1.d.ts"],
-    "readme": "./README.md",
-    "name": "GjsifyWebrtc-0.1",
-    "tsconfig": "./tsconfig.json",
-    "skipErrorChecking": true,
-    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
-}
-
