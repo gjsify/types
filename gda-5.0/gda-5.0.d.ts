@@ -21564,6 +21564,9 @@ export namespace Gda {
         // Fields
 
         object: GObject.Object;
+        nodes_list: SetNode[];
+        sources_list: SetSource[];
+        groups_list: SetGroup[];
 
         // Constructors
 
@@ -23135,6 +23138,7 @@ export namespace Gda {
         name: string;
         isolation_level: TransactionIsolation;
         state: TransactionStatusState;
+        events: TransactionStatusEvent[];
 
         // Constructors
 
@@ -24884,6 +24888,7 @@ export namespace Gda {
         table_name: string;
         size: number;
         column_names: string[];
+        column_values: unknown[];
 
         // Constructors
 
@@ -24970,6 +24975,7 @@ export namespace Gda {
         obj_short_name: string;
         obj_full_name: string;
         obj_owner: string;
+        depend_list: MetaDbObject[];
     }
 
     /**
@@ -25027,8 +25033,11 @@ export namespace Gda {
 
         // Fields
 
+        columns: MetaTableColumn[];
         pk_cols_array: number;
         pk_cols_nb: number;
+        reverse_fk_list: MetaTableForeignKey[];
+        fk_list: MetaTableForeignKey[];
     }
 
     /**
@@ -25394,6 +25403,10 @@ export namespace Gda {
     class SetGroup {
         static $gtype: GObject.GType<SetGroup>;
 
+        // Fields
+
+        nodes: SetNode[];
+
         // Constructors
 
         constructor(node: SetNode);
@@ -25521,6 +25534,7 @@ export namespace Gda {
         // Fields
 
         data_model: DataModel;
+        nodes: SetNode[];
 
         // Constructors
 

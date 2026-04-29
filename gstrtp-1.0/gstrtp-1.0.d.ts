@@ -2800,6 +2800,7 @@ export namespace GstRtp {
         state: number;
         data: any[];
         size: number[];
+        map: Gst.MapInfo[];
 
         // Static methods
 
@@ -2878,12 +2879,6 @@ export namespace GstRtp {
             id: number,
             nth: number,
         ): [boolean, Uint8Array];
-        /**
-         * Map the contents of `buffer` into `rtp`.
-         * @param buffer a {@link Gst.Buffer}
-         * @param flags {@link Gst.MapFlags}
-         */
-        static map(buffer: Gst.Buffer, flags: Gst.MapFlags): [boolean, RTPBuffer];
         /**
          * Allocate a new {@link Gst.Buffer} with enough data to hold an RTP packet with
          * `csrc_count` CSRCs, a payload length of `payload_len` and padding of `pad_len`.

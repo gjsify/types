@@ -5385,6 +5385,10 @@ export namespace GstCodecParsers {
      */
     class AV1ReferenceFrameInfo {
         static $gtype: GObject.GType<AV1ReferenceFrameInfo>;
+
+        // Fields
+
+        entry: AV1ReferenceFrameInfoEntry[];
     }
 
     /**
@@ -8787,6 +8791,7 @@ export namespace GstCodecParsers {
         // Fields
 
         num_ptls_minus1: number;
+        profile_tier_level: H266ProfileTierLevel[];
         extension_flag: number;
         extension_data_flag: number;
     }
@@ -10430,6 +10435,7 @@ export namespace GstCodecParsers {
         num_ptls_minus1: number;
         pt_present_flag: Uint8Array;
         ptl_max_tid: Uint8Array;
+        profile_tier_level: H266ProfileTierLevel[];
         ols_ptl_idx: Uint8Array;
         num_dpb_params_minus1: number;
         sublayer_dpb_params_present_flag: number;

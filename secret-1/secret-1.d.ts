@@ -7031,6 +7031,7 @@ export namespace Secret {
 
         name: string;
         flags: SchemaFlags;
+        attributes: SchemaAttribute[];
 
         // Constructors
 

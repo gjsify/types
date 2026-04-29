@@ -468,6 +468,7 @@ export namespace GstAnalytics {
 
         // Fields
 
+        streams: BatchStream[];
         n_streams: number;
     }
 
@@ -481,7 +482,9 @@ export namespace GstAnalytics {
         // Fields
 
         index: number;
+        sticky_events: Gst.Event[];
         n_sticky_events: number;
+        objects: Gst.MiniObject[];
         n_objects: number;
 
         // Methods

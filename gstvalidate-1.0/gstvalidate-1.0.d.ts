@@ -6842,6 +6842,7 @@ export namespace GstValidate {
         implementer_namespace: string;
         prepare: PrepareAction;
         execute: ExecuteAction;
+        parameters: ActionParameter[];
         description: string;
         flags: ActionTypeFlags;
         rank: Gst.Rank;

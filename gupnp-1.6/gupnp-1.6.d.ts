@@ -5132,6 +5132,7 @@ export namespace GUPnP {
         // Fields
 
         name: string;
+        'arguments': ServiceActionArgInfo[];
     }
 
     /**

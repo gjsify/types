@@ -70025,6 +70025,7 @@ export namespace Gio {
         name: string;
         methods: DBusMethodInfo[];
         signals: DBusSignalInfo[];
+        properties: DBusPropertyInfo[];
         annotations: DBusAnnotationInfo[];
 
         // Constructors
@@ -70226,6 +70227,8 @@ export namespace Gio {
 
         ref_count: number;
         path: string;
+        interfaces: DBusInterfaceInfo[];
+        nodes: DBusNodeInfo[];
         annotations: DBusAnnotationInfo[];
 
         // Constructors
@@ -71011,6 +71014,7 @@ export namespace Gio {
         // Fields
 
         address: SocketAddress;
+        vectors: InputVector[];
         num_vectors: number;
         bytes_received: number;
         flags: number;

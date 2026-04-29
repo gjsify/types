@@ -28030,6 +28030,7 @@ export namespace Gda {
         table_name: string;
         size: number;
         column_names: string[];
+        column_values: unknown[];
 
         // Constructors
 
@@ -28125,6 +28126,7 @@ export namespace Gda {
         obj_short_name: string;
         obj_full_name: string;
         obj_owner: string;
+        depend_list: MetaDbObject[];
     }
 
     /**
@@ -28187,8 +28189,11 @@ export namespace Gda {
 
         // Fields
 
+        columns: MetaTableColumn[];
         pk_cols_array: number;
         pk_cols_nb: number;
+        reverse_fk_list: MetaTableForeignKey[];
+        fk_list: MetaTableForeignKey[];
     }
 
     /**
@@ -29014,6 +29019,7 @@ export namespace Gda {
         // Fields
 
         operator_type: SqlOperatorType;
+        operands: SqlExpr[];
 
         // Constructors
 
@@ -29201,6 +29207,11 @@ export namespace Gda {
      */
     class SqlSelectFrom {
         static $gtype: GObject.GType<SqlSelectFrom>;
+
+        // Fields
+
+        targets: SqlSelectTarget[];
+        joins: SqlSelectJoin[];
 
         // Constructors
 

@@ -7849,6 +7849,7 @@ export namespace Gst {
         children: Element[];
         children_cookie: number;
         child_bus: Bus;
+        messages: Message[];
         polling: boolean;
         state_dirty: boolean;
         clock_dirty: boolean;

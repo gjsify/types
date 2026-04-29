@@ -39960,6 +39960,7 @@ export namespace Qmi {
         upin_retries: number;
         upuk_retries: number;
         error_code: UimCardError;
+        applications: IndicationUimCardStatusOutputCardStatusCardsElementApplicationsElementV2[];
     }
 
     /**
@@ -51438,6 +51439,7 @@ export namespace Qmi {
         // Fields
 
         session_type: PbmSessionType;
+        phonebooks: MessagePbmGetAllCapabilitiesOutputCapabilityBasicInformationElementPhonebooksElement[];
     }
 
     /**
@@ -54299,6 +54301,7 @@ export namespace Qmi {
         upin_retries: number;
         upuk_retries: number;
         error_code: UimCardError;
+        applications: MessageUimGetCardStatusOutputCardStatusCardsElementApplicationsElementV2[];
     }
 
     /**
@@ -54428,6 +54431,10 @@ export namespace Qmi {
      */
     class MessageUimGetConfigurationOutputPersonalizationStatusOtherElementGir {
         static $gtype: GObject.GType<MessageUimGetConfigurationOutputPersonalizationStatusOtherElementGir>;
+
+        // Fields
+
+        slot: MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement[];
     }
 
     /**

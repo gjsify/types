@@ -2848,6 +2848,7 @@ export namespace GstMpegts {
         last_table_id: number;
         actual_stream: boolean;
         present_following: boolean;
+        events: EITEvent[];
     }
 
     /**
@@ -3293,6 +3294,7 @@ export namespace GstMpegts {
         original_network_id: number;
         actual_ts: boolean;
         transport_stream_id: number;
+        services: SDTService[];
 
         // Constructors
 
@@ -3350,6 +3352,7 @@ export namespace GstMpegts {
         // Fields
 
         descriptors: Descriptor[];
+        services: SITService[];
     }
 
     /**

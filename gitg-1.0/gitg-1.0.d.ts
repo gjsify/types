@@ -8256,6 +8256,7 @@ export namespace Gitg {
 
         ref_count: number;
         filename: string;
+        patches: PatchSetPatch[];
         patches_length1: number;
 
         // Constructors
