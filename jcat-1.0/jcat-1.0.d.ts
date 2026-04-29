@@ -23,15 +23,8 @@ export namespace Jcat {
 
     /**
      * The kind of blob stored as a signature on the item.
+     * @gir-type Enum
      */
-
-    /**
-     * The kind of blob stored as a signature on the item.
-     */
-    export namespace BlobKind {
-        export const $gtype: GObject.GType<BlobKind>;
-    }
-
     enum BlobKind {
         /**
          * No known blob kind
@@ -77,18 +70,16 @@ export namespace Jcat {
          * SHA-512 checksum
          */
         SHA512,
-    }
-    /**
-     * The blob verification method.
-     */
-
-    /**
-     * The blob verification method.
-     */
-    export namespace BlobMethod {
-        export const $gtype: GObject.GType<BlobMethod>;
+        /**
+         * Binary transparency log index
+         */
+        BT_LOGINDEX,
     }
 
+    /**
+     * The blob verification method.
+     * @gir-type Enum
+     */
     enum BlobMethod {
         /**
          * Unknown
@@ -103,51 +94,43 @@ export namespace Jcat {
          */
         SIGNATURE,
     }
-    /**
-     * Flags used for importing.
-     */
 
     /**
      * Flags used for importing.
+     * @gir-type Enum
      */
-    export namespace ImportFlags {
-        export const $gtype: GObject.GType<ImportFlags>;
-    }
-
     enum ImportFlags {
         /**
          * No flags set
          */
         NONE,
     }
+
     /**
      * The compile-time major version
+     * @since 0.1.0
      */
     const MAJOR_VERSION: number;
     /**
      * The compile-time micro version
+     * @since 0.1.0
      */
     const MICRO_VERSION: number;
     /**
      * The compile-time minor version
+     * @since 0.1.0
      */
     const MINOR_VERSION: number;
     /**
      * Gets the JCat installed runtime version.
      * @returns a version number, e.g. "0.1.11"
+     * @since 0.1.11
      */
     function version_string(): string;
     /**
      * Flags used when creating the blob.
+     * @gir-type Flags
      */
-
-    /**
-     * Flags used when creating the blob.
-     */
-    export namespace BlobFlags {
-        export const $gtype: GObject.GType<BlobFlags>;
-    }
-
     enum BlobFlags {
         /**
          * Generic binary data
@@ -158,17 +141,11 @@ export namespace Jcat {
          */
         IS_UTF8,
     }
-    /**
-     * Flags used for exporting.
-     */
 
     /**
      * Flags used for exporting.
+     * @gir-type Flags
      */
-    export namespace ExportFlags {
-        export const $gtype: GObject.GType<ExportFlags>;
-    }
-
     enum ExportFlags {
         /**
          * No flags set
@@ -179,17 +156,11 @@ export namespace Jcat {
          */
         NO_TIMESTAMP,
     }
-    /**
-     * The flags to when signing a binary
-     */
 
     /**
      * The flags to when signing a binary
+     * @gir-type Flags
      */
-    export namespace SignFlags {
-        export const $gtype: GObject.GType<SignFlags>;
-    }
-
     enum SignFlags {
         /**
          * No flags set
@@ -203,18 +174,16 @@ export namespace Jcat {
          * Add a certificate
          */
         ADD_CERT,
-    }
-    /**
-     * The flags to use when interacting with a keyring
-     */
-
-    /**
-     * The flags to use when interacting with a keyring
-     */
-    export namespace VerifyFlags {
-        export const $gtype: GObject.GType<VerifyFlags>;
+        /**
+         * Use post-quantum algorithm
+         */
+        USE_PQ,
     }
 
+    /**
+     * The flags to use when interacting with a keyring
+     * @gir-type Flags
+     */
     enum VerifyFlags {
         /**
          * No flags set
@@ -232,7 +201,12 @@ export namespace Jcat {
          * Require the item contains at least one signature
          */
         REQUIRE_SIGNATURE,
+        /**
+         * Only consider post-quantum signatures
+         */
+        ONLY_PQ,
     }
+
     namespace Blob {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -242,6 +216,9 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
 
@@ -268,16 +245,19 @@ export namespace Jcat {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Blob.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Blob.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Blob.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Blob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -293,12 +273,12 @@ export namespace Jcat {
         static kind_from_string(kind: string): BlobKind;
         /**
          * Converts the enumerated kind to the normal file extension.
-         * @param kind #JcatBlobKind
+         * @param kind {@link Jcat.BlobKind}
          */
         static kind_to_filename_ext(kind: BlobKind): string;
         /**
          * Converts the enumerated kind to a string.
-         * @param kind #JcatBlobKind
+         * @param kind {@link Jcat.BlobKind}
          */
         static kind_to_string(kind: BlobKind): string;
 
@@ -306,14 +286,17 @@ export namespace Jcat {
 
         /**
          * Gets the optional AppStream ID for the blob.
-         * @returns a string, or %NULL if not set
+         * @returns a string, or `null` if not set
          */
         get_appstream_id(): string;
         /**
          * Gets the data stored in the blob, typically in binary (unprintable) form.
-         * @returns a #GBytes, or %NULL if the filename was not found
+         * @returns a {@link GLib.Bytes}, or `null` if the filename was not found
          */
         get_data(): GLib.Bytes;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
@@ -323,12 +306,12 @@ export namespace Jcat {
         get_data_as_string(): string;
         /**
          * gets the blob kind
-         * @returns #JcatBlobKind, e.g. %JCAT_BLOB_KIND_SHA256
+         * @returns {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          */
         get_kind(): BlobKind;
         /**
          * Gets the blob target.
-         * @returns #JcatBlobKind, e.g. %JCAT_BLOB_KIND_SHA256
+         * @returns {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          */
         get_target(): BlobKind;
         /**
@@ -340,19 +323,19 @@ export namespace Jcat {
          * Sets an optional AppStream ID on the blob.
          * @param appstream_id string
          */
-        set_appstream_id(appstream_id?: string | null): void;
+        set_appstream_id(appstream_id: string | null): void;
         /**
          * Sets the blob target.
-         * @param target a #JcatBlobKind, e.g. %JCAT_BLOB_KIND_SHA256
+         * @param target a {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          */
-        set_target(target: BlobKind | null): void;
+        set_target(target: BlobKind): void;
         /**
          * Sets the creation timestamp for the blob.
          * @param timestamp UTC timestamp
          */
-        set_timestamp(timestamp: number): void;
+        set_timestamp(timestamp: bigint | number): void;
         /**
-         * Converts the #JcatBlob to a string.
+         * Converts the {@link Jcat.Blob} to a string.
          * @returns string
          */
         to_string(): string;
@@ -367,6 +350,9 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BtCheckpoint extends GObject.Object {
         static $gtype: GObject.GType<BtCheckpoint>;
 
@@ -389,16 +375,19 @@ export namespace Jcat {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BtCheckpoint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BtCheckpoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BtCheckpoint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BtCheckpoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BtCheckpoint.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BtCheckpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -410,12 +399,12 @@ export namespace Jcat {
         /**
          * Gets the first 4 bytes of the SHA256 hash of the associated public key to act as a hint in
          * identifying the correct key to verify with.
-         * @returns string, or %NULL
+         * @returns string, or `null`
          */
         get_hash(): string;
         /**
          * Gets a human-readable representation of the signing ID.
-         * @returns string, or %NULL
+         * @returns string, or `null`
          */
         get_identity(): string;
         /**
@@ -425,26 +414,26 @@ export namespace Jcat {
         get_log_size(): number;
         /**
          * Gets the unique identifier for the log identity which issued the checkpoint.
-         * @returns string, or %NULL
+         * @returns string, or `null`
          */
         get_origin(): string;
         /**
          * Gets the ED25519 public key blob.
-         * @returns blob, or %NULL
+         * @returns blob, or `null`
          */
         get_payload(): GLib.Bytes;
         /**
          * Gets the ED25519 public key blob.
-         * @returns blob, or %NULL
+         * @returns blob, or `null`
          */
         get_pubkey(): GLib.Bytes;
         /**
          * Gets the ED25519 public key blob.
-         * @returns blob, or %NULL
+         * @returns blob, or `null`
          */
         get_signature(): GLib.Bytes;
         /**
-         * Converts the #JcatBtCheckpoint to a string.
+         * Converts the {@link Jcat.BtCheckpoint} to a string.
          * @returns string
          */
         to_string(): string;
@@ -459,6 +448,9 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BtVerifier extends GObject.Object {
         static $gtype: GObject.GType<BtVerifier>;
 
@@ -481,16 +473,19 @@ export namespace Jcat {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BtVerifier.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BtVerifier.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BtVerifier.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BtVerifier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BtVerifier.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BtVerifier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -506,21 +501,21 @@ export namespace Jcat {
         get_alg(): number;
         /**
          * Gets the hash.
-         * @returns string, or %NULL
+         * @returns string, or `null`
          */
         get_hash(): string;
         /**
          * Gets the ED25519 public key blob.
-         * @returns blob, or %NULL
+         * @returns blob, or `null`
          */
         get_key(): GLib.Bytes;
         /**
          * Gets the name.
-         * @returns string, or %NULL
+         * @returns string, or `null`
          */
         get_name(): string;
         /**
-         * Converts the #JcatBtVerifier to a string.
+         * Converts the {@link Jcat.BtVerifier} to a string.
          * @returns string
          */
         to_string(): string;
@@ -535,6 +530,9 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
@@ -557,16 +555,19 @@ export namespace Jcat {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -588,24 +589,24 @@ export namespace Jcat {
         /**
          * Adds a blob kind to the allowlist. By default, JCat will use all signature and checksum schemes
          * compiled in at build time. Once this function has been called only specific blob kinds will be
-         * used in functions like jcat_context_verify_blob().
-         * @param kind #JcatBlobKind, e.g. %JCAT_BLOB_KIND_GPG
+         * used in functions like `jcat_context_verify_blob()`.
+         * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.GPG}
          */
-        blob_kind_allow(kind: BlobKind | null): void;
+        blob_kind_allow(kind: BlobKind): void;
         /**
          * Removes a blob kind from the allowlist. By default, JCat will use all signature and checksum
          * schemes compiled in at build time. Once this function has been called this `kind` will not be
-         * used in functions like jcat_context_verify_blob().
-         * @param kind #JcatBlobKind, e.g. %JCAT_BLOB_KIND_GPG
+         * used in functions like `jcat_context_verify_blob()`.
+         * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.GPG}
          */
-        blob_kind_disallow(kind: BlobKind | null): void;
+        blob_kind_disallow(kind: BlobKind): void;
         /**
          * Gets the engine for a specific engine kind, setting up the context
          * automatically if required.
-         * @param kind #JcatBlobKind, e.g. %JCAT_BLOB_KIND_GPG
-         * @returns #JcatEngine, or %NULL for unavailable
+         * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.GPG}
+         * @returns {@link Jcat.Engine}, or `null` for unavailable
          */
-        get_engine(kind: BlobKind | null): Engine;
+        get_engine(kind: BlobKind): Engine;
         /**
          * Gets the local state directory the engines are using.
          * @returns path
@@ -617,32 +618,32 @@ export namespace Jcat {
          */
         set_keyring_path(path: string): void;
         /**
-         * Verifies a #JcatBlob using the public keys added to the context.
-         * @param data #GBytes
-         * @param blob #JcatBlob
-         * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
-         * @returns #JcatResult, or %NULL for failed
+         * Verifies a {@link Jcat.Blob} using the public keys added to the context.
+         * @param data {@link GLib.Bytes}
+         * @param blob {@link Jcat.Blob}
+         * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
+         * @returns {@link Jcat.Result}, or `null` for failed
          */
-        verify_blob(data: GLib.Bytes | Uint8Array, blob: Blob, flags: VerifyFlags | null): Result;
+        verify_blob(data: GLib.Bytes | Uint8Array, blob: Blob, flags: VerifyFlags): Result;
         /**
-         * Verifies a #JcatItem using the public keys added to the context. All
+         * Verifies a {@link Jcat.Item} using the public keys added to the context. All
          * `verify=CHECKSUM` engines (e.g. SHA256) must verify correctly,
          * but only one non-checksum signature has to verify.
-         * @param data #GBytes
-         * @param item #JcatItem
-         * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_REQUIRE_SIGNATURE
-         * @returns array of #JcatResult, or %NULL for failed
+         * @param data {@link GLib.Bytes}
+         * @param item {@link Jcat.Item}
+         * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.REQUIRE_SIGNATURE}
+         * @returns array of {@link Jcat.Result}, or `null` for failed
          */
-        verify_item(data: GLib.Bytes | Uint8Array, item: Item, flags: VerifyFlags | null): Result[];
+        verify_item(data: GLib.Bytes | Uint8Array, item: Item, flags: VerifyFlags): Result[];
         /**
-         * Verifies a #JcatItem using the target to an item. At least one `verify=CHECKSUM` (e.g. SHA256)
+         * Verifies a {@link Jcat.Item} using the target to an item. At least one `verify=CHECKSUM` (e.g. SHA256)
          * must exist and all checksum types that do exist must verify correctly.
-         * @param item_target #JcatItem containing checksums of the data
-         * @param item #JcatItem
-         * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_REQUIRE_SIGNATURE
-         * @returns results, or %NULL for failed
+         * @param item_target {@link Jcat.Item} containing checksums of the data
+         * @param item {@link Jcat.Item}
+         * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.REQUIRE_SIGNATURE}
+         * @returns results, or `null` for failed
          */
-        verify_target(item_target: Item, item: Item, flags: VerifyFlags | null): Result[];
+        verify_target(item_target: Item, item: Item, flags: VerifyFlags): Result[];
     }
 
     namespace Engine {
@@ -665,15 +666,37 @@ export namespace Jcat {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): Context;
+        /**
+         * @construct-only
+         * @default 0
+         */
         get kind(): number;
+        /**
+         * @construct-only
+         * @default 0
+         */
         get method(): number;
+        /**
+         * @read-only
+         * @default 0
+         */
         get verify_kind(): number;
+        /**
+         * @read-only
+         * @default 0
+         */
         get verifyKind(): number;
 
         /**
@@ -693,16 +716,19 @@ export namespace Jcat {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Engine.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Engine.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Engine.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -711,20 +737,81 @@ export namespace Jcat {
 
         // Virtual methods
 
+        /**
+         * @param filename
+         * @virtual
+         */
         vfunc_add_public_key(filename: string): boolean;
         /**
          * Adds a public key manually.
-         * @param blob #GBytes
+         * @param blob {@link GLib.Bytes}
+         * @virtual
          */
-        vfunc_add_public_key_raw(blob: GLib.Bytes | Uint8Array): boolean;
+        vfunc_add_public_key_raw(blob: GLib.Bytes): boolean;
         /**
          * Signs a chunk of data.
-         * @param blob #GBytes
-         * @param cert #GBytes
-         * @param privkey #GBytes
-         * @param flags #JcatSignFlags, e.g. %JCAT_SIGN_FLAG_ADD_TIMESTAMP
+         * @param blob {@link GLib.Bytes}
+         * @param cert {@link GLib.Bytes}
+         * @param privkey {@link GLib.Bytes}
+         * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
+         * @virtual
          */
-        vfunc_pubkey_sign(
+        vfunc_pubkey_sign(blob: GLib.Bytes, cert: GLib.Bytes, privkey: GLib.Bytes, flags: SignFlags): Blob;
+        /**
+         * Verifies a chunk of data.
+         * @param blob {@link GLib.Bytes}
+         * @param blob_signature {@link GLib.Bytes}
+         * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
+         * @virtual
+         */
+        vfunc_pubkey_verify(blob: GLib.Bytes, blob_signature: GLib.Bytes, flags: VerifyFlags): Result;
+        /**
+         * Signs a chunk of data.
+         * @param blob {@link GLib.Bytes}
+         * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
+         * @virtual
+         */
+        vfunc_self_sign(blob: GLib.Bytes, flags: SignFlags): Blob;
+        /**
+         * Verifies a chunk of data.
+         * @param blob {@link GLib.Bytes}
+         * @param blob_signature {@link GLib.Bytes}
+         * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
+         * @virtual
+         */
+        vfunc_self_verify(blob: GLib.Bytes, blob_signature: GLib.Bytes, flags: VerifyFlags): Result;
+        /**
+         * @virtual
+         */
+        vfunc_setup(): boolean;
+
+        // Methods
+
+        /**
+         * Adds a public key manually.
+         * @param blob {@link GLib.Bytes}
+         * @returns %
+         */
+        add_public_key_raw(blob: GLib.Bytes | Uint8Array): boolean;
+        /**
+         * Gets the blob kind.
+         * @returns {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
+         */
+        get_kind(): BlobKind;
+        /**
+         * Gets the verification method.
+         * @returns {@link Jcat.BlobMethod}, e.g. {@link Jcat.BlobMethod.SIGNATURE}
+         */
+        get_method(): BlobMethod;
+        /**
+         * Signs a chunk of data.
+         * @param blob {@link GLib.Bytes}
+         * @param cert {@link GLib.Bytes}
+         * @param privkey {@link GLib.Bytes}
+         * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
+         * @returns {@link Jcat.Blob}, or `null` for failed
+         */
+        pubkey_sign(
             blob: GLib.Bytes | Uint8Array,
             cert: GLib.Bytes | Uint8Array,
             privkey: GLib.Bytes | Uint8Array,
@@ -732,97 +819,31 @@ export namespace Jcat {
         ): Blob;
         /**
          * Verifies a chunk of data.
-         * @param blob #GBytes
-         * @param blob_signature #GBytes
-         * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
-         */
-        vfunc_pubkey_verify(
-            blob: GLib.Bytes | Uint8Array,
-            blob_signature: GLib.Bytes | Uint8Array,
-            flags: VerifyFlags,
-        ): Result;
-        /**
-         * Signs a chunk of data.
-         * @param blob #GBytes
-         * @param flags #JcatSignFlags, e.g. %JCAT_SIGN_FLAG_ADD_TIMESTAMP
-         */
-        vfunc_self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
-        /**
-         * Verifies a chunk of data.
-         * @param blob #GBytes
-         * @param blob_signature #GBytes
-         * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
-         */
-        vfunc_self_verify(
-            blob: GLib.Bytes | Uint8Array,
-            blob_signature: GLib.Bytes | Uint8Array,
-            flags: VerifyFlags,
-        ): Result;
-        vfunc_setup(): boolean;
-
-        // Methods
-
-        /**
-         * Adds a public key manually.
-         * @param blob #GBytes
-         * @returns %
-         */
-        add_public_key_raw(blob: GLib.Bytes | Uint8Array): boolean;
-        /**
-         * Gets the blob kind.
-         * @returns #JcatBlobKind, e.g. %JCAT_BLOB_KIND_SHA256
-         */
-        get_kind(): BlobKind;
-        /**
-         * Gets the verification method.
-         * @returns #JcatBlobMethod, e.g. %JCAT_BLOB_METHOD_SIGNATURE
-         */
-        get_method(): BlobMethod;
-        /**
-         * Signs a chunk of data.
-         * @param blob #GBytes
-         * @param cert #GBytes
-         * @param privkey #GBytes
-         * @param flags #JcatSignFlags, e.g. %JCAT_SIGN_FLAG_ADD_TIMESTAMP
-         * @returns #JcatBlob, or %NULL for failed
-         */
-        pubkey_sign(
-            blob: GLib.Bytes | Uint8Array,
-            cert: GLib.Bytes | Uint8Array,
-            privkey: GLib.Bytes | Uint8Array,
-            flags: SignFlags | null,
-        ): Blob;
-        /**
-         * Verifies a chunk of data.
-         * @param blob #GBytes
-         * @param blob_signature #GBytes
-         * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
-         * @returns #JcatResult, or %NULL for failed
+         * @param blob {@link GLib.Bytes}
+         * @param blob_signature {@link GLib.Bytes}
+         * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
+         * @returns {@link Jcat.Result}, or `null` for failed
          */
         pubkey_verify(
             blob: GLib.Bytes | Uint8Array,
             blob_signature: GLib.Bytes | Uint8Array,
-            flags: VerifyFlags | null,
+            flags: VerifyFlags,
         ): Result;
         /**
          * Signs a chunk of data.
-         * @param blob #GBytes
-         * @param flags #JcatSignFlags, e.g. %JCAT_SIGN_FLAG_ADD_TIMESTAMP
-         * @returns #JcatBlob, or %NULL for failed
+         * @param blob {@link GLib.Bytes}
+         * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
+         * @returns {@link Jcat.Blob}, or `null` for failed
          */
-        self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags | null): Blob;
+        self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
         /**
          * Verifies a chunk of data.
-         * @param blob #GBytes
-         * @param blob_signature #GBytes
-         * @param flags #JcatVerifyFlags, e.g. %JCAT_VERIFY_FLAG_DISABLE_TIME_CHECKS
-         * @returns #JcatResult, or %NULL for failed
+         * @param blob {@link GLib.Bytes}
+         * @param blob_signature {@link GLib.Bytes}
+         * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
+         * @returns {@link Jcat.Result}, or `null` for failed
          */
-        self_verify(
-            blob: GLib.Bytes | Uint8Array,
-            blob_signature: GLib.Bytes | Uint8Array,
-            flags: VerifyFlags | null,
-        ): Result;
+        self_verify(blob: GLib.Bytes | Uint8Array, blob_signature: GLib.Bytes | Uint8Array, flags: VerifyFlags): Result;
     }
 
     namespace File {
@@ -834,6 +855,9 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
 
@@ -856,16 +880,19 @@ export namespace Jcat {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof File.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof File.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof File.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -876,45 +903,41 @@ export namespace Jcat {
 
         /**
          * Adds an item to a file.
-         * @param item #JcatItem
+         * @param item {@link Jcat.Item}
          */
         add_item(item: Item): void;
         /**
          * Exports a Jcat file to a compressed file.
          * @param gfile #gfile
-         * @param flags a #JcatExportFlags, typically %JCAT_EXPORT_FLAG_NONE
-         * @param cancellable #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param flags a {@link Jcat.ExportFlags}, typically {@link Jcat.ExportFlags.NONE}
+         * @param cancellable {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
-        export_file(gfile: Gio.File, flags: ExportFlags | null, cancellable?: Gio.Cancellable | null): boolean;
+        export_file(gfile: Gio.File, flags: ExportFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Exports a Jcat file to raw JSON.
-         * @param flags a #JcatExportFlags, typically %JCAT_EXPORT_FLAG_NONE
-         * @returns JSON output, or %NULL for error
+         * @param flags a {@link Jcat.ExportFlags}, typically {@link Jcat.ExportFlags.NONE}
+         * @returns JSON output, or `null` for error
          */
-        export_json(flags: ExportFlags | null): string;
+        export_json(flags: ExportFlags): string;
         /**
          * Exports a Jcat file to a compressed stream.
-         * @param ostream #GOutputStream
-         * @param flags a #JcatExportFlags, typically %JCAT_EXPORT_FLAG_NONE
-         * @param cancellable #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param ostream {@link Gio.OutputStream}
+         * @param flags a {@link Jcat.ExportFlags}, typically {@link Jcat.ExportFlags.NONE}
+         * @param cancellable {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
-        export_stream(
-            ostream: Gio.OutputStream,
-            flags: ExportFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
+        export_stream(ostream: Gio.OutputStream, flags: ExportFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Finds the item with the specified ID, falling back to the ID alias if set.
          * @param id An ID, typically a filename basename
-         * @returns a #JcatItem, or %NULL if the filename was not found
+         * @returns a {@link Jcat.Item}, or `null` if the filename was not found
          */
         get_item_by_id(id: string): Item;
         /**
-         * Finds the default item. If more than one #JcatItem exists this function will
+         * Finds the default item. If more than one {@link Jcat.Item} exists this function will
          * return with an error.
-         * @returns a #JcatItem, or %NULL if no default exists
+         * @returns a {@link Jcat.Item}, or `null` if no default exists
          */
         get_item_default(): Item;
         /**
@@ -935,32 +958,28 @@ export namespace Jcat {
         /**
          * Imports a compressed Jcat file from an input stream.
          * @param gfile #gfile
-         * @param flags #JcatImportFlags, typically %JCAT_IMPORT_FLAG_NONE
-         * @param cancellable #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param flags {@link Jcat.ImportFlags}, typically {@link Jcat.ImportFlags.NONE}
+         * @param cancellable {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
-        import_file(gfile: Gio.File, flags: ImportFlags | null, cancellable?: Gio.Cancellable | null): boolean;
+        import_file(gfile: Gio.File, flags: ImportFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
          * Imports a Jcat file from raw JSON.
          * @param json JSON data
-         * @param flags #JcatImportFlags, typically %JCAT_IMPORT_FLAG_NONE
-         * @returns %TRUE for success
+         * @param flags {@link Jcat.ImportFlags}, typically {@link Jcat.ImportFlags.NONE}
+         * @returns `true` for success
          */
-        import_json(json: string, flags: ImportFlags | null): boolean;
+        import_json(json: string, flags: ImportFlags): boolean;
         /**
          * Imports a compressed Jcat file from a file.
-         * @param istream #GInputStream
-         * @param flags #JcatImportFlags, typically %JCAT_IMPORT_FLAG_NONE
-         * @param cancellable #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param istream {@link Gio.InputStream}
+         * @param flags {@link Jcat.ImportFlags}, typically {@link Jcat.ImportFlags.NONE}
+         * @param cancellable {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
-        import_stream(
-            istream: Gio.InputStream,
-            flags: ImportFlags | null,
-            cancellable?: Gio.Cancellable | null,
-        ): boolean;
+        import_stream(istream: Gio.InputStream, flags: ImportFlags, cancellable: Gio.Cancellable | null): boolean;
         /**
-         * Converts the #JcatFile to a string.
+         * Converts the {@link Jcat.File} to a string.
          * @returns string
          */
         to_string(): string;
@@ -975,6 +994,9 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
 
@@ -997,16 +1019,19 @@ export namespace Jcat {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1017,13 +1042,13 @@ export namespace Jcat {
 
         /**
          * Adds an item alias ID. Alias IDs are matched when using functions such as
-         * jcat_file_get_item_by_id().
+         * `jcat_file_get_item_by_id()`.
          * @param id An item ID alias, typically a file basename
          */
         add_alias_id(id: string): void;
         /**
          * Adds a new blob to the item.
-         * @param blob #JcatBlob
+         * @param blob {@link Jcat.Blob}
          */
         add_blob(blob: Blob): void;
         /**
@@ -1033,10 +1058,10 @@ export namespace Jcat {
         get_alias_ids(): string[];
         /**
          * Gets the item blobs by a specific kind.
-         * @param kind #JcatBlobKind, e.g. %JCAT_BLOB_KIND_SHA256
-         * @returns a blob, or %NULL
+         * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
+         * @returns a blob, or `null`
          */
-        get_blob_by_kind(kind: BlobKind | null): Blob;
+        get_blob_by_kind(kind: BlobKind): Blob;
         /**
          * Gets all the blobs for this item.
          * @returns blobs
@@ -1044,10 +1069,10 @@ export namespace Jcat {
         get_blobs(): Blob[];
         /**
          * Gets the item blobs by a specific kind.
-         * @param kind #JcatBlobKind, e.g. %JCAT_BLOB_KIND_SHA256
+         * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          * @returns blobs
          */
-        get_blobs_by_kind(kind: BlobKind | null): Blob[];
+        get_blobs_by_kind(kind: BlobKind): Blob[];
         /**
          * Returns the item ID.
          * @returns string
@@ -1056,8 +1081,8 @@ export namespace Jcat {
         /**
          * Finds out if any of the blobs are targeting an internal checksum.
          * If this returns with success then the caller might be able to use functions like
-         * jcat_context_verify_target() supplying some target checksums.
-         * @returns %TRUE on success
+         * `jcat_context_verify_target()` supplying some target checksums.
+         * @returns `true` on success
          */
         has_target(): boolean;
         /**
@@ -1066,7 +1091,7 @@ export namespace Jcat {
          */
         remove_alias_id(id: string): void;
         /**
-         * Converts the #JcatItem to a string.
+         * Converts the {@link Jcat.Item} to a string.
          * @returns string
          */
         to_string(): string;
@@ -1085,20 +1110,32 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             authority: string;
             engine: Engine;
-            timestamp: number;
+            timestamp: bigint | number;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
 
         // Properties
 
+        /**
+         * @default null
+         */
         get authority(): string;
         set authority(val: string);
+        /**
+         * @construct-only
+         */
         get engine(): Engine;
+        /**
+         * @default 0
+         */
         get timestamp(): number;
-        set timestamp(val: number);
+        set timestamp(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1117,16 +1154,19 @@ export namespace Jcat {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Result.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Result.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Result.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Result.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1137,17 +1177,17 @@ export namespace Jcat {
 
         /**
          * Gets the signing authority, if set.
-         * @returns string, or %NULL
+         * @returns string, or `null`
          */
         get_authority(): string;
         /**
          * Gets the blob kind.
-         * @returns #JcatBlobKind, e.g. %JCAT_BLOB_KIND_SHA256
+         * @returns {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          */
         get_kind(): BlobKind;
         /**
          * Gets the verification kind.
-         * @returns #JcatBlobMethod, e.g. %JCAT_BLOB_METHOD_SIGNATURE
+         * @returns {@link Jcat.BlobMethod}, e.g. {@link Jcat.BlobMethod.SIGNATURE}
          */
         get_method(): BlobMethod;
         /**
@@ -1156,19 +1196,43 @@ export namespace Jcat {
          */
         get_timestamp(): number;
         /**
-         * Converts the #JcatResult to a string.
+         * Converts the {@link Jcat.Result} to a string.
          * @returns string
          */
         to_string(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BlobClass = typeof Blob;
+    /**
+     * @gir-type Alias
+     */
     type BtCheckpointClass = typeof BtCheckpoint;
+    /**
+     * @gir-type Alias
+     */
     type BtVerifierClass = typeof BtVerifier;
+    /**
+     * @gir-type Alias
+     */
     type ContextClass = typeof Context;
+    /**
+     * @gir-type Alias
+     */
     type EngineClass = typeof Engine;
+    /**
+     * @gir-type Alias
+     */
     type FileClass = typeof File;
+    /**
+     * @gir-type Alias
+     */
     type ItemClass = typeof Item;
+    /**
+     * @gir-type Alias
+     */
     type ResultClass = typeof Result;
     /**
      * Name of the imported GIR library

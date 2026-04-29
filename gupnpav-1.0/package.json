@@ -1,54 +1,60 @@
 {
     "name": "@girs/gupnpav-1.0",
-    "version": "1.0.0-4.0.0-beta.38",
+    "version": "1.0.0-4.0.0-rc.6",
     "description": "GJS TypeScript type definitions for GUPnPAV-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gupnpav-1.0.js",
     "main": "gupnpav-1.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./gupnpav-1.0-ambient.d.ts",
-        "import": "./gupnpav-1.0-ambient.js",
-        "default": "./gupnpav-1.0-ambient.js"
-      },
-      "./import": {
-        "types": "./gupnpav-1.0-import.d.ts",
-        "import": "./gupnpav-1.0-import.js",
-        "default": "./gupnpav-1.0-import.js"
-      },
-      "./gupnpav-1.0": {
-        "types": "./gupnpav-1.0.d.ts",
-        "import": "./gupnpav-1.0.js",
-        "default": "./gupnpav-1.0.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./gupnpav-1.0-ambient.d.ts",
+            "import": "./gupnpav-1.0-ambient.js",
+            "default": "./gupnpav-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gupnpav-1.0-import.d.ts",
+            "import": "./gupnpav-1.0-import.js",
+            "default": "./gupnpav-1.0-import.js"
+        },
+        "./gupnpav-1.0": {
+            "types": "./gupnpav-1.0.d.ts",
+            "import": "./gupnpav-1.0.js",
+            "default": "./gupnpav-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GUPnPAV-1.0"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GUPnPAV-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gupnpav-1.0#readme"
 }
-
-

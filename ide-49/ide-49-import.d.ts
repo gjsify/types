@@ -1,9 +1,1 @@
-import type Ide49 from '@girs/ide-49';
-
-declare global {
-    export interface GjsGiImports {
-        Ide: typeof Ide49;
-    }
-}
-
-export default GjsGiImports;
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Ide"

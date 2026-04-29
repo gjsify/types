@@ -2,6 +2,8 @@
     "entryPoints": ["./telepathylogger-0.2.d.ts"],
     "readme": "./README.md",
     "name": "TelepathyLogger-0.2",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

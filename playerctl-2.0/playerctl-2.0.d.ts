@@ -19,16 +19,16 @@ export namespace Playerctl {
      */
 
     /**
-     * Loop status enumeration for a #PlayerctlPlayer
-     */
-
-    /**
-     * Loop status enumeration for a #PlayerctlPlayer
+     * @gir-type Enum
      */
     export namespace LoopStatus {
         export const $gtype: GObject.GType<LoopStatus>;
     }
 
+    /**
+     * Loop status enumeration for a {@link Playerctl.Player}
+     * @gir-type Enum
+     */
     enum LoopStatus {
         /**
          * The playback will stop when there are no more tracks to play.
@@ -44,17 +44,18 @@ export namespace Playerctl {
          */
         PLAYLIST,
     }
-    /**
-     * Playback status enumeration for a #PlayerctlPlayer
-     */
 
     /**
-     * Playback status enumeration for a #PlayerctlPlayer
+     * @gir-type Enum
      */
     export namespace PlaybackStatus {
         export const $gtype: GObject.GType<PlaybackStatus>;
     }
 
+    /**
+     * Playback status enumeration for a {@link Playerctl.Player}
+     * @gir-type Enum
+     */
     enum PlaybackStatus {
         /**
          * A track is currently playing.
@@ -69,17 +70,18 @@ export namespace Playerctl {
          */
         STOPPED,
     }
-    /**
-     * The source of the name used to control the player.
-     */
 
     /**
-     * The source of the name used to control the player.
+     * @gir-type Enum
      */
     export namespace Source {
         export const $gtype: GObject.GType<Source>;
     }
 
+    /**
+     * The source of the name used to control the player.
+     * @gir-type Enum
+     */
     enum Source {
         /**
          * Only for unitialized players. Source will be chosen automatically.
@@ -94,6 +96,7 @@ export namespace Playerctl {
          */
         DBUS_SYSTEM,
     }
+
     /**
      * Lists all the players that can be controlled by Playerctl.
      * @returns A list of player names.
@@ -102,15 +105,75 @@ export namespace Playerctl {
     namespace Player {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the player has disconnected and will no longer respond to
+             * queries and commands.
+             * @signal
+             * @run-first
+             */
             exit: () => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the metadata for the currently playing track changes.
+             * @signal
+             * @run-first
+             */
             metadata: (arg0: GLib.Variant) => void;
+            /**
+             * Emitted when the player pauses.
+             * @signal
+             * @deprecated since 2.0.0: Use the "playback-status::paused" signal instead.
+             * @run-first
+             */
             pause: () => void;
+            /**
+             * Emitted when the player begins to play.
+             * @signal
+             * @deprecated since 2.0.0: Use the "playback-status::playing" signal instead.
+             * @run-first
+             */
             play: () => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the track changes position unexpectedly or begins in a
+             * position other than the beginning. Otherwise, position is assumed to
+             * progress normally.
+             * @signal
+             * @run-first
+             */
             seeked: (arg0: number) => void;
+            /**
+             * Emitted when the shuffle status changes.
+             * @signal
+             * @run-first
+             */
             shuffle: (arg0: boolean) => void;
+            /**
+             * Emitted when the player stops.
+             * @signal
+             * @deprecated since 2.0.0: Use the "playback-status::stopped" signal instead.
+             * @run-first
+             */
             stop: () => void;
+            /**
+             * Emitted when the volume of the player changes.
+             * @signal
+             * @run-first
+             */
             volume: (arg0: number) => void;
             'notify::can-control': (pspec: GObject.ParamSpec) => void;
             'notify::can-go-next': (pspec: GObject.ParamSpec) => void;
@@ -128,38 +191,264 @@ export namespace Playerctl {
             'notify::source': (pspec: GObject.ParamSpec) => void;
             'notify::status': (pspec: GObject.ParamSpec) => void;
             'notify::volume': (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::can-control': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::can-go-next': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::can-go-previous': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::can-pause': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::can-play': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::can-seek': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::loop-status': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::metadata': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::playback-status': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::player-instance': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::player-name': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::position': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::shuffle': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::source': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::status': (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the loop status changes.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'loop-status::volume': (arg0: LoopStatus) => void;
+            [key: `loop-status::${string}`]: (arg0: LoopStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::can-control': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::can-go-next': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::can-go-previous': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::can-pause': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::can-play': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::can-seek': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::loop-status': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::metadata': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::playback-status': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::player-instance': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::player-name': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::position': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::shuffle': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::source': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::status': (arg0: PlaybackStatus) => void;
+            /**
+             * Emitted when the playback status changes. Detail will be "playing",
+             * "paused", or "stopped" which you can listen to by connecting to the
+             * "playback-status::[STATUS]" signal.
+             * @signal
+             * @detailed
+             * @run-first
+             */
             'playback-status::volume': (arg0: PlaybackStatus) => void;
+            [key: `playback-status::${string}`]: (arg0: PlaybackStatus) => void;
         }
 
         // Constructor properties interface
@@ -186,7 +475,7 @@ export namespace Playerctl {
             playerInstance: string;
             player_name: string;
             playerName: string;
-            position: number;
+            position: bigint | number;
             shuffle: boolean;
             source: Source;
             status: string;
@@ -194,39 +483,143 @@ export namespace Playerctl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Player extends GObject.Object {
         static $gtype: GObject.GType<Player>;
 
         // Properties
 
+        /**
+         * @read-only
+         * @default false
+         */
         get can_control(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get canControl(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get can_go_next(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get canGoNext(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get can_go_previous(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get canGoPrevious(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get can_pause(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get canPause(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get can_play(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get canPlay(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get can_seek(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get canSeek(): boolean;
+        /**
+         * @read-only
+         * @default Playerctl.LoopStatus.NONE
+         */
         get loop_status(): LoopStatus;
+        /**
+         * @read-only
+         * @default Playerctl.LoopStatus.NONE
+         */
         get loopStatus(): LoopStatus;
+        /**
+         * @read-only
+         */
         get metadata(): GLib.Variant;
+        /**
+         * @read-only
+         * @default Playerctl.PlaybackStatus.STOPPED
+         */
         get playback_status(): PlaybackStatus;
+        /**
+         * @read-only
+         * @default Playerctl.PlaybackStatus.STOPPED
+         */
         get playbackStatus(): PlaybackStatus;
+        /**
+         * @construct-only
+         * @default null
+         */
         get player_instance(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get playerInstance(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get player_name(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get playerName(): string;
+        /**
+         * @read-only
+         * @default 0
+         */
         get position(): number;
+        /**
+         * @read-only
+         * @default false
+         */
         get shuffle(): boolean;
+        /**
+         * @construct-only
+         * @default Playerctl.Source.NONE
+         */
         get source(): Source;
         /**
          * The playback status of the player as a string
+         * @deprecated since 2.0.0: Use the "playback-status" signal instead.
+         * @read-only
+         * @default null
          */
         get status(): string;
+        /**
+         * @default 0
+         */
         get volume(): number;
         set volume(val: number);
 
@@ -245,7 +638,7 @@ export namespace Playerctl {
 
         _init(...args: any[]): void;
 
-        static ['new'](player_name?: string | null): Player;
+        static ['new'](player_name: string | null): Player;
 
         static new_for_source(player_name: string | null, source: Source): Player;
 
@@ -253,16 +646,19 @@ export namespace Playerctl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Player.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Player.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Player.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Player.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Player.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -332,22 +728,22 @@ export namespace Playerctl {
          * @param property the property from the metadata to print
          * @returns The artist from the metadata of the current track
          */
-        print_metadata_prop(property?: string | null): string;
+        print_metadata_prop(property: string | null): string;
         /**
          * Command the player to seek forward by offset given in microseconds.
          * @param offset the offset to seek forward to in microseconds
          */
-        seek(offset: number): void;
+        seek(offset: bigint | number): void;
         /**
          * Set the loop status of the player. Can be set to either None, Track, or Playlist.
-         * @param status the requested #PlayerctlLoopStatus to set the player to
+         * @param status the requested {@link Playerctl.LoopStatus} to set the player to
          */
-        set_loop_status(status: LoopStatus | null): void;
+        set_loop_status(status: LoopStatus): void;
         /**
          * Sets the absolute position of the current track to the given position in microseconds.
          * @param position The absolute position in the track to set as the position
          */
-        set_position(position: number): void;
+        set_position(position: bigint | number): void;
         /**
          * Request to set the shuffle state of the player, either on or off.
          * @param shuffle whether to enable shuffle
@@ -368,9 +764,39 @@ export namespace Playerctl {
     namespace PlayerManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when a new name has appeared and is available to connect to. Use
+             * `playerctl_player_new_from_name()` to connect to the player and
+             * `playerctl_player_manager_manage_player()` to add it to the managed list of
+             * players.
+             * @signal
+             * @run-last
+             */
             'name-appeared': (arg0: PlayerName) => void;
+            /**
+             * Emitted when the name has vanished and is no longer available to be
+             * controlled by playerctl. If the player is managed, it will automatically
+             * be removed from the list of players and the
+             * {@link Playerctl.PlayerManager.SignalSignatures.player_vanished | Playerctl.PlayerManager::player-vanished} signal will be emitted
+             * automatically.
+             * @signal
+             * @run-first
+             */
             'name-vanished': (arg0: PlayerName) => void;
+            /**
+             * Emitted when a new player will be managed by this manager through a call
+             * to `playerctl_player_manager_manage_player()`.
+             * @signal
+             * @run-first
+             */
             'player-appeared': (arg0: Player) => void;
+            /**
+             * Emitted when a player has disconnected and will no longer be managed by
+             * this manager. The player is removed from the list of players
+             * automatically.
+             * @signal
+             * @run-first
+             */
             'player-vanished': (arg0: Player) => void;
             'notify::player-names': (pspec: GObject.ParamSpec) => void;
             'notify::players': (pspec: GObject.ParamSpec) => void;
@@ -385,6 +811,9 @@ export namespace Playerctl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PlayerManager extends GObject.Object {
         static $gtype: GObject.GType<PlayerManager>;
 
@@ -392,14 +821,17 @@ export namespace Playerctl {
 
         /**
          * A list of fully qualified player names that are currently available to control.
+         * @read-only
          */
         get player_names(): PlayerName[];
         /**
          * A list of fully qualified player names that are currently available to control.
+         * @read-only
          */
         get playerNames(): PlayerName[];
         /**
          * A list of players that are currently connected and managed by this class.
+         * @read-only
          */
         get players(): Player[];
 
@@ -422,16 +854,19 @@ export namespace Playerctl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PlayerManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlayerManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PlayerManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlayerManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlayerManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlayerManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -444,42 +879,48 @@ export namespace Playerctl {
          * Add the given player to the list of managed players. Takes a reference to
          * the player (so you can unref it after you call this function). The player
          * will automatically be unreffed and removed from the list of
-         * #PlayerctlPlayerManager:players when
-         * it disconnects and the #PlayerctlPlayerManager::player-vanished signal will
+         * {@link Playerctl.PlayerManager.players} when
+         * it disconnects and the {@link Playerctl.PlayerManager.SignalSignatures.player_vanished | Playerctl.PlayerManager::player-vanished} signal will
          * be emitted on the manager.
-         * @param player A #PlayerctlPlayer to manage
+         * @param player A {@link Playerctl.Player} to manage
          */
         manage_player(player: Player): void;
         /**
-         * Moves the player to the top of the list of #PlayerctlPlayerManager:players. If this manager has a
-         * sort function set with playerctl_player_manager_set_sort_func(), the list of
+         * Moves the player to the top of the list of {@link Playerctl.PlayerManager.players}. If this manager has a
+         * sort function set with `playerctl_player_manager_set_sort_func()`, the list of
          * players will be sorted afterward, but will be on top of equal players in the
          * sorted order.
-         * @param player A #PlayerctlPlayer in the list of #PlayerctlPlayerManager:players
+         * @param player A {@link Playerctl.Player} in the list of {@link Playerctl.PlayerManager.players}
          */
         move_player_to_top(player: Player): void;
         /**
-         * Keeps the #PlayerctlPlayerManager:players list of this manager in sorted order which is useful
+         * Keeps the {@link Playerctl.PlayerManager.players} list of this manager in sorted order which is useful
          * for using this list as a priority queue.
-         * @param sort_func The compare function to be used to sort the #PlayerctlPlayerManager:players.
+         * @param sort_func The compare function to be used to sort the {@link Playerctl.PlayerManager.players}.
          * @param notify A function to notify when the sort function will no longer be used.
          */
-        set_sort_func(sort_func: GLib.CompareDataFunc, notify?: GLib.DestroyNotify | null): void;
+        set_sort_func(sort_func: GLib.CompareDataFunc, notify: GLib.DestroyNotify | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlayerClass = typeof Player;
+    /**
+     * @gir-type Alias
+     */
     type PlayerManagerClass = typeof PlayerManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlayerManagerPrivate {
         static $gtype: GObject.GType<PlayerManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
      * Event container for when names of players appear or disapear as the
      * controllable media player applications open and close.
+     * @gir-type Struct
      */
     class PlayerName {
         static $gtype: GObject.GType<PlayerName>;
@@ -490,30 +931,25 @@ export namespace Playerctl {
         instance: string;
         source: Source;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         /**
          * Creates a dynamically allocated name name container as a copy of
          * `name`.
-         * @returns a newly-allocated copy of @name
+         * @returns a newly-allocated copy of `name`
          */
         copy(): PlayerName;
         /**
-         * Frees `name`. If `name` is %NULL, it simply returns.
+         * Frees `name`. If `name` is `null`, it simply returns.
          */
         free(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class PlayerPrivate {
         static $gtype: GObject.GType<PlayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

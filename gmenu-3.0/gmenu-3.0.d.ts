@@ -20,10 +20,9 @@ export namespace GMenu {
      * GMenu-3.0
      */
 
-    export namespace TreeItemType {
-        export const $gtype: GObject.GType<TreeItemType>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum TreeItemType {
         INVALID,
         DIRECTORY,
@@ -33,10 +32,16 @@ export namespace GMenu {
         ALIAS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TreeFlags {
         export const $gtype: GObject.GType<TreeFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum TreeFlags {
         NONE,
         INCLUDE_EXCLUDED,
@@ -46,9 +51,14 @@ export namespace GMenu {
         SORT_DISPLAY_NAME,
         INCLUDE_UNALLOCATED,
     }
+
     namespace Tree {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             changed: () => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
             'notify::menu-basename': (pspec: GObject.ParamSpec) => void;
@@ -66,6 +76,9 @@ export namespace GMenu {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
 
@@ -73,28 +86,38 @@ export namespace GMenu {
 
         /**
          * Flags controlling the content of the menu.
+         * @construct-only
+         * @default GMenu.TreeFlags.NONE
          */
         get flags(): TreeFlags;
         /**
          * The name of the menu file; must be a basename or a relative path. The file
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
+         * @construct-only
+         * @default applications.menu
          */
         get menu_basename(): string;
         /**
          * The name of the menu file; must be a basename or a relative path. The file
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
+         * @construct-only
+         * @default applications.menu
          */
         get menuBasename(): string;
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
+         * @construct-only
+         * @default null
          */
         get menu_path(): string;
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
+         * @construct-only
+         * @default null
          */
         get menuPath(): string;
 
@@ -119,16 +142,19 @@ export namespace GMenu {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tree.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tree.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tree.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -137,27 +163,36 @@ export namespace GMenu {
 
         // Static methods
 
-        static item_ref(item?: any | null): any | null;
-        static item_unref(item?: any | null): void;
+        /**
+         * @param item a `GMenuTreeItem`
+         */
+        static item_ref(item: any | null): any | null;
+        /**
+         * @param item
+         */
+        static item_unref(item: any | null): void;
 
         // Methods
 
         /**
          * This function is only available if the tree has been loaded via
-         * gmenu_tree_load_sync() or a variant thereof.
+         * `gmenu_tree_load_sync()` or a variant thereof.
          * @returns The absolute and canonicalized path to the loaded menu file
          */
         get_canonical_menu_path(): string;
+        /**
+         * @param path
+         */
         get_directory_from_path(path: string): TreeDirectory;
         /**
          * Look up the entry corresponding to the given "desktop file id".
          * @param id a desktop file ID
-         * @returns A newly referenced #GMenuTreeEntry, or %NULL if none
+         * @returns A newly referenced {@link GMenu.TreeEntry}, or `null` if none
          */
         get_entry_by_id(id: string): TreeEntry;
         /**
          * Get the root directory; you must have loaded the tree first (at
-         * least once) via gmenu_tree_load_sync() or a variant thereof.
+         * least once) via `gmenu_tree_load_sync()` or a variant thereof.
          * @returns Root of the tree
          */
         get_root_directory(): TreeDirectory;
@@ -165,39 +200,49 @@ export namespace GMenu {
          * Synchronously load the menu contents.  This function
          * performs a significant amount of blocking I/O if the
          * tree has not been loaded yet.
-         * @returns %TRUE on success, %FALSE on error
+         * @returns `true` on success, `false` on error
          */
         load_sync(): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeAlias {
         static $gtype: GObject.GType<TreeAlias>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
+        /**
+         * @returns The aliased directory entry
+         */
         get_aliased_directory(): TreeDirectory;
+        /**
+         * @returns The aliased entry
+         */
         get_aliased_entry(): TreeEntry;
         get_aliased_item_type(): TreeItemType;
         get_directory(): TreeDirectory;
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeAlias.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a {@link GMenu.TreeAlias}.
+         * @returns The {@link GMenu.Tree}
          */
         get_tree(): Tree;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TreeClass = typeof Tree;
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeDirectory {
         static $gtype: GObject.GType<TreeDirectory>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -206,123 +251,148 @@ export namespace GMenu {
         get_generic_name(): string;
         /**
          * Gets the icon for the directory.
-         * @returns The #GIcon for this directory
+         * @returns The {@link Gio.Icon} for this directory
          */
         get_icon(): Gio.Icon;
         get_is_nodisplay(): boolean;
         get_menu_id(): string;
         get_name(): string;
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeItem.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a `GMenuTreeItem`.
+         * @returns The {@link GMenu.Tree}
          */
         get_tree(): Tree;
+        /**
+         * @returns A new iterator over the directory contents
+         */
         iter(): TreeIter;
+        /**
+         * @param entry
+         */
         make_path(entry: TreeEntry): string;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeEntry {
         static $gtype: GObject.GType<TreeEntry>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
-        get_app_info(): Gio.DesktopAppInfo;
+        /**
+         * @returns The `GDesktopAppInfo` for this entry
+         */
+        get_app_info(): never;
         get_desktop_file_id(): string;
         get_desktop_file_path(): string;
         get_is_excluded(): boolean;
         get_is_nodisplay_recurse(): boolean;
         get_is_unallocated(): boolean;
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeEntry.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a {@link GMenu.TreeEntry}.
+         * @returns The {@link GMenu.Tree}
          */
         get_tree(): Tree;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeHeader {
         static $gtype: GObject.GType<TreeHeader>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
         get_directory(): TreeDirectory;
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeHeader.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a {@link GMenu.TreeHeader}.
+         * @returns The {@link GMenu.Tree}
          */
         get_tree(): Tree;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeIter {
         static $gtype: GObject.GType<TreeIter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned GMENU_TREE_ITEM_ALIAS.
          * @returns An alias
          */
         get_alias(): TreeAlias;
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned GMENU_TREE_ITEM_DIRECTORY.
          * @returns A directory
          */
         get_directory(): TreeDirectory;
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned GMENU_TREE_ITEM_ENTRY.
          * @returns An entry
          */
         get_entry(): TreeEntry;
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned GMENU_TREE_ITEM_HEADER.
          * @returns A header
          */
         get_header(): TreeHeader;
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned #GMENU_TREE_ITEM_SEPARATOR.
          * @returns A separator
          */
         get_separator(): TreeSeparator;
         /**
          * Change the iterator to the next item, and return its type.  If
-         * there are no more items, %GMENU_TREE_ITEM_INVALID is returned.
+         * there are no more items, {@link GMenu.TreeItemType.INVALID} is returned.
          * @returns The type of the next item that can be retrived from the iterator
          */
         next(): TreeItemType;
+        /**
+         * Increment the reference count of `iter`
+         */
+        ref(): TreeIter;
+        /**
+         * Decrement the reference count of `iter`
+         */
+        unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeSeparator {
         static $gtype: GObject.GType<TreeSeparator>;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeSeparator.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a {@link GMenu.TreeSeparator}.
+         * @returns The {@link GMenu.Tree}
          */
         get_tree(): Tree;
     }

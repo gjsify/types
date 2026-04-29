@@ -28,6 +28,13 @@ export namespace GUPnPDLNA {
     namespace Discoverer {
         // Signal signatures
         interface SignalSignatures extends GstPbutils.Discoverer.SignalSignatures {
+            /**
+             * Will be emitted when all information on a URI could be discovered.
+             *
+             * The reciever must unref `dlna` with when done using it.
+             * @signal
+             * @run-last
+             */
             done: (arg0: Information, arg1: GLib.Error) => void;
             'notify::extended-mode': (pspec: GObject.ParamSpec) => void;
             'notify::relaxed-mode': (pspec: GObject.ParamSpec) => void;
@@ -47,15 +54,28 @@ export namespace GUPnPDLNA {
 
     /**
      * The top-level object used to for metadata extraction.
+     * @gir-type Class
      */
     class Discoverer extends GstPbutils.Discoverer {
         static $gtype: GObject.GType<Discoverer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get extended_mode(): boolean;
+        /**
+         * @construct-only
+         */
         get extendedMode(): boolean;
+        /**
+         * @construct-only
+         */
         get relaxed_mode(): boolean;
+        /**
+         * @construct-only
+         */
         get relaxedMode(): boolean;
 
         /**
@@ -80,16 +100,19 @@ export namespace GUPnPDLNA {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Discoverer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -98,6 +121,11 @@ export namespace GUPnPDLNA {
 
         // Virtual methods
 
+        /**
+         * @param dlna
+         * @param err
+         * @virtual
+         */
         vfunc_done(dlna: Information, err: GLib.Error): void;
 
         // Methods
@@ -106,29 +134,38 @@ export namespace GUPnPDLNA {
          * Queues `uri` for metadata discovery. When discovery is completed, the
          * "discovered" signal is emitted on `discoverer`.
          * @param uri URI to gather metadata for
-         * @returns TRUE if @uri was successfully queued, FALSE otherwise.
+         * @returns TRUE if `uri` was successfully queued, FALSE otherwise.
          */
         discover_uri(uri: string): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GstPbutils.Discoverer.discover_uri
         discover_uri(...args: never[]): any;
         /**
          * Synchronously gathers metadata for `uri`.
          * @param uri URI to gather metadata for
-         * @returns a #GUPnPDLNAInformation with the metadata for @uri on success, NULL otherwise
+         * @returns a {@link GUPnPDLNA.Information} with the metadata for `uri` on success, NULL otherwise
          */
         discover_uri_sync(uri: string): Information;
+        /**
+         * @returns true if application is using extended mode and false otherwise
+         */
         get_extended_mode(): boolean;
         /**
-         * Given `name,` this finds the corresponding DLNA profile information (stored
-         * as a #GUPnPDLNAProfile).
+         * Given `name`, this finds the corresponding DLNA profile information (stored
+         * as a {@link GUPnPDLNA.Profile}).
          * @param name The name of the DLNA profile to be retrieved
-         * @returns a #GUPnPDLNAProfile on success, NULL otherwise.
+         * @returns a {@link GUPnPDLNA.Profile} on success, NULL otherwise.
          */
         get_profile(name: string): Profile;
+        /**
+         * @returns true if relaxed mode is set and false otherwise
+         */
         get_relaxed_mode(): boolean;
         /**
          * Retuns a list of the all the DLNA profiles supported by `self`.
-         * @returns a #GList of #GUPnPDLNAProfile on success, NULL otherwise.
+         * @returns a {@link GLib.List} of {@link GUPnPDLNA.Profile} on success, NULL otherwise.
          */
         list_profiles(): Profile[];
     }
@@ -150,13 +187,25 @@ export namespace GUPnPDLNA {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Information extends GObject.Object {
         static $gtype: GObject.GType<Information>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get info(): GstPbutils.DiscovererInfo;
+        /**
+         * @construct-only
+         */
         get mime(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -178,16 +227,19 @@ export namespace GUPnPDLNA {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Information.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Information.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Information.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Information.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -197,7 +249,13 @@ export namespace GUPnPDLNA {
         // Methods
 
         get_info(): GstPbutils.DiscovererInfo;
+        /**
+         * @returns the DLNA MIME type of the stream represented by `self`. Do not free this string.
+         */
         get_mime(): string;
+        /**
+         * @returns the DLNA profile name of the stream represented by `self`. Do not free this string.
+         */
         get_name(): string;
     }
 
@@ -224,16 +282,32 @@ export namespace GUPnPDLNA {
     /**
      * The top-level object used for the in-memory representation of the DLNA
      * Profiles.
+     * @gir-type Class
      */
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get encoding_profile(): GstPbutils.EncodingProfile;
+        /**
+         * @read-only
+         */
         get encodingProfile(): GstPbutils.EncodingProfile;
+        /**
+         * @construct-only
+         */
         get extended(): boolean;
+        /**
+         * @construct-only
+         */
         get mime(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -253,16 +327,19 @@ export namespace GUPnPDLNA {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Profile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Profile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Profile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -271,14 +348,35 @@ export namespace GUPnPDLNA {
 
         // Methods
 
+        /**
+         * @returns a {@link GstPbutils.EncodingProfile} object that, in a future version, can be used to transcode a given stream to match the DLNA profile represented by `self`. The receiver must unref the returned {@link GstPbutils.EncodingProfile} when done using it.
+         */
         get_encoding_profile(): GstPbutils.EncodingProfile;
+        /**
+         * @returns true if application is using extended mode and false otherwise
+         */
         get_extended(): boolean;
+        /**
+         * @returns the DLNA MIME type of the DLNA profile represented by `self`
+         */
         get_mime(): string;
+        /**
+         * @returns the name of the DLNA profile represented by `self`
+         */
         get_name(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiscovererClass = typeof Discoverer;
+    /**
+     * @gir-type Alias
+     */
     type InformationClass = typeof Information;
+    /**
+     * @gir-type Alias
+     */
     type ProfileClass = typeof Profile;
     /**
      * Name of the imported GIR library

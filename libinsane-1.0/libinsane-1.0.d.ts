@@ -18,26 +18,28 @@ export namespace Libinsane {
      * Libinsane-1.0
      */
 
-    export namespace ConstraintType {
-        export const $gtype: GObject.GType<ConstraintType>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum ConstraintType {
         NONE,
         RANGE,
         LIST,
     }
 
-    export namespace DeviceLocations {
-        export const $gtype: GObject.GType<DeviceLocations>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum DeviceLocations {
         ANY,
         LOCAL_ONLY,
     }
+
+    /**
+     * @gir-type Struct
+     */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -60,13 +62,11 @@ export namespace Libinsane {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
-    export namespace ImgFormat {
-        export const $gtype: GObject.GType<ImgFormat>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum ImgFormat {
         RAW_RGB_24,
         GRAYSCALE_8,
@@ -87,10 +87,9 @@ export namespace Libinsane {
         TIFF,
     }
 
-    export namespace ItemType {
-        export const $gtype: GObject.GType<ItemType>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum ItemType {
         DEVICE,
         FLATBED,
@@ -98,10 +97,9 @@ export namespace Libinsane {
         UNIDENTIFIED,
     }
 
-    export namespace LogLevel {
-        export const $gtype: GObject.GType<LogLevel>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum LogLevel {
         DEBUG,
         INFO,
@@ -109,10 +107,9 @@ export namespace Libinsane {
         ERROR,
     }
 
-    export namespace Unit {
-        export const $gtype: GObject.GType<Unit>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum Unit {
         NONE,
         PIXEL,
@@ -122,20 +119,17 @@ export namespace Libinsane {
         PERCENT,
         MICROSECOND,
     }
+
     function error_quark(): GLib.Quark;
+    /**
+     * @param logger
+     */
     function register_logger(logger: Logger): void;
     function unregister_logger(): void;
     /**
      * Not actually an enum but a bit field.
+     * @gir-type Flags
      */
-
-    /**
-     * Not actually an enum but a bit field.
-     */
-    export namespace Capability {
-        export const $gtype: GObject.GType<Capability>;
-    }
-
     enum Capability {
         NONE,
         EMULATED,
@@ -145,16 +139,16 @@ export namespace Libinsane {
         INACTIVE,
     }
 
-    export namespace SetFlag {
-        export const $gtype: GObject.GType<SetFlag>;
-    }
-
+    /**
+     * @gir-type Flags
+     */
     enum SetFlag {
         NONE,
         INEXACT,
         MUST_RELOAD_OPTIONS,
         MUST_RELOAD_PARAMS,
     }
+
     namespace Api {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -164,6 +158,9 @@ export namespace Libinsane {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Api extends GObject.Object {
         static $gtype: GObject.GType<Api>;
 
@@ -188,16 +185,19 @@ export namespace Libinsane {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Api.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Api.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Api.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Api.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Api.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Api.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -211,8 +211,16 @@ export namespace Libinsane {
         // Methods
 
         cleanup(): void;
+        /**
+         * @param dev_id
+         * @returns LibinsaneItem object
+         */
         get_device(dev_id: string): Item;
-        list_devices(locations: DeviceLocations | null): DeviceDescriptor[];
+        /**
+         * @param locations
+         * @returns list of available devices (LibinsaneDeviceDescriptors objects)
+         */
+        list_devices(locations: DeviceLocations): DeviceDescriptor[];
     }
 
     namespace DeviceDescriptor {
@@ -224,6 +232,9 @@ export namespace Libinsane {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DeviceDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DeviceDescriptor>;
 
@@ -244,16 +255,19 @@ export namespace Libinsane {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceDescriptor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -282,6 +296,9 @@ export namespace Libinsane {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
 
@@ -302,16 +319,19 @@ export namespace Libinsane {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -327,12 +347,18 @@ export namespace Libinsane {
          */
         get_children(): Item[];
         get_item_type(): ItemType;
+        /**
+         * @returns Item's name
+         */
         get_name(): string;
         /**
          * See [C-API](../doxygen/html/structlis__item.html#aa2e301604accfe64461b36e28365bf9e)
          * @returns item scan options.
          */
         get_options(): OptionDescriptor[];
+        /**
+         * @returns item scan parameters.
+         */
         scan_start(): ScanSession;
     }
 
@@ -345,6 +371,9 @@ export namespace Libinsane {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OptionDescriptor extends GObject.Object {
         static $gtype: GObject.GType<OptionDescriptor>;
 
@@ -365,16 +394,19 @@ export namespace Libinsane {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OptionDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OptionDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OptionDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OptionDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OptionDescriptor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OptionDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -398,6 +430,9 @@ export namespace Libinsane {
         get_value_unit(): Unit;
         is_readable(): boolean;
         is_writable(): boolean;
+        /**
+         * @param value
+         */
         set_value(value: GObject.Value | any): SetFlag;
     }
 
@@ -410,6 +445,9 @@ export namespace Libinsane {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScanParameters extends GObject.Object {
         static $gtype: GObject.GType<ScanParameters>;
 
@@ -430,16 +468,19 @@ export namespace Libinsane {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScanParameters.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScanParameters.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScanParameters.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScanParameters.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScanParameters.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScanParameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -463,6 +504,9 @@ export namespace Libinsane {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScanSession extends GObject.Object {
         static $gtype: GObject.GType<ScanSession>;
 
@@ -483,16 +527,19 @@ export namespace Libinsane {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScanSession.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScanSession.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScanSession.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScanSession.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScanSession.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScanSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -504,70 +551,92 @@ export namespace Libinsane {
         cancel(): void;
         end_of_feed(): boolean;
         end_of_page(): boolean;
+        /**
+         * @returns item scan parameters.
+         */
         get_scan_parameters(): ScanParameters;
         /**
-         * You must call libinsane_scan_session_end_of_feed() and libinsane_scan_session_end_of_page()
+         * You must call `libinsane_scan_session_end_of_feed()` and `libinsane_scan_session_end_of_page()`
          * after each call to this function before calling it again.
          * @param buffer buffer to read data
          * @returns Number of bytes read, or -1 on error
          */
         read(buffer: Uint8Array | string): number;
-        read_bytes(lng: number): GLib.Bytes;
+        /**
+         * @param lng number of bytes wanted
+         * @returns a new {@link GLib.Bytes}, or `null` if an error occured
+         */
+        read_bytes(lng: bigint | number): GLib.Bytes;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApiClass = typeof Api;
+    /**
+     * @gir-type Struct
+     */
     abstract class ApiPrivate {
         static $gtype: GObject.GType<ApiPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeviceDescriptorClass = typeof DeviceDescriptor;
+    /**
+     * @gir-type Struct
+     */
     abstract class DeviceDescriptorPrivate {
         static $gtype: GObject.GType<DeviceDescriptorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ItemClass = typeof Item;
+    /**
+     * @gir-type Struct
+     */
     abstract class ItemPrivate {
         static $gtype: GObject.GType<ItemPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LoggerInterface = typeof Logger;
+    /**
+     * @gir-type Alias
+     */
     type OptionDescriptorClass = typeof OptionDescriptor;
+    /**
+     * @gir-type Struct
+     */
     abstract class OptionDescriptorPrivate {
         static $gtype: GObject.GType<OptionDescriptorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScanParametersClass = typeof ScanParameters;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScanParametersPrivate {
         static $gtype: GObject.GType<ScanParametersPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScanSessionClass = typeof ScanSession;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScanSessionPrivate {
         static $gtype: GObject.GType<ScanSessionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace Logger {
@@ -578,6 +647,11 @@ export namespace Libinsane {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param lvl
+             * @param msg
+             * @virtual
+             */
             vfunc_log(lvl: LogLevel, msg: string): void;
         }
 
@@ -590,10 +664,17 @@ export namespace Libinsane {
         $gtype: GObject.GType<Logger>;
         prototype: Logger;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Logger extends GObject.Object, Logger.Interface {
         // Methods
 
-        log(lvl: LogLevel | null, msg: string): void;
+        /**
+         * @param lvl
+         * @param msg
+         */
+        log(lvl: LogLevel, msg: string): void;
     }
 
     export const Logger: LoggerNamespace & {

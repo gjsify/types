@@ -17,10 +17,9 @@ export namespace Babl {
      * Babl-0.1
      */
 
-    export namespace IccIntent {
-        export const $gtype: GObject.GType<IccIntent>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum IccIntent {
         PERCEPTUAL,
         RELATIVE_COLORIMETRIC,
@@ -29,14 +28,14 @@ export namespace Babl {
         PERFORMANCE,
     }
 
-    export namespace SpaceFlags {
-        export const $gtype: GObject.GType<SpaceFlags>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum SpaceFlags {
         NONE,
         EQUALIZE,
     }
+
     const ALPHA_FLOOR: number;
     const ALPHA_FLOOR_F: number;
     const MAJOR_VERSION: number;
@@ -60,13 +59,13 @@ export namespace Babl {
     function conversion_get_source_space(conversion: Object): Object;
     /**
      * Deinitializes the babl library and frees any resources used when
-     * matched with the number of calls to babl_init().
+     * matched with the number of calls to `babl_init()`.
      */
     function exit(): void;
     /**
      * Create a faster than normal fish with specified performance (and thus
      * corresponding precision tradeoff), values tolerance can hold: NULL and
-     * "default", means do same as babl_fish(), other values understood in
+     * "default", means do same as `babl_fish()`, other values understood in
      * increasing order of speed gain are:
      *    "exact" "precise" "fast" "glitch"
      *
@@ -85,7 +84,7 @@ export namespace Babl {
      * @param source_format
      * @param destination_format
      */
-    function fish(source_format?: any | null, destination_format?: any | null): Object;
+    function fish(source_format: any | null, destination_format: any | null): Object;
     /**
      * Returns the babl object representing the color format given by
      * `name` such as for example "RGB u8", "CMYK float" or "CIE Lab u16",
@@ -121,6 +120,9 @@ export namespace Babl {
      * @param format
      */
     function format_get_n_components(format: Object): number;
+    /**
+     * @param format
+     */
     function format_get_space(format: Object): Object;
     /**
      * Returns the type in the given `format` for the given
@@ -144,6 +146,10 @@ export namespace Babl {
      * @param format
      */
     function format_is_palette(format: Object): number;
+    /**
+     * @param type
+     * @param components
+     */
     function format_n(type: Object, components: number): Object;
     /**
      * Returns the babl object representing the color format given by
@@ -156,6 +162,9 @@ export namespace Babl {
      * @param space
      */
     function format_with_space(encoding: string, space: Object): Object;
+    /**
+     * @param model
+     */
     function get_model_flags(model: Object): ModelFlag;
     /**
      * Returns a string describing a Babl object.
@@ -166,15 +175,28 @@ export namespace Babl {
      * Get the version information on the babl library
      */
     function get_version(): [number, number, number];
+    /**
+     * @param icc_data
+     * @param icc_length
+     * @param key
+     * @param language
+     * @param country
+     */
     function icc_get_key(icc_data: string, icc_length: number, key: string, language: string, country: string): string;
-    function icc_make_space(icc_data: string, icc_length: number, intent: IccIntent | null, error: string): Object;
+    /**
+     * @param icc_data
+     * @param icc_length
+     * @param intent
+     * @param error
+     */
+    function icc_make_space(icc_data: string, icc_length: number, intent: IccIntent, error: string): Object;
     /**
      * Initializes the babl library.
      */
     function init(): void;
     /**
      * introspect a given BablObject
-     * @param babl A #Babl
+     * @param babl A {@link Babl.Object}
      */
     function introspect(babl: Object): void;
     /**
@@ -183,6 +205,11 @@ export namespace Babl {
      * @param name
      */
     function model(name: string): Object;
+    /**
+     * @param babl
+     * @param model_name
+     * @returns 0 if the name of the model in babl does not correspond to the provided model name.
+     */
     function model_is(babl: Object, model_name: string): number;
     /**
      * The models for formats also have a space in babl, try to avoid code
@@ -228,10 +255,10 @@ export namespace Babl {
     /**
      * Assign a palette to a palette format, the data is a single span of pixels
      * representing the colors of the palette.
-     * @param babl a #Babl
+     * @param babl a {@link Babl.Object}
      * @param format The pixel format
      * @param data The pixel data
-     * @param count The number of pixels in @data
+     * @param count The number of pixels in `data`
      */
     function palette_set_palette(babl: Object, format: Object, data: Uint8Array | string, count: number): void;
     /**
@@ -242,14 +269,23 @@ export namespace Babl {
      * @param destination
      * @param n
      */
-    function process(babl_fish: Object, source: any | null, destination: any | null, n: number): number;
+    function process(babl_fish: Object, source: any | null, destination: any | null, n: bigint | number): number;
+    /**
+     * @param babl_fish
+     * @param source
+     * @param source_stride
+     * @param dest
+     * @param dest_stride
+     * @param n
+     * @param rows
+     */
     function process_rows(
         babl_fish: Object,
         source: any | null,
         source_stride: number,
         dest: any | null,
         dest_stride: number,
-        n: number,
+        n: bigint | number,
         rows: number,
     ): number;
     /**
@@ -271,7 +307,7 @@ export namespace Babl {
      * Creates a new babl-space/ RGB matrix color space definition with the
      * specified CIE xy(Y) values for white point: wx, wy and primary
      * chromaticities: rx,ry,gx,gy,bx,by and TRCs to be used. After registering a
-     * new babl-space it can be used with babl_space() passing its name;
+     * new babl-space it can be used with `babl_space()` passing its name;
      *
      * Internally this does the math to derive the RGBXYZ matrix as used in an ICC
      * profile.
@@ -285,9 +321,9 @@ export namespace Babl {
      * @param bx The X-coordinate of the blue primary
      * @param by The Y-coordinate of the blue primary
      * @param trc_red The red component of the TRC.
-     * @param trc_green The green component of the TRC (can be %NULL if it's            the same as @trc_red).
-     * @param trc_blue The blue component of the TRC (can be %NULL if it's            the same as @trc_red).
-     * @param flags The #BablSpaceFlags
+     * @param trc_green The green component of the TRC (can be `null` if it's            the same as `trc_red`).
+     * @param trc_blue The blue component of the TRC (can be `null` if it's            the same as `trc_red`).
+     * @param flags The {@link Babl.SpaceFlags}
      */
     function space_from_chromaticities(
         name: string | null,
@@ -302,7 +338,7 @@ export namespace Babl {
         trc_red: Object,
         trc_green: Object | null,
         trc_blue: Object | null,
-        flags: SpaceFlags | null,
+        flags: SpaceFlags,
     ): Object;
     /**
      * Create a babl space from an in memory ICC profile, the profile does no
@@ -320,7 +356,7 @@ export namespace Babl {
      * @param icc_length length of icc profile in bytes
      * @param intent the intent from the ICC profile to use.
      */
-    function space_from_icc(icc_data: string, icc_length: number, intent: IccIntent | null): [Object, string];
+    function space_from_icc(icc_data: string, icc_length: number, intent: IccIntent): [Object, string];
     /**
      * Creates a new RGB matrix color space definition using a precomputed D50
      * adapted 3x3 matrix and associated CIE XYZ whitepoint, as possibly read from
@@ -339,8 +375,8 @@ export namespace Babl {
      * @param gz The Z-coordinate of the green primary
      * @param bz The Z-coordinate of the blue primary
      * @param trc_red The red component of the TRC.
-     * @param trc_green The green component of the TRC (can be %NULL if it's            the same as @trc_red).
-     * @param trc_blue The blue component of the TRC (can be %NULL if it's            the same as @trc_red).
+     * @param trc_green The green component of the TRC (can be `null` if it's            the same as `trc_red`).
+     * @param trc_blue The blue component of the TRC (can be `null` if it's            the same as `trc_red`).
      */
     function space_from_rgbxyz_matrix(
         name: string | null,
@@ -357,27 +393,30 @@ export namespace Babl {
         gz: number,
         bz: number,
         trc_red: Object,
-        trc_green?: Object | null,
-        trc_blue?: Object | null,
+        trc_green: Object | null,
+        trc_blue: Object | null,
     ): Object;
     /**
      * query the chromaticities of white point and primaries as well as trcs
-     * used for r g a nd b, all arguments are optional (can be %NULL).
-     * @param space A #Babl instance
+     * used for r g a nd b, all arguments are optional (can be `null`).
+     * @param space A {@link Babl.Object} instance
      */
     function space_get(
         space: Object,
     ): [number, number, number, number, number, number, number, number, Object | null, Object | null, Object | null];
+    /**
+     * @param space
+     */
     function space_get_gamma(space: Object): number;
     /**
      * Return pointer to ICC profile for space note that this is
      * the ICC profile for R'G'B', though in formats only supporting linear
      * like EXR GEGL chooses to load this lienar data as RGB and use the sRGB
      * TRC.
-     * @param babl a #Babl
+     * @param babl a {@link Babl.Object}
      * @returns pointer to ICC profile data.
      */
-    function space_get_icc(babl: Object): [string, number];
+    function space_get_icc(babl: Object): Uint8Array;
     /**
      * Retrieve the relevant RGB luminance constants for a babl space.
      *
@@ -388,8 +427,20 @@ export namespace Babl {
      * @param space a BablSpace
      */
     function space_get_rgb_luminance(space: Object): [number, number, number];
+    /**
+     * @param space
+     * @returns 1 if `space` is CMYK, 0 otherwise.
+     */
     function space_is_cmyk(space: Object): number;
+    /**
+     * @param space
+     * @returns 1 if `space` is grayscale, 0 otherwise.
+     */
     function space_is_gray(space: Object): number;
+    /**
+     * @param space
+     * @returns 1 if `space` is RGB, 0 otherwise.
+     */
     function space_is_rgb(space: Object): number;
     /**
      * Creates a variant of an existing space with different trc.
@@ -415,12 +466,21 @@ export namespace Babl {
      * @param name
      */
     function type(name: string): Object;
+    /**
+     * @gir-type Callback
+     */
     interface FishProcess {
-        (babl: Object, src: string, dst: string, n: number, data?: any | null): void;
+        (babl: Object, src: string, dst: string, n: number, data: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface FuncLinear {
         (conversion: Object, src: string, dst: string, n: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface FuncPlanar {
         (
             conversion: Object,
@@ -433,11 +493,9 @@ export namespace Babl {
             n: number,
         ): void;
     }
-
-    export namespace ModelFlag {
-        export const $gtype: GObject.GType<ModelFlag>;
-    }
-
+    /**
+     * @gir-type Flags
+     */
     enum ModelFlag {
         /**
          * the model encodes alpha.
@@ -480,16 +538,14 @@ export namespace Babl {
          */
         CMYK,
     }
+
     /**
      * The babl API is based around polymorphism and almost everything is
      * a Babl object.
+     * @gir-type Struct
      */
     class Object {
         static $gtype: GObject.GType<Object>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

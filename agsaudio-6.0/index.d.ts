@@ -9,7 +9,5 @@
 
 import './agsaudio-6.0-ambient.d.ts';
 
-import './agsaudio-6.0-import.d.ts';
-
 import AgsAudio from './agsaudio-6.0.js';
 export default AgsAudio;

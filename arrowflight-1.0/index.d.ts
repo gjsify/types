@@ -9,7 +9,5 @@
 
 import './arrowflight-1.0-ambient.d.ts';
 
-import './arrowflight-1.0-import.d.ts';
-
 import ArrowFlight from './arrowflight-1.0.js';
 export default ArrowFlight;

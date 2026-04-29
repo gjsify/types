@@ -37,39 +37,49 @@ export namespace MetaTest {
      * MetaTest-13
      */
 
-    export namespace ContextTestType {
-        export const $gtype: GObject.GType<ContextTestType>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum ContextTestType {
         HEADLESS,
         VKMS,
         NESTED,
     }
 
-    export namespace ContextTestFlag {
-        export const $gtype: GObject.GType<ContextTestFlag>;
-    }
-
+    /**
+     * @gir-type Flags
+     */
     enum ContextTestFlag {
         NONE,
         TEST_CLIENT,
         NO_X11,
     }
 
-    export namespace TestRunFlags {
-        export const $gtype: GObject.GType<TestRunFlags>;
-    }
-
+    /**
+     * @gir-type Flags
+     */
     enum TestRunFlags {
         NONE,
         CAN_SKIP,
     }
+
     namespace ContextTest {
         // Signal signatures
         interface SignalSignatures extends Meta.Context.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'after-tests': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'before-tests': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'run-tests': () => number;
             'notify::name': (pspec: GObject.ParamSpec) => void;
             'notify::unsafe-mode': (pspec: GObject.ParamSpec) => void;
@@ -80,6 +90,9 @@ export namespace MetaTest {
         interface ConstructorProps extends Meta.Context.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ContextTest extends Meta.Context {
         static $gtype: GObject.GType<ContextTest>;
 
@@ -100,16 +113,19 @@ export namespace MetaTest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContextTest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -118,7 +134,10 @@ export namespace MetaTest {
 
         // Methods
 
-        run_tests(flags: TestRunFlags | null): number;
+        /**
+         * @param flags
+         */
+        run_tests(flags: TestRunFlags): number;
         wait_for_x11_display(): void;
     }
 
@@ -131,6 +150,9 @@ export namespace MetaTest {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TestMonitor extends GObject.Object {
         static $gtype: GObject.GType<TestMonitor>;
 
@@ -153,16 +175,19 @@ export namespace MetaTest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TestMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -174,7 +199,13 @@ export namespace MetaTest {
         destroy(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContextTestClass = typeof ContextTest;
+    /**
+     * @gir-type Alias
+     */
     type TestMonitorClass = typeof TestMonitor;
     /**
      * Name of the imported GIR library

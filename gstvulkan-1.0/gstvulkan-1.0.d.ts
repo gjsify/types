@@ -23,26 +23,42 @@ export namespace GstVulkan {
      * GstVulkan-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VulkanBarrierFlags {
         export const $gtype: GObject.GType<VulkanBarrierFlags>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum VulkanBarrierFlags {
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VulkanBarrierType {
         export const $gtype: GObject.GType<VulkanBarrierType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum VulkanBarrierType {
         NONE,
         TYPE_MEMORY,
         TYPE_BUFFER,
         TYPE_IMAGE,
     }
+
+    /**
+     * @gir-type Struct
+     */
     class VulkanError extends GLib.Error {
-        static $gtype: GObject.GType<VulkanError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -51,18 +67,17 @@ export namespace GstVulkan {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
         static quark(): GLib.Quark;
         /**
-         * if `result` indicates an error condition, fills out #Gerror with details of
+         * if `result` indicates an error condition, fills out `Gerror` with details of
          * the error
          * @param result a VkResult
-         * @param error a #GError to fill
-         * @param format the printf-like format to write into the #GError
-         * @param ___ arguments for @format
+         * @param error a {@link GLib.Error} to fill
+         * @param format the printf-like format to write into the {@link GLib.Error}
+         * @param ___ arguments for `format`
          */
         static to_g_error(
             result: Vulkan.Result,
@@ -72,10 +87,16 @@ export namespace GstVulkan {
         ): [Vulkan.Result, GLib.Error | null];
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VulkanFormatScaling {
         export const $gtype: GObject.GType<VulkanFormatScaling>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum VulkanFormatScaling {
         UNORM,
         SNORM,
@@ -86,10 +107,16 @@ export namespace GstVulkan {
         SRGB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VulkanHandleType {
         export const $gtype: GObject.GType<VulkanHandleType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum VulkanHandleType {
         DESCRIPTOR_SET_LAYOUT,
         PIPELINE_LAYOUT,
@@ -99,8 +126,12 @@ export namespace GstVulkan {
         FRAMEBUFFER,
         SHADER,
     }
+
+    /**
+     * @gir-type Struct
+     */
     class VulkanWindowError extends GLib.Error {
-        static $gtype: GObject.GType<VulkanWindowError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -111,7 +142,6 @@ export namespace GstVulkan {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -133,86 +163,143 @@ export namespace GstVulkan {
     const VULKAN_NON_DISPATCHABLE_HANDLE_FORMAT: string;
     const VULKAN_QUEUE_CONTEXT_TYPE_STR: string;
     const VULKAN_SWAPPER_VIDEO_FORMATS: string;
+    /**
+     * @param context a {@link Gst.Context}
+     * @param device resulting {@link GstVulkan.VulkanDevice}
+     * @returns Whether `device` was in `context`
+     * @since 1.18
+     */
     function context_get_vulkan_device(context: Gst.Context, device: VulkanDevice): boolean;
+    /**
+     * @param context a {@link Gst.Context}
+     * @param display resulting {@link GstVulkan.VulkanDisplay}
+     * @returns Whether `display` was in `context`
+     * @since 1.18
+     */
     function context_get_vulkan_display(context: Gst.Context, display: VulkanDisplay): boolean;
+    /**
+     * @param context a {@link Gst.Context}
+     * @param instance resulting {@link GstVulkan.VulkanInstance}
+     * @returns Whether `instance` was in `context`
+     * @since 1.18
+     */
     function context_get_vulkan_instance(context: Gst.Context, instance: VulkanInstance): boolean;
+    /**
+     * @param context a {@link Gst.Context}
+     * @param queue resulting {@link GstVulkan.VulkanQueue}
+     * @returns Whether `queue` was in `context`
+     * @since 1.18
+     */
     function context_get_vulkan_queue(context: Gst.Context, queue: VulkanQueue): boolean;
     /**
      * Sets `device` on `context`
-     * @param context a #GstContext
-     * @param device a #GstVulkanDevice
+     * @param context a {@link Gst.Context}
+     * @param device a {@link GstVulkan.VulkanDevice}
+     * @since 1.18
      */
     function context_set_vulkan_device(context: Gst.Context, device: VulkanDevice): void;
     /**
      * Sets `display` on `context`
-     * @param context a #GstContext
-     * @param display a #GstVulkanDisplay
+     * @param context a {@link Gst.Context}
+     * @param display a {@link GstVulkan.VulkanDisplay}
+     * @since 1.18
      */
     function context_set_vulkan_display(context: Gst.Context, display: VulkanDisplay): void;
     /**
      * Sets `instance` on `context`
-     * @param context a #GstContext
-     * @param instance a #GstVulkanInstance
+     * @param context a {@link Gst.Context}
+     * @param instance a {@link GstVulkan.VulkanInstance}
+     * @since 1.18
      */
     function context_set_vulkan_instance(context: Gst.Context, instance: VulkanInstance): void;
     /**
      * Sets `queue` on `context`
-     * @param context a #GstContext
-     * @param queue a #GstVulkanQueue
+     * @param context a {@link Gst.Context}
+     * @param queue a {@link GstVulkan.VulkanQueue}
+     * @since 1.18
      */
     function context_set_vulkan_queue(context: Gst.Context, queue: VulkanQueue): void;
+    /**
+     * @param mem a {@link Gst.Memory}
+     * @returns whether the memory at `mem` is a {@link GstVulkan.VulkanBufferMemory}
+     * @since 1.18
+     */
     function is_vulkan_buffer_memory(mem: Gst.Memory): boolean;
+    /**
+     * @param mem a {@link Gst.Memory}
+     * @returns whether the memory at `mem` is a {@link GstVulkan.VulkanImageMemory}
+     * @since 1.18
+     */
     function is_vulkan_image_memory(mem: Gst.Memory): boolean;
+    /**
+     * @param mem a {@link Gst.Memory}
+     * @returns whether the memory at `mem` is a {@link GstVulkan.VulkanMemory}
+     * @since 1.18
+     */
     function is_vulkan_memory(mem: Gst.Memory): boolean;
     /**
-     * Allocate a new #GstVulkanBufferMemory.
-     * @param device a #GstVulkanDevice
+     * Allocate a new {@link GstVulkan.VulkanBufferMemory}.
+     * @param device a {@link GstVulkan.VulkanDevice}
      * @param size size of the new buffer
      * @param usage buffer usage flags
      * @param mem_prop_flags memory properties flags for the backing memory
-     * @returns a #GstMemory object backed by a vulkan buffer          backed by vulkan device memory
+     * @returns a {@link Gst.Memory} object backed by a vulkan buffer          backed by vulkan device memory
+     * @since 1.18
      */
     function vulkan_buffer_memory_alloc(
         device: VulkanDevice,
-        size: number,
+        size: bigint | number,
         usage: Vulkan.BufferUsageFlags,
         mem_prop_flags: Vulkan.MemoryPropertyFlags,
     ): Gst.Memory;
     /**
      * Initializes the Vulkan buffer memory allocator. It is safe to call this function
-     * multiple times.  This must be called before any other #GstVulkanBufferMemory operation.
+     * multiple times.  This must be called before any other {@link GstVulkan.VulkanBufferMemory} operation.
+     * @since 1.18
      */
     function vulkan_buffer_memory_init_once(): void;
     /**
-     * Allocated a new wrapped #GstVulkanBufferMemory with `buffer`.
-     * @param device a #GstVulkanDevice
-     * @param buffer a #VkBuffer
-     * @param usage usage flags of @buffer
-     * @param user_data user data to call @notify with
-     * @param notify a #GDestroyNotify called when @buffer is no longer in use
-     * @returns a #GstMemory object backed by a vulkan device memory
+     * Allocated a new wrapped {@link GstVulkan.VulkanBufferMemory} with `buffer`.
+     * @param device a {@link GstVulkan.VulkanDevice}
+     * @param buffer a {@link Vulkan.Buffer}
+     * @param usage usage flags of `buffer`
+     * @param user_data user data to call `notify` with
+     * @param notify a {@link GLib.DestroyNotify} called when `buffer` is no longer in use
+     * @returns a {@link Gst.Memory} object backed by a vulkan device memory
+     * @since 1.18
      */
     function vulkan_buffer_memory_wrapped(
         device: VulkanDevice,
         buffer: Vulkan.Buffer,
         usage: Vulkan.BufferUsageFlags,
-        user_data?: any | null,
-        notify?: GLib.DestroyNotify | null,
+        user_data: any | null,
+        notify: GLib.DestroyNotify | null,
     ): Gst.Memory;
-    function vulkan_create_shader(device: VulkanDevice, code: string, size: number): VulkanHandle;
-    function vulkan_display_type_to_extension_string(type: VulkanDisplayType | null): string;
     /**
-     * Perform the steps necessary for retrieving a #GstVulkanInstance and
-     * (optionally) an #GstVulkanDisplay from the surrounding elements or from
-     * the application using the #GstContext mechanism.
+     * @param device
+     * @param code
+     * @param size
+     */
+    function vulkan_create_shader(device: VulkanDevice, code: string, size: bigint | number): VulkanHandle;
+    /**
+     * @param type a {@link GstVulkan.VulkanDisplayType}
+     * @returns the Vulkan extension string required for creating a VkSurfaceKHR using a window system handle or `null`
+     * @since 1.18
+     */
+    function vulkan_display_type_to_extension_string(type: VulkanDisplayType): string;
+    /**
+     * Perform the steps necessary for retrieving a {@link GstVulkan.VulkanInstance} and
+     * (optionally) an {@link GstVulkan.VulkanDisplay} from the surrounding elements or from
+     * the application using the {@link Gst.Context} mechanism.
      *
-     * If the contents of `display_ptr` or `instance_ptr` are not %NULL, then no
-     * #GstContext query is necessary and no #GstVulkanInstance or #GstVulkanDisplay
+     * If the contents of `display_ptr` or `instance_ptr` are not `null`, then no
+     * {@link Gst.Context} query is necessary and no {@link GstVulkan.VulkanInstance} or {@link GstVulkan.VulkanDisplay}
      * retrieval is performed.
-     * @param element a #GstElement
-     * @param display_ptr the resulting #GstVulkanDisplay
-     * @param instance_ptr the resulting #GstVulkanInstance
-     * @returns whether a #GstVulkanInstance exists in @instance_ptr and if          @display_ptr is not %NULL, whether a #GstVulkanDisplay exists in          @display_ptr
+     * @param element a {@link Gst.Element}
+     * @param display_ptr the resulting {@link GstVulkan.VulkanDisplay}
+     * @param instance_ptr the resulting {@link GstVulkan.VulkanInstance}
+     * @returns whether a {@link GstVulkan.VulkanInstance} exists in `instance_ptr` and if          `display_ptr` is not `null`, whether a {@link GstVulkan.VulkanDisplay} exists in          `display_ptr`
+     * @since 1.18
      */
     function vulkan_ensure_element_data(
         element: Gst.Element,
@@ -220,33 +307,50 @@ export namespace GstVulkan {
         instance_ptr: VulkanInstance,
     ): [boolean, VulkanDisplay | null, VulkanInstance];
     function vulkan_error_quark(): GLib.Quark;
+    /**
+     * @param format
+     */
     function vulkan_format_get_info(format: Vulkan.Format): VulkanFormatInfo;
+    /**
+     * @param image
+     */
     function vulkan_get_or_create_image_view(image: VulkanImageMemory): VulkanImageView;
     /**
      * Performs the steps necessary for executing a context query including
      * posting a message for the application to respond.
-     * @param element a #GstElement
+     * @param element a {@link Gst.Element}
      * @param context_type the context type to query for
+     * @since 1.18
      */
     function vulkan_global_context_query(element: Gst.Element, context_type: string): void;
+    /**
+     * @param element a {@link Gst.Element}
+     * @param query a {@link Gst.Query} of type {@link Gst.QueryType.CONTEXT}
+     * @param display a {@link GstVulkan.VulkanDisplay}
+     * @param instance a {@link GstVulkan.VulkanInstance}
+     * @param device a {@link GstVulkan.VulkanInstance}
+     * @returns Whether the `query` was successfully responded to from the passed          `display`, `instance`, and `device`.
+     * @since 1.18
+     */
     function vulkan_handle_context_query(
         element: Gst.Element,
         query: Gst.Query,
-        display?: VulkanDisplay | null,
-        instance?: VulkanInstance | null,
-        device?: VulkanDevice | null,
+        display: VulkanDisplay | null,
+        instance: VulkanInstance | null,
+        device: VulkanDevice | null,
     ): boolean;
     /**
-     * Helper function for implementing #GstElementClass.set_context() in
+     * Helper function for implementing {@link Gst.ElementClass}.set_context() in
      * Vulkan capable elements.
      *
-     * Retrieve's the #GstVulkanDisplay or #GstVulkanInstance in `context` and places
+     * Retrieve's the {@link GstVulkan.VulkanDisplay} or {@link GstVulkan.VulkanInstance} in `context` and places
      * the result in `display` or `instance` respectively.
-     * @param element a #GstElement
-     * @param context a #GstContext
-     * @param display location of a #GstVulkanDisplay
-     * @param instance location of a #GstVulkanInstance
-     * @returns whether the @display or @instance could be set successfully
+     * @param element a {@link Gst.Element}
+     * @param context a {@link Gst.Context}
+     * @param display location of a {@link GstVulkan.VulkanDisplay}
+     * @param instance location of a {@link GstVulkan.VulkanInstance}
+     * @returns whether the `display` or `instance` could be set successfully
+     * @since 1.18
      */
     function vulkan_handle_set_context(
         element: Gst.Element,
@@ -255,107 +359,182 @@ export namespace GstVulkan {
         instance: VulkanInstance,
     ): [boolean, VulkanDisplay | null, VulkanInstance];
     /**
-     * Allocated a new #GstVulkanImageMemory.
-     * @param device a #GstVulkanDevice
+     * Allocated a new {@link GstVulkan.VulkanImageMemory}.
+     * @param device a {@link GstVulkan.VulkanDevice}
      * @param format the VkFormat for the new image
      * @param width width for the new image
      * @param height height for the new image
      * @param tiling tiling for the new image
      * @param usage usage flags for the new image
      * @param mem_prop_flags VkDeviceMemory property flags for the new image
-     * @returns a #GstMemory object backed by a vulkan device memory
+     * @returns a {@link Gst.Memory} object backed by a vulkan device memory
+     * @since 1.18
      */
     function vulkan_image_memory_alloc(
         device: VulkanDevice,
         format: Vulkan.Format,
-        width: number,
-        height: number,
+        width: bigint | number,
+        height: bigint | number,
         tiling: Vulkan.ImageTiling,
         usage: Vulkan.ImageUsageFlags,
         mem_prop_flags: Vulkan.MemoryPropertyFlags,
     ): Gst.Memory;
     /**
      * Initializes the Vulkan image memory allocator. It is safe to call this function
-     * multiple times.  This must be called before any other #GstVulkanImageMemory operation.
+     * multiple times.  This must be called before any other {@link GstVulkan.VulkanImageMemory} operation.
+     * @since 1.18
      */
     function vulkan_image_memory_init_once(): void;
+    /**
+     * @param device a {@link GstVulkan.VulkanDevice}
+     * @param image a VkImage
+     * @param format the VkFormat for `image`
+     * @param width width of `image`
+     * @param height height of `image`
+     * @param tiling tiling of `image`
+     * @param usage usage flags of `image`
+     * @param user_data user data for `notify`
+     * @returns a new {@link GstVulkan.VulkanImageMemory} wrapping `image`
+     * @since 1.18
+     */
     function vulkan_image_memory_wrapped(
         device: VulkanDevice,
         image: Vulkan.Image,
         format: Vulkan.Format,
-        width: number,
-        height: number,
+        width: bigint | number,
+        height: bigint | number,
         tiling: Vulkan.ImageTiling,
         usage: Vulkan.ImageUsageFlags,
-        user_data?: any | null,
+        user_data: any | null,
     ): Gst.Memory;
     /**
      * Performs the steps necessary for executing a context query between only
      * other elements in the pipeline
-     * @param element a #GstElement
+     * @param element a {@link Gst.Element}
      * @param context_type the context type to query for
+     * @since 1.18
      */
     function vulkan_local_context_query(element: Gst.Element, context_type: string): Gst.Query;
     /**
-     * Allocated a new #GstVulkanMemory.
-     * @param device a #GstVulkanDevice
+     * Allocated a new {@link GstVulkan.VulkanMemory}.
+     * @param device a {@link GstVulkan.VulkanDevice}
      * @param memory_type_index the Vulkan memory type index
-     * @param params a #GstAllocationParams
+     * @param params a {@link Gst.AllocationParams}
      * @param size the size to allocate
      * @param mem_prop_flags
-     * @returns a #GstMemory object backed by a vulkan device memory
+     * @returns a {@link Gst.Memory} object backed by a vulkan device memory
+     * @since 1.18
      */
     function vulkan_memory_alloc(
         device: VulkanDevice,
         memory_type_index: number,
         params: Gst.AllocationParams,
-        size: number,
+        size: bigint | number,
         mem_prop_flags: Vulkan.MemoryPropertyFlags,
     ): Gst.Memory;
+    /**
+     * @param device a {@link GstVulkan.VulkanDevice}
+     * @param type_bits memory type bits to search for
+     * @param properties memory properties to search for
+     * @param type_index resulting index of the memory type
+     * @returns whether a valid memory type could be found
+     * @since 1.18
+     */
     function vulkan_memory_find_memory_type_index_with_type_properties(
         device: VulkanDevice,
         type_bits: number,
         properties: Vulkan.MemoryPropertyFlags,
         type_index: number,
     ): boolean;
+    /**
+     * @param prop_bits
+     */
     function vulkan_memory_heap_flags_to_string(prop_bits: Vulkan.MemoryHeapFlags): string;
     /**
      * Initializes the Vulkan memory allocator. It is safe to call this function
-     * multiple times.  This must be called before any other #GstVulkanMemory operation.
+     * multiple times.  This must be called before any other {@link GstVulkan.VulkanMemory} operation.
+     * @since 1.18
      */
     function vulkan_memory_init_once(): void;
+    /**
+     * @param prop_bits
+     */
     function vulkan_memory_property_flags_to_string(prop_bits: Vulkan.MemoryPropertyFlags): string;
-    function vulkan_run_query(element: Gst.Element, query: Gst.Query, direction: Gst.PadDirection | null): boolean;
+    /**
+     * @param element a {@link Gst.Element}
+     * @param query the {@link Gst.Query} to perform
+     * @param direction the {@link Gst.PadDirection} to perform query on
+     * @returns whether `query` was answered successfully
+     * @since 1.18
+     */
+    function vulkan_run_query(element: Gst.Element, query: Gst.Query, direction: Gst.PadDirection): boolean;
+    /**
+     * @param sample_count_bits
+     */
     function vulkan_sample_count_flags_to_string(sample_count_bits: Vulkan.SampleCountFlags): string;
-    function vulkan_trash_mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
-    function vulkan_trash_object_unref(device: VulkanDevice, user_data?: any | null): void;
+    /**
+     * @param device
+     * @param user_data
+     */
+    function vulkan_trash_mini_object_unref(device: VulkanDevice, user_data: any | null): void;
+    /**
+     * @param device
+     * @param user_data
+     */
+    function vulkan_trash_object_unref(device: VulkanDevice, user_data: any | null): void;
     function vulkan_window_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Callback
+     */
     interface VulkanDeviceForEachQueueFunc {
         (device: VulkanDevice, queue: VulkanQueue): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface VulkanHandleDestroyNotify {
         (handle: VulkanHandle): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface VulkanImageMemoryFindViewFunc {
         (view: VulkanImageView): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface VulkanTrashListAdd {
         (trash_list: VulkanTrashList, trash: VulkanTrash): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface VulkanTrashListGC {
         (trash_list: VulkanTrashList): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface VulkanTrashListWait {
         (trash_list: VulkanTrashList, timeout: number): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface VulkanTrashNotify {
         (device: VulkanDevice): void;
     }
-
+    /**
+     * @gir-type Flags
+     */
     export namespace VulkanDisplayType {
         export const $gtype: GObject.GType<VulkanDisplayType>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum VulkanDisplayType {
         /**
          * no display
@@ -385,10 +564,16 @@ export namespace GstVulkan {
         ANY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace VulkanFormatFlags {
         export const $gtype: GObject.GType<VulkanFormatFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum VulkanFormatFlags {
         YUV,
         RGB,
@@ -396,6 +581,7 @@ export namespace GstVulkan {
         LE,
         COMPLEX,
     }
+
     namespace VulkanBufferMemoryAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
@@ -409,7 +595,8 @@ export namespace GstVulkan {
     }
 
     /**
-     * Opaque #GstVulkanBufferMemoryAllocator struct
+     * Opaque {@link GstVulkan.VulkanBufferMemoryAllocator} struct
+     * @gir-type Class
      */
     class VulkanBufferMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanBufferMemoryAllocator>;
@@ -431,16 +618,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanBufferMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanBufferMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanBufferMemoryAllocator.SignalSignatures[K]> extends [any, ...infer Q]
@@ -464,6 +654,7 @@ export namespace GstVulkan {
 
     /**
      * Opaque GstVulkanBufferPool struct
+     * @gir-type Class
      */
     class VulkanBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanBufferPool>;
@@ -495,16 +686,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanBufferPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanBufferPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanBufferPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -524,6 +718,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanCommandPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanCommandPool>;
 
@@ -548,16 +745,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanCommandPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanCommandPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanCommandPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -566,19 +766,25 @@ export namespace GstVulkan {
 
         // Methods
 
+        /**
+         * @returns a new or recycled primary {@link GstVulkan.VulkanCommandBuffer}
+         */
         create(): VulkanCommandBuffer;
+        /**
+         * @returns the parent {@link GstVulkan.VulkanQueue} for this command pool
+         */
         get_queue(): VulkanQueue;
         /**
          * This should be called to ensure no other thread will attempt to access
          * the pool's internal resources.  Any modification of any of the allocated
-         * #GstVulkanCommandBuffer's need to be encapsulated in a
-         * gst_vulkan_command_pool_lock()/gst_vulkan_command_pool_unlock() pair to meet
+         * {@link GstVulkan.VulkanCommandBuffer}'s need to be encapsulated in a
+         * `gst_vulkan_command_pool_lock()`/gst_vulkan_command_pool_unlock() pair to meet
          * the Vulkan API requirements that host access to the command pool is
          * externally synchronised.
          */
         lock(): void;
         /**
-         * See the documentation for gst_vulkan_command_pool_lock() for when you would
+         * See the documentation for `gst_vulkan_command_pool_lock()` for when you would
          * need to use this function.
          */
         unlock(): void;
@@ -596,6 +802,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanDescriptorCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanDescriptorCache>;
 
@@ -622,16 +831,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDescriptorCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDescriptorCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanDescriptorCache.SignalSignatures[K]> extends [any, ...infer Q]
@@ -642,7 +854,13 @@ export namespace GstVulkan {
 
         // Methods
 
+        /**
+         * @returns a new {@link GstVulkan.VulkanDescriptorSet}
+         */
         acquire(): VulkanDescriptorSet;
+        /**
+         * @param args
+         */
         // Conflicted with GstVulkan.VulkanHandlePool.acquire
         acquire(...args: never[]): any;
     }
@@ -659,6 +877,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanDescriptorPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanDescriptorPool>;
 
@@ -681,20 +902,27 @@ export namespace GstVulkan {
 
         _init(...args: any[]): void;
 
-        static new_wrapped(device: VulkanDevice, pool: Vulkan.DescriptorPool, max_sets: number): VulkanDescriptorPool;
+        static new_wrapped(
+            device: VulkanDevice,
+            pool: Vulkan.DescriptorPool,
+            max_sets: bigint | number,
+        ): VulkanDescriptorPool;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDescriptorPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDescriptorPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanDescriptorPool.SignalSignatures[K]> extends [any, ...infer Q]
@@ -705,8 +933,19 @@ export namespace GstVulkan {
 
         // Methods
 
+        /**
+         * @param n_layouts
+         * @param layouts
+         * @returns a new {@link GstVulkan.VulkanDescriptorSet}
+         */
         create(n_layouts: number, layouts: VulkanHandle): VulkanDescriptorSet;
+        /**
+         * @returns the parent {@link GstVulkan.VulkanDevice} for this descriptor pool
+         */
         get_device(): VulkanDevice;
+        /**
+         * @returns the maximum number of sets allocatable from `pool`
+         */
         get_max_sets(): number;
     }
 
@@ -728,13 +967,25 @@ export namespace GstVulkan {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanDevice>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get instance(): VulkanInstance;
+        /**
+         * @construct-only
+         */
         get physical_device(): VulkanPhysicalDevice;
+        /**
+         * @construct-only
+         */
         get physicalDevice(): VulkanPhysicalDevice;
 
         /**
@@ -758,16 +1009,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -777,20 +1031,20 @@ export namespace GstVulkan {
         // Static methods
 
         /**
-         * If a #GstVulkanDevice is requested in `query,` sets `device` as the reply.
+         * If a {@link GstVulkan.VulkanDevice} is requested in `query`, sets `device` as the reply.
          *
          * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
-         * for a #GstVulkanDevice.
-         * @param element a #GstElement
-         * @param query a #GstQuery of type #GST_QUERY_CONTEXT
-         * @param device the #GstVulkanDevice
+         * for a {@link GstVulkan.VulkanDevice}.
+         * @param element a {@link Gst.Element}
+         * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
+         * @param device the {@link GstVulkan.VulkanDevice}
          */
         static handle_context_query(element: Gst.Element, query: Gst.Query, device: VulkanDevice): boolean;
         /**
-         * Attempt to retrieve a #GstVulkanDevice using #GST_QUERY_CONTEXT from the
+         * Attempt to retrieve a {@link GstVulkan.VulkanDevice} using #GST_QUERY_CONTEXT from the
          * surrounding elements of `element`.
-         * @param element a #GstElement
-         * @param device a #GstVulkanDevice
+         * @param element a {@link Gst.Element}
+         * @param device a {@link GstVulkan.VulkanDevice}
          */
         static run_context_query(element: Gst.Element, device: VulkanDevice): [boolean, VulkanDevice];
 
@@ -798,20 +1052,28 @@ export namespace GstVulkan {
 
         create_fence(): VulkanFence;
         /**
-         * Iterate over each queue family available on #GstVulkanDevice
-         * @param func a #GstVulkanDeviceForEachQueueFunc to run for each #GstVulkanQueue
+         * Iterate over each queue family available on {@link GstVulkan.VulkanDevice}
+         * @param func a {@link GstVulkan.VulkanDeviceForEachQueueFunc} to run for each {@link GstVulkan.VulkanQueue}
          */
-        foreach_queue(func?: VulkanDeviceForEachQueueFunc | null): void;
+        foreach_queue(func: VulkanDeviceForEachQueueFunc | null): void;
+        /**
+         * @returns the {@link GstVulkan.VulkanInstance} used to create this `device`
+         */
         get_instance(): VulkanInstance;
         /**
          * Performs vkGetDeviceProcAddr() with `device` and `name`
          * @param name name of the function to retrieve
-         * @returns the function pointer for @name or %NULL
+         * @returns the function pointer for `name` or `null`
          */
         get_proc_address(name: string): any | null;
+        /**
+         * @param queue_family a queue family to retrieve
+         * @param queue_i index of the family to retrieve
+         * @returns a new {@link GstVulkan.VulkanQueue}
+         */
         get_queue(queue_family: number, queue_i: number): VulkanQueue;
         /**
-         * Attempts to create the internal #VkDevice object.
+         * Attempts to create the internal {@link Vulkan.Device} object.
          * @returns whether a vulkan device could be created
          */
         open(): boolean;
@@ -830,8 +1092,9 @@ export namespace GstVulkan {
     }
 
     /**
-     * The contents of a #GstVulkanDisplay are private and should only be accessed
+     * The contents of a {@link GstVulkan.VulkanDisplay} are private and should only be accessed
      * through the provided API
+     * @gir-type Class
      */
     class VulkanDisplay extends Gst.Object {
         static $gtype: GObject.GType<VulkanDisplay>;
@@ -857,16 +1120,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDisplay.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDisplay.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -876,48 +1142,67 @@ export namespace GstVulkan {
         // Static methods
 
         /**
-         * This function will read the %GST_VULKAN_WINDOW environment variable for
+         * This function will read the `GST_VULKAN_WINDOW` environment variable for
          * a user choice or choose the first supported implementation.
-         * @param instance a #GstVulkanInstance
+         * @param instance a {@link GstVulkan.VulkanInstance}
          */
         static choose_type(instance: VulkanInstance): VulkanDisplayType;
         /**
-         * If a #GstVulkanDisplay is requested in `query,` sets `device` as the reply.
+         * If a {@link GstVulkan.VulkanDisplay} is requested in `query`, sets `device` as the reply.
          *
          * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
-         * for a #GstVulkanDisplay.
-         * @param element a #GstElement
-         * @param query a #GstQuery of type #GST_QUERY_CONTEXT
-         * @param display the #GstVulkanDisplay
+         * for a {@link GstVulkan.VulkanDisplay}.
+         * @param element a {@link Gst.Element}
+         * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
+         * @param display the {@link GstVulkan.VulkanDisplay}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, display?: VulkanDisplay | null): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, display: VulkanDisplay | null): boolean;
         /**
-         * Attempt to retrieve a #GstVulkanDisplay using #GST_QUERY_CONTEXT from the
+         * Attempt to retrieve a {@link GstVulkan.VulkanDisplay} using #GST_QUERY_CONTEXT from the
          * surrounding elements of `element`.
-         * @param element a #GstElement
-         * @param display a #GstVulkanDisplay
+         * @param element a {@link Gst.Element}
+         * @param display a {@link GstVulkan.VulkanDisplay}
          */
         static run_context_query(element: Gst.Element, display: VulkanDisplay): [boolean, VulkanDisplay];
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_create_window(): VulkanWindow;
+        /**
+         * @virtual
+         */
         vfunc_get_handle(): any | null;
 
         // Methods
 
+        /**
+         * @returns a new {@link GstVulkan.VulkanWindow} for `display` or `null`.
+         */
         create_window(): VulkanWindow;
         /**
          * Execute `compare_func` over the list of windows stored by `display`.  The
-         * first argument to `compare_func` is the #GstVulkanWindow being checked and the
+         * first argument to `compare_func` is the {@link GstVulkan.VulkanWindow} being checked and the
          * second argument is `data`.
-         * @param data some data to pass to @compare_func
+         * @param data some data to pass to `compare_func`
          * @param compare_func a comparison function to run
-         * @returns The first #GstVulkanWindow that causes a match          from @compare_func
+         * @returns The first {@link GstVulkan.VulkanWindow} that causes a match          from `compare_func`
          */
         find_window(data: any | null, compare_func: GLib.CompareFunc): VulkanWindow;
+        /**
+         * @returns the winsys specific handle of `display`
+         */
         get_handle(): any | null;
+        /**
+         * @returns the {@link GstVulkan.VulkanDisplayType} of `display`
+         */
         get_handle_type(): VulkanDisplayType;
+        /**
+         * @param window the {@link GstVulkan.VulkanWindow} to remove
+         * @returns whether the window was successfully removed
+         */
         remove_window(window: VulkanWindow): boolean;
     }
 
@@ -933,6 +1218,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanFenceCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanFenceCache>;
 
@@ -955,16 +1243,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanFenceCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanFenceCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanFenceCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -984,6 +1275,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanFullScreenQuad extends Gst.Object {
         static $gtype: GObject.GType<VulkanFullScreenQuad>;
 
@@ -1013,16 +1307,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanFullScreenQuad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanFullScreenQuad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanFullScreenQuad.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1034,16 +1331,53 @@ export namespace GstVulkan {
         // Methods
 
         draw(): boolean;
+        /**
+         * @param cmd the {@link GstVulkan.VulkanCommandBuffer} to fill with commands
+         * @param fence
+         * @returns whether `cmd` could be filled with the necessary commands
+         */
         fill_command_buffer(cmd: VulkanCommandBuffer, fence: VulkanFence): boolean;
         get_last_fence(): VulkanFence;
+        /**
+         * @param fence
+         */
         prepare_draw(fence: VulkanFence): boolean;
-        set_index_buffer(indices: Gst.Memory, n_indices: number): boolean;
+        /**
+         * @param indices
+         * @param n_indices
+         */
+        set_index_buffer(indices: Gst.Memory, n_indices: bigint | number): boolean;
+        /**
+         * @param in_info
+         * @param out_info
+         */
         set_info(in_info: GstVideo.VideoInfo, out_info: GstVideo.VideoInfo): boolean;
+        /**
+         * @param buffer
+         */
         set_input_buffer(buffer: Gst.Buffer): boolean;
+        /**
+         * @param buffer
+         */
         set_output_buffer(buffer: Gst.Buffer): boolean;
+        /**
+         * @param vert
+         * @param frag
+         */
         set_shaders(vert: VulkanHandle, frag: VulkanHandle): boolean;
+        /**
+         * @param uniforms
+         */
         set_uniform_buffer(uniforms: Gst.Memory): boolean;
+        /**
+         * @param vertices
+         */
         set_vertex_buffer(vertices: Gst.Memory): boolean;
+        /**
+         * @param cmd a {@link GstVulkan.VulkanCommandBuffer} to submit
+         * @param fence a {@link GstVulkan.VulkanFence} to signal on completion
+         * @returns whether `cmd` could be submitted to the queue
+         */
         submit(cmd: VulkanCommandBuffer, fence: VulkanFence): boolean;
     }
 
@@ -1059,6 +1393,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class VulkanHandlePool extends Gst.Object {
         static $gtype: GObject.GType<VulkanHandlePool>;
 
@@ -1085,16 +1422,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanHandlePool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanHandlePool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanHandlePool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1103,16 +1443,33 @@ export namespace GstVulkan {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_acquire(): any | null;
+        /**
+         * @virtual
+         */
         vfunc_alloc(): any | null;
-        vfunc_free(handle?: any | null): void;
-        vfunc_release(handle?: any | null): void;
+        /**
+         * @param handle
+         * @virtual
+         */
+        vfunc_free(handle: any | null): void;
+        /**
+         * @param handle
+         * @virtual
+         */
+        vfunc_release(handle: any | null): void;
 
         // Methods
 
         acquire(): any | null;
         alloc(): any | null;
-        release(handle?: any | null): void;
+        /**
+         * @param handle
+         */
+        release(handle: any | null): void;
     }
 
     namespace VulkanImageBufferPool {
@@ -1129,6 +1486,7 @@ export namespace GstVulkan {
 
     /**
      * Opaque GstVulkanImageBufferPool struct
+     * @gir-type Class
      */
     class VulkanImageBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanImageBufferPool>;
@@ -1160,16 +1518,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanImageBufferPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanImageBufferPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanImageBufferPool.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1192,7 +1553,8 @@ export namespace GstVulkan {
     }
 
     /**
-     * Opaque #GstVulkanImageMemoryAllocator struct
+     * Opaque {@link GstVulkan.VulkanImageMemoryAllocator} struct
+     * @gir-type Class
      */
     class VulkanImageMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanImageMemoryAllocator>;
@@ -1214,16 +1576,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanImageMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanImageMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanImageMemoryAllocator.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1236,6 +1601,13 @@ export namespace GstVulkan {
     namespace VulkanInstance {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
+            /**
+             * Overrides the {@link GstVulkan.VulkanDevice} creation mechanism.
+             * It can be called from any thread.
+             * @signal
+             * @since 1.18
+             * @run-last
+             */
             'create-device': () => VulkanDevice;
             'notify::name': (pspec: GObject.ParamSpec) => void;
             'notify::parent': (pspec: GObject.ParamSpec) => void;
@@ -1246,6 +1618,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanInstance extends Gst.Object {
         static $gtype: GObject.GType<VulkanInstance>;
 
@@ -1272,16 +1647,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanInstance.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanInstance.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanInstance.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1291,32 +1669,38 @@ export namespace GstVulkan {
         // Static methods
 
         /**
-         * If a #GstVulkanInstance is requested in `query,` sets `instance` as the reply.
+         * If a {@link GstVulkan.VulkanInstance} is requested in `query`, sets `instance` as the reply.
          *
          * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
-         * for a #GstVulkanInstance.
-         * @param element a #GstElement
-         * @param query a #GstQuery of type #GST_QUERY_CONTEXT
-         * @param instance the #GstVulkanInstance
+         * for a {@link GstVulkan.VulkanInstance}.
+         * @param element a {@link Gst.Element}
+         * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
+         * @param instance the {@link GstVulkan.VulkanInstance}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, instance?: VulkanInstance | null): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, instance: VulkanInstance | null): boolean;
         /**
-         * Attempt to retrieve a #GstVulkanInstance using #GST_QUERY_CONTEXT from the
+         * Attempt to retrieve a {@link GstVulkan.VulkanInstance} using #GST_QUERY_CONTEXT from the
          * surrounding elements of `element`.
-         * @param element a #GstElement
-         * @param instance a #GstVulkanInstance
+         * @param element a {@link Gst.Element}
+         * @param instance a {@link GstVulkan.VulkanInstance}
          */
         static run_context_query(element: Gst.Element, instance: VulkanInstance): [boolean, VulkanInstance];
 
         // Methods
 
+        /**
+         * @returns a new {@link GstVulkan.VulkanDevice}
+         */
         create_device(): VulkanDevice;
         /**
          * Performs vkGetInstanceProcAddr() with `instance` and `name`
          * @param name name of the function to retrieve
-         * @returns the function pointer for @name or %NULL
+         * @returns the function pointer for `name` or `null`
          */
         get_proc_address(name: string): any | null;
+        /**
+         * @returns whether the instance could be created
+         */
         open(): boolean;
     }
 
@@ -1333,7 +1717,8 @@ export namespace GstVulkan {
     }
 
     /**
-     * Opaque #GstVulkanMemoryAllocator struct
+     * Opaque {@link GstVulkan.VulkanMemoryAllocator} struct
+     * @gir-type Class
      */
     class VulkanMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanMemoryAllocator>;
@@ -1355,16 +1740,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanMemoryAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanMemoryAllocator.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1389,19 +1777,35 @@ export namespace GstVulkan {
             device_index: number;
             deviceIndex: number;
             instance: VulkanInstance;
-            name: string;
+            name: string | any;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanPhysicalDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanPhysicalDevice>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get device_index(): number;
+        /**
+         * @construct-only
+         */
         get deviceIndex(): number;
+        /**
+         * @construct-only
+         */
         get instance(): VulkanInstance;
-        get name(): string;
+        /**
+         * @read-only
+         */
+        // This accessor conflicts with another accessor's type in a parent class or interface.
+        get name(): string | any;
 
         /**
          * Compile-time signal type information.
@@ -1428,16 +1832,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanPhysicalDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanPhysicalDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanPhysicalDevice.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1448,10 +1855,16 @@ export namespace GstVulkan {
 
         // Static methods
 
+        /**
+         * @param type
+         */
         static type_to_string(type: Vulkan.PhysicalDeviceType): string;
 
         // Methods
 
+        /**
+         * @returns The {@link GstVulkan.VulkanInstance} associated with this physical device
+         */
         get_instance(): VulkanInstance;
     }
 
@@ -1467,6 +1880,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanQueue extends Gst.Object {
         static $gtype: GObject.GType<VulkanQueue>;
 
@@ -1493,16 +1909,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1511,28 +1930,37 @@ export namespace GstVulkan {
 
         // Static methods
 
+        /**
+         * @param queue_bits
+         */
         static flags_to_string(queue_bits: Vulkan.QueueFlags): string;
         /**
-         * If a #GstVulkanQueue is requested in `query,` sets `queue` as the reply.
+         * If a {@link GstVulkan.VulkanQueue} is requested in `query`, sets `queue` as the reply.
          *
          * Intended for use with element query handlers to respond to #GST_QUERY_CONTEXT
-         * for a #GstVulkanQueue.
-         * @param element a #GstElement
-         * @param query a #GstQuery of type #GST_QUERY_CONTEXT
-         * @param queue the #GstVulkanQueue
+         * for a {@link GstVulkan.VulkanQueue}.
+         * @param element a {@link Gst.Element}
+         * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
+         * @param queue the {@link GstVulkan.VulkanQueue}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, queue?: VulkanQueue | null): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, queue: VulkanQueue | null): boolean;
         /**
-         * Attempt to retrieve a #GstVulkanQueue using #GST_QUERY_CONTEXT from the
+         * Attempt to retrieve a {@link GstVulkan.VulkanQueue} using #GST_QUERY_CONTEXT from the
          * surrounding elements of `element`.
-         * @param element a #GstElement
-         * @param queue a #GstVulkanQueue
+         * @param element a {@link Gst.Element}
+         * @param queue a {@link GstVulkan.VulkanQueue}
          */
         static run_context_query(element: Gst.Element, queue: VulkanQueue): [boolean, VulkanQueue];
 
         // Methods
 
+        /**
+         * @returns a new `GstVUlkanCommandPool` or `null`
+         */
         create_command_pool(): VulkanCommandPool;
+        /**
+         * @returns the {@link GstVulkan.VulkanDevice} for `queue`
+         */
         get_device(): VulkanDevice;
         /**
          * Locks the queue for command submission using `vkQueueSubmit()` to meet the
@@ -1542,7 +1970,7 @@ export namespace GstVulkan {
         /**
          * Unlocks the queue for command submission using `vkQueueSubmit()`.
          *
-         * See gst_vulkan_queue_submit_lock() for details on when this call is needed.
+         * See `gst_vulkan_queue_submit_lock()` for details on when this call is needed.
          */
         submit_unlock(): void;
     }
@@ -1566,6 +1994,9 @@ export namespace GstVulkan {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanSwapper extends Gst.Object {
         static $gtype: GObject.GType<VulkanSwapper>;
 
@@ -1606,16 +2037,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanSwapper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanSwapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanSwapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1624,6 +2058,9 @@ export namespace GstVulkan {
 
         // Methods
 
+        /**
+         * @param available_queue
+         */
         choose_queue(available_queue: VulkanQueue): boolean;
         get_supported_caps(): Gst.Caps;
         get_surface_rectangles(): [
@@ -1631,7 +2068,13 @@ export namespace GstVulkan {
             GstVideo.VideoRectangle | null,
             GstVideo.VideoRectangle | null,
         ];
+        /**
+         * @param buffer
+         */
         render_buffer(buffer: Gst.Buffer): boolean;
+        /**
+         * @param caps
+         */
         set_caps(caps: Gst.Caps): boolean;
     }
 
@@ -1647,6 +2090,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends VulkanTrashList.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanTrashFenceList extends VulkanTrashList {
         static $gtype: GObject.GType<VulkanTrashFenceList>;
 
@@ -1669,16 +2115,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanTrashFenceList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanTrashFenceList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanTrashFenceList.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1700,6 +2149,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanTrashList extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanTrashList>;
 
@@ -1720,16 +2172,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanTrashList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanTrashList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanTrashList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1738,18 +2193,43 @@ export namespace GstVulkan {
 
         // Virtual methods
 
+        /**
+         * @param trash
+         * @virtual
+         */
         vfunc_add_func(trash: VulkanTrash): boolean;
+        /**
+         * @virtual
+         */
         vfunc_gc_func(): void;
+        /**
+         * @param timeout
+         * @virtual
+         */
         vfunc_wait_func(timeout: number): boolean;
 
         // Methods
 
+        /**
+         * @param fence a {@link GstVulkan.VulkanFence} to wait for signalling
+         * @param notify notify function for when `fence` is signalled
+         * @returns a new or reused {@link GstVulkan.VulkanTrash} for the provided          parameters.
+         */
         acquire(fence: VulkanFence, notify: VulkanTrashNotify): VulkanTrash;
+        /**
+         * @param args
+         */
         // Conflicted with GstVulkan.VulkanHandlePool.acquire
         acquire(...args: never[]): any;
+        /**
+         * @param trash
+         */
         add(trash: VulkanTrash): boolean;
         gc(): void;
-        wait(timeout: number): boolean;
+        /**
+         * @param timeout
+         */
+        wait(timeout: bigint | number): boolean;
     }
 
     namespace VulkanVideoFilter {
@@ -1765,6 +2245,9 @@ export namespace GstVulkan {
         interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VulkanVideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VulkanVideoFilter>;
 
@@ -1791,16 +2274,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanVideoFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanVideoFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanVideoFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1811,10 +2297,34 @@ export namespace GstVulkan {
     namespace VulkanWindow {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             close: () => boolean | void;
+            /**
+             * @signal
+             * @run-last
+             */
             draw: () => void;
+            /**
+             * Will be emitted when a key event is received by the {@link GstVulkan.VulkanWindow}.
+             * @signal
+             * @since 1.18
+             * @run-last
+             */
             'key-event': (arg0: string, arg1: string) => void;
+            /**
+             * Will be emitted when a mouse event is received by the {@link GstVulkan.VulkanWindow}.
+             * @signal
+             * @since 1.18
+             * @run-last
+             */
             'mouse-event': (arg0: string, arg1: number, arg2: number, arg3: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             resize: (arg0: number, arg1: number) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -1829,14 +2339,18 @@ export namespace GstVulkan {
     }
 
     /**
-     * #GstVulkanWindow is an opaque struct and should only be accessed through the
+     * {@link GstVulkan.VulkanWindow} is an opaque struct and should only be accessed through the
      * provided api.
+     * @gir-type Class
      */
     abstract class VulkanWindow extends Gst.Object {
         static $gtype: GObject.GType<VulkanWindow>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get display(): VulkanDisplay;
 
         /**
@@ -1858,16 +2372,19 @@ export namespace GstVulkan {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanWindow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanWindow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1878,9 +2395,20 @@ export namespace GstVulkan {
 
         /**
          * Attempt to close the window.
+         * @virtual
          */
         vfunc_close(): void;
+        /**
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param queue_family_idx the queue family
+         * @virtual
+         */
         vfunc_get_presentation_support(device: VulkanDevice, queue_family_idx: number): boolean;
+        /**
+         * @param width
+         * @param height
+         * @virtual
+         */
         vfunc_get_surface_dimensions(width: number, height: number): void;
         /**
          * Tell a `window` that it should handle events from the window system. These
@@ -1888,11 +2416,19 @@ export namespace GstVulkan {
          * events are not propagated in the window hierarchy if a client is listening
          * for them. This method allows you to disable events handling completely
          * from the `window`.
-         * @param handle_events a #gboolean indicating if events should be handled or not.
+         * @param handle_events a `gboolean` indicating if events should be handled or not.
+         * @virtual
          */
         vfunc_handle_events(handle_events: boolean): void;
+        /**
+         * @virtual
+         */
         vfunc_open(): boolean;
-        vfunc_set_window_handle(handle: never): void;
+        /**
+         * @param handle
+         * @virtual
+         */
+        vfunc_set_window_handle(handle: number): void;
 
         // Methods
 
@@ -1900,8 +2436,20 @@ export namespace GstVulkan {
          * Attempt to close the window.
          */
         close(): void;
+        /**
+         * @returns the {@link GstVulkan.VulkanDisplay} for `window`
+         */
         get_display(): VulkanDisplay;
+        /**
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param queue_family_idx the queue family
+         * @returns whether the given combination of `window`, `device` and          `queue_family_idx` supports presentation
+         */
         get_presentation_support(device: VulkanDevice, queue_family_idx: number): boolean;
+        /**
+         * @param width
+         * @param height
+         */
         get_surface_dimensions(width: number, height: number): void;
         /**
          * Tell a `window` that it should handle events from the window system. These
@@ -1909,9 +2457,12 @@ export namespace GstVulkan {
          * events are not propagated in the window hierarchy if a client is listening
          * for them. This method allows you to disable events handling completely
          * from the `window`.
-         * @param handle_events a #gboolean indicating if events should be handled or not.
+         * @param handle_events a `gboolean` indicating if events should be handled or not.
          */
         handle_events(handle_events: boolean): void;
+        /**
+         * @returns whether `window` could be successfully opened
+         */
         open(): boolean;
         /**
          * Ask the `window` to redraw its contents
@@ -1925,27 +2476,41 @@ export namespace GstVulkan {
          * @param height the new height
          */
         resize(width: number, height: number): void;
+        /**
+         * @param event_type
+         * @param key_str
+         */
         send_key_event(event_type: string, key_str: string): void;
+        /**
+         * @param event_type
+         * @param button
+         * @param posx
+         * @param posy
+         */
         send_mouse_event(event_type: string, button: number, posx: number, posy: number): void;
-        set_window_handle(handle: never): void;
+        /**
+         * @param handle
+         */
+        set_window_handle(handle: bigint | number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanBarrierBufferInfo {
         static $gtype: GObject.GType<VulkanBarrierBufferInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanBarrierImageInfo {
         static $gtype: GObject.GType<VulkanBarrierImageInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanBarrierMemoryInfo {
         static $gtype: GObject.GType<VulkanBarrierMemoryInfo>;
 
@@ -1954,12 +2519,11 @@ export namespace GstVulkan {
         type: VulkanBarrierType;
         flags: VulkanBarrierFlags;
         queue: VulkanQueue;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanBufferMemory {
         static $gtype: GObject.GType<VulkanBufferMemory>;
 
@@ -1970,42 +2534,61 @@ export namespace GstVulkan {
         notify: GLib.DestroyNotify;
         user_data: any;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
-         * Allocate a new #GstVulkanBufferMemory.
-         * @param device a #GstVulkanDevice
+         * Allocate a new {@link GstVulkan.VulkanBufferMemory}.
+         * @param device a {@link GstVulkan.VulkanDevice}
          * @param size size of the new buffer
          * @param usage buffer usage flags
          * @param mem_prop_flags memory properties flags for the backing memory
          */
         static alloc(
             device: VulkanDevice,
-            size: number,
+            size: bigint | number,
             usage: Vulkan.BufferUsageFlags,
             mem_prop_flags: Vulkan.MemoryPropertyFlags,
         ): Gst.Memory;
         /**
          * Initializes the Vulkan buffer memory allocator. It is safe to call this function
-         * multiple times.  This must be called before any other #GstVulkanBufferMemory operation.
+         * multiple times.  This must be called before any other {@link GstVulkan.VulkanBufferMemory} operation.
          */
         static init_once(): void;
+        /**
+         * Allocated a new wrapped {@link GstVulkan.VulkanBufferMemory} with `buffer`.
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param buffer a {@link Vulkan.Buffer}
+         * @param usage usage flags of `buffer`
+         * @param user_data user data to call `notify` with
+         * @param notify a {@link GLib.DestroyNotify} called when `buffer` is no longer in use
+         */
+        static wrapped(
+            device: VulkanDevice,
+            buffer: Vulkan.Buffer,
+            usage: Vulkan.BufferUsageFlags,
+            user_data: any | null,
+            notify: GLib.DestroyNotify | null,
+        ): Gst.Memory;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanBufferMemoryAllocatorClass = typeof VulkanBufferMemoryAllocator;
+    /**
+     * @gir-type Alias
+     */
     type VulkanBufferPoolClass = typeof VulkanBufferPool;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanBufferPoolPrivate {
         static $gtype: GObject.GType<VulkanBufferPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanCommandBuffer {
         static $gtype: GObject.GType<VulkanCommandBuffer>;
 
@@ -2016,38 +2599,59 @@ export namespace GstVulkan {
         // Constructors
 
         constructor(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel);
-        _init(...args: any[]): void;
 
         static new_wrapped(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel): VulkanCommandBuffer;
+
+        // Methods
+
+        /**
+         * Increases the refcount of the given buffer by one.
+         * @returns `buf`
+         */
+        ref(): VulkanCommandBuffer;
+        /**
+         * Decreases the refcount of the buffer. If the refcount reaches 0, the buffer
+         * will be freed.
+         */
+        unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanCommandPoolClass = typeof VulkanCommandPool;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanCommandPoolPrivate {
         static $gtype: GObject.GType<VulkanCommandPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanDescriptorCacheClass = typeof VulkanDescriptorCache;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanDescriptorCachePrivate {
         static $gtype: GObject.GType<VulkanDescriptorCachePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanDescriptorPoolClass = typeof VulkanDescriptorPool;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanDescriptorPoolPrivate {
         static $gtype: GObject.GType<VulkanDescriptorPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanDescriptorSet {
         static $gtype: GObject.GType<VulkanDescriptorSet>;
 
@@ -2060,7 +2664,6 @@ export namespace GstVulkan {
         // Constructors
 
         constructor(pool: VulkanDescriptorPool, set: Vulkan.DescriptorSet, n_layouts: number, layouts: VulkanHandle);
-        _init(...args: any[]): void;
 
         static new_wrapped(
             pool: VulkanDescriptorPool,
@@ -2068,42 +2671,60 @@ export namespace GstVulkan {
             n_layouts: number,
             layouts: VulkanHandle,
         ): VulkanDescriptorSet;
+
+        // Methods
+
+        /**
+         * Increases the refcount of the given buffer by one.
+         * @returns `buf`
+         */
+        ref(): VulkanDescriptorSet;
+        /**
+         * Decreases the refcount of the buffer. If the refcount reaches 0, the buffer
+         * will be freed.
+         */
+        unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanDescriptorSetClass {
         static $gtype: GObject.GType<VulkanDescriptorSetClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanDescriptorSetPrivate {
         static $gtype: GObject.GType<VulkanDescriptorSetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanDeviceClass = typeof VulkanDevice;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanDevicePrivate {
         static $gtype: GObject.GType<VulkanDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanDisplayClass = typeof VulkanDisplay;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanDisplayPrivate {
         static $gtype: GObject.GType<VulkanDisplayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanFence {
         static $gtype: GObject.GType<VulkanFence>;
 
@@ -2115,7 +2736,6 @@ export namespace GstVulkan {
         // Constructors
 
         constructor(device: VulkanDevice);
-        _init(...args: any[]): void;
 
         static ['new'](device: VulkanDevice): VulkanFence;
 
@@ -2123,11 +2743,20 @@ export namespace GstVulkan {
 
         // Methods
 
+        /**
+         * @returns whether `fence` has been signalled
+         */
         is_signaled(): boolean;
         reset(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanFenceCacheClass = typeof VulkanFenceCache;
+    /**
+     * @gir-type Struct
+     */
     class VulkanFormatInfo {
         static $gtype: GObject.GType<VulkanFormatInfo>;
 
@@ -2146,23 +2775,22 @@ export namespace GstVulkan {
         poffset: Uint8Array;
         w_sub: Uint8Array;
         h_sub: Uint8Array;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanFullScreenQuadClass = typeof VulkanFullScreenQuad;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanFullScreenQuadPrivate {
         static $gtype: GObject.GType<VulkanFullScreenQuadPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
      * Holds information about a vulkan non dispatchable handle
+     * @gir-type Struct
      */
     class VulkanHandle {
         static $gtype: GObject.GType<VulkanHandle>;
@@ -2182,7 +2810,6 @@ export namespace GstVulkan {
             handle: VulkanHandleTypedef,
             notify: VulkanHandleDestroyNotify,
         );
-        _init(...args: any[]): void;
 
         static new_wrapped(
             device: VulkanDevice,
@@ -2193,23 +2820,30 @@ export namespace GstVulkan {
 
         // Static methods
 
+        /**
+         * @param element a {@link Gst.Element}
+         * @param query a {@link Gst.Query} of type {@link Gst.QueryType.CONTEXT}
+         * @param display a {@link GstVulkan.VulkanDisplay}
+         * @param instance a {@link GstVulkan.VulkanInstance}
+         * @param device a {@link GstVulkan.VulkanInstance}
+         */
         static context_query(
             element: Gst.Element,
             query: Gst.Query,
-            display?: VulkanDisplay | null,
-            instance?: VulkanInstance | null,
-            device?: VulkanDevice | null,
+            display: VulkanDisplay | null,
+            instance: VulkanInstance | null,
+            device: VulkanDevice | null,
         ): boolean;
         /**
-         * Helper function for implementing #GstElementClass.set_context() in
+         * Helper function for implementing {@link Gst.ElementClass}.set_context() in
          * Vulkan capable elements.
          *
-         * Retrieve's the #GstVulkanDisplay or #GstVulkanInstance in `context` and places
+         * Retrieve's the {@link GstVulkan.VulkanDisplay} or {@link GstVulkan.VulkanInstance} in `context` and places
          * the result in `display` or `instance` respectively.
-         * @param element a #GstElement
-         * @param context a #GstContext
-         * @param display location of a #GstVulkanDisplay
-         * @param instance location of a #GstVulkanInstance
+         * @param element a {@link Gst.Element}
+         * @param context a {@link Gst.Context}
+         * @param display location of a {@link GstVulkan.VulkanDisplay}
+         * @param instance location of a {@link GstVulkan.VulkanInstance}
          */
         static set_context(
             element: Gst.Element,
@@ -2224,57 +2858,74 @@ export namespace GstVulkan {
          * Frees the descriptor set layout in `handle`
          * @param user_data callback user data
          */
-        free_descriptor_set_layout(user_data?: any | null): void;
+        free_descriptor_set_layout(user_data: any | null): void;
         /**
          * Frees the framebuffer in `handle`
          * @param user_data callback user data
          */
-        free_framebuffer(user_data?: any | null): void;
+        free_framebuffer(user_data: any | null): void;
         /**
          * Frees the pipeline in `handle`
          * @param user_data callback user data
          */
-        free_pipeline(user_data?: any | null): void;
+        free_pipeline(user_data: any | null): void;
         /**
          * Frees the pipeline layout in `handle`
          * @param user_data callback user data
          */
-        free_pipeline_layout(user_data?: any | null): void;
+        free_pipeline_layout(user_data: any | null): void;
         /**
          * Frees the render pass in `handle`
          * @param user_data callback user data
          */
-        free_render_pass(user_data?: any | null): void;
+        free_render_pass(user_data: any | null): void;
         /**
          * Frees the sampler in `handle`
          * @param user_data callback user data
          */
-        free_sampler(user_data?: any | null): void;
+        free_sampler(user_data: any | null): void;
         /**
          * Frees the shader in `handle`
          * @param user_data callback user data
          */
-        free_shader(user_data?: any | null): void;
+        free_shader(user_data: any | null): void;
+        /**
+         * Increases the refcount of the given handle by one.
+         * @returns `buf`
+         */
+        ref(): VulkanHandle;
+        /**
+         * Decreases the refcount of the buffer. If the refcount reaches 0, the buffer
+         * will be freed.
+         */
+        unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanHandlePoolClass = typeof VulkanHandlePool;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanHandleTypedef {
         static $gtype: GObject.GType<VulkanHandleTypedef>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanImageBufferPoolClass = typeof VulkanImageBufferPool;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanImageBufferPoolPrivate {
         static $gtype: GObject.GType<VulkanImageBufferPoolPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanImageMemory {
         static $gtype: GObject.GType<VulkanImageMemory>;
 
@@ -2287,15 +2938,11 @@ export namespace GstVulkan {
         views: any[];
         outstanding_views: any[];
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
-         * Allocated a new #GstVulkanImageMemory.
-         * @param device a #GstVulkanDevice
+         * Allocated a new {@link GstVulkan.VulkanImageMemory}.
+         * @param device a {@link GstVulkan.VulkanDevice}
          * @param format the VkFormat for the new image
          * @param width width for the new image
          * @param height height for the new image
@@ -2306,36 +2953,84 @@ export namespace GstVulkan {
         static alloc(
             device: VulkanDevice,
             format: Vulkan.Format,
-            width: number,
-            height: number,
+            width: bigint | number,
+            height: bigint | number,
             tiling: Vulkan.ImageTiling,
             usage: Vulkan.ImageUsageFlags,
             mem_prop_flags: Vulkan.MemoryPropertyFlags,
         ): Gst.Memory;
         /**
          * Initializes the Vulkan image memory allocator. It is safe to call this function
-         * multiple times.  This must be called before any other #GstVulkanImageMemory operation.
+         * multiple times.  This must be called before any other {@link GstVulkan.VulkanImageMemory} operation.
          */
         static init_once(): void;
+        /**
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param image a VkImage
+         * @param format the VkFormat for `image`
+         * @param width width of `image`
+         * @param height height of `image`
+         * @param tiling tiling of `image`
+         * @param usage usage flags of `image`
+         * @param user_data user data for `notify`
+         */
+        static wrapped(
+            device: VulkanDevice,
+            image: Vulkan.Image,
+            format: Vulkan.Format,
+            width: bigint | number,
+            height: bigint | number,
+            tiling: Vulkan.ImageTiling,
+            usage: Vulkan.ImageUsageFlags,
+            user_data: any | null,
+        ): Gst.Memory;
 
         // Methods
 
+        /**
+         * @param view a {@link GstVulkan.VulkanImageView}
+         */
         add_view(view: VulkanImageView): void;
+        /**
+         * @param find_func {@link GstVulkan.VulkanImageMemoryFindViewFunc} to search with
+         * @returns the first {@link GstVulkan.VulkanImageView} that `find_func` returns `true` for, or `null`
+         */
         find_view(find_func: VulkanImageMemoryFindViewFunc): VulkanImageView;
+        /**
+         * @returns the height of `image`
+         */
         get_height(): number;
+        /**
+         * @returns the width of `image`
+         */
         get_width(): number;
+        /**
+         * @param allocator
+         * @param parent
+         * @param device
+         * @param usage
+         * @param params
+         * @param size
+         * @param user_data
+         */
         init(
             allocator: Gst.Allocator,
             parent: Gst.Memory,
             device: VulkanDevice,
             usage: Vulkan.ImageUsageFlags,
             params: Gst.AllocationParams,
-            size: number,
-            user_data?: any | null,
+            size: bigint | number,
+            user_data: any | null,
         ): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanImageMemoryAllocatorClass = typeof VulkanImageMemoryAllocator;
+    /**
+     * @gir-type Struct
+     */
     class VulkanImageView {
         static $gtype: GObject.GType<VulkanImageView>;
 
@@ -2346,20 +3041,37 @@ export namespace GstVulkan {
         // Constructors
 
         constructor(image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo);
-        _init(...args: any[]): void;
 
         static ['new'](image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo): VulkanImageView;
+
+        // Methods
+
+        /**
+         * Increases the refcount of the given trash object by one.
+         * @returns `trash`
+         */
+        ref(): VulkanImageView;
+        /**
+         * Decreases the refcount of the trash object. If the refcount reaches 0, the
+         * trash will be freed.
+         */
+        unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanInstanceClass = typeof VulkanInstance;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanInstancePrivate {
         static $gtype: GObject.GType<VulkanInstancePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanMemory {
         static $gtype: GObject.GType<VulkanMemory>;
 
@@ -2368,17 +3080,13 @@ export namespace GstVulkan {
         device: VulkanDevice;
         map_count: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
         /**
-         * Allocated a new #GstVulkanMemory.
-         * @param device a #GstVulkanDevice
+         * Allocated a new {@link GstVulkan.VulkanMemory}.
+         * @param device a {@link GstVulkan.VulkanDevice}
          * @param memory_type_index the Vulkan memory type index
-         * @param params a #GstAllocationParams
+         * @param params a {@link Gst.AllocationParams}
          * @param size the size to allocate
          * @param mem_prop_flags
          */
@@ -2386,52 +3094,76 @@ export namespace GstVulkan {
             device: VulkanDevice,
             memory_type_index: number,
             params: Gst.AllocationParams,
-            size: number,
+            size: bigint | number,
             mem_prop_flags: Vulkan.MemoryPropertyFlags,
         ): Gst.Memory;
+        /**
+         * @param device a {@link GstVulkan.VulkanDevice}
+         * @param type_bits memory type bits to search for
+         * @param properties memory properties to search for
+         * @param type_index resulting index of the memory type
+         */
         static find_memory_type_index_with_type_properties(
             device: VulkanDevice,
             type_bits: number,
             properties: Vulkan.MemoryPropertyFlags,
             type_index: number,
         ): boolean;
+        /**
+         * @param prop_bits
+         */
         static heap_flags_to_string(prop_bits: Vulkan.MemoryHeapFlags): string;
         /**
          * Initializes the Vulkan memory allocator. It is safe to call this function
-         * multiple times.  This must be called before any other #GstVulkanMemory operation.
+         * multiple times.  This must be called before any other {@link GstVulkan.VulkanMemory} operation.
          */
         static init_once(): void;
+        /**
+         * @param prop_bits
+         */
         static property_flags_to_string(prop_bits: Vulkan.MemoryPropertyFlags): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanMemoryAllocatorClass = typeof VulkanMemoryAllocator;
+    /**
+     * @gir-type Alias
+     */
     type VulkanPhysicalDeviceClass = typeof VulkanPhysicalDevice;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanPhysicalDevicePrivate {
         static $gtype: GObject.GType<VulkanPhysicalDevicePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanQueueClass = typeof VulkanQueue;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanQueuePrivate {
         static $gtype: GObject.GType<VulkanQueuePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanSwapperClass = typeof VulkanSwapper;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanSwapperPrivate {
         static $gtype: GObject.GType<VulkanSwapperPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VulkanTrash {
         static $gtype: GObject.GType<VulkanTrash>;
 
@@ -2444,7 +3176,6 @@ export namespace GstVulkan {
         // Constructors
 
         constructor(fence: VulkanFence);
-        _init(...args: any[]): void;
 
         static ['new'](fence: VulkanFence): VulkanTrash;
 
@@ -2452,20 +3183,52 @@ export namespace GstVulkan {
 
         // Static methods
 
-        static mini_object_unref(device: VulkanDevice, user_data?: any | null): void;
-        static object_unref(device: VulkanDevice, user_data?: any | null): void;
+        /**
+         * @param device
+         * @param user_data
+         */
+        static mini_object_unref(device: VulkanDevice, user_data: any | null): void;
+        /**
+         * @param device
+         * @param user_data
+         */
+        static object_unref(device: VulkanDevice, user_data: any | null): void;
+
+        // Methods
+
+        /**
+         * Increases the refcount of the given trash object by one.
+         * @returns `trash`
+         */
+        ref(): VulkanTrash;
+        /**
+         * Decreases the refcount of the trash object. If the refcount reaches 0, the
+         * trash will be freed.
+         */
+        unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanTrashFenceListClass = typeof VulkanTrashFenceList;
+    /**
+     * @gir-type Alias
+     */
     type VulkanTrashListClass = typeof VulkanTrashList;
+    /**
+     * @gir-type Alias
+     */
     type VulkanVideoFilterClass = typeof VulkanVideoFilter;
+    /**
+     * @gir-type Alias
+     */
     type VulkanWindowClass = typeof VulkanWindow;
+    /**
+     * @gir-type Struct
+     */
     abstract class VulkanWindowPrivate {
         static $gtype: GObject.GType<VulkanWindowPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

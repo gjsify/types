@@ -18,10 +18,9 @@ export namespace MyPaint {
      * MyPaint-1.6
      */
 
-    export namespace BrushInput {
-        export const $gtype: GObject.GType<BrushInput>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum BrushInput {
         INPUT_PRESSURE,
         INPUT_SPEED1,
@@ -44,10 +43,9 @@ export namespace MyPaint {
         INPUTS_COUNT,
     }
 
-    export namespace BrushSetting {
-        export const $gtype: GObject.GType<BrushSetting>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum BrushSetting {
         SETTING_OPAQUE,
         SETTING_OPAQUE_MULTIPLY,
@@ -116,10 +114,9 @@ export namespace MyPaint {
         SETTINGS_COUNT,
     }
 
-    export namespace BrushState {
-        export const $gtype: GObject.GType<BrushState>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum BrushState {
         STATE_X,
         STATE_Y,
@@ -167,16 +164,38 @@ export namespace MyPaint {
         STATE_BARREL_ROTATION,
         STATES_COUNT,
     }
+
+    /**
+     * @param cname
+     */
     function brush_input_from_cname(cname: string): BrushInput;
-    function brush_input_info(id: BrushInput | null): BrushInputInfo;
+    /**
+     * @param id
+     */
+    function brush_input_info(id: BrushInput): BrushInputInfo;
+    /**
+     * @param cname
+     */
     function brush_setting_from_cname(cname: string): BrushSetting;
-    function brush_setting_info(id: BrushSetting | null): BrushSettingInfo;
+    /**
+     * @param id
+     */
+    function brush_setting_info(id: BrushSetting): BrushSettingInfo;
+    /**
+     * @gir-type Callback
+     */
     interface SurfaceBeginAtomicFunction {
         (self: Surface): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SurfaceDestroyFunction {
         (self: Surface): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SurfaceDrawDabFunction {
         (
             self: Surface,
@@ -195,9 +214,15 @@ export namespace MyPaint {
             colorize: number,
         ): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SurfaceEndAtomicFunction {
         (self: Surface, roi: Rectangle): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SurfaceGetColorFunction {
         (
             self: Surface,
@@ -210,17 +235,27 @@ export namespace MyPaint {
             color_a: number,
         ): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SurfaceSavePngFunction {
         (self: Surface, path: string, x: number, y: number, width: number, height: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TileRequestEndFunction {
         (self: TiledSurface, request: TileRequest): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TileRequestStartFunction {
         (self: TiledSurface, request: TileRequest): void;
     }
     /**
      * The MyPaint brush engine class.
+     * @gir-type Struct
      */
     class Brush {
         static $gtype: GObject.GType<Brush>;
@@ -228,7 +263,6 @@ export namespace MyPaint {
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): Brush;
 
@@ -236,59 +270,72 @@ export namespace MyPaint {
 
         // Static methods
 
+        /**
+         * @param cname
+         */
         static input_from_cname(cname: string): BrushInput;
+        /**
+         * @param cname
+         */
         static setting_from_cname(cname: string): BrushSetting;
 
         // Methods
 
         from_defaults(): void;
+        /**
+         * @param string
+         */
         from_string(string: string): boolean;
         /**
          * Get the base value of a brush setting.
          * @param id
          */
-        get_base_value(id: BrushSetting | null): number;
+        get_base_value(id: BrushSetting): number;
         /**
-         * Returns how many inputs are used for the dynamics of a #MyPaintBrushSetting
+         * Returns how many inputs are used for the dynamics of a {@link MyPaint.BrushSetting}
          * @param id
          */
-        get_inputs_used_n(id: BrushSetting | null): number;
+        get_inputs_used_n(id: BrushSetting): number;
         /**
-         * Get the number of points used for the dynamics mapping between a #MyPaintBrushInput and #MyPaintBrushSetting.
+         * Get the number of points used for the dynamics mapping between a {@link MyPaint.BrushInput} and {@link MyPaint.BrushSetting}.
          * @param id
          * @param input
          */
-        get_mapping_n(id: BrushSetting | null, input: BrushInput | null): number;
+        get_mapping_n(id: BrushSetting, input: BrushInput): number;
         /**
          * Get a X,Y point of a dynamics mapping.
          * @param id
          * @param input
          * @param index
          */
-        get_mapping_point(id: BrushSetting | null, input: BrushInput | null, index: number): [number, number];
+        get_mapping_point(id: BrushSetting, input: BrushInput, index: number): [number, number];
         /**
          * Get an internal brush engine state.
          * Normally used for debugging, but can be used to implement record & replay functionality.
          * @param i
          */
-        get_state(i: BrushState | null): number;
+        get_state(i: BrushState): number;
         /**
          * Return the total amount of painting time for the current stroke.
          */
         get_total_stroke_painting_time(): number;
         /**
-         * Returns TRUE if the brush has no dynamics for the given #MyPaintBrushSetting
+         * Returns TRUE if the brush has no dynamics for the given {@link MyPaint.BrushSetting}
          * @param id
          */
-        is_constant(id: BrushSetting | null): boolean;
+        is_constant(id: BrushSetting): boolean;
         /**
          * Start a new stroke.
          */
         new_stroke(): void;
         /**
+         * Increase the reference count.
+         */
+        ref(): void;
+        /**
          * Reset the current brush engine state.
-         * Used when the next mypaint_brush_stroke_to() call is not related to the current state.
-         * Note that the reset request is queued and changes in state will only happen on next stroke_to()
+         * Used when the next `mypaint_brush_stroke_to()` call is not related to the current state.
+         * Note that the reset request is queued and changes in state will only happen on next `stroke_to()`
          */
         reset(): void;
         /**
@@ -296,24 +343,24 @@ export namespace MyPaint {
          * @param id
          * @param value
          */
-        set_base_value(id: BrushSetting | null, value: number): void;
+        set_base_value(id: BrushSetting, value: number): void;
         /**
-         * Set the number of points used for the dynamics mapping between a #MyPaintBrushInput and #MyPaintBrushSetting.
+         * Set the number of points used for the dynamics mapping between a {@link MyPaint.BrushInput} and {@link MyPaint.BrushSetting}.
          * @param id
          * @param input
          * @param n
          */
-        set_mapping_n(id: BrushSetting | null, input: BrushInput | null, n: number): void;
+        set_mapping_n(id: BrushSetting, input: BrushInput, n: number): void;
         /**
          * Set a X,Y point of a dynamics mapping.
-         * The index must be within the number of points set using mypaint_brush_set_mapping_n()
+         * The index must be within the number of points set using `mypaint_brush_set_mapping_n()`
          * @param id
          * @param input
          * @param index
          * @param x
          * @param y
          */
-        set_mapping_point(id: BrushSetting | null, input: BrushInput | null, index: number, x: number, y: number): void;
+        set_mapping_point(id: BrushSetting, input: BrushInput, index: number, x: number, y: number): void;
         /**
          * Enable/Disable printing of brush engine inputs on stderr. Intended for debugging only.
          * @param enabled
@@ -325,7 +372,7 @@ export namespace MyPaint {
          * @param i
          * @param value
          */
-        set_state(i: BrushState | null, value: number): void;
+        set_state(i: BrushState, value: number): void;
         /**
          * Should be called once for each motion event.
          * @param surface
@@ -346,8 +393,15 @@ export namespace MyPaint {
             ytilt: number,
             dtime: number,
         ): number;
+        /**
+         * Decrease the reference count. Will be freed when it hits 0.
+         */
+        unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BrushInputInfo {
         static $gtype: GObject.GType<BrushInputInfo>;
 
@@ -376,7 +430,6 @@ export namespace MyPaint {
                 tooltip: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -384,6 +437,9 @@ export namespace MyPaint {
         get_tooltip(): string;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BrushSettingInfo {
         static $gtype: GObject.GType<BrushSettingInfo>;
 
@@ -410,7 +466,6 @@ export namespace MyPaint {
                 tooltip: string;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -419,9 +474,10 @@ export namespace MyPaint {
     }
 
     /**
-     * Simple #MyPaintTiledSurface subclass that implements a fixed sized #MyPaintSurface.
+     * Simple {@link MyPaint.TiledSurface} subclass that implements a fixed sized {@link MyPaint.Surface}.
      * Only intended for testing and trivial use-cases, and to serve as an example of
      * how to implement a tiled surface subclass.
+     * @gir-type Struct
      */
     class FixedTiledSurface {
         static $gtype: GObject.GType<FixedTiledSurface>;
@@ -429,7 +485,6 @@ export namespace MyPaint {
         // Constructors
 
         constructor(width: number, height: number);
-        _init(...args: any[]): void;
 
         static ['new'](width: number, height: number): FixedTiledSurface;
 
@@ -440,6 +495,9 @@ export namespace MyPaint {
         ['interface'](): Surface;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
@@ -460,15 +518,24 @@ export namespace MyPaint {
                 height: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
         copy(): Rectangle;
+        /**
+         * @param x
+         * @param y
+         */
         expand_to_include_point(x: number, y: number): void;
+        /**
+         * @param other
+         */
         expand_to_include_rect(other: Rectangle): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Rectangles {
         static $gtype: GObject.GType<Rectangles>;
 
@@ -484,9 +551,11 @@ export namespace MyPaint {
                 num_rectangles: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Surface {
         static $gtype: GObject.GType<Surface>;
 
@@ -494,10 +563,6 @@ export namespace MyPaint {
 
         destroy: SurfaceDestroyFunction;
         refcount: number;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -534,7 +599,21 @@ export namespace MyPaint {
             colorize: number,
         ): number;
         end_atomic(): Rectangle | null;
+        /**
+         * @param x
+         * @param y
+         * @param radius
+         */
         get_alpha(x: number, y: number, radius: number): number;
+        /**
+         * @param x
+         * @param y
+         * @param radius
+         * @param color_r
+         * @param color_g
+         * @param color_b
+         * @param color_a
+         */
         get_color(
             x: number,
             y: number,
@@ -544,9 +623,27 @@ export namespace MyPaint {
             color_b: number,
             color_a: number,
         ): void;
+        /**
+         * Increase the reference count.
+         */
+        ref(): void;
+        /**
+         * @param path
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         */
         save_png(path: string, x: number, y: number, width: number, height: number): void;
+        /**
+         * Decrease the reference count.
+         */
+        unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class TileRequest {
         static $gtype: GObject.GType<TileRequest>;
 
@@ -573,13 +670,12 @@ export namespace MyPaint {
                 mipmap_level: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         // Methods
 
         /**
-         * Initialize a request for use with mypaint_tiled_surface_tile_request_start()
-         * and mypaint_tiled_surface_tile_request_end()
+         * Initialize a request for use with `mypaint_tiled_surface_tile_request_start()`
+         * and `mypaint_tiled_surface_tile_request_end()`
          * @param level
          * @param tx
          * @param ty
@@ -590,6 +686,7 @@ export namespace MyPaint {
 
     /**
      * Testing if this comment ends up in the gir.
+     * @gir-type Struct
      */
     class TiledSurface {
         static $gtype: GObject.GType<TiledSurface>;
@@ -603,12 +700,19 @@ export namespace MyPaint {
         threadsafe_tile_requests: boolean;
         tile_size: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
+        /**
+         * Deallocate resources set up by `mypaint_tiled_surface_init()`
+         * Does not free the {@link MyPaint.TiledSurface} itself.
+         * Note: Only intended to be called from subclasses of {@link MyPaint.TiledSurface}
+         */
+        destroy(): void;
+        /**
+         * @param x
+         * @param y
+         * @param radius
+         */
         get_alpha(x: number, y: number, radius: number): number;
         /**
          * Enable/Disable symmetric brush painting across an X axis.
@@ -616,7 +720,13 @@ export namespace MyPaint {
          * @param center_x X axis to mirror events across.
          */
         set_symmetry_state(active: boolean, center_x: number): void;
+        /**
+         * @param request
+         */
         tile_request_end(request: TileRequest): void;
+        /**
+         * @param request
+         */
         tile_request_start(request: TileRequest): void;
     }
 

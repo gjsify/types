@@ -25,16 +25,18 @@ export namespace Libproxy {
      * longer used.
      *
      * `since` 0.4.16
-     * @param proxies a %NULL-terminated array of proxies
+     * @param proxies a `null`-terminated array of proxies
      */
     function proxy_factory_free_proxies(proxies: string[]): void;
+    /**
+     * @gir-type Struct
+     */
     class ProxyFactory {
         static $gtype: GObject.GType<ProxyFactory>;
 
         // Constructors
 
         constructor(properties?: Partial<{}>);
-        _init(...args: any[]): void;
 
         static ['new'](): ProxyFactory;
 
@@ -45,7 +47,7 @@ export namespace Libproxy {
          * longer used.
          *
          * `since` 0.4.16
-         * @param proxies a %NULL-terminated array of proxies
+         * @param proxies a `null`-terminated array of proxies
          */
         static free_proxies(proxies: string[]): void;
 
@@ -58,10 +60,10 @@ export namespace Libproxy {
         /**
          * Get which proxies to use for the specified `URL`.
          *
-         * A %NULL-terminated array of proxy strings is returned.
+         * A `null`-terminated array of proxy strings is returned.
          * If the first proxy fails, the second should be tried, etc...
          * Don't forget to free the strings/array when you are done.
-         * If an unrecoverable error occurs, this function returns %NULL.
+         * If an unrecoverable error occurs, this function returns `null`.
          *
          * Regarding performance: this method always blocks and may be called
          * in a separate thread (is thread-safe).  In most cases, the time
@@ -83,15 +85,15 @@ export namespace Libproxy {
          *
          * The format of the returned proxy strings are as follows:
          *
-         *   - http://[username:password`]`proxy:port
+         *   - http://[username:password@]proxy:port
          *
-         *   - socks://[username:password`]`proxy:port
+         *   - socks://[username:password@]proxy:port
          *
-         *   - socks5://[username:password`]`proxy:port
+         *   - socks5://[username:password@]proxy:port
          *
-         *   - socks4://[username:password`]`proxy:port
+         *   - socks4://[username:password@]proxy:port
          *
-         *   - <procotol>://[username:password`]`proxy:port
+         *   - <procotol>://[username:password@]proxy:port
          *
          *   - direct://
          *
@@ -109,7 +111,7 @@ export namespace Libproxy {
          * previous does not exist. As an example, on Mac OS X you can configure a
          * RTSP streaming proxy. The expected returned configuration would be:
          *
-         *   - rtsp://[username:password`]`proxy:port
+         *   - rtsp://[username:password@]proxy:port
          *
          * To free the returned value, call `px_proxy_factory_free_proxies`.
          * @param url Get proxxies for specificed URL

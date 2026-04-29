@@ -31,9 +31,10 @@ export namespace GtkSpell {
 
     /**
      * Error codes used for GtkSpell errors.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -45,7 +46,6 @@ export namespace GtkSpell {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -56,6 +56,12 @@ export namespace GtkSpell {
     namespace Checker {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            /**
+             * The ::language-changed signal is emitted when the user selects
+             * a new spelling language from the context menu.
+             * @signal
+             * @run-last
+             */
             'language-changed': (arg0: string) => void;
             'notify::decode-language-codes': (pspec: GObject.ParamSpec) => void;
         }
@@ -69,15 +75,22 @@ export namespace GtkSpell {
     }
 
     /**
-     * The #GtkSpellChecker struct contains only private fields.
+     * The {@link GtkSpell.Checker} struct contains only private fields.
+     * @gir-type Class
      */
     class Checker extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Checker>;
 
         // Properties
 
+        /**
+         * @default false
+         */
         get decode_language_codes(): boolean;
         set decode_language_codes(val: boolean);
+        /**
+         * @default false
+         */
         get decodeLanguageCodes(): boolean;
         set decodeLanguageCodes(val: boolean);
 
@@ -100,16 +113,19 @@ export namespace GtkSpell {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Checker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Checker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Checker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -127,8 +143,8 @@ export namespace GtkSpell {
          */
         static decode_language_code(lang: string): string;
         /**
-         * Retrieves the #GtkSpellChecker object attached to a text view.
-         * @param view A #GtkTextView.
+         * Retrieves the {@link GtkSpell.Checker} object attached to a text view.
+         * @param view A {@link Gtk.TextView}.
          */
         static get_from_text_view(view: Gtk.TextView): Checker;
         /**
@@ -138,6 +154,10 @@ export namespace GtkSpell {
 
         // Virtual methods
 
+        /**
+         * @param new_lang
+         * @virtual
+         */
         vfunc_language_changed(new_lang: string): void;
 
         // Methods
@@ -148,11 +168,11 @@ export namespace GtkSpell {
          */
         add_to_dictionary(word: string): void;
         /**
-         * Attach #GtkSpellChecker object to `view`.
+         * Attach {@link GtkSpell.Checker} object to `view`.
          *
          * Note: Please read the tutorial section of the documentation to make sure
          * you don't leak references!
-         * @param view The #GtkTextView to attach to.
+         * @param view The {@link Gtk.TextView} to attach to.
          * @returns TRUE on success, FALSE on failure.
          */
         attach(view: Gtk.TextView): boolean;
@@ -163,12 +183,12 @@ export namespace GtkSpell {
          */
         check_word(word: string): boolean;
         /**
-         * Detaches this #GtkSpellChecker from its #GtkTextView.  Use
-         * gtk_spell_checker_get_from_text_view () to retrieve a #GtkSpellChecker from
-         * a #GtkTextView. If the #GtkSpellChecker is not attached to any #GtkTextView,
+         * Detaches this {@link GtkSpell.Checker} from its {@link Gtk.TextView}.  Use
+         * gtk_spell_checker_get_from_text_view () to retrieve a {@link GtkSpell.Checker} from
+         * a {@link Gtk.TextView}. If the {@link GtkSpell.Checker} is not attached to any {@link Gtk.TextView},
          * the function silently exits.
          *
-         * Note: if the #GtkSpellChecker is owned by the #GtkTextView, you must
+         * Note: if the {@link GtkSpell.Checker} is owned by the {@link Gtk.TextView}, you must
          * take a reference to it to prevent it from being automatically destroyed.
          * Please read the tutorial section of the documentation!
          */
@@ -188,7 +208,7 @@ export namespace GtkSpell {
          * Retrieves a submenu of replacement spellings, or NULL if the word at `iter` is
          * not misspelt.
          * @param iter Textiter of position in buffer to be corrected if necessary.
-         * @returns the #GtkMenu widget, or %NULL if there is no need for a menu
+         * @returns the {@link Gtk.Menu} widget, or `null` if there is no need for a menu
          */
         get_suggestions_menu(iter: Gtk.TextIter): Gtk.Widget;
         /**
@@ -201,21 +221,23 @@ export namespace GtkSpell {
          */
         recheck_all(): void;
         /**
-         * Set the language on `spell` to `lang,` possibily returning an error in
+         * Set the language on `spell` to `lang`, possibily returning an error in
          * `error`.
-         * @param lang The language to use, as a locale specifier (i.e. "en_US"). If #NULL, attempt to use the default system locale (LANG).
+         * @param lang The language to use, as a locale specifier (i.e. "en_US"). If `NULL`, attempt to use the default system locale (LANG).
          * @returns FALSE if there was an error.
          */
-        set_language(lang?: string | null): boolean;
+        set_language(lang: string | null): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CheckerClass = typeof Checker;
+    /**
+     * @gir-type Struct
+     */
     abstract class CheckerPrivate {
         static $gtype: GObject.GType<CheckerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

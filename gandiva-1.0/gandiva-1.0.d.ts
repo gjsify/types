@@ -22,16 +22,16 @@ export namespace Gandiva {
      */
 
     /**
-     * They are corresponding to `gandiva::ResultNullableType` values.
-     */
-
-    /**
-     * They are corresponding to `gandiva::ResultNullableType` values.
+     * @gir-type Enum
      */
     export namespace ResultNullableType {
         export const $gtype: GObject.GType<ResultNullableType>;
     }
 
+    /**
+     * They are corresponding to `gandiva::ResultNullableType` values.
+     * @gir-type Enum
+     */
     enum ResultNullableType {
         /**
          * This means the result validity is an intersection of
@@ -48,21 +48,26 @@ export namespace Gandiva {
          */
         INTERNAL,
     }
+
     /**
      * The major version.
+     * @since 1.0.0
      */
     const VERSION_MAJOR: number;
     /**
      * The micro version.
+     * @since 1.0.0
      */
     const VERSION_MICRO: number;
     /**
      * The minor version.
+     * @since 1.0.0
      */
     const VERSION_MINOR: number;
     /**
      * The version tag. Normally, it's an empty string. It's "SNAPSHOT"
      * for snapshot version.
+     * @since 1.0.0
      */
     const VERSION_TAG: string;
     namespace AndNode {
@@ -77,6 +82,9 @@ export namespace Gandiva {
         interface ConstructorProps extends BooleanNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AndNode extends BooleanNode {
         static $gtype: GObject.GType<AndNode>;
 
@@ -99,16 +107,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AndNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AndNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AndNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AndNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AndNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AndNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -128,6 +139,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BinaryLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BinaryLiteralNode>;
 
@@ -152,16 +166,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BinaryLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -170,6 +187,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the binary literal.
+         */
         get_value(): GLib.Bytes;
     }
 
@@ -185,6 +205,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BooleanLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BooleanLiteralNode>;
 
@@ -207,16 +230,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BooleanLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -225,6 +251,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the boolean literal.
+         */
         get_value(): boolean;
     }
 
@@ -240,6 +269,9 @@ export namespace Gandiva {
         interface ConstructorProps extends Node.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BooleanNode extends Node {
         static $gtype: GObject.GType<BooleanNode>;
 
@@ -260,16 +292,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BooleanNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -278,6 +313,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The children of the boolean node.
+         */
         get_children(): Node[];
     }
 
@@ -293,6 +331,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DoubleLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<DoubleLiteralNode>;
 
@@ -315,16 +356,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DoubleLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -333,6 +377,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 64-bit floating point literal.
+         */
         get_value(): number;
     }
 
@@ -355,15 +402,33 @@ export namespace Gandiva {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Expression extends GObject.Object {
         static $gtype: GObject.GType<Expression>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set expression(val: any);
+        /**
+         * @construct-only
+         */
         get result_field(): Arrow.Field;
+        /**
+         * @construct-only
+         */
         get resultField(): Arrow.Field;
+        /**
+         * @construct-only
+         */
         get root_node(): Node;
+        /**
+         * @construct-only
+         */
         get rootNode(): Node;
 
         /**
@@ -385,16 +450,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Expression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Expression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -403,6 +471,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The string representation of the node in the expression tree.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -421,11 +492,17 @@ export namespace Gandiva {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FieldNode extends Node {
         static $gtype: GObject.GType<FieldNode>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get field(): Arrow.Field;
 
         /**
@@ -447,16 +524,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FieldNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FieldNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FieldNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FieldNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FieldNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FieldNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -476,6 +556,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FloatLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<FloatLiteralNode>;
 
@@ -498,16 +581,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FloatLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -516,6 +602,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 32-bit floating point literal.
+         */
         get_value(): number;
     }
 
@@ -534,11 +623,17 @@ export namespace Gandiva {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FunctionNode extends Node {
         static $gtype: GObject.GType<FunctionNode>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -560,16 +655,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FunctionNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -578,6 +676,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The parameters of the function node.
+         */
         get_parameters(): Node[];
     }
 
@@ -590,6 +691,9 @@ export namespace Gandiva {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FunctionRegistry extends GObject.Object {
         static $gtype: GObject.GType<FunctionRegistry>;
 
@@ -612,16 +716,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionRegistry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionRegistry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FunctionRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -630,7 +737,14 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The native functions in the function registry.
+         */
         get_native_functions(): NativeFunction[];
+        /**
+         * @param function_signature A {@link Gandiva.FunctionSignature} to be looked up.
+         * @returns The native functions associated to the given {@link Gandiva.FunctionSignature}.
+         */
         lookup(function_signature: FunctionSignature): NativeFunction | null;
     }
 
@@ -648,12 +762,21 @@ export namespace Gandiva {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FunctionSignature extends GObject.Object {
         static $gtype: GObject.GType<FunctionSignature>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set function_signature(val: any);
+        /**
+         * @construct-only
+         */
         set functionSignature(val: any);
 
         /**
@@ -679,16 +802,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionSignature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionSignature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FunctionSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -697,10 +823,26 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @param other_function_signature A {@link Gandiva.FunctionSignature} to be compared.
+         * @returns `true` if both of them have the same data, `false` otherwise.
+         */
         equal(other_function_signature: FunctionSignature): boolean;
+        /**
+         * @returns A base name of the function signature.   It should be freed with `g_free()` when no longer needed.
+         */
         get_base_name(): string;
+        /**
+         * @returns A list of parameter data types of the function signature.
+         */
         get_param_types(): Arrow.DataType[];
+        /**
+         * @returns A {@link Arrow.DataType} of the return value of the function signature.
+         */
         get_return_type(): Arrow.DataType;
+        /**
+         * @returns The string representation of the function signature.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -726,16 +868,37 @@ export namespace Gandiva {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class IfNode extends Node {
         static $gtype: GObject.GType<IfNode>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get condition_node(): Node;
+        /**
+         * @construct-only
+         */
         get conditionNode(): Node;
+        /**
+         * @construct-only
+         */
         get else_node(): Node;
+        /**
+         * @construct-only
+         */
         get elseNode(): Node;
+        /**
+         * @construct-only
+         */
         get then_node(): Node;
+        /**
+         * @construct-only
+         */
         get thenNode(): Node;
 
         /**
@@ -757,16 +920,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IfNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IfNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IfNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IfNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IfNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IfNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -786,6 +952,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int16LiteralNode>;
 
@@ -808,16 +977,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int16LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -826,6 +998,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 16-bit integer literal.
+         */
         get_value(): number;
     }
 
@@ -841,6 +1016,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int32LiteralNode>;
 
@@ -863,16 +1041,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int32LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -881,6 +1062,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 32-bit integer literal.
+         */
         get_value(): number;
     }
 
@@ -896,6 +1080,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int64LiteralNode>;
 
@@ -914,20 +1101,23 @@ export namespace Gandiva {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): Int64LiteralNode;
+        static ['new'](value: bigint | number): Int64LiteralNode;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int64LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -936,6 +1126,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 64-bit integer literal.
+         */
         get_value(): number;
     }
 
@@ -951,6 +1144,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int8LiteralNode>;
 
@@ -973,16 +1169,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int8LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -991,6 +1190,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 8-bit integer literal.
+         */
         get_value(): number;
     }
 
@@ -1006,6 +1208,9 @@ export namespace Gandiva {
         interface ConstructorProps extends Node.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LiteralNode extends Node {
         static $gtype: GObject.GType<LiteralNode>;
 
@@ -1026,16 +1231,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1057,12 +1265,21 @@ export namespace Gandiva {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class NativeFunction extends GObject.Object {
         static $gtype: GObject.GType<NativeFunction>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set native_function(val: any);
+        /**
+         * @construct-only
+         */
         set nativeFunction(val: any);
 
         /**
@@ -1082,16 +1299,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NativeFunction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NativeFunction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NativeFunction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1100,12 +1320,34 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns `true` if the native function has the possibility of returning errors,   `false` otherwise.
+         */
         can_return_errors(): boolean;
+        /**
+         * @param other_native_function A {@link Gandiva.NativeFunction} to be compared.
+         * @returns `true` if both of them have the same data, `false` otherwise.
+         */
         equal(other_native_function: NativeFunction): boolean;
+        /**
+         * @returns A value of {@link Gandiva.ResultNullableType}.
+         */
         get_result_nullable_type(): ResultNullableType;
+        /**
+         * @returns A list of {@link Gandiva.FunctionSignature} supported by the native function.
+         */
         get_signatures(): FunctionSignature[];
+        /**
+         * @returns `true` if the native function needs a context for evaluation,   `false` otherwise.
+         */
         need_context(): boolean;
+        /**
+         * @returns `true` if the native function needs a function holder for evaluation,   `false` otherwise.
+         */
         need_function_holder(): boolean;
+        /**
+         * @returns The string representation of the signatures of the native function.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -1125,13 +1367,25 @@ export namespace Gandiva {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set node(val: any);
+        /**
+         * @construct-only
+         */
         get return_type(): Arrow.DataType;
+        /**
+         * @construct-only
+         */
         get returnType(): Arrow.DataType;
 
         /**
@@ -1151,16 +1405,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Node.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Node.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1169,6 +1426,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The string representation of the node.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -1184,6 +1444,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NullLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<NullLiteralNode>;
 
@@ -1206,16 +1469,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NullLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1235,6 +1501,9 @@ export namespace Gandiva {
         interface ConstructorProps extends BooleanNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OrNode extends BooleanNode {
         static $gtype: GObject.GType<OrNode>;
 
@@ -1257,16 +1526,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OrNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OrNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OrNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OrNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OrNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OrNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1287,11 +1559,17 @@ export namespace Gandiva {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Projector extends GObject.Object {
         static $gtype: GObject.GType<Projector>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set projector(val: any);
 
         /**
@@ -1313,16 +1591,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Projector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Projector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Projector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Projector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Projector.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Projector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1331,6 +1612,10 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @param record_batch A {@link Arrow.RecordBatch}.
+         * @returns The {@link Arrow.Array} as the result evaluated on success, `null` on error.
+         */
         evaluate(record_batch: Arrow.RecordBatch): Arrow.Array[] | null;
     }
 
@@ -1346,6 +1631,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StringLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<StringLiteralNode>;
 
@@ -1368,16 +1656,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringLiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringLiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StringLiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1386,6 +1677,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the UTF-8 encoded string literal.
+         */
         get_value(): string;
     }
 
@@ -1401,6 +1695,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt16LiteralNode>;
 
@@ -1423,16 +1720,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt16LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1441,6 +1741,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 16-bit unsigned integer literal.
+         */
         get_value(): number;
     }
 
@@ -1456,6 +1759,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt32LiteralNode>;
 
@@ -1478,16 +1784,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt32LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1496,6 +1805,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 32-bit unsigned integer literal.
+         */
         get_value(): number;
     }
 
@@ -1511,6 +1823,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt64LiteralNode>;
 
@@ -1529,20 +1844,23 @@ export namespace Gandiva {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): UInt64LiteralNode;
+        static ['new'](value: bigint | number): UInt64LiteralNode;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt64LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1551,6 +1869,9 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 64-bit unsigned integer literal.
+         */
         get_value(): number;
     }
 
@@ -1566,6 +1887,9 @@ export namespace Gandiva {
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt8LiteralNode>;
 
@@ -1588,16 +1912,19 @@ export namespace Gandiva {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8LiteralNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8LiteralNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt8LiteralNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1606,35 +1933,119 @@ export namespace Gandiva {
 
         // Methods
 
+        /**
+         * @returns The value of the 8-bit unsigned integer literal.
+         */
         get_value(): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AndNodeClass = typeof AndNode;
+    /**
+     * @gir-type Alias
+     */
     type BinaryLiteralNodeClass = typeof BinaryLiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type BooleanLiteralNodeClass = typeof BooleanLiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type BooleanNodeClass = typeof BooleanNode;
+    /**
+     * @gir-type Alias
+     */
     type DoubleLiteralNodeClass = typeof DoubleLiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type ExpressionClass = typeof Expression;
+    /**
+     * @gir-type Alias
+     */
     type FieldNodeClass = typeof FieldNode;
+    /**
+     * @gir-type Alias
+     */
     type FloatLiteralNodeClass = typeof FloatLiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type FunctionNodeClass = typeof FunctionNode;
+    /**
+     * @gir-type Alias
+     */
     type FunctionRegistryClass = typeof FunctionRegistry;
+    /**
+     * @gir-type Alias
+     */
     type FunctionSignatureClass = typeof FunctionSignature;
+    /**
+     * @gir-type Alias
+     */
     type IfNodeClass = typeof IfNode;
+    /**
+     * @gir-type Alias
+     */
     type Int16LiteralNodeClass = typeof Int16LiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type Int32LiteralNodeClass = typeof Int32LiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type Int64LiteralNodeClass = typeof Int64LiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type Int8LiteralNodeClass = typeof Int8LiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type LiteralNodeClass = typeof LiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type NativeFunctionClass = typeof NativeFunction;
+    /**
+     * @gir-type Alias
+     */
     type NodeClass = typeof Node;
+    /**
+     * @gir-type Alias
+     */
     type NullLiteralNodeClass = typeof NullLiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type OrNodeClass = typeof OrNode;
+    /**
+     * @gir-type Alias
+     */
     type ProjectorClass = typeof Projector;
+    /**
+     * @gir-type Alias
+     */
     type StringLiteralNodeClass = typeof StringLiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type UInt16LiteralNodeClass = typeof UInt16LiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type UInt32LiteralNodeClass = typeof UInt32LiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type UInt64LiteralNodeClass = typeof UInt64LiteralNode;
+    /**
+     * @gir-type Alias
+     */
     type UInt8LiteralNodeClass = typeof UInt8LiteralNode;
     /**
      * Name of the imported GIR library

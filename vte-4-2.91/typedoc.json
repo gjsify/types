@@ -2,6 +2,8 @@
     "entryPoints": ["./vte-4-2.91.d.ts"],
     "readme": "./README.md",
     "name": "Vte-4-2.91",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

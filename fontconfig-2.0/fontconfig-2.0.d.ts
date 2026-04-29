@@ -18,28 +18,25 @@ export namespace fontconfig {
      */
 
     function init(): void;
+    /**
+     * @gir-type Struct
+     */
     class Pattern {
         static $gtype: GObject.GType<Pattern>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class CharSet {
         static $gtype: GObject.GType<CharSet>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Config {
         static $gtype: GObject.GType<Config>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

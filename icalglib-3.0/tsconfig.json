@@ -17,7 +17,18 @@
     "inlineSources": false,
     "newLine": "LF",
     // Show diagnostics
-    "diagnostics": true
+    "diagnostics": true,
+    "paths": {
+      "@girs/gobject-2.0": [
+            "../gobject-2.0/index.d.ts"
+      ],
+      "@girs/glib-2.0": [
+            "../glib-2.0/index.d.ts"
+      ],
+      "@girs/gjs": [
+            "../gjs/index.d.ts"
+      ]
+}
   },
   "include": ["./icalglib-3.0.d.ts"]
 }

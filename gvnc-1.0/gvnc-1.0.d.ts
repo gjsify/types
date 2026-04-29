@@ -20,10 +20,9 @@ export namespace GVnc {
      * GVnc-1.0
      */
 
-    export namespace AudioFormatType {
-        export const $gtype: GObject.GType<AudioFormatType>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum AudioFormatType {
         U8,
         S8,
@@ -33,10 +32,16 @@ export namespace GVnc {
         S32,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionAuth {
         export const $gtype: GObject.GType<ConnectionAuth>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ConnectionAuth {
         INVALID,
         /**
@@ -89,10 +94,16 @@ export namespace GVnc {
         MSLOGON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionAuthVencrypt {
         export const $gtype: GObject.GType<ConnectionAuthVencrypt>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ConnectionAuthVencrypt {
         PLAIN,
         TLSNONE,
@@ -105,10 +116,16 @@ export namespace GVnc {
         TLSSASL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionCredential {
         export const $gtype: GObject.GType<ConnectionCredential>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ConnectionCredential {
         PASSWORD,
         USERNAME,
@@ -116,10 +133,16 @@ export namespace GVnc {
         CA_CERT_DATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionEncoding {
         export const $gtype: GObject.GType<ConnectionEncoding>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ConnectionEncoding {
         RAW,
         COPY_RECT,
@@ -154,20 +177,32 @@ export namespace GVnc {
         ALPHA_CURSOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionPowerAction {
         export const $gtype: GObject.GType<ConnectionPowerAction>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ConnectionPowerAction {
         SHUTDOWN,
         REBOOT,
         RESET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConnectionResizeStatus {
         export const $gtype: GObject.GType<ConnectionResizeStatus>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ConnectionResizeStatus {
         UNSUPPORTED,
         OK,
@@ -176,6 +211,7 @@ export namespace GVnc {
         INVALID_LAOUT,
         FORWARDED,
     }
+
     const LEDSTATE_CAPS_LOCK: number;
     const LEDSTATE_NUM_LOCK: number;
     const LEDSTATE_SCROLL_LOCK: number;
@@ -186,7 +222,7 @@ export namespace GVnc {
     const PADDING_LARGE: number;
     /**
      * Check whether the library is at least as new as the
-     * version (`major,` `minor,` `micro)`
+     * version (`major`, `minor`, `micro`)
      * @param major the desired major version
      * @param minor the desired minor version
      * @param micro the desired micro version
@@ -221,8 +257,20 @@ export namespace GVnc {
     namespace BaseAudio {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-audio-playback-data': (arg0: AudioSample) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-audio-playback-start': (arg0: AudioFormat) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-audio-playback-stop': () => void;
         }
 
@@ -231,6 +279,9 @@ export namespace GVnc {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Audio.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BaseAudio extends GObject.Object implements Audio {
         static $gtype: GObject.GType<BaseAudio>;
 
@@ -253,16 +304,19 @@ export namespace GVnc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BaseAudio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseAudio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BaseAudio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseAudio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BaseAudio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BaseAudio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -271,11 +325,20 @@ export namespace GVnc {
 
         // Virtual methods
 
+        /**
+         * @param sample
+         * @virtual
+         */
         vfunc_playback_data(sample: AudioSample): boolean;
+        /**
+         * @param format
+         * @virtual
+         */
         vfunc_playback_start(format: AudioFormat): boolean;
+        /**
+         * @virtual
+         */
         vfunc_playback_stop(): boolean;
-
-        // Inherited methods
         /**
          * Request playback of a single audio sample in `sample`
          * @param sample the audio sample
@@ -305,90 +368,68 @@ export namespace GVnc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -396,7 +437,7 @@ export namespace GVnc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -404,9 +445,9 @@ export namespace GVnc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -426,9 +467,9 @@ export namespace GVnc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -442,33 +483,33 @@ export namespace GVnc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -501,21 +542,21 @@ export namespace GVnc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -525,8 +566,8 @@ export namespace GVnc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -543,14 +584,14 @@ export namespace GVnc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -561,13 +602,13 @@ export namespace GVnc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -598,21 +639,21 @@ export namespace GVnc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -622,33 +663,34 @@ export namespace GVnc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -657,6 +699,7 @@ export namespace GVnc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -665,12 +708,14 @@ export namespace GVnc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -679,20 +724,22 @@ export namespace GVnc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -704,8 +751,9 @@ export namespace GVnc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -761,22 +809,52 @@ export namespace GVnc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class BaseFramebuffer extends GObject.Object implements Framebuffer {
         static $gtype: GObject.GType<BaseFramebuffer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get buffer(): any;
         get color_map(): ColorMap;
         set color_map(val: ColorMap);
         get colorMap(): ColorMap;
         set colorMap(val: ColorMap);
+        /**
+         * @construct-only
+         * @default 0
+         */
         get height(): number;
+        /**
+         * @construct-only
+         */
         get local_format(): PixelFormat;
+        /**
+         * @construct-only
+         */
         get localFormat(): PixelFormat;
+        /**
+         * @construct-only
+         */
         get remote_format(): PixelFormat;
+        /**
+         * @construct-only
+         */
         get remoteFormat(): PixelFormat;
+        /**
+         * @construct-only
+         * @default 0
+         */
         get rowstride(): number;
+        /**
+         * @construct-only
+         * @default 0
+         */
         get width(): number;
 
         /**
@@ -805,28 +883,37 @@ export namespace GVnc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseFramebuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseFramebuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BaseFramebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
+        /**
+         * @param src
+         * @param rowstride
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         */
         blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
-         * Copies data from the range (`srcx,` `srcy)` to
-         * (`srcx+``width,` `srcy+``height)` over to the
-         * range starting at (`dstx,` `dsty)`.
+         * Copies data from the range (`srcx`, `srcy`) to
+         * (`srcx`+`width`, `srcy`+`height`) over to the
+         * range starting at (`dstx`, `dsty`).
          * @param srcx the horizontal starting pixel
          * @param srcy the vertical starting pixel
          * @param dstx the horizontal target pixel
@@ -836,8 +923,8 @@ export namespace GVnc {
          */
         copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
@@ -879,8 +966,8 @@ export namespace GVnc {
          */
         perfect_format_match(): boolean;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is always
          * 3 as it must be in plain RGB24 format.
          * @param src the new pixel data
@@ -904,7 +991,7 @@ export namespace GVnc {
          */
         set_color_map(map: ColorMap): void;
         /**
-         * Sets a pixel in the framebuffer at (`x,` `y)` to the
+         * Sets a pixel in the framebuffer at (`x`, `y`) to the
          * value in `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
@@ -912,22 +999,32 @@ export namespace GVnc {
          * @param y the vertical pixel to set
          */
         set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
+        /**
+         * @param src
+         * @param rowstride
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         * @virtual
+         */
         vfunc_blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
-         * Copies data from the range (`srcx,` `srcy)` to
-         * (`srcx+``width,` `srcy+``height)` over to the
-         * range starting at (`dstx,` `dsty)`.
+         * Copies data from the range (`srcx`, `srcy`) to
+         * (`srcx`+`width`, `srcy`+`height`) over to the
+         * range starting at (`dstx`, `dsty`).
          * @param srcx the horizontal starting pixel
          * @param srcy the vertical starting pixel
          * @param dstx the horizontal target pixel
          * @param dsty the vertical target pixel
          * @param width the width of the region
          * @param height the height of the region
+         * @virtual
          */
         vfunc_copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
@@ -935,33 +1032,45 @@ export namespace GVnc {
          * @param y the vertical pixel to start filling
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
+         * @virtual
          */
-        vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
+        vfunc_fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_buffer(): number;
         /**
          * Query the height of the remote framebuffer
+         * @virtual
          */
         vfunc_get_height(): number;
         /**
          * Get the pixel format used to store the framebuffer locally
+         * @virtual
          */
         vfunc_get_local_format(): PixelFormat;
+        /**
+         * @virtual
+         */
         vfunc_get_remote_format(): PixelFormat;
         /**
          * Get the number of bytes per line of the framebuffer
+         * @virtual
          */
         vfunc_get_rowstride(): number;
         /**
          * Query the width of the remote framebuffer
+         * @virtual
          */
         vfunc_get_width(): number;
         /**
          * Determine if the local and remote pixel formats match
+         * @virtual
          */
         vfunc_perfect_format_match(): boolean;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is always
          * 3 as it must be in plain RGB24 format.
          * @param src the new pixel data
@@ -970,29 +1079,25 @@ export namespace GVnc {
          * @param y the vertical pixel to start filling
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
+         * @virtual
          */
-        vfunc_rgb24_blt(
-            src: Uint8Array | string,
-            rowstride: number,
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-        ): void;
+        vfunc_rgb24_blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
          * Set the color map to use for the framebuffer
          * @param map the new color map
+         * @virtual
          */
         vfunc_set_color_map(map: ColorMap): void;
         /**
-         * Sets a pixel in the framebuffer at (`x,` `y)` to the
+         * Sets a pixel in the framebuffer at (`x`, `y`) to the
          * value in `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
+         * @virtual
          */
-        vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
+        vfunc_set_pixel_at(src: Uint8Array, x: number, y: number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1006,90 +1111,68 @@ export namespace GVnc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1097,7 +1180,7 @@ export namespace GVnc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1105,9 +1188,9 @@ export namespace GVnc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1127,9 +1210,9 @@ export namespace GVnc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1143,33 +1226,33 @@ export namespace GVnc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1202,21 +1285,21 @@ export namespace GVnc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1226,8 +1309,8 @@ export namespace GVnc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1244,14 +1327,14 @@ export namespace GVnc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1262,13 +1345,13 @@ export namespace GVnc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1299,21 +1382,21 @@ export namespace GVnc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1323,33 +1406,34 @@ export namespace GVnc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1358,6 +1442,7 @@ export namespace GVnc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1366,12 +1451,14 @@ export namespace GVnc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1380,20 +1467,22 @@ export namespace GVnc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1405,8 +1494,9 @@ export namespace GVnc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1437,25 +1527,106 @@ export namespace GVnc {
     namespace Connection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-auth-choose-subtype': (arg0: number, arg1: GObject.ValueArray) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-auth-choose-type': (arg0: GObject.ValueArray) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-auth-credential': (arg0: GObject.ValueArray) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-auth-failure': (arg0: string) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-auth-unsupported': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-bell': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-connected': () => void;
+            /**
+             * Emitted when the cursor is changed.
+             * @signal
+             * @run-first
+             */
             'vnc-cursor-changed': (arg0: Cursor | null) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-desktop-rename': (arg0: string) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-desktop-resize': (arg0: number, arg1: number) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-disconnected': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-error': (arg0: string) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-framebuffer-update': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-initialized': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-led-state': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-pixel-format-changed': (arg0: PixelFormat) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-pointer-mode-changed': (arg0: boolean) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-power-control-failed': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-power-control-initialized': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-server-cut-text': (arg0: string) => void;
             'notify::framebuffer': (pspec: GObject.ParamSpec) => void;
         }
@@ -1467,6 +1638,9 @@ export namespace GVnc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
 
@@ -1494,16 +1668,19 @@ export namespace GVnc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1512,25 +1689,103 @@ export namespace GVnc {
 
         // Virtual methods
 
+        /**
+         * @param type
+         * @param subtypes
+         * @virtual
+         */
         vfunc_vnc_auth_choose_subtype(type: number, subtypes: GObject.ValueArray): void;
+        /**
+         * @param types
+         * @virtual
+         */
         vfunc_vnc_auth_choose_type(types: GObject.ValueArray): void;
+        /**
+         * @param creds
+         * @virtual
+         */
         vfunc_vnc_auth_credential(creds: GObject.ValueArray): void;
+        /**
+         * @param reason
+         * @virtual
+         */
         vfunc_vnc_auth_failure(reason: string): void;
+        /**
+         * @param authType
+         * @virtual
+         */
         vfunc_vnc_auth_unsupported(authType: number): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_bell(): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_connected(): void;
+        /**
+         * @param cursor
+         * @virtual
+         */
         vfunc_vnc_cursor_changed(cursor: Cursor): void;
+        /**
+         * @param name
+         * @virtual
+         */
         vfunc_vnc_desktop_rename(name: string): void;
+        /**
+         * @param width
+         * @param height
+         * @virtual
+         */
         vfunc_vnc_desktop_resize(width: number, height: number): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_disconnected(): void;
+        /**
+         * @param message
+         * @virtual
+         */
         vfunc_vnc_error(message: string): void;
+        /**
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         * @virtual
+         */
         vfunc_vnc_framebuffer_update(x: number, y: number, width: number, height: number): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_initialized(): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_led_state(): void;
+        /**
+         * @param format
+         * @virtual
+         */
         vfunc_vnc_pixel_format_changed(format: PixelFormat): void;
+        /**
+         * @param absPointer
+         * @virtual
+         */
         vfunc_vnc_pointer_mode_changed(absPointer: boolean): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_power_control_failed(): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_power_control_initialized(): void;
+        /**
+         * @param text
+         * @virtual
+         */
         vfunc_vnc_server_cut_text(text: GLib.String): void;
 
         // Methods
@@ -1548,10 +1803,14 @@ export namespace GVnc {
          * @returns TRUE if the connection is ok, FALSE if it has an error
          */
         audio_enable(): boolean;
-        client_cut_text(data: any | null, length: number): boolean;
+        /**
+         * @param data
+         * @param length
+         */
+        client_cut_text(data: any | null, length: bigint | number): boolean;
         /**
          * Request that the server send a framebuffer update when the
-         * region positioned at (`x,` `y)` wth size (`width,` `height)`
+         * region positioned at (`x`, `y`) wth size (`width`, `height`)
          * sees damage. The update sent may be a subset of the region
          * requested, if `incremental` is FALSE.
          * @param incremental TRUE to only receive region with changes
@@ -1677,7 +1936,7 @@ export namespace GVnc {
          * @param hostname the hostname
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_addr(addr: Gio.SocketAddress, hostname?: string | null): boolean;
+        open_addr(addr: Gio.SocketAddress, hostname: string | null): boolean;
         /**
          * Open a connection using `fd` as the transport. If `fd`
          * refers to a TCP connection, it is recommended to use
@@ -1699,7 +1958,7 @@ export namespace GVnc {
          * @param hostname the host associated with the connection
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_fd_with_hostname(fd: number, hostname?: string | null): boolean;
+        open_fd_with_hostname(fd: number, hostname: string | null): boolean;
         /**
          * Open a TCP connection to the remote desktop at `host`
          * listening on `port`.
@@ -1730,7 +1989,7 @@ export namespace GVnc {
          * @param action
          * @returns TRUE if the action was sent, FALSE if power control is not supported
          */
-        power_control(action: ConnectionPowerAction | null): boolean;
+        power_control(action: ConnectionPowerAction): boolean;
         /**
          * Set the audio sink to use for playing back audio from
          * the remote session.
@@ -1806,6 +2065,10 @@ export namespace GVnc {
          * @returns TRUE if the connection is ok, FALSE if it has an error
          */
         set_shared(shared: boolean): boolean;
+        /**
+         * @param width
+         * @param height
+         */
         set_size(width: number, height: number): ConnectionResizeStatus;
         /**
          * Initiate a shutdown of the current connection
@@ -1835,6 +2098,9 @@ export namespace GVnc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
 
@@ -1842,12 +2108,24 @@ export namespace GVnc {
 
         get data(): any;
         set data(val: any);
+        /**
+         * @default 0
+         */
         get height(): number;
         set height(val: number);
+        /**
+         * @default 0
+         */
         get hotx(): number;
         set hotx(val: number);
+        /**
+         * @default 0
+         */
         get hoty(): number;
         set hoty(val: number);
+        /**
+         * @default 0
+         */
         get width(): number;
         set width(val: number);
 
@@ -1870,16 +2148,19 @@ export namespace GVnc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Cursor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Cursor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Cursor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Cursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1893,6 +2174,9 @@ export namespace GVnc {
          * @returns the bitmap data
          */
         get_data(): Uint8Array;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
@@ -1915,8 +2199,17 @@ export namespace GVnc {
          * @returns the width of the bitmap
          */
         get_width(): number;
+        /**
+         * Determine whether the rendered cursor has
+         * any visible pixels
+         * @returns TRUE if there is at least one visible pixel, FALSE otherwise
+         */
+        is_visible(): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class AudioFormat {
         static $gtype: GObject.GType<AudioFormat>;
 
@@ -1935,7 +2228,6 @@ export namespace GVnc {
                 frequency: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): AudioFormat;
 
@@ -1955,7 +2247,13 @@ export namespace GVnc {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioInterface = typeof Audio;
+    /**
+     * @gir-type Struct
+     */
     class AudioSample {
         static $gtype: GObject.GType<AudioSample>;
 
@@ -1974,7 +2272,6 @@ export namespace GVnc {
                 capacity: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](capacity: number): AudioSample;
 
@@ -1996,24 +2293,31 @@ export namespace GVnc {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BaseAudioClass = typeof BaseAudio;
+    /**
+     * @gir-type Struct
+     */
     abstract class BaseAudioPrivate {
         static $gtype: GObject.GType<BaseAudioPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BaseFramebufferClass = typeof BaseFramebuffer;
+    /**
+     * @gir-type Struct
+     */
     abstract class BaseFramebufferPrivate {
         static $gtype: GObject.GType<BaseFramebufferPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ColorMap {
         static $gtype: GObject.GType<ColorMap>;
 
@@ -2031,7 +2335,6 @@ export namespace GVnc {
                 size: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](offset: number, size: number): ColorMap;
 
@@ -2052,7 +2355,7 @@ export namespace GVnc {
          * Lookup the RGB values associated with the
          * colour map entry at position `idx`
          * @param idx the index to set
-         * @returns TRUE if @idx was in range, FALSE otherwise
+         * @returns TRUE if `idx` was in range, FALSE otherwise
          */
         lookup(idx: number): [boolean, number, number, number];
         /**
@@ -2062,11 +2365,14 @@ export namespace GVnc {
          * @param red the new red value
          * @param green the new green value
          * @param blue the new blue value
-         * @returns TRUE if @idx was in range, FALSE otherwise
+         * @returns TRUE if `idx` was in range, FALSE otherwise
          */
         set(idx: number, red: number, green: number, blue: number): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ColorMapEntry {
         static $gtype: GObject.GType<ColorMapEntry>;
 
@@ -2085,28 +2391,37 @@ export namespace GVnc {
                 blue: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConnectionClass = typeof Connection;
+    /**
+     * @gir-type Struct
+     */
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CursorClass = typeof Cursor;
+    /**
+     * @gir-type Struct
+     */
     abstract class CursorPrivate {
         static $gtype: GObject.GType<CursorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FramebufferInterface = typeof Framebuffer;
+    /**
+     * @gir-type Struct
+     */
     class PixelFormat {
         static $gtype: GObject.GType<PixelFormat>;
 
@@ -2139,7 +2454,6 @@ export namespace GVnc {
                 blue_shift: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](): PixelFormat;
 
@@ -2157,6 +2471,9 @@ export namespace GVnc {
          * Release the memory associated with `format`
          */
         free(): void;
+        /**
+         * @param other
+         */
         match(other: PixelFormat): boolean;
     }
 
@@ -2168,8 +2485,19 @@ export namespace GVnc {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param sample
+             * @virtual
+             */
             vfunc_playback_data(sample: AudioSample): boolean;
+            /**
+             * @param format
+             * @virtual
+             */
             vfunc_playback_start(format: AudioFormat): boolean;
+            /**
+             * @virtual
+             */
             vfunc_playback_stop(): boolean;
         }
 
@@ -2182,6 +2510,9 @@ export namespace GVnc {
         $gtype: GObject.GType<Audio>;
         prototype: Audio;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Audio extends GObject.Object, Audio.Interface {
         // Methods
 
@@ -2215,22 +2546,32 @@ export namespace GVnc {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param src
+             * @param rowstride
+             * @param x
+             * @param y
+             * @param width
+             * @param height
+             * @virtual
+             */
             vfunc_blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
             /**
-             * Copies data from the range (`srcx,` `srcy)` to
-             * (`srcx+``width,` `srcy+``height)` over to the
-             * range starting at (`dstx,` `dsty)`.
+             * Copies data from the range (`srcx`, `srcy`) to
+             * (`srcx`+`width`, `srcy`+`height`) over to the
+             * range starting at (`dstx`, `dsty`).
              * @param srcx the horizontal starting pixel
              * @param srcy the vertical starting pixel
              * @param dstx the horizontal target pixel
              * @param dsty the vertical target pixel
              * @param width the width of the region
              * @param height the height of the region
+             * @virtual
              */
             vfunc_copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void;
             /**
-             * Fill all the pixels in the range (`x,` `y)` to
-             * (`x` + `width,` `y` + `height)` to the value in
+             * Fill all the pixels in the range (`x`, `y`) to
+             * (`x` + `width`, `y` + `height`) to the value in
              * `src`. The number of bytes in `src` is
              * determined by the remote pixel format
              * @param src the new pixel data
@@ -2238,33 +2579,45 @@ export namespace GVnc {
              * @param y the vertical pixel to start filling
              * @param width the number of pixels to fill horizontally
              * @param height the number of pixels to fill vertically
+             * @virtual
              */
-            vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
+            vfunc_fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
+            /**
+             * @virtual
+             */
             vfunc_get_buffer(): number;
             /**
              * Query the height of the remote framebuffer
+             * @virtual
              */
             vfunc_get_height(): number;
             /**
              * Get the pixel format used to store the framebuffer locally
+             * @virtual
              */
             vfunc_get_local_format(): PixelFormat;
+            /**
+             * @virtual
+             */
             vfunc_get_remote_format(): PixelFormat;
             /**
              * Get the number of bytes per line of the framebuffer
+             * @virtual
              */
             vfunc_get_rowstride(): number;
             /**
              * Query the width of the remote framebuffer
+             * @virtual
              */
             vfunc_get_width(): number;
             /**
              * Determine if the local and remote pixel formats match
+             * @virtual
              */
             vfunc_perfect_format_match(): boolean;
             /**
-             * Fill all the pixels in the range (`x,` `y)` to
-             * (`x` + `width,` `y` + `height)` to the value in
+             * Fill all the pixels in the range (`x`, `y`) to
+             * (`x` + `width`, `y` + `height`) to the value in
              * `src`. The number of bytes in `src` is always
              * 3 as it must be in plain RGB24 format.
              * @param src the new pixel data
@@ -2273,9 +2626,10 @@ export namespace GVnc {
              * @param y the vertical pixel to start filling
              * @param width the number of pixels to fill horizontally
              * @param height the number of pixels to fill vertically
+             * @virtual
              */
             vfunc_rgb24_blt(
-                src: Uint8Array | string,
+                src: Uint8Array,
                 rowstride: number,
                 x: number,
                 y: number,
@@ -2285,17 +2639,19 @@ export namespace GVnc {
             /**
              * Set the color map to use for the framebuffer
              * @param map the new color map
+             * @virtual
              */
             vfunc_set_color_map(map: ColorMap): void;
             /**
-             * Sets a pixel in the framebuffer at (`x,` `y)` to the
+             * Sets a pixel in the framebuffer at (`x`, `y`) to the
              * value in `src`. The number of bytes in `src` is
              * determined by the remote pixel format
              * @param src the new pixel data
              * @param x the horizontal pixel to set
              * @param y the vertical pixel to set
+             * @virtual
              */
-            vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
+            vfunc_set_pixel_at(src: Uint8Array, x: number, y: number): void;
         }
 
         // Constructor properties interface
@@ -2307,14 +2663,25 @@ export namespace GVnc {
         $gtype: GObject.GType<Framebuffer>;
         prototype: Framebuffer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Framebuffer extends GObject.Object, Framebuffer.Interface {
         // Methods
 
+        /**
+         * @param src
+         * @param rowstride
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         */
         blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
-         * Copies data from the range (`srcx,` `srcy)` to
-         * (`srcx+``width,` `srcy+``height)` over to the
-         * range starting at (`dstx,` `dsty)`.
+         * Copies data from the range (`srcx`, `srcy`) to
+         * (`srcx`+`width`, `srcy`+`height`) over to the
+         * range starting at (`dstx`, `dsty`).
          * @param srcx the horizontal starting pixel
          * @param srcy the vertical starting pixel
          * @param dstx the horizontal target pixel
@@ -2324,8 +2691,8 @@ export namespace GVnc {
          */
         copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
@@ -2367,8 +2734,8 @@ export namespace GVnc {
          */
         perfect_format_match(): boolean;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is always
          * 3 as it must be in plain RGB24 format.
          * @param src the new pixel data
@@ -2392,7 +2759,7 @@ export namespace GVnc {
          */
         set_color_map(map: ColorMap): void;
         /**
-         * Sets a pixel in the framebuffer at (`x,` `y)` to the
+         * Sets a pixel in the framebuffer at (`x`, `y`) to the
          * value in `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data

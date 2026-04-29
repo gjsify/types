@@ -17,7 +17,90 @@
     "inlineSources": false,
     "newLine": "LF",
     // Show diagnostics
-    "diagnostics": true
+    "diagnostics": true,
+    "paths": {
+      "@girs/st-16": [
+            "../st-16/index.d.ts"
+      ],
+      "@girs/meta-16": [
+            "../meta-16/index.d.ts"
+      ],
+      "@girs/xlib-2.0": [
+            "../xlib-2.0/index.d.ts"
+      ],
+      "@girs/xfixes-4.0": [
+            "../xfixes-4.0/index.d.ts"
+      ],
+      "@girs/mtk-16": [
+            "../mtk-16/index.d.ts"
+      ],
+      "@girs/graphene-1.0": [
+            "../graphene-1.0/index.d.ts"
+      ],
+      "@girs/gobject-2.0": [
+            "../gobject-2.0/index.d.ts"
+      ],
+      "@girs/glib-2.0": [
+            "../glib-2.0/index.d.ts"
+      ],
+      "@girs/gio-2.0": [
+            "../gio-2.0/index.d.ts"
+      ],
+      "@girs/gmodule-2.0": [
+            "../gmodule-2.0/index.d.ts"
+      ],
+      "@girs/gdesktopenums-3.0": [
+            "../gdesktopenums-3.0/index.d.ts"
+      ],
+      "@girs/cogl-16": [
+            "../cogl-16/index.d.ts"
+      ],
+      "@girs/gl-1.0": [
+            "../gl-1.0/index.d.ts"
+      ],
+      "@girs/clutter-16": [
+            "../clutter-16/index.d.ts"
+      ],
+      "@girs/pango-1.0": [
+            "../pango-1.0/index.d.ts"
+      ],
+      "@girs/cairo-1.0": [
+            "../cairo-1.0/index.d.ts"
+      ],
+      "@girs/harfbuzz-0.0": [
+            "../harfbuzz-0.0/index.d.ts"
+      ],
+      "@girs/freetype2-2.0": [
+            "../freetype2-2.0/index.d.ts"
+      ],
+      "@girs/atk-1.0": [
+            "../atk-1.0/index.d.ts"
+      ],
+      "@girs/gdkpixbuf-2.0": [
+            "../gdkpixbuf-2.0/index.d.ts"
+      ],
+      "@girs/polkitagent-1.0": [
+            "../polkitagent-1.0/index.d.ts"
+      ],
+      "@girs/polkit-1.0": [
+            "../polkit-1.0/index.d.ts"
+      ],
+      "@girs/nm-1.0": [
+            "../nm-1.0/index.d.ts"
+      ],
+      "@girs/gvc-1.0": [
+            "../gvc-1.0/index.d.ts"
+      ],
+      "@girs/gcr-4": [
+            "../gcr-4/index.d.ts"
+      ],
+      "@girs/gck-2": [
+            "../gck-2/index.d.ts"
+      ],
+      "@girs/gjs": [
+            "../gjs/index.d.ts"
+      ]
+}
   },
   "include": ["./shell-16.d.ts"]
 }

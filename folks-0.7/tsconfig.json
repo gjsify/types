@@ -17,7 +17,27 @@
     "inlineSources": false,
     "newLine": "LF",
     // Show diagnostics
-    "diagnostics": true
+    "diagnostics": true,
+    "paths": {
+      "@girs/glib-2.0": [
+            "../glib-2.0/index.d.ts"
+      ],
+      "@girs/gio-2.0": [
+            "../gio-2.0/index.d.ts"
+      ],
+      "@girs/gobject-2.0": [
+            "../gobject-2.0/index.d.ts"
+      ],
+      "@girs/gmodule-2.0": [
+            "../gmodule-2.0/index.d.ts"
+      ],
+      "@girs/gee-0.8": [
+            "../gee-0.8/index.d.ts"
+      ],
+      "@girs/gjs": [
+            "../gjs/index.d.ts"
+      ]
+}
   },
   "include": ["./folks-0.7.d.ts"]
 }

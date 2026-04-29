@@ -21,24 +21,17 @@ export namespace GUsb {
      * GUsb-1.0
      */
 
-    export namespace ContextError {
-        export const $gtype: GObject.GType<ContextError>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum ContextError {
         CONTEXT_ERROR_INTERNAL,
     }
-    /**
-     * The USB device class.
-     */
 
     /**
      * The USB device class.
+     * @gir-type Enum
      */
-    export namespace DeviceClassCode {
-        export const $gtype: GObject.GType<DeviceClassCode>;
-    }
-
     enum DeviceClassCode {
         INTERFACE_DESC,
         AUDIO,
@@ -62,32 +55,20 @@ export namespace GUsb {
         APPLICATION_SPECIFIC,
         VENDOR_SPECIFIC,
     }
-    /**
-     * The message direction.
-     */
 
     /**
      * The message direction.
+     * @gir-type Enum
      */
-    export namespace DeviceDirection {
-        export const $gtype: GObject.GType<DeviceDirection>;
-    }
-
     enum DeviceDirection {
         DEVICE_TO_HOST,
         HOST_TO_DEVICE,
     }
-    /**
-     * The error code.
-     */
 
     /**
      * The error code.
+     * @gir-type Enum
      */
-    export namespace DeviceError {
-        export const $gtype: GObject.GType<DeviceError>;
-    }
-
     enum DeviceError {
         /**
          * Internal error
@@ -134,60 +115,44 @@ export namespace GUsb {
          */
         BUSY,
     }
-    /**
-     * The USB language ID.
-     */
 
     /**
      * The USB language ID.
+     * @gir-type Enum
      */
-    export namespace DeviceLangid {
-        export const $gtype: GObject.GType<DeviceLangid>;
-    }
-
     enum DeviceLangid {
         INVALID,
         ENGLISH_UNITED_STATES,
     }
-    /**
-     * The message recipient.
-     */
 
     /**
      * The message recipient.
+     * @gir-type Enum
      */
-    export namespace DeviceRecipient {
-        export const $gtype: GObject.GType<DeviceRecipient>;
-    }
-
     enum DeviceRecipient {
         DEVICE,
         INTERFACE,
         ENDPOINT,
         OTHER,
     }
-    /**
-     * The message request type.
-     */
 
     /**
      * The message request type.
+     * @gir-type Enum
      */
-    export namespace DeviceRequestType {
-        export const $gtype: GObject.GType<DeviceRequestType>;
-    }
-
     enum DeviceRequestType {
         STANDARD,
         CLASS,
         VENDOR,
         RESERVED,
     }
+
     /**
      * The error code.
+     * @gir-type Struct
      */
     class SourceError extends GLib.Error {
-        static $gtype: GObject.GType<SourceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -196,7 +161,6 @@ export namespace GUsb {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     /**
@@ -211,29 +175,28 @@ export namespace GUsb {
      * The compile-time minor version
      */
     const MINOR_VERSION: number;
+    /**
+     * @returns Our personal error quark.
+     * @since 0.1.0
+     */
     function source_error_quark(): GLib.Quark;
     /**
      * Converts the error code into a string
      * @param error_code a libusb error code
-     * @returns String, or %NULL
+     * @returns String, or `null`
+     * @since 0.1.0
      */
     function strerror(error_code: number): string;
     /**
      * Gets the GUsb installed runtime version.
      * @returns a version number, e.g. "0.3.1"
+     * @since 0.3.1
      */
     function version_string(): string;
     /**
      * The flags to use for the context.
+     * @gir-type Flags
      */
-
-    /**
-     * The flags to use for the context.
-     */
-    export namespace ContextFlags {
-        export const $gtype: GObject.GType<ContextFlags>;
-    }
-
     enum ContextFlags {
         NONE,
         AUTO_OPEN_DEVICES,
@@ -241,23 +204,17 @@ export namespace GUsb {
         SAVE_REMOVED_DEVICES,
         DEBUG,
     }
-    /**
-     * Flags for the g_usb_device_claim_interface and
-     * g_usb_device_release_interface methods flags parameters.
-     */
 
     /**
      * Flags for the g_usb_device_claim_interface and
      * g_usb_device_release_interface methods flags parameters.
+     * @gir-type Flags
      */
-    export namespace DeviceClaimInterfaceFlags {
-        export const $gtype: GObject.GType<DeviceClaimInterfaceFlags>;
-    }
-
     enum DeviceClaimInterfaceFlags {
         NONE,
         BIND_KERNEL_DRIVER,
     }
+
     namespace BosDescriptor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -267,6 +224,9 @@ export namespace GUsb {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BosDescriptor extends GObject.Object {
         static $gtype: GObject.GType<BosDescriptor>;
 
@@ -287,16 +247,19 @@ export namespace GUsb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BosDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BosDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BosDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -312,7 +275,7 @@ export namespace GUsb {
         get_capability(): number;
         /**
          * Gets any extra data from the BOS descriptor.
-         * @returns a #GBytes, or %NULL for failure
+         * @returns a {@link GLib.Bytes}, or `null` for failure
          */
         get_extra(): GLib.Bytes;
     }
@@ -320,8 +283,23 @@ export namespace GUsb {
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted when a USB device is added.
+             * @signal
+             * @run-last
+             */
             'device-added': (arg0: Device) => void;
+            /**
+             * This signal is emitted when a USB device is changed.
+             * @signal
+             * @run-last
+             */
             'device-changed': (arg0: Device) => void;
+            /**
+             * This signal is emitted when a USB device is removed.
+             * @signal
+             * @run-last
+             */
             'device-removed': (arg0: Device) => void;
             'notify::debug-level': (pspec: GObject.ParamSpec) => void;
             'notify::libusb-context': (pspec: GObject.ParamSpec) => void;
@@ -337,16 +315,31 @@ export namespace GUsb {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Context extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Context>;
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get debug_level(): number;
         set debug_level(val: number);
+        /**
+         * @default 0
+         */
         get debugLevel(): number;
         set debugLevel(val: number);
+        /**
+         * @read-only
+         */
         get libusb_context(): any;
+        /**
+         * @read-only
+         */
         get libusbContext(): any;
 
         /**
@@ -368,16 +361,19 @@ export namespace GUsb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -390,8 +386,20 @@ export namespace GUsb {
 
         // Virtual methods
 
+        /**
+         * @param device
+         * @virtual
+         */
         vfunc_device_added(device: Device): void;
+        /**
+         * @param device
+         * @virtual
+         */
         vfunc_device_changed(device: Device): void;
+        /**
+         * @param device
+         * @virtual
+         */
         vfunc_device_removed(device: Device): void;
 
         // Methods
@@ -407,26 +415,29 @@ export namespace GUsb {
          * Finds a device based on its bus and address values.
          * @param bus a bus number
          * @param address a bus address
-         * @returns a new #GUsbDevice, or %NULL if not found.
+         * @returns a new {@link GUsb.Device}, or `null` if not found.
          */
         find_by_bus_address(bus: number, address: number): Device;
         /**
          * Finds a device based on its platform id value.
          * @param platform_id a platform id, e.g. "usb:00:03:03:02"
-         * @returns a new #GUsbDevice, or %NULL if not found.
+         * @returns a new {@link GUsb.Device}, or `null` if not found.
          */
         find_by_platform_id(platform_id: string): Device;
         /**
          * Finds a device based on its bus and address values.
          * @param vid a vendor ID
          * @param pid a product ID
-         * @returns a new #GUsbDevice, or %NULL if not found.
+         * @returns a new {@link GUsb.Device}, or `null` if not found.
          */
         find_by_vid_pid(vid: number, pid: number): Device;
+        /**
+         * @returns a new {@link GLib.PtrArray} of {@link GUsb.Device}'s.
+         */
         get_devices(): Device[];
         /**
          * Sets the flags to use for the context.
-         * @returns the #GUsbContextFlags, e.g. %G_USB_CONTEXT_FLAGS_AUTO_OPEN_DEVICES
+         * @returns the {@link GUsb.ContextFlags}, e.g. {@link GUsb.ContextFlags.AUTO_OPEN_DEVICES}
          */
         get_flags(): ContextFlags;
         /**
@@ -436,59 +447,59 @@ export namespace GUsb {
         get_hotplug_poll_interval(): number;
         /**
          * Gets the internal GMainContext to use for synchronous methods.
-         * By default the value is set to the value of g_main_context_default()
-         * @returns the #GMainContext
+         * By default the value is set to the value of `g_main_context_default()`
+         * @returns the {@link GLib.MainContext}
          */
         get_main_context(): GLib.MainContext;
         /**
          * This function does nothing.
-         * @param main_ctx a #GMainContext, or %NULL
-         * @returns the #GUsbSource.
+         * @param main_ctx a {@link GLib.MainContext}, or `null`
+         * @returns the {@link GUsb.Source}.
          */
         get_source(main_ctx: GLib.MainContext): Source;
         /**
          * Loads the context from a JSON object.
-         * @param json_object a #JsonObject
-         * @returns %TRUE on success
+         * @param json_object a {@link Json.Object}
+         * @returns `true` on success
          */
         load(json_object: Json.Object): boolean;
         /**
          * Loads any devices with a specified tag into the context from a JSON object.
-         * @param json_object a #JsonObject
-         * @param tag a string tag, e.g. `runtime-reload`, or %NULL
-         * @returns %TRUE on success
+         * @param json_object a {@link Json.Object}
+         * @param tag a string tag, e.g. `runtime-reload`, or `null`
+         * @returns `true` on success
          */
         load_with_tag(json_object: Json.Object, tag: string): boolean;
         /**
          * Saves the context to an existing JSON builder.
-         * @param json_builder a #JsonBuilder
-         * @returns %TRUE on success
+         * @param json_builder a {@link Json.Builder}
+         * @returns `true` on success
          */
         save(json_builder: Json.Builder): boolean;
         /**
          * Saves any devices with a specified tag into an existing JSON builder.
-         * @param json_builder a #JsonBuilder
-         * @param tag a string tag, e.g. `runtime-reload`, or %NULL
-         * @returns %TRUE on success
+         * @param json_builder a {@link Json.Builder}
+         * @param tag a string tag, e.g. `runtime-reload`, or `null`
+         * @returns `true` on success
          */
         save_with_tag(json_builder: Json.Builder, tag: string): boolean;
         /**
          * Sets the debug flags which control what is logged to the console.
          *
-         * Using %G_LOG_LEVEL_INFO will output to standard out, and everything
+         * Using {@link GLib.LogLevelFlags.LEVEL_INFO} will output to standard out, and everything
          * else logs to standard error.
-         * @param flags a GLogLevelFlags such as %G_LOG_LEVEL_ERROR | %G_LOG_LEVEL_INFO, or 0
+         * @param flags a GLogLevelFlags such as {@link GLib.LogLevelFlags.LEVEL_ERROR} | {@link GLib.LogLevelFlags.LEVEL_INFO}, or 0
          */
-        set_debug(flags: GLib.LogLevelFlags | null): void;
+        set_debug(flags: GLib.LogLevelFlags): void;
         /**
          * Sets the flags to use for the context. These should be set before
-         * g_usb_context_enumerate() is called.
-         * @param flags some #GUsbContextFlags, e.g. %G_USB_CONTEXT_FLAGS_AUTO_OPEN_DEVICES
+         * `g_usb_context_enumerate()` is called.
+         * @param flags some {@link GUsb.ContextFlags}, e.g. {@link GUsb.ContextFlags.AUTO_OPEN_DEVICES}
          */
-        set_flags(flags: ContextFlags | null): void;
+        set_flags(flags: ContextFlags): void;
         /**
          * Sets the poll interval for platforms like Windows that do not support `LIBUSB_CAP_HAS_HOTPLUG`.
-         * This defaults to 1000ms and can be changed before or after g_usb_context_enumerate() has been
+         * This defaults to 1000ms and can be changed before or after `g_usb_context_enumerate()` has been
          * called.
          * @param hotplug_poll_interval the interval in ms
          */
@@ -504,39 +515,37 @@ export namespace GUsb {
          *
          * Warning: This is synchronous and blocks until the device comes
          * back or the timeout triggers.
-         * @param device a #GUsbDevice
+         * @param device a {@link GUsb.Device}
          * @param timeout_ms timeout to wait
-         * @returns a new #GUsbDevice, or %NULL for invalid
+         * @returns a new {@link GUsb.Device}, or `null` for invalid
          */
         wait_for_replug(device: Device, timeout_ms: number): Device;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -546,40 +555,40 @@ export namespace GUsb {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -589,13 +598,14 @@ export namespace GUsb {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -609,90 +619,68 @@ export namespace GUsb {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -700,7 +688,7 @@ export namespace GUsb {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -708,9 +696,9 @@ export namespace GUsb {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -730,9 +718,9 @@ export namespace GUsb {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -746,33 +734,33 @@ export namespace GUsb {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -805,21 +793,21 @@ export namespace GUsb {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -829,8 +817,8 @@ export namespace GUsb {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -847,14 +835,14 @@ export namespace GUsb {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -865,13 +853,13 @@ export namespace GUsb {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -902,21 +890,21 @@ export namespace GUsb {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -926,33 +914,34 @@ export namespace GUsb {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -961,6 +950,7 @@ export namespace GUsb {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -969,12 +959,14 @@ export namespace GUsb {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -983,20 +975,22 @@ export namespace GUsb {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1008,8 +1002,9 @@ export namespace GUsb {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1056,15 +1051,35 @@ export namespace GUsb {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Device extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Device>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Context);
+        /**
+         * @construct-only
+         */
         get libusb_device(): any;
+        /**
+         * @construct-only
+         */
         get libusbDevice(): any;
+        /**
+         * @construct-only
+         * @default null
+         */
         set platform_id(val: string);
+        /**
+         * @construct-only
+         * @default null
+         */
         set platformId(val: string);
 
         /**
@@ -1084,16 +1099,19 @@ export namespace GUsb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1122,34 +1140,34 @@ export namespace GUsb {
          * @param endpoint the address of a valid endpoint to communicate with
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %TRUE on success
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `true` on success
          */
         bulk_transfer(
             endpoint: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, number];
         /**
          * Do an async bulk transfer
          * @param endpoint the address of a valid endpoint to communicate with
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         bulk_transfer_async(
             endpoint: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Do an async bulk transfer
          * @param endpoint the address of a valid endpoint to communicate with
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         bulk_transfer_async(
@@ -1164,36 +1182,36 @@ export namespace GUsb {
          * @param endpoint the address of a valid endpoint to communicate with
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         bulk_transfer_async(
             endpoint: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
+         * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
          */
         bulk_transfer_finish(res: Gio.AsyncResult): number;
         /**
          * Claim an interface of the device.
          * @param iface bInterfaceNumber of the interface you wish to claim
-         * @param flags #GUsbDeviceClaimInterfaceFlags
-         * @returns %TRUE on success
+         * @param flags {@link GUsb.DeviceClaimInterfaceFlags}
+         * @returns `true` on success
          */
-        claim_interface(iface: number, flags: DeviceClaimInterfaceFlags | null): boolean;
+        claim_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
         /**
          * Clear all the events saved by the device.
          */
         clear_events(): void;
         /**
          * Closes the device when it is no longer required.
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         close(): boolean;
         /**
@@ -1208,19 +1226,19 @@ export namespace GUsb {
          * @param idx the index field for the setup packet
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %TRUE on success
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `true` on success
          */
         control_transfer(
-            direction: DeviceDirection | null,
-            request_type: DeviceRequestType | null,
-            recipient: DeviceRecipient | null,
+            direction: DeviceDirection,
+            request_type: DeviceRequestType,
+            recipient: DeviceRecipient,
             request: number,
             value: number,
             idx: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, number];
         /**
          * Do an async control transfer
@@ -1232,18 +1250,18 @@ export namespace GUsb {
          * @param idx
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         control_transfer_async(
-            direction: DeviceDirection | null,
-            request_type: DeviceRequestType | null,
-            recipient: DeviceRecipient | null,
+            direction: DeviceDirection,
+            request_type: DeviceRequestType,
+            recipient: DeviceRecipient,
             request: number,
             value: number,
             idx: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Do an async control transfer
@@ -1255,13 +1273,13 @@ export namespace GUsb {
          * @param idx
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         control_transfer_async(
-            direction: DeviceDirection | null,
-            request_type: DeviceRequestType | null,
-            recipient: DeviceRecipient | null,
+            direction: DeviceDirection,
+            request_type: DeviceRequestType,
+            recipient: DeviceRecipient,
             request: number,
             value: number,
             idx: number,
@@ -1280,24 +1298,24 @@ export namespace GUsb {
          * @param idx
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         control_transfer_async(
-            direction: DeviceDirection | null,
-            request_type: DeviceRequestType | null,
-            recipient: DeviceRecipient | null,
+            direction: DeviceDirection,
+            request_type: DeviceRequestType,
+            recipient: DeviceRecipient,
             request: number,
             value: number,
             idx: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
+         * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
          */
         control_transfer_finish(res: Gio.AsyncResult): number;
@@ -1311,14 +1329,14 @@ export namespace GUsb {
          * If you want to find all the BOS descriptors that match (there may be other matching BOS
          * descriptors you have to use `g_usb_device_get_bos_descriptors()` and check each one manually.
          * @param capability a BOS capability type
-         * @returns a #GUsbBosDescriptor or %NULL for not found
+         * @returns a {@link GUsb.BosDescriptor} or `null` for not found
          */
         get_bos_descriptor(capability: number): BosDescriptor;
         /**
          * Gets all the BOS descriptors exported by the device.
          *
          * The first time this method is used the hardware is queried and then after that cached results
-         * are returned. To invalidate the caches use g_usb_device_invalidate().
+         * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
          * @returns an array of BOS descriptors
          */
         get_bos_descriptors(): BosDescriptor[];
@@ -1329,7 +1347,7 @@ export namespace GUsb {
         get_bus(): number;
         /**
          * Gets the device children if any exist.
-         * @returns an array of #GUsbDevice
+         * @returns an array of {@link GUsb.Device}
          */
         get_children(): Device[];
         /**
@@ -1346,11 +1364,11 @@ export namespace GUsb {
          */
         get_configuration_index(): number;
         /**
-         * Gets the date and time that the #GUsbDevice was created.
+         * Gets the date and time that the {@link GUsb.Device} was created.
          *
          * This can be used as an indicator if the device replugged, as the vendor and product IDs may not
          * change for some devices. Use `g_date_time_equal()` to verify equality.
-         * @returns a #GDateTime
+         * @returns a {@link GLib.DateTime}
          */
         get_created(): GLib.DateTime;
         /**
@@ -1362,19 +1380,19 @@ export namespace GUsb {
          */
         get_custom_index(class_id: number, subclass_id: number, protocol_id: number): number;
         /**
-         * Gets the device class, typically a #GUsbDeviceClassCode.
+         * Gets the device class, typically a {@link GUsb.DeviceClassCode}.
          * @returns a device class number, e.g. 0x09 is a USB hub.
          */
         get_device_class(): number;
         /**
          * Gets the device protocol qualified by the class and subclass numbers.
-         * See g_usb_device_get_device_class() and g_usb_device_get_device_subclass().
+         * See `g_usb_device_get_device_class()` and `g_usb_device_get_device_subclass()`.
          * @returns a device protocol number.
          */
         get_device_protocol(): number;
         /**
          * Gets the device subclass qualified by the class number.
-         * See g_usb_device_get_device_class().
+         * See `g_usb_device_get_device_class()`.
          * @returns a device subclass number.
          */
         get_device_subclass(): number;
@@ -1389,36 +1407,36 @@ export namespace GUsb {
         /**
          * Gets the default HID descriptors exported by the device.
          *
-         * If more than one interface exports a HID descriptor, use g_usb_device_get_hid_descriptors()
+         * If more than one interface exports a HID descriptor, use `g_usb_device_get_hid_descriptors()`
          * instead.
-         * @returns a HID descriptor, or %NULL
+         * @returns a HID descriptor, or `null`
          */
         get_hid_descriptor_default(): GLib.Bytes;
         /**
          * Gets all the HID descriptors exported by the device.
          *
          * The first time this method is used the hardware is queried and then after that cached results
-         * are returned. To invalidate the caches use g_usb_device_invalidate().
+         * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
          * @returns an array of HID descriptors
          */
         get_hid_descriptors(): GLib.Bytes[];
         /**
          * Gets the first interface that matches the vendor class interface descriptor.
          * If you want to find all the interfaces that match (there may be other
-         * 'alternate' interfaces you have to use g_usb_device_get_interfaces() and
+         * 'alternate' interfaces you have to use `g_usb_device_get_interfaces()` and
          * check each one manally.
          * @param class_id a device class, e.g. 0xff for VENDOR
          * @param subclass_id a device subclass
          * @param protocol_id a protocol number
-         * @returns a #GUsbInterface or %NULL for not found
+         * @returns a {@link GUsb.Interface} or `null` for not found
          */
         get_interface(class_id: number, subclass_id: number, protocol_id: number): Interface;
         /**
          * Gets all the interfaces exported by the device.
          *
          * The first time this method is used the hardware is queried and then after that cached results
-         * are returned. To invalidate the caches use g_usb_device_invalidate().
-         * @returns an array of interfaces or %NULL for error
+         * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
+         * @returns an array of interfaces or `null` for error
          */
         get_interfaces(): Interface[];
         /**
@@ -1428,7 +1446,7 @@ export namespace GUsb {
         get_manufacturer_index(): number;
         /**
          * Gets the device parent if one exists.
-         * @returns #GUsbDevice or %NULL
+         * @returns {@link GUsb.Device} or `null`
          */
         get_parent(): Device;
         /**
@@ -1438,7 +1456,7 @@ export namespace GUsb {
         get_pid(): number;
         /**
          * Gets the product ID for the device as a string.
-         * @returns an string ID, or %NULL if not available.
+         * @returns an string ID, or `null` if not available.
          */
         get_pid_as_str(): string;
         /**
@@ -1477,14 +1495,14 @@ export namespace GUsb {
         get_spec(): number;
         /**
          * Get a string descriptor from the device. The returned string should be freed
-         * with g_free() when no longer needed.
+         * with `g_free()` when no longer needed.
          * @param desc_index the index for the string descriptor to retrieve
          * @returns a newly-allocated string holding the descriptor, or NULL on error.
          */
         get_string_descriptor(desc_index: number): string;
         /**
          * Get a raw string descriptor from the device. The returned string should be freed
-         * with g_bytes_unref() when no longer needed.
+         * with `g_bytes_unref()` when no longer needed.
          * The descriptor will be at most 128 btes in length, if you need to
          * issue a request with either a smaller or larger descriptor, you can
          * use g_usb_device_get_string_descriptor_bytes_full instead.
@@ -1495,13 +1513,13 @@ export namespace GUsb {
         get_string_descriptor_bytes(desc_index: number, langid: number): GLib.Bytes;
         /**
          * Get a raw string descriptor from the device. The returned string should be freed
-         * with g_bytes_unref() when no longer needed.
+         * with `g_bytes_unref()` when no longer needed.
          * @param desc_index the index for the string descriptor to retrieve
          * @param langid the language ID
          * @param length size of the request data buffer
          * @returns a possibly UTF-16 string, or NULL on error.
          */
-        get_string_descriptor_bytes_full(desc_index: number, langid: number, length: number): GLib.Bytes;
+        get_string_descriptor_bytes_full(desc_index: number, langid: number, length: bigint | number): GLib.Bytes;
         /**
          * Gets all the tags.
          * @returns string tags
@@ -1514,13 +1532,13 @@ export namespace GUsb {
         get_vid(): number;
         /**
          * Gets the vendor ID for the device as a string.
-         * @returns an string ID, or %NULL if not available.
+         * @returns an string ID, or `null` if not available.
          */
         get_vid_as_str(): string;
         /**
          * Checks if a tag has been used to identify the specific device.
          * @param tag a tag, for example `bootloader` or `runtime-reload`
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         has_tag(tag: string): boolean;
         /**
@@ -1530,34 +1548,34 @@ export namespace GUsb {
          * @param endpoint the address of a valid endpoint to communicate with
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %TRUE on success
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `true` on success
          */
         interrupt_transfer(
             endpoint: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): [boolean, number];
         /**
          * Do an async interrupt transfer
          * @param endpoint the address of a valid endpoint to communicate with
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         interrupt_transfer_async(
             endpoint: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<number>;
         /**
          * Do an async interrupt transfer
          * @param endpoint the address of a valid endpoint to communicate with
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         interrupt_transfer_async(
@@ -1572,45 +1590,45 @@ export namespace GUsb {
          * @param endpoint the address of a valid endpoint to communicate with
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         interrupt_transfer_async(
             endpoint: number,
             data: Uint8Array | string,
             timeout: number,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
+         * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
          */
         interrupt_transfer_finish(res: Gio.AsyncResult): number;
         /**
-         * Invalidates the caches used in g_usb_device_get_interfaces().
+         * Invalidates the caches used in `g_usb_device_get_interfaces()`.
          */
         invalidate(): void;
         /**
          * Gets if the device is emulated.
-         * @returns %TRUE if the device is emulated and not backed by a physical device.
+         * @returns `true` if the device is emulated and not backed by a physical device.
          */
         is_emulated(): boolean;
         /**
          * Opens the device for use.
          *
          * Warning: this function is synchronous.
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         open(): boolean;
         /**
          * Release an interface of the device.
          * @param iface bInterfaceNumber of the interface you wish to release
-         * @param flags #GUsbDeviceClaimInterfaceFlags
-         * @returns %TRUE on success
+         * @param flags {@link GUsb.DeviceClaimInterfaceFlags}
+         * @returns `true` on success
          */
-        release_interface(iface: number, flags: DeviceClaimInterfaceFlags | null): boolean;
+        release_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
         /**
          * Removes a tag, which is included in the JSON log to identify the specific device.
          * @param tag a tag, for example `bootloader` or `runtime-reload`
@@ -1624,7 +1642,7 @@ export namespace GUsb {
          * rediscovered.
          *
          * This is a blocking function which usually incurs a noticeable delay.
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         reset(): boolean;
         /**
@@ -1632,44 +1650,42 @@ export namespace GUsb {
          *
          * Warning: this function is synchronous.
          * @param configuration the configuration value to set
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         set_configuration(configuration: number): boolean;
         /**
          * Sets an alternate setting on an interface.
          * @param iface bInterfaceNumber of the interface you wish to release
          * @param alt alternative setting number
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         set_interface_alt(iface: number, alt: number): boolean;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1679,40 +1695,40 @@ export namespace GUsb {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1722,13 +1738,14 @@ export namespace GUsb {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1742,90 +1759,68 @@ export namespace GUsb {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1833,7 +1828,7 @@ export namespace GUsb {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1841,9 +1836,9 @@ export namespace GUsb {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1863,9 +1858,9 @@ export namespace GUsb {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1879,33 +1874,33 @@ export namespace GUsb {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1938,21 +1933,21 @@ export namespace GUsb {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1962,8 +1957,8 @@ export namespace GUsb {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1980,14 +1975,14 @@ export namespace GUsb {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1998,13 +1993,13 @@ export namespace GUsb {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2035,21 +2030,21 @@ export namespace GUsb {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2059,33 +2054,34 @@ export namespace GUsb {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2094,6 +2090,7 @@ export namespace GUsb {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2102,12 +2099,14 @@ export namespace GUsb {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2116,20 +2115,22 @@ export namespace GUsb {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2141,8 +2142,9 @@ export namespace GUsb {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2179,6 +2181,9 @@ export namespace GUsb {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DeviceEvent extends GObject.Object {
         static $gtype: GObject.GType<DeviceEvent>;
 
@@ -2199,16 +2204,19 @@ export namespace GUsb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2219,12 +2227,12 @@ export namespace GUsb {
 
         /**
          * Gets any bytes data from the event.
-         * @returns a #GBytes, or %NULL
+         * @returns a {@link GLib.Bytes}, or `null`
          */
         get_bytes(): GLib.Bytes;
         /**
          * Gets the event ID.
-         * @returns string, or %NULL
+         * @returns string, or `null`
          */
         get_id(): string;
         /**
@@ -2239,7 +2247,7 @@ export namespace GUsb {
         get_status(): number;
         /**
          * Set the bytes data to the event.
-         * @param bytes a #GBytes
+         * @param bytes a {@link GLib.Bytes}
          */
         set_bytes(bytes: GLib.Bytes | Uint8Array): void;
     }
@@ -2247,7 +2255,17 @@ export namespace GUsb {
     namespace DeviceList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted when a USB device is added.
+             * @signal
+             * @run-last
+             */
             'device-added': (arg0: Device) => void;
+            /**
+             * This signal is emitted when a USB device is removed.
+             * @signal
+             * @run-last
+             */
             'device-removed': (arg0: Device) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
         }
@@ -2259,11 +2277,17 @@ export namespace GUsb {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DeviceList extends GObject.Object {
         static $gtype: GObject.GType<DeviceList>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get context(): Context;
 
         /**
@@ -2285,16 +2309,19 @@ export namespace GUsb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2303,7 +2330,15 @@ export namespace GUsb {
 
         // Virtual methods
 
+        /**
+         * @param device
+         * @virtual
+         */
         vfunc_device_added(device: Device): void;
+        /**
+         * @param device
+         * @virtual
+         */
         vfunc_device_removed(device: Device): void;
 
         // Methods
@@ -2316,16 +2351,19 @@ export namespace GUsb {
          * Finds a device based on its bus and address values.
          * @param bus a bus number
          * @param address a bus address
-         * @returns a new #GUsbDevice, or %NULL if not found.
+         * @returns a new {@link GUsb.Device}, or `null` if not found.
          */
         find_by_bus_address(bus: number, address: number): Device;
         /**
          * Finds a device based on its bus and address values.
          * @param vid a vendor ID
          * @param pid a product ID
-         * @returns a new #GUsbDevice, or %NULL if not found.
+         * @returns a new {@link GUsb.Device}, or `null` if not found.
          */
         find_by_vid_pid(vid: number, pid: number): Device;
+        /**
+         * @returns a new {@link GLib.PtrArray} of {@link GUsb.Device}'s.
+         */
         get_devices(): Device[];
     }
 
@@ -2338,6 +2376,9 @@ export namespace GUsb {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
 
@@ -2358,16 +2399,19 @@ export namespace GUsb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Endpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2388,7 +2432,7 @@ export namespace GUsb {
         get_direction(): DeviceDirection;
         /**
          * Gets any extra data from the endpoint.
-         * @returns a #GBytes, or %NULL for failure
+         * @returns a {@link GLib.Bytes}, or `null` for failure
          */
         get_extra(): GLib.Bytes;
         /**
@@ -2432,6 +2476,9 @@ export namespace GUsb {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
 
@@ -2452,16 +2499,19 @@ export namespace GUsb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Interface.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Interface.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Interface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Interface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2476,18 +2526,18 @@ export namespace GUsb {
          */
         get_alternate(): number;
         /**
-         * Gets the interface class, typically a #GUsbInterfaceClassCode.
+         * Gets the interface class, typically a `GUsbInterfaceClassCode`.
          * @returns a interface class number, e.g. 0x09 is a USB hub.
          */
         get_class(): number;
         /**
          * Gets interface endpoints.
-         * @returns an array of endpoints, or %NULL on failure.
+         * @returns an array of endpoints, or `null` on failure.
          */
         get_endpoints(): Endpoint[];
         /**
          * Gets any extra data from the interface.
-         * @returns a #GBytes, or %NULL for failure
+         * @returns a {@link GLib.Bytes}, or `null` for failure
          */
         get_extra(): GLib.Bytes;
         /**
@@ -2512,31 +2562,51 @@ export namespace GUsb {
         get_number(): number;
         /**
          * Gets the interface protocol qualified by the class and subclass numbers.
-         * See g_usb_interface_get_class() and g_usb_interface_get_subclass().
+         * See `g_usb_interface_get_class()` and `g_usb_interface_get_subclass()`.
          * @returns a interface protocol number.
          */
         get_protocol(): number;
         /**
          * Gets the interface subclass qualified by the class number.
-         * See g_usb_interface_get_class().
+         * See `g_usb_interface_get_class()`.
          * @returns a interface subclass number.
          */
         get_subclass(): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BosDescriptorClass = typeof BosDescriptor;
+    /**
+     * @gir-type Alias
+     */
     type ContextClass = typeof Context;
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
+    /**
+     * @gir-type Alias
+     */
     type DeviceEventClass = typeof DeviceEvent;
+    /**
+     * @gir-type Alias
+     */
     type DeviceListClass = typeof DeviceList;
+    /**
+     * @gir-type Alias
+     */
     type EndpointClass = typeof Endpoint;
+    /**
+     * @gir-type Alias
+     */
     type InterfaceClass = typeof Interface;
+    /**
+     * @gir-type Struct
+     */
     abstract class Source {
         static $gtype: GObject.GType<Source>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 

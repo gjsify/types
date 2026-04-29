@@ -20,8 +20,21 @@ export namespace GstBadAllocators {
      * GstBadAllocators-1.0
      */
 
+    /**
+     * @param mem a {@link Gst.Memory}
+     * @returns whether the memory at `mem` is backed by physical memory
+     * @since 1.12
+     */
     function is_phys_memory(mem: Gst.Memory): boolean;
-    function phys_memory_get_phys_addr(mem: Gst.Memory): never;
+    /**
+     * @param mem a {@link Gst.Memory}
+     * @returns Physical memory address that is backing `mem`, or 0 if none
+     * @since 1.12
+     */
+    function phys_memory_get_phys_addr(mem: Gst.Memory): number;
+    /**
+     * @gir-type Alias
+     */
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
     namespace PhysMemoryAllocator {
         /**
@@ -31,7 +44,11 @@ export namespace GstBadAllocators {
         interface Interface {
             // Virtual methods
 
-            vfunc_get_phys_addr(mem: Gst.Memory): never;
+            /**
+             * @param mem
+             * @virtual
+             */
+            vfunc_get_phys_addr(mem: Gst.Memory): bigint | number;
         }
 
         // Constructor properties interface
@@ -43,6 +60,9 @@ export namespace GstBadAllocators {
         $gtype: GObject.GType<PhysMemoryAllocator>;
         prototype: PhysMemoryAllocator;
     }
+    /**
+     * @gir-type Interface
+     */
     interface PhysMemoryAllocator extends Gst.Allocator, PhysMemoryAllocator.Interface {}
 
     export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace & {

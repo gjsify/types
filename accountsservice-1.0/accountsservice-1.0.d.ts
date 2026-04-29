@@ -21,16 +21,16 @@ export namespace AccountsService {
      */
 
     /**
-     * Type of user account
-     */
-
-    /**
-     * Type of user account
+     * @gir-type Enum
      */
     export namespace UserAccountType {
         export const $gtype: GObject.GType<UserAccountType>;
     }
 
+    /**
+     * Type of user account
+     * @gir-type Enum
+     */
     enum UserAccountType {
         /**
          * Normal non-administrative user
@@ -41,11 +41,13 @@ export namespace AccountsService {
          */
         ADMINISTRATOR,
     }
+
     /**
      * Various error codes returned by the accounts service.
+     * @gir-type Struct
      */
     class UserManagerError extends GLib.Error {
-        static $gtype: GObject.GType<UserManagerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -73,7 +75,6 @@ export namespace AccountsService {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -81,16 +82,16 @@ export namespace AccountsService {
     }
 
     /**
-     * Mode for setting the user's password.
-     */
-
-    /**
-     * Mode for setting the user's password.
+     * @gir-type Enum
      */
     export namespace UserPasswordMode {
         export const $gtype: GObject.GType<UserPasswordMode>;
     }
 
+    /**
+     * Mode for setting the user's password.
+     * @gir-type Enum
+     */
     enum UserPasswordMode {
         /**
          * Password set normally
@@ -105,11 +106,22 @@ export namespace AccountsService {
          */
         NONE,
     }
+
     function user_manager_error_quark(): GLib.Quark;
     namespace User {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the user accounts changes in some way.
+             * @signal
+             * @run-last
+             */
             changed: () => void;
+            /**
+             * Emitted when the list of sessions for this user changes.
+             * @signal
+             * @run-last
+             */
             'sessions-changed': () => void;
             'notify::account-type': (pspec: GObject.ParamSpec) => void;
             'notify::automatic-login': (pspec: GObject.ParamSpec) => void;
@@ -149,7 +161,7 @@ export namespace AccountsService {
             iconFile: string;
             is_loaded: boolean;
             isLoaded: boolean;
-            language: string;
+            language: string | null;
             local_account: boolean;
             localAccount: boolean;
             location: string;
@@ -158,8 +170,8 @@ export namespace AccountsService {
             loginFrequency: number;
             login_history: GLib.Variant;
             loginHistory: GLib.Variant;
-            login_time: number;
-            loginTime: number;
+            login_time: bigint | number;
+            loginTime: bigint | number;
             nonexistent: boolean;
             password_hint: string;
             passwordHint: string;
@@ -180,26 +192,71 @@ export namespace AccountsService {
 
     /**
      * Represents a user account on the system.
+     * @gir-type Class
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
 
         // Properties
 
+        /**
+         * @read-only
+         * @default 0
+         */
         get account_type(): number;
+        /**
+         * @read-only
+         * @default 0
+         */
         get accountType(): number;
+        /**
+         * @read-only
+         * @default false
+         */
         get automatic_login(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get automaticLogin(): boolean;
+        /**
+         * @read-only
+         * @default null
+         */
         get email(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get home_directory(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get homeDirectory(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get icon_file(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get iconFile(): string;
+        /**
+         * @read-only
+         * @default false
+         */
         get is_loaded(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get isLoaded(): boolean;
         /**
          * The user’s locale, in the format
-         * `language[_territory][.codeset][`modifier]``, where `language` is an
+         * `language[_territory][.codeset][`modifier`]`, where `language` is an
          * ISO 639 language code, `territory` is an ISO 3166 country code, and
          * `codeset` is a character set or encoding identifier like `ISO-8859-1`
          * or `UTF-8`; as specified by [`setlocale(3)`](man:setlocale(3)).
@@ -207,34 +264,134 @@ export namespace AccountsService {
          * The locale may be the empty string, which means the user is using the
          * system default locale.
          *
-         * The property may be %NULL if it wasn’t possible to load it from the
+         * The property may be `null` if it wasn’t possible to load it from the
          * daemon.
+         * @read-only
+         * @default null
          */
-        get language(): string;
+        get language(): string | null;
+        /**
+         * @read-only
+         * @default false
+         */
         get local_account(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get localAccount(): boolean;
+        /**
+         * @read-only
+         * @default null
+         */
         get location(): string;
+        /**
+         * @read-only
+         * @default false
+         */
         get locked(): boolean;
+        /**
+         * @read-only
+         * @default 0
+         */
         get login_frequency(): number;
+        /**
+         * @read-only
+         * @default 0
+         */
         get loginFrequency(): number;
+        /**
+         * @read-only
+         */
         get login_history(): GLib.Variant;
+        /**
+         * @read-only
+         */
         get loginHistory(): GLib.Variant;
+        /**
+         * @read-only
+         * @default 0
+         */
         get login_time(): number;
+        /**
+         * @read-only
+         * @default 0
+         */
         get loginTime(): number;
+        /**
+         * @read-only
+         * @default false
+         */
         get nonexistent(): boolean;
+        /**
+         * @read-only
+         * @default null
+         */
         get password_hint(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get passwordHint(): string;
+        /**
+         * @read-only
+         * @default 0
+         */
         get password_mode(): number;
+        /**
+         * @read-only
+         * @default 0
+         */
         get passwordMode(): number;
+        /**
+         * @read-only
+         * @default null
+         */
         get real_name(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get realName(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get shell(): string;
+        /**
+         * @read-only
+         * @default false
+         */
         get system_account(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get systemAccount(): boolean;
+        /**
+         * @read-only
+         * @default 0
+         */
         get uid(): number;
+        /**
+         * @read-only
+         * @default null
+         */
         get user_name(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get userName(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get x_session(): string;
+        /**
+         * @read-only
+         * @default null
+         */
         get xSession(): string;
 
         /**
@@ -254,16 +411,19 @@ export namespace AccountsService {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof User.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof User.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof User.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -275,27 +435,27 @@ export namespace AccountsService {
         /**
          * Organize the user by login frequency and names.
          * @param user2 a user
-         * @returns negative if @user1 is before @user2, zero if equal    or positive if @user1 is after @user2
+         * @returns negative if `user1` is before `user2`, zero if equal    or positive if `user1` is after `user2`
          */
         collate(user2: User): number;
         /**
          * Retrieves the account type of `user`.
-         * @returns a #ActUserAccountType
+         * @returns a {@link AccountsService.UserAccountType}
          */
         get_account_type(): UserAccountType;
         /**
-         * Returns whether or not #ActUser is automatically logged in at boot time.
-         * @returns %TRUE or %FALSE
+         * Returns whether or not {@link AccountsService.User} is automatically logged in at boot time.
+         * @returns `true` or `false`
          */
         get_automatic_login(): boolean;
         /**
          * Retrieves the email address set by `user`.
-         * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
+         * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
         get_email(): string;
         /**
          * Retrieves the home directory for `user`.
-         * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
+         * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
         get_home_dir(): string;
         /**
@@ -304,23 +464,23 @@ export namespace AccountsService {
          */
         get_icon_file(): string;
         /**
-         * Returns the value of #ActUser:language.
-         * @returns the user’s language, or the empty string    if they are using the system default language, or %NULL if there is no    connection to the daemon
+         * Returns the value of {@link AccountsService.User.language}.
+         * @returns the user’s language, or the empty string    if they are using the system default language, or `null` if there is no    connection to the daemon
          */
         get_language(): string | null;
         /**
-         * Returns the value of #ActUser:languages.
-         * @returns the user’s preferred languages, or the    empty string if they are using the system default language, or %NULL    if there is no connection to the daemon
+         * Returns the value of {@link AccountsService.User.languages}.
+         * @returns the user’s preferred languages, or the    empty string if they are using the system default language, or `null`    if there is no connection to the daemon
          */
         get_languages(): string[] | null;
         /**
          * Retrieves the location set by `user`.
-         * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
+         * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
         get_location(): string;
         /**
-         * Returns whether or not the #ActUser account is locked.
-         * @returns %TRUE or %FALSE
+         * Returns whether or not the {@link AccountsService.User} account is locked.
+         * @returns `true` or `false`
          */
         get_locked(): boolean;
         /**
@@ -330,7 +490,7 @@ export namespace AccountsService {
         get_login_frequency(): number;
         /**
          * Returns the login history for `user`.
-         * @returns a pointer to GVariant of type "a(xxa{sv})" which must not be modified or freed, or %NULL.
+         * @returns a pointer to GVariant of type "a(xxa{sv})" which must not be modified or freed, or `null`.
          */
         get_login_history(): GLib.Variant;
         /**
@@ -346,7 +506,7 @@ export namespace AccountsService {
         get_num_sessions(): number;
         /**
          * Get the number of sessions for a user on any seat of any type.
-         * See also act_user_get_num_sessions().
+         * See also `act_user_get_num_sessions()`.
          *
          * (Currently, this function is only implemented for systemd-logind.
          * For ConsoleKit, it is equivalent to act_user_get_num_sessions.)
@@ -354,8 +514,8 @@ export namespace AccountsService {
          */
         get_num_sessions_anywhere(): number;
         /**
-         * Returns the user accounts service object path of `user,`
-         * or %NULL if `user` doesn't have an object path associated
+         * Returns the user accounts service object path of `user`,
+         * or `null` if `user` doesn't have an object path associated
          * with it.
          * @returns the object path of the user
          */
@@ -368,16 +528,16 @@ export namespace AccountsService {
         get_password_expiration_policy(): [number, number, number, number, number, number];
         /**
          * Retrieves the password hint set by `user`.
-         * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
+         * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
         get_password_hint(): string;
         /**
          * Retrieves the password mode of `user`.
-         * @returns a #ActUserPasswordMode
+         * @returns a {@link AccountsService.UserPasswordMode}
          */
         get_password_mode(): UserPasswordMode;
         /**
-         * Returns the id of the primary session of `user,` or %NULL if `user`
+         * Returns the id of the primary session of `user`, or `null` if `user`
          * has no primary session.  The primary session will always be
          * graphical and will be chosen from the sessions on the same seat as
          * the seat of the session of the calling process.
@@ -386,12 +546,12 @@ export namespace AccountsService {
         get_primary_session_id(): string;
         /**
          * Retrieves the display name of `user`.
-         * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
+         * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
         get_real_name(): string;
         /**
-         * Returns whether or not the #ActUser account has retained state in accountsservice.
-         * @returns %TRUE or %FALSE
+         * Returns whether or not the {@link AccountsService.User} account has retained state in accountsservice.
+         * @returns `true` or `false`
          */
         get_saved(): boolean;
         /**
@@ -406,17 +566,17 @@ export namespace AccountsService {
         get_session_type(): string;
         /**
          * Retrieves the shell assigned to `user`.
-         * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
+         * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
         get_shell(): string;
         /**
          * Retrieves the ID of `user`.
-         * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
+         * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
         get_uid(): number;
         /**
          * Retrieves the login name of `user`.
-         * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
+         * @returns a pointer to an array of characters which must not be modified or  freed, or `null`.
          */
         get_user_name(): string;
         /**
@@ -426,46 +586,46 @@ export namespace AccountsService {
         get_x_session(): string;
         /**
          * Retrieves whether the user is a local account or not.
-         * @returns %TRUE if the user is local
+         * @returns `true` if the user is local
          */
         is_local_account(): boolean;
         /**
-         * Returns whether or not #ActUser is currently graphically logged in
+         * Returns whether or not {@link AccountsService.User} is currently graphically logged in
          * on the same seat as the seat of the session of the calling process.
-         * @returns %TRUE or %FALSE
+         * @returns `true` or `false`
          */
         is_logged_in(): boolean;
         /**
-         * Returns whether or not #ActUser is currently logged in in any way
-         * whatsoever.  See also act_user_is_logged_in().
+         * Returns whether or not {@link AccountsService.User} is currently logged in in any way
+         * whatsoever.  See also `act_user_is_logged_in()`.
          *
          * (Currently, this function is only implemented for systemd-logind.
          * For ConsoleKit, it is equivalent to act_user_is_logged_in.)
-         * @returns %TRUE or %FALSE
+         * @returns `true` or `false`
          */
         is_logged_in_anywhere(): boolean;
         /**
          * Retrieves whether the user is nonexistent or not.
-         * @returns %TRUE if the user is nonexistent
+         * @returns `true` if the user is nonexistent
          */
         is_nonexistent(): boolean;
         /**
-         * Returns whether or not #ActUser represents a 'system account' like
+         * Returns whether or not {@link AccountsService.User} represents a 'system account' like
          * 'root' or 'nobody'.
-         * @returns %TRUE or %FALSE
+         * @returns `true` or `false`
          */
         is_system_account(): boolean;
         /**
          * Changes the account type of `user`.
          *
          * Note this function is synchronous and ignores errors.
-         * @param account_type a #ActUserAccountType
+         * @param account_type a {@link AccountsService.UserAccountType}
          */
-        set_account_type(account_type: UserAccountType | null): void;
+        set_account_type(account_type: UserAccountType): void;
         /**
-         * If enabled is set to %TRUE then this user will automatically be logged in
+         * If enabled is set to `true` then this user will automatically be logged in
          * at boot up time.  Only one user can be configured to auto login at any given
-         * time, so subsequent calls to act_user_set_automatic_login() override previous
+         * time, so subsequent calls to `act_user_set_automatic_login()` override previous
          * calls.
          *
          * Note this function is synchronous and ignores errors.
@@ -487,15 +647,15 @@ export namespace AccountsService {
          */
         set_icon_file(icon_file: string): void;
         /**
-         * Assigns a new locale for `user,` setting #ActUser:language.
+         * Assigns a new locale for `user`, setting {@link AccountsService.User.language}.
          *
          * Note this function is synchronous and ignores errors.
          * @param language a locale (for example, `en_US.utf8`), or the empty    string to use the system default locale
          */
         set_language(language: string): void;
         /**
-         * Assigns preferred languages for `user,` setting #ActUser:languages, and
-         * overriding #ActUser:language with the first item in the list if there is one.
+         * Assigns preferred languages for `user`, setting {@link AccountsService.User.languages}, and
+         * overriding {@link AccountsService.User.language} with the first item in the list if there is one.
          *
          * Note this function is synchronous and ignores errors.
          * @param languages an array of locale (for example, `en_US.utf8`), or    the empty string to use the system default locale
@@ -532,11 +692,14 @@ export namespace AccountsService {
          * @param days_after_expiration_until_lock location to write number of days account will be locked after password expires.
          */
         set_password_expiration_policy(
-            min_days_between_changes: number,
-            max_days_between_changes: number,
-            days_to_warn: number,
-            days_after_expiration_until_lock: number,
+            min_days_between_changes: bigint | number,
+            max_days_between_changes: bigint | number,
+            days_to_warn: bigint | number,
+            days_after_expiration_until_lock: bigint | number,
         ): void;
+        /**
+         * @param hint
+         */
         set_password_hint(hint: string): void;
         /**
          * Changes the password of `user`.  If `password_mode` is
@@ -546,9 +709,9 @@ export namespace AccountsService {
          * a password to log in.
          *
          * Note this function is synchronous and ignores errors.
-         * @param password_mode a #ActUserPasswordMode
+         * @param password_mode a {@link AccountsService.UserPasswordMode}
          */
-        set_password_mode(password_mode: UserPasswordMode | null): void;
+        set_password_mode(password_mode: UserPasswordMode): void;
         /**
          * Assigns a new name for `user`.
          *
@@ -576,7 +739,7 @@ export namespace AccountsService {
          * Note this function is synchronous and ignores errors.
          * @param expiration_time location to write users expires timestamp
          */
-        set_user_expiration_policy(expiration_time: number): void;
+        set_user_expiration_policy(expiration_time: bigint | number): void;
         /**
          * Assigns a new username for `user`.
          *
@@ -596,9 +759,29 @@ export namespace AccountsService {
     namespace UserManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when a user is added to the user manager.
+             * @signal
+             * @run-last
+             */
             'user-added': (arg0: User) => void;
+            /**
+             * One of the users has changed
+             * @signal
+             * @run-last
+             */
             'user-changed': (arg0: User) => void;
+            /**
+             * One of the users has logged in or out.
+             * @signal
+             * @run-last
+             */
             'user-is-logged-in-changed': (arg0: User) => void;
+            /**
+             * Emitted when a user is removed from the user manager.
+             * @signal
+             * @run-last
+             */
             'user-removed': (arg0: User) => void;
             'notify::exclude-usernames-list': (pspec: GObject.ParamSpec) => void;
             'notify::has-multiple-users': (pspec: GObject.ParamSpec) => void;
@@ -622,6 +805,7 @@ export namespace AccountsService {
 
     /**
      * A user manager object.
+     * @gir-type Class
      */
     class UserManager extends GObject.Object {
         static $gtype: GObject.GType<UserManager>;
@@ -632,15 +816,29 @@ export namespace AccountsService {
         set exclude_usernames_list(val: any);
         get excludeUsernamesList(): any;
         set excludeUsernamesList(val: any);
+        /**
+         * @default false
+         */
         get has_multiple_users(): boolean;
         set has_multiple_users(val: boolean);
+        /**
+         * @default false
+         */
         get hasMultipleUsers(): boolean;
         set hasMultipleUsers(val: boolean);
         get include_usernames_list(): any;
         set include_usernames_list(val: any);
         get includeUsernamesList(): any;
         set includeUsernamesList(val: any);
+        /**
+         * @read-only
+         * @default false
+         */
         get is_loaded(): boolean;
+        /**
+         * @read-only
+         * @default false
+         */
         get isLoaded(): boolean;
 
         /**
@@ -660,16 +858,19 @@ export namespace AccountsService {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -681,16 +882,32 @@ export namespace AccountsService {
         /**
          * Returns the user manager singleton instance.  Calling this function will
          * automatically being loading the user list if it isn't loaded already.
-         * The #ActUserManager:is-loaded property will be set to %TRUE when the users
-         * are finished loading and then act_user_manager_list_users() can be called.
+         * The {@link AccountsService.UserManager.is_loaded} property will be set to `true` when the users
+         * are finished loading and then `act_user_manager_list_users()` can be called.
          */
         static get_default(): UserManager;
 
         // Virtual methods
 
+        /**
+         * @param user
+         * @virtual
+         */
         vfunc_user_added(user: User): void;
+        /**
+         * @param user
+         * @virtual
+         */
         vfunc_user_changed(user: User): void;
+        /**
+         * @param user
+         * @virtual
+         */
         vfunc_user_is_logged_in_changed(user: User): void;
+        /**
+         * @param user
+         * @virtual
+         */
         vfunc_user_removed(user: User): void;
 
         // Methods
@@ -702,30 +919,30 @@ export namespace AccountsService {
          */
         activate_user_session(user: User): boolean;
         /**
-         * Caches a user account so it shows up via act_user_manager_list_users().
+         * Caches a user account so it shows up via `act_user_manager_list_users()`.
          * @param username a user name
          * @returns user object
          */
         cache_user(username: string): User;
         /**
          * Asynchronously caches a user account so it shows up via
-         * act_user_manager_list_users().
+         * `act_user_manager_list_users()`.
          *
-         * For more details, see act_user_manager_cache_user(), which
+         * For more details, see `act_user_manager_cache_user()`, which
          * is the synchronous version of this call.
          * @param username a unix user name
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          */
-        cache_user_async(username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<User>;
+        cache_user_async(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<User>;
         /**
          * Asynchronously caches a user account so it shows up via
-         * act_user_manager_list_users().
+         * `act_user_manager_list_users()`.
          *
-         * For more details, see act_user_manager_cache_user(), which
+         * For more details, see `act_user_manager_cache_user()`, which
          * is the synchronous version of this call.
          * @param username a unix user name
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call     when the request is satisfied
          */
         cache_user_async(
             username: string,
@@ -734,24 +951,24 @@ export namespace AccountsService {
         ): void;
         /**
          * Asynchronously caches a user account so it shows up via
-         * act_user_manager_list_users().
+         * `act_user_manager_list_users()`.
          *
-         * For more details, see act_user_manager_cache_user(), which
+         * For more details, see `act_user_manager_cache_user()`, which
          * is the synchronous version of this call.
          * @param username a unix user name
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call     when the request is satisfied
          */
         cache_user_async(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User> | void;
         /**
          * Finishes an asynchronous user caching.
          *
-         * See act_user_manager_cache_user_async().
-         * @param result a #GAsyncResult
+         * See `act_user_manager_cache_user_async()`.
+         * @param result a {@link Gio.AsyncResult}
          * @returns user object
          */
         cache_user_finish(result: Gio.AsyncResult): User;
@@ -764,100 +981,100 @@ export namespace AccountsService {
          * Creates a user account on the system.
          * @param username a unix user name
          * @param fullname a unix GECOS value
-         * @param accounttype a #ActUserAccountType
+         * @param accounttype a {@link AccountsService.UserAccountType}
          * @returns user object
          */
-        create_user(username: string, fullname: string, accounttype: UserAccountType | null): User;
+        create_user(username: string, fullname: string, accounttype: UserAccountType): User;
         /**
          * Asynchronously creates a user account on the system.
          *
-         * For more details, see act_user_manager_create_user(), which
+         * For more details, see `act_user_manager_create_user()`, which
          * is the synchronous version of this call.
          * @param username a unix user name
          * @param fullname a unix GECOS value
-         * @param accounttype a #ActUserAccountType
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
+         * @param accounttype a {@link AccountsService.UserAccountType}
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          */
         create_user_async(
             username: string,
             fullname: string,
-            accounttype: UserAccountType | null,
-            cancellable?: Gio.Cancellable | null,
+            accounttype: UserAccountType,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<User>;
         /**
          * Asynchronously creates a user account on the system.
          *
-         * For more details, see act_user_manager_create_user(), which
+         * For more details, see `act_user_manager_create_user()`, which
          * is the synchronous version of this call.
          * @param username a unix user name
          * @param fullname a unix GECOS value
-         * @param accounttype a #ActUserAccountType
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
+         * @param accounttype a {@link AccountsService.UserAccountType}
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call     when the request is satisfied
          */
         create_user_async(
             username: string,
             fullname: string,
-            accounttype: UserAccountType | null,
+            accounttype: UserAccountType,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Asynchronously creates a user account on the system.
          *
-         * For more details, see act_user_manager_create_user(), which
+         * For more details, see `act_user_manager_create_user()`, which
          * is the synchronous version of this call.
          * @param username a unix user name
          * @param fullname a unix GECOS value
-         * @param accounttype a #ActUserAccountType
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
+         * @param accounttype a {@link AccountsService.UserAccountType}
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call     when the request is satisfied
          */
         create_user_async(
             username: string,
             fullname: string,
-            accounttype: UserAccountType | null,
-            cancellable?: Gio.Cancellable | null,
+            accounttype: UserAccountType,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<User> | void;
         /**
          * Finishes an asynchronous user creation.
          *
-         * See act_user_manager_create_user_async().
-         * @param result a #GAsyncResult
+         * See `act_user_manager_create_user_async()`.
+         * @param result a {@link Gio.AsyncResult}
          * @returns user object
          */
         create_user_finish(result: Gio.AsyncResult): User;
         /**
          * Deletes a user account on the system.
-         * @param user an #ActUser object
-         * @param remove_files %TRUE to delete the users home directory
-         * @returns %TRUE if the user account was successfully deleted
+         * @param user an {@link AccountsService.User} object
+         * @param remove_files `true` to delete the users home directory
+         * @returns `true` if the user account was successfully deleted
          */
         delete_user(user: User, remove_files: boolean): boolean;
         /**
          * Asynchronously deletes a user account from the system.
          *
-         * For more details, see act_user_manager_delete_user(), which
+         * For more details, see `act_user_manager_delete_user()`, which
          * is the synchronous version of this call.
-         * @param user a #ActUser object
-         * @param remove_files %TRUE to delete the users home directory
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
+         * @param user a {@link AccountsService.User} object
+         * @param remove_files `true` to delete the users home directory
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          */
         delete_user_async(
             user: User,
             remove_files: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes a user account from the system.
          *
-         * For more details, see act_user_manager_delete_user(), which
+         * For more details, see `act_user_manager_delete_user()`, which
          * is the synchronous version of this call.
-         * @param user a #ActUser object
-         * @param remove_files %TRUE to delete the users home directory
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
+         * @param user a {@link AccountsService.User} object
+         * @param remove_files `true` to delete the users home directory
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call     when the request is satisfied
          */
         delete_user_async(
             user: User,
@@ -868,43 +1085,43 @@ export namespace AccountsService {
         /**
          * Asynchronously deletes a user account from the system.
          *
-         * For more details, see act_user_manager_delete_user(), which
+         * For more details, see `act_user_manager_delete_user()`, which
          * is the synchronous version of this call.
-         * @param user a #ActUser object
-         * @param remove_files %TRUE to delete the users home directory
-         * @param cancellable optional #GCancellable object,     %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
+         * @param user a {@link AccountsService.User} object
+         * @param remove_files `true` to delete the users home directory
+         * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call     when the request is satisfied
          */
         delete_user_async(
             user: User,
             remove_files: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous user account deletion.
          *
-         * See act_user_manager_delete_user_async().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if the user account was successfully deleted
+         * See `act_user_manager_delete_user_async()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if the user account was successfully deleted
          */
         delete_user_finish(result: Gio.AsyncResult): boolean;
         /**
-         * Retrieves a pointer to the #ActUser object for the login `username`
+         * Retrieves a pointer to the {@link AccountsService.User} object for the login `username`
          * from `manager`. Trying to use this object before its
-         * #ActUser:is-loaded property is %TRUE will result in undefined
+         * {@link AccountsService.User.is_loaded} property is `true` will result in undefined
          * behavior.
          * @param username the login name of the user to get.
-         * @returns #ActUser object
+         * @returns {@link AccountsService.User} object
          */
         get_user(username: string): User;
         /**
-         * Retrieves a pointer to the #ActUser object for the user with the
+         * Retrieves a pointer to the {@link AccountsService.User} object for the user with the
          * given uid from `manager`. Trying to use this object before its
-         * #ActUser:is-loaded property is %TRUE will result in undefined
+         * {@link AccountsService.User.is_loaded} property is `true` will result in undefined
          * behavior.
          * @param id the uid of the user to get.
-         * @returns #ActUser object
+         * @returns {@link AccountsService.User} object
          */
         get_user_by_id(id: number): User;
         /**
@@ -914,7 +1131,7 @@ export namespace AccountsService {
         goto_login_session(): boolean;
         /**
          * Get a list of system user accounts
-         * @returns List of #ActUser objects
+         * @returns List of {@link AccountsService.User} objects
          */
         list_users(): User[];
         /**
@@ -928,31 +1145,51 @@ export namespace AccountsService {
          * server and the user has never logged in before, then that
          * account will no longer show up in ListCachedUsers() output.
          * @param username a user name
-         * @returns %TRUE if successful, otherwise %FALSE
+         * @returns `true` if successful, otherwise `false`
          */
         uncache_user(username: string): boolean;
-        uncache_user_async(username: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        /**
+         * @param username
+         * @param cancellable
+         */
+        uncache_user_async(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        /**
+         * @param username
+         * @param cancellable
+         * @param callback
+         */
         uncache_user_async(
             username: string,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param username
+         * @param cancellable
+         * @param callback
+         */
         uncache_user_async(
             username: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous user uncaching.
          *
-         * See act_user_manager_uncache_user_async().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if the user account was successfully uncached
+         * See `act_user_manager_uncache_user_async()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if the user account was successfully uncached
          */
         uncache_user_finish(result: Gio.AsyncResult): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UserClass = typeof User;
+    /**
+     * @gir-type Alias
+     */
     type UserManagerClass = typeof UserManager;
     /**
      * Name of the imported GIR library

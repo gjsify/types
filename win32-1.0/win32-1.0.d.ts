@@ -17,18 +17,29 @@ export namespace win32 {
      * win32-1.0
      */
 
+    /**
+     * @gir-type Struct
+     */
     class MSG {
         static $gtype: GObject.GType<MSG>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HWND = number;
-    type HICON = number;
-    type HCURSOR = number;
-    type HGDIOBJ = number;
+    /**
+     * @gir-type Alias
+     */
+    type HICON = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type HCURSOR = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type HGDIOBJ = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

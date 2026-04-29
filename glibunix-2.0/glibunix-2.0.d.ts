@@ -20,15 +20,9 @@ export namespace GLibUnix {
 
     /**
      * Mnemonic constants for the ends of a Unix pipe.
+     * @gir-type Enum
+     * @since 2.80
      */
-
-    /**
-     * Mnemonic constants for the ends of a Unix pipe.
-     */
-    export namespace PipeEnd {
-        export const $gtype: GObject.GType<PipeEnd>;
-    }
-
     enum PipeEnd {
         /**
          * The readable file descriptor 0
@@ -39,21 +33,55 @@ export namespace GLibUnix {
          */
         WRITE,
     }
+
+    /**
+     * @param lowfd
+     */
     function closefrom(lowfd: number): number;
     function error_quark(): GLib.Quark;
-    function fd_add_full(
-        priority: number,
-        fd: number,
-        condition: GLib.IOCondition | null,
-        _function: GLib.UnixFDSourceFunc,
-    ): number;
-    function fd_source_new(fd: number, condition: GLib.IOCondition | null): GLib.Source;
+    /**
+     * @param priority
+     * @param fd
+     * @param condition
+     * @param _function
+     */
+    function fd_add_full(priority: number, fd: number, condition: GLib.IOCondition, _function: never): number;
+    /**
+     * @param fd
+     * @param condition
+     */
+    function fd_source_new(fd: number, condition: GLib.IOCondition): GLib.Source;
+    /**
+     * @param lowfd
+     */
     function fdwalk_set_cloexec(lowfd: number): number;
+    /**
+     * @param user_name
+     */
     function get_passwd_entry(user_name: string): any | null;
+    /**
+     * @param fds
+     * @param flags
+     */
     function open_pipe(fds: number, flags: number): boolean;
+    /**
+     * @param fd
+     * @param nonblock
+     */
     function set_fd_nonblocking(fd: number, nonblock: boolean): boolean;
+    /**
+     * @param priority
+     * @param signum
+     * @param handler
+     */
     function signal_add_full(priority: number, signum: number, handler: GLib.SourceFunc): number;
+    /**
+     * @param signum
+     */
     function signal_source_new(signum: number): GLib.Source;
+    /**
+     * @gir-type Callback
+     */
     interface FDSourceFunc {
         (fd: number, condition: GLib.IOCondition): boolean;
     }
@@ -61,6 +89,8 @@ export namespace GLibUnix {
      * A Unix pipe. The advantage of this type over `int[2]` is that it can
      * be closed automatically when it goes out of scope, using `g_auto(GUnixPipe)`,
      * on compilers that support that feature.
+     * @gir-type Struct
+     * @since 2.80
      */
     class Pipe {
         static $gtype: GObject.GType<Pipe>;
@@ -76,7 +106,6 @@ export namespace GLibUnix {
                 fds: number[];
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

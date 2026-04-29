@@ -24,16 +24,8 @@ export namespace GrlNet {
     /**
      * These constants identify all the available errors managed by
      * the web client.
+     * @gir-type Enum
      */
-
-    /**
-     * These constants identify all the available errors managed by
-     * the web client.
-     */
-    export namespace WcError {
-        export const $gtype: GObject.GType<WcError>;
-    }
-
     enum WcError {
         /**
          * Deprecated. For generic errors, you
@@ -76,6 +68,7 @@ export namespace GrlNet {
          */
         CANCELLED,
     }
+
     namespace Wc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -99,23 +92,47 @@ export namespace GrlNet {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Wc extends GObject.Object {
         static $gtype: GObject.GType<Wc>;
 
         // Properties
 
+        /**
+         * @default true
+         */
         get cache(): boolean;
         set cache(val: boolean);
+        /**
+         * @default 10
+         */
         get cache_size(): number;
         set cache_size(val: number);
+        /**
+         * @default 10
+         */
         get cacheSize(): number;
         set cacheSize(val: number);
+        /**
+         * @default 0
+         */
         get loglevel(): number;
         set loglevel(val: number);
+        /**
+         * @default 0
+         */
         get throttling(): number;
         set throttling(val: number);
+        /**
+         * @default null
+         */
         get user_agent(): string;
         set user_agent(val: string);
+        /**
+         * @default null
+         */
         get userAgent(): string;
         set userAgent(val: string);
 
@@ -138,16 +155,19 @@ export namespace GrlNet {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Wc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Wc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Wc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Wc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -168,14 +188,14 @@ export namespace GrlNet {
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
          * @param uri The URI of the resource to request
-         * @param cancellable a #GCancellable instance or %NULL to ignore
+         * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          */
-        request_async(uri: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Uint8Array | null>;
+        request_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array | null>;
         /**
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
          * @param uri The URI of the resource to request
-         * @param cancellable a #GCancellable instance or %NULL to ignore
+         * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
         request_async(
@@ -187,12 +207,12 @@ export namespace GrlNet {
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
          * @param uri The URI of the resource to request
-         * @param cancellable a #GCancellable instance or %NULL to ignore
+         * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
         request_async(
             uri: string,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Uint8Array | null> | void;
         /**
@@ -203,26 +223,26 @@ export namespace GrlNet {
          * The content address will be invalidated at the next request. So if you
          * want to keep it, please copy it into another address.
          * @param result The result of the request
-         * @returns %TRUE if the request was successfull. If %FALSE an error occurred.
+         * @returns `true` if the request was successfull. If `false` an error occurred.
          */
         request_finish(result: Gio.AsyncResult): [boolean, Uint8Array | null];
         /**
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
          * @param uri The URI of the resource to request
-         * @param headers a set of additional HTTP headers for this request or %NULL to ignore
-         * @param cancellable a #GCancellable instance or %NULL to ignore
+         * @param headers a set of additional HTTP headers for this request or `null` to ignore
+         * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
         request_with_headers_async(
             uri: string,
-            headers?: GLib.HashTable<string, string> | null,
-            cancellable?: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
+            headers: GLib.HashTable<string, string> | null,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
          * Sets if cache must be used. Note that this will only work if caching is
-         * supporting.  If sets %TRUE, a new cache will be created. If sets to %FALSE,
+         * supporting.  If sets `true`, a new cache will be created. If sets to `false`,
          * current cache is clean and removed.
          * @param use_cache if cache must be used or not
          */
@@ -240,7 +260,7 @@ export namespace GrlNet {
          */
         set_log_level(log_level: number): void;
         /**
-         * Setting this property, the #GrlNetWc will queue all the requests and
+         * Setting this property, the {@link GrlNet.Wc} will queue all the requests and
          * will dispatch them with a pause between them of this value.
          *
          * Note that if the grl-net library was compiled against libsoup3, changing
@@ -251,13 +271,15 @@ export namespace GrlNet {
         set_throttling(throttling: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WcClass = typeof Wc;
+    /**
+     * @gir-type Struct
+     */
     abstract class WcPrivate {
         static $gtype: GObject.GType<WcPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

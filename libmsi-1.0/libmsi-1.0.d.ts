@@ -20,16 +20,26 @@ export namespace Libmsi {
      * Libmsi-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ColInfo {
         export const $gtype: GObject.GType<ColInfo>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ColInfo {
         NAMES,
         TYPES,
     }
+
+    /**
+     * @gir-type Struct
+     */
     class DBError extends GLib.Error {
-        static $gtype: GObject.GType<DBError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -70,17 +80,22 @@ export namespace Libmsi {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Property {
         export const $gtype: GObject.GType<Property>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Property {
         DICTIONARY,
         CODEPAGE,
@@ -104,18 +119,28 @@ export namespace Libmsi {
         SECURITY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PropertyType {
         export const $gtype: GObject.GType<PropertyType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PropertyType {
         EMPTY,
         INT,
         STRING,
         FILETIME,
     }
+
+    /**
+     * @gir-type Struct
+     */
     class ResultError extends GLib.Error {
-        static $gtype: GObject.GType<ResultError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -142,7 +167,6 @@ export namespace Libmsi {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -152,17 +176,23 @@ export namespace Libmsi {
     const NULL_INT: number;
     function db_error_quark(): GLib.Quark;
     function result_error_quark(): GLib.Quark;
-
+    /**
+     * @gir-type Flags
+     */
     export namespace DbFlags {
         export const $gtype: GObject.GType<DbFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DbFlags {
         READONLY,
         CREATE,
         TRANSACT,
         PATCH,
     }
+
     namespace Database {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -180,13 +210,28 @@ export namespace Libmsi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Database extends GObject.Object {
         static $gtype: GObject.GType<Database>;
 
         // Properties
 
+        /**
+         * @construct-only
+         * @default 0
+         */
         get flags(): DbFlags;
+        /**
+         * @construct-only
+         * @default null
+         */
         get outpath(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get path(): string;
 
         /**
@@ -204,20 +249,23 @@ export namespace Libmsi {
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, flags: number, persist?: string | null): Database;
+        static ['new'](path: string, flags: number, persist: string | null): Database;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Database.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Database.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Database.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Database.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -229,9 +277,12 @@ export namespace Libmsi {
         /**
          * FIXME
          * @param file an MST transform file path
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         apply_transform(file: string): boolean;
+        /**
+         * @returns `true` on success.
+         */
         commit(): boolean;
         /**
          * Writes a file containing the table data as tab separated ASCII.
@@ -246,19 +297,35 @@ export namespace Libmsi {
          * row4 : data <tab> data <tab> data <tab> ... data <cr> <lf>
          * @param table a table name
          * @param fd a file descriptor
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         ['export'](table: string, fd: number): boolean;
+        /**
+         * @param table an exisiting table name
+         * @returns a %LibmsiRecord containing the names of all the primary key columns.
+         */
         get_primary_keys(table: string): Record;
         /**
          * Import a table to the database from file `path`.
          * @param path path to a table file
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         ['import'](path: string): boolean;
+        /**
+         * @returns `true` if the database is read-only.
+         */
         is_readonly(): boolean;
+        /**
+         * @param table an exisiting table name
+         * @returns `true` if the `table` is persistent, `false` if it's temporary
+         */
         is_table_persistent(table: string): boolean;
-        merge(merge: Database, table?: string | null): boolean;
+        /**
+         * @param merge a %LibmsiDatabase to merge
+         * @param table an optionnal table name
+         * @returns `true` on success
+         */
+        merge(merge: Database, table: string | null): boolean;
     }
 
     namespace Query {
@@ -276,12 +343,22 @@ export namespace Libmsi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get database(): Database;
+        /**
+         * @construct-only
+         * @default null
+         */
         get query(): string;
 
         /**
@@ -303,16 +380,19 @@ export namespace Libmsi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Query.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Query.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Query.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Query.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -323,27 +403,27 @@ export namespace Libmsi {
 
         /**
          * Release the current result set.
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         close(): boolean;
         /**
          * Execute the `query` with the arguments from `rec`.
-         * @param rec a #LibmsiRecord containing query arguments, or     %NULL if no arguments needed
-         * @returns %TRUE on success
+         * @param rec a {@link Libmsi.Record} containing query arguments, or     `null` if no arguments needed
+         * @returns `true` on success
          */
-        execute(rec?: Record | null): boolean;
+        execute(rec: Record | null): boolean;
         /**
-         * Return the next query result. %NULL is returned when there
+         * Return the next query result. `null` is returned when there
          * is no more results.
-         * @returns a newly allocated     #LibmsiRecord or %NULL when no results or failure.
+         * @returns a newly allocated     {@link Libmsi.Record} or `null` when no results or failure.
          */
         fetch(): Record | null;
         /**
          * Get column informations, returned as record string fields.
-         * @param info a #LibmsiColInfo specifying the type of information to return
-         * @returns a newly allocated #LibmsiRecord containing informations or %NULL on error.
+         * @param info a {@link Libmsi.ColInfo} specifying the type of information to return
+         * @returns a newly allocated {@link Libmsi.Record} containing informations or `null` on error.
          */
-        get_column_info(info: ColInfo | null): Record;
+        get_column_info(info: ColInfo): Record;
         /**
          * Call this to get more information on the last query error.
          */
@@ -363,11 +443,18 @@ export namespace Libmsi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Record extends GObject.Object {
         static $gtype: GObject.GType<Record>;
 
         // Properties
 
+        /**
+         * @construct-only
+         * @default 0
+         */
         get count(): number;
 
         /**
@@ -389,16 +476,19 @@ export namespace Libmsi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Record.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Record.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Record.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Record.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Record.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Record.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -409,59 +499,71 @@ export namespace Libmsi {
 
         /**
          * Clear record fields.
-         * @returns %TRUE on success.
+         * @returns `true` on success.
          */
         clear(): boolean;
+        /**
+         * @returns the number of record fields.
+         */
         get_field_count(): number;
         /**
          * Get the integer value of %field. If the field is a string
          * representing an integer, it will be converted to an integer value.
-         * Other values and types will return %LIBMSI_NULL_INT.
+         * Other values and types will return `LIBMSI_NULL_INT`.
          * @param field a field identifier
-         * @returns The integer value, or %LIBMSI_NULL_INT if the field is not an integer.
+         * @returns The integer value, or `LIBMSI_NULL_INT` if the field is not an integer.
          */
         get_int(field: number): number;
         /**
          * Get the stream associated with the given record `field`.
          * @param field a field identifier
-         * @returns a new #GInputStream
+         * @returns a new {@link Gio.InputStream}
          */
         get_stream(field: number): Gio.InputStream;
         /**
          * Get a string representation of %field.
          * @param field a field identifier
-         * @returns a string, or %NULL on error.
+         * @returns a string, or `null` on error.
          */
         get_string(field: number): string;
+        /**
+         * @param field a field identifier
+         * @returns `true` if the field is null (or %field > record field count)
+         */
         is_null(field: number): boolean;
         /**
          * Load the file content as a stream in `field`.
          * @param field a field identifier
-         * @param filename a filename or %NULL
-         * @returns %TRUE on success.
+         * @param filename a filename or `null`
+         * @returns `true` on success.
          */
         load_stream(field: number, filename: string): boolean;
         /**
          * Set the %field to the integer value %val.
          * @param field a field identifier
          * @param val value to set field to
-         * @returns %TRUE on success.
+         * @returns `true` on success.
          */
         set_int(field: number, val: number): boolean;
         /**
          * Set the stream content from `input` stream.
          * @param field a field identifier
-         * @param input a #GInputStream
-         * @param count the number of bytes to read from @input
-         * @param cancellable optional GCancellable object, %NULL to ignore
-         * @returns %TRUE on success
+         * @param input a {@link Gio.InputStream}
+         * @param count the number of bytes to read from `input`
+         * @param cancellable optional GCancellable object, `null` to ignore
+         * @returns `true` on success
          */
-        set_stream(field: number, input: Gio.InputStream, count: number, cancellable?: Gio.Cancellable | null): boolean;
+        set_stream(
+            field: number,
+            input: Gio.InputStream,
+            count: bigint | number,
+            cancellable: Gio.Cancellable | null,
+        ): boolean;
         /**
          * Set the %field value to %val string.
          * @param field a field identifier
-         * @param val a string or %NULL
-         * @returns %TRUE on success.
+         * @param val a string or `null`
+         * @returns `true` on success.
          */
         set_string(field: number, val: string): boolean;
     }
@@ -482,13 +584,27 @@ export namespace Libmsi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SummaryInfo extends GObject.Object {
         static $gtype: GObject.GType<SummaryInfo>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get database(): Database;
+        /**
+         * @construct-only
+         * @default 0
+         */
         get update_count(): number;
+        /**
+         * @construct-only
+         * @default 0
+         */
         get updateCount(): number;
 
         /**
@@ -510,16 +626,19 @@ export namespace Libmsi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SummaryInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SummaryInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SummaryInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -528,48 +647,79 @@ export namespace Libmsi {
 
         // Methods
 
-        get_filetime(prop: Property | null): number;
-        get_int(prop: Property | null): number;
+        /**
+         * @param prop a {@link Libmsi.Property} to get
+         * @returns the property value or 0 on failure
+         */
+        get_filetime(prop: Property): number;
+        /**
+         * @param prop a {@link Libmsi.Property} to get
+         * @returns the property value or -1 on failure
+         */
+        get_int(prop: Property): number;
+        /**
+         * @returns a new {@link GLib.Array} with the list of set properties
+         */
         get_properties(): Property[];
-        get_property_type(prop: Property | null): PropertyType;
-        get_string(prop: Property | null): string;
+        /**
+         * @param prop a {@link Libmsi.Property} to get
+         * @returns the property type associated for `prop`.
+         */
+        get_property_type(prop: Property): PropertyType;
+        /**
+         * @param prop a {@link Libmsi.Property} to get
+         * @returns the property value or `null` on failure
+         */
+        get_string(prop: Property): string;
         /**
          * Save summary informations to the associated database.
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         persist(): boolean;
         /**
          * Save summary informations to the associated database.
-         * @param db a #LibmsiDatabase to save to
-         * @returns %TRUE on success
+         * @param db a {@link Libmsi.Database} to save to
+         * @returns `true` on success
          */
         save(db: Database): boolean;
         /**
          * Set file time property `prop`.
-         * @param prop a #LibmsiProperty to set
+         * @param prop a {@link Libmsi.Property} to set
          * @param value a value
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
-        set_filetime(prop: Property | null, value: number): boolean;
+        set_filetime(prop: Property, value: bigint | number): boolean;
         /**
          * Set integer property `prop`.
-         * @param prop a #LibmsiProperty to set
+         * @param prop a {@link Libmsi.Property} to set
          * @param value a value
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
-        set_int(prop: Property | null, value: number): boolean;
+        set_int(prop: Property, value: number): boolean;
         /**
          * Set string property `prop`.
-         * @param prop a #LibmsiProperty to set
+         * @param prop a {@link Libmsi.Property} to set
          * @param value a string value
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
-        set_string(prop: Property | null, value: string): boolean;
+        set_string(prop: Property, value: string): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DatabaseClass = typeof Database;
+    /**
+     * @gir-type Alias
+     */
     type QueryClass = typeof Query;
+    /**
+     * @gir-type Alias
+     */
     type RecordClass = typeof Record;
+    /**
+     * @gir-type Alias
+     */
     type SummaryInfoClass = typeof SummaryInfo;
     /**
      * Name of the imported GIR library

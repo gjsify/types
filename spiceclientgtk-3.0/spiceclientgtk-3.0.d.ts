@@ -33,16 +33,16 @@ export namespace SpiceClientGtk {
      */
 
     /**
-     * Constants for key events.
-     */
-
-    /**
-     * Constants for key events.
+     * @gir-type Enum
      */
     export namespace DisplayKeyEvent {
         export const $gtype: GObject.GType<DisplayKeyEvent>;
     }
 
+    /**
+     * Constants for key events.
+     * @gir-type Enum
+     */
     enum DisplayKeyEvent {
         /**
          * key press
@@ -57,11 +57,27 @@ export namespace SpiceClientGtk {
          */
         CLICK,
     }
+
     namespace Display {
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            /**
+             * Notify when the grab keys have been pressed
+             * @signal
+             * @run-first
+             */
             'grab-keys-pressed': () => void;
+            /**
+             * Notify when the keyboard grab is active or not.
+             * @signal
+             * @run-first
+             */
             'keyboard-grab': (arg0: number) => void;
+            /**
+             * Notify when the mouse grab is active or not.
+             * @signal
+             * @run-first
+             */
             'mouse-grab': (arg0: number) => void;
             'notify::channel-id': (pspec: GObject.ParamSpec) => void;
             'notify::disable-inputs': (pspec: GObject.ParamSpec) => void;
@@ -124,7 +140,8 @@ export namespace SpiceClientGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.EventBox.ConstructorProps,
+            extends
+                Gtk.EventBox.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             channel_id: number;
@@ -152,7 +169,8 @@ export namespace SpiceClientGtk {
     }
 
     /**
-     * The #SpiceDisplay struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGtk.Display} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class Display extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
@@ -160,29 +178,49 @@ export namespace SpiceClientGtk {
         // Properties
 
         /**
-         * channel-id for this #SpiceDisplay
+         * channel-id for this {@link SpiceClientGtk.Display}
+         * @construct-only
+         * @default 0
          */
         get channel_id(): number;
         /**
-         * channel-id for this #SpiceDisplay
+         * channel-id for this {@link SpiceClientGtk.Display}
+         * @construct-only
+         * @default 0
          */
         get channelId(): number;
         /**
          * Disable all keyboard & mouse inputs.
+         * @since 0.8
+         * @default false
          */
         get disable_inputs(): boolean;
         set disable_inputs(val: boolean);
         /**
          * Disable all keyboard & mouse inputs.
+         * @since 0.8
+         * @default false
          */
         get disableInputs(): boolean;
         set disableInputs(val: boolean);
+        /**
+         * @default true
+         */
         get grab_keyboard(): boolean;
         set grab_keyboard(val: boolean);
+        /**
+         * @default true
+         */
         get grabKeyboard(): boolean;
         set grabKeyboard(val: boolean);
+        /**
+         * @default true
+         */
         get grab_mouse(): boolean;
         set grab_mouse(val: boolean);
+        /**
+         * @default true
+         */
         get grabMouse(): boolean;
         set grabMouse(val: boolean);
         /**
@@ -191,6 +229,8 @@ export namespace SpiceClientGtk {
          * sent to the server. If the key is pressed longer than the
          * keypress-delay, the server will receive the delayed press
          * event, and a following release event when the key is released.
+         * @since 0.13
+         * @default 100
          */
         get keypress_delay(): number;
         set keypress_delay(val: number);
@@ -200,30 +240,40 @@ export namespace SpiceClientGtk {
          * sent to the server. If the key is pressed longer than the
          * keypress-delay, the server will receive the delayed press
          * event, and a following release event when the key is released.
+         * @since 0.13
+         * @default 100
          */
         get keypressDelay(): number;
         set keypressDelay(val: number);
         /**
-         * Select monitor from #SpiceDisplay to show.
+         * Select monitor from {@link SpiceClientGtk.Display} to show.
          * The value -1 means the whole display is shown.
          * By default, the monitor 0 is selected.
+         * @since 0.13
+         * @default 0
          */
         get monitor_id(): number;
         set monitor_id(val: number);
         /**
-         * Select monitor from #SpiceDisplay to show.
+         * Select monitor from {@link SpiceClientGtk.Display} to show.
          * The value -1 means the whole display is shown.
          * By default, the monitor 0 is selected.
+         * @since 0.13
+         * @default 0
          */
         get monitorId(): number;
         set monitorId(val: number);
         /**
          * If scaling, only scale down, never up.
+         * @since 0.14
+         * @default false
          */
         get only_downscale(): boolean;
         set only_downscale(val: boolean);
         /**
          * If scaling, only scale down, never up.
+         * @since 0.14
+         * @default false
          */
         get onlyDownscale(): boolean;
         set onlyDownscale(val: boolean);
@@ -231,22 +281,37 @@ export namespace SpiceClientGtk {
          * Indicate whether the display is ready to be shown. It takes
          * into account several conditions, such as the channel display
          * "mark" state, whether the monitor area is visible..
+         * @since 0.13
+         * @read-only
+         * @default false
          */
         get ready(): boolean;
+        /**
+         * @default false
+         */
         get resize_guest(): boolean;
         set resize_guest(val: boolean);
+        /**
+         * @default false
+         */
         get resizeGuest(): boolean;
         set resizeGuest(val: boolean);
+        /**
+         * @default true
+         */
         get scaling(): boolean;
         set scaling(val: boolean);
         /**
-         * #SpiceSession for this #SpiceDisplay
+         * {@link SpiceClientGLib.Session} for this {@link SpiceClientGtk.Display}
+         * @construct-only
          */
         get session(): SpiceClientGLib.Session;
         /**
          * Zoom level in percentage, from 10 to 400. Default to 100.
          * (this option is only supported with cairo backend when scaling
          * is enabled)
+         * @since 0.10
+         * @default 100
          */
         get zoom_level(): number;
         set zoom_level(val: number);
@@ -254,6 +319,8 @@ export namespace SpiceClientGtk {
          * Zoom level in percentage, from 10 to 400. Default to 100.
          * (this option is only supported with cairo backend when scaling
          * is enabled)
+         * @since 0.10
+         * @default 100
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
@@ -282,16 +349,19 @@ export namespace SpiceClientGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -307,9 +377,13 @@ export namespace SpiceClientGtk {
         get_grab_keys(): GrabSequence;
         /**
          * Take a screenshot of the display.
-         * @returns a #GdkPixbuf with the screenshot image buffer
+         * @returns a {@link GdkPixbuf.Pixbuf} with the screenshot image buffer
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
+        /**
+         * Ungrab the keyboard.
+         */
+        keyboard_ungrab(): void;
         /**
          * Ungrab the mouse.
          */
@@ -317,17 +391,15 @@ export namespace SpiceClientGtk {
         /**
          * Send keyval press/release events to the display.
          * @param keyvals Keyval array
-         * @param kind #SpiceDisplayKeyEvent action
+         * @param kind {@link SpiceClientGtk.DisplayKeyEvent} action
          */
-        send_keys(keyvals: number[], kind: DisplayKeyEvent | null): void;
+        send_keys(keyvals: number[], kind: DisplayKeyEvent): void;
         /**
          * Set the key combination to grab/ungrab the keyboard. The default is
          * "Control L + Alt L".
          * @param seq key sequence
          */
         set_grab_keys(seq: GrabSequence): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -341,90 +413,68 @@ export namespace SpiceClientGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -432,7 +482,7 @@ export namespace SpiceClientGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -440,9 +490,9 @@ export namespace SpiceClientGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -462,9 +512,9 @@ export namespace SpiceClientGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -478,33 +528,33 @@ export namespace SpiceClientGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -537,21 +587,21 @@ export namespace SpiceClientGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -561,8 +611,8 @@ export namespace SpiceClientGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -579,14 +629,14 @@ export namespace SpiceClientGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -597,13 +647,13 @@ export namespace SpiceClientGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -634,21 +684,21 @@ export namespace SpiceClientGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -658,33 +708,34 @@ export namespace SpiceClientGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -693,6 +744,7 @@ export namespace SpiceClientGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -701,12 +753,14 @@ export namespace SpiceClientGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -715,20 +769,22 @@ export namespace SpiceClientGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -740,8 +796,9 @@ export namespace SpiceClientGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -795,7 +852,8 @@ export namespace SpiceClientGtk {
     }
 
     /**
-     * The #SpiceGtkSession struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGtk.GtkSession} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class GtkSession extends GObject.Object {
         static $gtype: GObject.GType<GtkSession>;
@@ -805,48 +863,68 @@ export namespace SpiceClientGtk {
         /**
          * When this is true the clipboard gets automatically shared between host
          * and guest.
+         * @since 0.8
+         * @default true
          */
         get auto_clipboard(): boolean;
         set auto_clipboard(val: boolean);
         /**
          * When this is true the clipboard gets automatically shared between host
          * and guest.
+         * @since 0.8
+         * @default true
          */
         get autoClipboard(): boolean;
         set autoClipboard(val: boolean);
         /**
          * Automatically redirect newly plugged in USB devices. Note the auto
-         * redirection only happens when a #SpiceDisplay associated with the
+         * redirection only happens when a {@link SpiceClientGtk.Display} associated with the
          * session had keyboard focus.
+         * @since 0.8
+         * @default false
          */
         get auto_usbredir(): boolean;
         set auto_usbredir(val: boolean);
         /**
          * Automatically redirect newly plugged in USB devices. Note the auto
-         * redirection only happens when a #SpiceDisplay associated with the
+         * redirection only happens when a {@link SpiceClientGtk.Display} associated with the
          * session had keyboard focus.
+         * @since 0.8
+         * @default false
          */
         get autoUsbredir(): boolean;
         set autoUsbredir(val: boolean);
         /**
-         * Returns %TRUE if the pointer is currently grabbed by this session.
+         * Returns `true` if the pointer is currently grabbed by this session.
+         * @since 0.27
+         * @read-only
+         * @default false
          */
         get pointer_grabbed(): boolean;
         /**
-         * Returns %TRUE if the pointer is currently grabbed by this session.
+         * Returns `true` if the pointer is currently grabbed by this session.
+         * @since 0.27
+         * @read-only
+         * @default false
          */
         get pointerGrabbed(): boolean;
         /**
-         * #SpiceSession this #SpiceGtkSession is associated with
+         * {@link SpiceClientGLib.Session} this {@link SpiceClientGtk.GtkSession} is associated with
+         * @since 0.8
+         * @construct-only
          */
         get session(): SpiceClientGLib.Session;
         /**
          * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
+         * @since 0.32
+         * @default true
          */
         get sync_modifiers(): boolean;
         set sync_modifiers(val: boolean);
         /**
          * Automatically sync modifiers (Caps, Num and Scroll locks) with the guest.
+         * @since 0.32
+         * @default true
          */
         get syncModifiers(): boolean;
         set syncModifiers(val: boolean);
@@ -868,16 +946,19 @@ export namespace SpiceClientGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GtkSession.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GtkSession.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GtkSession.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GtkSession.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GtkSession.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GtkSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -887,13 +968,13 @@ export namespace SpiceClientGtk {
         // Static methods
 
         /**
-         * Gets the #SpiceGtkSession associated with the passed in #SpiceSession.
-         * A new #SpiceGtkSession instance will be created the first time this
-         * function is called for a certain #SpiceSession.
+         * Gets the {@link SpiceClientGtk.GtkSession} associated with the passed in {@link SpiceClientGLib.Session}.
+         * A new {@link SpiceClientGtk.GtkSession} instance will be created the first time this
+         * function is called for a certain {@link SpiceClientGLib.Session}.
          *
          * Note that this function returns a weak reference, which should not be used
-         * after the #SpiceSession itself has been unref-ed by the caller.
-         * @param session #SpiceSession for which to get the #SpiceGtkSession
+         * after the {@link SpiceClientGLib.Session} itself has been unref-ed by the caller.
+         * @param session {@link SpiceClientGLib.Session} for which to get the {@link SpiceClientGtk.GtkSession}
          */
         static get(session: SpiceClientGLib.Session): GtkSession;
 
@@ -916,6 +997,13 @@ export namespace SpiceClientGtk {
     namespace UsbDeviceWidget {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            /**
+             * The {@link SpiceClientGtk.UsbDeviceWidget.SignalSignatures.connect_failed | SpiceClientGtk.UsbDeviceWidget::connect-failed} signal is emitted whenever
+             * the user has requested for a device to be redirected and this has
+             * failed.
+             * @signal
+             * @run-first
+             */
             'connect-failed': (arg0: SpiceClientGLib.UsbDevice, arg1: GLib.Error) => void;
             'notify::device-format-string': (pspec: GObject.ParamSpec) => void;
             'notify::session': (pspec: GObject.ParamSpec) => void;
@@ -970,7 +1058,8 @@ export namespace SpiceClientGtk {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -981,7 +1070,8 @@ export namespace SpiceClientGtk {
     }
 
     /**
-     * The #SpiceUsbDeviceWidget struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGtk.UsbDeviceWidget} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class UsbDeviceWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<UsbDeviceWidget>;
@@ -989,17 +1079,22 @@ export namespace SpiceClientGtk {
         // Properties
 
         /**
-         * Format string to pass to spice_usb_device_get_description() for getting
+         * Format string to pass to `spice_usb_device_get_description()` for getting
          * the device USB descriptions.
+         * @construct-only
+         * @default null
          */
         get device_format_string(): string;
         /**
-         * Format string to pass to spice_usb_device_get_description() for getting
+         * Format string to pass to `spice_usb_device_get_description()` for getting
          * the device USB descriptions.
+         * @construct-only
+         * @default null
          */
         get deviceFormatString(): string;
         /**
-         * #SpiceSession this #SpiceUsbDeviceWidget is associated with
+         * {@link SpiceClientGLib.Session} this {@link SpiceClientGtk.UsbDeviceWidget} is associated with
+         * @construct-only
          */
         get session(): SpiceClientGLib.Session;
 
@@ -1018,47 +1113,49 @@ export namespace SpiceClientGtk {
 
         _init(...args: any[]): void;
 
-        static ['new'](session: SpiceClientGLib.Session, device_format_string?: string | null): UsbDeviceWidget;
+        static ['new'](session: SpiceClientGLib.Session, device_format_string: string | null): UsbDeviceWidget;
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UsbDeviceWidget.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UsbDeviceWidget.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UsbDeviceWidget.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UsbDeviceWidget.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UsbDeviceWidget.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UsbDeviceWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable.
+         * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1072,90 +1169,68 @@ export namespace SpiceClientGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1163,7 +1238,7 @@ export namespace SpiceClientGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1171,9 +1246,9 @@ export namespace SpiceClientGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1193,9 +1268,9 @@ export namespace SpiceClientGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1209,33 +1284,33 @@ export namespace SpiceClientGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1268,21 +1343,21 @@ export namespace SpiceClientGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1292,8 +1367,8 @@ export namespace SpiceClientGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1310,14 +1385,14 @@ export namespace SpiceClientGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1328,13 +1403,13 @@ export namespace SpiceClientGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1365,21 +1440,21 @@ export namespace SpiceClientGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1389,33 +1464,34 @@ export namespace SpiceClientGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1424,6 +1500,7 @@ export namespace SpiceClientGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1432,12 +1509,14 @@ export namespace SpiceClientGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1446,20 +1525,22 @@ export namespace SpiceClientGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1471,8 +1552,9 @@ export namespace SpiceClientGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1500,9 +1582,13 @@ export namespace SpiceClientGtk {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DisplayClass = typeof Display;
     /**
      * An opaque type that represents a grab sequence.
+     * @gir-type Struct
      */
     class GrabSequence {
         static $gtype: GObject.GType<GrabSequence>;
@@ -1510,7 +1596,6 @@ export namespace SpiceClientGtk {
         // Constructors
 
         constructor(keysyms: number[]);
-        _init(...args: any[]): void;
 
         static ['new'](keysyms: number[]): GrabSequence;
 
@@ -1525,7 +1610,7 @@ export namespace SpiceClientGtk {
         as_string(): string;
         /**
          * Creates a copy of the `sequence`.
-         * @returns a copy of @sequence
+         * @returns a copy of `sequence`
          */
         copy(): GrabSequence;
         /**
@@ -1534,14 +1619,19 @@ export namespace SpiceClientGtk {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GtkSessionClass = typeof GtkSession;
+    /**
+     * @gir-type Alias
+     */
     type UsbDeviceWidgetClass = typeof UsbDeviceWidget;
+    /**
+     * @gir-type Struct
+     */
     abstract class UsbDeviceWidgetPrivate {
         static $gtype: GObject.GType<UsbDeviceWidgetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

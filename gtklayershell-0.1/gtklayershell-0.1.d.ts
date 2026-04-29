@@ -29,10 +29,9 @@ export namespace GtkLayerShell {
      * GtkLayerShell-0.1
      */
 
-    export namespace Edge {
-        export const $gtype: GObject.GType<Edge>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum Edge {
         /**
          * The left edge of the screen.
@@ -57,10 +56,9 @@ export namespace GtkLayerShell {
         ENTRY_NUMBER,
     }
 
-    export namespace KeyboardMode {
-        export const $gtype: GObject.GType<KeyboardMode>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum KeyboardMode {
         /**
          * This window should not receive keyboard events.
@@ -82,10 +80,9 @@ export namespace GtkLayerShell {
         ENTRY_NUMBER,
     }
 
-    export namespace Layer {
-        export const $gtype: GObject.GType<Layer>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum Layer {
         /**
          * The background layer.
@@ -109,6 +106,7 @@ export namespace GtkLayerShell {
          */
         ENTRY_NUMBER,
     }
+
     /**
      * When auto exclusive zone is enabled, exclusive zone is automatically set to the
      * size of the `window` + relevant margin. To disable auto exclusive zone, just set the
@@ -119,46 +117,116 @@ export namespace GtkLayerShell {
      * @param window A layer surface.
      */
     function auto_exclusive_zone_enable(window: Gtk.Window): void;
+    /**
+     * @param window A layer surface.
+     * @returns if the surface's exclusive zone is set to change based on the window's size
+     * @since 0.5
+     */
     function auto_exclusive_zone_is_enabled(window: Gtk.Window): boolean;
-    function get_anchor(window: Gtk.Window, edge: Edge | null): boolean;
+    /**
+     * @param window A layer surface.
+     * @param edge
+     * @returns if this surface is anchored to the given edge.
+     * @since 0.5
+     */
+    function get_anchor(window: Gtk.Window, edge: Edge): boolean;
+    /**
+     * @param window A layer surface.
+     * @returns the window's exclusive zone (which may have been set manually or automatically)
+     * @since 0.5
+     */
     function get_exclusive_zone(window: Gtk.Window): number;
+    /**
+     * @param window A layer surface.
+     * @returns if keyboard interactivity is enabled
+     * @since 0.5
+     * @deprecated since 0.6: Use gtk_layer_get_keyboard_mode () instead.
+     */
     function get_keyboard_interactivity(window: Gtk.Window): boolean;
+    /**
+     * @param window A layer surface.
+     * @returns current keyboard interactivity mode for `window`.
+     * @since 0.6
+     */
     function get_keyboard_mode(window: Gtk.Window): KeyboardMode;
+    /**
+     * @param window A layer surface.
+     * @returns the current layer.
+     * @since 0.5
+     */
     function get_layer(window: Gtk.Window): Layer;
+    /**
+     * @returns the major version number of the GTK Layer Shell library
+     * @since 0.4
+     */
     function get_major_version(): number;
-    function get_margin(window: Gtk.Window, edge: Edge | null): number;
+    /**
+     * @param window A layer surface.
+     * @param edge
+     * @returns the size of the margin for the given edge.
+     * @since 0.5
+     */
+    function get_margin(window: Gtk.Window, edge: Edge): number;
+    /**
+     * @returns the micro/patch version number of the GTK Layer Shell library
+     * @since 0.4
+     */
     function get_micro_version(): number;
+    /**
+     * @returns the minor version number of the GTK Layer Shell library
+     * @since 0.4
+     */
     function get_minor_version(): number;
     /**
      * NOTE: To get which monitor the surface is actually on, use
-     * gdk_display_get_monitor_at_window().
+     * `gdk_display_get_monitor_at_window()`.
      * @param window A layer surface.
-     * @returns the monitor this surface will/has requested to be on, can be %NULL.
+     * @returns the monitor this surface will/has requested to be on, can be `null`.
+     * @since 0.5
      */
     function get_monitor(window: Gtk.Window): Gdk.Monitor;
     /**
      * NOTE: this function does not return ownership of the string. Do not free the returned string.
      * Future calls into the library may invalidate the returned string.
      * @param window A layer surface.
-     * @returns a reference to the namespace property. If namespace is unset, returns the default namespace ("gtk-layer-shell"). Never returns %NULL.
+     * @returns a reference to the namespace property. If namespace is unset, returns the default namespace ("gtk-layer-shell"). Never returns `null`.
+     * @since 0.5
      */
     function get_namespace(window: Gtk.Window): string;
     /**
      * May block for a Wayland roundtrip the first time it's called.
      * @returns version of the zwlr_layer_shell_v1 protocol supported by the compositor or 0 if the protocol is not supported.
+     * @since 0.6
      */
     function get_protocol_version(): number;
+    /**
+     * @param window A layer surface.
+     * @returns if the respect_close behavior is enabled, see `gtk_layer_set_respect_close()`
+     * @since 0.10
+     */
+    function get_respect_close(window: Gtk.Window): boolean;
+    /**
+     * @param window A layer surface.
+     * @returns The underlying layer surface Wayland object
+     * @since 0.4
+     */
     function get_zwlr_layer_surface_v1(window: Gtk.Window): any | null;
     /**
      * Set the `window` up to be a layer surface once it is mapped. this must be called before
      * the `window` is realized.
-     * @param window A #GtkWindow to be turned into a layer surface.
+     * @param window A {@link Gtk.Window} to be turned into a layer surface.
      */
     function init_for_window(window: Gtk.Window): void;
+    /**
+     * @param window A {@link Gtk.Window} that may or may not have a layer surface.
+     * @returns if `window` has been initialized as a layer surface.
+     * @since 0.5
+     */
     function is_layer_window(window: Gtk.Window): boolean;
     /**
      * May block for a Wayland roundtrip the first time it's called.
-     * @returns %TRUE if the platform is Wayland and Wayland compositor supports the zwlr_layer_shell_v1 protocol.
+     * @returns `true` if the platform is Wayland and Wayland compositor supports the zwlr_layer_shell_v1 protocol.
+     * @since 0.5
      */
     function is_supported(): boolean;
     /**
@@ -166,12 +234,12 @@ export namespace GtkLayerShell {
      * - If two perpendicular edges are anchored, the surface with be anchored to that corner
      * - If two opposite edges are anchored, the window will be stretched across the screen in that direction
      *
-     * Default is %FALSE for each #GtkLayerShellEdge
+     * Default is `false` for each {@link GtkLayerShell.Edge}
      * @param window A layer surface.
-     * @param edge A #GtkLayerShellEdge this layer surface may be anchored to.
-     * @param anchor_to_edge Whether or not to anchor this layer surface to @edge.
+     * @param edge A {@link GtkLayerShell.Edge} this layer surface may be anchored to.
+     * @param anchor_to_edge Whether or not to anchor this layer surface to `edge`.
      */
-    function set_anchor(window: Gtk.Window, edge: Edge | null, anchor_to_edge: boolean): void;
+    function set_anchor(window: Gtk.Window, edge: Edge, anchor_to_edge: boolean): void;
     /**
      * Has no effect unless the surface is anchored to an edge. Requests that the compositor
      * does not place other surfaces within the given exclusive zone of the anchored edge.
@@ -186,47 +254,49 @@ export namespace GtkLayerShell {
     /**
      * Whether the `window` should receive keyboard events from the compositor.
      *
-     * Default is %FALSE
+     * Default is `false`
      * @param window A layer surface.
      * @param interactivity Whether the layer surface should receive keyboard events.
+     * @deprecated since 0.6: Use gtk_layer_set_keyboard_mode () instead.
      */
     function set_keyboard_interactivity(window: Gtk.Window, interactivity: boolean): void;
     /**
      * Sets if/when `window` should receive keyboard events from the compositor, see
      * GtkLayerShellKeyboardMode for details.
      *
-     * Default is %GTK_LAYER_SHELL_KEYBOARD_MODE_NONE
+     * Default is {@link GtkLayerShell.KeyboardMode.NONE}
      * @param window A layer surface.
      * @param mode The type of keyboard interactivity requested.
+     * @since 0.6
      */
-    function set_keyboard_mode(window: Gtk.Window, mode: KeyboardMode | null): void;
+    function set_keyboard_mode(window: Gtk.Window, mode: KeyboardMode): void;
     /**
      * Set the "layer" on which the surface appears (controls if it is over top of or below other surfaces). The layer may
      * be changed on-the-fly in the current version of the layer shell protocol, but on compositors that only support an
      * older version the `window` is remapped so the change can take effect.
      *
-     * Default is %GTK_LAYER_SHELL_LAYER_TOP
+     * Default is {@link GtkLayerShell.Layer.TOP}
      * @param window A layer surface.
      * @param layer The layer on which this surface appears.
      */
-    function set_layer(window: Gtk.Window, layer: Layer | null): void;
+    function set_layer(window: Gtk.Window, layer: Layer): void;
     /**
      * Set the margin for a specific `edge` of a `window`. Effects both surface's distance from
      * the edge and its exclusive zone size (if auto exclusive zone enabled).
      *
-     * Default is 0 for each #GtkLayerShellEdge
+     * Default is 0 for each {@link GtkLayerShell.Edge}
      * @param window A layer surface.
-     * @param edge The #GtkLayerShellEdge for which to set the margin.
-     * @param margin_size The margin for @edge to be set.
+     * @param edge The {@link GtkLayerShell.Edge} for which to set the margin.
+     * @param margin_size The margin for `edge` to be set.
      */
-    function set_margin(window: Gtk.Window, edge: Edge | null, margin_size: number): void;
+    function set_margin(window: Gtk.Window, edge: Edge, margin_size: number): void;
     /**
-     * Set the output for the window to be placed on, or %NULL to let the compositor choose.
+     * Set the output for the window to be placed on, or `null` to let the compositor choose.
      * If the window is currently mapped, it will get remapped so the change can take effect.
      *
-     * Default is %NULL
+     * Default is `null`
      * @param window A layer surface.
-     * @param monitor The output this layer surface will be placed on (%NULL to let the compositor decide).
+     * @param monitor The output this layer surface will be placed on (`null` to let the compositor decide).
      */
     function set_monitor(window: Gtk.Window, monitor: Gdk.Monitor): void;
     /**
@@ -237,17 +307,30 @@ export namespace GtkLayerShell {
      * ownership of original. If the window is currently mapped, it will get remapped so
      * the change can take effect.
      *
-     * Default is "gtk-layer-shell" (which will be used if set to %NULL)
+     * Default is "gtk-layer-shell" (which will be used if set to `null`)
      * @param window A layer surface.
      * @param name_space The namespace of this layer surface.
      */
     function set_namespace(window: Gtk.Window, name_space: string): void;
+    /**
+     * Compositors may send the `zwlr_layer_surface_v1.closed` event in some cases (such as
+     * when an output is destroyed). Prior to v0.10 this always triggered a GTK `delete-event`
+     * signal, which would destroy the window if not intercepted by application code. In v0.10+
+     * this behavior is disabled by default, and can be turned back on by calling this
+     * function with `true`. To handle the `.closed` event without destroying your window
+     * turn respect_close on and connect a `delete-event` listener that returns `true`.
+     * @param window A layer surface.
+     * @param respect_close If to forward the .closed event to GTK.
+     * @since 0.10
+     */
+    function set_respect_close(window: Gtk.Window, respect_close: boolean): void;
     /**
      * Commits a surface state if there's no pending commit scheduled by the GTK.
      * You almost never need to call this; the only known case is when the surface is in a state
      * where it does not receive frame callbacks and the regular deferred commit mechanism
      * is unavailable.
      * @param window A layer surface.
+     * @since 0.9
      */
     function try_force_commit(window: Gtk.Window): void;
     /**

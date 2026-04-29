@@ -22,10 +22,16 @@ export namespace Kkc {
      * Kkc-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KanaMode {
         export const $gtype: GObject.GType<KanaMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum KanaMode {
         HIRAGANA,
         KATAKANA,
@@ -34,10 +40,16 @@ export namespace Kkc {
         WIDE_LATIN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PunctuationStyle {
         export const $gtype: GObject.GType<PunctuationStyle>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PunctuationStyle {
         JA_JA,
         EN_EN,
@@ -45,19 +57,31 @@ export namespace Kkc {
         EN_JA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DictionaryCallbackReturn {
         export const $gtype: GObject.GType<DictionaryCallbackReturn>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DictionaryCallbackReturn {
         CONTINUE,
         REMOVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputMode {
         export const $gtype: GObject.GType<InputMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum InputMode {
         HIRAGANA,
         KATAKANA,
@@ -66,8 +90,12 @@ export namespace Kkc {
         WIDE_LATIN,
         DIRECT,
     }
+
+    /**
+     * @gir-type Struct
+     */
     class MetadataFormatError extends GLib.Error {
-        static $gtype: GObject.GType<MetadataFormatError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -77,11 +105,13 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class LanguageModelError extends GLib.Error {
-        static $gtype: GObject.GType<LanguageModelError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -90,11 +120,13 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeyEventFormatError extends GLib.Error {
-        static $gtype: GObject.GType<KeyEventFormatError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -104,11 +136,13 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RuleParseError extends GLib.Error {
-        static $gtype: GObject.GType<RuleParseError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -117,11 +151,13 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DictionaryError extends GLib.Error {
-        static $gtype: GObject.GType<DictionaryError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -131,7 +167,6 @@ export namespace Kkc {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
     }
 
     const KeysymsVoidSymbol: number;
@@ -2220,14 +2255,22 @@ export namespace Kkc {
     const KeysymsSinh_luu2: number;
     const KeysymsSinh_kunddaliya: number;
     function init(): void;
+    /**
+     * @gir-type Callback
+     */
     interface GetTime {
-        (): number;
+        (): bigint | number;
     }
-
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum ModifierType {
         NONE,
         SHIFT_MASK,
@@ -2245,6 +2288,7 @@ export namespace Kkc {
         META_MASK,
         RELEASE_MASK,
     }
+
     namespace MetadataFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -2264,6 +2308,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MetadataFile extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MetadataFile>;
 
@@ -2295,16 +2342,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MetadataFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MetadataFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MetadataFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MetadataFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2313,47 +2363,64 @@ export namespace Kkc {
 
         // Virtual methods
 
+        /**
+         * @param object
+         * @virtual
+         */
         vfunc_parse(object: Json.Object): boolean;
 
         // Methods
 
+        /**
+         * @param object
+         */
         parse(object: Json.Object): boolean;
         get_name(): string;
+        /**
+         * @param value
+         */
         set_name(value: string): void;
         get_label(): string;
+        /**
+         * @param value
+         */
         set_label(value: string): void;
         get_description(): string;
+        /**
+         * @param value
+         */
         set_description(value: string): void;
         get_filename(): string;
+        /**
+         * @param value
+         */
         set_filename(value: string): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2363,40 +2430,40 @@ export namespace Kkc {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2406,13 +2473,14 @@ export namespace Kkc {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2426,90 +2494,68 @@ export namespace Kkc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2517,7 +2563,7 @@ export namespace Kkc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2525,9 +2571,9 @@ export namespace Kkc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2547,9 +2593,9 @@ export namespace Kkc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2563,33 +2609,33 @@ export namespace Kkc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2622,21 +2668,21 @@ export namespace Kkc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2646,8 +2692,8 @@ export namespace Kkc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2664,14 +2710,14 @@ export namespace Kkc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2682,13 +2728,13 @@ export namespace Kkc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2719,21 +2765,21 @@ export namespace Kkc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2743,33 +2789,34 @@ export namespace Kkc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2778,6 +2825,7 @@ export namespace Kkc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2786,12 +2834,14 @@ export namespace Kkc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2800,20 +2850,22 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2825,8 +2877,9 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2859,6 +2912,9 @@ export namespace Kkc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class TrellisNode {
         static $gtype: GObject.GType<TrellisNode>;
 
@@ -2874,16 +2930,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TrellisNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TrellisNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TrellisNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TrellisNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TrellisNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TrellisNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2892,11 +2951,29 @@ export namespace Kkc {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_to_string(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_endpos(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_length(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_input(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_output(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_entries(): LanguageModelEntry[];
 
         // Methods
@@ -2914,6 +2991,9 @@ export namespace Kkc {
         interface SignalSignatures extends TrellisNode.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UnigramTrellisNode extends TrellisNode {
         static $gtype: GObject.GType<UnigramTrellisNode>;
 
@@ -2925,16 +3005,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UnigramTrellisNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnigramTrellisNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UnigramTrellisNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnigramTrellisNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UnigramTrellisNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UnigramTrellisNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2951,6 +3034,9 @@ export namespace Kkc {
         interface SignalSignatures extends TrellisNode.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BigramTrellisNode extends TrellisNode {
         static $gtype: GObject.GType<BigramTrellisNode>;
 
@@ -2966,16 +3052,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BigramTrellisNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BigramTrellisNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BigramTrellisNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BigramTrellisNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BigramTrellisNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BigramTrellisNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3001,11 +3090,14 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataFile.ConstructorProps {
-            model_type: GObject.GType;
-            modelType: GObject.GType;
+            model_type: GObject.GTypeInput;
+            modelType: GObject.GTypeInput;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LanguageModelMetadata extends MetadataFile {
         static $gtype: GObject.GType<LanguageModelMetadata>;
 
@@ -3035,16 +3127,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LanguageModelMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LanguageModelMetadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LanguageModelMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LanguageModelMetadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LanguageModelMetadata.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LanguageModelMetadata.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3055,12 +3150,18 @@ export namespace Kkc {
 
         // Static methods
 
+        /**
+         * @param name
+         */
         static find(name: string): LanguageModelMetadata | null;
 
         // Methods
 
         create_language_model(): LanguageModel | null;
         get_model_type(): GObject.GType;
+        /**
+         * @param value
+         */
         set_model_type(value: GObject.GType): void;
     }
 
@@ -3081,6 +3182,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class LanguageModel extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<LanguageModel>;
 
@@ -3088,7 +3192,13 @@ export namespace Kkc {
 
         get metadata(): LanguageModelMetadata;
         set metadata(val: LanguageModelMetadata);
+        /**
+         * @read-only
+         */
         get bos(): LanguageModelEntry;
+        /**
+         * @read-only
+         */
         get eos(): LanguageModelEntry;
 
         /**
@@ -3108,16 +3218,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LanguageModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LanguageModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LanguageModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LanguageModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3126,55 +3239,91 @@ export namespace Kkc {
 
         // Static methods
 
+        /**
+         * @param name
+         */
         static load(name: string): LanguageModel | null;
 
         // Virtual methods
 
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_unigram_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @param output
+         * @virtual
+         */
         vfunc_get(input: string, output: string): LanguageModelEntry | null;
+        /**
+         * @virtual
+         */
         vfunc_parse(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_bos(): LanguageModelEntry;
+        /**
+         * @virtual
+         */
         vfunc_get_eos(): LanguageModelEntry;
 
         // Methods
 
+        /**
+         * @param input
+         */
         unigram_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         */
         entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @param output
+         */
         get(input: string, output: string): LanguageModelEntry | null;
         parse(): boolean;
         get_metadata(): LanguageModelMetadata;
+        /**
+         * @param value
+         */
         set_metadata(value: LanguageModelMetadata): void;
         get_bos(): LanguageModelEntry;
         get_eos(): LanguageModelEntry;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3184,40 +3333,40 @@ export namespace Kkc {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3227,13 +3376,14 @@ export namespace Kkc {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3247,90 +3397,68 @@ export namespace Kkc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3338,7 +3466,7 @@ export namespace Kkc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3346,9 +3474,9 @@ export namespace Kkc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3368,9 +3496,9 @@ export namespace Kkc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3384,33 +3512,33 @@ export namespace Kkc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3443,21 +3571,21 @@ export namespace Kkc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3467,8 +3595,8 @@ export namespace Kkc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3485,14 +3613,14 @@ export namespace Kkc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3503,13 +3631,13 @@ export namespace Kkc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3540,21 +3668,21 @@ export namespace Kkc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3564,33 +3692,34 @@ export namespace Kkc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3599,6 +3728,7 @@ export namespace Kkc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3607,12 +3737,14 @@ export namespace Kkc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3621,20 +3753,22 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3646,8 +3780,9 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3686,11 +3821,15 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends LanguageModel.ConstructorProps,
+            extends
+                LanguageModel.ConstructorProps,
                 UnigramLanguageModel.ConstructorProps,
                 BigramLanguageModel.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TextBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<TextBigramLanguageModel>;
 
@@ -3720,16 +3859,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextBigramLanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextBigramLanguageModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextBigramLanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextBigramLanguageModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextBigramLanguageModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextBigramLanguageModel.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3740,40 +3882,131 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param ids
+         */
         get_key(ids: number[]): string;
+        /**
+         * @param input
+         */
         parse_lm(input: string): void;
-
-        // Inherited properties
+        /** @category Inherited from Kkc.LanguageModel */
         get metadata(): LanguageModelMetadata;
         set metadata(val: LanguageModelMetadata);
+        /**
+         * @read-only
+         * @category Inherited from Kkc.LanguageModel
+         */
         get bos(): LanguageModelEntry;
+        /**
+         * @read-only
+         * @category Inherited from Kkc.LanguageModel
+         */
         get eos(): LanguageModelEntry;
-
-        // Inherited methods
+        /**
+         * @param entry
+         */
         unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         */
         unigram_backoff(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         * @virtual
+         */
         vfunc_unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         * @virtual
+         */
         vfunc_unigram_backoff(entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param input
+         */
         unigram_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         */
         entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @param output
+         */
         get(input: string, output: string): LanguageModelEntry | null;
         parse(): boolean;
         get_metadata(): LanguageModelMetadata;
+        /**
+         * @param value
+         */
         set_metadata(value: LanguageModelMetadata): void;
         get_bos(): LanguageModelEntry;
         get_eos(): LanguageModelEntry;
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_unigram_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @param output
+         * @virtual
+         */
         vfunc_get(input: string, output: string): LanguageModelEntry | null;
+        /**
+         * @virtual
+         */
         vfunc_parse(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_bos(): LanguageModelEntry;
+        /**
+         * @virtual
+         */
         vfunc_get_eos(): LanguageModelEntry;
     }
 
@@ -3788,10 +4021,12 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends TextBigramLanguageModel.ConstructorProps,
-                TrigramLanguageModel.ConstructorProps {}
+            extends TextBigramLanguageModel.ConstructorProps, TrigramLanguageModel.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TextTrigramLanguageModel extends TextBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<TextTrigramLanguageModel>;
 
@@ -3814,16 +4049,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextTrigramLanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextTrigramLanguageModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextTrigramLanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextTrigramLanguageModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextTrigramLanguageModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextTrigramLanguageModel.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3831,27 +4069,97 @@ export namespace Kkc {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         trigram_backoff_cost(
             ppentry: LanguageModelEntry,
             pentry: LanguageModelEntry,
             entry: LanguageModelEntry,
         ): number;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         */
         unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         */
         unigram_backoff(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         * @virtual
+         */
         vfunc_unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         * @virtual
+         */
         vfunc_unigram_backoff(entry: LanguageModelEntry): number;
     }
 
@@ -3867,7 +4175,8 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends LanguageModel.ConstructorProps,
+            extends
+                LanguageModel.ConstructorProps,
                 UnigramLanguageModel.ConstructorProps,
                 BigramLanguageModel.ConstructorProps {
             min_cost: number;
@@ -3875,12 +4184,21 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SortedBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<SortedBigramLanguageModel>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get min_cost(): number;
+        /**
+         * @read-only
+         */
         get minCost(): number;
 
         /**
@@ -3902,16 +4220,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SortedBigramLanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SortedBigramLanguageModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SortedBigramLanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SortedBigramLanguageModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SortedBigramLanguageModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SortedBigramLanguageModel.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3922,40 +4243,129 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_offset(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
         get_min_cost(): number;
-
-        // Inherited properties
+        /** @category Inherited from Kkc.LanguageModel */
         get metadata(): LanguageModelMetadata;
         set metadata(val: LanguageModelMetadata);
+        /**
+         * @read-only
+         * @category Inherited from Kkc.LanguageModel
+         */
         get bos(): LanguageModelEntry;
+        /**
+         * @read-only
+         * @category Inherited from Kkc.LanguageModel
+         */
         get eos(): LanguageModelEntry;
-
-        // Inherited methods
+        /**
+         * @param entry
+         */
         unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         */
         unigram_backoff(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         * @virtual
+         */
         vfunc_unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         * @virtual
+         */
         vfunc_unigram_backoff(entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param input
+         */
         unigram_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         */
         entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @param output
+         */
         get(input: string, output: string): LanguageModelEntry | null;
         parse(): boolean;
         get_metadata(): LanguageModelMetadata;
+        /**
+         * @param value
+         */
         set_metadata(value: LanguageModelMetadata): void;
         get_bos(): LanguageModelEntry;
         get_eos(): LanguageModelEntry;
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_unigram_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_entries(input: string): Gee.Collection;
+        /**
+         * @param input
+         * @param output
+         * @virtual
+         */
         vfunc_get(input: string, output: string): LanguageModelEntry | null;
+        /**
+         * @virtual
+         */
         vfunc_parse(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_bos(): LanguageModelEntry;
+        /**
+         * @virtual
+         */
         vfunc_get_eos(): LanguageModelEntry;
     }
 
@@ -3971,10 +4381,12 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SortedBigramLanguageModel.ConstructorProps,
-                TrigramLanguageModel.ConstructorProps {}
+            extends SortedBigramLanguageModel.ConstructorProps, TrigramLanguageModel.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SortedTrigramLanguageModel extends SortedBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<SortedTrigramLanguageModel>;
 
@@ -3997,16 +4409,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SortedTrigramLanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SortedTrigramLanguageModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SortedTrigramLanguageModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SortedTrigramLanguageModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SortedTrigramLanguageModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SortedTrigramLanguageModel.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4014,27 +4429,97 @@ export namespace Kkc {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         trigram_backoff_cost(
             ppentry: LanguageModelEntry,
             pentry: LanguageModelEntry,
             entry: LanguageModelEntry,
         ): number;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         * @virtual
+         */
         vfunc_bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         */
         unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         */
         unigram_backoff(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         * @virtual
+         */
         vfunc_unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         * @virtual
+         */
         vfunc_unigram_backoff(entry: LanguageModelEntry): number;
     }
 
@@ -4047,6 +4532,9 @@ export namespace Kkc {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
 
@@ -4067,16 +4555,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decoder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4085,11 +4576,28 @@ export namespace Kkc {
 
         // Static methods
 
+        /**
+         * @param model
+         */
         static create(model: LanguageModel): Decoder | null;
 
         // Virtual methods
 
+        /**
+         * @param input
+         * @param nbest
+         * @param constraint
+         * @virtual
+         */
         vfunc_decode(input: string, nbest: number, constraint: number[]): Segment[];
+        /**
+         * @param input
+         * @param nbest
+         * @param constraint
+         * @param max_distance
+         * @param min_path_cost
+         * @virtual
+         */
         vfunc_decode_with_costs(
             input: string,
             nbest: number,
@@ -4100,7 +4608,19 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param input
+         * @param nbest
+         * @param constraint
+         */
         decode(input: string, nbest: number, constraint: number[]): Segment[];
+        /**
+         * @param input
+         * @param nbest
+         * @param constraint
+         * @param max_distance
+         * @param min_path_cost
+         */
         decode_with_costs(
             input: string,
             nbest: number,
@@ -4123,11 +4643,17 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class BigramDecoder extends Decoder {
         static $gtype: GObject.GType<BigramDecoder>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get model(): BigramLanguageModel;
 
         /**
@@ -4149,16 +4675,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BigramDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BigramDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BigramDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BigramDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BigramDecoder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BigramDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4167,14 +4696,44 @@ export namespace Kkc {
 
         // Virtual methods
 
+        /**
+         * @param pnode
+         * @param node
+         * @param endpos
+         * @virtual
+         */
         vfunc_path_cost(pnode: TrellisNode, node: TrellisNode, endpos: number): number;
 
         // Methods
 
+        /**
+         * @param trellis
+         * @param input
+         * @param constraint
+         */
         add_unknown_nodes(trellis: Gee.ArrayList[], input: string, constraint: number[]): void;
+        /**
+         * @param input
+         * @param constraint
+         */
         build_trellis(input: string, constraint: number[]): Gee.ArrayList[];
+        /**
+         * @param trellis
+         * @param input
+         */
         forward_search(trellis: Gee.ArrayList[], input: string): void;
+        /**
+         * @param pnode
+         * @param node
+         * @param endpos
+         */
         path_cost(pnode: TrellisNode, node: TrellisNode, endpos: number): number;
+        /**
+         * @param trellis
+         * @param nbest
+         * @param max_distance
+         * @param min_path_cost
+         */
         backward_search(
             trellis: Gee.ArrayList[],
             nbest: number,
@@ -4195,6 +4754,9 @@ export namespace Kkc {
         interface ConstructorProps extends BigramDecoder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TrigramDecoder extends BigramDecoder {
         static $gtype: GObject.GType<TrigramDecoder>;
 
@@ -4217,16 +4779,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TrigramDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TrigramDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TrigramDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TrigramDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TrigramDecoder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TrigramDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4250,6 +4815,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SegmentList extends GObject.Object {
         static $gtype: GObject.GType<SegmentList>;
 
@@ -4259,6 +4827,9 @@ export namespace Kkc {
         set cursor_pos(val: number);
         get cursorPos(): number;
         set cursorPos(val: number);
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -4280,16 +4851,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SegmentList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SegmentList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SegmentList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SegmentList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SegmentList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SegmentList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4299,9 +4873,21 @@ export namespace Kkc {
         // Methods
 
         clear(): void;
+        /**
+         * @param segment
+         */
         add(segment: Segment): void;
+        /**
+         * @param index
+         */
         get(index: number): Segment;
+        /**
+         * @param index
+         */
         get_offset(index: number): number;
+        /**
+         * @param segment
+         */
         set_segments(segment: Segment): void;
         first_segment(): boolean;
         last_segment(): boolean;
@@ -4311,6 +4897,9 @@ export namespace Kkc {
         get_input(): string;
         to_array(): Segment[];
         get_cursor_pos(): number;
+        /**
+         * @param value
+         */
         set_cursor_pos(value: number): void;
         get_size(): number;
     }
@@ -4330,6 +4919,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Segment extends GObject.Object {
         static $gtype: GObject.GType<Segment>;
 
@@ -4363,16 +4955,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Segment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Segment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Segment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Segment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Segment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Segment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4382,15 +4977,27 @@ export namespace Kkc {
         // Methods
 
         get_input(): string;
+        /**
+         * @param value
+         */
         set_input(value: string): void;
         get_output(): string;
+        /**
+         * @param value
+         */
         set_output(value: string): void;
     }
 
     namespace CandidateList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             populated: () => void;
+            /**
+             * @signal
+             */
             selected: (arg0: Candidate) => void;
             'notify::cursor-pos': (pspec: GObject.ParamSpec) => void;
             'notify::size': (pspec: GObject.ParamSpec) => void;
@@ -4416,6 +5023,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CandidateList extends GObject.Object {
         static $gtype: GObject.GType<CandidateList>;
 
@@ -4425,6 +5035,9 @@ export namespace Kkc {
         set cursor_pos(val: number);
         get cursorPos(): number;
         set cursorPos(val: number);
+        /**
+         * @read-only
+         */
         get size(): number;
         get page_start(): number;
         set page_start(val: number);
@@ -4436,7 +5049,13 @@ export namespace Kkc {
         set pageSize(val: number);
         get round(): boolean;
         set round(val: boolean);
+        /**
+         * @read-only
+         */
         get page_visible(): boolean;
+        /**
+         * @read-only
+         */
         get pageVisible(): boolean;
 
         /**
@@ -4458,16 +5077,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CandidateList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CandidateList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CandidateList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4476,12 +5098,24 @@ export namespace Kkc {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_next(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_previous(): boolean;
 
         // Methods
 
+        /**
+         * @param index
+         */
         get(index: number): Candidate;
+        /**
+         * @param index_in_page
+         */
         select_at(index_in_page: number): boolean;
         select(): void;
         first(): boolean;
@@ -4492,13 +5126,25 @@ export namespace Kkc {
         page_up(): boolean;
         page_down(): boolean;
         get_cursor_pos(): number;
+        /**
+         * @param value
+         */
         set_cursor_pos(value: number): void;
         get_size(): number;
         get_page_start(): number;
+        /**
+         * @param value
+         */
         set_page_start(value: number): void;
         get_page_size(): number;
+        /**
+         * @param value
+         */
         set_page_size(value: number): void;
         get_round(): boolean;
+        /**
+         * @param value
+         */
         set_round(value: boolean): void;
         get_page_visible(): boolean;
     }
@@ -4519,11 +5165,14 @@ export namespace Kkc {
             midasi: string;
             okuri: boolean;
             text: string;
-            annotation: string;
+            annotation: string | null;
             output: string;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Candidate extends GObject.Object {
         static $gtype: GObject.GType<Candidate>;
 
@@ -4535,8 +5184,8 @@ export namespace Kkc {
         set okuri(val: boolean);
         get text(): string;
         set text(val: string);
-        get annotation(): string;
-        set annotation(val: string);
+        get annotation(): string | null;
+        set annotation(val: string | null);
         get output(): string;
         set output(val: string);
 
@@ -4559,22 +5208,25 @@ export namespace Kkc {
             midasi: string,
             okuri: boolean,
             text: string,
-            annotation?: string | null,
-            output?: string | null,
+            annotation: string | null,
+            output: string | null,
         ): Candidate;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Candidate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Candidate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Candidate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Candidate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Candidate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Candidate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4585,20 +5237,38 @@ export namespace Kkc {
 
         to_string(): string;
         get_midasi(): string;
+        /**
+         * @param value
+         */
         set_midasi(value: string): void;
         get_okuri(): boolean;
+        /**
+         * @param value
+         */
         set_okuri(value: boolean): void;
         get_text(): string;
+        /**
+         * @param value
+         */
         set_text(value: string): void;
         get_annotation(): string | null;
-        set_annotation(value?: string | null): void;
+        /**
+         * @param value
+         */
+        set_annotation(value: string | null): void;
         get_output(): string;
+        /**
+         * @param value
+         */
         set_output(value: string): void;
     }
 
     namespace KeyEventFilter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             forwarded: (arg0: KeyEvent) => void;
         }
 
@@ -4607,6 +5277,9 @@ export namespace Kkc {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
 
@@ -4627,16 +5300,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEventFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEventFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyEventFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4645,11 +5321,21 @@ export namespace Kkc {
 
         // Virtual methods
 
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_filter_key_event(key: KeyEvent): KeyEvent | null;
+        /**
+         * @virtual
+         */
         vfunc_reset(): void;
 
         // Methods
 
+        /**
+         * @param key
+         */
         filter_key_event(key: KeyEvent): KeyEvent | null;
         reset(): void;
     }
@@ -4675,6 +5361,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class KeyEvent extends GObject.Object {
         static $gtype: GObject.GType<KeyEvent>;
 
@@ -4714,16 +5403,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4734,15 +5426,30 @@ export namespace Kkc {
 
         to_string(): string;
         get_name(): string;
+        /**
+         * @param value
+         */
         set_name(value: string): void;
         get_unicode(): string;
+        /**
+         * @param value
+         */
         set_unicode(value: string): void;
         get_keyval(): number;
+        /**
+         * @param value
+         */
         set_keyval(value: number): void;
         get_keycode(): number;
+        /**
+         * @param value
+         */
         set_keycode(value: number): void;
         get_modifiers(): ModifierType;
-        set_modifiers(value: ModifierType | null): void;
+        /**
+         * @param value
+         */
+        set_modifiers(value: ModifierType): void;
     }
 
     namespace Keymap {
@@ -4754,17 +5461,20 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            parent: Keymap;
+            parent: Keymap | null;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Keymap extends GObject.Object {
         static $gtype: GObject.GType<Keymap>;
 
         // Properties
 
-        get parent(): Keymap;
-        set parent(val: Keymap);
+        get parent(): Keymap | null;
+        set parent(val: Keymap | null);
 
         /**
          * Compile-time signal type information.
@@ -4785,16 +5495,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Keymap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Keymap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Keymap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Keymap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Keymap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Keymap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4804,19 +5517,38 @@ export namespace Kkc {
         // Static methods
 
         static commands(): string[];
+        /**
+         * @param command
+         */
         static get_command_label(command: string): string;
 
         // Methods
 
         entries(): KeymapEntry[];
         local_entries(): KeymapEntry[];
-        set(key: KeyEvent, command?: string | null): void;
+        /**
+         * @param key
+         * @param command
+         */
+        set(key: KeyEvent, command: string | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+        /**
+         * @param key
+         */
         lookup_key(key: KeyEvent): string | null;
+        /**
+         * @param command
+         */
         where_is(command: string): KeyEvent | null;
         get_parent(): Keymap | null;
-        set_parent(value?: Keymap | null): void;
+        /**
+         * @param value
+         */
+        set_parent(value: Keymap | null): void;
     }
 
     namespace NicolaKeyEventFilter {
@@ -4828,6 +5560,9 @@ export namespace Kkc {
         interface ConstructorProps extends KeyEventFilter.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
 
@@ -4859,16 +5594,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NicolaKeyEventFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NicolaKeyEventFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NicolaKeyEventFilter.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4891,11 +5629,17 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RomKanaCharacterList extends GObject.Object {
         static $gtype: GObject.GType<RomKanaCharacterList>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -4917,16 +5661,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RomKanaCharacterList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RomKanaCharacterList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RomKanaCharacterList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RomKanaCharacterList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RomKanaCharacterList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RomKanaCharacterList.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4937,13 +5684,37 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param character
+         */
         add(character: RomKanaCharacter): void;
+        /**
+         * @param other
+         */
         add_all(other: RomKanaCharacterList): void;
+        /**
+         * @param index
+         * @param character
+         */
         insert(index: number, character: RomKanaCharacter): void;
+        /**
+         * @param index
+         * @param other
+         */
         insert_all(index: number, other: RomKanaCharacterList): void;
+        /**
+         * @param index
+         */
         get(index: number): RomKanaCharacter;
         clear(): void;
+        /**
+         * @param start_char_pos
+         * @param stop_char_pos
+         */
         slice(start_char_pos: number, stop_char_pos: number): RomKanaCharacterList;
+        /**
+         * @param index
+         */
         remove_at(index: number): void;
         get_output(): string;
         get_input(): string;
@@ -4978,6 +5749,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RomKanaConverter extends GObject.Object {
         static $gtype: GObject.GType<RomKanaConverter>;
 
@@ -4995,10 +5769,25 @@ export namespace Kkc {
         set auto_correct(val: boolean);
         get autoCorrect(): boolean;
         set autoCorrect(val: boolean);
+        /**
+         * @read-only
+         */
         get pending_output(): string;
+        /**
+         * @read-only
+         */
         get pendingOutput(): string;
+        /**
+         * @read-only
+         */
         get pending_input(): string;
+        /**
+         * @read-only
+         */
         get pendingInput(): string;
+        /**
+         * @read-only
+         */
         get produced(): RomKanaCharacterList;
 
         /**
@@ -5020,16 +5809,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RomKanaConverter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RomKanaConverter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RomKanaConverter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5039,18 +5831,40 @@ export namespace Kkc {
         // Methods
 
         get_produced_output(): string;
+        /**
+         * @param uc
+         */
         is_valid(uc: string): boolean;
         flush_partial(): boolean;
+        /**
+         * @param text
+         */
         append_text(text: string): void;
+        /**
+         * @param uc
+         */
         append(uc: string): boolean;
+        /**
+         * @param uc
+         * @param no_carryover
+         */
         can_consume(uc: string, no_carryover: boolean): boolean;
         reset(): void;
         ['delete'](): boolean;
         get_kana_mode(): KanaMode;
-        set_kana_mode(value: KanaMode | null): void;
+        /**
+         * @param value
+         */
+        set_kana_mode(value: KanaMode): void;
         get_punctuation_style(): PunctuationStyle;
-        set_punctuation_style(value: PunctuationStyle | null): void;
+        /**
+         * @param value
+         */
+        set_punctuation_style(value: PunctuationStyle): void;
         get_auto_correct(): boolean;
+        /**
+         * @param value
+         */
         set_auto_correct(value: boolean): void;
         get_pending_output(): string;
         get_pending_input(): string;
@@ -5076,6 +5890,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RuleMetadata extends MetadataFile {
         static $gtype: GObject.GType<RuleMetadata>;
 
@@ -5105,16 +5922,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RuleMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RuleMetadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RuleMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RuleMetadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RuleMetadata.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RuleMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5123,15 +5943,28 @@ export namespace Kkc {
 
         // Static methods
 
+        /**
+         * @param name
+         */
         static find(name: string): RuleMetadata | null;
 
         // Methods
 
         create_key_event_filter(): KeyEventFilter;
+        /**
+         * @param type
+         * @param name
+         */
         locate_map_file(type: string, name: string): string | null;
         get_filter(): string;
+        /**
+         * @param value
+         */
         set_filter(value: string): void;
         get_priority(): number;
+        /**
+         * @param value
+         */
         set_priority(value: number): void;
     }
 
@@ -5150,6 +5983,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Rule extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Rule>;
 
@@ -5183,16 +6019,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Rule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Rule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Rule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Rule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Rule.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Rule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5205,39 +6044,46 @@ export namespace Kkc {
 
         // Methods
 
-        get_keymap(mode: InputMode | null): Keymap;
+        /**
+         * @param mode
+         */
+        get_keymap(mode: InputMode): Keymap;
         get_metadata(): RuleMetadata;
+        /**
+         * @param value
+         */
         set_metadata(value: RuleMetadata): void;
         get_filter(): KeyEventFilter;
+        /**
+         * @param value
+         */
         set_filter(value: KeyEventFilter): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -5247,40 +6093,40 @@ export namespace Kkc {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -5290,13 +6136,14 @@ export namespace Kkc {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5310,90 +6157,68 @@ export namespace Kkc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5401,7 +6226,7 @@ export namespace Kkc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5409,9 +6234,9 @@ export namespace Kkc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5431,9 +6256,9 @@ export namespace Kkc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5447,33 +6272,33 @@ export namespace Kkc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5506,21 +6331,21 @@ export namespace Kkc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -5530,8 +6355,8 @@ export namespace Kkc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5548,14 +6373,14 @@ export namespace Kkc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -5566,13 +6391,13 @@ export namespace Kkc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5603,21 +6428,21 @@ export namespace Kkc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5627,33 +6452,34 @@ export namespace Kkc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5662,6 +6488,7 @@ export namespace Kkc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5670,12 +6497,14 @@ export namespace Kkc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5684,20 +6513,22 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5709,8 +6540,9 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -5750,6 +6582,9 @@ export namespace Kkc {
         interface ConstructorProps extends Rule.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UserRule extends Rule {
         static $gtype: GObject.GType<UserRule>;
 
@@ -5775,16 +6610,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserRule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserRule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserRule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserRule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserRule.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserRule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5793,12 +6631,18 @@ export namespace Kkc {
 
         // Methods
 
-        write(input_mode: InputMode | null): void;
+        /**
+         * @param input_mode
+         */
+        write(input_mode: InputMode): void;
     }
 
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'request-selection-text': () => void;
             'notify::dictionaries': (pspec: GObject.ParamSpec) => void;
             'notify::candidates': (pspec: GObject.ParamSpec) => void;
@@ -5837,6 +6681,9 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
@@ -5844,12 +6691,33 @@ export namespace Kkc {
 
         get dictionaries(): DictionaryList;
         set dictionaries(val: DictionaryList);
+        /**
+         * @read-only
+         */
         get candidates(): CandidateList;
+        /**
+         * @read-only
+         */
         get segments(): SegmentList;
+        /**
+         * @read-only
+         */
         get input(): string;
+        /**
+         * @read-only
+         */
         get input_cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get inputCursorPos(): number;
+        /**
+         * @read-only
+         */
         get input_cursor_width(): number;
+        /**
+         * @read-only
+         */
         get inputCursorWidth(): number;
         get input_mode(): InputMode;
         set input_mode(val: InputMode);
@@ -5867,7 +6735,13 @@ export namespace Kkc {
         set typing_rule(val: Rule);
         get typingRule(): Rule;
         set typingRule(val: Rule);
+        /**
+         * @read-only
+         */
         get key_event_filter(): KeyEventFilter;
+        /**
+         * @read-only
+         */
         get keyEventFilter(): KeyEventFilter;
 
         /**
@@ -5889,16 +6763,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5907,8 +6784,17 @@ export namespace Kkc {
 
         // Methods
 
-        set_selection_text(text?: string | null): void;
+        /**
+         * @param text
+         */
+        set_selection_text(text: string | null): void;
+        /**
+         * @param keyseq
+         */
         process_key_events(keyseq: string): boolean;
+        /**
+         * @param key
+         */
         process_key_event(key: KeyEvent): boolean;
         reset(): void;
         has_output(): boolean;
@@ -5916,6 +6802,9 @@ export namespace Kkc {
         poll_output(): string;
         clear_output(): void;
         get_dictionaries(): DictionaryList;
+        /**
+         * @param value
+         */
         set_dictionaries(value: DictionaryList): void;
         get_candidates(): CandidateList;
         get_segments(): SegmentList;
@@ -5923,12 +6812,24 @@ export namespace Kkc {
         get_input_cursor_pos(): number;
         get_input_cursor_width(): number;
         get_input_mode(): InputMode;
-        set_input_mode(value: InputMode | null): void;
+        /**
+         * @param value
+         */
+        set_input_mode(value: InputMode): void;
         get_punctuation_style(): PunctuationStyle;
-        set_punctuation_style(value: PunctuationStyle | null): void;
+        /**
+         * @param value
+         */
+        set_punctuation_style(value: PunctuationStyle): void;
         get_auto_correct(): boolean;
+        /**
+         * @param value
+         */
         set_auto_correct(value: boolean): void;
         get_typing_rule(): Rule;
+        /**
+         * @param value
+         */
         set_typing_rule(value: Rule): void;
         get_key_event_filter(): KeyEventFilter;
     }
@@ -5940,11 +6841,12 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Dictionary.ConstructorProps,
-                SegmentDictionary.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class EmptySegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<EmptySegmentDictionary>;
 
@@ -5967,16 +6869,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EmptySegmentDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EmptySegmentDictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EmptySegmentDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EmptySegmentDictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EmptySegmentDictionary.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EmptySegmentDictionary.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5984,19 +6889,53 @@ export namespace Kkc {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         reload(): void;
         save(): void;
+        /**
+         * @virtual
+         */
         vfunc_reload(): void;
+        /**
+         * @virtual
+         */
         vfunc_save(): void;
+        /**
+         * @param midasi
+         * @param okuri
+         */
         lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         */
         complete(midasi: string): string[];
+        /**
+         * @param candidate
+         */
         select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         */
         purge_candidate(candidate: Candidate): boolean;
+        /**
+         * @param midasi
+         * @param okuri
+         * @virtual
+         */
         vfunc_lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         * @virtual
+         */
         vfunc_complete(midasi: string): string[];
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_purge_candidate(candidate: Candidate): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6011,90 +6950,68 @@ export namespace Kkc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6102,7 +7019,7 @@ export namespace Kkc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6110,9 +7027,9 @@ export namespace Kkc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6132,9 +7049,9 @@ export namespace Kkc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6148,33 +7065,33 @@ export namespace Kkc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6207,21 +7124,21 @@ export namespace Kkc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -6231,8 +7148,8 @@ export namespace Kkc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6249,14 +7166,14 @@ export namespace Kkc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6267,13 +7184,13 @@ export namespace Kkc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6304,21 +7221,21 @@ export namespace Kkc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6328,33 +7245,34 @@ export namespace Kkc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6363,6 +7281,7 @@ export namespace Kkc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6371,12 +7290,14 @@ export namespace Kkc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6385,20 +7306,22 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6410,8 +7333,9 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6446,11 +7370,12 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Dictionary.ConstructorProps,
-                SegmentDictionary.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SystemSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<SystemSegmentDictionary>;
 
@@ -6473,16 +7398,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SystemSegmentDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SystemSegmentDictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SystemSegmentDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SystemSegmentDictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SystemSegmentDictionary.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SystemSegmentDictionary.SignalSignatures[K]> extends [any, ...infer Q]
@@ -6490,19 +7418,53 @@ export namespace Kkc {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         reload(): void;
         save(): void;
+        /**
+         * @virtual
+         */
         vfunc_reload(): void;
+        /**
+         * @virtual
+         */
         vfunc_save(): void;
+        /**
+         * @param midasi
+         * @param okuri
+         */
         lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         */
         complete(midasi: string): string[];
+        /**
+         * @param candidate
+         */
         select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         */
         purge_candidate(candidate: Candidate): boolean;
+        /**
+         * @param midasi
+         * @param okuri
+         * @virtual
+         */
         vfunc_lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         * @virtual
+         */
         vfunc_complete(midasi: string): string[];
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_purge_candidate(candidate: Candidate): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6517,90 +7479,68 @@ export namespace Kkc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6608,7 +7548,7 @@ export namespace Kkc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6616,9 +7556,9 @@ export namespace Kkc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6638,9 +7578,9 @@ export namespace Kkc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6654,33 +7594,33 @@ export namespace Kkc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6713,21 +7653,21 @@ export namespace Kkc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -6737,8 +7677,8 @@ export namespace Kkc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6755,14 +7695,14 @@ export namespace Kkc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -6773,13 +7713,13 @@ export namespace Kkc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6810,21 +7750,21 @@ export namespace Kkc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6834,33 +7774,34 @@ export namespace Kkc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6869,6 +7810,7 @@ export namespace Kkc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6877,12 +7819,14 @@ export namespace Kkc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6891,20 +7835,22 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6916,8 +7862,9 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -6952,11 +7899,12 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Dictionary.ConstructorProps,
-                SegmentDictionary.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UserSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<UserSegmentDictionary>;
 
@@ -6979,16 +7927,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserSegmentDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserSegmentDictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserSegmentDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserSegmentDictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserSegmentDictionary.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserSegmentDictionary.SignalSignatures[K]> extends [any, ...infer Q]
@@ -6996,19 +7947,53 @@ export namespace Kkc {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         reload(): void;
         save(): void;
+        /**
+         * @virtual
+         */
         vfunc_reload(): void;
+        /**
+         * @virtual
+         */
         vfunc_save(): void;
+        /**
+         * @param midasi
+         * @param okuri
+         */
         lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         */
         complete(midasi: string): string[];
+        /**
+         * @param candidate
+         */
         select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         */
         purge_candidate(candidate: Candidate): boolean;
+        /**
+         * @param midasi
+         * @param okuri
+         * @virtual
+         */
         vfunc_lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         * @virtual
+         */
         vfunc_complete(midasi: string): string[];
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_purge_candidate(candidate: Candidate): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -7023,90 +8008,68 @@ export namespace Kkc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7114,7 +8077,7 @@ export namespace Kkc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7122,9 +8085,9 @@ export namespace Kkc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7144,9 +8107,9 @@ export namespace Kkc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7160,33 +8123,33 @@ export namespace Kkc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7219,21 +8182,21 @@ export namespace Kkc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -7243,8 +8206,8 @@ export namespace Kkc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7261,14 +8224,14 @@ export namespace Kkc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7279,13 +8242,13 @@ export namespace Kkc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7316,21 +8279,21 @@ export namespace Kkc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7340,33 +8303,34 @@ export namespace Kkc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7375,6 +8339,7 @@ export namespace Kkc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7383,12 +8348,14 @@ export namespace Kkc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7397,20 +8364,22 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7422,8 +8391,9 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7458,11 +8428,12 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                Dictionary.ConstructorProps,
-                SentenceDictionary.ConstructorProps {}
+            extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SentenceDictionary.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UserSentenceDictionary extends GObject.Object implements Dictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserSentenceDictionary>;
 
@@ -7485,16 +8456,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserSentenceDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserSentenceDictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserSentenceDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserSentenceDictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserSentenceDictionary.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserSentenceDictionary.SignalSignatures[K]> extends [any, ...infer Q]
@@ -7502,17 +8476,42 @@ export namespace Kkc {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         reload(): void;
         save(): void;
+        /**
+         * @virtual
+         */
         vfunc_reload(): void;
+        /**
+         * @virtual
+         */
         vfunc_save(): void;
+        /**
+         * @param input
+         */
         lookup_constraint(input: string): [boolean, number[]];
+        /**
+         * @param input
+         */
         lookup_phrase(input: string[]): [boolean, string[]];
+        /**
+         * @param input
+         */
         select_segments(input: Segment[]): boolean;
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_lookup_constraint(input: string): [boolean, number[]];
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_lookup_phrase(input: string[]): [boolean, string[]];
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_select_segments(input: Segment[]): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -7527,90 +8526,68 @@ export namespace Kkc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7618,7 +8595,7 @@ export namespace Kkc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7626,9 +8603,9 @@ export namespace Kkc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7648,9 +8625,9 @@ export namespace Kkc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7664,33 +8641,33 @@ export namespace Kkc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7723,21 +8700,21 @@ export namespace Kkc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -7747,8 +8724,8 @@ export namespace Kkc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7765,14 +8742,14 @@ export namespace Kkc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -7783,13 +8760,13 @@ export namespace Kkc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7820,21 +8797,21 @@ export namespace Kkc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7844,33 +8821,34 @@ export namespace Kkc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7879,6 +8857,7 @@ export namespace Kkc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7887,12 +8866,14 @@ export namespace Kkc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7901,20 +8882,22 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7926,8 +8909,9 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -7962,12 +8946,16 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
+            extends
+                GObject.Object.ConstructorProps,
                 Dictionary.ConstructorProps,
                 SegmentDictionary.ConstructorProps,
                 SentenceDictionary.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UserDictionary extends GObject.Object implements Dictionary, SegmentDictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserDictionary>;
 
@@ -7990,40 +8978,98 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserDictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserDictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserDictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserDictionary.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserDictionary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         reload(): void;
         save(): void;
+        /**
+         * @virtual
+         */
         vfunc_reload(): void;
+        /**
+         * @virtual
+         */
         vfunc_save(): void;
+        /**
+         * @param midasi
+         * @param okuri
+         */
         lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         */
         complete(midasi: string): string[];
+        /**
+         * @param candidate
+         */
         select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         */
         purge_candidate(candidate: Candidate): boolean;
+        /**
+         * @param midasi
+         * @param okuri
+         * @virtual
+         */
         vfunc_lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         * @virtual
+         */
         vfunc_complete(midasi: string): string[];
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_purge_candidate(candidate: Candidate): boolean;
+        /**
+         * @param input
+         */
         lookup_constraint(input: string): [boolean, number[]];
+        /**
+         * @param input
+         */
         lookup_phrase(input: string[]): [boolean, string[]];
+        /**
+         * @param input
+         */
         select_segments(input: Segment[]): boolean;
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_lookup_constraint(input: string): [boolean, number[]];
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_lookup_phrase(input: string[]): [boolean, string[]];
+        /**
+         * @param input
+         * @virtual
+         */
         vfunc_select_segments(input: Segment[]): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -8038,90 +9084,68 @@ export namespace Kkc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8129,7 +9153,7 @@ export namespace Kkc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8137,9 +9161,9 @@ export namespace Kkc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8159,9 +9183,9 @@ export namespace Kkc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8175,33 +9199,33 @@ export namespace Kkc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8234,21 +9258,21 @@ export namespace Kkc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -8258,8 +9282,8 @@ export namespace Kkc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8276,14 +9300,14 @@ export namespace Kkc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8294,13 +9318,13 @@ export namespace Kkc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8331,21 +9355,21 @@ export namespace Kkc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8355,33 +9379,34 @@ export namespace Kkc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8390,6 +9415,7 @@ export namespace Kkc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8398,12 +9424,14 @@ export namespace Kkc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8412,20 +9440,22 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8437,8 +9467,9 @@ export namespace Kkc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8483,11 +9514,17 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DictionaryList extends GObject.Object {
         static $gtype: GObject.GType<DictionaryList>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -8509,16 +9546,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DictionaryList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DictionaryList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DictionaryList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DictionaryList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DictionaryList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DictionaryList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8527,9 +9567,19 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param dictionary
+         */
         add(dictionary: Dictionary): void;
+        /**
+         * @param dictionary
+         */
         remove(dictionary: Dictionary): void;
         clear(): void;
+        /**
+         * @param type
+         * @param callback
+         */
         call(type: GObject.GType | null, callback: DictionaryList.DictionaryCallback): void;
         save(): void;
         get_size(): number;
@@ -8538,7 +9588,13 @@ export namespace Kkc {
     namespace DBusCandidateList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             populated: () => void;
+            /**
+             * @signal
+             */
             selected: (arg0: string, arg1: boolean, arg2: string, arg3: string) => void;
             'notify::cursor-pos': (pspec: GObject.ParamSpec) => void;
             'notify::size': (pspec: GObject.ParamSpec) => void;
@@ -8564,20 +9620,53 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DBusCandidateList extends GObject.Object {
         static $gtype: GObject.GType<DBusCandidateList>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get cursorPos(): number;
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get page_start(): number;
+        /**
+         * @read-only
+         */
         get pageStart(): number;
+        /**
+         * @read-only
+         */
         get page_size(): number;
+        /**
+         * @read-only
+         */
         get pageSize(): number;
+        /**
+         * @read-only
+         */
         get round(): boolean;
+        /**
+         * @read-only
+         */
         get page_visible(): boolean;
+        /**
+         * @read-only
+         */
         get pageVisible(): boolean;
 
         /**
@@ -8603,16 +9692,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DBusCandidateList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DBusCandidateList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DBusCandidateList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DBusCandidateList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DBusCandidateList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DBusCandidateList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8621,6 +9713,9 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param index_in_page
+         */
         select_at(index_in_page: number): boolean;
         select(): void;
         first(): boolean;
@@ -8630,6 +9725,9 @@ export namespace Kkc {
         cursor_down(): boolean;
         page_up(): boolean;
         page_down(): boolean;
+        /**
+         * @param index
+         */
         get(index: number): [string, boolean, string, string];
         get_cursor_pos(): number;
         get_size(): number;
@@ -8655,13 +9753,25 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DBusSegmentList extends GObject.Object {
         static $gtype: GObject.GType<DBusSegmentList>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get cursorPos(): number;
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -8683,16 +9793,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DBusSegmentList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DBusSegmentList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DBusSegmentList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DBusSegmentList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DBusSegmentList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DBusSegmentList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8701,6 +9814,9 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param index
+         */
         get(index: number): [string, string];
         first_segment(): boolean;
         last_segment(): boolean;
@@ -8737,13 +9853,25 @@ export namespace Kkc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DBusContext extends GObject.Object {
         static $gtype: GObject.GType<DBusContext>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get input(): string;
+        /**
+         * @read-only
+         */
         get input_cursor_pos(): number;
+        /**
+         * @read-only
+         */
         get inputCursorPos(): number;
         get input_mode(): number;
         set input_mode(val: number);
@@ -8777,16 +9905,19 @@ export namespace Kkc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DBusContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DBusContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DBusContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DBusContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DBusContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DBusContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8795,7 +9926,15 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param keyval
+         * @param keycode
+         * @param modifiers
+         */
         process_key_event(keyval: number, keycode: number, modifiers: number): boolean;
+        /**
+         * @param command
+         */
         process_command_event(command: string): boolean;
         reset(): void;
         has_output(): boolean;
@@ -8805,10 +9944,19 @@ export namespace Kkc {
         get_input(): string;
         get_input_cursor_pos(): number;
         get_input_mode(): number;
+        /**
+         * @param value
+         */
         set_input_mode(value: number): void;
         get_punctuation_style(): number;
+        /**
+         * @param value
+         */
         set_punctuation_style(value: number): void;
         get_auto_correct(): boolean;
+        /**
+         * @param value
+         */
         set_auto_correct(value: boolean): void;
     }
 
@@ -8821,6 +9969,9 @@ export namespace Kkc {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DBusServer extends GObject.Object {
         static $gtype: GObject.GType<DBusServer>;
 
@@ -8843,21 +9994,24 @@ export namespace Kkc {
             connection: Gio.DBusConnection,
             model: LanguageModel,
             dictionaries: DictionaryList,
-            typing_rule?: Rule | null,
+            typing_rule: Rule | null,
         ): DBusServer;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DBusServer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DBusServer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DBusServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8866,349 +10020,450 @@ export namespace Kkc {
 
         // Methods
 
+        /**
+         * @param sender
+         */
         create_context(sender: never): string;
+        /**
+         * @param object_path
+         */
         destroy_context(object_path: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MetadataFileClass = typeof MetadataFile;
+    /**
+     * @gir-type Struct
+     */
     abstract class MetadataFilePrivate {
         static $gtype: GObject.GType<MetadataFilePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TrellisNodeClass = typeof TrellisNode;
+    /**
+     * @gir-type Struct
+     */
     abstract class TrellisNodePrivate {
         static $gtype: GObject.GType<TrellisNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UnigramTrellisNodeClass = typeof UnigramTrellisNode;
+    /**
+     * @gir-type Struct
+     */
     abstract class UnigramTrellisNodePrivate {
         static $gtype: GObject.GType<UnigramTrellisNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BigramTrellisNodeClass = typeof BigramTrellisNode;
+    /**
+     * @gir-type Struct
+     */
     abstract class BigramTrellisNodePrivate {
         static $gtype: GObject.GType<BigramTrellisNodePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LanguageModelMetadataClass = typeof LanguageModelMetadata;
+    /**
+     * @gir-type Struct
+     */
     abstract class LanguageModelMetadataPrivate {
         static $gtype: GObject.GType<LanguageModelMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LanguageModelClass = typeof LanguageModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class LanguageModelPrivate {
         static $gtype: GObject.GType<LanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TextBigramLanguageModelClass = typeof TextBigramLanguageModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class TextBigramLanguageModelPrivate {
         static $gtype: GObject.GType<TextBigramLanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TextTrigramLanguageModelClass = typeof TextTrigramLanguageModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class TextTrigramLanguageModelPrivate {
         static $gtype: GObject.GType<TextTrigramLanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SortedBigramLanguageModelClass = typeof SortedBigramLanguageModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class SortedBigramLanguageModelPrivate {
         static $gtype: GObject.GType<SortedBigramLanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SortedTrigramLanguageModelClass = typeof SortedTrigramLanguageModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class SortedTrigramLanguageModelPrivate {
         static $gtype: GObject.GType<SortedTrigramLanguageModelPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DecoderClass = typeof Decoder;
+    /**
+     * @gir-type Struct
+     */
     abstract class DecoderPrivate {
         static $gtype: GObject.GType<DecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BigramDecoderClass = typeof BigramDecoder;
+    /**
+     * @gir-type Struct
+     */
     abstract class BigramDecoderPrivate {
         static $gtype: GObject.GType<BigramDecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TrigramDecoderClass = typeof TrigramDecoder;
+    /**
+     * @gir-type Struct
+     */
     abstract class TrigramDecoderPrivate {
         static $gtype: GObject.GType<TrigramDecoderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SegmentListClass = typeof SegmentList;
+    /**
+     * @gir-type Struct
+     */
     abstract class SegmentListPrivate {
         static $gtype: GObject.GType<SegmentListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SegmentClass = typeof Segment;
+    /**
+     * @gir-type Struct
+     */
     abstract class SegmentPrivate {
         static $gtype: GObject.GType<SegmentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CandidateListClass = typeof CandidateList;
+    /**
+     * @gir-type Struct
+     */
     abstract class CandidateListPrivate {
         static $gtype: GObject.GType<CandidateListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CandidateClass = typeof Candidate;
+    /**
+     * @gir-type Struct
+     */
     abstract class CandidatePrivate {
         static $gtype: GObject.GType<CandidatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type KeyEventFilterClass = typeof KeyEventFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyEventFilterPrivate {
         static $gtype: GObject.GType<KeyEventFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type KeyEventClass = typeof KeyEvent;
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyEventPrivate {
         static $gtype: GObject.GType<KeyEventPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type KeymapClass = typeof Keymap;
+    /**
+     * @gir-type Struct
+     */
     abstract class KeymapPrivate {
         static $gtype: GObject.GType<KeymapPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NicolaKeyEventFilterClass = typeof NicolaKeyEventFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class NicolaKeyEventFilterPrivate {
         static $gtype: GObject.GType<NicolaKeyEventFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RomKanaCharacterListClass = typeof RomKanaCharacterList;
+    /**
+     * @gir-type Struct
+     */
     abstract class RomKanaCharacterListPrivate {
         static $gtype: GObject.GType<RomKanaCharacterListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RomKanaConverterClass = typeof RomKanaConverter;
+    /**
+     * @gir-type Struct
+     */
     abstract class RomKanaConverterPrivate {
         static $gtype: GObject.GType<RomKanaConverterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RuleMetadataClass = typeof RuleMetadata;
+    /**
+     * @gir-type Struct
+     */
     abstract class RuleMetadataPrivate {
         static $gtype: GObject.GType<RuleMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RuleClass = typeof Rule;
+    /**
+     * @gir-type Struct
+     */
     abstract class RulePrivate {
         static $gtype: GObject.GType<RulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UserRuleClass = typeof UserRule;
+    /**
+     * @gir-type Struct
+     */
     abstract class UserRulePrivate {
         static $gtype: GObject.GType<UserRulePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContextClass = typeof Context;
+    /**
+     * @gir-type Struct
+     */
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EmptySegmentDictionaryClass = typeof EmptySegmentDictionary;
+    /**
+     * @gir-type Struct
+     */
     abstract class EmptySegmentDictionaryPrivate {
         static $gtype: GObject.GType<EmptySegmentDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SystemSegmentDictionaryClass = typeof SystemSegmentDictionary;
+    /**
+     * @gir-type Struct
+     */
     abstract class SystemSegmentDictionaryPrivate {
         static $gtype: GObject.GType<SystemSegmentDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UserSegmentDictionaryClass = typeof UserSegmentDictionary;
+    /**
+     * @gir-type Struct
+     */
     abstract class UserSegmentDictionaryPrivate {
         static $gtype: GObject.GType<UserSegmentDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UserSentenceDictionaryClass = typeof UserSentenceDictionary;
+    /**
+     * @gir-type Struct
+     */
     abstract class UserSentenceDictionaryPrivate {
         static $gtype: GObject.GType<UserSentenceDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UserDictionaryClass = typeof UserDictionary;
+    /**
+     * @gir-type Struct
+     */
     abstract class UserDictionaryPrivate {
         static $gtype: GObject.GType<UserDictionaryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DictionaryListClass = typeof DictionaryList;
+    /**
+     * @gir-type Struct
+     */
     abstract class DictionaryListPrivate {
         static $gtype: GObject.GType<DictionaryListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DBusCandidateListClass = typeof DBusCandidateList;
+    /**
+     * @gir-type Struct
+     */
     abstract class DBusCandidateListPrivate {
         static $gtype: GObject.GType<DBusCandidateListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DBusSegmentListClass = typeof DBusSegmentList;
+    /**
+     * @gir-type Struct
+     */
     abstract class DBusSegmentListPrivate {
         static $gtype: GObject.GType<DBusSegmentListPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DBusContextClass = typeof DBusContext;
+    /**
+     * @gir-type Struct
+     */
     abstract class DBusContextPrivate {
         static $gtype: GObject.GType<DBusContextPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DBusServerClass = typeof DBusServer;
+    /**
+     * @gir-type Struct
+     */
     abstract class DBusServerPrivate {
         static $gtype: GObject.GType<DBusServerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UnigramLanguageModelIface = typeof UnigramLanguageModel;
+    /**
+     * @gir-type Alias
+     */
     type BigramLanguageModelIface = typeof BigramLanguageModel;
+    /**
+     * @gir-type Alias
+     */
     type TrigramLanguageModelIface = typeof TrigramLanguageModel;
+    /**
+     * @gir-type Alias
+     */
     type DictionaryIface = typeof Dictionary;
+    /**
+     * @gir-type Alias
+     */
     type SegmentDictionaryIface = typeof SegmentDictionary;
+    /**
+     * @gir-type Alias
+     */
     type SentenceDictionaryIface = typeof SentenceDictionary;
+    /**
+     * @gir-type Struct
+     */
     class LanguageModelEntry {
         static $gtype: GObject.GType<LanguageModelEntry>;
 
@@ -9227,9 +10482,11 @@ export namespace Kkc {
                 id: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeymapEntry {
         static $gtype: GObject.GType<KeymapEntry>;
 
@@ -9237,12 +10494,11 @@ export namespace Kkc {
 
         key: KeyEvent;
         command: string | null;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RomKanaCharacter {
         static $gtype: GObject.GType<RomKanaCharacter>;
 
@@ -9259,7 +10515,6 @@ export namespace Kkc {
                 input: string;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     namespace UnigramLanguageModel {
@@ -9270,7 +10525,15 @@ export namespace Kkc {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param entry
+             * @virtual
+             */
             vfunc_unigram_cost(entry: LanguageModelEntry): number;
+            /**
+             * @param entry
+             * @virtual
+             */
             vfunc_unigram_backoff(entry: LanguageModelEntry): number;
         }
 
@@ -9283,10 +10546,19 @@ export namespace Kkc {
         $gtype: GObject.GType<UnigramLanguageModel>;
         prototype: UnigramLanguageModel;
     }
+    /**
+     * @gir-type Interface
+     */
     interface UnigramLanguageModel extends LanguageModel, UnigramLanguageModel.Interface {
         // Methods
 
+        /**
+         * @param entry
+         */
         unigram_cost(entry: LanguageModelEntry): number;
+        /**
+         * @param entry
+         */
         unigram_backoff(entry: LanguageModelEntry): number;
     }
 
@@ -9302,8 +10574,23 @@ export namespace Kkc {
         interface Interface extends UnigramLanguageModel.Interface {
             // Virtual methods
 
+            /**
+             * @param pentry
+             * @param entry
+             * @virtual
+             */
             vfunc_has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+            /**
+             * @param pentry
+             * @param entry
+             * @virtual
+             */
             vfunc_bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+            /**
+             * @param pentry
+             * @param entry
+             * @virtual
+             */
             vfunc_bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
         }
 
@@ -9316,12 +10603,31 @@ export namespace Kkc {
         $gtype: GObject.GType<BigramLanguageModel>;
         prototype: BigramLanguageModel;
     }
+    /**
+     * @gir-type Interface
+     */
     interface BigramLanguageModel extends UnigramLanguageModel, BigramLanguageModel.Interface {
         // Methods
 
+        /**
+         * @param pentry
+         * @param entry
+         */
         has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param pentry
+         * @param entry
+         */
         bigram_backoff_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
     }
 
@@ -9337,11 +10643,23 @@ export namespace Kkc {
         interface Interface extends BigramLanguageModel.Interface {
             // Virtual methods
 
+            /**
+             * @param ppentry
+             * @param pentry
+             * @param entry
+             * @virtual
+             */
             vfunc_has_trigram(
                 ppentry: LanguageModelEntry,
                 pentry: LanguageModelEntry,
                 entry: LanguageModelEntry,
             ): boolean;
+            /**
+             * @param ppentry
+             * @param pentry
+             * @param entry
+             * @virtual
+             */
             vfunc_trigram_cost(
                 ppentry: LanguageModelEntry,
                 pentry: LanguageModelEntry,
@@ -9358,11 +10676,29 @@ export namespace Kkc {
         $gtype: GObject.GType<TrigramLanguageModel>;
         prototype: TrigramLanguageModel;
     }
+    /**
+     * @gir-type Interface
+     */
     interface TrigramLanguageModel extends BigramLanguageModel, TrigramLanguageModel.Interface {
         // Methods
 
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
+        /**
+         * @param ppentry
+         * @param pentry
+         * @param entry
+         */
         trigram_backoff_cost(
             ppentry: LanguageModelEntry,
             pentry: LanguageModelEntry,
@@ -9382,7 +10718,13 @@ export namespace Kkc {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_reload(): void;
+            /**
+             * @virtual
+             */
             vfunc_save(): void;
         }
 
@@ -9395,6 +10737,9 @@ export namespace Kkc {
         $gtype: GObject.GType<Dictionary>;
         prototype: Dictionary;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Dictionary extends GObject.Object, Dictionary.Interface {
         // Methods
 
@@ -9414,9 +10759,26 @@ export namespace Kkc {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param midasi
+             * @param okuri
+             * @virtual
+             */
             vfunc_lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+            /**
+             * @param midasi
+             * @virtual
+             */
             vfunc_complete(midasi: string): string[];
+            /**
+             * @param candidate
+             * @virtual
+             */
             vfunc_select_candidate(candidate: Candidate): boolean;
+            /**
+             * @param candidate
+             * @virtual
+             */
             vfunc_purge_candidate(candidate: Candidate): boolean;
         }
 
@@ -9429,12 +10791,28 @@ export namespace Kkc {
         $gtype: GObject.GType<SegmentDictionary>;
         prototype: SegmentDictionary;
     }
+    /**
+     * @gir-type Interface
+     */
     interface SegmentDictionary extends GObject.Object, SegmentDictionary.Interface {
         // Methods
 
+        /**
+         * @param midasi
+         * @param okuri
+         */
         lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
+        /**
+         * @param midasi
+         */
         complete(midasi: string): string[];
+        /**
+         * @param candidate
+         */
         select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         */
         purge_candidate(candidate: Candidate): boolean;
     }
 
@@ -9450,8 +10828,20 @@ export namespace Kkc {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param input
+             * @virtual
+             */
             vfunc_lookup_constraint(input: string): [boolean, number[]];
+            /**
+             * @param input
+             * @virtual
+             */
             vfunc_lookup_phrase(input: string[]): [boolean, string[]];
+            /**
+             * @param input
+             * @virtual
+             */
             vfunc_select_segments(input: Segment[]): boolean;
         }
 
@@ -9464,11 +10854,23 @@ export namespace Kkc {
         $gtype: GObject.GType<SentenceDictionary>;
         prototype: SentenceDictionary;
     }
+    /**
+     * @gir-type Interface
+     */
     interface SentenceDictionary extends GObject.Object, SentenceDictionary.Interface {
         // Methods
 
+        /**
+         * @param input
+         */
         lookup_constraint(input: string): [boolean, number[]];
+        /**
+         * @param input
+         */
         lookup_phrase(input: string[]): [boolean, string[]];
+        /**
+         * @param input
+         */
         select_segments(input: Segment[]): boolean;
     }
 

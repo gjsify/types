@@ -21,16 +21,16 @@ export namespace GExiv2 {
      */
 
     /**
-     * Options to control the byte order of binary EXIF data exports
-     */
-
-    /**
-     * Options to control the byte order of binary EXIF data exports
+     * @gir-type Enum
      */
     export namespace ByteOrder {
         export const $gtype: GObject.GType<ByteOrder>;
     }
 
+    /**
+     * Options to control the byte order of binary EXIF data exports
+     * @gir-type Enum
+     */
     enum ByteOrder {
         /**
          * Use little-endian byte order
@@ -41,17 +41,18 @@ export namespace GExiv2 {
          */
         BIG,
     }
-    /**
-     * GExiv2 log levels
-     */
 
     /**
-     * GExiv2 log levels
+     * @gir-type Enum
      */
     export namespace LogLevel {
         export const $gtype: GObject.GType<LogLevel>;
     }
 
+    /**
+     * GExiv2 log levels
+     * @gir-type Enum
+     */
     enum LogLevel {
         /**
          * Log level for debugging
@@ -74,27 +75,23 @@ export namespace GExiv2 {
          */
         MUTE,
     }
-    /**
-     * The orientation of an image is defined as the location of it's x,y origin.  More than rotation,
-     * orientation allows for every variation of rotation, flips, and mirroring to be described in
-     * 3 bits of data.
-     *
-     * A handy primer to orientation can be found at
-     * <ulink url="http://jpegclub.org/exif_orientation.html"></ulink>
-     */
 
     /**
-     * The orientation of an image is defined as the location of it's x,y origin.  More than rotation,
-     * orientation allows for every variation of rotation, flips, and mirroring to be described in
-     * 3 bits of data.
-     *
-     * A handy primer to orientation can be found at
-     * <ulink url="http://jpegclub.org/exif_orientation.html"></ulink>
+     * @gir-type Enum
      */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
 
+    /**
+     * The orientation of an image is defined as the location of it's x,y origin.  More than rotation,
+     * orientation allows for every variation of rotation, flips, and mirroring to be described in
+     * 3 bits of data.
+     *
+     * A handy primer to orientation can be found at
+     * <ulink url="http://jpegclub.org/exif_orientation.html"></ulink>
+     * @gir-type Enum
+     */
     enum Orientation {
         /**
          * The orientation of the image is unknown
@@ -133,17 +130,18 @@ export namespace GExiv2 {
          */
         ROT_270,
     }
-    /**
-     * Used in gexiv2_metadata_set_xmp_tag_struct() to determine the array type
-     */
 
     /**
-     * Used in gexiv2_metadata_set_xmp_tag_struct() to determine the array type
+     * @gir-type Enum
      */
     export namespace StructureType {
         export const $gtype: GObject.GType<StructureType>;
     }
 
+    /**
+     * Used in `gexiv2_metadata_set_xmp_tag_struct()` to determine the array type
+     * @gir-type Enum
+     */
     enum StructureType {
         /**
          * Structure is not an array
@@ -166,49 +164,58 @@ export namespace GExiv2 {
          */
         LANG,
     }
+
     const MAJOR_VERSION: number;
     const MICRO_VERSION: number;
     const MINOR_VERSION: number;
+    /**
+     * @returns The gexiv2 library's version number as a formatted decimal XXYYZZ, where XX is the major version, YY is the minor version, and ZZ is the micro version.  For example, version 0.6.1 will be returned as 000601.
+     */
     function get_version(): number;
     /**
      * gexiv2 requires initialization before its methods are used.  In particular, this call must be
      * made in a thread-safe fashion.  Best practice is to call from the application's main thread and
      * not to use any Gexiv2 code until it has returned.
-     * @returns %TRUE if initialized.  If %FALSE, GExiv2 should not be used (unable to initialize properly).
+     * @returns `true` if initialized.  If `false`, GExiv2 should not be used (unable to initialize properly).
      */
     function initialize(): boolean;
+    /**
+     * @returns The current {@link GExiv2.LogLevel}.  Messages below this level will not be logged.
+     */
     function log_get_level(): LogLevel;
     /**
      * Log messages below this level will not be logged.
-     * @param level The #GExiv2LogLevel gexiv2 should respect.
+     * @param level The {@link GExiv2.LogLevel} gexiv2 should respect.
      */
-    function log_set_level(level: LogLevel | null): void;
+    function log_set_level(level: LogLevel): void;
     /**
-     * When called, gexiv2 will install it's own #GExiv2LogHandler which redirects all Exiv2 and gexiv2
-     * log messages to GLib's logging calls (g_debug(), g_message(), g_warning(), and g_critical() for the
-     * respective #GExiv2LogLevel value).  #GEXIV2_LOG_LEVEL_MUTE logs are dropped.
+     * When called, gexiv2 will install it's own {@link GExiv2.LogHandler} which redirects all Exiv2 and gexiv2
+     * log messages to GLib's logging calls (g_debug(), `g_message()`, `g_warning()`, and `g_critical()` for the
+     * respective {@link GExiv2.LogLevel} value).  #GEXIV2_LOG_LEVEL_MUTE logs are dropped.
      *
      * One advantage to using this is that GLib's logging control and handlers can be used rather than
      * GExiv2's ad hoc scheme.  It also means an application can use GLib logging and have all its
      * messages routed through the same calls.
      */
     function log_use_glib_logging(): void;
+    /**
+     * @gir-type Callback
+     */
     interface LogHandler {
         (level: LogLevel, msg: string): void;
     }
     /**
-     * Options to control the format of the serialized XMP packet
-     * Taken from: exiv2/src/xmp.hpp
-     */
-
-    /**
-     * Options to control the format of the serialized XMP packet
-     * Taken from: exiv2/src/xmp.hpp
+     * @gir-type Flags
      */
     export namespace XmpFormatFlags {
         export const $gtype: GObject.GType<XmpFormatFlags>;
     }
 
+    /**
+     * Options to control the format of the serialized XMP packet
+     * Taken from: exiv2/src/xmp.hpp
+     * @gir-type Flags
+     */
     enum XmpFormatFlags {
         /**
          * Omit the XML packet wrapper.
@@ -239,6 +246,7 @@ export namespace GExiv2 {
          */
         OMIT_ALL_FORMATTING,
     }
+
     namespace Metadata {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -262,6 +270,7 @@ export namespace GExiv2 {
      *
      * A full reference for all supported Exiv2 tags can be found at
      * <ulink url="http://www.exiv2.org/metadata.html"></ulink>
+     * @gir-type Class
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
@@ -285,16 +294,19 @@ export namespace GExiv2 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Metadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Metadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -321,6 +333,9 @@ export namespace GExiv2 {
          * @param tag An Exiv2 tag
          */
         static get_tag_type(tag: string): string | null;
+        /**
+         * @param tag Full tag name (e.g. "Xmp.dc.subject") or XMP namespace identifier (e.g. "dc")
+         */
         static get_xmp_namespace_for_tag(tag: string): string;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
@@ -337,6 +352,10 @@ export namespace GExiv2 {
          * @param tag An Exiv2 tag
          */
         static is_xmp_tag(tag: string): boolean;
+        /**
+         * @param name XMP URI name (should end in /)
+         * @param prefix XMP namespace prefix
+         */
         static register_xmp_namespace(name: string, prefix: string): boolean;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
@@ -356,11 +375,24 @@ export namespace GExiv2 {
          * @param tag An Exiv2 tag
          */
         static try_get_tag_type(tag: string): string | null;
+        /**
+         * @param tag Full tag name (e.g. "Xmp.dc.subject") or XMP namespace identifier (e.g. "dc")
+         */
         static try_get_xmp_namespace_for_tag(tag: string): string;
+        /**
+         * @param name XMP URI name (should end in /)
+         * @param prefix XMP namespace prefix
+         */
         static try_register_xmp_namespace(name: string, prefix: string): boolean;
         static try_unregister_all_xmp_namespaces(): void;
+        /**
+         * @param name XMP URI name (should end in /)
+         */
         static try_unregister_xmp_namespace(name: string): boolean;
         static unregister_all_xmp_namespaces(): void;
+        /**
+         * @param name XMP URI name (should end in /)
+         */
         static unregister_xmp_namespace(name: string): boolean;
 
         // Methods
@@ -371,7 +403,7 @@ export namespace GExiv2 {
         clear(): void;
         /**
          * This is a composite clear method that will clear a number of fields.  See
-         * #gexiv2_metadata_get_comment for more information.
+         * `gexiv2_metadata_get_comment` for more information.
          */
         clear_comment(): void;
         /**
@@ -403,7 +435,7 @@ export namespace GExiv2 {
          */
         erase_exif_thumbnail(): void;
         /**
-         * Destroys the #GExiv2Metadata object and frees all associated memory.
+         * Destroys the {@link GExiv2.Metadata} object and frees all associated memory.
          */
         free(): void;
         /**
@@ -418,12 +450,12 @@ export namespace GExiv2 {
          */
         from_stream(stream: Gio.InputStream): boolean;
         /**
-         * Encode the XMP packet as a %NULL-terminated string.
-         * @param xmp_format_flags One of #GExiv2XmpFormatFlags
+         * Encode the XMP packet as a `null`-terminated string.
+         * @param xmp_format_flags One of {@link GExiv2.XmpFormatFlags}
          * @param padding The padding (FIXME: Add documentation)
-         * @returns Encode the XMP packet and return as a %NULL-terminated string.
+         * @returns Encode the XMP packet and return as a `null`-terminated string.
          */
-        generate_xmp_packet(xmp_format_flags: XmpFormatFlags | null, padding: number): string | null;
+        generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
         /**
          * A composite accessor that uses the first available metadata field from a list of well-known
          * locations to find the photo's comment (or description).
@@ -449,7 +481,11 @@ export namespace GExiv2 {
          * @returns The photo's comment field.
          */
         get_comment(): string | null;
-        get_exif_data(byte_order: ByteOrder | null): GLib.Bytes | null;
+        /**
+         * @param byte_order Whether to export the data in little or big endian format
+         * @returns The content of the EXIF data or `null` on error
+         */
+        get_exif_data(byte_order: ByteOrder): GLib.Bytes | null;
         /**
          * Fetch EXIF `tag` represented by a fraction. `nom` will contain the numerator,
          * `den` the denominator of the fraction on successful return.
@@ -519,25 +555,25 @@ export namespace GExiv2 {
         /**
          * Composite accessor to query the pixel with stored in the metadata. This
          * might differ from the height of image that is available through
-         * gexiv2_metadata_get_pixel_height()
+         * `gexiv2_metadata_get_pixel_height()`
          * @returns Height of images in pixels as stored in the metadata
          */
         get_metadata_pixel_height(): number;
         /**
          * Composite accessor to query the pixel with stored in the metadata. This
          * might differ from the width of image that is available through
-         * gexiv2_metadata_get_pixel_width()
+         * `gexiv2_metadata_get_pixel_width()`
          * @returns Width of images in pixels as stored in the metadata
          */
         get_metadata_pixel_width(): number;
         /**
          * Query mime type of currently loaded image.
-         * @returns The MIME type of the loaded image, %NULL if not loaded or unknown.
+         * @returns The MIME type of the loaded image, `null` if not loaded or unknown.
          */
         get_mime_type(): string;
         /**
          * The EXIF Orientation field
-         * @returns A #GExiv2Orientation value representing the EXIF orientation value.
+         * @returns A {@link GExiv2.Orientation} value representing the EXIF orientation value.
          */
         get_orientation(): Orientation;
         /**
@@ -553,28 +589,32 @@ export namespace GExiv2 {
          * @returns Pixel width of current image
          */
         get_pixel_width(): number;
+        /**
+         * @param props A {@link GExiv2.PreviewProperties} instance
+         * @returns A {@link GExiv2.PreviewImage} instance for the particular {@link GExiv2.PreviewProperties}.
+         */
         get_preview_image(props: PreviewProperties): PreviewImage;
         /**
          * An image may have stored one or more previews, often of different qualities, sometimes of
          * different image formats than the containing image.  This call returns the properties of all
-         * previews Exiv2 finds within the loaded image.  Use #gexiv2_metadata_get_preview_image to
+         * previews Exiv2 finds within the loaded image.  Use `gexiv2_metadata_get_preview_image` to
          * load a particular preview into memory.
-         * @returns An array of #GExiv2PreviewProperties instances, one for each preview present in the loaded image.
+         * @returns An array of {@link GExiv2.PreviewProperties} instances, one for each preview present in the loaded image.
          */
         get_preview_properties(): PreviewProperties[] | null;
         /**
          * Query `self` whether it supports writing EXIF metadata.
-         * @returns %TRUE if the loaded image type supports writing EXIF metadata.
+         * @returns `true` if the loaded image type supports writing EXIF metadata.
          */
         get_supports_exif(): boolean;
         /**
          * Query `self` whether it supports writing IPTC metadata.
-         * @returns %TRUE if the loaded image type supports writing IPTC metadata.
+         * @returns `true` if the loaded image type supports writing IPTC metadata.
          */
         get_supports_iptc(): boolean;
         /**
          * Query `self` whether it supports writing XMP metadata.
-         * @returns %TRUE if the loaded image type supports writing XMP metadata.
+         * @returns `true` if the loaded image type supports writing XMP metadata.
          */
         get_supports_xmp(): boolean;
         /**
@@ -598,10 +638,10 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          *
          * In case of error, a GLib warning will be logged. Use instead
-         * gexiv2_metadata_try_get_tag_multiple() if you want to avoid this and
+         * `gexiv2_metadata_try_get_tag_multiple()` if you want to avoid this and
          * control if and how the error is outputted.
          * @param tag Exiv2 tag name
-         * @returns The multiple string values of the tag.  Returns %NULL if parameters are %NULL or @tag does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed @tag, returns array[0] = %NULL if @tag is undefined or is not set in the current metadata. (Note: <ulink url="https://gitlab.gnome.org/GNOME/gexiv2/-/issues/61">xmpText/langAlt bug</ulink>  is fixed in gexiv2_metadata_try_get_tag_multiple())
+         * @returns The multiple string values of the tag.  Returns `null` if parameters are `null` or `tag` does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed `tag`, returns array[0] = `null` if `tag` is undefined or is not set in the current metadata. (Note: <ulink url="https://gitlab.gnome.org/GNOME/gexiv2/-/issues/61">xmpText/langAlt bug</ulink>  is fixed in `gexiv2_metadata_try_get_tag_multiple()`)
          */
         get_tag_multiple(tag: string): string[] | null;
         /**
@@ -619,15 +659,27 @@ export namespace GExiv2 {
          * Tags that support multiple values are returned as a single string, with elements separated by ", ".
          *
          * In case of error, a GLib warning will be logged. Use instead
-         * gexiv2_metadata_try_get_tag_string() if you want to avoid this and
+         * `gexiv2_metadata_try_get_tag_string()` if you want to avoid this and
          * control if and how the error is outputted.
          * @param tag Exiv2 tag name
          * @returns The tag's value as a string
          */
         get_tag_string(tag: string): string | null;
+        /**
+         * @returns The currently-encoded XMP packet (see gexiv2_metadata_generate_xmp_packet).
+         */
         get_xmp_packet(): string | null;
+        /**
+         * @returns A unique list of the available XMP tags
+         */
         get_xmp_tags(): string[];
+        /**
+         * @returns TRUE if EXIF metadata is present in the loaded image
+         */
         has_exif(): boolean;
+        /**
+         * @returns TRUE if IPTC metadata is present in the loaded image
+         */
         has_iptc(): boolean;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
@@ -635,9 +687,17 @@ export namespace GExiv2 {
          * @returns TRUE if the tag is present.
          */
         has_tag(tag: string): boolean;
+        /**
+         * @returns TRUE if XMP metadata is present in the loaded image
+         */
         has_xmp(): boolean;
         /**
          * The buffer must be an image format supported by Exiv2.
+         *
+         * When called on an already filled meta-data object (i.e. one that has already
+         * been filled by a previous call of {@link GExiv2.Metadata.open_path}) and the
+         * opening of the new path fails, the object will not revert to its previous
+         * state but be in a similar state after calling {@link GExiv2.Metadata.new}.
          * @param data A buffer containing the data to be read
          * @returns Boolean success indicator
          */
@@ -663,8 +723,8 @@ export namespace GExiv2 {
         save_file(path: string): boolean;
         /**
          * This is a composite setter that will set a number of fields to the supplied value.  See
-         * #gexiv2_metadata_get_comment for more information.
-         * @param comment Comment string to set. Must not be %NULL
+         * `gexiv2_metadata_get_comment` for more information.
+         * @param comment Comment string to set. Must not be `null`
          */
         set_comment(comment: string): void;
         /**
@@ -676,6 +736,9 @@ export namespace GExiv2 {
          * @returns Boolean success value
          */
         set_exif_tag_rational(tag: string, nom: number, den: number): boolean;
+        /**
+         * @param buffer A buffer containing thumbnail data
+         */
         set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
         /**
          * Sets or replaces the EXIF thumbnail with the image in the file
@@ -685,7 +748,7 @@ export namespace GExiv2 {
         set_exif_thumbnail_from_file(path: string): boolean;
         /**
          * Convenience function to create a new set of simple GPS data. Warning: Will remove any other
-         * GPS information that is currently set. See gexiv2_metadata_update_gps_info() for
+         * GPS information that is currently set. See `gexiv2_metadata_update_gps_info()` for
          * just modifying the GPS data.
          * @param longitude Longitude value to set or replace current value
          * @param latitude Latitude value to set or replace current value
@@ -705,25 +768,25 @@ export namespace GExiv2 {
         set_metadata_pixel_width(width: number): void;
         /**
          * The orientation must be valid and cannot be #GEXIV2_ORIENTATION_UNSPECIFIED.
-         * @param orientation The new #GExiv2Orientation for the image.
+         * @param orientation The new {@link GExiv2.Orientation} for the image.
          */
-        set_orientation(orientation: Orientation | null): void;
+        set_orientation(orientation: Orientation): void;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          * @param tag Exiv2 tag name
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
          */
-        set_tag_long(tag: string, value: number): boolean;
+        set_tag_long(tag: string, value: bigint | number): boolean;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          *
-         * All previous `tag` values are erased. For multiple value tags, each of the non %NULL
-         * entries in `values` is stored. For single value tags, only the last non %NULL value
+         * All previous `tag` values are erased. For multiple value tags, each of the non `null`
+         * entries in `values` is stored. For single value tags, only the last non `null` value
          * is assigned.
          *
          * In case of error, a GLib warning will be logged. Use instead
-         * gexiv2_metadata_try_set_tag_multiple() if you want to avoid this and
+         * `gexiv2_metadata_try_set_tag_multiple()` if you want to avoid this and
          * control if and how the error is outputted.
          * @param tag Exiv2 tag name
          * @param values An array of values to set or replace the existing value(s)
@@ -737,7 +800,7 @@ export namespace GExiv2 {
          * value tags, `value` replaces the value.
          *
          * In case of error, a GLib warning will be logged. Use instead
-         * gexiv2_metadata_try_set_tag_string() if you want to avoid this and
+         * `gexiv2_metadata_try_set_tag_string()` if you want to avoid this and
          * control if and how the error is outputted.
          * @param tag Exiv2 tag name
          * @param value The value to set or replace the existing value
@@ -750,7 +813,7 @@ export namespace GExiv2 {
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
          */
-        set_xmp_tag_struct(tag: string, type: StructureType | null): boolean;
+        set_xmp_tag_struct(tag: string, type: StructureType): boolean;
         /**
          * Removes the Exiv2 tag from the metadata object.
          *
@@ -768,12 +831,12 @@ export namespace GExiv2 {
          */
         try_erase_exif_thumbnail(): void;
         /**
-         * Encode the XMP packet as a %NULL-terminated string.
-         * @param xmp_format_flags One of #GExiv2XmpFormatFlags
+         * Encode the XMP packet as a `null`-terminated string.
+         * @param xmp_format_flags One of {@link GExiv2.XmpFormatFlags}
          * @param padding The padding (FIXME: Add documentation)
-         * @returns Encode the XMP packet and return as a %NULL-terminated string.
+         * @returns Encode the XMP packet and return as a `null`-terminated string.
          */
-        try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags | null, padding: number): string | null;
+        try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
         /**
          * A composite accessor that uses the first available metadata field from a list of well-known
          * locations to find the photo's comment (or description).
@@ -853,22 +916,26 @@ export namespace GExiv2 {
         /**
          * Composite accessor to query the pixel with stored in the metadata. This
          * might differ from the height of image that is available through
-         * gexiv2_metadata_get_pixel_height()
+         * `gexiv2_metadata_get_pixel_height()`
          * @returns Height of images in pixels as stored in the metadata
          */
         try_get_metadata_pixel_height(): number;
         /**
          * Composite accessor to query the pixel with stored in the metadata. This
          * might differ from the width of image that is available through
-         * gexiv2_metadata_get_pixel_width()
+         * `gexiv2_metadata_get_pixel_width()`
          * @returns Width of images in pixels as stored in the metadata
          */
         try_get_metadata_pixel_width(): number;
         /**
          * The EXIF Orientation field
-         * @returns A #GExiv2Orientation value representing the EXIF orientation value.
+         * @returns A {@link GExiv2.Orientation} value representing the EXIF orientation value.
          */
         try_get_orientation(): Orientation;
+        /**
+         * @param props A {@link GExiv2.PreviewProperties} instance
+         * @returns A {@link GExiv2.PreviewImage} instance for the particular {@link GExiv2.PreviewProperties}.
+         */
         try_get_preview_image(props: PreviewProperties): PreviewImage;
         /**
          * An interpreted string is one fit for user display.  It may display units or use formatting
@@ -890,7 +957,7 @@ export namespace GExiv2 {
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          * @param tag Exiv2 tag name
-         * @returns The multiple string values of @tag.  Returns %NULL if parameters are %NULL or @tag does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed @tag, returns array[0] = %NULL if @tag is undefined or is not set in the current metadata.
+         * @returns The multiple string values of `tag`.  Returns `null` if parameters are `null` or `tag` does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed `tag`, returns array[0] = `null` if `tag` is undefined or is not set in the current metadata.
          */
         try_get_tag_multiple(tag: string): string[] | null;
         /**
@@ -910,6 +977,9 @@ export namespace GExiv2 {
          * @returns The tag's value as a string
          */
         try_get_tag_string(tag: string): string | null;
+        /**
+         * @returns The currently-encoded XMP packet (see gexiv2_metadata_generate_xmp_packet).
+         */
         try_get_xmp_packet(): string | null;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
@@ -919,8 +989,8 @@ export namespace GExiv2 {
         try_has_tag(tag: string): boolean;
         /**
          * This is a composite setter that will set a number of fields to the supplied value.  See
-         * #gexiv2_metadata_get_comment for more information.
-         * @param comment Comment string to set. Must not be %NULL
+         * `gexiv2_metadata_get_comment` for more information.
+         * @param comment Comment string to set. Must not be `null`
          */
         try_set_comment(comment: string): void;
         /**
@@ -932,10 +1002,13 @@ export namespace GExiv2 {
          * @returns Boolean success value
          */
         try_set_exif_tag_rational(tag: string, nom: number, den: number): boolean;
+        /**
+         * @param buffer A buffer containing thumbnail data
+         */
         try_set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
         /**
          * Convenience function to create a new set of simple GPS data. Warning: Will remove any other
-         * GPS information that is currently set. See gexiv2_metadata_update_gps_info() for
+         * GPS information that is currently set. See `gexiv2_metadata_update_gps_info()` for
          * just modifying the GPS data.
          * @param longitude Longitude value to set or replace current value
          * @param latitude Latitude value to set or replace current value
@@ -955,21 +1028,21 @@ export namespace GExiv2 {
         try_set_metadata_pixel_width(width: number): void;
         /**
          * The orientation must be valid and cannot be #GEXIV2_ORIENTATION_UNSPECIFIED.
-         * @param orientation The new #GExiv2Orientation for the image.
+         * @param orientation The new {@link GExiv2.Orientation} for the image.
          */
-        try_set_orientation(orientation: Orientation | null): void;
+        try_set_orientation(orientation: Orientation): void;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          * @param tag Exiv2 tag name
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
          */
-        try_set_tag_long(tag: string, value: number): boolean;
+        try_set_tag_long(tag: string, value: bigint | number): boolean;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
          *
-         * All previous `tag` values are erased. For multiple value tags, each of the non %NULL
-         * entries in `values` is stored. For single value tags, only the last non %NULL value
+         * All previous `tag` values are erased. For multiple value tags, each of the non `null`
+         * entries in `values` is stored. For single value tags, only the last non `null` value
          * is assigned.
          * @param tag Exiv2 tag name
          * @param values An array of values to set or replace the existing value(s)
@@ -992,7 +1065,7 @@ export namespace GExiv2 {
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
          */
-        try_set_xmp_tag_struct(tag: string, type: StructureType | null): boolean;
+        try_set_xmp_tag_struct(tag: string, type: StructureType): boolean;
         /**
          * The Exiv2 Tag Reference can be found at <ulink url="https://www.exiv2.org/metadata.html"></ulink>
          *
@@ -1000,7 +1073,7 @@ export namespace GExiv2 {
          * tags marked as Repeatable (which can be of any Iptc type). There are no multiple value Exif
          * tags.
          * @param tag An Exiv2 tag
-         * @returns Whether @tag is capable of storing multiple values or not. If @tag is undefined (i.e. not built-in and not added to @self), then @error is set and %FALSE is returned.
+         * @returns Whether `tag` is capable of storing multiple values or not. If `tag` is undefined (i.e. not built-in and not added to `self`), then `error` is set and `false` is returned.
          */
         try_tag_supports_multiple_values(tag: string): boolean;
         /**
@@ -1030,6 +1103,9 @@ export namespace GExiv2 {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PreviewImage extends GObject.Object {
         static $gtype: GObject.GType<PreviewImage>;
 
@@ -1050,16 +1126,19 @@ export namespace GExiv2 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PreviewImage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviewImage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PreviewImage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviewImage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PreviewImage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PreviewImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1072,14 +1151,40 @@ export namespace GExiv2 {
          * Releases the preview image and all associated memory.
          */
         free(): void;
+        /**
+         * @returns The raw image data
+         */
         get_data(): Uint8Array;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+        /**
+         * @returns The preview image's recommended file extension.
+         */
         get_extension(): string;
+        /**
+         * @returns The preview image's display height in pixels.
+         */
         get_height(): number;
+        /**
+         * @returns The preview image's MIME type.
+         */
         get_mime_type(): string;
+        /**
+         * @returns The preview image's display width in pixels.
+         */
         get_width(): number;
+        /**
+         * @param path The file path to write the preview image to.
+         * @returns The number of bytes written to the file.
+         */
         try_write_file(path: string): number;
+        /**
+         * @param path The file path to write the preview image to.
+         * @returns The number of bytes written to the file.
+         */
         write_file(path: string): number;
     }
 
@@ -1092,6 +1197,9 @@ export namespace GExiv2 {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PreviewProperties extends GObject.Object {
         static $gtype: GObject.GType<PreviewProperties>;
 
@@ -1112,16 +1220,19 @@ export namespace GExiv2 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PreviewProperties.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviewProperties.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PreviewProperties.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviewProperties.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PreviewProperties.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PreviewProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1130,38 +1241,59 @@ export namespace GExiv2 {
 
         // Methods
 
+        /**
+         * @returns The recommended file extension for the preview image.
+         */
         get_extension(): string;
+        /**
+         * @returns The preview image's display height in pixels.
+         */
         get_height(): number;
+        /**
+         * @returns The preview image's MIME type.
+         */
         get_mime_type(): string;
+        /**
+         * @returns The preview image size in bytes.
+         */
         get_size(): number;
+        /**
+         * @returns The preview image's display width in pixels.
+         */
         get_width(): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MetadataClass = typeof Metadata;
+    /**
+     * @gir-type Struct
+     */
     abstract class MetadataPrivate {
         static $gtype: GObject.GType<MetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PreviewImageClass = typeof PreviewImage;
+    /**
+     * @gir-type Struct
+     */
     abstract class PreviewImagePrivate {
         static $gtype: GObject.GType<PreviewImagePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PreviewPropertiesClass = typeof PreviewProperties;
+    /**
+     * @gir-type Struct
+     */
     abstract class PreviewPropertiesPrivate {
         static $gtype: GObject.GType<PreviewPropertiesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

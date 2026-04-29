@@ -1,64 +1,70 @@
 {
     "name": "@girs/dbusmenugtk-0.4",
-    "version": "0.4.0-4.0.0-beta.38",
+    "version": "0.4.0-4.0.0-rc.6",
     "description": "GJS TypeScript type definitions for DbusmenuGtk-0.4, generated from library version 0.4.0",
     "type": "module",
     "module": "dbusmenugtk-0.4.js",
     "main": "dbusmenugtk-0.4.js",
     "exports": {
-      "./ambient": {
-        "types": "./dbusmenugtk-0.4-ambient.d.ts",
-        "import": "./dbusmenugtk-0.4-ambient.js",
-        "default": "./dbusmenugtk-0.4-ambient.js"
-      },
-      "./import": {
-        "types": "./dbusmenugtk-0.4-import.d.ts",
-        "import": "./dbusmenugtk-0.4-import.js",
-        "default": "./dbusmenugtk-0.4-import.js"
-      },
-      "./dbusmenugtk-0.4": {
-        "types": "./dbusmenugtk-0.4.d.ts",
-        "import": "./dbusmenugtk-0.4.js",
-        "default": "./dbusmenugtk-0.4.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./dbusmenugtk-0.4-ambient.d.ts",
+            "import": "./dbusmenugtk-0.4-ambient.js",
+            "default": "./dbusmenugtk-0.4-ambient.js"
+        },
+        "./import": {
+            "types": "./dbusmenugtk-0.4-import.d.ts",
+            "import": "./dbusmenugtk-0.4-import.js",
+            "default": "./dbusmenugtk-0.4-import.js"
+        },
+        "./dbusmenugtk-0.4": {
+            "types": "./dbusmenugtk-0.4.d.ts",
+            "import": "./dbusmenugtk-0.4.js",
+            "default": "./dbusmenugtk-0.4.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/gtk-2.0": "2.24.33-4.0.0-beta.38",
-      "@girs/gdk-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/pango-1.0": "1.57.0-4.0.0-beta.38",
-      "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.38",
-      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/atk-1.0": "2.58.0-4.0.0-beta.38",
-      "@girs/dbusmenu-0.4": "0.4.0-4.0.0-beta.38"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/dbusmenu-0.4": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-2.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gtk-2.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "DbusmenuGtk-0.4"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "DbusmenuGtk-0.4"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/dbusmenugtk-0.4#readme"
 }
-
-

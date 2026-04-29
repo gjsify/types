@@ -20,16 +20,8 @@ export namespace P11Kit {
     /**
      * Error codes returned by various functions. The functions each clearly state
      * which error codes they are capable of returning.
+     * @gir-type Enum
      */
-
-    /**
-     * Error codes returned by various functions. The functions each clearly state
-     * which error codes they are capable of returning.
-     */
-    export namespace UriResult {
-        export const $gtype: GObject.GType<UriResult>;
-    }
-
     enum UriResult {
         OK,
         UNEXPECTED,
@@ -39,6 +31,7 @@ export namespace P11Kit {
         BAD_VERSION,
         NOT_FOUND,
     }
+
     const PIN_FALLBACK: string;
     const URI_SCHEME: string;
     const URI_SCHEME_LEN: number;
@@ -57,9 +50,9 @@ export namespace P11Kit {
      * </programlisting></informalexample>
      * @param string Pointer to string block
      * @param max_length Maximum length of string block
-     * @returns The newly allocated string, or %NULL if memory could not be allocated.
+     * @returns The newly allocated string, or `null` if memory could not be allocated.
      */
-    function space_strdup(string: number, max_length: number): string;
+    function space_strdup(string: number, max_length: bigint | number): string;
     /**
      * In PKCS\#11 structures many strings are encoded in a strange way. The string
      * is placed in a fixed length buffer and then padded with spaces.
@@ -78,12 +71,12 @@ export namespace P11Kit {
      * @param max_length Maximum length of string block
      * @returns The length of the space padded string.
      */
-    function space_strlen(string: number, max_length: number): number;
+    function space_strlen(string: number, max_length: bigint | number): number;
     /**
      * Lookup a message for the uri error code. These codes are the P11_KIT_URI_XXX
-     * error codes that can be returned from p11_kit_uri_parse() or
-     * p11_kit_uri_format(). As a special case %NULL, will be returned for
-     * %P11_KIT_URI_OK.
+     * error codes that can be returned from `p11_kit_uri_parse()` or
+     * `p11_kit_uri_format()`. As a special case `null`, will be returned for
+     * {@link P11Kit.UriResult.OK}.
      * @param code The error code
      * @returns The message for the error code. This string is owned by the p11-kit library.
      */
@@ -93,7 +86,7 @@ export namespace P11Kit {
      *
      * PKCS\#11 URIs can represent tokens, objects or modules. The uri_type argument
      * allows the caller to specify what type of URI is expected and the sorts of
-     * things the URI should match. %P11_KIT_URI_FOR_ANY can be used to parse a URI
+     * things the URI should match. {@link P11Kit.UriType.ANY} can be used to parse a URI
      * for any context. It's then up to the caller to make sense of the way that
      * it is used.
      *
@@ -103,23 +96,19 @@ export namespace P11Kit {
      * @param string The string to parse
      * @param uri_type The type of URI that is expected
      * @param uri The blank URI to parse the values into
-     * @returns %P11_KIT_URI_OK if the URI was parsed successfully. %P11_KIT_URI_BAD_SCHEME if this was not a PKCS\#11 URI. %P11_KIT_URI_BAD_SYNTAX if the URI syntax was bad. %P11_KIT_URI_NO_MEMORY if memory allocation failed. %P11_KIT_URI_BAD_VERSION if a version number was bad. %P11_KIT_URI_BAD_ENCODING if the URI encoding was invalid.
+     * @returns {@link P11Kit.UriResult.OK} if the URI was parsed successfully. {@link P11Kit.UriResult.BAD_SCHEME} if this was not a PKCS\#11 URI. {@link P11Kit.UriResult.BAD_SYNTAX} if the URI syntax was bad. `P11_KIT_URI_NO_MEMORY` if memory allocation failed. {@link P11Kit.UriResult.BAD_VERSION} if a version number was bad. {@link P11Kit.UriResult.BAD_ENCODING} if the URI encoding was invalid.
      */
-    function uri_parse(string: string, uri_type: UriType | null, uri: Uri): number;
+    function uri_parse(string: string, uri_type: UriType, uri: Uri): number;
+    /**
+     * @gir-type Callback
+     */
     interface pin_destroy_func {
         (data: any): void;
     }
     /**
-     * Flags that are passed to p11_kit_pin_request() and registered callbacks.
+     * Flags that are passed to `p11_kit_pin_request()` and registered callbacks.
+     * @gir-type Flags
      */
-
-    /**
-     * Flags that are passed to p11_kit_pin_request() and registered callbacks.
-     */
-    export namespace PinFlags {
-        export const $gtype: GObject.GType<PinFlags>;
-    }
-
     enum PinFlags {
         USER_LOGIN,
         SO_LOGIN,
@@ -128,23 +117,14 @@ export namespace P11Kit {
         MANY_TRIES,
         FINAL_TRY,
     }
-    /**
-     * A PKCS\#11 URI can represent different kinds of things. This flag is used by
-     * p11_kit_uri_parse() to denote in what context the URI will be used.
-     *
-     * The various types can be combined.
-     */
 
     /**
      * A PKCS\#11 URI can represent different kinds of things. This flag is used by
-     * p11_kit_uri_parse() to denote in what context the URI will be used.
+     * `p11_kit_uri_parse()` to denote in what context the URI will be used.
      *
      * The various types can be combined.
+     * @gir-type Flags
      */
-    export namespace UriType {
-        export const $gtype: GObject.GType<UriType>;
-    }
-
     enum UriType {
         OBJECT,
         TOKEN,
@@ -154,16 +134,14 @@ export namespace P11Kit {
         OBJECT_ON_TOKEN_AND_MODULE,
         ANY,
     }
+
     /**
      * A structure representing a PKCS\#11 PIN. There are no public fields
      * visible in this structure. Use the various accessor functions.
+     * @gir-type Struct
      */
     abstract class Pin {
         static $gtype: GObject.GType<Pin>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -182,7 +160,14 @@ export namespace P11Kit {
          * @param length a location to return the value length
          * @returns the value for the PIN.
          */
-        get_value(length: number): number;
+        get_value(length: bigint | number): number;
+        /**
+         * Add a reference to a P11KitPin. This should be matched with a later call
+         * to `p11_kit_pin_unref()`. As long as at least one reference is held, the PIN
+         * will remain valid and in memory.
+         * @returns the `pin` pointer, for convenience sake.
+         */
+        ref(): Pin;
         /**
          * Remove a reference from a P11KitPin. When all references have been removed
          * then the PIN will be freed and will no longer be in memory.
@@ -193,21 +178,18 @@ export namespace P11Kit {
     /**
      * A structure representing a PKCS\#11 URI. There are no public fields
      * visible in this structure. Use the various accessor functions.
+     * @gir-type Struct
      */
     abstract class Uri {
         static $gtype: GObject.GType<Uri>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Static methods
 
         /**
          * Lookup a message for the uri error code. These codes are the P11_KIT_URI_XXX
-         * error codes that can be returned from p11_kit_uri_parse() or
-         * p11_kit_uri_format(). As a special case %NULL, will be returned for
-         * %P11_KIT_URI_OK.
+         * error codes that can be returned from `p11_kit_uri_parse()` or
+         * `p11_kit_uri_format()`. As a special case `null`, will be returned for
+         * {@link P11Kit.UriResult.OK}.
          * @param code The error code
          */
         static message(code: number): string;
@@ -216,7 +198,7 @@ export namespace P11Kit {
          *
          * PKCS\#11 URIs can represent tokens, objects or modules. The uri_type argument
          * allows the caller to specify what type of URI is expected and the sorts of
-         * things the URI should match. %P11_KIT_URI_FOR_ANY can be used to parse a URI
+         * things the URI should match. {@link P11Kit.UriType.ANY} can be used to parse a URI
          * for any context. It's then up to the caller to make sense of the way that
          * it is used.
          *
@@ -249,14 +231,14 @@ export namespace P11Kit {
          *
          * The uri_type of URI specified limits the different parts of the resulting
          * URI. To format a URI containing all possible information use
-         * %P11_KIT_URI_FOR_ANY
+         * {@link P11Kit.UriType.ANY}
          *
-         * The resulting string should be freed with free().
+         * The resulting string should be freed with `free()`.
          * @param uri_type The type of URI that should be produced.
          * @param string Location to store a newly allocated string.
-         * @returns %P11_KIT_URI_OK if the URI was formatted successfully. %P11_KIT_URI_NO_MEMORY if memory allocation failed.
+         * @returns {@link P11Kit.UriResult.OK} if the URI was formatted successfully. `P11_KIT_URI_NO_MEMORY` if memory allocation failed.
          */
-        format(uri_type: UriType | null, string: string): number;
+        format(uri_type: UriType, string: string): number;
         /**
          * Free a PKCS\#11 URI.
          */
@@ -264,7 +246,7 @@ export namespace P11Kit {
         /**
          * Get the 'pin-source' part of the URI. This is used by some applications to
          * lookup a PIN for logging into a PKCS\#11 token.
-         * @returns The pin-source or %NULL if not present.
+         * @returns The pin-source or `null` if not present.
          */
         get_pin_source(): string;
         get_pinfile(): string;
@@ -274,6 +256,9 @@ export namespace P11Kit {
          * @param pin_source The new pin-source
          */
         set_pin_source(pin_source: string): void;
+        /**
+         * @param pinfile The pinfile
+         */
         set_pinfile(pinfile: string): void;
         /**
          * Set the unrecognized flag on this URI.

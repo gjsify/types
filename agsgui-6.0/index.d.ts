@@ -9,7 +9,5 @@
 
 import './agsgui-6.0-ambient.d.ts';
 
-import './agsgui-6.0-import.d.ts';
-
 import AgsGui from './agsgui-6.0.js';
 export default AgsGui;

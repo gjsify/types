@@ -17,7 +17,15 @@
     "inlineSources": false,
     "newLine": "LF",
     // Show diagnostics
-    "diagnostics": true
+    "diagnostics": true,
+    "paths": {
+      "@girs/gobject-2.0": [
+            "../gobject-2.0/index.d.ts"
+      ],
+      "@girs/gjs": [
+            "../gjs/index.d.ts"
+      ]
+}
   },
   "include": ["./freetype2-2.0.d.ts"]
 }

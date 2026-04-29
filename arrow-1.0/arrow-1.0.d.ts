@@ -21,16 +21,16 @@ export namespace Arrow {
      */
 
     /**
-     * They are corresponding to `arrow::Compression::type` values.
-     */
-
-    /**
-     * They are corresponding to `arrow::Compression::type` values.
+     * @gir-type Enum
      */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
 
+    /**
+     * They are corresponding to `arrow::Compression::type` values.
+     * @gir-type Enum
+     */
     enum CompressionType {
         /**
          * Not compressed.
@@ -65,17 +65,18 @@ export namespace Arrow {
          */
         BZ2,
     }
-    /**
-     * They correspond to the values of `arrow::compute::CountOptions::CountMode`.
-     */
 
     /**
-     * They correspond to the values of `arrow::compute::CountOptions::CountMode`.
+     * @gir-type Enum
      */
     export namespace CountMode {
         export const $gtype: GObject.GType<CountMode>;
     }
 
+    /**
+     * They correspond to the values of `arrow::compute::CountOptions::CountMode`.
+     * @gir-type Enum
+     */
     enum CountMode {
         /**
          * Only non-null values will be counted.
@@ -90,13 +91,15 @@ export namespace Arrow {
          */
         ALL,
     }
+
     /**
      * The error codes are used by all arrow-glib functions.
      *
      * They are corresponding to `arrow::Status` values.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
-        static $gtype: GObject.GType<Error>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -163,7 +166,6 @@ export namespace Arrow {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -171,16 +173,16 @@ export namespace Arrow {
     }
 
     /**
-     * They are corresponding to `arrow::io::FileMode::type` values.
-     */
-
-    /**
-     * They are corresponding to `arrow::io::FileMode::type` values.
+     * @gir-type Enum
      */
     export namespace FileMode {
         export const $gtype: GObject.GType<FileMode>;
     }
 
+    /**
+     * They are corresponding to `arrow::io::FileMode::type` values.
+     * @gir-type Enum
+     */
     enum FileMode {
         /**
          * For read.
@@ -195,17 +197,19 @@ export namespace Arrow {
          */
         READWRITE,
     }
-    /**
-     * They are corresponding to `arrow::fs::FileType` values.
-     */
 
     /**
-     * They are corresponding to `arrow::fs::FileType` values.
+     * @gir-type Enum
      */
     export namespace FileType {
         export const $gtype: GObject.GType<FileType>;
     }
 
+    /**
+     * They are corresponding to `arrow::fs::FileType` values.
+     * @gir-type Enum
+     * @since 1.0.0
+     */
     enum FileType {
         /**
          * Entry is not found
@@ -224,19 +228,19 @@ export namespace Arrow {
          */
         DIR,
     }
-    /**
-     * They are corresponding to
-     * `arrow::compute::FilterOptions::NullSelectionBehavior` values.
-     */
 
     /**
-     * They are corresponding to
-     * `arrow::compute::FilterOptions::NullSelectionBehavior` values.
+     * @gir-type Enum
      */
     export namespace FilterNullSelectionBehavior {
         export const $gtype: GObject.GType<FilterNullSelectionBehavior>;
     }
 
+    /**
+     * They are corresponding to
+     * `arrow::compute::FilterOptions::NullSelectionBehavior` values.
+     * @gir-type Enum
+     */
     enum FilterNullSelectionBehavior {
         /**
          * Filtered value will be removed in the output.
@@ -247,21 +251,20 @@ export namespace Arrow {
          */
         EMIT_NULL,
     }
-    /**
-     * They are corresponding to `arrow::IntervalType::type` values.
-     *
-     * Since 7.0.0
-     */
 
     /**
-     * They are corresponding to `arrow::IntervalType::type` values.
-     *
-     * Since 7.0.0
+     * @gir-type Enum
      */
     export namespace IntervalType {
         export const $gtype: GObject.GType<IntervalType>;
     }
 
+    /**
+     * They are corresponding to `arrow::IntervalType::type` values.
+     *
+     * Since 7.0.0
+     * @gir-type Enum
+     */
     enum IntervalType {
         /**
          * A number of months.
@@ -278,17 +281,18 @@ export namespace Arrow {
          */
         MONTH_DAY_NANO,
     }
-    /**
-     * They are corresponding to `arrow::json::UnexpectedFieldBehavior` values.
-     */
 
     /**
-     * They are corresponding to `arrow::json::UnexpectedFieldBehavior` values.
+     * @gir-type Enum
      */
     export namespace JSONReadUnexpectedFieldBehavior {
         export const $gtype: GObject.GType<JSONReadUnexpectedFieldBehavior>;
     }
 
+    /**
+     * They are corresponding to `arrow::json::UnexpectedFieldBehavior` values.
+     * @gir-type Enum
+     */
     enum JSONReadUnexpectedFieldBehavior {
         /**
          * Ignore other fields.
@@ -303,17 +307,19 @@ export namespace Arrow {
          */
         INFER_TYPE,
     }
-    /**
-     * They correspond to the values of `arrow::compute::JoinType`.
-     */
 
     /**
-     * They correspond to the values of `arrow::compute::JoinType`.
+     * @gir-type Enum
      */
     export namespace JoinType {
         export const $gtype: GObject.GType<JoinType>;
     }
 
+    /**
+     * They correspond to the values of `arrow::compute::JoinType`.
+     * @gir-type Enum
+     * @since 7.0.0
+     */
     enum JoinType {
         LEFT_SEMI,
         RIGHT_SEMI,
@@ -324,19 +330,19 @@ export namespace Arrow {
         RIGHT_OUTER,
         FULL_OUTER,
     }
-    /**
-     * They are corresponding to `arrow::ipc::MetadataVersion::type`
-     * values.
-     */
 
     /**
-     * They are corresponding to `arrow::ipc::MetadataVersion::type`
-     * values.
+     * @gir-type Enum
      */
     export namespace MetadataVersion {
         export const $gtype: GObject.GType<MetadataVersion>;
     }
 
+    /**
+     * They are corresponding to `arrow::ipc::MetadataVersion::type`
+     * values.
+     * @gir-type Enum
+     */
     enum MetadataVersion {
         /**
          * Version 1.
@@ -351,17 +357,19 @@ export namespace Arrow {
          */
         V3,
     }
-    /**
-     * They are corresponding to `arrow::compute::NullPlacement` values.
-     */
 
     /**
-     * They are corresponding to `arrow::compute::NullPlacement` values.
+     * @gir-type Enum
      */
     export namespace NullPlacement {
         export const $gtype: GObject.GType<NullPlacement>;
     }
 
+    /**
+     * They are corresponding to `arrow::compute::NullPlacement` values.
+     * @gir-type Enum
+     * @since 12.0.0
+     */
     enum NullPlacement {
         /**
          * Place nulls and NaNs before any non-null values.
@@ -374,19 +382,20 @@ export namespace Arrow {
          */
         AT_END,
     }
-    /**
-     * They correspond to the values of
-     * `arrow::compute::QuantileOptions::Interpolation`.
-     */
 
     /**
-     * They correspond to the values of
-     * `arrow::compute::QuantileOptions::Interpolation`.
+     * @gir-type Enum
      */
     export namespace QuantileInterpolation {
         export const $gtype: GObject.GType<QuantileInterpolation>;
     }
 
+    /**
+     * They correspond to the values of
+     * `arrow::compute::QuantileOptions::Interpolation`.
+     * @gir-type Enum
+     * @since 9.0.0
+     */
     enum QuantileInterpolation {
         /**
          * Linear.
@@ -410,50 +419,58 @@ export namespace Arrow {
         MIDPOINT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RankTiebreaker {
         export const $gtype: GObject.GType<RankTiebreaker>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum RankTiebreaker {
         MIN,
         MAX,
         FIRST,
         DENSE,
     }
-    /**
-     * They correspond to the values of `arrow::compute::RoundMode`.
-     */
 
     /**
-     * They correspond to the values of `arrow::compute::RoundMode`.
+     * @gir-type Enum
      */
     export namespace RoundMode {
         export const $gtype: GObject.GType<RoundMode>;
     }
 
+    /**
+     * They correspond to the values of `arrow::compute::RoundMode`.
+     * @gir-type Enum
+     * @since 7.0.0
+     */
     enum RoundMode {
         DOWN,
         UP,
         /**
          * Get the integral part without fractional digits (aka "trunc")
-         * `GARROW_ROUND_TOWARDS_INFINITY,`
+         * `GARROW_ROUND_TOWARDS_INFINITY`,
          *   Round negative values with `GARROW_ROUND_MODE_DOWN` rule
          *   and positive values with UP rule (aka "away from zero")
-         * `GARROW_ROUND_HALF_DOWN,`
+         * `GARROW_ROUND_HALF_DOWN`,
          *   Round ties with `GARROW_ROUND_MODE_DOWN` rule
          *   (also called "round half towards negative infinity")
-         * `GARROW_ROUND_HALF_UP,`
+         * `GARROW_ROUND_HALF_UP`,
          *   Round ties with `GARROW_ROUND_MODE_UP` rule
          *   (also called "round half towards positive infinity")
-         * `GARROW_ROUND_HALF_TOWARDS_ZERO,`
+         * `GARROW_ROUND_HALF_TOWARDS_ZERO`,
          *   Round ties with GARROW_ROUND_MODE_TOWARDS_ZERO rule
          *   (also called "round half away from infinity")
-         * `GARROW_ROUND_HALF_TOWARDS_INFINITY,`
+         * `GARROW_ROUND_HALF_TOWARDS_INFINITY`,
          *   Round ties with GARROW_ROUND_MODE_TOWARDS_INFINITY rule
          *   (also called "round half away from zero")
-         * `GARROW_ROUND_HALF_TO_EVEN,`
+         * `GARROW_ROUND_HALF_TO_EVEN`,
          *   Round ties to nearest even integer
-         * `GARROW_ROUND_HALF_TO_ODD,`
+         * `GARROW_ROUND_HALF_TO_ODD`,
          *   Round ties to nearest odd integer
          */
         TOWARDS_ZERO,
@@ -465,17 +482,19 @@ export namespace Arrow {
         HALF_TO_EVEN,
         HALF_TO_ODD,
     }
-    /**
-     * They are corresponding to `arrow::fs::S3LogLevel` values.
-     */
 
     /**
-     * They are corresponding to `arrow::fs::S3LogLevel` values.
+     * @gir-type Enum
      */
     export namespace S3LogLevel {
         export const $gtype: GObject.GType<S3LogLevel>;
     }
 
+    /**
+     * They are corresponding to `arrow::fs::S3LogLevel` values.
+     * @gir-type Enum
+     * @since 7.0.0
+     */
     enum S3LogLevel {
         /**
          * Off.
@@ -506,17 +525,19 @@ export namespace Arrow {
          */
         TRACE,
     }
-    /**
-     * They are corresponding to `arrow::compute::SortOrder` values.
-     */
 
     /**
-     * They are corresponding to `arrow::compute::SortOrder` values.
+     * @gir-type Enum
      */
     export namespace SortOrder {
         export const $gtype: GObject.GType<SortOrder>;
     }
 
+    /**
+     * They are corresponding to `arrow::compute::SortOrder` values.
+     * @gir-type Enum
+     * @since 3.0.0
+     */
     enum SortOrder {
         /**
          * Sort in ascending order.
@@ -527,17 +548,18 @@ export namespace Arrow {
          */
         DESCENDING,
     }
-    /**
-     * They are corresponding to `arrow::TimeUnit::type` values.
-     */
 
     /**
-     * They are corresponding to `arrow::TimeUnit::type` values.
+     * @gir-type Enum
      */
     export namespace TimeUnit {
         export const $gtype: GObject.GType<TimeUnit>;
     }
 
+    /**
+     * They are corresponding to `arrow::TimeUnit::type` values.
+     * @gir-type Enum
+     */
     enum TimeUnit {
         /**
          * Second.
@@ -556,17 +578,18 @@ export namespace Arrow {
          */
         NANO,
     }
-    /**
-     * They are corresponding to `arrow::Type::type` values.
-     */
 
     /**
-     * They are corresponding to `arrow::Type::type` values.
+     * @gir-type Enum
      */
     export namespace Type {
         export const $gtype: GObject.GType<Type>;
     }
 
+    /**
+     * They are corresponding to `arrow::Type::type` values.
+     * @gir-type Enum
+     */
     enum Type {
         /**
          * A degenerate NULL type represented as 0 bytes/bits.
@@ -731,17 +754,19 @@ export namespace Arrow {
          */
         RUN_END_ENCODED,
     }
-    /**
-     * They correspond to the values of `arrow::compute::Utf8NormalizeOptions::Form`.
-     */
 
     /**
-     * They correspond to the values of `arrow::compute::Utf8NormalizeOptions::Form`.
+     * @gir-type Enum
      */
     export namespace UTF8NormalizeForm {
         export const $gtype: GObject.GType<UTF8NormalizeForm>;
     }
 
+    /**
+     * They correspond to the values of `arrow::compute::Utf8NormalizeOptions::Form`.
+     * @gir-type Enum
+     * @since 8.0.0
+     */
     enum UTF8NormalizeForm {
         /**
          * Normalization Form Canonical Composition.
@@ -762,38 +787,49 @@ export namespace Arrow {
          */
         NFKD,
     }
+
     /**
      * The major version.
+     * @since 0.10.0
      */
     const VERSION_MAJOR: number;
     /**
      * The micro version.
+     * @since 0.10.0
      */
     const VERSION_MICRO: number;
     /**
      * The minor version.
+     * @since 0.10.0
      */
     const VERSION_MINOR: number;
     /**
      * The version tag. Normally, it's an empty string. It's "SNAPSHOT"
      * for snapshot version.
+     * @since 0.10.0
      */
     const VERSION_TAG: string;
     function error_quark(): GLib.Quark;
     /**
      * Finalize the S3 APIs.
-     * @returns %TRUE on success, %FALSE on error.
+     * @returns `true` on success, `false` on error.
+     * @since 7.0.0
      */
     function s3_finalize(): boolean;
     /**
      * Normally, you don't need to call this function because the S3 APIs
      * are initialized with the default options automatically. If you want
      * to call this function, you must call this function before you use
-     * any #GArrowS3FileSystem related APIs.
+     * any {@link Arrow.S3FileSystem} related APIs.
      * @param options Options to initialize the S3 APIs.
-     * @returns %TRUE on success, %FALSE on error.
+     * @returns `true` on success, `false` on error.
+     * @since 7.0.0
      */
-    function s3_initialize(options?: S3GlobalOptions | null): boolean;
+    function s3_initialize(options: S3GlobalOptions | null): boolean;
+    /**
+     * @returns `true` if Apache Arrow C++ is built with S3 support, `false`   otherwise.
+     * @since 7.0.0
+     */
     function s3_is_enabled(): boolean;
     namespace AggregateNodeOptions {
         // Signal signatures
@@ -806,6 +842,9 @@ export namespace Arrow {
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AggregateNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<AggregateNodeOptions>;
 
@@ -824,20 +863,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](aggregations: Aggregation[], keys?: string[] | null): AggregateNodeOptions;
+        static ['new'](aggregations: Aggregation[], keys: string[] | null): AggregateNodeOptions;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AggregateNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AggregateNodeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AggregateNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AggregateNodeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AggregateNodeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AggregateNodeOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -866,6 +908,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Aggregation extends GObject.Object {
         static $gtype: GObject.GType<Aggregation>;
 
@@ -873,18 +918,29 @@ export namespace Arrow {
 
         /**
          * The function name to aggregate.
+         * @since 6.0.0
+         * @construct-only
+         * @default null
          */
         get function(): string;
         /**
          * The input field name of aggregate function.
+         * @since 6.0.0
+         * @construct-only
+         * @default null
          */
         get input(): string;
         /**
          * The options of aggregate function.
+         * @since 6.0.0
+         * @construct-only
          */
         get options(): FunctionOptions;
         /**
          * The output field name of aggregate function.
+         * @since 6.0.0
+         * @construct-only
+         * @default null
          */
         get output(): string;
 
@@ -907,16 +963,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Aggregation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Aggregation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Aggregation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Aggregation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Aggregation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Aggregation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -941,26 +1000,53 @@ export namespace Arrow {
             array: any;
             buffer1: Buffer;
             buffer2: Buffer;
-            null_bitmap: Buffer;
-            nullBitmap: Buffer;
+            null_bitmap: Buffer | null;
+            nullBitmap: Buffer | null;
             parent: Array;
             value_data_type: DataType;
             valueDataType: DataType;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Array extends GObject.Object {
         static $gtype: GObject.GType<Array>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set array(val: any);
+        /**
+         * @construct-only
+         */
         get buffer1(): Buffer;
+        /**
+         * @construct-only
+         */
         get buffer2(): Buffer;
-        get null_bitmap(): Buffer;
-        get nullBitmap(): Buffer;
+        /**
+         * @construct-only
+         */
+        get null_bitmap(): Buffer | null;
+        /**
+         * @construct-only
+         */
+        get nullBitmap(): Buffer | null;
+        /**
+         * @construct-only
+         */
         get parent(): Array;
+        /**
+         * @construct-only
+         */
         get value_data_type(): DataType;
+        /**
+         * @construct-only
+         */
         get valueDataType(): DataType;
 
         /**
@@ -980,16 +1066,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -998,46 +1087,172 @@ export namespace Arrow {
 
         // Static methods
 
+        /**
+         * @param c_abi_array A `struct ArrowArray *`.
+         * @param data_type A {@link Arrow.DataType} of the C ABI array.
+         */
         static ['import'](c_abi_array: any, data_type: DataType): Array | null;
 
         // Methods
 
-        cast(target_data_type: DataType, options?: CastOptions | null): Array | null;
+        /**
+         * @param target_data_type A {@link Arrow.DataType} of cast target data.
+         * @param options A {@link Arrow.CastOptions}.
+         * @returns A newly created casted array on success, `null` on error.
+         */
+        cast(target_data_type: DataType, options: CastOptions | null): Array | null;
+        /**
+         * @param other_arrays A {@link Arrow.Array} to be   concatenated.
+         * @returns The concatenated array.
+         */
         concatenate(other_arrays: Array[]): Array | null;
-        count(options?: CountOptions | null): number;
+        /**
+         * @param options A {@link Arrow.CountOptions}.
+         * @returns The number of target values on success. If an error is occurred,   the returned value is untrustful value.
+         */
+        count(options: CountOptions | null): number;
+        /**
+         * @returns A {@link Arrow.StructArray} of `{input type "values", int64_t "counts"}`   on success, `null` on error.
+         */
         count_values(): StructArray | null;
+        /**
+         * @returns A newly created {@link Arrow.DictionaryArray} for the `array` on success,   `null` on error.
+         */
         dictionary_encode(): DictionaryArray | null;
+        /**
+         * @param other_array A {@link Arrow.Array} to be compared.
+         * @returns The string representation of   the difference between two arrays as unified format. If there is   no difference, the return value is `null`.   It should be freed with `g_free()` when no longer needed.
+         */
         diff_unified(other_array: Array): string | null;
+        /**
+         * @param other_array A {@link Arrow.Array} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_array: Array): boolean;
+        /**
+         * @param other_array A {@link Arrow.Array} to be compared.
+         * @returns `true` if both of them have the approx same data, `false`   otherwise.
+         */
         equal_approx(other_array: Array): boolean;
-        equal_options(other_array: Array, options?: EqualOptions | null): boolean;
+        /**
+         * @param other_array A {@link Arrow.Array} to be compared.
+         * @param options A {@link Arrow.EqualOptions} to custom how to compare.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
+        equal_options(other_array: Array, options: EqualOptions | null): boolean;
+        /**
+         * @param start_index The start index of `array` to be used.
+         * @param other_array A {@link Arrow.Array} to be compared.
+         * @param other_start_index The start index of `other_array` to be used.
+         * @param end_index The end index of `array` to be used. The end index of   `other_array` is "`other_start_index` + (`end_index` -   `start_index`)".
+         * @param options A {@link Arrow.EqualOptions} to custom how to compare.
+         * @returns `true` if both of them have the same data in the range,   `false` otherwise.
+         */
         equal_range(
-            start_index: number,
+            start_index: bigint | number,
             other_array: Array,
-            other_start_index: number,
-            end_index: number,
-            options?: EqualOptions | null,
+            other_start_index: bigint | number,
+            end_index: bigint | number,
+            options: EqualOptions | null,
         ): boolean;
+        /**
+         * @returns `true` on success, `false` on error.
+         */
         ['export'](): [boolean, any, any];
-        filter(filter: BooleanArray, options?: FilterOptions | null): Array | null;
+        /**
+         * @param filter The values indicates which values should be filtered out.
+         * @param options A {@link Arrow.FilterOptions}.
+         * @returns The {@link Arrow.Array} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
+         */
+        filter(filter: BooleanArray, options: FilterOptions | null): Array | null;
+        /**
+         * @returns The number of rows in the array.
+         */
         get_length(): number;
+        /**
+         * @returns The number of NULLs in the array.
+         */
         get_n_nulls(): number;
+        /**
+         * @returns The bitmap that indicates null   value indices for the array as {@link Arrow.Buffer} or `null` when   `garrow_array_get_n_nulls()` returns 0.
+         */
         get_null_bitmap(): Buffer | null;
+        /**
+         * @returns The number of values in the array.
+         */
         get_offset(): number;
+        /**
+         * @returns The {@link Arrow.DataType} for each value of the   array.
+         */
         get_value_data_type(): DataType;
+        /**
+         * @returns The {@link Arrow.Type} for each value of the array.
+         */
         get_value_type(): Type;
+        /**
+         * @param right A right hand side {@link Arrow.Array}.
+         * @returns The {@link Arrow.BooleanArray}   showing whether each element in the left array is contained   in right array.
+         */
         is_in(right: Array): BooleanArray | null;
+        /**
+         * @param right A right hand side {@link Arrow.ChunkedArray}.
+         * @returns The {@link Arrow.BooleanArray}   showing whether each element in the left array is contained   in right chunked array.
+         */
         is_in_chunked_array(right: ChunkedArray): BooleanArray | null;
-        is_null(i: number): boolean;
-        is_valid(i: number): boolean;
-        run_end_encode(options?: RunEndEncodeOptions | null): RunEndEncodedArray | null;
-        slice(offset: number, length: number): Array;
-        sort_indices(order: SortOrder | null): UInt64Array | null;
+        /**
+         * @param i The index of the target value.
+         * @returns Whether the `i`-th value is null or not.
+         */
+        is_null(i: bigint | number): boolean;
+        /**
+         * @param i The index of the target value.
+         * @returns Whether the `i`-th value is valid (not null) or not.
+         */
+        is_valid(i: bigint | number): boolean;
+        /**
+         * @param options A {@link Arrow.RunEndEncodeOptions}.
+         * @returns A newly created `GArrowRunEndEncodeArray` for the `array` on success,   `null` on error.
+         */
+        run_end_encode(options: RunEndEncodeOptions | null): RunEndEncodedArray | null;
+        /**
+         * @param offset The offset of sub {@link Arrow.Array}.
+         * @param length The length of sub {@link Arrow.Array}.
+         * @returns The sub {@link Arrow.Array}. It covers only from   `offset` to `offset + length` range. The sub {@link Arrow.Array} shares   values with the base {@link Arrow.Array}.
+         */
+        slice(offset: bigint | number, length: bigint | number): Array;
+        /**
+         * @param order The order for sort.
+         * @returns The indices that would sort   an array in the specified order on success, `null` on error.
+         */
+        sort_indices(order: SortOrder): UInt64Array | null;
+        /**
+         * @returns The indices that would sort   an array in ascending order on success, `null` on error.
+         */
         sort_to_indices(): UInt64Array | null;
-        take(indices: Array, options?: TakeOptions | null): Array | null;
-        take_chunked_array(indices: ChunkedArray, options?: TakeOptions | null): ChunkedArray | null;
+        /**
+         * @param indices The indices of values to take.
+         * @param options A {@link Arrow.TakeOptions}.
+         * @returns The {@link Arrow.Array} taken from   an array of values at indices in input array or `null` on error.
+         */
+        take(indices: Array, options: TakeOptions | null): Array | null;
+        /**
+         * @param indices The indices of values to take.
+         * @param options A {@link Arrow.TakeOptions}.
+         * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in chunked array or `null` on error.
+         */
+        take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): ChunkedArray | null;
+        /**
+         * @returns The formatted array content or `null` on error.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string | null;
+        /**
+         * @returns A newly created unique elements array on success, `null` on error.
+         */
         unique(): Array | null;
+        /**
+         * @param return_type A {@link Arrow.DataType} of the returned view.
+         * @returns A zero-copy view of this array   with the given type. This method checks if the `return_type` are   layout-compatible.
+         */
         view(return_type: DataType): Array | null;
     }
 
@@ -1055,12 +1270,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class ArrayBuilder extends GObject.Object {
         static $gtype: GObject.GType<ArrayBuilder>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set array_builder(val: any);
+        /**
+         * @construct-only
+         */
         set arrayBuilder(val: any);
 
         /**
@@ -1080,16 +1304,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1098,33 +1325,72 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_empty_value(): boolean;
         /**
          * Append multiple empty values at once. It's more efficient than multiple
-         * garrow_array_builder_append_empty_value() calls.
+         * `garrow_array_builder_append_empty_value()` calls.
          * @param n The number of null values to be appended.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_empty_values(n: number): boolean;
+        append_empty_values(n: bigint | number): boolean;
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_null(): boolean;
         /**
          * Append multiple nulls at once. It's more efficient than multiple
-         * garrow_array_builder_append_null() calls.
+         * `garrow_array_builder_append_null()` calls.
          * @param n The number of null values to be appended.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_nulls(n: number): boolean;
+        append_nulls(n: bigint | number): boolean;
+        /**
+         * @returns The built {@link Arrow.Array} on success,   `null` on error.
+         */
         finish(): Array;
+        /**
+         * @returns The capacity of the building array.
+         */
         get_capacity(): number;
+        /**
+         * @param i The index of the child.
+         * @returns The {@link Arrow.ArrayBuilder} for the i-th child.
+         */
         get_child(i: number): ArrayBuilder;
+        /**
+         * @returns The {@link Arrow.ArrayBuilder} for all fields.
+         */
         get_children(): ArrayBuilder[];
+        /**
+         * @returns The current length of the building array.
+         */
         get_length(): number;
+        /**
+         * @returns The current number of null elements in the building array.
+         */
         get_n_nulls(): number;
+        /**
+         * @returns The {@link Arrow.DataType} of the value of   the array builder.
+         */
         get_value_data_type(): DataType;
+        /**
+         * @returns The {@link Arrow.Type} of the value of the array builder.
+         */
         get_value_type(): Type;
-        reserve(additional_capacity: number): boolean;
+        /**
+         * @param additional_capacity The additional capacity to be reserved.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        reserve(additional_capacity: bigint | number): boolean;
         reset(): void;
-        resize(capacity: number): boolean;
+        /**
+         * @param capacity A new capacity.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        resize(capacity: bigint | number): boolean;
     }
 
     namespace ArrayDatum {
@@ -1141,11 +1407,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ArrayDatum extends Datum {
         static $gtype: GObject.GType<ArrayDatum>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): Array;
 
         /**
@@ -1167,16 +1439,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ArrayDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ArrayDatum.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ArrayDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ArrayDatum.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ArrayDatum.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ArrayDatum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1197,6 +1472,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ArraySortOptions extends FunctionOptions {
         static $gtype: GObject.GType<ArraySortOptions>;
 
@@ -1204,6 +1482,8 @@ export namespace Arrow {
 
         /**
          * How to order values.
+         * @since 3.0.0
+         * @default Arrow.SortOrder.ASCENDING
          */
         get order(): SortOrder;
         set order(val: SortOrder);
@@ -1227,16 +1507,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ArraySortOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ArraySortOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ArraySortOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ArraySortOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ArraySortOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ArraySortOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1245,7 +1528,14 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_options A {@link Arrow.ArraySortOptions} to be compared.
+         * @returns `true` if both of them have the same order, `false`   otherwise.
+         */
         equal(other_options: ArraySortOptions): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FunctionOptions.equal
         equal(...args: never[]): any;
     }
@@ -1265,6 +1555,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class BaseBinaryScalar extends Scalar {
         static $gtype: GObject.GType<BaseBinaryScalar>;
 
@@ -1272,6 +1565,8 @@ export namespace Arrow {
 
         /**
          * The value of the scalar.
+         * @since 5.0.0
+         * @construct-only
          */
         set value(val: Buffer);
 
@@ -1292,16 +1587,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BaseBinaryScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseBinaryScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BaseBinaryScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseBinaryScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BaseBinaryScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BaseBinaryScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1310,6 +1608,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): Buffer;
     }
 
@@ -1328,6 +1629,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class BaseListScalar extends Scalar {
         static $gtype: GObject.GType<BaseListScalar>;
 
@@ -1335,6 +1639,8 @@ export namespace Arrow {
 
         /**
          * The value of the scalar.
+         * @since 5.0.0
+         * @construct-only
          */
         set value(val: Array);
 
@@ -1355,16 +1661,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BaseListScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseListScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BaseListScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseListScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BaseListScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BaseListScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1373,6 +1682,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): Array;
     }
 
@@ -1392,6 +1704,9 @@ export namespace Arrow {
         interface ConstructorProps extends Array.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BinaryArray extends Array {
         static $gtype: GObject.GType<BinaryArray>;
 
@@ -1411,25 +1726,28 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             value_data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): BinaryArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BinaryArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BinaryArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BinaryArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BinaryArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1438,10 +1756,23 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The data of the array as {@link Arrow.Buffer}.
+         */
         get_buffer(): Buffer;
+        /**
+         * @returns The data of the array as {@link Arrow.Buffer}.
+         */
         get_data_buffer(): Buffer;
+        /**
+         * @returns The offsets of the array as {@link Arrow.Buffer}.
+         */
         get_offsets_buffer(): Buffer;
-        get_value(i: number): GLib.Bytes;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
     namespace BinaryArrayBuilder {
@@ -1455,6 +1786,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BinaryArrayBuilder>;
 
@@ -1477,16 +1811,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BinaryArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BinaryArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1495,17 +1832,29 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: Uint8Array | string): boolean;
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: Uint8Array | string): boolean;
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
-         * @param values The array of #GBytes.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param values The array of {@link GLib.Bytes}.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace BinaryDataType {
@@ -1519,6 +1868,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BinaryDataType extends DataType {
         static $gtype: GObject.GType<BinaryDataType>;
 
@@ -1541,16 +1893,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BinaryDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BinaryDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BinaryDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BinaryDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1569,6 +1924,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BinaryDictionaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BinaryDictionaryArrayBuilder>;
 
@@ -1591,16 +1949,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryDictionaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryDictionaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BinaryDictionaryArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1611,18 +1972,40 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param array A {@link Arrow.BinaryArray}.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_array(array: BinaryArray): boolean;
         /**
          * Append dictionary indices directly without modifying the internal memo.
          * @param values The array of indices.
-         * @param is_valids The array of   %TRUE or %FALSE that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   `true` or `false` that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_indices(values: number[], is_valids?: boolean[] | null): boolean;
+        append_indices(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: Uint8Array | string): boolean;
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         finish_delta(): [boolean, Array, Array];
+        /**
+         * @returns A number of entries in the dictionary.
+         */
         get_dictionary_length(): number;
+        /**
+         * @param values A {@link Arrow.BinaryArray}.
+         * @returns `true` on success, `false` if there was an error.
+         */
         insert_memo_values(values: BinaryArray): boolean;
         /**
          * Reset and also clear accumulated dictionary values in memo table.
@@ -1643,6 +2026,9 @@ export namespace Arrow {
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<BinaryScalar>;
 
@@ -1665,16 +2051,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BinaryScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BinaryScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BinaryScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BinaryScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BinaryScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1698,6 +2087,9 @@ export namespace Arrow {
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BooleanArray extends PrimitiveArray {
         static $gtype: GObject.GType<BooleanArray>;
 
@@ -1716,20 +2108,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): BooleanArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): BooleanArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BooleanArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BooleanArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BooleanArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BooleanArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1738,11 +2138,33 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param right A right hand side {@link Arrow.BooleanArray}.
+         * @returns The element-wise AND operated boolean array.   It should be freed with `g_object_unref()` when no longer needed.
+         */
         and(right: BooleanArray): BooleanArray;
-        get_value(i: number): boolean;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): boolean;
+        /**
+         * @returns The raw boolean values.   It should be freed with `g_free()` when no longer needed.
+         */
         get_values(): boolean[];
+        /**
+         * @returns The element-wise inverted boolean array.   It should be freed with `g_object_unref()` when no longer needed.
+         */
         invert(): BooleanArray;
+        /**
+         * @param right A right hand side {@link Arrow.BooleanArray}.
+         * @returns The element-wise OR operated boolean array.   It should be freed with `g_object_unref()` when no longer needed.
+         */
         or(right: BooleanArray): BooleanArray;
+        /**
+         * @param right A right hand side {@link Arrow.BooleanArray}.
+         * @returns The element-wise XOR operated boolean array.   It should be freed with `g_object_unref()` when no longer needed.
+         */
         xor(right: BooleanArray): BooleanArray;
     }
 
@@ -1757,6 +2179,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BooleanArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BooleanArrayBuilder>;
 
@@ -1779,16 +2204,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BooleanArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BooleanArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BooleanArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BooleanArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1799,16 +2227,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A boolean value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: boolean): boolean;
+        /**
+         * @param value A boolean value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: boolean): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of boolean.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: boolean[], is_valids?: boolean[] | null): boolean;
+        append_values(values: boolean[], is_valids: boolean[] | null): boolean;
     }
 
     namespace BooleanDataType {
@@ -1822,6 +2258,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BooleanDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<BooleanDataType>;
 
@@ -1844,16 +2283,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BooleanDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BooleanDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BooleanDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BooleanDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1873,6 +2315,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BooleanScalar extends Scalar {
         static $gtype: GObject.GType<BooleanScalar>;
 
@@ -1895,16 +2340,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BooleanScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BooleanScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BooleanScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BooleanScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BooleanScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1913,6 +2361,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): boolean;
     }
 
@@ -1928,19 +2379,31 @@ export namespace Arrow {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: any;
-            data: GLib.Bytes;
-            parent: Buffer;
+            data: GLib.Bytes | Uint8Array;
+            parent: Buffer | null;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Buffer extends GObject.Object {
         static $gtype: GObject.GType<Buffer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set buffer(val: any);
-        set data(val: GLib.Bytes);
-        get parent(): Buffer;
+        /**
+         * @construct-only
+         */
+        set data(val: GLib.Bytes | Uint8Array);
+        /**
+         * @construct-only
+         */
+        get parent(): Buffer | null;
 
         /**
          * Compile-time signal type information.
@@ -1963,16 +2426,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1981,18 +2447,58 @@ export namespace Arrow {
 
         // Methods
 
-        copy(start: number, size: number): Buffer | null;
+        /**
+         * @param start An offset of data to be copied in byte.
+         * @param size The number of bytes to be copied from the start.
+         * @returns A newly copied {@link Arrow.Buffer} on success, `null` on error.
+         */
+        copy(start: bigint | number, size: bigint | number): Buffer | null;
+        /**
+         * @param other_buffer A {@link Arrow.Buffer} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_buffer: Buffer): boolean;
-        equal_n_bytes(other_buffer: Buffer, n_bytes: number): boolean;
+        /**
+         * @param other_buffer A {@link Arrow.Buffer} to be compared.
+         * @param n_bytes The number of first bytes to be compared.
+         * @returns `true` if both of them have the same data in the first   `n_bytes`, `false` otherwise.
+         */
+        equal_n_bytes(other_buffer: Buffer, n_bytes: bigint | number): boolean;
+        /**
+         * @returns The number of bytes that where allocated for the buffer in   total.
+         */
         get_capacity(): number;
+        /**
+         * @returns The data of the buffer. The data is owned by   the buffer. You should not free or modify the data.
+         */
         get_data(): GLib.Bytes;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+        /**
+         * @returns The data of the buffer. If the   buffer is immutable, it returns `null`. The data is owned by the   buffer. You should not free the data.
+         */
         get_mutable_data(): GLib.Bytes | null;
+        /**
+         * @returns The parent {@link Arrow.Buffer} or `null`.
+         */
         get_parent(): Buffer | null;
+        /**
+         * @returns The number of bytes that might have valid data.
+         */
         get_size(): number;
+        /**
+         * @returns `true` if the buffer is mutable, `false` otherwise.
+         */
         is_mutable(): boolean;
-        slice(offset: number, size: number): Buffer;
+        /**
+         * @param offset An offset in the buffer data in byte.
+         * @param size The number of bytes of the sliced data.
+         * @returns A newly created {@link Arrow.Buffer} that shares   data of the base {@link Arrow.Buffer}. The created {@link Arrow.Buffer} has data   start with offset from the base buffer data and are the specified   bytes size.
+         */
+        slice(offset: bigint | number, size: bigint | number): Buffer;
     }
 
     namespace BufferInputStream {
@@ -2005,18 +2511,22 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SeekableInputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {
+            extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
             buffer: Buffer;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class BufferInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<BufferInputStream>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get buffer(): Buffer;
 
         /**
@@ -2038,16 +2548,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BufferInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BufferInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BufferInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2056,9 +2569,10 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The data of the stream as {@link Arrow.Buffer}.
+         */
         get_buffer(): Buffer;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2072,90 +2586,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2163,7 +2655,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2171,9 +2663,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2193,9 +2685,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2209,33 +2701,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2268,21 +2760,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2292,8 +2784,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2310,14 +2802,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2328,13 +2820,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2365,21 +2857,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2389,33 +2881,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2424,6 +2917,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2432,12 +2926,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2446,20 +2942,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2471,8 +2969,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2509,11 +3008,12 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {}
+            extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BufferOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
 
@@ -2536,32 +3036,49 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BufferOutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BufferOutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BufferOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
         /**
          * It ensures writing all data on memory to storage.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         flush(): boolean;
+        /**
+         * @param data The data to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
         write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -2576,90 +3093,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2667,7 +3162,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2675,9 +3170,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2697,9 +3192,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2713,33 +3208,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2772,21 +3267,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2796,8 +3291,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2814,14 +3309,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2832,13 +3327,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2869,21 +3364,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2893,33 +3388,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2928,6 +3424,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2936,12 +3433,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2950,20 +3449,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2975,8 +3476,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3056,6 +3558,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CSVReadOptions extends GObject.Object {
         static $gtype: GObject.GType<CSVReadOptions>;
 
@@ -3063,144 +3568,200 @@ export namespace Arrow {
 
         /**
          * Whether values are allowed to contain CR (0x0d) and LF (0x0a) characters.
+         * @since 0.12.0
+         * @default false
          */
         get allow_newlines_in_values(): boolean;
         set allow_newlines_in_values(val: boolean);
         /**
          * Whether values are allowed to contain CR (0x0d) and LF (0x0a) characters.
+         * @since 0.12.0
+         * @default false
          */
         get allowNewlinesInValues(): boolean;
         set allowNewlinesInValues(val: boolean);
         /**
          * Whether string / binary columns can have null values.
-         * If %TRUE, then strings in "null_values" are considered null for string columns.
-         * If %FALSE, then all strings are valid string values.
+         * If `true`, then strings in "null_values" are considered null for string columns.
+         * If `false`, then all strings are valid string values.
+         * @since 0.14.0
+         * @default false
          */
         get allow_null_strings(): boolean;
         set allow_null_strings(val: boolean);
         /**
          * Whether string / binary columns can have null values.
-         * If %TRUE, then strings in "null_values" are considered null for string columns.
-         * If %FALSE, then all strings are valid string values.
+         * If `true`, then strings in "null_values" are considered null for string columns.
+         * If `false`, then all strings are valid string values.
+         * @since 0.14.0
+         * @default false
          */
         get allowNullStrings(): boolean;
         set allowNullStrings(val: boolean);
         /**
          * Block size we request from the IO layer; also determines the size
-         * of chunks when #GArrowCSVReadOptions:use-threads is %TRUE.
+         * of chunks when {@link Arrow.CSVReadOptions.use_threads} is `true`.
+         * @since 0.12.0
+         * @default 1048576
          */
         get block_size(): number;
         set block_size(val: number);
         /**
          * Block size we request from the IO layer; also determines the size
-         * of chunks when #GArrowCSVReadOptions:use-threads is %TRUE.
+         * of chunks when {@link Arrow.CSVReadOptions.use_threads} is `true`.
+         * @since 0.12.0
+         * @default 1048576
          */
         get blockSize(): number;
         set blockSize(val: number);
         /**
          * Whether to check UTF8 validity of string columns.
+         * @since 0.12.0
+         * @default true
          */
         get check_utf8(): boolean;
         set check_utf8(val: boolean);
         /**
          * Whether to check UTF8 validity of string columns.
+         * @since 0.12.0
+         * @default true
          */
         get checkUtf8(): boolean;
         set checkUtf8(val: boolean);
         /**
          * Field delimiter character.
+         * @since 0.12.0
+         * @default 44
          */
         get delimiter(): number;
         set delimiter(val: number);
         /**
          * Escaping character. This is used only when
-         * #GArrowCSVReadOptions:is-escaped is %TRUE.
+         * {@link Arrow.CSVReadOptions.is_escaped} is `true`.
+         * @since 0.12.0
+         * @default 92
          */
         get escape_character(): number;
         set escape_character(val: number);
         /**
          * Escaping character. This is used only when
-         * #GArrowCSVReadOptions:is-escaped is %TRUE.
+         * {@link Arrow.CSVReadOptions.is_escaped} is `true`.
+         * @since 0.12.0
+         * @default 92
          */
         get escapeCharacter(): number;
         set escapeCharacter(val: number);
+        /**
+         * @default false
+         */
         get generate_column_names(): boolean;
         set generate_column_names(val: boolean);
+        /**
+         * @default false
+         */
         get generateColumnNames(): boolean;
         set generateColumnNames(val: boolean);
         /**
-         * Whether empty lines are ignored. If %FALSE, an empty line
+         * Whether empty lines are ignored. If `false`, an empty line
          * represents a simple empty value (assuming a one-column CSV file).
+         * @since 0.12.0
+         * @default true
          */
         get ignore_empty_lines(): boolean;
         set ignore_empty_lines(val: boolean);
         /**
-         * Whether empty lines are ignored. If %FALSE, an empty line
+         * Whether empty lines are ignored. If `false`, an empty line
          * represents a simple empty value (assuming a one-column CSV file).
+         * @since 0.12.0
+         * @default true
          */
         get ignoreEmptyLines(): boolean;
         set ignoreEmptyLines(val: boolean);
         /**
          * Whether a quote inside a value is double quoted.
+         * @since 0.12.0
+         * @default true
          */
         get is_double_quoted(): boolean;
         set is_double_quoted(val: boolean);
         /**
          * Whether a quote inside a value is double quoted.
+         * @since 0.12.0
+         * @default true
          */
         get isDoubleQuoted(): boolean;
         set isDoubleQuoted(val: boolean);
         /**
          * Whether escaping is used.
+         * @since 0.12.0
+         * @default false
          */
         get is_escaped(): boolean;
         set is_escaped(val: boolean);
         /**
          * Whether escaping is used.
+         * @since 0.12.0
+         * @default false
          */
         get isEscaped(): boolean;
         set isEscaped(val: boolean);
         /**
          * Whether quoting is used.
+         * @since 0.12.0
+         * @default true
          */
         get is_quoted(): boolean;
         set is_quoted(val: boolean);
         /**
          * Whether quoting is used.
+         * @since 0.12.0
+         * @default true
          */
         get isQuoted(): boolean;
         set isQuoted(val: boolean);
         /**
          * The number of header rows to skip (not including
          * the row of column names, if any)
+         * @since 0.15.0
+         * @default 0
          */
         get n_skip_rows(): number;
         set n_skip_rows(val: number);
         /**
          * The number of header rows to skip (not including
          * the row of column names, if any)
+         * @since 0.15.0
+         * @default 0
          */
         get nSkipRows(): number;
         set nSkipRows(val: number);
         /**
          * Quoting character. This is used only when
-         * #GArrowCSVReadOptions:is-quoted is %TRUE.
+         * {@link Arrow.CSVReadOptions.is_quoted} is `true`.
+         * @since 0.12.0
+         * @default 34
          */
         get quote_character(): number;
         set quote_character(val: number);
         /**
          * Quoting character. This is used only when
-         * #GArrowCSVReadOptions:is-quoted is %TRUE.
+         * {@link Arrow.CSVReadOptions.is_quoted} is `true`.
+         * @since 0.12.0
+         * @default 34
          */
         get quoteCharacter(): number;
         set quoteCharacter(val: number);
         /**
          * Whether to use the global CPU thread pool.
+         * @since 0.12.0
+         * @default true
          */
         get use_threads(): boolean;
         set use_threads(val: boolean);
         /**
          * Whether to use the global CPU thread pool.
+         * @since 0.12.0
+         * @default true
          */
         get useThreads(): boolean;
         set useThreads(val: boolean);
@@ -3224,16 +3785,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CSVReadOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CSVReadOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CSVReadOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CSVReadOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CSVReadOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CSVReadOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3242,32 +3806,80 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param column_name
+         */
         add_column_name(column_name: string): void;
         /**
          * Add value type of a column.
          * @param name The name of the target column.
-         * @param data_type The #GArrowDataType for the column.
+         * @param data_type The {@link Arrow.DataType} for the column.
          */
         add_column_type(name: string, data_type: DataType): void;
+        /**
+         * @param false_value The value to be processed as false.
+         */
         add_false_value(false_value: string): void;
+        /**
+         * @param null_value The value to be processed as null.
+         */
         add_null_value(null_value: string): void;
         /**
          * Add value types for columns in the schema.
-         * @param schema The #GArrowSchema that specifies columns and their types.
+         * @param schema The {@link Arrow.Schema} that specifies columns and their types.
          */
         add_schema(schema: Schema): void;
+        /**
+         * @param parser The {@link Arrow.TimestampParser} to be added.
+         */
         add_timestamp_parser(parser: TimestampParser): void;
+        /**
+         * @param true_value The value to be processed as true.
+         */
         add_true_value(true_value: string): void;
+        /**
+         * @returns The column names.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
+         */
         get_column_names(): string[] | null;
+        /**
+         * @returns The column name and value type mapping of the options.
+         */
         get_column_types(): GLib.HashTable<string, DataType>;
+        /**
+         * @returns The values to be processed as false.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
+         */
         get_false_values(): string[] | null;
+        /**
+         * @returns The values to be processed as null.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
+         */
         get_null_values(): string[] | null;
+        /**
+         * @returns The list of `GArrowTimestampParsers` to be used.
+         */
         get_timestamp_parsers(): TimestampParser[];
+        /**
+         * @returns The values to be processed as true.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
+         */
         get_true_values(): string[] | null;
+        /**
+         * @param column_names The column names (if empty, will be read from first   row after `skip_rows`)
+         */
         set_column_names(column_names: string[]): void;
+        /**
+         * @param false_values The values to be processed as false.
+         */
         set_false_values(false_values: string[]): void;
+        /**
+         * @param null_values The values to be processed as null.
+         */
         set_null_values(null_values: string[]): void;
+        /**
+         * @param parsers The list of   {@link Arrow.TimestampParser} to be added.
+         */
         set_timestamp_parsers(parsers: TimestampParser[]): void;
+        /**
+         * @param true_values The values to be processed as true.
+         */
         set_true_values(true_values: string[]): void;
     }
 
@@ -3287,13 +3899,25 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CSVReader extends GObject.Object {
         static $gtype: GObject.GType<CSVReader>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set csv_table_reader(val: any);
+        /**
+         * @construct-only
+         */
         set csvTableReader(val: any);
+        /**
+         * @construct-only
+         */
         get input(): InputStream;
 
         /**
@@ -3311,20 +3935,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](input: InputStream, options?: CSVReadOptions | null): CSVReader;
+        static ['new'](input: InputStream, options: CSVReadOptions | null): CSVReader;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CSVReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CSVReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CSVReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CSVReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CSVReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CSVReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3333,6 +3960,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns A read {@link Arrow.Table} or `null` on error.
+         */
         read(): Table | null;
     }
 
@@ -3345,6 +3975,9 @@ export namespace Arrow {
         interface ConstructorProps extends Expression.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CallExpression extends Expression {
         static $gtype: GObject.GType<CallExpression>;
 
@@ -3363,20 +3996,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](_function: string, _arguments: Expression[], options?: FunctionOptions | null): CallExpression;
+        static ['new'](_function: string, _arguments: Expression[], options: FunctionOptions | null): CallExpression;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CallExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CallExpression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CallExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CallExpression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CallExpression.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CallExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3416,6 +4052,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CastOptions extends FunctionOptions {
         static $gtype: GObject.GType<CastOptions>;
 
@@ -3423,71 +4062,97 @@ export namespace Arrow {
 
         /**
          * Whether truncating decimal value is allowed or not.
+         * @since 1.0.0
+         * @default false
          */
         get allow_decimal_truncate(): boolean;
         set allow_decimal_truncate(val: boolean);
         /**
          * Whether truncating decimal value is allowed or not.
+         * @since 1.0.0
+         * @default false
          */
         get allowDecimalTruncate(): boolean;
         set allowDecimalTruncate(val: boolean);
         /**
          * Whether truncating float value is allowed or not.
+         * @since 0.12.0
+         * @default false
          */
         get allow_float_truncate(): boolean;
         set allow_float_truncate(val: boolean);
         /**
          * Whether truncating float value is allowed or not.
+         * @since 0.12.0
+         * @default false
          */
         get allowFloatTruncate(): boolean;
         set allowFloatTruncate(val: boolean);
         /**
          * Whether integer overflow is allowed or not.
+         * @since 0.7.0
+         * @default false
          */
         get allow_int_overflow(): boolean;
         set allow_int_overflow(val: boolean);
         /**
          * Whether integer overflow is allowed or not.
+         * @since 0.7.0
+         * @default false
          */
         get allowIntOverflow(): boolean;
         set allowIntOverflow(val: boolean);
         /**
          * Whether invalid UTF-8 string value is allowed or not.
+         * @since 0.13.0
+         * @default false
          */
         get allow_invalid_utf8(): boolean;
         set allow_invalid_utf8(val: boolean);
         /**
          * Whether invalid UTF-8 string value is allowed or not.
+         * @since 0.13.0
+         * @default false
          */
         get allowInvalidUtf8(): boolean;
         set allowInvalidUtf8(val: boolean);
         /**
          * Whether time overflow is allowed or not.
+         * @since 1.0.0
+         * @default false
          */
         get allow_time_overflow(): boolean;
         set allow_time_overflow(val: boolean);
         /**
          * Whether time overflow is allowed or not.
+         * @since 1.0.0
+         * @default false
          */
         get allowTimeOverflow(): boolean;
         set allowTimeOverflow(val: boolean);
         /**
          * Whether truncating time value is allowed or not.
+         * @since 0.8.0
+         * @default false
          */
         get allow_time_truncate(): boolean;
         set allow_time_truncate(val: boolean);
         /**
          * Whether truncating time value is allowed or not.
+         * @since 0.8.0
+         * @default false
          */
         get allowTimeTruncate(): boolean;
         set allowTimeTruncate(val: boolean);
         /**
-         * The #GArrowDataType being casted to.
+         * The {@link Arrow.DataType} being casted to.
+         * @since 1.0.0
          */
         get to_data_type(): DataType;
         set to_data_type(val: DataType);
         /**
-         * The #GArrowDataType being casted to.
+         * The {@link Arrow.DataType} being casted to.
+         * @since 1.0.0
          */
         get toDataType(): DataType;
         set toDataType(val: DataType);
@@ -3511,16 +4176,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CastOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CastOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CastOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CastOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CastOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CastOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3545,14 +4213,29 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ChunkedArray extends GObject.Object {
         static $gtype: GObject.GType<ChunkedArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set chunked_array(val: any);
+        /**
+         * @construct-only
+         */
         set chunkedArray(val: any);
+        /**
+         * @construct-only
+         */
         set data_type(val: DataType);
+        /**
+         * @construct-only
+         */
         set dataType(val: DataType);
 
         /**
@@ -3576,16 +4259,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ChunkedArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChunkedArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ChunkedArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChunkedArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ChunkedArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ChunkedArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3594,22 +4280,86 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The combined array that has   all data in all chunks.
+         */
         combine(): Array | null;
+        /**
+         * @param other_chunked_array A {@link Arrow.ChunkedArray} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_chunked_array: ChunkedArray): boolean;
-        filter(filter: BooleanArray, options?: FilterOptions | null): ChunkedArray | null;
-        filter_chunked_array(filter: ChunkedArray, options?: FilterOptions | null): ChunkedArray | null;
+        /**
+         * @param filter The values indicates which values should be filtered out.
+         * @param options A {@link Arrow.FilterOptions}.
+         * @returns The {@link Arrow.ChunkedArray} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
+         */
+        filter(filter: BooleanArray, options: FilterOptions | null): ChunkedArray | null;
+        /**
+         * @param filter The values indicates which values should be filtered out.
+         * @param options A {@link Arrow.FilterOptions}.
+         * @returns The {@link Arrow.ChunkedArray} filtered   with a chunked array filter. Nulls in the filter will   result in nulls in the output.
+         */
+        filter_chunked_array(filter: ChunkedArray, options: FilterOptions | null): ChunkedArray | null;
+        /**
+         * @param i The index of the target chunk.
+         * @returns The i-th chunk of the chunked array.
+         */
         get_chunk(i: number): Array;
+        /**
+         * @returns The chunks in the chunked array.
+         */
         get_chunks(): Array[];
+        /**
+         * @returns The total number of rows in the chunked array.
+         */
         get_length(): number;
+        /**
+         * @returns The total number of chunks in the chunked array.
+         */
         get_n_chunks(): number;
+        /**
+         * @returns The total number of NULL in the chunked array.
+         */
         get_n_nulls(): number;
+        /**
+         * @returns The total number of rows in the chunked array.
+         */
         get_n_rows(): number;
+        /**
+         * @returns The {@link Arrow.DataType} of the value of   the chunked array.
+         */
         get_value_data_type(): DataType;
+        /**
+         * @returns The {@link Arrow.Type} of the value of the chunked array.
+         */
         get_value_type(): Type;
-        slice(offset: number, length: number): ChunkedArray;
-        sort_indices(order: SortOrder | null): UInt64Array | null;
-        take(indices: Array, options?: TakeOptions | null): ChunkedArray | null;
-        take_chunked_array(indices: ChunkedArray, options?: TakeOptions | null): ChunkedArray | null;
+        /**
+         * @param offset The offset of sub {@link Arrow.ChunkedArray}.
+         * @param length The length of sub {@link Arrow.ChunkedArray}.
+         * @returns The sub {@link Arrow.ChunkedArray}. It covers only from   `offset` to `offset + length` range. The sub {@link Arrow.ChunkedArray} shares   values with the base {@link Arrow.ChunkedArray}.
+         */
+        slice(offset: bigint | number, length: bigint | number): ChunkedArray;
+        /**
+         * @param order The order for sort.
+         * @returns The indices that would sort   a chunked array in the specified order on success, `null` on error.
+         */
+        sort_indices(order: SortOrder): UInt64Array | null;
+        /**
+         * @param indices The indices of values to take.
+         * @param options A {@link Arrow.TakeOptions}.
+         * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in input array or `null` on error.
+         */
+        take(indices: Array, options: TakeOptions | null): ChunkedArray | null;
+        /**
+         * @param indices The indices of values to take.
+         * @param options A {@link Arrow.TakeOptions}.
+         * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in chunked array or `null` on error.
+         */
+        take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): ChunkedArray | null;
+        /**
+         * @returns The formatted chunked array content or `null` on error.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string | null;
     }
 
@@ -3627,11 +4377,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ChunkedArrayDatum extends Datum {
         static $gtype: GObject.GType<ChunkedArrayDatum>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): ChunkedArray;
 
         /**
@@ -3653,16 +4409,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ChunkedArrayDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChunkedArrayDatum.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ChunkedArrayDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChunkedArrayDatum.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ChunkedArrayDatum.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ChunkedArrayDatum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3683,11 +4442,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Codec extends GObject.Object {
         static $gtype: GObject.GType<Codec>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set codec(val: any);
 
         /**
@@ -3709,16 +4474,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Codec.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Codec.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Codec.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Codec.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Codec.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Codec.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3727,8 +4495,17 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The compression level of the codec.
+         */
         get_compression_level(): number;
+        /**
+         * @returns The compression type of the codec.
+         */
         get_compression_type(): CompressionType;
+        /**
+         * @returns The name of the codec.
+         */
         get_name(): string;
     }
 
@@ -3743,20 +4520,27 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends InputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {
+            extends InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
             codec: Codec;
             raw: InputStream;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CompressedInputStream extends InputStream implements File, Readable {
         static $gtype: GObject.GType<CompressedInputStream>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get codec(): Codec;
+        /**
+         * @construct-only
+         */
         get raw(): InputStream;
 
         /**
@@ -3778,16 +4562,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CompressedInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CompressedInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CompressedInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CompressedInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CompressedInputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CompressedInputStream.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3795,16 +4582,40 @@ export namespace Arrow {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
-        read(n_bytes: number): Buffer | null;
+        /**
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         */
+        read(n_bytes: bigint | number): Buffer | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.InputStream.read
         read(...args: never[]): any;
-        read_bytes(n_bytes: number): GLib.Bytes | null;
+        /**
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
+         */
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.InputStream.read_bytes
         read_bytes(...args: never[]): any;
         /**
@@ -3820,90 +4631,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3911,7 +4700,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3919,9 +4708,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3941,9 +4730,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3957,33 +4746,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4016,21 +4805,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4040,8 +4829,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4058,14 +4847,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4076,13 +4865,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4113,21 +4902,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4137,33 +4926,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4172,6 +4962,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4180,12 +4971,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4194,20 +4987,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4219,8 +5014,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4259,20 +5055,27 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {
+            extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
             codec: Codec;
             raw: OutputStream;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CompressedOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<CompressedOutputStream>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get codec(): Codec;
+        /**
+         * @construct-only
+         */
         get raw(): OutputStream;
 
         /**
@@ -4294,16 +5097,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CompressedOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CompressedOutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CompressedOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CompressedOutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CompressedOutputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CompressedOutputStream.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4311,17 +5117,31 @@ export namespace Arrow {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
         /**
          * It ensures writing all data on memory to storage.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         flush(): boolean;
+        /**
+         * @param data The data to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
         write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -4336,90 +5156,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4427,7 +5225,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4435,9 +5233,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4457,9 +5255,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4473,33 +5271,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4532,21 +5330,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4556,8 +5354,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4574,14 +5372,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4592,13 +5390,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4629,21 +5427,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4653,33 +5451,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4688,6 +5487,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4696,12 +5496,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4710,20 +5512,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4735,8 +5539,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4777,11 +5582,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CountOptions extends FunctionOptions {
         static $gtype: GObject.GType<CountOptions>;
 
         // Properties
 
+        /**
+         * @default Arrow.CountMode.ONLY_VALID
+         */
         get mode(): CountMode;
         set mode(val: CountMode);
 
@@ -4804,16 +5615,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CountOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CountOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CountOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CountOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CountOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CountOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4835,12 +5649,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class DataType extends GObject.Object {
         static $gtype: GObject.GType<DataType>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set data_type(val: any);
+        /**
+         * @construct-only
+         */
         set dataType(val: any);
 
         /**
@@ -4860,16 +5683,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4878,14 +5704,33 @@ export namespace Arrow {
 
         // Static methods
 
+        /**
+         * @param c_abi_schema A `struct ArrowSchema *`.
+         */
         static ['import'](c_abi_schema: any): DataType | null;
 
         // Methods
 
+        /**
+         * @param other_data_type A {@link Arrow.DataType} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_data_type: DataType): boolean;
+        /**
+         * @returns An exported {@link Arrow.DataType} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
+         */
         ['export'](): any | null;
+        /**
+         * @returns The {@link Arrow.Type} of the data type.
+         */
         get_id(): Type;
+        /**
+         * @returns The name of the data type.   It should be freed with `g_free()` when no longer needed.
+         */
         get_name(): string;
+        /**
+         * @returns The string representation of the data type.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -4905,6 +5750,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date32Array extends NumericArray {
         static $gtype: GObject.GType<Date32Array>;
 
@@ -4923,20 +5771,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Date32Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Date32Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date32Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date32Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date32Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date32Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4945,7 +5801,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
     }
 
@@ -4960,6 +5823,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Date32ArrayBuilder>;
 
@@ -4982,16 +5848,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date32ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date32ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date32ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date32ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5000,16 +5869,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value The number of days since UNIX epoch in signed 32bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value The number of days since UNIX epoch in signed 32bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of   the number of days since UNIX epoch in signed 32bit integer.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace Date32DataType {
@@ -5023,6 +5900,9 @@ export namespace Arrow {
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date32DataType extends TemporalDataType {
         static $gtype: GObject.GType<Date32DataType>;
 
@@ -5045,16 +5925,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date32DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date32DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date32DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date32DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date32DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date32DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5074,6 +5957,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date32Scalar extends Scalar {
         static $gtype: GObject.GType<Date32Scalar>;
 
@@ -5096,16 +5982,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date32Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date32Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date32Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date32Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date32Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date32Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5114,6 +6003,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -5133,6 +6025,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date64Array extends NumericArray {
         static $gtype: GObject.GType<Date64Array>;
 
@@ -5151,20 +6046,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Date64Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Date64Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date64Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date64Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date64Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date64Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date64Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date64Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5173,7 +6076,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
     }
 
@@ -5188,6 +6098,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Date64ArrayBuilder>;
 
@@ -5210,16 +6123,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date64ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date64ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date64ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date64ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5228,16 +6144,24 @@ export namespace Arrow {
 
         // Methods
 
-        append(value: number): boolean;
-        append_value(value: number): boolean;
+        /**
+         * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append(value: bigint | number): boolean;
+        /**
+         * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of   the number of milliseconds since UNIX epoch in signed 64bit integer.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace Date64DataType {
@@ -5251,6 +6175,9 @@ export namespace Arrow {
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date64DataType extends TemporalDataType {
         static $gtype: GObject.GType<Date64DataType>;
 
@@ -5273,16 +6200,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date64DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date64DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date64DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date64DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date64DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date64DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5302,6 +6232,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date64Scalar extends Scalar {
         static $gtype: GObject.GType<Date64Scalar>;
 
@@ -5320,20 +6253,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): Date64Scalar;
+        static ['new'](value: bigint | number): Date64Scalar;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date64Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date64Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date64Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date64Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date64Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date64Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5342,6 +6278,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -5358,11 +6297,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Datum extends GObject.Object {
         static $gtype: GObject.GType<Datum>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set datum(val: any);
 
         /**
@@ -5382,16 +6327,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Datum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Datum.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Datum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Datum.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Datum.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Datum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5400,11 +6348,30 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_datum A {@link Arrow.Datum} to be compared.
+         * @returns `true` if both of them have the same datum, `false`   otherwise.
+         */
         equal(other_datum: Datum): boolean;
+        /**
+         * @returns `true` if the datum holds a {@link Arrow.Array}, `false`   otherwise.
+         */
         is_array(): boolean;
+        /**
+         * @returns `true` if the datum holds a {@link Arrow.Array} or   {@link Arrow.ChunkedArray}, `false` otherwise.
+         */
         is_array_like(): boolean;
+        /**
+         * @returns `true` if the datum holds a {@link Arrow.Scalar}, `false` otherwise.
+         */
         is_scalar(): boolean;
+        /**
+         * @returns `true` if the datum holds a {@link Arrow.Array}, {@link Arrow.ChunkedArray} or   {@link Arrow.Scalar}, `false` otherwise.
+         */
         is_value(): boolean;
+        /**
+         * @returns The formatted datum content.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -5423,6 +6390,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DayMillisecond extends GObject.Object {
         static $gtype: GObject.GType<DayMillisecond>;
 
@@ -5430,11 +6400,15 @@ export namespace Arrow {
 
         /**
          * The day part value.
+         * @since 8.0.0
+         * @default 0
          */
         get day(): number;
         set day(val: number);
         /**
          * The millisecond part value.
+         * @since 8.0.0
+         * @default 0
          */
         get millisecond(): number;
         set millisecond(val: number);
@@ -5458,16 +6432,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DayMillisecond.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayMillisecond.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DayMillisecond.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayMillisecond.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DayMillisecond.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DayMillisecond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5476,7 +6453,15 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_day_millisecond A {@link Arrow.DayMillisecond} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_day_millisecond: DayMillisecond): boolean;
+        /**
+         * @param other_day_millisecond A {@link Arrow.DayMillisecond} to be compared.
+         * @returns `true` if the value is less than the other value,   `false` otherwise.
+         */
         less_than(other_day_millisecond: DayMillisecond): boolean;
     }
 
@@ -5496,6 +6481,9 @@ export namespace Arrow {
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DayTimeIntervalArray extends PrimitiveArray {
         static $gtype: GObject.GType<DayTimeIntervalArray>;
 
@@ -5514,20 +6502,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): DayTimeIntervalArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): DayTimeIntervalArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DayTimeIntervalArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayTimeIntervalArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DayTimeIntervalArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayTimeIntervalArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DayTimeIntervalArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DayTimeIntervalArray.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5538,7 +6534,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): DayMillisecond;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): DayMillisecond;
+        /**
+         * @returns The list of {@link Arrow.DayMillisecond}.
+         */
         get_values(): DayMillisecond[] | null;
     }
 
@@ -5553,6 +6556,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DayTimeIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<DayTimeIntervalArrayBuilder>;
 
@@ -5575,16 +6581,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayTimeIntervalArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayTimeIntervalArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DayTimeIntervalArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5595,15 +6604,19 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A {@link Arrow.DayMillisecond}.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: DayMillisecond): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` calls.
-         * @param values The array of a #GArrowDayMillisecond.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param values The array of a {@link Arrow.DayMillisecond}.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: DayMillisecond[], is_valids?: boolean[] | null): boolean;
+        append_values(values: DayMillisecond[], is_valids: boolean[] | null): boolean;
     }
 
     namespace DayTimeIntervalDataType {
@@ -5617,6 +6630,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DayTimeIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<DayTimeIntervalDataType>;
 
@@ -5639,16 +6655,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayTimeIntervalDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayTimeIntervalDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DayTimeIntervalDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5670,6 +6689,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DayTimeIntervalScalar extends Scalar {
         static $gtype: GObject.GType<DayTimeIntervalScalar>;
 
@@ -5692,16 +6714,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayTimeIntervalScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DayTimeIntervalScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DayTimeIntervalScalar.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5712,6 +6737,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): DayMillisecond;
     }
 
@@ -5728,11 +6756,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal128 extends GObject.Object {
         static $gtype: GObject.GType<Decimal128>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set decimal128(val: any);
 
         /**
@@ -5750,22 +6784,25 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: number): Decimal128;
+        static new_integer(data: bigint | number): Decimal128;
 
         static new_string(data: string): Decimal128;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal128.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal128.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal128.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal128.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5778,25 +6815,86 @@ export namespace Arrow {
          * Computes the absolute value of the `decimal` destructively.
          */
         abs(): void;
+        /**
+         * @returns A copied {@link Arrow.Decimal128}.
+         */
         copy(): Decimal128;
+        /**
+         * @param right A {@link Arrow.Decimal128}.
+         * @returns The divided value of   these decimals or `null` on error.
+         */
         divide(right: Decimal128): [Decimal128 | null, Decimal128 | null];
+        /**
+         * @param other_decimal A {@link Arrow.Decimal128} to be compared.
+         * @returns `true` if the decimal is equal to the other decimal, `false`   otherwise.
+         */
         equal(other_decimal: Decimal128): boolean;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal128} to be compared.
+         * @returns `true` if the decimal is greater than the other decimal,   `false` otherwise.
+         */
         greater_than(other_decimal: Decimal128): boolean;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal128} to be compared.
+         * @returns `true` if the decimal is greater than the other decimal   or equal to the other decimal, `false` otherwise.
+         */
         greater_than_or_equal(other_decimal: Decimal128): boolean;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal128} to be compared.
+         * @returns `true` if the decimal is less than the other decimal,   `false` otherwise.
+         */
         less_than(other_decimal: Decimal128): boolean;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal128} to be compared.
+         * @returns `true` if the decimal is less than the other decimal   or equal to the other decimal, `false` otherwise.
+         */
         less_than_or_equal(other_decimal: Decimal128): boolean;
+        /**
+         * @param right A {@link Arrow.Decimal128}.
+         * @returns The subtracted value of these decimals.
+         */
         minus(right: Decimal128): Decimal128;
+        /**
+         * @param right A {@link Arrow.Decimal128}.
+         * @returns The multiplied value of these decimals.
+         */
         multiply(right: Decimal128): Decimal128;
         /**
          * Negate the current value of the `decimal` destructively.
          */
         negate(): void;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal128} to be compared.
+         * @returns `true` if the decimal isn't equal to the other decimal,   `false` otherwise.
+         */
         not_equal(other_decimal: Decimal128): boolean;
+        /**
+         * @param right A {@link Arrow.Decimal128}.
+         * @returns The added value of these decimals.
+         */
         plus(right: Decimal128): Decimal128;
+        /**
+         * @param original_scale A scale to be converted from.
+         * @param new_scale A scale to be converted to.
+         * @returns The rescaled decimal or `null` on error.
+         */
         rescale(original_scale: number, new_scale: number): Decimal128 | null;
+        /**
+         * @returns The binary representation of the decimal.
+         */
         to_bytes(): GLib.Bytes;
+        /**
+         * @returns The 64-bit integer representation of the decimal.
+         */
         to_integer(): number;
+        /**
+         * @returns The string representation of the decimal.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
+        /**
+         * @param scale The scale of the decimal.
+         * @returns The string representation of the decimal.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string_scale(scale: number): string;
     }
 
@@ -5816,6 +6914,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal128Array extends FixedSizeBinaryArray {
         static $gtype: GObject.GType<Decimal128Array>;
 
@@ -5836,16 +6937,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal128Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal128Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal128Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal128Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5854,8 +6958,19 @@ export namespace Arrow {
 
         // Methods
 
-        format_value(i: number): string;
-        get_value(i: number): Decimal128;
+        /**
+         * @param i The index of the target value.
+         * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
+         */
+        format_value(i: bigint | number): string;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): Decimal128;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FixedSizeBinaryArray.get_value
         get_value(...args: never[]): any;
     }
@@ -5871,6 +6986,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal128ArrayBuilder extends FixedSizeBinaryArrayBuilder {
         static $gtype: GObject.GType<Decimal128ArrayBuilder>;
 
@@ -5893,16 +7011,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal128ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5913,18 +7034,32 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A decimal value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: Decimal128): boolean;
-        append_value(value?: Decimal128 | null): boolean;
+        /**
+         * @param value A decimal value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: Decimal128 | null): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FixedSizeBinaryArrayBuilder.append_value
         append_value(...args: never[]): any;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
-         * @param values The array of #GArrowDecimal128.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param values The array of {@link Arrow.Decimal128}.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: Decimal128[], is_valids?: boolean[] | null): boolean;
+        append_values(values: Decimal128[], is_valids: boolean[] | null): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FixedSizeBinaryArrayBuilder.append_values
         append_values(...args: never[]): any;
     }
@@ -5940,6 +7075,9 @@ export namespace Arrow {
         interface ConstructorProps extends DecimalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal128DataType extends DecimalDataType {
         static $gtype: GObject.GType<Decimal128DataType>;
 
@@ -5965,16 +7103,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal128DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal128DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal128DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal128DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6001,6 +7142,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal128Scalar extends Scalar {
         static $gtype: GObject.GType<Decimal128Scalar>;
 
@@ -6008,6 +7152,8 @@ export namespace Arrow {
 
         /**
          * The value of the scalar.
+         * @since 5.0.0
+         * @construct-only
          */
         set value(val: Decimal128);
 
@@ -6030,16 +7176,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal128Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal128Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal128Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal128Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal128Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6048,6 +7197,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): Decimal128;
     }
 
@@ -6064,11 +7216,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal256 extends GObject.Object {
         static $gtype: GObject.GType<Decimal256>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set decimal256(val: any);
 
         /**
@@ -6086,22 +7244,25 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: number): Decimal256;
+        static new_integer(data: bigint | number): Decimal256;
 
         static new_string(data: string): Decimal256;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal256.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal256.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal256.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal256.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6114,23 +7275,77 @@ export namespace Arrow {
          * Computes the absolute value of the `decimal` destructively.
          */
         abs(): void;
+        /**
+         * @returns A copied {@link Arrow.Decimal256}.
+         */
         copy(): Decimal256;
+        /**
+         * @param right A {@link Arrow.Decimal256}.
+         * @returns The divided value of   these decimals or `null` on error.
+         */
         divide(right: Decimal256): [Decimal256 | null, Decimal256 | null];
+        /**
+         * @param other_decimal A {@link Arrow.Decimal256} to be compared.
+         * @returns `true` if the decimal is equal to the other decimal, `false`   otherwise.
+         */
         equal(other_decimal: Decimal256): boolean;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal256} to be compared.
+         * @returns `true` if the decimal is greater than the other decimal,   `false` otherwise.
+         */
         greater_than(other_decimal: Decimal256): boolean;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal256} to be compared.
+         * @returns `true` if the decimal is greater than the other decimal   or equal to the other decimal, `false` otherwise.
+         */
         greater_than_or_equal(other_decimal: Decimal256): boolean;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal256} to be compared.
+         * @returns `true` if the decimal is less than the other decimal,   `false` otherwise.
+         */
         less_than(other_decimal: Decimal256): boolean;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal256} to be compared.
+         * @returns `true` if the decimal is less than the other decimal   or equal to the other decimal, `false` otherwise.
+         */
         less_than_or_equal(other_decimal: Decimal256): boolean;
+        /**
+         * @param right A {@link Arrow.Decimal256}.
+         * @returns The multiplied value of these decimals.
+         */
         multiply(right: Decimal256): Decimal256;
         /**
          * Negate the current value of the `decimal` destructively.
          */
         negate(): void;
+        /**
+         * @param other_decimal A {@link Arrow.Decimal256} to be compared.
+         * @returns `true` if the decimal isn't equal to the other decimal,   `false` otherwise.
+         */
         not_equal(other_decimal: Decimal256): boolean;
+        /**
+         * @param right A {@link Arrow.Decimal256}.
+         * @returns The added value of these decimals.
+         */
         plus(right: Decimal256): Decimal256;
+        /**
+         * @param original_scale A scale to be converted from.
+         * @param new_scale A scale to be converted to.
+         * @returns The rescaled decimal or `null` on error.
+         */
         rescale(original_scale: number, new_scale: number): Decimal256 | null;
+        /**
+         * @returns The binary representation of the decimal.
+         */
         to_bytes(): GLib.Bytes;
+        /**
+         * @returns The string representation of the decimal.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
+        /**
+         * @param scale The scale of the decimal.
+         * @returns The string representation of the decimal.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string_scale(scale: number): string;
     }
 
@@ -6150,6 +7365,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal256Array extends FixedSizeBinaryArray {
         static $gtype: GObject.GType<Decimal256Array>;
 
@@ -6170,16 +7388,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal256Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal256Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal256Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal256Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6188,8 +7409,19 @@ export namespace Arrow {
 
         // Methods
 
-        format_value(i: number): string;
-        get_value(i: number): Decimal256;
+        /**
+         * @param i The index of the target value.
+         * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
+         */
+        format_value(i: bigint | number): string;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): Decimal256;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FixedSizeBinaryArray.get_value
         get_value(...args: never[]): any;
     }
@@ -6205,6 +7437,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal256ArrayBuilder extends FixedSizeBinaryArrayBuilder {
         static $gtype: GObject.GType<Decimal256ArrayBuilder>;
 
@@ -6227,16 +7462,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal256ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -6247,17 +7485,27 @@ export namespace Arrow {
 
         // Methods
 
-        append_value(value?: Decimal256 | null): boolean;
+        /**
+         * @param value A decimal value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: Decimal256 | null): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FixedSizeBinaryArrayBuilder.append_value
         append_value(...args: never[]): any;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
-         * @param values The array of #GArrowDecimal256.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param values The array of {@link Arrow.Decimal256}.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: Decimal256[], is_valids?: boolean[] | null): boolean;
+        append_values(values: Decimal256[], is_valids: boolean[] | null): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FixedSizeBinaryArrayBuilder.append_values
         append_values(...args: never[]): any;
     }
@@ -6273,6 +7521,9 @@ export namespace Arrow {
         interface ConstructorProps extends DecimalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal256DataType extends DecimalDataType {
         static $gtype: GObject.GType<Decimal256DataType>;
 
@@ -6298,16 +7549,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal256DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal256DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal256DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal256DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6334,6 +7588,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Decimal256Scalar extends Scalar {
         static $gtype: GObject.GType<Decimal256Scalar>;
 
@@ -6341,6 +7598,8 @@ export namespace Arrow {
 
         /**
          * The value of the scalar.
+         * @since 5.0.0
+         * @construct-only
          */
         set value(val: Decimal256);
 
@@ -6363,16 +7622,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decimal256Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decimal256Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decimal256Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decimal256Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decimal256Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6381,6 +7643,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): Decimal256;
     }
 
@@ -6395,6 +7660,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedSizeBinaryDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class DecimalDataType extends FixedSizeBinaryDataType {
         static $gtype: GObject.GType<DecimalDataType>;
 
@@ -6420,16 +7688,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DecimalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DecimalDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DecimalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DecimalDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DecimalDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DecimalDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6438,7 +7709,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The precision of the decimal data type.
+         */
         get_precision(): number;
+        /**
+         * @returns The scale of the decimal data type.
+         */
         get_scale(): number;
     }
 
@@ -6463,12 +7740,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DenseUnionArray extends UnionArray {
         static $gtype: GObject.GType<DenseUnionArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value_offsets(): Int32Array;
+        /**
+         * @construct-only
+         */
         get valueOffsets(): Int32Array;
 
         /**
@@ -6497,16 +7783,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DenseUnionArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DenseUnionArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DenseUnionArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DenseUnionArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DenseUnionArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DenseUnionArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6515,7 +7804,11 @@ export namespace Arrow {
 
         // Methods
 
-        get_value_offset(i: number): number;
+        /**
+         * @param i The index of the offset of the value in the union.
+         * @returns The offset of the i-th value.
+         */
+        get_value_offset(i: bigint | number): number;
     }
 
     namespace DenseUnionArrayBuilder {
@@ -6529,6 +7822,9 @@ export namespace Arrow {
         interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DenseUnionArrayBuilder extends UnionArrayBuilder {
         static $gtype: GObject.GType<DenseUnionArrayBuilder>;
 
@@ -6547,20 +7843,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data_type?: DenseUnionDataType | null): DenseUnionArrayBuilder;
+        static ['new'](data_type: DenseUnionDataType | null): DenseUnionArrayBuilder;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DenseUnionArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DenseUnionArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DenseUnionArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -6581,6 +7880,9 @@ export namespace Arrow {
         interface ConstructorProps extends UnionDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DenseUnionDataType extends UnionDataType {
         static $gtype: GObject.GType<DenseUnionDataType>;
 
@@ -6603,16 +7905,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DenseUnionDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DenseUnionDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DenseUnionDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DenseUnionDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DenseUnionDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DenseUnionDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6633,6 +7938,9 @@ export namespace Arrow {
         interface ConstructorProps extends UnionScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DenseUnionScalar extends UnionScalar {
         static $gtype: GObject.GType<DenseUnionScalar>;
 
@@ -6655,16 +7963,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DenseUnionScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DenseUnionScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DenseUnionScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DenseUnionScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DenseUnionScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DenseUnionScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6693,12 +8004,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DictionaryArray extends Array {
         static $gtype: GObject.GType<DictionaryArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dictionary(): Array;
+        /**
+         * @construct-only
+         */
         get indices(): Array;
 
         /**
@@ -6720,16 +8040,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DictionaryArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DictionaryArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DictionaryArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DictionaryArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DictionaryArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DictionaryArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6738,8 +8061,17 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The dictionary of this array.
+         */
         get_dictionary(): Array;
+        /**
+         * @returns The dictionary data type of this array.
+         */
         get_dictionary_data_type(): DictionaryDataType;
+        /**
+         * @returns The indices of values in dictionary.
+         */
         get_indices(): Array;
     }
 
@@ -6754,6 +8086,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DictionaryDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<DictionaryDataType>;
 
@@ -6776,16 +8111,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DictionaryDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DictionaryDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DictionaryDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DictionaryDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DictionaryDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DictionaryDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6794,8 +8132,17 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The {@link Arrow.DataType} of index.
+         */
         get_index_data_type(): DataType;
+        /**
+         * @returns The {@link Arrow.DataType} of dictionary values.
+         */
         get_value_data_type(): DataType;
+        /**
+         * @returns Whether dictionary contents are ordered or not.
+         */
         is_ordered(): boolean;
     }
 
@@ -6815,6 +8162,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DoubleArray extends NumericArray {
         static $gtype: GObject.GType<DoubleArray>;
 
@@ -6833,20 +8183,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): DoubleArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): DoubleArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DoubleArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DoubleArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DoubleArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DoubleArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6855,8 +8213,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -6871,6 +8239,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DoubleArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<DoubleArrayBuilder>;
 
@@ -6893,16 +8264,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DoubleArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DoubleArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DoubleArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DoubleArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6911,16 +8285,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A double value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value A double value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of double.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace DoubleDataType {
@@ -6934,6 +8316,9 @@ export namespace Arrow {
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DoubleDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<DoubleDataType>;
 
@@ -6956,16 +8341,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DoubleDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DoubleDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DoubleDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DoubleDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6985,6 +8373,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DoubleScalar extends Scalar {
         static $gtype: GObject.GType<DoubleScalar>;
 
@@ -7007,16 +8398,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DoubleScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DoubleScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DoubleScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DoubleScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DoubleScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7025,6 +8419,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -7047,6 +8444,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class EqualOptions extends GObject.Object {
         static $gtype: GObject.GType<EqualOptions>;
 
@@ -7055,27 +8455,37 @@ export namespace Arrow {
         /**
          * The absolute tolerance for approximate comparison of
          * floating-point values.
+         * @since 5.0.0
+         * @default 0.00001
          */
         get absolute_tolerance(): number;
         set absolute_tolerance(val: number);
         /**
          * The absolute tolerance for approximate comparison of
          * floating-point values.
+         * @since 5.0.0
+         * @default 0.00001
          */
         get absoluteTolerance(): number;
         set absoluteTolerance(val: number);
         /**
          * Whether or not approximate comparison is used.
+         * @since 5.0.0
+         * @default false
          */
         get approx(): boolean;
         set approx(val: boolean);
         /**
          * Whether or not NaNs are considered equal.
+         * @since 5.0.0
+         * @default false
          */
         get nans_equal(): boolean;
         set nans_equal(val: boolean);
         /**
          * Whether or not NaNs are considered equal.
+         * @since 5.0.0
+         * @default false
          */
         get nansEqual(): boolean;
         set nansEqual(val: boolean);
@@ -7099,16 +8509,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EqualOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EqualOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EqualOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EqualOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EqualOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EqualOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7117,6 +8530,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns `true` if approximate comparison is used, `false` otherwise.
+         */
         is_approx(): boolean;
     }
 
@@ -7129,6 +8545,9 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExecuteContext extends GObject.Object {
         static $gtype: GObject.GType<ExecuteContext>;
 
@@ -7151,16 +8570,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExecuteContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExecuteContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExecuteContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExecuteContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExecuteContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExecuteContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7183,12 +8605,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExecuteNode extends GObject.Object {
         static $gtype: GObject.GType<ExecuteNode>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set node(val: any);
+        /**
+         * @construct-only
+         */
         get options(): ExecuteNodeOptions;
 
         /**
@@ -7208,16 +8639,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExecuteNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExecuteNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExecuteNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExecuteNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExecuteNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExecuteNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7226,7 +8660,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The kind name of the node.
+         */
         get_kind_name(): string;
+        /**
+         * @returns The output schema of the node.
+         */
         get_output_schema(): Schema;
     }
 
@@ -7243,11 +8683,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExecuteNodeOptions extends GObject.Object {
         static $gtype: GObject.GType<ExecuteNodeOptions>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set options(val: any);
 
         /**
@@ -7267,16 +8713,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExecuteNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExecuteNodeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExecuteNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExecuteNodeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExecuteNodeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExecuteNodeOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7297,11 +8746,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExecutePlan extends GObject.Object {
         static $gtype: GObject.GType<ExecutePlan>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set plan(val: any);
 
         /**
@@ -7323,16 +8778,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExecutePlan.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExecutePlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExecutePlan.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExecutePlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExecutePlan.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExecutePlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7342,54 +8800,63 @@ export namespace Arrow {
         // Methods
 
         /**
-         * This is a shortcut of garrow_execute_plan_build_node() for aggregate
+         * This is a shortcut of `garrow_execute_plan_build_node()` for aggregate
          * node.
-         * @param input A #GArrowExecuteNode.
-         * @param options A #GArrowAggregateNodeOptions.
-         * @returns A newly built and added #GArrowExecuteNode   for aggregation on success, %NULL on error.
+         * @param input A {@link Arrow.ExecuteNode}.
+         * @param options A {@link Arrow.AggregateNodeOptions}.
+         * @returns A newly built and added {@link Arrow.ExecuteNode}   for aggregation on success, `null` on error.
          */
         build_aggregate_node(input: ExecuteNode, options: AggregateNodeOptions): ExecuteNode;
         /**
-         * This is a shortcut of garrow_execute_plan_build_node() for filter
+         * This is a shortcut of `garrow_execute_plan_build_node()` for filter
          * node.
-         * @param input A #GArrowExecuteNode.
-         * @param options A #GArrowFilterNodeOptions.
-         * @returns A newly built and added #GArrowExecuteNode   for filter on success, %NULL on error.
+         * @param input A {@link Arrow.ExecuteNode}.
+         * @param options A {@link Arrow.FilterNodeOptions}.
+         * @returns A newly built and added {@link Arrow.ExecuteNode}   for filter on success, `null` on error.
          */
         build_filter_node(input: ExecuteNode, options: FilterNodeOptions): ExecuteNode;
         /**
-         * This is a shortcut of garrow_execute_plan_build_node() for hash
+         * This is a shortcut of `garrow_execute_plan_build_node()` for hash
          * join node.
-         * @param left A left #GArrowExecuteNode.
-         * @param right A right #GArrowExecuteNode.
-         * @param options A #GArrowHashJoinNodeOptions.
-         * @returns A newly built and added #GArrowExecuteNode   for hash join on success, %NULL on error.
+         * @param left A left {@link Arrow.ExecuteNode}.
+         * @param right A right {@link Arrow.ExecuteNode}.
+         * @param options A {@link Arrow.HashJoinNodeOptions}.
+         * @returns A newly built and added {@link Arrow.ExecuteNode}   for hash join on success, `null` on error.
          */
         build_hash_join_node(left: ExecuteNode, right: ExecuteNode, options: HashJoinNodeOptions): ExecuteNode;
+        /**
+         * @param factory_name A factory name to build a {@link Arrow.ExecuteNode}.
+         * @param inputs An inputs to execute new node.
+         * @param options A {@link Arrow.ExecuteNodeOptions} for new node.
+         * @returns A newly built and added {@link Arrow.ExecuteNode}   on success, `null` on error.
+         */
         build_node(factory_name: string, inputs: ExecuteNode[], options: ExecuteNodeOptions): ExecuteNode;
         /**
-         * This is a shortcut of garrow_execute_plan_build_node() for project
+         * This is a shortcut of `garrow_execute_plan_build_node()` for project
          * node.
-         * @param input A #GArrowExecuteNode.
-         * @param options A #GArrowProjectNodeOptions.
-         * @returns A newly built and added #GArrowExecuteNode   for project on success, %NULL on error.
+         * @param input A {@link Arrow.ExecuteNode}.
+         * @param options A {@link Arrow.ProjectNodeOptions}.
+         * @returns A newly built and added {@link Arrow.ExecuteNode}   for project on success, `null` on error.
          */
         build_project_node(input: ExecuteNode, options: ProjectNodeOptions): ExecuteNode;
         /**
-         * This is a shortcut of garrow_execute_plan_build_node() for sink
+         * This is a shortcut of `garrow_execute_plan_build_node()` for sink
          * node.
-         * @param input A #GArrowExecuteNode.
-         * @param options A #GArrowSinkNodeOptions.
-         * @returns A newly built and added #GArrowExecuteNode   for sink on success, %NULL on error.
+         * @param input A {@link Arrow.ExecuteNode}.
+         * @param options A {@link Arrow.SinkNodeOptions}.
+         * @returns A newly built and added {@link Arrow.ExecuteNode}   for sink on success, `null` on error.
          */
         build_sink_node(input: ExecuteNode, options: SinkNodeOptions): ExecuteNode;
         /**
-         * This is a shortcut of garrow_execute_plan_build_node() for source
+         * This is a shortcut of `garrow_execute_plan_build_node()` for source
          * node.
-         * @param options A #GArrowSourceNodeOptions.
-         * @returns A newly built and added #GArrowExecuteNode   for source on success, %NULL on error.
+         * @param options A {@link Arrow.SourceNodeOptions}.
+         * @returns A newly built and added {@link Arrow.ExecuteNode}   for source on success, `null` on error.
          */
         build_source_node(options: SourceNodeOptions): ExecuteNode;
+        /**
+         * @returns A list of   {@link Arrow.ExecuteNode} of this plan.
+         */
         get_nodes(): ExecuteNode[];
         /**
          * Starts this plan.
@@ -7399,10 +8866,13 @@ export namespace Arrow {
          * Stops this plan.
          */
         stop(): void;
+        /**
+         * @returns `true` on success, `false` on error.
+         */
         validate(): boolean;
         /**
          * Waits for finishing this plan.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         wait(): boolean;
     }
@@ -7416,6 +8886,9 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Expression extends GObject.Object {
         static $gtype: GObject.GType<Expression>;
 
@@ -7436,16 +8909,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Expression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Expression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7454,7 +8930,14 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_expression A {@link Arrow.Expression}.
+         * @returns `true` if both of them have the same content, `false`   otherwise.
+         */
         equal(other_expression: Expression): boolean;
+        /**
+         * @returns The formatted expression.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -7477,11 +8960,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExtensionArray extends Array {
         static $gtype: GObject.GType<ExtensionArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get storage(): Array;
 
         /**
@@ -7501,16 +8990,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExtensionArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtensionArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExtensionArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtensionArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExtensionArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExtensionArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7519,6 +9011,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The underlying storage of the array.
+         */
         get_storage(): Array;
     }
 
@@ -7537,12 +9032,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExtensionDataType extends DataType {
         static $gtype: GObject.GType<ExtensionDataType>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get storage_data_type(): DataType;
+        /**
+         * @construct-only
+         */
         get storageDataType(): DataType;
 
         /**
@@ -7562,16 +9066,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExtensionDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtensionDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExtensionDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtensionDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExtensionDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExtensionDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7581,30 +9088,45 @@ export namespace Arrow {
         // Virtual methods
 
         /**
-         * It must returns %TRUE only when the both data types equal, %FALSE
+         * It must returns `true` only when the both data types equal, `false`
          *   otherwise.
          * @param other_data_type
+         * @virtual
          */
         vfunc_equal(other_data_type: ExtensionDataType): boolean;
         /**
-         * It must returns #GType for corresponding extension array
+         * It must returns {@link GObject.GType} for corresponding extension array
          *   class.
+         * @virtual
          */
         vfunc_get_array_gtype(): GObject.GType;
         /**
          * It must returns the name of this extension data type.
+         * @virtual
          */
         vfunc_get_extension_name(): string;
         /**
          * It must returns a serialized data of this extension data type
          *   to deserialize later.
+         * @virtual
          */
-        vfunc_serialize(): GLib.Bytes;
+        vfunc_serialize(): GLib.Bytes | Uint8Array;
 
         // Methods
 
+        /**
+         * @returns The extension name of the type.   It should be freed with `g_free()` when no longer needed.
+         */
         get_extension_name(): string;
+        /**
+         * @param storage A {@link Arrow.Array}.
+         * @returns The array that wraps underlying storage array.
+         */
         wrap_array(storage: Array): ExtensionArray;
+        /**
+         * @param storage A {@link Arrow.ChunkedArray}.
+         * @returns The chunked array that wraps underlying   storage chunked array.
+         */
         wrap_chunked_array(storage: ChunkedArray): ChunkedArray;
     }
 
@@ -7621,11 +9143,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExtensionDataTypeRegistry extends GObject.Object {
         static $gtype: GObject.GType<ExtensionDataTypeRegistry>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set registry(val: any);
 
         /**
@@ -7645,16 +9173,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtensionDataTypeRegistry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtensionDataTypeRegistry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExtensionDataTypeRegistry.SignalSignatures[K]> extends [any, ...infer Q]
@@ -7669,18 +9200,22 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param name An extension data type name to be looked up.
+         * @returns A found {@link Arrow.ExtensionDataType} on   found, `null` on not found.
+         */
         lookup(name: string): ExtensionDataType;
         /**
          * Register the given `data_type` to the `registry`.
-         * @param data_type A #GArrowExtensionDataType to be registered.
-         * @returns %TRUE on success, %FALSE on error.
+         * @param data_type A {@link Arrow.ExtensionDataType} to be registered.
+         * @returns `true` on success, `false` on error.
          */
         register(data_type: ExtensionDataType): boolean;
         /**
          * Unregister an extension data type that has the given `name` from the
          * `registry`.
          * @param name An extension data type name to be unregistered.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         unregister(name: string): boolean;
     }
@@ -7697,6 +9232,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExtensionScalar extends Scalar {
         static $gtype: GObject.GType<ExtensionScalar>;
 
@@ -7717,16 +9255,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExtensionScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtensionScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExtensionScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtensionScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExtensionScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExtensionScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7748,12 +9289,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FeatherFileReader extends GObject.Object {
         static $gtype: GObject.GType<FeatherFileReader>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set feather_reader(val: any);
+        /**
+         * @construct-only
+         */
         set featherReader(val: any);
 
         /**
@@ -7775,16 +9325,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FeatherFileReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FeatherFileReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FeatherFileReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FeatherFileReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FeatherFileReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FeatherFileReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7793,9 +9346,23 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The format version of the file.
+         */
         get_version(): number;
+        /**
+         * @returns The table in the file that has all columns.
+         */
         read(): Table;
+        /**
+         * @param indices The indices of column to be read.
+         * @returns The table in the file that has only the   specified columns.
+         */
         read_indices(indices: number[]): Table;
+        /**
+         * @param names The names of column to be read.
+         * @returns The table in the file that has only the   specified columns.
+         */
         read_names(names: string[]): Table;
     }
 
@@ -7812,6 +9379,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FeatherWriteProperties extends GObject.Object {
         static $gtype: GObject.GType<FeatherWriteProperties>;
 
@@ -7819,13 +9389,15 @@ export namespace Arrow {
 
         /**
          * Compression type to use. Only
-         * %GARROW_COMPRESSION_TYPE_UNCOMPRESSED,
-         * %GARROW_COMPRESSION_TYPE_LZ4 and %GARROW_COMPRESSION_TYPE_ZSTD
+         * {@link Arrow.CompressionType.UNCOMPRESSED},
+         * {@link Arrow.CompressionType.LZ4} and {@link Arrow.CompressionType.ZSTD}
          * are supported. The default compression is
-         * %GARROW_COMPRESSION_TYPE_LZ4 if Apache Arrow C++ is built with
-         * support for it, otherwise %GARROW_COMPRESSION_TYPE_UNCOMPRESSED.
-         * %GARROW_COMPRESSION_TYPE_UNCOMPRESSED is set as the object
+         * {@link Arrow.CompressionType.LZ4} if Apache Arrow C++ is built with
+         * support for it, otherwise {@link Arrow.CompressionType.UNCOMPRESSED}.
+         * {@link Arrow.CompressionType.UNCOMPRESSED} is set as the object
          * default here.
+         * @since 0.17.0
+         * @default Arrow.CompressionType.LZO
          */
         get compression(): CompressionType;
         set compression(val: CompressionType);
@@ -7849,16 +9421,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FeatherWriteProperties.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FeatherWriteProperties.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FeatherWriteProperties.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FeatherWriteProperties.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FeatherWriteProperties.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FeatherWriteProperties.SignalSignatures[K]> extends [any, ...infer Q]
@@ -7884,13 +9459,25 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Field extends GObject.Object {
         static $gtype: GObject.GType<Field>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set data_type(val: DataType);
+        /**
+         * @construct-only
+         */
         set dataType(val: DataType);
+        /**
+         * @construct-only
+         */
         set field(val: any);
 
         /**
@@ -7914,16 +9501,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Field.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Field.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Field.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Field.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Field.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Field.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7932,21 +9522,64 @@ export namespace Arrow {
 
         // Static methods
 
+        /**
+         * @param c_abi_schema A `struct ArrowSchema *`.
+         */
         static ['import'](c_abi_schema: any): Field | null;
 
         // Methods
 
+        /**
+         * @param other_field A {@link Arrow.Field} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_field: Field): boolean;
+        /**
+         * @returns An exported {@link Arrow.Field} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
+         */
         ['export'](): any | null;
+        /**
+         * @returns The data type of the field.
+         */
         get_data_type(): DataType;
+        /**
+         * @returns The   metadata in the field.   It should be freed with `g_hash_table_unref()` when no longer needed.
+         */
         get_metadata(): GLib.HashTable<string, string> | null;
+        /**
+         * @returns The name of the field.
+         */
         get_name(): string;
+        /**
+         * @returns `true` if the field has metadata, `false` otherwise.
+         */
         has_metadata(): boolean;
+        /**
+         * @returns Whether the filed may include null or not.
+         */
         is_nullable(): boolean;
+        /**
+         * @returns The new field that doesn't have metadata.
+         */
         remove_metadata(): Field;
+        /**
+         * @returns The string representation of the field.
+         */
         to_string(): string;
+        /**
+         * @param show_metadata Whether include metadata or not.
+         * @returns The string representation of the field.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string_metadata(show_metadata: boolean): string;
+        /**
+         * @param metadata An additional associated metadata.
+         * @returns The new field that also has the given   metadata. If both of the existing metadata and the given metadata   have the same keys, the values in the given metadata are used.
+         */
         with_merged_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
+        /**
+         * @param metadata A new associated metadata.
+         * @returns The new field with the given metadata.
+         */
         with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
     }
 
@@ -7959,6 +9592,9 @@ export namespace Arrow {
         interface ConstructorProps extends Expression.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FieldExpression extends Expression {
         static $gtype: GObject.GType<FieldExpression>;
 
@@ -7981,16 +9617,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FieldExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FieldExpression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FieldExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FieldExpression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FieldExpression.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FieldExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8018,13 +9657,16 @@ export namespace Arrow {
             dir_name: string;
             dirName: string;
             extension: string;
-            mtime: number;
+            mtime: bigint | number;
             path: string;
-            size: number;
+            size: bigint | number;
             type: FileType;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileInfo extends GObject.Object {
         static $gtype: GObject.GType<FileInfo>;
 
@@ -8032,42 +9674,59 @@ export namespace Arrow {
 
         /**
          * The file base name (component after the last directory separator).
+         * @since 0.17.0
+         * @read-only
          */
         get base_name(): string;
         /**
          * The file base name (component after the last directory separator).
+         * @since 0.17.0
+         * @read-only
          */
         get baseName(): string;
         /**
          * The directory base name (component before the file base name).
+         * @since 0.17.0
+         * @read-only
          */
         get dir_name(): string;
         /**
          * The directory base name (component before the file base name).
+         * @since 0.17.0
+         * @read-only
          */
         get dirName(): string;
         /**
          * The file extension (excluding the dot).
+         * @since 0.17.0
+         * @read-only
          */
         get extension(): string;
         /**
          * The time of last modification, if available.
+         * @since 0.17.0
+         * @default -1
          */
         get mtime(): number;
-        set mtime(val: number);
+        set mtime(val: bigint | number);
         /**
          * The full file path in the file system.
+         * @since 0.17.0
          */
         get path(): string;
         set path(val: string);
         /**
          * The size in bytes, if available
          * Only regular files are guaranteed to have a size.
+         * @since 0.17.0
+         * @default -1
          */
         get size(): number;
-        set size(val: number);
+        set size(val: bigint | number);
         /**
          * The type of the entry.
+         * @since 0.17.0
+         * @default Arrow.FileType.UNKNOWN
          */
         get type(): FileType;
         set type(val: FileType);
@@ -8091,16 +9750,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8109,9 +9771,22 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_file_info A {@link Arrow.FileInfo} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_file_info: FileInfo): boolean;
+        /**
+         * @returns `true` if the entry is a directory, `false` otherwise.
+         */
         is_dir(): boolean;
+        /**
+         * @returns `true` if the entry is a file, `false` otherwise.
+         */
         is_file(): boolean;
+        /**
+         * @returns The string representation of the file statistics.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -8124,11 +9799,12 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SeekableInputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {}
+            extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<FileInputStream>;
 
@@ -8153,16 +9829,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8171,9 +9850,10 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The file descriptor of `stream`.
+         */
         get_file_descriptor(): number;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8187,90 +9867,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8278,7 +9936,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8286,9 +9944,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8308,9 +9966,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8324,33 +9982,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8383,21 +10041,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -8407,8 +10065,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8425,14 +10083,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8443,13 +10101,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8480,21 +10138,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8504,33 +10162,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8539,6 +10198,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8547,12 +10207,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8561,20 +10223,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8586,8 +10250,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -8624,11 +10289,12 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {}
+            extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<FileOutputStream>;
 
@@ -8651,32 +10317,49 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileOutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileOutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
         /**
          * It ensures writing all data on memory to storage.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         flush(): boolean;
+        /**
+         * @param data The data to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
         write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -8691,90 +10374,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8782,7 +10443,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8790,9 +10451,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8812,9 +10473,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8828,33 +10489,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8887,21 +10548,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -8911,8 +10572,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8929,14 +10590,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -8947,13 +10608,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8984,21 +10645,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -9008,33 +10669,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -9043,6 +10705,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -9051,12 +10714,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -9065,20 +10730,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -9090,8 +10757,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -9141,6 +10809,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileSelector extends GObject.Object {
         static $gtype: GObject.GType<FileSelector>;
 
@@ -9149,12 +10820,16 @@ export namespace Arrow {
         /**
          * The behavior if `base_dir` isn't found in the file system.
          * If false, an error is returned.  If true, an empty selection is returned.
+         * @since 0.17.0
+         * @default false
          */
         get allow_not_found(): boolean;
         set allow_not_found(val: boolean);
         /**
          * The behavior if `base_dir` isn't found in the file system.
          * If false, an error is returned.  If true, an empty selection is returned.
+         * @since 0.17.0
+         * @default false
          */
         get allowNotFound(): boolean;
         set allowNotFound(val: boolean);
@@ -9162,6 +10837,7 @@ export namespace Arrow {
          * The directory in which to select files.
          * If the path exists but doesn't point to a directory, this should
          * be an error.
+         * @since 0.17.0
          */
         get base_dir(): string;
         set base_dir(val: string);
@@ -9169,21 +10845,28 @@ export namespace Arrow {
          * The directory in which to select files.
          * If the path exists but doesn't point to a directory, this should
          * be an error.
+         * @since 0.17.0
          */
         get baseDir(): string;
         set baseDir(val: string);
         /**
          * The maximum number of subdirectories to recurse into.
+         * @since 0.17.0
+         * @default 2147483647
          */
         get max_recursion(): number;
         set max_recursion(val: number);
         /**
          * The maximum number of subdirectories to recurse into.
+         * @since 0.17.0
+         * @default 2147483647
          */
         get maxRecursion(): number;
         set maxRecursion(val: number);
         /**
          * Whether to recurse into subdirectories.
+         * @since 0.17.0
+         * @default false
          */
         get recursive(): boolean;
         set recursive(val: boolean);
@@ -9205,16 +10888,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileSelector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSelector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileSelector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSelector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileSelector.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileSelector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9236,12 +10922,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class FileSystem extends GObject.Object {
         static $gtype: GObject.GType<FileSystem>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set file_system(val: any);
+        /**
+         * @construct-only
+         */
         set fileSystem(val: any);
 
         /**
@@ -9261,16 +10956,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9280,9 +10978,9 @@ export namespace Arrow {
         // Static methods
 
         /**
-         * This is a factory function to create a specific #GArrowFileSystem
+         * This is a factory function to create a specific {@link Arrow.FileSystem}
          * object.
-         * @param uri An URI to specify file system with options. If you only have an   absolute path, g_filename_to_uri() will help you.
+         * @param uri An URI to specify file system with options. If you only have an   absolute path, `g_filename_to_uri()` will help you.
          */
         static create(uri: string): FileSystem | null;
 
@@ -9294,7 +10992,7 @@ export namespace Arrow {
          * Otherwise, it is replaced.
          * @param src The path of the source file.
          * @param dest The path of the destination.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         copy_file(src: string, dest: string): boolean;
         /**
@@ -9302,34 +11000,34 @@ export namespace Arrow {
          * This function succeeds if the directory already exists.
          * @param path The paths of the directory.
          * @param recursive Whether creating directory recursively or not.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         create_dir(path: string, recursive: boolean): boolean;
         /**
          * Delete a directory and its contents, recursively.
          * @param path The paths of the directory.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         delete_dir(path: string): boolean;
         /**
          * Delete a directory's contents, recursively. Like
-         * garrow_file_system_delete_dir(), but doesn't delete the directory
+         * `garrow_file_system_delete_dir()`, but doesn't delete the directory
          * itself. Passing an empty path (`""`) will wipe the entire file
          * system tree.
          * @param path The paths of the directory.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         delete_dir_contents(path: string): boolean;
         /**
          * Delete a file.
          * @param path The paths of the file to be delete.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         delete_file(path: string): boolean;
         /**
          * Delete many files.
          * @param paths The paths of the files to be delete.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         delete_files(paths: string[]): boolean;
         /**
@@ -9337,30 +11035,33 @@ export namespace Arrow {
          *
          * Any symlink is automatically dereferenced, recursively.
          * A non-existing or unreachable file returns an OK status and has
-         * a #GArrowFileType of value %GARROW_FILE_TYPE_NOT_FOUND.
+         * a {@link Arrow.FileType} of value {@link Arrow.FileType.NOT_FOUND}.
          * An error status indicates a truly exceptional condition
          * (low-level I/O error, etc.).
          * @param path The path of the target.
-         * @returns A #GArrowFileInfo.
+         * @returns A {@link Arrow.FileInfo}.
          */
         get_file_info(path: string): FileInfo | null;
         /**
-         * Get information same as garrow_file_system_get_file_info()
+         * Get information same as `garrow_file_system_get_file_info()`
          * for the given many targets at once.
          * @param paths The paths of the targets.
-         * @returns A list of #GArrowFileInfo.
+         * @returns A list of {@link Arrow.FileInfo}.
          */
         get_file_infos_paths(paths: string[]): FileInfo[];
         /**
-         * Get information same as garrow_file_system_get_file_info()
+         * Get information same as `garrow_file_system_get_file_info()`
          * according to a selector.
          *
          * The selector's base directory will not be part of the results,
          * even if it exists.
-         * @param file_selector A #GArrowFileSelector.
-         * @returns A list of #GArrowFileInfo.
+         * @param file_selector A {@link Arrow.FileSelector}.
+         * @returns A list of {@link Arrow.FileInfo}.
          */
         get_file_infos_selector(file_selector: FileSelector): FileInfo[];
+        /**
+         * @returns The name of file system type.   It should be freed with `g_free()` when no longer needed.
+         */
         get_type_name(): string;
         /**
          * Move / rename a file or a directory.
@@ -9370,33 +11071,33 @@ export namespace Arrow {
          * - otherwise, behavior is unspecified (implementation-dependent).
          * @param src The path of the source file.
          * @param dest The path of the destination.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         move(src: string, dest: string): boolean;
         /**
          * Open an output stream for appending.
          * If the target doesn't exist, a new empty file is created.
          * @param path The path of the output stream.
-         * @returns A newly created #GArrowOutputStream   for appending.
+         * @returns A newly created {@link Arrow.OutputStream}   for appending.
          */
         open_append_stream(path: string): OutputStream | null;
         /**
          * Open an input file for random access reading.
          * @param path The path of the input file.
-         * @returns A newly created   #GArrowSeekableInputStream.
+         * @returns A newly created   {@link Arrow.SeekableInputStream}.
          */
         open_input_file(path: string): SeekableInputStream | null;
         /**
          * Open an input stream for sequential reading.
          * @param path The path of the input stream.
-         * @returns A newly created   #GArrowInputStream.
+         * @returns A newly created   {@link Arrow.InputStream}.
          */
         open_input_stream(path: string): InputStream | null;
         /**
          * Open an output stream for sequential writing.
          * If the target already exists, the existing data is truncated.
          * @param path The path of the output stream.
-         * @returns A newly created   #GArrowOutputStream.
+         * @returns A newly created   {@link Arrow.OutputStream}.
          */
         open_output_stream(path: string): OutputStream | null;
     }
@@ -9412,6 +11113,9 @@ export namespace Arrow {
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FilterNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<FilterNodeOptions>;
 
@@ -9434,16 +11138,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterNodeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterNodeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterNodeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterNodeOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9465,6 +11172,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FilterOptions extends FunctionOptions {
         static $gtype: GObject.GType<FilterOptions>;
 
@@ -9472,11 +11182,15 @@ export namespace Arrow {
 
         /**
          * How to handle filtered values.
+         * @since 0.17.0
+         * @default Arrow.FilterNullSelectionBehavior.DROP
          */
         get null_selection_behavior(): FilterNullSelectionBehavior;
         set null_selection_behavior(val: FilterNullSelectionBehavior);
         /**
          * How to handle filtered values.
+         * @since 0.17.0
+         * @default Arrow.FilterNullSelectionBehavior.DROP
          */
         get nullSelectionBehavior(): FilterNullSelectionBehavior;
         set nullSelectionBehavior(val: FilterNullSelectionBehavior);
@@ -9500,16 +11214,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9533,6 +11250,9 @@ export namespace Arrow {
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FixedSizeBinaryArray extends PrimitiveArray {
         static $gtype: GObject.GType<FixedSizeBinaryArray>;
 
@@ -9553,24 +11273,27 @@ export namespace Arrow {
 
         static ['new'](
             data_type: FixedSizeBinaryDataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): FixedSizeBinaryArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedSizeBinaryArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedSizeBinaryArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FixedSizeBinaryArray.SignalSignatures[K]> extends [any, ...infer Q]
@@ -9581,8 +11304,18 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The number of bytes of each value.
+         */
         get_byte_width(): number;
-        get_value(i: number): GLib.Bytes;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): GLib.Bytes;
+        /**
+         * @returns All values as a {@link GLib.Bytes}.
+         */
         get_values_bytes(): GLib.Bytes;
     }
 
@@ -9597,6 +11330,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FixedSizeBinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<FixedSizeBinaryArrayBuilder>;
 
@@ -9619,16 +11355,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedSizeBinaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedSizeBinaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FixedSizeBinaryArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -9639,27 +11378,35 @@ export namespace Arrow {
 
         // Methods
 
-        append_value(value?: Uint8Array | null): boolean;
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: Uint8Array | null): boolean;
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
-         * @param values The array of #GBytes.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param values The array of {@link GLib.Bytes}.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          *
          * This is more efficient than
-         * garrow_fixed_size_binary_array_builder_append_values().
-         * @param values A #GBytes that contains multiple values.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * `garrow_fixed_size_binary_array_builder_append_values()`.
+         * @param values A {@link GLib.Bytes} that contains multiple values.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values_packed(values: GLib.Bytes | Uint8Array, is_valids?: boolean[] | null): boolean;
+        append_values_packed(values: GLib.Bytes | Uint8Array, is_valids: boolean[] | null): boolean;
     }
 
     namespace FixedSizeBinaryDataType {
@@ -9673,6 +11420,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FixedSizeBinaryDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<FixedSizeBinaryDataType>;
 
@@ -9695,16 +11445,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedSizeBinaryDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedSizeBinaryDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FixedSizeBinaryDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -9715,6 +11468,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The number of bytes for one data.
+         */
         get_byte_width(): number;
     }
 
@@ -9731,6 +11487,9 @@ export namespace Arrow {
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FixedSizeBinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<FixedSizeBinaryScalar>;
 
@@ -9753,16 +11512,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedSizeBinaryScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedSizeBinaryScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FixedSizeBinaryScalar.SignalSignatures[K]> extends [any, ...infer Q]
@@ -9783,6 +11545,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class FixedWidthDataType extends DataType {
         static $gtype: GObject.GType<FixedWidthDataType>;
 
@@ -9803,16 +11568,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FixedWidthDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedWidthDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FixedWidthDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FixedWidthDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FixedWidthDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FixedWidthDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9821,6 +11589,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The number of bits for one data.
+         */
         get_bit_width(): number;
     }
 
@@ -9840,6 +11611,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FloatArray extends NumericArray {
         static $gtype: GObject.GType<FloatArray>;
 
@@ -9858,20 +11632,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): FloatArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): FloatArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FloatArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FloatArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FloatArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FloatArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9880,8 +11662,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -9896,6 +11688,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FloatArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<FloatArrayBuilder>;
 
@@ -9918,16 +11713,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FloatArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FloatArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FloatArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FloatArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9936,16 +11734,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A float value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value A float value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of float.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace FloatDataType {
@@ -9959,6 +11765,9 @@ export namespace Arrow {
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FloatDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<FloatDataType>;
 
@@ -9981,16 +11790,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FloatDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FloatDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FloatDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FloatDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10010,6 +11822,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FloatScalar extends Scalar {
         static $gtype: GObject.GType<FloatScalar>;
 
@@ -10032,16 +11847,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FloatScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FloatScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FloatScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FloatScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10050,6 +11868,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -10064,6 +11885,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class FloatingPointDataType extends NumericDataType {
         static $gtype: GObject.GType<FloatingPointDataType>;
 
@@ -10084,16 +11908,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FloatingPointDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatingPointDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FloatingPointDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FloatingPointDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FloatingPointDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FloatingPointDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -10116,11 +11943,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Function extends GObject.Object {
         static $gtype: GObject.GType<Function>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set function(val: any);
 
         /**
@@ -10140,16 +11973,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Function.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Function.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Function.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Function.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10159,16 +11995,44 @@ export namespace Arrow {
         // Static methods
 
         static all(): Function[];
+        /**
+         * @param name A function name to be found.
+         */
         static find(name: string): Function;
 
         // Methods
 
+        /**
+         * @param other_function A {@link Arrow.Function} to be compared.
+         * @returns `true` if both of them have the same name, `false`   otherwise.
+         */
         equal(other_function: Function): boolean;
-        execute(args: Datum[], options?: FunctionOptions | null, context?: ExecuteContext | null): Datum | null;
+        /**
+         * @param args A list of {@link Arrow.Datum}.
+         * @param options Options for the execution as an object that   implements  {@link Arrow.FunctionOptions}.
+         * @param context A {@link Arrow.ExecuteContext} for the execution.
+         * @returns A return value of the execution as {@link Arrow.Datum} on success, `null` on error.
+         */
+        execute(args: Datum[], options: FunctionOptions | null, context: ExecuteContext | null): Datum | null;
+        /**
+         * @returns The default options of this   function if exists, `null` otherwise.
+         */
         get_default_options(): FunctionOptions | null;
+        /**
+         * @returns The function documentation.
+         */
         get_doc(): FunctionDoc;
+        /**
+         * @returns The function name.
+         */
         get_name(): string;
+        /**
+         * @returns `G_TYPE_NONE` if this function doesn't have options, the   {@link GObject.GType} of options of this function if it exists and Apache Arrow   GLib bindings of it also exist, `G_TYPE_INVALID` if options of this   function exists but Apache Arrow GLib bindings of it don't exist.
+         */
         get_options_type(): GObject.GType;
+        /**
+         * @returns The formatted function.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -10185,11 +12049,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FunctionDoc extends GObject.Object {
         static $gtype: GObject.GType<FunctionDoc>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set doc(val: any);
 
         /**
@@ -10209,16 +12079,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FunctionDoc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionDoc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FunctionDoc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionDoc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FunctionDoc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FunctionDoc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10227,9 +12100,21 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns Symbolic names (identifiers) for the function arguments.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
+         */
         get_arg_names(): string[];
+        /**
+         * @returns A detailed description of the function, meant to follow   the summary.   It should be freed with `g_free()` when no longer needed.
+         */
         get_description(): string;
+        /**
+         * @returns Name of the options class, if any.   It should be freed with `g_free()` when no longer needed.
+         */
         get_options_class_name(): string;
+        /**
+         * @returns A one-line summary of the function, using a verb.   It should be freed with `g_free()` when no longer needed.
+         */
         get_summary(): string;
     }
 
@@ -10242,6 +12127,9 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FunctionOptions extends GObject.Object {
         static $gtype: GObject.GType<FunctionOptions>;
 
@@ -10262,16 +12150,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FunctionOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FunctionOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FunctionOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FunctionOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FunctionOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10280,7 +12171,14 @@ export namespace Arrow {
 
         // Methods
 
-        equal(other_options?: FunctionOptions | null): boolean;
+        /**
+         * @param other_options A {@link Arrow.FunctionOptions} to be compared.
+         * @returns `true` if both of them have the same values, `false`   otherwise.
+         */
+        equal(other_options: FunctionOptions | null): boolean;
+        /**
+         * @returns The formatted options.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -10295,6 +12193,9 @@ export namespace Arrow {
         interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GCSFileSystem extends FileSystem {
         static $gtype: GObject.GType<GCSFileSystem>;
 
@@ -10315,16 +12216,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GCSFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GCSFileSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GCSFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GCSFileSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GCSFileSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GCSFileSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10342,18 +12246,22 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SeekableInputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {
+            extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
             raw: Gio.InputStream;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class GIOInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<GIOInputStream>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw(): Gio.InputStream;
 
         /**
@@ -10375,16 +12283,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GIOInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GIOInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GIOInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GIOInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GIOInputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GIOInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10393,9 +12304,10 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The wrapped {@link Gio.InputStream}.
+         */
         get_raw(): Gio.InputStream;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -10409,90 +12321,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -10500,7 +12390,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -10508,9 +12398,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -10530,9 +12420,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -10546,33 +12436,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -10605,21 +12495,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -10629,8 +12519,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -10647,14 +12537,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -10665,13 +12555,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -10702,21 +12592,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -10726,33 +12616,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -10761,6 +12652,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -10769,12 +12661,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -10783,20 +12677,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -10808,8 +12704,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -10847,18 +12744,22 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends OutputStream.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {
+            extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
             raw: Gio.OutputStream;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class GIOOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<GIOOutputStream>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw(): Gio.OutputStream;
 
         /**
@@ -10880,16 +12781,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GIOOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GIOOutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GIOOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GIOOutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GIOOutputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GIOOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10898,18 +12802,35 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The wrapped {@link Gio.OutputStream}.
+         */
         get_raw(): Gio.OutputStream;
-
-        // Inherited methods
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
         /**
          * It ensures writing all data on memory to storage.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         flush(): boolean;
+        /**
+         * @param data The data to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
         write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -10924,90 +12845,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11015,7 +12914,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11023,9 +12922,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11045,9 +12944,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11061,33 +12960,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -11120,21 +13019,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -11144,8 +13043,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11162,14 +13061,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -11180,13 +13079,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11217,21 +13116,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11241,33 +13140,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -11276,6 +13176,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -11284,12 +13185,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -11298,20 +13201,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -11323,8 +13228,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -11363,6 +13269,9 @@ export namespace Arrow {
         interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HDFSFileSystem extends FileSystem {
         static $gtype: GObject.GType<HDFSFileSystem>;
 
@@ -11383,16 +13292,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HDFSFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HDFSFileSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HDFSFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HDFSFileSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HDFSFileSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HDFSFileSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11416,6 +13328,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HalfFloatArray extends NumericArray {
         static $gtype: GObject.GType<HalfFloatArray>;
 
@@ -11434,20 +13349,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): HalfFloatArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): HalfFloatArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HalfFloatArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HalfFloatArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HalfFloatArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HalfFloatArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HalfFloatArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HalfFloatArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11456,7 +13379,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
     }
 
@@ -11471,6 +13401,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HalfFloatArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<HalfFloatArrayBuilder>;
 
@@ -11493,16 +13426,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HalfFloatArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HalfFloatArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HalfFloatArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -11513,15 +13449,19 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A 16-bit float value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of 16-bit float.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace HalfFloatDataType {
@@ -11535,6 +13475,9 @@ export namespace Arrow {
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HalfFloatDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<HalfFloatDataType>;
 
@@ -11557,16 +13500,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HalfFloatDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HalfFloatDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HalfFloatDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HalfFloatDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HalfFloatDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HalfFloatDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11586,6 +13532,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HalfFloatScalar extends Scalar {
         static $gtype: GObject.GType<HalfFloatScalar>;
 
@@ -11608,16 +13557,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HalfFloatScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HalfFloatScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HalfFloatScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HalfFloatScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HalfFloatScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HalfFloatScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11626,6 +13578,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -11640,6 +13595,9 @@ export namespace Arrow {
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HashJoinNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<HashJoinNodeOptions>;
 
@@ -11662,16 +13620,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HashJoinNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashJoinNodeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HashJoinNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashJoinNodeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HashJoinNodeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HashJoinNodeOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -11682,7 +13643,15 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param outputs Output fields.
+         * @returns `true` on success, `false` on error.
+         */
         set_left_outputs(outputs: string[]): boolean;
+        /**
+         * @param outputs Output fields.
+         * @returns `true` on success, `false` on error.
+         */
         set_right_outputs(outputs: string[]): boolean;
     }
 
@@ -11697,6 +13666,9 @@ export namespace Arrow {
         interface ConstructorProps extends TimestampParser.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ISO8601TimestampParser extends TimestampParser {
         static $gtype: GObject.GType<ISO8601TimestampParser>;
 
@@ -11719,16 +13691,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ISO8601TimestampParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ISO8601TimestampParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ISO8601TimestampParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ISO8601TimestampParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ISO8601TimestampParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ISO8601TimestampParser.SignalSignatures[K]> extends [any, ...infer Q]
@@ -11751,6 +13726,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class IndexOptions extends FunctionOptions {
         static $gtype: GObject.GType<IndexOptions>;
 
@@ -11758,6 +13736,7 @@ export namespace Arrow {
 
         /**
          * The value to be compared.
+         * @since 12.0.0
          */
         get value(): Scalar;
         set value(val: Scalar);
@@ -11781,16 +13760,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IndexOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IndexOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IndexOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IndexOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IndexOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IndexOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11807,20 +13789,27 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gio.InputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {
+            extends Gio.InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
             input_stream: any;
             inputStream: any;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputStream extends Gio.InputStream implements File, Readable {
         static $gtype: GObject.GType<InputStream>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set input_stream(val: any);
+        /**
+         * @construct-only
+         */
         set inputStream(val: any);
 
         /**
@@ -11840,16 +13829,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11858,20 +13850,60 @@ export namespace Arrow {
 
         // Methods
 
-        advance(n_bytes: number): boolean;
+        /**
+         * @param n_bytes The number of bytes to be advanced.
+         * @returns `true` on success, `false` on error.
+         */
+        advance(n_bytes: bigint | number): boolean;
+        /**
+         * @param alignment The byte multiple for the metadata prefix, usually 8   or 64, to ensure the body starts on a multiple of that alignment.
+         * @returns `true` on success, `false` on error.
+         */
         align(alignment: number): boolean;
-        read_record_batch(schema: Schema, options?: ReadOptions | null): RecordBatch | null;
+        /**
+         * @param schema A {@link Arrow.Schema} for a read record batch.
+         * @param options A {@link Arrow.ReadOptions}.
+         * @returns {@link Arrow.RecordBatch} on success, `null` on error.
+         */
+        read_record_batch(schema: Schema, options: ReadOptions | null): RecordBatch | null;
+        /**
+         * @returns {@link Arrow.Tensor} on success, `null` on error.
+         */
         read_tensor(): Tensor | null;
-
-        // Inherited methods
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
-        read(n_bytes: number): Buffer | null;
+        /**
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         */
+        read(n_bytes: bigint | number): Buffer | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.InputStream.read
         read(...args: never[]): any;
-        read_bytes(n_bytes: number): GLib.Bytes | null;
+        /**
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
+         */
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.InputStream.read_bytes
         read_bytes(...args: never[]): any;
         /**
@@ -11887,90 +13919,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11978,7 +13988,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11986,9 +13996,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -12008,9 +14018,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -12024,33 +14034,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -12083,21 +14093,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -12107,8 +14117,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -12125,14 +14135,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -12143,13 +14153,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -12180,21 +14190,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -12204,33 +14214,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12239,6 +14250,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12247,12 +14259,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12261,20 +14275,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -12286,8 +14302,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -12331,6 +14348,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int16Array extends NumericArray {
         static $gtype: GObject.GType<Int16Array>;
 
@@ -12349,20 +14369,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int16Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Int16Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int16Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int16Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int16Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int16Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12371,8 +14399,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -12387,6 +14425,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int16ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int16ArrayBuilder>;
 
@@ -12409,16 +14450,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int16ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int16ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int16ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int16ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12427,16 +14471,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A int16 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value A int16 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of int16.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace Int16DataType {
@@ -12450,6 +14502,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int16DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int16DataType>;
 
@@ -12472,16 +14527,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int16DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int16DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int16DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int16DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12501,6 +14559,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int16Scalar extends Scalar {
         static $gtype: GObject.GType<Int16Scalar>;
 
@@ -12523,16 +14584,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int16Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int16Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int16Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int16Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12541,6 +14605,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -12560,6 +14627,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int32Array extends NumericArray {
         static $gtype: GObject.GType<Int32Array>;
 
@@ -12578,20 +14648,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int32Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Int32Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int32Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int32Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12600,8 +14678,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -12616,6 +14704,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int32ArrayBuilder>;
 
@@ -12638,16 +14729,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int32ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int32ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12656,16 +14750,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A int32 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value A int32 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of int32.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace Int32DataType {
@@ -12679,6 +14781,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int32DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int32DataType>;
 
@@ -12701,16 +14806,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int32DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int32DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int32DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int32DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12730,6 +14838,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int32Scalar extends Scalar {
         static $gtype: GObject.GType<Int32Scalar>;
 
@@ -12752,16 +14863,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int32Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int32Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int32Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int32Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int32Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12770,6 +14884,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -12789,6 +14906,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int64Array extends NumericArray {
         static $gtype: GObject.GType<Int64Array>;
 
@@ -12807,20 +14927,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int64Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Int64Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int64Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int64Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int64Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int64Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12829,8 +14957,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -12845,6 +14983,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int64ArrayBuilder>;
 
@@ -12867,16 +15008,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int64ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int64ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12885,16 +15029,24 @@ export namespace Arrow {
 
         // Methods
 
-        append(value: number): boolean;
-        append_value(value: number): boolean;
+        /**
+         * @param value A int64 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append(value: bigint | number): boolean;
+        /**
+         * @param value A int64 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of int64.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace Int64DataType {
@@ -12908,6 +15060,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int64DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int64DataType>;
 
@@ -12930,16 +15085,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int64DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int64DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int64DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int64DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12959,6 +15117,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int64Scalar extends Scalar {
         static $gtype: GObject.GType<Int64Scalar>;
 
@@ -12977,20 +15138,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): Int64Scalar;
+        static ['new'](value: bigint | number): Int64Scalar;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int64Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int64Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int64Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int64Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int64Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12999,6 +15163,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -13018,6 +15185,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int8Array extends NumericArray {
         static $gtype: GObject.GType<Int8Array>;
 
@@ -13036,20 +15206,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int8Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): Int8Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int8Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int8Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int8Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int8Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13058,8 +15236,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): Uint8Array;
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -13074,6 +15262,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int8ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int8ArrayBuilder>;
 
@@ -13096,16 +15287,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int8ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int8ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int8ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int8ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13114,16 +15308,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A int8 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value A int8 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of int8.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: Uint8Array | string, is_valids?: boolean[] | null): boolean;
+        append_values(values: Uint8Array | string, is_valids: boolean[] | null): boolean;
     }
 
     namespace Int8DataType {
@@ -13137,6 +15339,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int8DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int8DataType>;
 
@@ -13159,16 +15364,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int8DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int8DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int8DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int8DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13188,6 +15396,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int8Scalar extends Scalar {
         static $gtype: GObject.GType<Int8Scalar>;
 
@@ -13210,16 +15421,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int8Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int8Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int8Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int8Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int8Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13228,6 +15442,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -13242,6 +15459,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class IntArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<IntArrayBuilder>;
 
@@ -13264,16 +15484,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IntArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IntArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IntArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IntArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IntArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IntArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13282,16 +15505,24 @@ export namespace Arrow {
 
         // Methods
 
-        append(value: number): boolean;
-        append_value(value: number): boolean;
+        /**
+         * @param value A int value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append(value: bigint | number): boolean;
+        /**
+         * @param value A int value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of int.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace IntegerDataType {
@@ -13305,6 +15536,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class IntegerDataType extends NumericDataType {
         static $gtype: GObject.GType<IntegerDataType>;
 
@@ -13325,16 +15559,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IntegerDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IntegerDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IntegerDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IntegerDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IntegerDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IntegerDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13343,6 +15580,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns `true` if the data type is signed, `false` otherwise.
+         */
         is_signed(): boolean;
     }
 
@@ -13357,6 +15597,9 @@ export namespace Arrow {
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class IntervalDataType extends TemporalDataType {
         static $gtype: GObject.GType<IntervalDataType>;
 
@@ -13377,16 +15620,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IntervalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IntervalDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IntervalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IntervalDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IntervalDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IntervalDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13395,6 +15641,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The interval type of the given `type`.
+         */
         get_interval_type(): IntervalType;
     }
 
@@ -13423,6 +15672,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class JSONReadOptions extends GObject.Object {
         static $gtype: GObject.GType<JSONReadOptions>;
 
@@ -13430,50 +15682,67 @@ export namespace Arrow {
 
         /**
          * Whether objects may be printed across multiple lines (for example pretty printed).
-         * if %FALSE, input must end with an empty line.
+         * if `false`, input must end with an empty line.
+         * @since 0.14.0
+         * @default false
          */
         get allow_newlines_in_values(): boolean;
         set allow_newlines_in_values(val: boolean);
         /**
          * Whether objects may be printed across multiple lines (for example pretty printed).
-         * if %FALSE, input must end with an empty line.
+         * if `false`, input must end with an empty line.
+         * @since 0.14.0
+         * @default false
          */
         get allowNewlinesInValues(): boolean;
         set allowNewlinesInValues(val: boolean);
         /**
          * Block size we request from the IO layer; also determines the size
-         * of chunks when #GArrowJSONReadOptions:use-threads is %TRUE.
+         * of chunks when {@link Arrow.JSONReadOptions.use_threads} is `true`.
+         * @since 0.14.0
+         * @default 1048576
          */
         get block_size(): number;
         set block_size(val: number);
         /**
          * Block size we request from the IO layer; also determines the size
-         * of chunks when #GArrowJSONReadOptions:use-threads is %TRUE.
+         * of chunks when {@link Arrow.JSONReadOptions.use_threads} is `true`.
+         * @since 0.14.0
+         * @default 1048576
          */
         get blockSize(): number;
         set blockSize(val: number);
         /**
          * Schema for passing custom conversion rules.
+         * @since 0.14.0
          */
         get schema(): Schema;
         set schema(val: Schema);
         /**
          * How to parse handle fields outside the explicit schema.
+         * @since 0.14.0
+         * @default Arrow.JSONReadUnexpectedFieldBehavior.INFER_TYPE
          */
         get unexpected_field_behavior(): JSONReadUnexpectedFieldBehavior;
         set unexpected_field_behavior(val: JSONReadUnexpectedFieldBehavior);
         /**
          * How to parse handle fields outside the explicit schema.
+         * @since 0.14.0
+         * @default Arrow.JSONReadUnexpectedFieldBehavior.INFER_TYPE
          */
         get unexpectedFieldBehavior(): JSONReadUnexpectedFieldBehavior;
         set unexpectedFieldBehavior(val: JSONReadUnexpectedFieldBehavior);
         /**
          * Whether to use the global CPU thread pool.
+         * @since 0.14.0
+         * @default true
          */
         get use_threads(): boolean;
         set use_threads(val: boolean);
         /**
          * Whether to use the global CPU thread pool.
+         * @since 0.14.0
+         * @default true
          */
         get useThreads(): boolean;
         set useThreads(val: boolean);
@@ -13497,16 +15766,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JSONReadOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JSONReadOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JSONReadOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JSONReadOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JSONReadOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JSONReadOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13530,13 +15802,25 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class JSONReader extends GObject.Object {
         static $gtype: GObject.GType<JSONReader>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get input(): InputStream;
+        /**
+         * @construct-only
+         */
         set json_table_reader(val: any);
+        /**
+         * @construct-only
+         */
         set jsonTableReader(val: any);
 
         /**
@@ -13554,20 +15838,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](input: InputStream, options?: JSONReadOptions | null): JSONReader;
+        static ['new'](input: InputStream, options: JSONReadOptions | null): JSONReader;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JSONReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JSONReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JSONReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JSONReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JSONReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JSONReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13576,6 +15863,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns A read {@link Arrow.Table} or `null` on error.
+         */
         read(): Table | null;
     }
 
@@ -13595,6 +15885,9 @@ export namespace Arrow {
         interface ConstructorProps extends Array.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeBinaryArray extends Array {
         static $gtype: GObject.GType<LargeBinaryArray>;
 
@@ -13614,25 +15907,28 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             value_data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): LargeBinaryArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeBinaryArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeBinaryArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeBinaryArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeBinaryArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeBinaryArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeBinaryArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13641,10 +15937,23 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The data of the array as {@link Arrow.Buffer}.
+         */
         get_buffer(): Buffer;
+        /**
+         * @returns The data of the array as {@link Arrow.Buffer}.
+         */
         get_data_buffer(): Buffer;
+        /**
+         * @returns The offsets of the array as {@link Arrow.Buffer}.
+         */
         get_offsets_buffer(): Buffer;
-        get_value(i: number): GLib.Bytes;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
     namespace LargeBinaryArrayBuilder {
@@ -13658,6 +15967,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeBinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<LargeBinaryArrayBuilder>;
 
@@ -13680,16 +15992,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeBinaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeBinaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeBinaryArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -13700,16 +16015,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: Uint8Array | string): boolean;
+        /**
+         * @param value A binary value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
-         * @param values The array of #GBytes.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param values The array of {@link GLib.Bytes}.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace LargeBinaryDataType {
@@ -13723,6 +16046,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeBinaryDataType extends DataType {
         static $gtype: GObject.GType<LargeBinaryDataType>;
 
@@ -13745,16 +16071,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeBinaryDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeBinaryDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeBinaryDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeBinaryDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeBinaryDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeBinaryDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -13777,6 +16106,9 @@ export namespace Arrow {
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeBinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<LargeBinaryScalar>;
 
@@ -13799,16 +16131,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeBinaryScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeBinaryScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeBinaryScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeBinaryScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeBinaryScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeBinaryScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13836,12 +16171,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeListArray extends Array {
         static $gtype: GObject.GType<LargeListArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw_values(): Array;
+        /**
+         * @construct-only
+         */
         get rawValues(): Array;
 
         /**
@@ -13861,25 +16205,28 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             values: Array,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): LargeListArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeListArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeListArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeListArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeListArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeListArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeListArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13888,13 +16235,36 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): Array;
-        get_value_length(i: number): number;
-        get_value_offset(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th list.
+         */
+        get_value(i: bigint | number): Array;
+        /**
+         * @param i
+         */
+        get_value_length(i: bigint | number): number;
+        /**
+         * @param i The index of the offset of the target value.
+         * @returns The target offset in the array containing the list's values.
+         */
+        get_value_offset(i: bigint | number): number;
+        /**
+         * @returns The target offsets in the array containing the list's values.
+         */
         get_value_offsets(): number[];
+        /**
+         * @returns The data type of value in each list.
+         */
         get_value_type(): DataType;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.Array.get_value_type
         get_value_type(...args: never[]): any;
+        /**
+         * @returns The array containing the list's values.
+         */
         get_values(): Array;
     }
 
@@ -13909,6 +16279,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeListArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<LargeListArrayBuilder>;
 
@@ -13931,16 +16304,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeListArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeListArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeListArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeListArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeListArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeListArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -13951,7 +16327,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns `true` on success, `false` if there was an error. It appends a new list element. To append a new list element, you need to call this function then append list element values to `value_builder`. `value_builder` is the {@link Arrow.ArrayBuilder} specified to constructor. You can get `value_builder` by `garrow_large_list_array_builder_get_value_builder()`.
+         */
         append_value(): boolean;
+        /**
+         * @returns The {@link Arrow.ArrayBuilder} for values.
+         */
         get_value_builder(): ArrayBuilder;
     }
 
@@ -13966,6 +16348,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeListDataType extends DataType {
         static $gtype: GObject.GType<LargeListDataType>;
 
@@ -13988,16 +16373,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeListDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeListDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeListDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeListDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeListDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeListDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14006,6 +16394,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The field of value.
+         */
         get_field(): Field;
     }
 
@@ -14022,6 +16413,9 @@ export namespace Arrow {
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeListScalar extends BaseListScalar {
         static $gtype: GObject.GType<LargeListScalar>;
 
@@ -14044,16 +16438,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeListScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeListScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeListScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeListScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeListScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeListScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14077,6 +16474,9 @@ export namespace Arrow {
         interface ConstructorProps extends LargeBinaryArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeStringArray extends LargeBinaryArray {
         static $gtype: GObject.GType<LargeStringArray>;
 
@@ -14096,25 +16496,28 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             value_data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): LargeStringArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeStringArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeStringArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeStringArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeStringArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeStringArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeStringArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14123,7 +16526,11 @@ export namespace Arrow {
 
         // Methods
 
-        get_string(i: number): string;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th UTF-8 encoded string.
+         */
+        get_string(i: bigint | number): string;
     }
 
     namespace LargeStringArrayBuilder {
@@ -14137,6 +16544,9 @@ export namespace Arrow {
         interface ConstructorProps extends LargeBinaryArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeStringArrayBuilder extends LargeBinaryArrayBuilder {
         static $gtype: GObject.GType<LargeStringArrayBuilder>;
 
@@ -14159,16 +16569,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeStringArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeStringArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeStringArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -14179,16 +16592,25 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A string value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_string(value: string): boolean;
-        append_string_len(value: string, length: number): boolean;
+        /**
+         * @param value A string value.
+         * @param length The length of `value`.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_string_len(value: string, length: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of strings.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_strings(values: string[], is_valids?: boolean[] | null): boolean;
+        append_strings(values: string[], is_valids: boolean[] | null): boolean;
     }
 
     namespace LargeStringDataType {
@@ -14202,6 +16624,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeStringDataType extends DataType {
         static $gtype: GObject.GType<LargeStringDataType>;
 
@@ -14224,16 +16649,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeStringDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeStringDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeStringDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeStringDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeStringDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeStringDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -14256,6 +16684,9 @@ export namespace Arrow {
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LargeStringScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<LargeStringScalar>;
 
@@ -14278,16 +16709,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LargeStringScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeStringScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LargeStringScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LargeStringScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LargeStringScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LargeStringScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14315,12 +16749,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ListArray extends Array {
         static $gtype: GObject.GType<ListArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw_values(): Array;
+        /**
+         * @construct-only
+         */
         get rawValues(): Array;
 
         /**
@@ -14340,25 +16783,28 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             values: Array,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): ListArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ListArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ListArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ListArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ListArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ListArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ListArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14367,13 +16813,36 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): Array;
-        get_value_length(i: number): number;
-        get_value_offset(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The i-th list.
+         */
+        get_value(i: bigint | number): Array;
+        /**
+         * @param i The index of the length of the target value.
+         * @returns The target length in the array containing the list's values.
+         */
+        get_value_length(i: bigint | number): number;
+        /**
+         * @param i
+         */
+        get_value_offset(i: bigint | number): number;
+        /**
+         * @returns The target offsets in the array containing the list's values.
+         */
         get_value_offsets(): number[];
+        /**
+         * @returns The data type of value in each list.
+         */
         get_value_type(): DataType;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.Array.get_value_type
         get_value_type(...args: never[]): any;
+        /**
+         * @returns The array containing the list's values.
+         */
         get_values(): Array;
     }
 
@@ -14388,6 +16857,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ListArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<ListArrayBuilder>;
 
@@ -14410,16 +16882,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ListArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ListArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ListArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ListArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ListArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ListArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14428,8 +16903,17 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns `true` on success, `false` if there was an error. It appends a new list element. To append a new list element, you need to call this function then append list element values to `value_builder`. `value_builder` is the {@link Arrow.ArrayBuilder} specified to constructor. You can get `value_builder` by `garrow_list_array_builder_get_value_builder()`. |[<!-- language="C" --> GArrowInt8ArrayBuilder *value_builder; GArrowListArrayBuilder *builder; value_builder = `garrow_int8_array_builder_new()`; builder = garrow_list_array_builder_new(value_builder, NULL); // Start 0th list element: [1, 0, -1] garrow_list_array_builder_append(builder, NULL); garrow_int8_array_builder_append(value_builder, 1); garrow_int8_array_builder_append(value_builder, 0); garrow_int8_array_builder_append(value_builder, -1); // Start 1st list element: [-29, 29] garrow_list_array_builder_append(builder, NULL); garrow_int8_array_builder_append(value_builder, -29); garrow_int8_array_builder_append(value_builder, 29); {   // [[1, 0, -1], [-29, 29]]   GArrowArray *array = garrow_array_builder_finish(builder);   // Now, builder is needless.   g_object_unref(builder);   g_object_unref(value_builder);   // Use array...   g_object_unref(array); } ]|
+         */
         append(): boolean;
+        /**
+         * @returns `true` on success, `false` if there was an error. It appends a new list element. To append a new list element, you need to call this function then append list element values to `value_builder`. `value_builder` is the {@link Arrow.ArrayBuilder} specified to constructor. You can get `value_builder` by `garrow_list_array_builder_get_value_builder()`. |[<!-- language="C" --> GArrowInt8ArrayBuilder *value_builder; GArrowListArrayBuilder *builder; value_builder = `garrow_int8_array_builder_new()`; builder = garrow_list_array_builder_new(value_builder, NULL); // Start 0th list element: [1, 0, -1] garrow_list_array_builder_append(builder, NULL); garrow_int8_array_builder_append(value_builder, 1); garrow_int8_array_builder_append(value_builder, 0); garrow_int8_array_builder_append(value_builder, -1); // Start 1st list element: [-29, 29] garrow_list_array_builder_append(builder, NULL); garrow_int8_array_builder_append(value_builder, -29); garrow_int8_array_builder_append(value_builder, 29); {   // [[1, 0, -1], [-29, 29]]   GArrowArray *array = garrow_array_builder_finish(builder);   // Now, builder is needless.   g_object_unref(builder);   g_object_unref(value_builder);   // Use array...   g_object_unref(array); } ]|
+         */
         append_value(): boolean;
+        /**
+         * @returns The {@link Arrow.ArrayBuilder} for values.
+         */
         get_value_builder(): ArrayBuilder;
     }
 
@@ -14444,6 +16928,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ListDataType extends DataType {
         static $gtype: GObject.GType<ListDataType>;
 
@@ -14466,16 +16953,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ListDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ListDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ListDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ListDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ListDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ListDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14484,7 +16974,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The field of value.
+         */
         get_field(): Field;
+        /**
+         * @returns The field of value.
+         */
         get_value_field(): Field;
     }
 
@@ -14501,6 +16997,9 @@ export namespace Arrow {
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ListScalar extends BaseListScalar {
         static $gtype: GObject.GType<ListScalar>;
 
@@ -14523,16 +17022,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ListScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ListScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ListScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ListScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ListScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ListScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14549,6 +17051,9 @@ export namespace Arrow {
         interface ConstructorProps extends Expression.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LiteralExpression extends Expression {
         static $gtype: GObject.GType<LiteralExpression>;
 
@@ -14571,16 +17076,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LiteralExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LiteralExpression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LiteralExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LiteralExpression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LiteralExpression.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LiteralExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14599,6 +17107,9 @@ export namespace Arrow {
         interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LocalFileSystem extends FileSystem {
         static $gtype: GObject.GType<LocalFileSystem>;
 
@@ -14617,20 +17128,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](options?: LocalFileSystemOptions | null): LocalFileSystem;
+        static ['new'](options: LocalFileSystemOptions | null): LocalFileSystem;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LocalFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LocalFileSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LocalFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LocalFileSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LocalFileSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LocalFileSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14652,6 +17166,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LocalFileSystemOptions extends GObject.Object {
         static $gtype: GObject.GType<LocalFileSystemOptions>;
 
@@ -14660,12 +17177,16 @@ export namespace Arrow {
         /**
          * Whether open_input_stream and open_input_file return a mmap'ed file,
          * or a regular one.
+         * @since 0.17.0
+         * @default false
          */
         get use_mmap(): boolean;
         set use_mmap(val: boolean);
         /**
          * Whether open_input_stream and open_input_file return a mmap'ed file,
          * or a regular one.
+         * @since 0.17.0
+         * @default false
          */
         get useMmap(): boolean;
         set useMmap(val: boolean);
@@ -14689,16 +17210,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LocalFileSystemOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LocalFileSystemOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LocalFileSystemOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LocalFileSystemOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LocalFileSystemOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LocalFileSystemOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -14732,13 +17256,25 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MapArray extends ListArray {
         static $gtype: GObject.GType<MapArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get items(): Array;
+        /**
+         * @construct-only
+         */
         get keys(): Array;
+        /**
+         * @construct-only
+         */
         get offsets(): Array;
 
         /**
@@ -14763,16 +17299,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14781,7 +17320,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The items Array containing item values.
+         */
         get_items(): Array;
+        /**
+         * @returns The Array containing key values.
+         */
         get_keys(): Array;
     }
 
@@ -14796,6 +17341,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MapArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MapArrayBuilder>;
 
@@ -14818,16 +17366,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14836,17 +17387,29 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param offsets The array of signed int.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(offsets: number[], is_valids?: boolean[] | null): boolean;
+        append_values(offsets: number[], is_valids: boolean[] | null): boolean;
+        /**
+         * @returns The {@link Arrow.ArrayBuilder} for item values.
+         */
         get_item_builder(): ArrayBuilder;
+        /**
+         * @returns The {@link Arrow.ArrayBuilder} for key values.
+         */
         get_key_builder(): ArrayBuilder;
+        /**
+         * @returns The {@link Arrow.ArrayBuilder} to add map entries as struct values.   This can be used instead of `garrow_map_array_builder_get_key_builder()` and   `garrow_map_array_builder_get_item_builder()`. You can build map entries as a list of   struct values with this builder.
+         */
         get_value_builder(): ArrayBuilder;
     }
 
@@ -14861,6 +17424,9 @@ export namespace Arrow {
         interface ConstructorProps extends ListDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MapDataType extends ListDataType {
         static $gtype: GObject.GType<MapDataType>;
 
@@ -14886,16 +17452,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14904,7 +17473,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The item type of the map.
+         */
         get_item_type(): DataType;
+        /**
+         * @returns The key type of the map.
+         */
         get_key_type(): DataType;
     }
 
@@ -14921,6 +17496,9 @@ export namespace Arrow {
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MapScalar extends BaseListScalar {
         static $gtype: GObject.GType<MapScalar>;
 
@@ -14943,16 +17521,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14976,6 +17557,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MatchSubstringOptions extends FunctionOptions {
         static $gtype: GObject.GType<MatchSubstringOptions>;
 
@@ -14983,17 +17567,23 @@ export namespace Arrow {
 
         /**
          * Whether to perform a case-insensitive match.
+         * @since 12.0.0
+         * @default false
          */
         get ignore_case(): boolean;
         set ignore_case(val: boolean);
         /**
          * Whether to perform a case-insensitive match.
+         * @since 12.0.0
+         * @default false
          */
         get ignoreCase(): boolean;
         set ignoreCase(val: boolean);
         /**
          * The exact substring (or regex, depending on kernel) to look for
          * inside input values.
+         * @since 12.0.0
+         * @default null
          */
         get pattern(): string;
         set pattern(val: string);
@@ -15017,16 +17607,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MatchSubstringOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MatchSubstringOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MatchSubstringOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MatchSubstringOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MatchSubstringOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MatchSubstringOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -15045,11 +17638,12 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends SeekableInputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {}
+            extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MemoryMappedInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<MemoryMappedInputStream>;
 
@@ -15072,16 +17666,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MemoryMappedInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MemoryMappedInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MemoryMappedInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MemoryMappedInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MemoryMappedInputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MemoryMappedInputStream.SignalSignatures[K]> extends [any, ...infer Q]
@@ -15089,8 +17686,6 @@ export namespace Arrow {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -15104,90 +17699,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -15195,7 +17768,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -15203,9 +17776,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -15225,9 +17798,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -15241,33 +17814,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -15300,21 +17873,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -15324,8 +17897,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -15342,14 +17915,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -15360,13 +17933,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -15397,21 +17970,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -15421,33 +17994,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -15456,6 +18030,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -15464,12 +18039,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -15478,20 +18055,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -15503,8 +18082,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -15546,12 +18126,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MemoryPool extends GObject.Object {
         static $gtype: GObject.GType<MemoryPool>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set memory_pool(val: any);
+        /**
+         * @construct-only
+         */
         set memoryPool(val: any);
 
         /**
@@ -15571,16 +18160,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MemoryPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MemoryPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MemoryPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MemoryPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MemoryPool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MemoryPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15593,7 +18185,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The name of the backend used by this MemoryPool   (e.g. "system" or "jemalloc").   It should be freed with `g_free()` when no longer needed.
+         */
         get_backend_name(): string;
+        /**
+         * @returns The number of bytes that were allocated and not yet free’d   through this allocator.
+         */
         get_bytes_allocated(): number;
         /**
          * Return peak memory allocation in this memory pool.
@@ -15613,6 +18211,9 @@ export namespace Arrow {
         interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MockFileSystem extends FileSystem {
         static $gtype: GObject.GType<MockFileSystem>;
 
@@ -15633,16 +18234,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MockFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MockFileSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MockFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MockFileSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MockFileSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MockFileSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15663,10 +18267,13 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             day: number;
             month: number;
-            nanosecond: number;
+            nanosecond: bigint | number;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthDayNano extends GObject.Object {
         static $gtype: GObject.GType<MonthDayNano>;
 
@@ -15674,19 +18281,25 @@ export namespace Arrow {
 
         /**
          * The day part value.
+         * @since 8.0.0
+         * @default 0
          */
         get day(): number;
         set day(val: number);
         /**
          * The month part value.
+         * @since 8.0.0
+         * @default 0
          */
         get month(): number;
         set month(val: number);
         /**
          * The nanosecond part value.
+         * @since 8.0.0
+         * @default 0
          */
         get nanosecond(): number;
-        set nanosecond(val: number);
+        set nanosecond(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -15703,20 +18316,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](month: number, day: number, nanosecond: number): MonthDayNano;
+        static ['new'](month: number, day: number, nanosecond: bigint | number): MonthDayNano;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthDayNano.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNano.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthDayNano.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNano.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthDayNano.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthDayNano.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15725,6 +18341,10 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_month_nano_day A {@link Arrow.MonthDayNano} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_month_nano_day: MonthDayNano): boolean;
     }
 
@@ -15744,6 +18364,9 @@ export namespace Arrow {
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthDayNanoIntervalArray extends PrimitiveArray {
         static $gtype: GObject.GType<MonthDayNanoIntervalArray>;
 
@@ -15763,24 +18386,27 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): MonthDayNanoIntervalArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNanoIntervalArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNanoIntervalArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthDayNanoIntervalArray.SignalSignatures[K]> extends [any, ...infer Q]
@@ -15791,7 +18417,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): MonthDayNano;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): MonthDayNano;
+        /**
+         * @returns The list of {@link Arrow.MonthDayNano}.
+         */
         get_values(): MonthDayNano[] | null;
     }
 
@@ -15806,6 +18439,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthDayNanoIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MonthDayNanoIntervalArrayBuilder>;
 
@@ -15828,16 +18464,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNanoIntervalArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNanoIntervalArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthDayNanoIntervalArrayBuilder.SignalSignatures[K]> extends [
@@ -15851,15 +18490,19 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A {@link Arrow.MonthDayNano}.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: MonthDayNano): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` calls.
-         * @param values The array of a #GArrowMonthDayNano.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param values The array of a {@link Arrow.MonthDayNano}.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: MonthDayNano[], is_valids?: boolean[] | null): boolean;
+        append_values(values: MonthDayNano[], is_valids: boolean[] | null): boolean;
     }
 
     namespace MonthDayNanoIntervalDataType {
@@ -15873,6 +18516,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthDayNanoIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<MonthDayNanoIntervalDataType>;
 
@@ -15895,16 +18541,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNanoIntervalDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNanoIntervalDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthDayNanoIntervalDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -15926,6 +18575,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthDayNanoIntervalScalar extends Scalar {
         static $gtype: GObject.GType<MonthDayNanoIntervalScalar>;
 
@@ -15948,16 +18600,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNanoIntervalScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthDayNanoIntervalScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthDayNanoIntervalScalar.SignalSignatures[K]> extends [any, ...infer Q]
@@ -15968,6 +18623,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): MonthDayNano;
     }
 
@@ -15987,6 +18645,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthIntervalArray extends NumericArray {
         static $gtype: GObject.GType<MonthIntervalArray>;
 
@@ -16005,20 +18666,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): MonthIntervalArray;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): MonthIntervalArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthIntervalArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthIntervalArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthIntervalArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthIntervalArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthIntervalArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthIntervalArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16027,7 +18696,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
     }
 
@@ -16042,6 +18718,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MonthIntervalArrayBuilder>;
 
@@ -16064,16 +18743,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthIntervalArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthIntervalArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthIntervalArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -16084,15 +18766,19 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value The month.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` calls.
          * @param values The array of the month.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace MonthIntervalDataType {
@@ -16106,6 +18792,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<MonthIntervalDataType>;
 
@@ -16128,16 +18817,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthIntervalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthIntervalDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthIntervalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthIntervalDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthIntervalDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthIntervalDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -16159,6 +18851,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MonthIntervalScalar extends Scalar {
         static $gtype: GObject.GType<MonthIntervalScalar>;
 
@@ -16181,16 +18876,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonthIntervalScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthIntervalScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonthIntervalScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonthIntervalScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonthIntervalScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonthIntervalScalar.SignalSignatures[K]> extends [any, ...infer Q]
@@ -16201,6 +18899,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -16217,6 +18918,9 @@ export namespace Arrow {
         interface ConstructorProps extends Buffer.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MutableBuffer extends Buffer {
         static $gtype: GObject.GType<MutableBuffer>;
 
@@ -16241,16 +18945,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MutableBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MutableBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MutableBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MutableBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MutableBuffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MutableBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16259,10 +18966,23 @@ export namespace Arrow {
 
         // Methods
 
-        set_data(offset: number, data: Uint8Array | string): boolean;
+        /**
+         * @param offset A write offset in the buffer data in byte.
+         * @param data The data to be written.
+         * @returns `true` on success, `false` otherwise.
+         */
+        set_data(offset: bigint | number, data: Uint8Array | string): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
-        slice(offset: number, size: number): MutableBuffer;
+        /**
+         * @param offset An offset in the buffer data in byte.
+         * @param size The number of bytes of the sliced data.
+         * @returns A newly created {@link Arrow.MutableBuffer} that   shares data of the base {@link Arrow.MutableBuffer}. The created   {@link Arrow.MutableBuffer} has data start with offset from the base   buffer data and are the specified bytes size.
+         */
+        slice(offset: bigint | number, size: bigint | number): MutableBuffer;
     }
 
     namespace NullArray {
@@ -16281,6 +19001,9 @@ export namespace Arrow {
         interface ConstructorProps extends Array.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NullArray extends Array {
         static $gtype: GObject.GType<NullArray>;
 
@@ -16299,20 +19022,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number): NullArray;
+        static ['new'](length: bigint | number): NullArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NullArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NullArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NullArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NullArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16331,6 +19057,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NullArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<NullArrayBuilder>;
 
@@ -16353,16 +19082,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NullArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NullArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NullArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NullArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16381,6 +19113,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NullDataType extends DataType {
         static $gtype: GObject.GType<NullDataType>;
 
@@ -16403,16 +19138,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NullDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NullDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NullDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NullDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16432,6 +19170,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NullScalar extends Scalar {
         static $gtype: GObject.GType<NullScalar>;
 
@@ -16454,16 +19195,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NullScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NullScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NullScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NullScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NullScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16487,6 +19231,9 @@ export namespace Arrow {
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NumericArray extends PrimitiveArray {
         static $gtype: GObject.GType<NumericArray>;
 
@@ -16507,16 +19254,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NumericArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NumericArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NumericArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NumericArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NumericArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NumericArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16525,6 +19275,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of the computed mean.
+         */
         mean(): number;
     }
 
@@ -16539,6 +19292,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class NumericDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<NumericDataType>;
 
@@ -16559,16 +19315,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NumericDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NumericDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NumericDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NumericDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NumericDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NumericDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16592,13 +19351,25 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ORCFileReader extends GObject.Object {
         static $gtype: GObject.GType<ORCFileReader>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get input(): SeekableInputStream;
+        /**
+         * @construct-only
+         */
         set orc_file_reader(val: any);
+        /**
+         * @construct-only
+         */
         set orcFileReader(val: any);
 
         /**
@@ -16620,16 +19391,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ORCFileReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ORCFileReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ORCFileReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ORCFileReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ORCFileReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ORCFileReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16638,15 +19412,43 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The field indexes to be read.
+         */
         get_field_indexes(): number[] | null;
+        /**
+         * @returns The field indices to be read.
+         */
         get_field_indices(): number[] | null;
+        /**
+         * @returns The number of rows in the file.
+         */
         get_n_rows(): number;
+        /**
+         * @returns The number of stripes in the file.
+         */
         get_n_stripes(): number;
-        read_stripe(i: number): RecordBatch | null;
+        /**
+         * @param i The stripe index to be read.
+         * @returns A newly read stripe as   {@link Arrow.RecordBatch} or `null` on error.
+         */
+        read_stripe(i: bigint | number): RecordBatch | null;
+        /**
+         * @returns A newly read stripes as   {@link Arrow.Table} or `null` on error.
+         */
         read_stripes(): Table | null;
+        /**
+         * @returns A newly read type as   {@link Arrow.Schema} or `null` on error.
+         */
         read_type(): Schema | null;
-        set_field_indexes(field_indexes?: number[] | null): void;
-        set_field_indices(field_indices?: number[] | null): void;
+        /**
+         * @param field_indexes The field indexes to be read.
+         */
+        set_field_indexes(field_indexes: number[] | null): void;
+        /**
+         * @param field_indices The field indices to be read.
+         */
+        set_field_indices(field_indices: number[] | null): void;
     }
 
     namespace OutputStream {
@@ -16658,20 +19460,27 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends GObject.Object.ConstructorProps,
-                File.ConstructorProps,
-                Writable.ConstructorProps {
+            extends GObject.Object.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
             output_stream: any;
             outputStream: any;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputStream extends GObject.Object implements File, Writable {
         static $gtype: GObject.GType<OutputStream>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set output_stream(val: any);
+        /**
+         * @construct-only
+         */
         set outputStream(val: any);
 
         /**
@@ -16691,16 +19500,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16709,20 +19521,47 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param alignment The byte multiple for the metadata prefix, usually 8   or 64, to ensure the body starts on a multiple of that alignment.
+         * @returns `true` on success, `false` on error.
+         */
         align(alignment: number): boolean;
-        write_record_batch(record_batch: RecordBatch, options?: WriteOptions | null): number;
+        /**
+         * @param record_batch A {@link Arrow.RecordBatch} to be written.
+         * @param options A {@link Arrow.WriteOptions}.
+         * @returns The number of written bytes on success, -1 on error.
+         */
+        write_record_batch(record_batch: RecordBatch, options: WriteOptions | null): number;
+        /**
+         * @param tensor A {@link Arrow.Tensor} to be written.
+         * @returns The number of written bytes on success, -1 on error.
+         */
         write_tensor(tensor: Tensor): number;
-
-        // Inherited methods
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
         /**
          * It ensures writing all data on memory to storage.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         flush(): boolean;
+        /**
+         * @param data The data to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
         write(data: Uint8Array | string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -16737,90 +19576,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -16828,7 +19645,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -16836,9 +19653,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -16858,9 +19675,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -16874,33 +19691,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -16933,21 +19750,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -16957,8 +19774,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -16975,14 +19792,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -16993,13 +19810,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -17030,21 +19847,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -17054,33 +19871,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -17089,6 +19907,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -17097,12 +19916,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -17111,20 +19932,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -17136,8 +19959,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -17181,6 +20005,9 @@ export namespace Arrow {
         interface ConstructorProps extends Array.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PrimitiveArray extends Array {
         static $gtype: GObject.GType<PrimitiveArray>;
 
@@ -17201,16 +20028,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PrimitiveArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PrimitiveArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PrimitiveArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PrimitiveArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PrimitiveArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PrimitiveArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17219,7 +20049,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The data of the array as {@link Arrow.Buffer}.
+         */
         get_buffer(): Buffer;
+        /**
+         * @returns The data of the array as {@link Arrow.Buffer}.
+         */
         get_data_buffer(): Buffer;
     }
 
@@ -17234,6 +20070,9 @@ export namespace Arrow {
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ProjectNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<ProjectNodeOptions>;
 
@@ -17252,20 +20091,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](expressions: Expression[], names?: string[] | null): ProjectNodeOptions;
+        static ['new'](expressions: Expression[], names: string[] | null): ProjectNodeOptions;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProjectNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProjectNodeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProjectNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProjectNodeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProjectNodeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProjectNodeOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17292,6 +20134,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class QuantileOptions extends FunctionOptions {
         static $gtype: GObject.GType<QuantileOptions>;
 
@@ -17300,28 +20145,38 @@ export namespace Arrow {
         /**
          * Interpolation method to use when quantile lies between two data
          * points.
+         * @since 9.0.0
+         * @default Arrow.QuantileInterpolation.LINEAR
          */
         get interpolation(): QuantileInterpolation;
         set interpolation(val: QuantileInterpolation);
         /**
          * If less than this many non-null values are observed, emit null.
+         * @since 9.0.0
+         * @default 0
          */
         get min_count(): number;
         set min_count(val: number);
         /**
          * If less than this many non-null values are observed, emit null.
+         * @since 9.0.0
+         * @default 0
          */
         get minCount(): number;
         set minCount(val: number);
         /**
          * If true (the default), null values are ignored. Otherwise, if any
          * value is null, emit null.
+         * @since 9.0.0
+         * @default true
          */
         get skip_nulls(): boolean;
         set skip_nulls(val: boolean);
         /**
          * If true (the default), null values are ignored. Otherwise, if any
          * value is null, emit null.
+         * @since 9.0.0
+         * @default true
          */
         get skipNulls(): boolean;
         set skipNulls(val: boolean);
@@ -17345,16 +20200,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof QuantileOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, QuantileOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof QuantileOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, QuantileOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof QuantileOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<QuantileOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17363,8 +20221,17 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The `q`s to be used.
+         */
         get_qs(): number[];
+        /**
+         * @param q A `q` to be used.
+         */
         set_q(q: number): void;
+        /**
+         * @param qs `q`s to be used.
+         */
         set_qs(qs: number[]): void;
     }
 
@@ -17384,6 +20251,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RankOptions extends FunctionOptions {
         static $gtype: GObject.GType<RankOptions>;
 
@@ -17391,16 +20261,22 @@ export namespace Arrow {
 
         /**
          * Whether nulls and NaNs are placed at the start or at the end.
+         * @since 12.0.0
+         * @default Arrow.NullPlacement.AT_END
          */
         get null_placement(): NullPlacement;
         set null_placement(val: NullPlacement);
         /**
          * Whether nulls and NaNs are placed at the start or at the end.
+         * @since 12.0.0
+         * @default Arrow.NullPlacement.AT_END
          */
         get nullPlacement(): NullPlacement;
         set nullPlacement(val: NullPlacement);
         /**
          * Tiebreaker for dealing with equal values in ranks.
+         * @since 12.0.0
+         * @default Arrow.RankTiebreaker.FIRST
          */
         get tiebreaker(): RankTiebreaker;
         set tiebreaker(val: RankTiebreaker);
@@ -17424,16 +20300,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RankOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RankOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RankOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RankOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RankOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RankOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17447,9 +20326,19 @@ export namespace Arrow {
          * @param sort_key The sort key to be added.
          */
         add_sort_key(sort_key: SortKey): void;
+        /**
+         * @param other_options A {@link Arrow.RankOptions} to be compared.
+         * @returns `true` if both of them have the same option values, `false`   otherwise.
+         */
         equal(other_options: RankOptions): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FunctionOptions.equal
         equal(...args: never[]): any;
+        /**
+         * @returns The sort keys to be used.
+         */
         get_sort_keys(): SortKey[];
         /**
          * Set sort keys to be used.
@@ -17475,6 +20364,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ReadOptions extends GObject.Object {
         static $gtype: GObject.GType<ReadOptions>;
 
@@ -17482,21 +20374,29 @@ export namespace Arrow {
 
         /**
          * The maximum permitted schema nesting depth.
+         * @since 1.0.0
+         * @default 64
          */
         get max_recursion_depth(): number;
         set max_recursion_depth(val: number);
         /**
          * The maximum permitted schema nesting depth.
+         * @since 1.0.0
+         * @default 64
          */
         get maxRecursionDepth(): number;
         set maxRecursionDepth(val: number);
         /**
          * Whether to use the global CPU thread pool.
+         * @since 1.0.0
+         * @default true
          */
         get use_threads(): boolean;
         set use_threads(val: boolean);
         /**
          * Whether to use the global CPU thread pool.
+         * @since 1.0.0
+         * @default true
          */
         get useThreads(): boolean;
         set useThreads(val: boolean);
@@ -17520,16 +20420,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ReadOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ReadOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ReadOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ReadOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ReadOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ReadOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17538,7 +20441,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns Top-level schema fields to include when deserializing   RecordBatch. If empty, return all deserialized fields.   It should be freed with `g_free()` when no longer needed.
+         */
         get_included_fields(): number[];
+        /**
+         * @param fields Top-level schema fields to   include when deserializing RecordBatch. If empty, return all   deserialized fields.
+         */
         set_included_fields(fields: number[]): void;
     }
 
@@ -17556,12 +20465,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatch extends GObject.Object {
         static $gtype: GObject.GType<RecordBatch>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatch(val: any);
 
         /**
@@ -17583,16 +20501,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatch.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17601,25 +20522,94 @@ export namespace Arrow {
 
         // Static methods
 
+        /**
+         * @param c_abi_array A `struct ArrowArray *`.
+         * @param schema A {@link Arrow.Schema} of the C ABI array.
+         */
         static ['import'](c_abi_array: any, schema: Schema): RecordBatch | null;
 
         // Methods
 
+        /**
+         * @param i The index of the new column.
+         * @param field The field to be added.
+         * @param column The column to be added.
+         * @returns The newly allocated   {@link Arrow.RecordBatch} that has a new column or `null` on error.
+         */
         add_column(i: number, field: Field, column: Array): RecordBatch | null;
+        /**
+         * @param other_record_batch A {@link Arrow.RecordBatch} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_record_batch: RecordBatch): boolean;
+        /**
+         * @param other_record_batch A {@link Arrow.RecordBatch} to be compared.
+         * @param check_metadata Whether to compare metadata.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal_metadata(other_record_batch: RecordBatch, check_metadata: boolean): boolean;
+        /**
+         * @returns `true` on success, `false` on error.
+         */
         ['export'](): [boolean, any, any];
-        filter(filter: BooleanArray, options?: FilterOptions | null): RecordBatch | null;
+        /**
+         * @param filter The values indicates which values should be filtered out.
+         * @param options A {@link Arrow.FilterOptions}.
+         * @returns The {@link Arrow.RecordBatch} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
+         */
+        filter(filter: BooleanArray, options: FilterOptions | null): RecordBatch | null;
+        /**
+         * @param i The index of the target column. If it's negative, index is   counted backward from the end of the columns. `-1` means the last   column.
+         * @returns The i-th column in the record batch   on success, `null` on out of index.
+         */
         get_column_data(i: number): Array | null;
+        /**
+         * @param i The index of the target column. If it's negative, index is   counted backward from the end of the columns. `-1` means the last   column.
+         * @returns The name of the i-th column in the record batch   on success, `null` on out of index
+         */
         get_column_name(i: number): string | null;
+        /**
+         * @returns The number of columns in the record batch.
+         */
         get_n_columns(): number;
+        /**
+         * @returns The number of rows in the record batch.
+         */
         get_n_rows(): number;
+        /**
+         * @returns The schema of the record batch.
+         */
         get_schema(): Schema;
+        /**
+         * @param i The index of the new column.
+         * @returns The newly allocated   {@link Arrow.RecordBatch} that doesn't have the column or `null` on error.
+         */
         remove_column(i: number): RecordBatch | null;
-        serialize(options?: WriteOptions | null): Buffer | null;
-        slice(offset: number, length: number): RecordBatch;
+        /**
+         * @param options A {@link Arrow.WriteOptions}.
+         * @returns The newly allocated   {@link Arrow.Buffer} that contains a serialized record batch or `null` on   error.
+         */
+        serialize(options: WriteOptions | null): Buffer | null;
+        /**
+         * @param offset The offset of sub {@link Arrow.RecordBatch}.
+         * @param length The length of sub {@link Arrow.RecordBatch}.
+         * @returns The sub {@link Arrow.RecordBatch}. It covers   only from `offset` to `offset + length` range. The sub   {@link Arrow.RecordBatch} shares values with the base   {@link Arrow.RecordBatch}.
+         */
+        slice(offset: bigint | number, length: bigint | number): RecordBatch;
+        /**
+         * @param options The options to be used.
+         * @returns The indices that would sort   a record batch with the specified options on success, `null` on error.
+         */
         sort_indices(options: SortOptions): UInt64Array | null;
-        take(indices: Array, options?: TakeOptions | null): RecordBatch | null;
+        /**
+         * @param indices The indices of values to take.
+         * @param options A {@link Arrow.TakeOptions}.
+         * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in input array or `null` on error.
+         */
+        take(indices: Array, options: TakeOptions | null): RecordBatch | null;
+        /**
+         * @returns The formatted record batch content or `null` on error.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string | null;
     }
 
@@ -17637,12 +20627,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchBuilder extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchBuilder>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch_builder(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatchBuilder(val: any);
 
         /**
@@ -17664,16 +20663,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17682,14 +20684,40 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The built {@link Arrow.RecordBatch} on success,   `null` on error.
+         */
         flush(): RecordBatch;
+        /**
+         * @param i The column index. If it's negative, index is counted backward   from the end of the columns. `-1` means the last column.
+         * @returns The {@link Arrow.ArrayBuilder} for   the `i`-th column on success, `null` on out of index.
+         */
         get_column_builder(i: number): ArrayBuilder | null;
+        /**
+         * @param i The field index. If it's negative, index is counted backward   from the end of the fields. `-1` means the last field.
+         * @returns The {@link Arrow.ArrayBuilder} for   the `i`-th field on success, `null` on out of index.
+         */
         get_field(i: number): ArrayBuilder | null;
+        /**
+         * @returns The initial capacity for array builders.
+         */
         get_initial_capacity(): number;
+        /**
+         * @returns The number of columns.
+         */
         get_n_columns(): number;
+        /**
+         * @returns The number of fields.
+         */
         get_n_fields(): number;
+        /**
+         * @returns The {@link Arrow.Schema} of the record batch builder.
+         */
         get_schema(): Schema;
-        set_initial_capacity(capacity: number): void;
+        /**
+         * @param capacity The new initial capacity for array builders.
+         */
+        set_initial_capacity(capacity: bigint | number): void;
     }
 
     namespace RecordBatchDatum {
@@ -17706,11 +20734,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchDatum extends Datum {
         static $gtype: GObject.GType<RecordBatchDatum>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): RecordBatch;
 
         /**
@@ -17732,16 +20766,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchDatum.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchDatum.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchDatum.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchDatum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17763,12 +20800,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchFileReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchFileReader>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch_file_reader(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatchFileReader(val: any);
 
         /**
@@ -17790,16 +20836,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchFileReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchFileReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchFileReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchFileReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchFileReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchFileReader.SignalSignatures[K]> extends [any, ...infer Q]
@@ -17810,10 +20859,27 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The number of record batches in the file.
+         */
         get_n_record_batches(): number;
+        /**
+         * @param i The index of the target record batch.
+         * @returns The i-th record batch in the file or `null` on error.
+         */
         get_record_batch(i: number): RecordBatch | null;
+        /**
+         * @returns The schema in the file.
+         */
         get_schema(): Schema;
+        /**
+         * @returns The format version in the file.
+         */
         get_version(): MetadataVersion;
+        /**
+         * @param i The index of the target record batch.
+         * @returns The i-th record batch in the file or `null` on error.
+         */
         read_record_batch(i: number): RecordBatch | null;
     }
 
@@ -17828,6 +20894,9 @@ export namespace Arrow {
         interface ConstructorProps extends RecordBatchStreamWriter.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchFileWriter extends RecordBatchStreamWriter {
         static $gtype: GObject.GType<RecordBatchFileWriter>;
 
@@ -17850,16 +20919,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchFileWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchFileWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchFileWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchFileWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchFileWriter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchFileWriter.SignalSignatures[K]> extends [any, ...infer Q]
@@ -17882,11 +20954,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchIterator extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchIterator>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set iterator(val: any);
 
         /**
@@ -17908,16 +20986,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchIterator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchIterator.SignalSignatures[K]> extends [any, ...infer Q]
@@ -17928,8 +21009,18 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_iterator A {@link Arrow.RecordBatchIterator} to be compared.
+         * @returns `true` if both iterators are the same, `false` otherwise.
+         */
         equal(other_iterator: RecordBatchIterator): boolean;
+        /**
+         * @returns The next {@link Arrow.RecordBatch}, or `null` when the iterator is completed.
+         */
         next(): RecordBatch | null;
+        /**
+         * @returns A {@link GLib.List} contains every moved elements from the iterator.
+         */
         to_list(): RecordBatch[];
     }
 
@@ -17949,13 +21040,25 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchReader>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch_reader(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatchReader(val: any);
+        /**
+         * @construct-only
+         */
         set sources(val: any);
 
         /**
@@ -17973,20 +21076,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](record_batches: RecordBatch[], schema?: Schema | null): RecordBatchReader;
+        static ['new'](record_batches: RecordBatch[], schema: Schema | null): RecordBatchReader;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17995,16 +21101,40 @@ export namespace Arrow {
 
         // Static methods
 
+        /**
+         * @param c_abi_array_stream A `struct ArrowArrayStream *`.
+         */
         static ['import'](c_abi_array_stream: any): RecordBatchReader | null;
 
         // Methods
 
+        /**
+         * @returns An exported   {@link Arrow.RecordBatchReader} as `struct ArrowArrayStream *` on   success, `null` on error.   It should be freed with the `ArrowArrayStream::release` callback then   `g_free()` when no longer needed.
+         */
         ['export'](): any | null;
+        /**
+         * @returns The next record batch in the stream or `null` on end of stream.
+         */
         get_next_record_batch(): RecordBatch | null;
+        /**
+         * @returns The schema in the stream.
+         */
         get_schema(): Schema;
+        /**
+         * @returns A list of source   of this reader.
+         */
         get_sources(): GObject.Object[];
+        /**
+         * @returns The all record batches in the stream as {@link Arrow.Table}.
+         */
         read_all(): Table | null;
+        /**
+         * @returns The next record batch in the stream or `null` on end of stream.
+         */
         read_next(): RecordBatch | null;
+        /**
+         * @returns The next record batch in the stream or `null` on end of stream.
+         */
         read_next_record_batch(): RecordBatch | null;
     }
 
@@ -18020,6 +21150,9 @@ export namespace Arrow {
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchStreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<RecordBatchStreamReader>;
 
@@ -18045,16 +21178,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchStreamReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchStreamReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchStreamReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchStreamReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchStreamReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchStreamReader.SignalSignatures[K]> extends [any, ...infer Q]
@@ -18075,6 +21211,9 @@ export namespace Arrow {
         interface ConstructorProps extends RecordBatchWriter.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchStreamWriter extends RecordBatchWriter {
         static $gtype: GObject.GType<RecordBatchStreamWriter>;
 
@@ -18097,16 +21236,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchStreamWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchStreamWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchStreamWriter.SignalSignatures[K]> extends [any, ...infer Q]
@@ -18130,12 +21272,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchWriter extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchWriter>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set record_batch_writer(val: any);
+        /**
+         * @construct-only
+         */
         set recordBatchWriter(val: any);
 
         /**
@@ -18155,16 +21306,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchWriter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18173,8 +21327,19 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @param record_batch The record batch to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
         write_record_batch(record_batch: RecordBatch): boolean;
+        /**
+         * @param table The table to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
         write_table(table: Table): boolean;
     }
 
@@ -18191,6 +21356,9 @@ export namespace Arrow {
         interface ConstructorProps extends MutableBuffer.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ResizableBuffer extends MutableBuffer {
         static $gtype: GObject.GType<ResizableBuffer>;
 
@@ -18209,23 +21377,26 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](initial_size: number): ResizableBuffer;
+        static ['new'](initial_size: bigint | number): ResizableBuffer;
         // Conflicted with Arrow.MutableBuffer.new
 
         static ['new'](...args: never[]): any;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ResizableBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResizableBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ResizableBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResizableBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ResizableBuffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ResizableBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18234,8 +21405,16 @@ export namespace Arrow {
 
         // Methods
 
-        reserve(new_capacity: number): boolean;
-        resize(new_size: number): boolean;
+        /**
+         * @param new_capacity The new buffer capacity in bytes.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        reserve(new_capacity: bigint | number): boolean;
+        /**
+         * @param new_size The new buffer size in bytes.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        resize(new_size: bigint | number): boolean;
     }
 
     namespace RoundOptions {
@@ -18249,11 +21428,14 @@ export namespace Arrow {
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             mode: RoundMode;
-            n_digits: number;
-            nDigits: number;
+            n_digits: bigint | number;
+            nDigits: bigint | number;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RoundOptions extends FunctionOptions {
         static $gtype: GObject.GType<RoundOptions>;
 
@@ -18261,19 +21443,25 @@ export namespace Arrow {
 
         /**
          * The rounding and tie-breaking mode.
+         * @since 7.0.0
+         * @default Arrow.RoundMode.HALF_TO_EVEN
          */
         get mode(): RoundMode;
         set mode(val: RoundMode);
         /**
          * The rounding precision (number of digits to round to).
+         * @since 7.0.0
+         * @default 0
          */
         get n_digits(): number;
-        set n_digits(val: number);
+        set n_digits(val: bigint | number);
         /**
          * The rounding precision (number of digits to round to).
+         * @since 7.0.0
+         * @default 0
          */
         get nDigits(): number;
-        set nDigits(val: number);
+        set nDigits(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -18294,16 +21482,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RoundOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RoundOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RoundOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RoundOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RoundOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RoundOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18326,6 +21517,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RoundToMultipleOptions extends FunctionOptions {
         static $gtype: GObject.GType<RoundToMultipleOptions>;
 
@@ -18333,6 +21527,8 @@ export namespace Arrow {
 
         /**
          * The rounding and tie-breaking mode.
+         * @since 7.0.0
+         * @default Arrow.RoundMode.HALF_TO_EVEN
          */
         get mode(): RoundMode;
         set mode(val: RoundMode);
@@ -18343,6 +21539,7 @@ export namespace Arrow {
          * For example, rounding a decimal value means a decimal multiple is
          * required. Rounding a floating point or integer value means a floating
          * point scalar is required.
+         * @since 7.0.0
          */
         get multiple(): Scalar;
         set multiple(val: Scalar);
@@ -18366,16 +21563,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RoundToMultipleOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RoundToMultipleOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RoundToMultipleOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RoundToMultipleOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RoundToMultipleOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RoundToMultipleOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -18399,6 +21599,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RunEndEncodeOptions extends FunctionOptions {
         static $gtype: GObject.GType<RunEndEncodeOptions>;
 
@@ -18406,11 +21609,13 @@ export namespace Arrow {
 
         /**
          * The data type for run-end.
+         * @since 13.0.0
          */
         get run_end_data_type(): DataType;
         set run_end_data_type(val: DataType);
         /**
          * The data type for run-end.
+         * @since 13.0.0
          */
         get runEndDataType(): DataType;
         set runEndDataType(val: DataType);
@@ -18430,20 +21635,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](run_end_data_type?: DataType | null): RunEndEncodeOptions;
+        static ['new'](run_end_data_type: DataType | null): RunEndEncodeOptions;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RunEndEncodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RunEndEncodeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RunEndEncodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RunEndEncodeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RunEndEncodeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RunEndEncodeOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -18475,13 +21683,25 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RunEndEncodedArray extends Array {
         static $gtype: GObject.GType<RunEndEncodedArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get run_ends(): Array;
+        /**
+         * @construct-only
+         */
         get runEnds(): Array;
+        /**
+         * @construct-only
+         */
         get values(): Array;
 
         /**
@@ -18501,24 +21721,27 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            logical_length: number,
+            logical_length: bigint | number,
             run_ends: Array,
             values: Array,
-            logical_offset: number,
+            logical_offset: bigint | number,
         ): RunEndEncodedArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RunEndEncodedArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RunEndEncodedArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RunEndEncodedArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RunEndEncodedArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RunEndEncodedArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RunEndEncodedArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18527,12 +21750,33 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns A newly decoded {@link Arrow.Array} for the `array` on success,   `null` on error.
+         */
         decode(): Array | null;
+        /**
+         * @returns Find the physical length of this array.   The physical length of an run-end encoded array is the number of   physical values (and run-ends) necessary to represent the logical   range of values from offset to length.   Avoid calling this function if the physical length can be   established in some other way (e.g. when iterating over the runs   sequentially until the end). This function uses binary-search, so   it has a O(log N) cost.
+         */
         find_physical_length(): number;
+        /**
+         * @returns Find the physical offset of this array.   This function uses binary-search, so it has a O(log N) cost.
+         */
         find_physical_offset(): number;
+        /**
+         * @returns The logical indexes of each run-end or   `null` on error.   If a non-zero logical offset is set, this function allocates a   new array and rewrites all the run end values to be relative to   the logical offset and cuts the end of the array to the logical   length.
+         */
         get_logical_run_ends(): Array;
+        /**
+         * @returns The logical values of each run.   If a non-zero logical offset is set, this function allocates a   new array containing only the values within the logical range.
+         */
         get_logical_values(): Array;
+        /**
+         * @returns The indexes of each run-end.   The physical offset to the array is applied.
+         */
         get_run_ends(): Array;
+        /**
+         * @returns The values of each run.   The physical offset to the array is applied.
+         */
         get_values(): Array;
     }
 
@@ -18547,6 +21791,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RunEndEncodedDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<RunEndEncodedDataType>;
 
@@ -18569,16 +21816,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RunEndEncodedDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RunEndEncodedDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RunEndEncodedDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RunEndEncodedDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RunEndEncodedDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RunEndEncodedDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -18589,7 +21839,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The {@link Arrow.DataType} of run-end.
+         */
         get_run_end_data_type(): DataType;
+        /**
+         * @returns The {@link Arrow.DataType} of value.
+         */
         get_value_data_type(): DataType;
     }
 
@@ -18604,6 +21860,9 @@ export namespace Arrow {
         interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class S3FileSystem extends FileSystem {
         static $gtype: GObject.GType<S3FileSystem>;
 
@@ -18624,16 +21883,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof S3FileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, S3FileSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof S3FileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, S3FileSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof S3FileSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<S3FileSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18655,6 +21917,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class S3GlobalOptions extends GObject.Object {
         static $gtype: GObject.GType<S3GlobalOptions>;
 
@@ -18662,11 +21927,15 @@ export namespace Arrow {
 
         /**
          * The log level of S3 APIs.
+         * @since 7.0.0
+         * @default Arrow.S3LogLevel.FATAL
          */
         get log_level(): S3LogLevel;
         set log_level(val: S3LogLevel);
         /**
          * The log level of S3 APIs.
+         * @since 7.0.0
+         * @default Arrow.S3LogLevel.FATAL
          */
         get logLevel(): S3LogLevel;
         set logLevel(val: S3LogLevel);
@@ -18690,16 +21959,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof S3GlobalOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, S3GlobalOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof S3GlobalOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, S3GlobalOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof S3GlobalOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<S3GlobalOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18723,6 +21995,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Scalar extends GObject.Object {
         static $gtype: GObject.GType<Scalar>;
 
@@ -18730,12 +22005,19 @@ export namespace Arrow {
 
         /**
          * The data type of the scalar.
+         * @since 5.0.0
+         * @construct-only
          */
         set data_type(val: DataType);
         /**
          * The data type of the scalar.
+         * @since 5.0.0
+         * @construct-only
          */
         set dataType(val: DataType);
+        /**
+         * @construct-only
+         */
         set scalar(val: any);
 
         /**
@@ -18755,16 +22037,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18773,15 +22058,42 @@ export namespace Arrow {
 
         // Static methods
 
+        /**
+         * @param data_type A {@link Arrow.DataType} for the parsed scalar.
+         * @param data Data to be parsed.
+         */
         static parse(data_type: DataType, data: Uint8Array | string): Scalar | null;
 
         // Methods
 
-        cast(data_type: DataType, options?: CastOptions | null): Scalar | null;
+        /**
+         * @param data_type A {@link Arrow.DataType} of the casted scalar.
+         * @param options A {@link Arrow.CastOptions}.
+         * @returns A newly created casted scalar on success, `null` on error.
+         */
+        cast(data_type: DataType, options: CastOptions | null): Scalar | null;
+        /**
+         * @param other_scalar A {@link Arrow.Scalar} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_scalar: Scalar): boolean;
-        equal_options(other_scalar: Scalar, options?: EqualOptions | null): boolean;
+        /**
+         * @param other_scalar A {@link Arrow.Scalar} to be compared.
+         * @param options A {@link Arrow.EqualOptions}.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
+        equal_options(other_scalar: Scalar, options: EqualOptions | null): boolean;
+        /**
+         * @returns The {@link Arrow.DataType} for the scalar.
+         */
         get_data_type(): DataType;
+        /**
+         * @returns `true` if the scalar is valid, `false` otherwise.
+         */
         is_valid(): boolean;
+        /**
+         * @returns The string representation of the scalar.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -18802,6 +22114,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScalarAggregateOptions extends FunctionOptions {
         static $gtype: GObject.GType<ScalarAggregateOptions>;
 
@@ -18809,21 +22124,29 @@ export namespace Arrow {
 
         /**
          * The minimum required number of values.
+         * @since 5.0.0
+         * @default 1
          */
         get min_count(): number;
         set min_count(val: number);
         /**
          * The minimum required number of values.
+         * @since 5.0.0
+         * @default 1
          */
         get minCount(): number;
         set minCount(val: number);
         /**
          * Whether NULLs are skipped or not.
+         * @since 5.0.0
+         * @default true
          */
         get skip_nulls(): boolean;
         set skip_nulls(val: boolean);
         /**
          * Whether NULLs are skipped or not.
+         * @since 5.0.0
+         * @default true
          */
         get skipNulls(): boolean;
         set skipNulls(val: boolean);
@@ -18847,16 +22170,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScalarAggregateOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScalarAggregateOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScalarAggregateOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScalarAggregateOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScalarAggregateOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScalarAggregateOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -18880,11 +22206,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScalarDatum extends Datum {
         static $gtype: GObject.GType<ScalarDatum>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): Scalar;
 
         /**
@@ -18906,16 +22238,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScalarDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScalarDatum.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScalarDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScalarDatum.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScalarDatum.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScalarDatum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18936,11 +22271,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Schema extends GObject.Object {
         static $gtype: GObject.GType<Schema>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set schema(val: any);
 
         /**
@@ -18962,16 +22303,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Schema.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Schema.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Schema.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Schema.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Schema.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Schema.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18980,24 +22324,83 @@ export namespace Arrow {
 
         // Static methods
 
+        /**
+         * @param c_abi_schema A `struct ArrowSchema *`.
+         */
         static ['import'](c_abi_schema: any): Schema | null;
 
         // Methods
 
+        /**
+         * @param i The index of the new field.
+         * @param field The field to be added.
+         * @returns The newly allocated {@link Arrow.Schema} that has a new field or `null` on error.
+         */
         add_field(i: number, field: Field): Schema | null;
+        /**
+         * @param other_schema A {@link Arrow.Schema} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_schema: Schema): boolean;
+        /**
+         * @returns An exported {@link Arrow.Schema} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
+         */
         ['export'](): any | null;
+        /**
+         * @param i The index of the target field.
+         * @returns The i-th field of the schema.
+         */
         get_field(i: number): Field;
+        /**
+         * @param name The name of the field to be found.
+         * @returns The found field or `null`.
+         */
         get_field_by_name(name: string): Field;
+        /**
+         * @param name The name of the field to be found.
+         * @returns The index of the found field, -1 on not found.
+         */
         get_field_index(name: string): number;
+        /**
+         * @returns The fields of the schema.
+         */
         get_fields(): Field[];
+        /**
+         * @returns The   metadata in the schema.   It should be freed with `g_hash_table_unref()` when no longer needed.
+         */
         get_metadata(): GLib.HashTable<string, string> | null;
+        /**
+         * @returns `true` if the schema has metadata, `false` otherwise.
+         */
         has_metadata(): boolean;
+        /**
+         * @returns The number of fields of the schema.
+         */
         n_fields(): number;
+        /**
+         * @param i The index of the field to be removed.
+         * @returns The newly allocated {@link Arrow.Schema} that doesn't have the field or `null` on error.
+         */
         remove_field(i: number): Schema | null;
+        /**
+         * @param i The index of the field to be replaced.
+         * @param field The newly added {@link Arrow.Field}.
+         * @returns The newly allocated {@link Arrow.Schema} that has `field` as the `i`-th field or `null` on error.
+         */
         replace_field(i: number, field: Field): Schema | null;
+        /**
+         * @returns The string representation of the schema.
+         */
         to_string(): string;
+        /**
+         * @param show_metadata Whether include metadata or not.
+         * @returns The string representation of the schema.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string_metadata(show_metadata: boolean): string;
+        /**
+         * @param metadata A new associated metadata.
+         * @returns The new schema with the given metadata.
+         */
         with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Schema;
     }
 
@@ -19010,11 +22413,12 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends InputStream.ConstructorProps,
-                File.ConstructorProps,
-                Readable.ConstructorProps {}
+            extends InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SeekableInputStream extends InputStream implements File, Readable {
         static $gtype: GObject.GType<SeekableInputStream>;
 
@@ -19035,16 +22439,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SeekableInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SeekableInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SeekableInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SeekableInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SeekableInputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SeekableInputStream.SignalSignatures[K]> extends [any, ...infer Q]
@@ -19055,21 +22462,65 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The size of the file.
+         */
         get_size(): number;
+        /**
+         * @returns Whether zero copy read is supported or not.
+         */
         get_support_zero_copy(): boolean;
-        peek(n_bytes: number): GLib.Bytes;
-        read_at(position: number, n_bytes: number): Buffer | null;
-        read_at_bytes(position: number, n_bytes: number): GLib.Bytes | null;
-
-        // Inherited methods
+        /**
+         * @param n_bytes The number of bytes to be peeked.
+         * @returns The data of the buffer, up to the   indicated number. The data becomes invalid after any operation on   the stream. If the stream is unbuffered, the data is empty.   It should be freed with `g_bytes_unref()` when no longer needed.
+         */
+        peek(n_bytes: bigint | number): GLib.Bytes;
+        /**
+         * @param position The read start position.
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         */
+        read_at(position: bigint | number, n_bytes: bigint | number): Buffer | null;
+        /**
+         * @param position The read start position.
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link GLib.Bytes} that has read data on   success, `null` if there was an error.
+         */
+        read_at_bytes(position: bigint | number, n_bytes: bigint | number): GLib.Bytes | null;
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
-        read(n_bytes: number): Buffer | null;
+        /**
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         */
+        read(n_bytes: bigint | number): Buffer | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.InputStream.read
         read(...args: never[]): any;
-        read_bytes(n_bytes: number): GLib.Bytes | null;
+        /**
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
+         */
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.InputStream.read_bytes
         read_bytes(...args: never[]): any;
         /**
@@ -19085,90 +22536,68 @@ export namespace Arrow {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -19176,7 +22605,7 @@ export namespace Arrow {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -19184,9 +22613,9 @@ export namespace Arrow {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -19206,9 +22635,9 @@ export namespace Arrow {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -19222,33 +22651,33 @@ export namespace Arrow {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -19281,21 +22710,21 @@ export namespace Arrow {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -19305,8 +22734,8 @@ export namespace Arrow {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -19323,14 +22752,14 @@ export namespace Arrow {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -19341,13 +22770,13 @@ export namespace Arrow {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -19378,21 +22807,21 @@ export namespace Arrow {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -19402,33 +22831,34 @@ export namespace Arrow {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -19437,6 +22867,7 @@ export namespace Arrow {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -19445,12 +22876,14 @@ export namespace Arrow {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -19459,20 +22892,22 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -19484,8 +22919,9 @@ export namespace Arrow {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -19530,6 +22966,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SetLookupOptions extends FunctionOptions {
         static $gtype: GObject.GType<SetLookupOptions>;
 
@@ -19537,21 +22976,27 @@ export namespace Arrow {
 
         /**
          * Whether NULLs are skipped or not.
+         * @since 6.0.0
+         * @default false
          */
         get skip_nulls(): boolean;
         set skip_nulls(val: boolean);
         /**
          * Whether NULLs are skipped or not.
+         * @since 6.0.0
+         * @default false
          */
         get skipNulls(): boolean;
         set skipNulls(val: boolean);
         /**
          * The set of values to look up input values into.
+         * @since 6.0.0
          */
         get value_set(): Datum;
         set value_set(val: Datum);
         /**
          * The set of values to look up input values into.
+         * @since 6.0.0
          */
         get valueSet(): Datum;
         set valueSet(val: Datum);
@@ -19571,20 +23016,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](value_set?: Datum | null): SetLookupOptions;
+        static ['new'](value_set: Datum | null): SetLookupOptions;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SetLookupOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SetLookupOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SetLookupOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SetLookupOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SetLookupOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SetLookupOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19603,6 +23051,9 @@ export namespace Arrow {
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SinkNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<SinkNodeOptions>;
 
@@ -19625,16 +23076,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SinkNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SinkNodeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SinkNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SinkNodeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SinkNodeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SinkNodeOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19643,6 +23097,10 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param schema A {@link Arrow.Schema}.
+         * @returns A {@link Arrow.RecordBatchReader} to read generated record batches.
+         */
         get_reader(schema: Schema): RecordBatchReader;
     }
 
@@ -19661,12 +23119,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SlowFileSystem extends FileSystem {
         static $gtype: GObject.GType<SlowFileSystem>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get base_file_system(): FileSystem;
+        /**
+         * @construct-only
+         */
         get baseFileSystem(): FileSystem;
 
         /**
@@ -19694,16 +23161,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SlowFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SlowFileSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SlowFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SlowFileSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SlowFileSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SlowFileSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19726,6 +23196,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SortKey extends GObject.Object {
         static $gtype: GObject.GType<SortKey>;
 
@@ -19733,6 +23206,9 @@ export namespace Arrow {
 
         /**
          * How to order values.
+         * @since 3.0.0
+         * @construct-only
+         * @default Arrow.SortOrder.ASCENDING
          */
         get order(): SortOrder;
         /**
@@ -19741,6 +23217,9 @@ export namespace Arrow {
          *     dot_path = '.' name
          *              | '[' digit+ ']'
          *              | dot_path+
+         * @since 7.0.0
+         * @read-only
+         * @default null
          */
         get target(): string;
 
@@ -19763,16 +23242,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SortKey.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SortKey.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SortKey.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SortKey.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SortKey.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SortKey.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19781,6 +23263,10 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_sort_key A {@link Arrow.SortKey} to be compared.
+         * @returns `true` if both of them have the same name and order, `false`   otherwise.
+         */
         equal(other_sort_key: SortKey): boolean;
     }
 
@@ -19793,6 +23279,9 @@ export namespace Arrow {
         interface ConstructorProps extends FunctionOptions.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SortOptions extends FunctionOptions {
         static $gtype: GObject.GType<SortOptions>;
 
@@ -19811,20 +23300,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](sort_keys?: SortKey[] | null): SortOptions;
+        static ['new'](sort_keys: SortKey[] | null): SortOptions;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SortOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SortOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SortOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SortOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SortOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SortOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19838,9 +23330,19 @@ export namespace Arrow {
          * @param sort_key The sort key to be added.
          */
         add_sort_key(sort_key: SortKey): void;
+        /**
+         * @param other_options A {@link Arrow.SortOptions} to be compared.
+         * @returns `true` if both of them have the same sort keys, `false`   otherwise.
+         */
         equal(other_options: SortOptions): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.FunctionOptions.equal
         equal(...args: never[]): any;
+        /**
+         * @returns The sort keys to be used.
+         */
         get_sort_keys(): SortKey[];
         /**
          * Set sort keys to be used.
@@ -19866,13 +23368,25 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SourceNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<SourceNodeOptions>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get reader(): RecordBatchReader;
+        /**
+         * @construct-only
+         */
         get record_batch(): RecordBatch;
+        /**
+         * @construct-only
+         */
         get recordBatch(): RecordBatch;
 
         /**
@@ -19898,16 +23412,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SourceNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SourceNodeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SourceNodeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SourceNodeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SourceNodeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SourceNodeOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19932,6 +23449,9 @@ export namespace Arrow {
         interface ConstructorProps extends UnionArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SparseUnionArray extends UnionArray {
         static $gtype: GObject.GType<SparseUnionArray>;
 
@@ -19956,16 +23476,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SparseUnionArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SparseUnionArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SparseUnionArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SparseUnionArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SparseUnionArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SparseUnionArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19984,6 +23507,9 @@ export namespace Arrow {
         interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SparseUnionArrayBuilder extends UnionArrayBuilder {
         static $gtype: GObject.GType<SparseUnionArrayBuilder>;
 
@@ -20002,20 +23528,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data_type?: SparseUnionDataType | null): SparseUnionArrayBuilder;
+        static ['new'](data_type: SparseUnionDataType | null): SparseUnionArrayBuilder;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SparseUnionArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SparseUnionArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SparseUnionArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -20036,6 +23565,9 @@ export namespace Arrow {
         interface ConstructorProps extends UnionDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SparseUnionDataType extends UnionDataType {
         static $gtype: GObject.GType<SparseUnionDataType>;
 
@@ -20058,16 +23590,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SparseUnionDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SparseUnionDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SparseUnionDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SparseUnionDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SparseUnionDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SparseUnionDataType.SignalSignatures[K]> extends [any, ...infer Q]
@@ -20090,6 +23625,9 @@ export namespace Arrow {
         interface ConstructorProps extends UnionScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SparseUnionScalar extends UnionScalar {
         static $gtype: GObject.GType<SparseUnionScalar>;
 
@@ -20112,16 +23650,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SparseUnionScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SparseUnionScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SparseUnionScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SparseUnionScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SparseUnionScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SparseUnionScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20140,30 +23681,42 @@ export namespace Arrow {
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            max_splits: number;
-            maxSplits: number;
+            max_splits: bigint | number;
+            maxSplits: bigint | number;
             pattern: string;
             reverse: boolean;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SplitPatternOptions extends FunctionOptions {
         static $gtype: GObject.GType<SplitPatternOptions>;
 
         // Properties
 
+        /**
+         * @default -1
+         */
         get max_splits(): number;
-        set max_splits(val: number);
+        set max_splits(val: bigint | number);
+        /**
+         * @default -1
+         */
         get maxSplits(): number;
-        set maxSplits(val: number);
+        set maxSplits(val: bigint | number);
         /**
          * The exact substring to split on.
+         * @since 16.0.0
          */
         get pattern(): string;
         set pattern(val: string);
         /**
          * Start splitting from the end of the string (only relevant when
          * max_splits != -1)
+         * @since 16.0.0
+         * @default false
          */
         get reverse(): boolean;
         set reverse(val: boolean);
@@ -20187,16 +23740,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SplitPatternOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SplitPatternOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SplitPatternOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SplitPatternOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SplitPatternOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SplitPatternOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -20221,6 +23777,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StrftimeOptions extends FunctionOptions {
         static $gtype: GObject.GType<StrftimeOptions>;
 
@@ -20228,11 +23787,15 @@ export namespace Arrow {
 
         /**
          * The desired format string.
+         * @since 16.0.0
+         * @default `Y`-%m-%dT%H:`M`:`S`
          */
         get format(): string;
         set format(val: string);
         /**
          * The desired output locale string.
+         * @since 16.0.0
+         * @default C
          */
         get locale(): string;
         set locale(val: string);
@@ -20256,16 +23819,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StrftimeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StrftimeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StrftimeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StrftimeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StrftimeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StrftimeOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20289,6 +23855,9 @@ export namespace Arrow {
         interface ConstructorProps extends BinaryArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StringArray extends BinaryArray {
         static $gtype: GObject.GType<StringArray>;
 
@@ -20308,25 +23877,28 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](
-            length: number,
+            length: bigint | number,
             value_offsets: Buffer,
             value_data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): StringArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StringArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StringArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StringArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StringArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20335,7 +23907,11 @@ export namespace Arrow {
 
         // Methods
 
-        get_string(i: number): string;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th UTF-8 encoded string.
+         */
+        get_string(i: bigint | number): string;
     }
 
     namespace StringArrayBuilder {
@@ -20349,6 +23925,9 @@ export namespace Arrow {
         interface ConstructorProps extends BinaryArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StringArrayBuilder extends BinaryArrayBuilder {
         static $gtype: GObject.GType<StringArrayBuilder>;
 
@@ -20371,16 +23950,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StringArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StringArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StringArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StringArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20389,19 +23971,35 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value A string value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: string): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Arrow.BinaryArrayBuilder.append
         append(...args: never[]): any;
+        /**
+         * @param value A string value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_string(value: string): boolean;
+        /**
+         * @param value A string value.
+         * @param length The length of `value`.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_string_len(value: string, length: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of strings.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth @is_valids is %TRUE, the Nth @values is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_strings(values: string[], is_valids?: boolean[] | null): boolean;
+        append_strings(values: string[], is_valids: boolean[] | null): boolean;
     }
 
     namespace StringDataType {
@@ -20415,6 +24013,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StringDataType extends DataType {
         static $gtype: GObject.GType<StringDataType>;
 
@@ -20437,16 +24038,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StringDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StringDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StringDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StringDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20465,6 +24069,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StringDictionaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<StringDictionaryArrayBuilder>;
 
@@ -20487,16 +24094,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringDictionaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringDictionaryArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StringDictionaryArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -20507,17 +24117,35 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param array A {@link Arrow.StringArray}.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_array(array: StringArray): boolean;
         /**
          * Append dictionary indices directly without modifying the internal memo.
          * @param values The array of indices.
-         * @param is_valids The array of   %TRUE or %FALSE that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   `true` or `false` that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_indices(values: number[], is_valids?: boolean[] | null): boolean;
+        append_indices(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
+        /**
+         * @param value A string value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_string(value: string): boolean;
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         finish_delta(): [boolean, Array, Array];
+        /**
+         * @returns A number of entries in the dictionary.
+         */
         get_dictionary_length(): number;
+        /**
+         * @param values A {@link Arrow.StringArray}.
+         * @returns `true` on success, `false` if there was an error.
+         */
         insert_memo_values(values: StringArray): boolean;
         /**
          * Reset and also clear accumulated dictionary values in memo table.
@@ -20538,6 +24166,9 @@ export namespace Arrow {
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StringScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<StringScalar>;
 
@@ -20560,16 +24191,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StringScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StringScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StringScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StringScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StringScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20595,6 +24229,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StrptimeOptions extends FunctionOptions {
         static $gtype: GObject.GType<StrptimeOptions>;
 
@@ -20602,21 +24239,28 @@ export namespace Arrow {
 
         /**
          * Return null on parsing errors if true or raise if false.
+         * @since 16.0.0
+         * @default false
          */
         get error_is_null(): boolean;
         set error_is_null(val: boolean);
         /**
          * Return null on parsing errors if true or raise if false.
+         * @since 16.0.0
+         * @default false
          */
         get errorIsNull(): boolean;
         set errorIsNull(val: boolean);
         /**
          * The desired format string.
+         * @since 16.0.0
          */
         get format(): string;
         set format(val: string);
         /**
          * The desired time resolution.
+         * @since 16.0.0
+         * @default Arrow.TimeUnit.MICRO
          */
         get unit(): TimeUnit;
         set unit(val: TimeUnit);
@@ -20640,16 +24284,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StrptimeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StrptimeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StrptimeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StrptimeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StrptimeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StrptimeOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20668,6 +24315,9 @@ export namespace Arrow {
         interface ConstructorProps extends TimestampParser.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StrptimeTimestampParser extends TimestampParser {
         static $gtype: GObject.GType<StrptimeTimestampParser>;
 
@@ -20690,16 +24340,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StrptimeTimestampParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StrptimeTimestampParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StrptimeTimestampParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StrptimeTimestampParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StrptimeTimestampParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StrptimeTimestampParser.SignalSignatures[K]> extends [any, ...infer Q]
@@ -20710,6 +24363,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The format used by this parser.
+         */
         get_format(): string;
     }
 
@@ -20729,6 +24385,9 @@ export namespace Arrow {
         interface ConstructorProps extends Array.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StructArray extends Array {
         static $gtype: GObject.GType<StructArray>;
 
@@ -20749,24 +24408,27 @@ export namespace Arrow {
 
         static ['new'](
             data_type: DataType,
-            length: number,
+            length: bigint | number,
             fields: Array[],
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): StructArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StructArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StructArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StructArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StructArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20775,8 +24437,18 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The fields in the struct.
+         */
         flatten(): Array[];
+        /**
+         * @param i The index of the field in the struct.
+         * @returns The i-th field.
+         */
         get_field(i: number): Array;
+        /**
+         * @returns The fields in the struct.
+         */
         get_fields(): Array[];
     }
 
@@ -20791,6 +24463,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StructArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<StructArrayBuilder>;
 
@@ -20813,16 +24488,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StructArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StructArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StructArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StructArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20831,9 +24509,22 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns `true` on success, `false` if there was an error. It appends a new struct element. To append a new struct element, you need to call this function then append struct element field values to all `field_builder`s. `field_value`s are the {@link Arrow.ArrayBuilder} specified to constructor. You can get `field_builder` by `garrow_struct_array_builder_get_field_builder()` or `garrow_struct_array_builder_get_field_builders()`. |[<!-- language="C" --> // TODO ]|
+         */
         append(): boolean;
+        /**
+         * @returns `true` on success, `false` if there was an error. It appends a new struct element. To append a new struct element, you need to call this function then append struct element field values to all `field_builder`s. `field_value`s are the {@link Arrow.ArrayBuilder} specified to constructor. You can get `field_builder` by `garrow_struct_array_builder_get_field_builder()` or `garrow_struct_array_builder_get_field_builders()`. |[<!-- language="C" --> // TODO ]|
+         */
         append_value(): boolean;
+        /**
+         * @param i The index of the field in the struct.
+         * @returns The {@link Arrow.ArrayBuilder} for the i-th field.
+         */
         get_field_builder(i: number): ArrayBuilder;
+        /**
+         * @returns The {@link Arrow.ArrayBuilder} for all fields.
+         */
         get_field_builders(): ArrayBuilder[];
     }
 
@@ -20848,6 +24539,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StructDataType extends DataType {
         static $gtype: GObject.GType<StructDataType>;
 
@@ -20870,16 +24564,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StructDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StructDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StructDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StructDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20888,10 +24585,28 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param i The index of the target field.
+         * @returns The field at the index in the struct data type or `null` on not found.
+         */
         get_field(i: number): Field | null;
+        /**
+         * @param name The name of the target field.
+         * @returns The field that has the name in the struct data type or `null` on not found.
+         */
         get_field_by_name(name: string): Field | null;
+        /**
+         * @param name The name of the target field.
+         * @returns The index of the target index in the struct data type   or `-1` on not found.
+         */
         get_field_index(name: string): number;
+        /**
+         * @returns The fields of the struct data type.
+         */
         get_fields(): Field[];
+        /**
+         * @returns The number of fields of the struct data type.
+         */
         get_n_fields(): number;
     }
 
@@ -20909,12 +24624,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StructFieldOptions extends FunctionOptions {
         static $gtype: GObject.GType<StructFieldOptions>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get field_ref(): string;
+        /**
+         * @read-only
+         */
         get fieldRef(): string;
 
         /**
@@ -20936,16 +24660,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StructFieldOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructFieldOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StructFieldOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructFieldOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StructFieldOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StructFieldOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20954,6 +24681,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param field_ref The name or dot path specifying what to extract from struct or  union.
+         */
         set_field_ref(field_ref: string): void;
     }
 
@@ -20969,6 +24699,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StructScalar extends Scalar {
         static $gtype: GObject.GType<StructScalar>;
 
@@ -20991,16 +24724,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StructScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StructScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StructScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StructScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21009,6 +24745,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): Scalar[];
     }
 
@@ -21027,12 +24766,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SubTreeFileSystem extends FileSystem {
         static $gtype: GObject.GType<SubTreeFileSystem>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get base_file_system(): FileSystem;
+        /**
+         * @construct-only
+         */
         get baseFileSystem(): FileSystem;
 
         /**
@@ -21054,16 +24802,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SubTreeFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SubTreeFileSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SubTreeFileSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SubTreeFileSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SubTreeFileSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SubTreeFileSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21084,11 +24835,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Table extends GObject.Object {
         static $gtype: GObject.GType<Table>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set table(val: any);
 
         /**
@@ -21114,16 +24871,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Table.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Table.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Table.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Table.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Table.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Table.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21132,31 +24892,109 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param i The index of the new column.
+         * @param field The field for the column to be added.
+         * @param chunked_array The column data to be added.
+         * @returns The newly allocated   {@link Arrow.Table} that has a new column or `null` on error.
+         */
         add_column(i: number, field: Field, chunked_array: ChunkedArray): Table | null;
+        /**
+         * @returns The {@link Arrow.Table} with   chunks combined, or `null` on error.
+         */
         combine_chunks(): Table | null;
-        concatenate(other_tables: Table[], options?: TableConcatenateOptions | null): Table | null;
+        /**
+         * @param other_tables The tables to be concatenated.
+         * @param options The options to customize concatenation.
+         * @returns The table concatenated vertically.
+         */
+        concatenate(other_tables: Table[], options: TableConcatenateOptions | null): Table | null;
+        /**
+         * @param other_table A {@link Arrow.Table} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_table: Table): boolean;
+        /**
+         * @param other_table A {@link Arrow.Table} to be compared.
+         * @param check_metadata Whether to compare metadata.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal_metadata(other_table: Table, check_metadata: boolean): boolean;
-        filter(filter: BooleanArray, options?: FilterOptions | null): Table | null;
-        filter_chunked_array(filter: ChunkedArray, options?: FilterOptions | null): Table | null;
+        /**
+         * @param filter The values indicates which values should be filtered out.
+         * @param options A {@link Arrow.FilterOptions}.
+         * @returns The {@link Arrow.Table} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
+         */
+        filter(filter: BooleanArray, options: FilterOptions | null): Table | null;
+        /**
+         * @param filter The values indicates which values should be filtered out.
+         * @param options A {@link Arrow.FilterOptions}.
+         * @returns The {@link Arrow.Table} filtered   with a chunked array filter. Nulls in the filter will   result in nulls in the output.
+         */
+        filter_chunked_array(filter: ChunkedArray, options: FilterOptions | null): Table | null;
+        /**
+         * @param i The index of the target column. If it's negative, index is   counted backward from the end of the columns. `-1` means the last   column.
+         * @returns The i-th column's data in the table.
+         */
         get_column_data(i: number): ChunkedArray | null;
+        /**
+         * @returns The number of columns in the table.
+         */
         get_n_columns(): number;
+        /**
+         * @returns The number of rows in the table.
+         */
         get_n_rows(): number;
+        /**
+         * @returns The schema of the table.
+         */
         get_schema(): Schema;
+        /**
+         * @param i The index of the column to be removed.
+         * @returns The newly allocated   {@link Arrow.Table} that doesn't have the column or `null` on error.
+         */
         remove_column(i: number): Table | null;
+        /**
+         * @param i The index of the column to be replaced.
+         * @param field The field for the new column.
+         * @param chunked_array The newly added column data.
+         * @returns The newly allocated {@link Arrow.Table} that has `column` as the `i`-th column or `null` on error.
+         */
         replace_column(i: number, field: Field, chunked_array: ChunkedArray): Table | null;
-        slice(offset: number, length: number): Table;
+        /**
+         * @param offset The offset of sub {@link Arrow.Table}. If the offset is negative,   the offset is counted from the last.
+         * @param length The length of sub {@link Arrow.Table}.
+         * @returns The sub {@link Arrow.Table}. It covers   only from `offset` to `offset + length` range. The sub   {@link Arrow.Table} shares values with the base   {@link Arrow.Table}.
+         */
+        slice(offset: bigint | number, length: bigint | number): Table;
+        /**
+         * @param options The options to be used.
+         * @returns The indices that would sort   a table with the specified options on success, `null` on error.
+         */
         sort_indices(options: SortOptions): UInt64Array | null;
-        take(indices: Array, options?: TakeOptions | null): Table | null;
-        take_chunked_array(indices: ChunkedArray, options?: TakeOptions | null): Table | null;
+        /**
+         * @param indices The indices of values to take.
+         * @param options A {@link Arrow.TakeOptions}.
+         * @returns The {@link Arrow.Table} taken from   an array of values at indices in input array or `null` on error.
+         */
+        take(indices: Array, options: TakeOptions | null): Table | null;
+        /**
+         * @param indices The indices of values to take.
+         * @param options A {@link Arrow.TakeOptions}.
+         * @returns The {@link Arrow.Table} taken from   an array of values at indices in chunked array or `null` on error.
+         */
+        take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): Table | null;
+        /**
+         * @returns The formatted table content or `null` on error.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string | null;
         /**
          * Writes the `table` as Feather format data to the `sink`.
          * @param sink The output.
          * @param properties The properties for this write.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
-        write_as_feather(sink: OutputStream, properties?: FeatherWriteProperties | null): boolean;
+        write_as_feather(sink: OutputStream, properties: FeatherWriteProperties | null): boolean;
     }
 
     namespace TableBatchReader {
@@ -21171,6 +25009,9 @@ export namespace Arrow {
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TableBatchReader extends RecordBatchReader {
         static $gtype: GObject.GType<TableBatchReader>;
 
@@ -21196,16 +25037,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TableBatchReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TableBatchReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TableBatchReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TableBatchReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TableBatchReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TableBatchReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21221,7 +25065,7 @@ export namespace Arrow {
          * depending on actual chunking characteristics of each table column.
          * @param max_chunk_size The maximum chunk size of record batches.
          */
-        set_max_chunk_size(max_chunk_size: number): void;
+        set_max_chunk_size(max_chunk_size: bigint | number): void;
     }
 
     namespace TableConcatenateOptions {
@@ -21241,50 +25085,61 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TableConcatenateOptions extends GObject.Object {
         static $gtype: GObject.GType<TableConcatenateOptions>;
 
         // Properties
 
         /**
-         * If true, a #GArrowField of #GArrowNullDataType can be unified
-         * with a #GArrowField of another type. The unified field will be of
+         * If true, a {@link Arrow.Field} of {@link Arrow.NullDataType} can be unified
+         * with a {@link Arrow.Field} of another type. The unified field will be of
          * the other type and become nullable. Nullability will be promoted
          * to the looser option (nullable if one is not nullable).
+         * @since 6.0.0
+         * @default true
          */
         get promote_nullability(): boolean;
         set promote_nullability(val: boolean);
         /**
-         * If true, a #GArrowField of #GArrowNullDataType can be unified
-         * with a #GArrowField of another type. The unified field will be of
+         * If true, a {@link Arrow.Field} of {@link Arrow.NullDataType} can be unified
+         * with a {@link Arrow.Field} of another type. The unified field will be of
          * the other type and become nullable. Nullability will be promoted
          * to the looser option (nullable if one is not nullable).
+         * @since 6.0.0
+         * @default true
          */
         get promoteNullability(): boolean;
         set promoteNullability(val: boolean);
         /**
          * If true, the schemas of the tables will be first unified with
          * fields of the same name being merged, according to
-         * #GArrowTableConcatenateOptions:promote-nullability, then each
+         * {@link Arrow.TableConcatenateOptions.promote_nullability}, then each
          * table will be promoted to the unified schema before being
          * concatenated.
          *
          * Otherwise, all tables should have the same schema. Each column in
          * the output table is the result of concatenating the corresponding
          * columns in all input tables.
+         * @since 6.0.0
+         * @default false
          */
         get unify_schemas(): boolean;
         set unify_schemas(val: boolean);
         /**
          * If true, the schemas of the tables will be first unified with
          * fields of the same name being merged, according to
-         * #GArrowTableConcatenateOptions:promote-nullability, then each
+         * {@link Arrow.TableConcatenateOptions.promote_nullability}, then each
          * table will be promoted to the unified schema before being
          * concatenated.
          *
          * Otherwise, all tables should have the same schema. Each column in
          * the output table is the result of concatenating the corresponding
          * columns in all input tables.
+         * @since 6.0.0
+         * @default false
          */
         get unifySchemas(): boolean;
         set unifySchemas(val: boolean);
@@ -21308,16 +25163,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TableConcatenateOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TableConcatenateOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TableConcatenateOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TableConcatenateOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TableConcatenateOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TableConcatenateOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -21341,11 +25199,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TableDatum extends Datum {
         static $gtype: GObject.GType<TableDatum>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get value(): Table;
 
         /**
@@ -21367,16 +25231,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TableDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TableDatum.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TableDatum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TableDatum.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TableDatum.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TableDatum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21393,6 +25260,9 @@ export namespace Arrow {
         interface ConstructorProps extends FunctionOptions.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TakeOptions extends FunctionOptions {
         static $gtype: GObject.GType<TakeOptions>;
 
@@ -21415,16 +25285,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TakeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TakeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TakeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TakeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TakeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TakeOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21443,6 +25316,9 @@ export namespace Arrow {
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class TemporalDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<TemporalDataType>;
 
@@ -21463,16 +25339,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TemporalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TemporalDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TemporalDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TemporalDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TemporalDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TemporalDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21495,12 +25374,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Tensor extends GObject.Object {
         static $gtype: GObject.GType<Tensor>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get buffer(): Buffer;
+        /**
+         * @construct-only
+         */
         set tensor(val: any);
 
         /**
@@ -21521,23 +25409,26 @@ export namespace Arrow {
         static ['new'](
             data_type: DataType,
             data: Buffer,
-            shape: number[],
-            strides?: number[] | null,
-            dimension_names?: string[] | null,
+            shape: (bigint | number)[],
+            strides: (bigint | number)[] | null,
+            dimension_names: string[] | null,
         ): Tensor;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tensor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tensor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tensor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tensor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tensor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tensor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21546,18 +25437,59 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param other_tensor A {@link Arrow.Tensor} to be compared.
+         * @returns `true` if both of them have the same data, `false`   otherwise.
+         */
         equal(other_tensor: Tensor): boolean;
+        /**
+         * @returns The data of the tensor.
+         */
         get_buffer(): Buffer;
+        /**
+         * @param i The index of the target dimension.
+         * @returns The i-th dimension name of the tensor.
+         */
         get_dimension_name(i: number): string;
+        /**
+         * @returns The number of dimensions of the tensor.
+         */
         get_n_dimensions(): number;
+        /**
+         * @returns The shape of the tensor.   It should be freed with `g_free()` when no longer needed.
+         */
         get_shape(): number[];
+        /**
+         * @returns The number of value cells in the tensor.
+         */
         get_size(): number;
+        /**
+         * @returns The strides of the tensor.   It should be freed with `g_free()` when no longer needed.
+         */
         get_strides(): number[];
+        /**
+         * @returns The data type of each value in the tensor.
+         */
         get_value_data_type(): DataType;
+        /**
+         * @returns The type of each value in the tensor.
+         */
         get_value_type(): Type;
+        /**
+         * @returns `true` if the tensor is column major a.k.a. Fortran order,   `false` otherwise.
+         */
         is_column_major(): boolean;
+        /**
+         * @returns `true` if the tensor is contiguous, `false` otherwise.
+         */
         is_contiguous(): boolean;
+        /**
+         * @returns `true` if the tensor is mutable, `false` otherwise.
+         */
         is_mutable(): boolean;
+        /**
+         * @returns `true` if the tensor is row major a.k.a. C order,   `false` otherwise.
+         */
         is_row_major(): boolean;
     }
 
@@ -21577,6 +25509,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Time32Array extends NumericArray {
         static $gtype: GObject.GType<Time32Array>;
 
@@ -21597,24 +25532,27 @@ export namespace Arrow {
 
         static ['new'](
             data_type: Time32DataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): Time32Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Time32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time32Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Time32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time32Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Time32Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Time32Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21623,7 +25561,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
     }
 
@@ -21638,6 +25583,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Time32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Time32ArrayBuilder>;
 
@@ -21660,16 +25608,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Time32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time32ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Time32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time32ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Time32ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Time32ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21678,16 +25629,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value The number of days since UNIX epoch in signed 32bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value The number of days since UNIX epoch in signed 32bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of   the number of days since UNIX epoch in signed 32bit integer.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace Time32DataType {
@@ -21701,6 +25660,9 @@ export namespace Arrow {
         interface ConstructorProps extends TimeDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Time32DataType extends TimeDataType {
         static $gtype: GObject.GType<Time32DataType>;
 
@@ -21723,16 +25685,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Time32DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time32DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Time32DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time32DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Time32DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Time32DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21752,6 +25717,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Time32Scalar extends Scalar {
         static $gtype: GObject.GType<Time32Scalar>;
 
@@ -21774,16 +25742,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Time32Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time32Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Time32Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time32Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Time32Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Time32Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21792,6 +25763,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -21811,6 +25785,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Time64Array extends NumericArray {
         static $gtype: GObject.GType<Time64Array>;
 
@@ -21831,24 +25808,27 @@ export namespace Arrow {
 
         static ['new'](
             data_type: Time64DataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): Time64Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Time64Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time64Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Time64Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time64Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Time64Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Time64Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21857,7 +25837,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
     }
 
@@ -21872,6 +25859,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Time64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Time64ArrayBuilder>;
 
@@ -21894,16 +25884,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Time64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time64ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Time64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time64ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Time64ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Time64ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21912,16 +25905,24 @@ export namespace Arrow {
 
         // Methods
 
-        append(value: number): boolean;
-        append_value(value: number): boolean;
+        /**
+         * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append(value: bigint | number): boolean;
+        /**
+         * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of   the number of milliseconds since UNIX epoch in signed 64bit integer.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace Time64DataType {
@@ -21935,6 +25936,9 @@ export namespace Arrow {
         interface ConstructorProps extends TimeDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Time64DataType extends TimeDataType {
         static $gtype: GObject.GType<Time64DataType>;
 
@@ -21957,16 +25961,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Time64DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time64DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Time64DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time64DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Time64DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Time64DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21986,6 +25993,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Time64Scalar extends Scalar {
         static $gtype: GObject.GType<Time64Scalar>;
 
@@ -22004,20 +26014,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data_type: Time64DataType, value: number): Time64Scalar;
+        static ['new'](data_type: Time64DataType, value: bigint | number): Time64Scalar;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Time64Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time64Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Time64Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Time64Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Time64Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Time64Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22026,6 +26039,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -22040,6 +26056,9 @@ export namespace Arrow {
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class TimeDataType extends TemporalDataType {
         static $gtype: GObject.GType<TimeDataType>;
 
@@ -22060,16 +26079,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimeDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimeDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimeDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimeDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimeDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimeDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22078,6 +26100,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The unit of the time data type.
+         */
         get_unit(): TimeUnit;
     }
 
@@ -22097,6 +26122,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TimestampArray extends NumericArray {
         static $gtype: GObject.GType<TimestampArray>;
 
@@ -22117,24 +26145,27 @@ export namespace Arrow {
 
         static ['new'](
             data_type: TimestampDataType,
-            length: number,
+            length: bigint | number,
             data: Buffer,
             null_bitmap: Buffer | null,
-            n_nulls: number,
+            n_nulls: bigint | number,
         ): TimestampArray;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimestampArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimestampArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimestampArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimestampArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22143,7 +26174,14 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
     }
 
@@ -22158,6 +26196,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TimestampArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<TimestampArrayBuilder>;
 
@@ -22180,16 +26221,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimestampArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimestampArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimestampArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimestampArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -22200,16 +26244,24 @@ export namespace Arrow {
 
         // Methods
 
-        append(value: number): boolean;
-        append_value(value: number): boolean;
+        /**
+         * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append(value: bigint | number): boolean;
+        /**
+         * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of   the number of milliseconds since UNIX epoch in signed 64bit integer.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace TimestampDataType {
@@ -22227,6 +26279,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TimestampDataType extends TemporalDataType {
         static $gtype: GObject.GType<TimestampDataType>;
 
@@ -22234,10 +26289,14 @@ export namespace Arrow {
 
         /**
          * The time zone of this data type.
+         * @since 16.0.0
+         * @construct-only
          */
         get time_zone(): GLib.TimeZone;
         /**
          * The time zone of this data type.
+         * @since 16.0.0
+         * @construct-only
          */
         get timeZone(): GLib.TimeZone;
 
@@ -22256,20 +26315,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](unit: TimeUnit, time_zone?: GLib.TimeZone | null): TimestampDataType;
+        static ['new'](unit: TimeUnit, time_zone: GLib.TimeZone | null): TimestampDataType;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimestampDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimestampDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimestampDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimestampDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22278,6 +26340,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The unit of the timestamp data type.
+         */
         get_unit(): TimeUnit;
     }
 
@@ -22294,11 +26359,17 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class TimestampParser extends GObject.Object {
         static $gtype: GObject.GType<TimestampParser>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set parser(val: any);
 
         /**
@@ -22318,16 +26389,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimestampParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimestampParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimestampParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimestampParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22336,6 +26410,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The kind of this timestamp parser.
+         */
         get_kind(): string;
     }
 
@@ -22351,6 +26428,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TimestampScalar extends Scalar {
         static $gtype: GObject.GType<TimestampScalar>;
 
@@ -22369,20 +26449,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](data_type: TimestampDataType, value: number): TimestampScalar;
+        static ['new'](data_type: TimestampDataType, value: bigint | number): TimestampScalar;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimestampScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimestampScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimestampScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimestampScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimestampScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22391,6 +26474,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -22410,6 +26496,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt16Array extends NumericArray {
         static $gtype: GObject.GType<UInt16Array>;
 
@@ -22428,20 +26517,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt16Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): UInt16Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt16Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt16Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt16Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt16Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22450,8 +26547,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -22466,6 +26573,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt16ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt16ArrayBuilder>;
 
@@ -22488,16 +26598,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt16ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22506,16 +26619,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value An uint16 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value An uint16 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of uint16.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace UInt16DataType {
@@ -22529,6 +26650,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt16DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt16DataType>;
 
@@ -22551,16 +26675,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt16DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt16DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt16DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt16DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22580,6 +26707,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt16Scalar extends Scalar {
         static $gtype: GObject.GType<UInt16Scalar>;
 
@@ -22602,16 +26732,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt16Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt16Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt16Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt16Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt16Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22620,6 +26753,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -22639,6 +26775,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt32Array extends NumericArray {
         static $gtype: GObject.GType<UInt32Array>;
 
@@ -22657,20 +26796,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt32Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): UInt32Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt32Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt32Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22679,8 +26826,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -22695,6 +26852,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt32ArrayBuilder>;
 
@@ -22717,16 +26877,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt32ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22735,16 +26898,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value An uint32 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value An uint32 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of uint32.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
     namespace UInt32DataType {
@@ -22758,6 +26929,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt32DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt32DataType>;
 
@@ -22780,16 +26954,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt32DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt32DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt32DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt32DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22809,6 +26986,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt32Scalar extends Scalar {
         static $gtype: GObject.GType<UInt32Scalar>;
 
@@ -22831,16 +27011,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt32Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt32Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt32Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt32Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt32Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22849,6 +27032,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -22868,6 +27054,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt64Array extends NumericArray {
         static $gtype: GObject.GType<UInt64Array>;
 
@@ -22886,20 +27075,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt64Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): UInt64Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt64Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt64Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt64Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt64Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22908,8 +27105,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): number[];
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -22924,6 +27131,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt64ArrayBuilder>;
 
@@ -22946,16 +27156,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt64ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22964,16 +27177,24 @@ export namespace Arrow {
 
         // Methods
 
-        append(value: number): boolean;
-        append_value(value: number): boolean;
+        /**
+         * @param value An uint64 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append(value: bigint | number): boolean;
+        /**
+         * @param value An uint64 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of uint64.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace UInt64DataType {
@@ -22987,6 +27208,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt64DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt64DataType>;
 
@@ -23009,16 +27233,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt64DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt64DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt64DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt64DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23038,6 +27265,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt64Scalar extends Scalar {
         static $gtype: GObject.GType<UInt64Scalar>;
 
@@ -23056,20 +27286,23 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number): UInt64Scalar;
+        static ['new'](value: bigint | number): UInt64Scalar;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt64Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt64Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt64Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt64Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt64Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23078,6 +27311,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -23097,6 +27333,9 @@ export namespace Arrow {
         interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt8Array extends NumericArray {
         static $gtype: GObject.GType<UInt8Array>;
 
@@ -23115,20 +27354,28 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt8Array;
+        static ['new'](
+            length: bigint | number,
+            data: Buffer,
+            null_bitmap: Buffer | null,
+            n_nulls: bigint | number,
+        ): UInt8Array;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt8Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt8Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt8Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt8Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23137,8 +27384,18 @@ export namespace Arrow {
 
         // Methods
 
-        get_value(i: number): number;
+        /**
+         * @param i The index of the target value.
+         * @returns The `i`-th value.
+         */
+        get_value(i: bigint | number): number;
+        /**
+         * @returns The raw values.
+         */
         get_values(): Uint8Array;
+        /**
+         * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
+         */
         sum(): number;
     }
 
@@ -23153,6 +27410,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt8ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt8ArrayBuilder>;
 
@@ -23175,16 +27435,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8ArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt8ArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23193,16 +27456,24 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param value An uint8 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append(value: number): boolean;
+        /**
+         * @param value An uint8 value.
+         * @returns `true` on success, `false` if there was an error.
+         */
         append_value(value: number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of uint8.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: Uint8Array | string, is_valids?: boolean[] | null): boolean;
+        append_values(values: Uint8Array | string, is_valids: boolean[] | null): boolean;
     }
 
     namespace UInt8DataType {
@@ -23216,6 +27487,9 @@ export namespace Arrow {
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt8DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt8DataType>;
 
@@ -23238,16 +27512,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt8DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8DataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt8DataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8DataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt8DataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt8DataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23267,6 +27544,9 @@ export namespace Arrow {
         interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UInt8Scalar extends Scalar {
         static $gtype: GObject.GType<UInt8Scalar>;
 
@@ -23289,16 +27569,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UInt8Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8Scalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UInt8Scalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UInt8Scalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UInt8Scalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UInt8Scalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23307,6 +27590,9 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): number;
     }
 
@@ -23321,6 +27607,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UIntArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UIntArrayBuilder>;
 
@@ -23343,16 +27632,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UIntArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UIntArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UIntArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UIntArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UIntArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UIntArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23361,16 +27653,24 @@ export namespace Arrow {
 
         // Methods
 
-        append(value: number): boolean;
-        append_value(value: number): boolean;
+        /**
+         * @param value A unsigned int value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append(value: bigint | number): boolean;
+        /**
+         * @param value A unsigned int value.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        append_value(value: bigint | number): boolean;
         /**
          * Append multiple values at once. It's more efficient than multiple
          * `append` and `append_null` calls.
          * @param values The array of unsigned int.
-         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is %TRUE, the Nth `values` is valid value. Otherwise   the Nth value is null value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
+         * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids?: boolean[] | null): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
     namespace UTF8NormalizeOptions {
@@ -23386,6 +27686,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class UTF8NormalizeOptions extends FunctionOptions {
         static $gtype: GObject.GType<UTF8NormalizeOptions>;
 
@@ -23393,6 +27696,8 @@ export namespace Arrow {
 
         /**
          * The Unicode normalization form to apply.
+         * @since 8.0.0
+         * @default Arrow.UTF8NormalizeForm.NFC
          */
         get form(): UTF8NormalizeForm;
         set form(val: UTF8NormalizeForm);
@@ -23416,16 +27721,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UTF8NormalizeOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UTF8NormalizeOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UTF8NormalizeOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -23455,12 +27763,21 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class UnionArray extends Array {
         static $gtype: GObject.GType<UnionArray>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get type_ids(): Int8Array;
+        /**
+         * @construct-only
+         */
         get typeIds(): Int8Array;
 
         /**
@@ -23480,16 +27797,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UnionArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnionArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UnionArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnionArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UnionArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UnionArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23498,9 +27818,21 @@ export namespace Arrow {
 
         // Methods
 
-        get_child_id(i: number): number;
+        /**
+         * @param i The index of the physical child ID containing value in the union.
+         * @returns The physical child ID containing the i-th value.
+         */
+        get_child_id(i: bigint | number): number;
+        /**
+         * @param i The index of the field in the union.
+         * @returns The i-th field values as a   {@link Arrow.Array} or `null` on out of range.
+         */
         get_field(i: number): Array | null;
-        get_type_code(i: number): number;
+        /**
+         * @param i The index of the logical type code of the value in the union.
+         * @returns The i-th logical type code of the value.
+         */
+        get_type_code(i: bigint | number): number;
     }
 
     namespace UnionArrayBuilder {
@@ -23514,6 +27846,9 @@ export namespace Arrow {
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class UnionArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UnionArrayBuilder>;
 
@@ -23534,16 +27869,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnionArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnionArrayBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UnionArrayBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UnionArrayBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23552,20 +27890,25 @@ export namespace Arrow {
 
         // Methods
 
-        append_child(child: ArrayBuilder, filed_name?: string | null): number;
+        /**
+         * @param child A {@link Arrow.ArrayBuilder} for new child.
+         * @param filed_name A field name for new child.
+         * @returns The type ID for the appended child.
+         */
+        append_child(child: ArrayBuilder, filed_name: string | null): number;
         /**
          * Append an element to the union array.
          *
-         * If `builder` is #GArrowDenseUnionArrayBuilder, this must be followed by an
+         * If `builder` is {@link Arrow.DenseUnionArrayBuilder}, this must be followed by an
          * append to the appropriate child builder.
          *
-         * If `builder` is #GArrowSparseUnionArrayBuilder, this must be
+         * If `builder` is {@link Arrow.SparseUnionArrayBuilder}, this must be
          * followed by appends to all child builders. The corresponding child
          * builder must be appended to independently after this method is
          * called, and all other child builders must have null or empty value
          * appended.
          * @param value A type ID value.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         append_value(value: number): boolean;
     }
@@ -23581,6 +27924,9 @@ export namespace Arrow {
         interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class UnionDataType extends DataType {
         static $gtype: GObject.GType<UnionDataType>;
 
@@ -23601,16 +27947,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UnionDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnionDataType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UnionDataType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnionDataType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UnionDataType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UnionDataType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23619,9 +27968,22 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @param i The index of the target field.
+         * @returns The field at the index in the union data type or `null` on not found.
+         */
         get_field(i: number): Field | null;
+        /**
+         * @returns The fields of the union data type.
+         */
         get_fields(): Field[];
+        /**
+         * @returns The number of fields of the union data type.
+         */
         get_n_fields(): number;
+        /**
+         * @returns The codes for each field.   It should be freed with `g_free()` when no longer needed.
+         */
         get_type_codes(): Uint8Array;
     }
 
@@ -23640,6 +28002,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class UnionScalar extends Scalar {
         static $gtype: GObject.GType<UnionScalar>;
 
@@ -23647,6 +28012,8 @@ export namespace Arrow {
 
         /**
          * The value of the scalar.
+         * @since 5.0.0
+         * @construct-only
          */
         set value(val: Scalar);
 
@@ -23667,16 +28034,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UnionScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnionScalar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UnionScalar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnionScalar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UnionScalar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UnionScalar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23685,7 +28055,13 @@ export namespace Arrow {
 
         // Methods
 
+        /**
+         * @returns The type code of this scalar.
+         */
         get_type_code(): number;
+        /**
+         * @returns The value of this scalar.
+         */
         get_value(): Scalar;
     }
 
@@ -23708,6 +28084,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class VarianceOptions extends FunctionOptions {
         static $gtype: GObject.GType<VarianceOptions>;
 
@@ -23715,26 +28094,36 @@ export namespace Arrow {
 
         /**
          * The Delta Degrees of Freedom (ddof) to be used.
+         * @since 6.0.0
+         * @default 0
          */
         get ddof(): number;
         set ddof(val: number);
         /**
          * If less than this many non-null values are observed, emit null.
+         * @since 6.0.0
+         * @default 0
          */
         get min_count(): number;
         set min_count(val: number);
         /**
          * If less than this many non-null values are observed, emit null.
+         * @since 6.0.0
+         * @default 0
          */
         get minCount(): number;
         set minCount(val: number);
         /**
          * Whether NULLs are skipped or not.
+         * @since 6.0.0
+         * @default true
          */
         get skip_nulls(): boolean;
         set skip_nulls(val: boolean);
         /**
          * Whether NULLs are skipped or not.
+         * @since 6.0.0
+         * @default true
          */
         get skipNulls(): boolean;
         set skipNulls(val: boolean);
@@ -23758,16 +28147,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VarianceOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VarianceOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VarianceOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VarianceOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VarianceOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VarianceOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23803,6 +28195,9 @@ export namespace Arrow {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WriteOptions extends GObject.Object {
         static $gtype: GObject.GType<WriteOptions>;
 
@@ -23811,18 +28206,24 @@ export namespace Arrow {
         /**
          * Write padding after memory buffers to this multiple of
          * bytes. Generally 8 or 64.
+         * @since 1.0.0
+         * @default 8
          */
         get alignment(): number;
         set alignment(val: number);
         /**
          * Whether to allow field lengths that don't fit in a signed 32-bit
          * int. Some implementations may not be able to parse such streams.
+         * @since 1.0.0
+         * @default false
          */
         get allow_64bit(): boolean;
         set allow_64bit(val: boolean);
         /**
          * Whether to allow field lengths that don't fit in a signed 32-bit
          * int. Some implementations may not be able to parse such streams.
+         * @since 1.0.0
+         * @default false
          */
         get allow64bit(): boolean;
         set allow64bit(val: boolean);
@@ -23832,38 +28233,51 @@ export namespace Arrow {
          * internal use (e.g. Feather files).
          *
          * May only be UNCOMPRESSED, LZ4_FRAME and ZSTD.
+         * @since 2.0.0
          */
         get codec(): Codec;
         set codec(val: Codec);
         /**
          * The maximum permitted schema nesting depth.
+         * @since 1.0.0
+         * @default 64
          */
         get max_recursion_depth(): number;
         set max_recursion_depth(val: number);
         /**
          * The maximum permitted schema nesting depth.
+         * @since 1.0.0
+         * @default 64
          */
         get maxRecursionDepth(): number;
         set maxRecursionDepth(val: number);
         /**
          * Whether to use the global CPU thread pool.
+         * @since 1.0.0
+         * @default true
          */
         get use_threads(): boolean;
         set use_threads(val: boolean);
         /**
          * Whether to use the global CPU thread pool.
+         * @since 1.0.0
+         * @default true
          */
         get useThreads(): boolean;
         set useThreads(val: boolean);
         /**
          * Whether to write the pre-0.15.0 encapsulated IPC message format
          * consisting of a 4-byte prefix instead of 8 byte.
+         * @since 1.0.0
+         * @default false
          */
         get write_legacy_ipc_format(): boolean;
         set write_legacy_ipc_format(val: boolean);
         /**
          * Whether to write the pre-0.15.0 encapsulated IPC message format
          * consisting of a 4-byte prefix instead of 8 byte.
+         * @since 1.0.0
+         * @default false
          */
         get writeLegacyIpcFormat(): boolean;
         set writeLegacyIpcFormat(val: boolean);
@@ -23887,16 +28301,19 @@ export namespace Arrow {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WriteOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WriteOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WriteOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WriteOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WriteOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WriteOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -23904,285 +28321,1125 @@ export namespace Arrow {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AggregateNodeOptionsClass = typeof AggregateNodeOptions;
+    /**
+     * @gir-type Alias
+     */
     type AggregationClass = typeof Aggregation;
+    /**
+     * @gir-type Alias
+     */
     type ArrayBuilderClass = typeof ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type ArrayClass = typeof Array;
+    /**
+     * @gir-type Alias
+     */
     type ArrayDatumClass = typeof ArrayDatum;
+    /**
+     * @gir-type Alias
+     */
     type ArraySortOptionsClass = typeof ArraySortOptions;
+    /**
+     * @gir-type Alias
+     */
     type BaseBinaryScalarClass = typeof BaseBinaryScalar;
+    /**
+     * @gir-type Alias
+     */
     type BaseListScalarClass = typeof BaseListScalar;
+    /**
+     * @gir-type Alias
+     */
     type BinaryArrayBuilderClass = typeof BinaryArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type BinaryArrayClass = typeof BinaryArray;
+    /**
+     * @gir-type Alias
+     */
     type BinaryDataTypeClass = typeof BinaryDataType;
+    /**
+     * @gir-type Alias
+     */
     type BinaryDictionaryArrayBuilderClass = typeof BinaryDictionaryArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type BinaryScalarClass = typeof BinaryScalar;
+    /**
+     * @gir-type Alias
+     */
     type BooleanArrayBuilderClass = typeof BooleanArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type BooleanArrayClass = typeof BooleanArray;
+    /**
+     * @gir-type Alias
+     */
     type BooleanDataTypeClass = typeof BooleanDataType;
+    /**
+     * @gir-type Alias
+     */
     type BooleanScalarClass = typeof BooleanScalar;
+    /**
+     * @gir-type Alias
+     */
     type BufferClass = typeof Buffer;
+    /**
+     * @gir-type Alias
+     */
     type BufferInputStreamClass = typeof BufferInputStream;
+    /**
+     * @gir-type Alias
+     */
     type BufferOutputStreamClass = typeof BufferOutputStream;
+    /**
+     * @gir-type Alias
+     */
     type CSVReadOptionsClass = typeof CSVReadOptions;
+    /**
+     * @gir-type Alias
+     */
     type CSVReaderClass = typeof CSVReader;
+    /**
+     * @gir-type Alias
+     */
     type CallExpressionClass = typeof CallExpression;
+    /**
+     * @gir-type Alias
+     */
     type CastOptionsClass = typeof CastOptions;
+    /**
+     * @gir-type Alias
+     */
     type ChunkedArrayClass = typeof ChunkedArray;
+    /**
+     * @gir-type Alias
+     */
     type ChunkedArrayDatumClass = typeof ChunkedArrayDatum;
+    /**
+     * @gir-type Alias
+     */
     type CodecClass = typeof Codec;
+    /**
+     * @gir-type Alias
+     */
     type CompressedInputStreamClass = typeof CompressedInputStream;
+    /**
+     * @gir-type Alias
+     */
     type CompressedOutputStreamClass = typeof CompressedOutputStream;
+    /**
+     * @gir-type Alias
+     */
     type CountOptionsClass = typeof CountOptions;
+    /**
+     * @gir-type Alias
+     */
     type DataTypeClass = typeof DataType;
+    /**
+     * @gir-type Alias
+     */
     type Date32ArrayBuilderClass = typeof Date32ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Date32ArrayClass = typeof Date32Array;
+    /**
+     * @gir-type Alias
+     */
     type Date32DataTypeClass = typeof Date32DataType;
+    /**
+     * @gir-type Alias
+     */
     type Date32ScalarClass = typeof Date32Scalar;
+    /**
+     * @gir-type Alias
+     */
     type Date64ArrayBuilderClass = typeof Date64ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Date64ArrayClass = typeof Date64Array;
+    /**
+     * @gir-type Alias
+     */
     type Date64DataTypeClass = typeof Date64DataType;
+    /**
+     * @gir-type Alias
+     */
     type Date64ScalarClass = typeof Date64Scalar;
+    /**
+     * @gir-type Alias
+     */
     type DatumClass = typeof Datum;
+    /**
+     * @gir-type Alias
+     */
     type DayMillisecondClass = typeof DayMillisecond;
+    /**
+     * @gir-type Alias
+     */
     type DayTimeIntervalArrayBuilderClass = typeof DayTimeIntervalArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type DayTimeIntervalArrayClass = typeof DayTimeIntervalArray;
+    /**
+     * @gir-type Alias
+     */
     type DayTimeIntervalDataTypeClass = typeof DayTimeIntervalDataType;
+    /**
+     * @gir-type Alias
+     */
     type DayTimeIntervalScalarClass = typeof DayTimeIntervalScalar;
+    /**
+     * @gir-type Alias
+     */
     type Decimal128ArrayBuilderClass = typeof Decimal128ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Decimal128ArrayClass = typeof Decimal128Array;
+    /**
+     * @gir-type Alias
+     */
     type Decimal128Class = typeof Decimal128;
+    /**
+     * @gir-type Alias
+     */
     type Decimal128DataTypeClass = typeof Decimal128DataType;
+    /**
+     * @gir-type Alias
+     */
     type Decimal128ScalarClass = typeof Decimal128Scalar;
+    /**
+     * @gir-type Alias
+     */
     type Decimal256ArrayBuilderClass = typeof Decimal256ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Decimal256ArrayClass = typeof Decimal256Array;
+    /**
+     * @gir-type Alias
+     */
     type Decimal256Class = typeof Decimal256;
+    /**
+     * @gir-type Alias
+     */
     type Decimal256DataTypeClass = typeof Decimal256DataType;
+    /**
+     * @gir-type Alias
+     */
     type Decimal256ScalarClass = typeof Decimal256Scalar;
+    /**
+     * @gir-type Alias
+     */
     type DecimalDataTypeClass = typeof DecimalDataType;
+    /**
+     * @gir-type Alias
+     */
     type DenseUnionArrayBuilderClass = typeof DenseUnionArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type DenseUnionArrayClass = typeof DenseUnionArray;
+    /**
+     * @gir-type Alias
+     */
     type DenseUnionDataTypeClass = typeof DenseUnionDataType;
+    /**
+     * @gir-type Alias
+     */
     type DenseUnionScalarClass = typeof DenseUnionScalar;
+    /**
+     * @gir-type Alias
+     */
     type DictionaryArrayClass = typeof DictionaryArray;
+    /**
+     * @gir-type Alias
+     */
     type DictionaryDataTypeClass = typeof DictionaryDataType;
+    /**
+     * @gir-type Alias
+     */
     type DoubleArrayBuilderClass = typeof DoubleArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type DoubleArrayClass = typeof DoubleArray;
+    /**
+     * @gir-type Alias
+     */
     type DoubleDataTypeClass = typeof DoubleDataType;
+    /**
+     * @gir-type Alias
+     */
     type DoubleScalarClass = typeof DoubleScalar;
+    /**
+     * @gir-type Alias
+     */
     type EqualOptionsClass = typeof EqualOptions;
+    /**
+     * @gir-type Alias
+     */
     type ExecuteContextClass = typeof ExecuteContext;
+    /**
+     * @gir-type Alias
+     */
     type ExecuteNodeClass = typeof ExecuteNode;
+    /**
+     * @gir-type Alias
+     */
     type ExecuteNodeOptionsClass = typeof ExecuteNodeOptions;
+    /**
+     * @gir-type Alias
+     */
     type ExecutePlanClass = typeof ExecutePlan;
+    /**
+     * @gir-type Alias
+     */
     type ExpressionClass = typeof Expression;
+    /**
+     * @gir-type Alias
+     */
     type ExtensionArrayClass = typeof ExtensionArray;
+    /**
+     * @gir-type Alias
+     */
     type ExtensionDataTypeClass = typeof ExtensionDataType;
+    /**
+     * @gir-type Alias
+     */
     type ExtensionDataTypeRegistryClass = typeof ExtensionDataTypeRegistry;
+    /**
+     * @gir-type Alias
+     */
     type ExtensionScalarClass = typeof ExtensionScalar;
+    /**
+     * @gir-type Alias
+     */
     type FeatherFileReaderClass = typeof FeatherFileReader;
+    /**
+     * @gir-type Alias
+     */
     type FeatherWritePropertiesClass = typeof FeatherWriteProperties;
+    /**
+     * @gir-type Alias
+     */
     type FieldClass = typeof Field;
+    /**
+     * @gir-type Alias
+     */
     type FieldExpressionClass = typeof FieldExpression;
+    /**
+     * @gir-type Alias
+     */
     type FileInfoClass = typeof FileInfo;
+    /**
+     * @gir-type Alias
+     */
     type FileInputStreamClass = typeof FileInputStream;
+    /**
+     * @gir-type Alias
+     */
     type FileInterface = typeof File;
+    /**
+     * @gir-type Alias
+     */
     type FileOutputStreamClass = typeof FileOutputStream;
+    /**
+     * @gir-type Alias
+     */
     type FileSelectorClass = typeof FileSelector;
+    /**
+     * @gir-type Alias
+     */
     type FileSystemClass = typeof FileSystem;
+    /**
+     * @gir-type Alias
+     */
     type FilterNodeOptionsClass = typeof FilterNodeOptions;
+    /**
+     * @gir-type Alias
+     */
     type FilterOptionsClass = typeof FilterOptions;
+    /**
+     * @gir-type Alias
+     */
     type FixedSizeBinaryArrayBuilderClass = typeof FixedSizeBinaryArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type FixedSizeBinaryArrayClass = typeof FixedSizeBinaryArray;
+    /**
+     * @gir-type Alias
+     */
     type FixedSizeBinaryDataTypeClass = typeof FixedSizeBinaryDataType;
+    /**
+     * @gir-type Alias
+     */
     type FixedSizeBinaryScalarClass = typeof FixedSizeBinaryScalar;
+    /**
+     * @gir-type Alias
+     */
     type FixedWidthDataTypeClass = typeof FixedWidthDataType;
+    /**
+     * @gir-type Alias
+     */
     type FloatArrayBuilderClass = typeof FloatArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type FloatArrayClass = typeof FloatArray;
+    /**
+     * @gir-type Alias
+     */
     type FloatDataTypeClass = typeof FloatDataType;
+    /**
+     * @gir-type Alias
+     */
     type FloatScalarClass = typeof FloatScalar;
+    /**
+     * @gir-type Alias
+     */
     type FloatingPointDataTypeClass = typeof FloatingPointDataType;
+    /**
+     * @gir-type Alias
+     */
     type FunctionClass = typeof Function;
+    /**
+     * @gir-type Alias
+     */
     type FunctionDocClass = typeof FunctionDoc;
+    /**
+     * @gir-type Alias
+     */
     type FunctionOptionsClass = typeof FunctionOptions;
+    /**
+     * @gir-type Alias
+     */
     type GCSFileSystemClass = typeof GCSFileSystem;
+    /**
+     * @gir-type Alias
+     */
     type GIOInputStreamClass = typeof GIOInputStream;
+    /**
+     * @gir-type Alias
+     */
     type GIOOutputStreamClass = typeof GIOOutputStream;
+    /**
+     * @gir-type Alias
+     */
     type HDFSFileSystemClass = typeof HDFSFileSystem;
+    /**
+     * @gir-type Alias
+     */
     type HalfFloatArrayBuilderClass = typeof HalfFloatArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type HalfFloatArrayClass = typeof HalfFloatArray;
+    /**
+     * @gir-type Alias
+     */
     type HalfFloatDataTypeClass = typeof HalfFloatDataType;
+    /**
+     * @gir-type Alias
+     */
     type HalfFloatScalarClass = typeof HalfFloatScalar;
+    /**
+     * @gir-type Alias
+     */
     type HashJoinNodeOptionsClass = typeof HashJoinNodeOptions;
+    /**
+     * @gir-type Alias
+     */
     type ISO8601TimestampParserClass = typeof ISO8601TimestampParser;
+    /**
+     * @gir-type Alias
+     */
     type IndexOptionsClass = typeof IndexOptions;
+    /**
+     * @gir-type Alias
+     */
     type InputStreamClass = typeof InputStream;
+    /**
+     * @gir-type Alias
+     */
     type Int16ArrayBuilderClass = typeof Int16ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Int16ArrayClass = typeof Int16Array;
+    /**
+     * @gir-type Alias
+     */
     type Int16DataTypeClass = typeof Int16DataType;
+    /**
+     * @gir-type Alias
+     */
     type Int16ScalarClass = typeof Int16Scalar;
+    /**
+     * @gir-type Alias
+     */
     type Int32ArrayBuilderClass = typeof Int32ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Int32ArrayClass = typeof Int32Array;
+    /**
+     * @gir-type Alias
+     */
     type Int32DataTypeClass = typeof Int32DataType;
+    /**
+     * @gir-type Alias
+     */
     type Int32ScalarClass = typeof Int32Scalar;
+    /**
+     * @gir-type Alias
+     */
     type Int64ArrayBuilderClass = typeof Int64ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Int64ArrayClass = typeof Int64Array;
+    /**
+     * @gir-type Alias
+     */
     type Int64DataTypeClass = typeof Int64DataType;
+    /**
+     * @gir-type Alias
+     */
     type Int64ScalarClass = typeof Int64Scalar;
+    /**
+     * @gir-type Alias
+     */
     type Int8ArrayBuilderClass = typeof Int8ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Int8ArrayClass = typeof Int8Array;
+    /**
+     * @gir-type Alias
+     */
     type Int8DataTypeClass = typeof Int8DataType;
+    /**
+     * @gir-type Alias
+     */
     type Int8ScalarClass = typeof Int8Scalar;
+    /**
+     * @gir-type Alias
+     */
     type IntArrayBuilderClass = typeof IntArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type IntegerDataTypeClass = typeof IntegerDataType;
+    /**
+     * @gir-type Alias
+     */
     type IntervalDataTypeClass = typeof IntervalDataType;
+    /**
+     * @gir-type Alias
+     */
     type JSONReadOptionsClass = typeof JSONReadOptions;
+    /**
+     * @gir-type Alias
+     */
     type JSONReaderClass = typeof JSONReader;
+    /**
+     * @gir-type Alias
+     */
     type LargeBinaryArrayBuilderClass = typeof LargeBinaryArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type LargeBinaryArrayClass = typeof LargeBinaryArray;
+    /**
+     * @gir-type Alias
+     */
     type LargeBinaryDataTypeClass = typeof LargeBinaryDataType;
+    /**
+     * @gir-type Alias
+     */
     type LargeBinaryScalarClass = typeof LargeBinaryScalar;
+    /**
+     * @gir-type Alias
+     */
     type LargeListArrayBuilderClass = typeof LargeListArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type LargeListArrayClass = typeof LargeListArray;
+    /**
+     * @gir-type Alias
+     */
     type LargeListDataTypeClass = typeof LargeListDataType;
+    /**
+     * @gir-type Alias
+     */
     type LargeListScalarClass = typeof LargeListScalar;
+    /**
+     * @gir-type Alias
+     */
     type LargeStringArrayBuilderClass = typeof LargeStringArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type LargeStringArrayClass = typeof LargeStringArray;
+    /**
+     * @gir-type Alias
+     */
     type LargeStringDataTypeClass = typeof LargeStringDataType;
+    /**
+     * @gir-type Alias
+     */
     type LargeStringScalarClass = typeof LargeStringScalar;
+    /**
+     * @gir-type Alias
+     */
     type ListArrayBuilderClass = typeof ListArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type ListArrayClass = typeof ListArray;
+    /**
+     * @gir-type Alias
+     */
     type ListDataTypeClass = typeof ListDataType;
+    /**
+     * @gir-type Alias
+     */
     type ListScalarClass = typeof ListScalar;
+    /**
+     * @gir-type Alias
+     */
     type LiteralExpressionClass = typeof LiteralExpression;
+    /**
+     * @gir-type Alias
+     */
     type LocalFileSystemClass = typeof LocalFileSystem;
+    /**
+     * @gir-type Alias
+     */
     type LocalFileSystemOptionsClass = typeof LocalFileSystemOptions;
+    /**
+     * @gir-type Alias
+     */
     type MapArrayBuilderClass = typeof MapArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type MapArrayClass = typeof MapArray;
+    /**
+     * @gir-type Alias
+     */
     type MapDataTypeClass = typeof MapDataType;
+    /**
+     * @gir-type Alias
+     */
     type MapScalarClass = typeof MapScalar;
+    /**
+     * @gir-type Alias
+     */
     type MatchSubstringOptionsClass = typeof MatchSubstringOptions;
+    /**
+     * @gir-type Alias
+     */
     type MemoryMappedInputStreamClass = typeof MemoryMappedInputStream;
+    /**
+     * @gir-type Alias
+     */
     type MemoryPoolClass = typeof MemoryPool;
+    /**
+     * @gir-type Alias
+     */
     type MockFileSystemClass = typeof MockFileSystem;
+    /**
+     * @gir-type Alias
+     */
     type MonthDayNanoClass = typeof MonthDayNano;
+    /**
+     * @gir-type Alias
+     */
     type MonthDayNanoIntervalArrayBuilderClass = typeof MonthDayNanoIntervalArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type MonthDayNanoIntervalArrayClass = typeof MonthDayNanoIntervalArray;
+    /**
+     * @gir-type Alias
+     */
     type MonthDayNanoIntervalDataTypeClass = typeof MonthDayNanoIntervalDataType;
+    /**
+     * @gir-type Alias
+     */
     type MonthDayNanoIntervalScalarClass = typeof MonthDayNanoIntervalScalar;
+    /**
+     * @gir-type Alias
+     */
     type MonthIntervalArrayBuilderClass = typeof MonthIntervalArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type MonthIntervalArrayClass = typeof MonthIntervalArray;
+    /**
+     * @gir-type Alias
+     */
     type MonthIntervalDataTypeClass = typeof MonthIntervalDataType;
+    /**
+     * @gir-type Alias
+     */
     type MonthIntervalScalarClass = typeof MonthIntervalScalar;
+    /**
+     * @gir-type Alias
+     */
     type MutableBufferClass = typeof MutableBuffer;
+    /**
+     * @gir-type Alias
+     */
     type NullArrayBuilderClass = typeof NullArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type NullArrayClass = typeof NullArray;
+    /**
+     * @gir-type Alias
+     */
     type NullDataTypeClass = typeof NullDataType;
+    /**
+     * @gir-type Alias
+     */
     type NullScalarClass = typeof NullScalar;
+    /**
+     * @gir-type Alias
+     */
     type NumericArrayClass = typeof NumericArray;
+    /**
+     * @gir-type Alias
+     */
     type NumericDataTypeClass = typeof NumericDataType;
+    /**
+     * @gir-type Alias
+     */
     type ORCFileReaderClass = typeof ORCFileReader;
+    /**
+     * @gir-type Alias
+     */
     type OutputStreamClass = typeof OutputStream;
+    /**
+     * @gir-type Alias
+     */
     type PrimitiveArrayClass = typeof PrimitiveArray;
+    /**
+     * @gir-type Alias
+     */
     type ProjectNodeOptionsClass = typeof ProjectNodeOptions;
+    /**
+     * @gir-type Alias
+     */
     type QuantileOptionsClass = typeof QuantileOptions;
+    /**
+     * @gir-type Alias
+     */
     type RankOptionsClass = typeof RankOptions;
+    /**
+     * @gir-type Alias
+     */
     type ReadOptionsClass = typeof ReadOptions;
+    /**
+     * @gir-type Alias
+     */
     type ReadableInterface = typeof Readable;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchBuilderClass = typeof RecordBatchBuilder;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchClass = typeof RecordBatch;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchDatumClass = typeof RecordBatchDatum;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchFileReaderClass = typeof RecordBatchFileReader;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchFileWriterClass = typeof RecordBatchFileWriter;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchIteratorClass = typeof RecordBatchIterator;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchReaderClass = typeof RecordBatchReader;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchStreamReaderClass = typeof RecordBatchStreamReader;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchStreamWriterClass = typeof RecordBatchStreamWriter;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchWriterClass = typeof RecordBatchWriter;
+    /**
+     * @gir-type Alias
+     */
     type ResizableBufferClass = typeof ResizableBuffer;
+    /**
+     * @gir-type Alias
+     */
     type RoundOptionsClass = typeof RoundOptions;
+    /**
+     * @gir-type Alias
+     */
     type RoundToMultipleOptionsClass = typeof RoundToMultipleOptions;
+    /**
+     * @gir-type Alias
+     */
     type RunEndEncodeOptionsClass = typeof RunEndEncodeOptions;
+    /**
+     * @gir-type Alias
+     */
     type RunEndEncodedArrayClass = typeof RunEndEncodedArray;
+    /**
+     * @gir-type Alias
+     */
     type RunEndEncodedDataTypeClass = typeof RunEndEncodedDataType;
+    /**
+     * @gir-type Alias
+     */
     type S3FileSystemClass = typeof S3FileSystem;
+    /**
+     * @gir-type Alias
+     */
     type S3GlobalOptionsClass = typeof S3GlobalOptions;
+    /**
+     * @gir-type Alias
+     */
     type ScalarAggregateOptionsClass = typeof ScalarAggregateOptions;
+    /**
+     * @gir-type Alias
+     */
     type ScalarClass = typeof Scalar;
+    /**
+     * @gir-type Alias
+     */
     type ScalarDatumClass = typeof ScalarDatum;
+    /**
+     * @gir-type Alias
+     */
     type SchemaClass = typeof Schema;
+    /**
+     * @gir-type Alias
+     */
     type SeekableInputStreamClass = typeof SeekableInputStream;
+    /**
+     * @gir-type Alias
+     */
     type SetLookupOptionsClass = typeof SetLookupOptions;
+    /**
+     * @gir-type Alias
+     */
     type SinkNodeOptionsClass = typeof SinkNodeOptions;
+    /**
+     * @gir-type Alias
+     */
     type SlowFileSystemClass = typeof SlowFileSystem;
+    /**
+     * @gir-type Alias
+     */
     type SortKeyClass = typeof SortKey;
+    /**
+     * @gir-type Alias
+     */
     type SortOptionsClass = typeof SortOptions;
+    /**
+     * @gir-type Alias
+     */
     type SourceNodeOptionsClass = typeof SourceNodeOptions;
+    /**
+     * @gir-type Alias
+     */
     type SparseUnionArrayBuilderClass = typeof SparseUnionArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type SparseUnionArrayClass = typeof SparseUnionArray;
+    /**
+     * @gir-type Alias
+     */
     type SparseUnionDataTypeClass = typeof SparseUnionDataType;
+    /**
+     * @gir-type Alias
+     */
     type SparseUnionScalarClass = typeof SparseUnionScalar;
+    /**
+     * @gir-type Alias
+     */
     type SplitPatternOptionsClass = typeof SplitPatternOptions;
+    /**
+     * @gir-type Alias
+     */
     type StrftimeOptionsClass = typeof StrftimeOptions;
+    /**
+     * @gir-type Alias
+     */
     type StringArrayBuilderClass = typeof StringArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type StringArrayClass = typeof StringArray;
+    /**
+     * @gir-type Alias
+     */
     type StringDataTypeClass = typeof StringDataType;
+    /**
+     * @gir-type Alias
+     */
     type StringDictionaryArrayBuilderClass = typeof StringDictionaryArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type StringScalarClass = typeof StringScalar;
+    /**
+     * @gir-type Alias
+     */
     type StrptimeOptionsClass = typeof StrptimeOptions;
+    /**
+     * @gir-type Alias
+     */
     type StrptimeTimestampParserClass = typeof StrptimeTimestampParser;
+    /**
+     * @gir-type Alias
+     */
     type StructArrayBuilderClass = typeof StructArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type StructArrayClass = typeof StructArray;
+    /**
+     * @gir-type Alias
+     */
     type StructDataTypeClass = typeof StructDataType;
+    /**
+     * @gir-type Alias
+     */
     type StructFieldOptionsClass = typeof StructFieldOptions;
+    /**
+     * @gir-type Alias
+     */
     type StructScalarClass = typeof StructScalar;
+    /**
+     * @gir-type Alias
+     */
     type SubTreeFileSystemClass = typeof SubTreeFileSystem;
+    /**
+     * @gir-type Alias
+     */
     type TableBatchReaderClass = typeof TableBatchReader;
+    /**
+     * @gir-type Alias
+     */
     type TableClass = typeof Table;
+    /**
+     * @gir-type Alias
+     */
     type TableConcatenateOptionsClass = typeof TableConcatenateOptions;
+    /**
+     * @gir-type Alias
+     */
     type TableDatumClass = typeof TableDatum;
+    /**
+     * @gir-type Alias
+     */
     type TakeOptionsClass = typeof TakeOptions;
+    /**
+     * @gir-type Alias
+     */
     type TemporalDataTypeClass = typeof TemporalDataType;
+    /**
+     * @gir-type Alias
+     */
     type TensorClass = typeof Tensor;
+    /**
+     * @gir-type Alias
+     */
     type Time32ArrayBuilderClass = typeof Time32ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Time32ArrayClass = typeof Time32Array;
+    /**
+     * @gir-type Alias
+     */
     type Time32DataTypeClass = typeof Time32DataType;
+    /**
+     * @gir-type Alias
+     */
     type Time32ScalarClass = typeof Time32Scalar;
+    /**
+     * @gir-type Alias
+     */
     type Time64ArrayBuilderClass = typeof Time64ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type Time64ArrayClass = typeof Time64Array;
+    /**
+     * @gir-type Alias
+     */
     type Time64DataTypeClass = typeof Time64DataType;
+    /**
+     * @gir-type Alias
+     */
     type Time64ScalarClass = typeof Time64Scalar;
+    /**
+     * @gir-type Alias
+     */
     type TimeDataTypeClass = typeof TimeDataType;
+    /**
+     * @gir-type Alias
+     */
     type TimestampArrayBuilderClass = typeof TimestampArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type TimestampArrayClass = typeof TimestampArray;
+    /**
+     * @gir-type Alias
+     */
     type TimestampDataTypeClass = typeof TimestampDataType;
+    /**
+     * @gir-type Alias
+     */
     type TimestampParserClass = typeof TimestampParser;
+    /**
+     * @gir-type Alias
+     */
     type TimestampScalarClass = typeof TimestampScalar;
+    /**
+     * @gir-type Alias
+     */
     type UInt16ArrayBuilderClass = typeof UInt16ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type UInt16ArrayClass = typeof UInt16Array;
+    /**
+     * @gir-type Alias
+     */
     type UInt16DataTypeClass = typeof UInt16DataType;
+    /**
+     * @gir-type Alias
+     */
     type UInt16ScalarClass = typeof UInt16Scalar;
+    /**
+     * @gir-type Alias
+     */
     type UInt32ArrayBuilderClass = typeof UInt32ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type UInt32ArrayClass = typeof UInt32Array;
+    /**
+     * @gir-type Alias
+     */
     type UInt32DataTypeClass = typeof UInt32DataType;
+    /**
+     * @gir-type Alias
+     */
     type UInt32ScalarClass = typeof UInt32Scalar;
+    /**
+     * @gir-type Alias
+     */
     type UInt64ArrayBuilderClass = typeof UInt64ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type UInt64ArrayClass = typeof UInt64Array;
+    /**
+     * @gir-type Alias
+     */
     type UInt64DataTypeClass = typeof UInt64DataType;
+    /**
+     * @gir-type Alias
+     */
     type UInt64ScalarClass = typeof UInt64Scalar;
+    /**
+     * @gir-type Alias
+     */
     type UInt8ArrayBuilderClass = typeof UInt8ArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type UInt8ArrayClass = typeof UInt8Array;
+    /**
+     * @gir-type Alias
+     */
     type UInt8DataTypeClass = typeof UInt8DataType;
+    /**
+     * @gir-type Alias
+     */
     type UInt8ScalarClass = typeof UInt8Scalar;
+    /**
+     * @gir-type Alias
+     */
     type UIntArrayBuilderClass = typeof UIntArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type UTF8NormalizeOptionsClass = typeof UTF8NormalizeOptions;
+    /**
+     * @gir-type Alias
+     */
     type UnionArrayBuilderClass = typeof UnionArrayBuilder;
+    /**
+     * @gir-type Alias
+     */
     type UnionArrayClass = typeof UnionArray;
+    /**
+     * @gir-type Alias
+     */
     type UnionDataTypeClass = typeof UnionDataType;
+    /**
+     * @gir-type Alias
+     */
     type UnionScalarClass = typeof UnionScalar;
+    /**
+     * @gir-type Alias
+     */
     type VarianceOptionsClass = typeof VarianceOptions;
+    /**
+     * @gir-type Alias
+     */
     type WritableFileInterface = typeof WritableFile;
+    /**
+     * @gir-type Alias
+     */
     type WritableInterface = typeof Writable;
+    /**
+     * @gir-type Alias
+     */
     type WriteOptionsClass = typeof WriteOptions;
     namespace File {
         // Constructor properties interface
@@ -24194,12 +29451,27 @@ export namespace Arrow {
         $gtype: GObject.GType<File>;
         prototype: File;
     }
+    /**
+     * @gir-type Interface
+     */
     interface File extends GObject.Object {
         // Methods
 
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         close(): boolean;
+        /**
+         * @returns The mode of the file.
+         */
         get_mode(): FileMode;
+        /**
+         * @returns `true` if the `file` is already closed, `false` otherwise.
+         */
         is_closed(): boolean;
+        /**
+         * @returns The current offset on success, -1 if there was an error.
+         */
         tell(): number;
     }
 
@@ -24217,11 +29489,22 @@ export namespace Arrow {
         $gtype: GObject.GType<Readable>;
         prototype: Readable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Readable extends GObject.Object {
         // Methods
 
-        read(n_bytes: number): Buffer | null;
-        read_bytes(n_bytes: number): GLib.Bytes | null;
+        /**
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         */
+        read(n_bytes: bigint | number): Buffer | null;
+        /**
+         * @param n_bytes The number of bytes to be read.
+         * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
+         */
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
     }
 
     export const Readable: ReadableNamespace & {
@@ -24238,14 +29521,21 @@ export namespace Arrow {
         $gtype: GObject.GType<Writable>;
         prototype: Writable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Writable extends GObject.Object {
         // Methods
 
         /**
          * It ensures writing all data on memory to storage.
-         * @returns %TRUE on success, %FALSE if there was an error.
+         * @returns `true` on success, `false` if there was an error.
          */
         flush(): boolean;
+        /**
+         * @param data The data to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
         write(data: Uint8Array | string): boolean;
     }
 
@@ -24263,17 +29553,28 @@ export namespace Arrow {
         $gtype: GObject.GType<WritableFile>;
         prototype: WritableFile;
     }
+    /**
+     * @gir-type Interface
+     */
     interface WritableFile extends GObject.Object {
         // Methods
 
-        write_at(position: number, data: Uint8Array | string): boolean;
+        /**
+         * @param position The write start position.
+         * @param data The data to be written.
+         * @returns `true` on success, `false` if there was an error.
+         */
+        write_at(position: bigint | number, data: Uint8Array | string): boolean;
     }
 
     export const WritableFile: WritableFileNamespace & {
         new (): WritableFile; // This allows `obj instanceof WritableFile`
     };
 
-    type TimePoint = number;
+    /**
+     * @gir-type Alias
+     */
+    type TimePoint = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

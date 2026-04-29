@@ -34,18 +34,8 @@ export namespace CryptUI {
      *
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
+     * @gir-type Enum
      */
-
-    /**
-     * Used in key properties to indicate what kind of key it is
-     *
-     * Never ever change a values already present. These values are used
-     * across applications, DBus etc...
-     */
-    export namespace EncType {
-        export const $gtype: GObject.GType<EncType>;
-    }
-
     enum EncType {
         /**
          * the key is none of the below types
@@ -69,23 +59,15 @@ export namespace CryptUI {
         MAXVALUE,
     }
 
-    export namespace KeyChooserMode {
-        export const $gtype: GObject.GType<KeyChooserMode>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum KeyChooserMode {
         RECIPIENTS,
         SIGNER,
         SUPPORT_SYMMETRIC,
         MUSTSIGN,
     }
-    /**
-     * Used in key properties to indicate a key's status.  These values are
-     * logically OR'd together.
-     *
-     * Never ever change a values already present. These values are used
-     * across applications, DBus etc...
-     */
 
     /**
      * Used in key properties to indicate a key's status.  These values are
@@ -93,11 +75,8 @@ export namespace CryptUI {
      *
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
+     * @gir-type Enum
      */
-    export namespace KeyFlags {
-        export const $gtype: GObject.GType<KeyFlags>;
-    }
-
     enum KeyFlags {
         /**
          * whether the key is valid
@@ -133,32 +112,22 @@ export namespace CryptUI {
         EXPORTABLE,
     }
 
-    export namespace KeyStoreMode {
-        export const $gtype: GObject.GType<KeyStoreMode>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum KeyStoreMode {
         ALL,
         SELECTED,
         RESULTS,
     }
-    /**
-     * Indicates where a key is located.
-     *
-     * Never ever change a values already present. These values are used
-     * across applications, DBus etc...
-     */
 
     /**
      * Indicates where a key is located.
      *
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
+     * @gir-type Enum
      */
-    export namespace Location {
-        export const $gtype: GObject.GType<Location>;
-    }
-
     enum Location {
         /**
          * An invalid key
@@ -181,23 +150,14 @@ export namespace CryptUI {
          */
         LOCAL,
     }
-    /**
-     * What the validity of the key is.
-     *
-     * Never ever change a values already present. These values are used
-     * across applications, DBus etc...
-     */
 
     /**
      * What the validity of the key is.
      *
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
+     * @gir-type Enum
      */
-    export namespace Validity {
-        export const $gtype: GObject.GType<Validity>;
-    }
-
     enum Validity {
         /**
          * the key is revoked
@@ -228,79 +188,74 @@ export namespace CryptUI {
          */
         ULTIMATE,
     }
+
+    /**
+     * @gir-type Callback
+     */
     interface KeyStoreFilterFunc {
         (ckset: Keyset, key: string): boolean;
     }
+    /**
+     * @gir-type Struct
+     */
     class KeyChooser {
         static $gtype: GObject.GType<KeyChooser>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeyChooserClass {
         static $gtype: GObject.GType<KeyChooserClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyChooserPriv {
         static $gtype: GObject.GType<KeyChooserPriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeyStore {
         static $gtype: GObject.GType<KeyStore>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeyStoreClass {
         static $gtype: GObject.GType<KeyStoreClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyStorePriv {
         static $gtype: GObject.GType<KeyStorePriv>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Keyset {
         static $gtype: GObject.GType<Keyset>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeysetClass {
         static $gtype: GObject.GType<KeysetClass>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class KeysetPrivate {
         static $gtype: GObject.GType<KeysetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

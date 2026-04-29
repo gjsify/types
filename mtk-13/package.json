@@ -1,55 +1,61 @@
 {
     "name": "@girs/mtk-13",
-    "version": "13.0.0-4.0.0-beta.38",
+    "version": "13.0.0-4.0.0-rc.6",
     "description": "GJS TypeScript type definitions for Mtk-13, generated from library version 13.0.0",
     "type": "module",
     "module": "mtk-13.js",
     "main": "mtk-13.js",
     "exports": {
-      "./ambient": {
-        "types": "./mtk-13-ambient.d.ts",
-        "import": "./mtk-13-ambient.js",
-        "default": "./mtk-13-ambient.js"
-      },
-      "./import": {
-        "types": "./mtk-13-import.d.ts",
-        "import": "./mtk-13-import.js",
-        "default": "./mtk-13-import.js"
-      },
-      "./mtk-13": {
-        "types": "./mtk-13.d.ts",
-        "import": "./mtk-13.js",
-        "default": "./mtk-13.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./mtk-13-ambient.d.ts",
+            "import": "./mtk-13-ambient.js",
+            "default": "./mtk-13-ambient.js"
+        },
+        "./import": {
+            "types": "./mtk-13-import.d.ts",
+            "import": "./mtk-13-import.js",
+            "default": "./mtk-13-import.js"
+        },
+        "./mtk-13": {
+            "types": "./mtk-13.d.ts",
+            "import": "./mtk-13.js",
+            "default": "./mtk-13.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.38"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Mtk-13"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Mtk-13"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/mtk-13#readme"
 }
-
-

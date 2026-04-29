@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["./arrowdataset-23.0.d.ts"],
+    "readme": "./README.md",
+    "name": "ArrowDataset-23.0",
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
+}
+

@@ -2,6 +2,8 @@
     "entryPoints": ["./gxml-0.20.d.ts"],
     "readme": "./README.md",
     "name": "GXml-0.20",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

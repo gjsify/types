@@ -22,15 +22,8 @@ export namespace GstFft {
 
     /**
      * The various window functions available.
+     * @gir-type Enum
      */
-
-    /**
-     * The various window functions available.
-     */
-    export namespace FFTWindow {
-        export const $gtype: GObject.GType<FFTWindow>;
-    }
-
     enum FFTWindow {
         /**
          * Rectangular window
@@ -53,6 +46,7 @@ export namespace GstFft {
          */
         BLACKMAN,
     }
+
     /**
      * Returns the next number to `n` that is entirely a product
      * of 2, 3 and 5. Using this as the `len` parameter for
@@ -62,38 +56,35 @@ export namespace GstFft {
      */
     function fft_next_fast_length(n: number): number;
     /**
-     * #GstFFTF32 provides a FFT implementation and related functions for
-     * 32 bit float samples. To use this call gst_fft_f32_new() for
-     * allocating a #GstFFTF32 instance with the appropriate parameters and
-     * then call gst_fft_f32_fft() or gst_fft_f32_inverse_fft() to perform the
+     * {@link GstFft.FFTF32} provides a FFT implementation and related functions for
+     * 32 bit float samples. To use this call `gst_fft_f32_new()` for
+     * allocating a {@link GstFft.FFTF32} instance with the appropriate parameters and
+     * then call `gst_fft_f32_fft()` or `gst_fft_f32_inverse_fft()` to perform the
      * FFT or inverse FFT on a buffer of samples.
      *
-     * After use free the #GstFFTF32 instance with gst_fft_f32_free().
+     * After use free the {@link GstFft.FFTF32} instance with `gst_fft_f32_free()`.
      *
-     * For the best performance use gst_fft_next_fast_length() to get a
+     * For the best performance use `gst_fft_next_fast_length()` to get a
      * number that is entirely a product of 2, 3 and 5 and use this as the
-     * `len` parameter for gst_fft_f32_new().
+     * `len` parameter for `gst_fft_f32_new()`.
      *
      * The `len` parameter specifies the number of samples in the time domain that
      * will be processed or generated. The number of samples in the frequency domain
-     * is `len/`2 + 1. To get n samples in the frequency domain use 2*n - 2 as `len`.
+     * is `len`/2 + 1. To get n samples in the frequency domain use 2*n - 2 as `len`.
      *
      * Before performing the FFT on time domain data it usually makes sense
-     * to apply a window function to it. For this gst_fft_f32_window() can comfortably
+     * to apply a window function to it. For this `gst_fft_f32_window()` can comfortably
      * be used.
      *
-     * Be aware, that you can't simply run gst_fft_f32_inverse_fft() on the
-     * resulting frequency data of gst_fft_f32_fft() to get the original data back.
+     * Be aware, that you can't simply run `gst_fft_f32_inverse_fft()` on the
+     * resulting frequency data of `gst_fft_f32_fft()` to get the original data back.
      * The relation between them is iFFT (FFT (x)) = x * nfft where nfft is the
      * length of the FFT. This also has to be taken into account when calculation
      * the magnitude of the frequency data.
+     * @gir-type Struct
      */
     abstract class FFTF32 {
         static $gtype: GObject.GType<FFTF32>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -101,9 +92,9 @@ export namespace GstFft {
          * This performs the FFT on `timedata` and puts the result in `freqdata`.
          *
          * `timedata` must have as many samples as specified with the `len` parameter while
-         * allocating the #GstFFTF32 instance with gst_fft_f32_new().
+         * allocating the {@link GstFft.FFTF32} instance with `gst_fft_f32_new()`.
          *
-         * `freqdata` must be large enough to hold `len/`2 + 1 #GstFFTF32Complex frequency
+         * `freqdata` must be large enough to hold `len`/2 + 1 {@link GstFft.FFTF32Complex} frequency
          * domain samples.
          * @param timedata Buffer of the samples in the time domain
          * @param freqdata Target buffer for the samples in the frequency domain
@@ -116,8 +107,8 @@ export namespace GstFft {
         /**
          * This performs the inverse FFT on `freqdata` and puts the result in `timedata`.
          *
-         * `freqdata` must have `len/`2 + 1 samples, where `len` is the parameter specified
-         * while allocating the #GstFFTF32 instance with gst_fft_f32_new().
+         * `freqdata` must have `len`/2 + 1 samples, where `len` is the parameter specified
+         * while allocating the {@link GstFft.FFTF32} instance with `gst_fft_f32_new()`.
          *
          * `timedata` must be large enough to hold `len` time domain samples.
          * @param freqdata Buffer of the samples in the frequency domain
@@ -129,12 +120,13 @@ export namespace GstFft {
          * @param timedata Time domain samples
          * @param window Window function to apply
          */
-        window(timedata: number, window: FFTWindow | null): void;
+        window(timedata: number, window: FFTWindow): void;
     }
 
     /**
      * Data type for complex numbers composed of
      * 32 bit float.
+     * @gir-type Struct
      */
     class FFTF32Complex {
         static $gtype: GObject.GType<FFTF32Complex>;
@@ -152,42 +144,38 @@ export namespace GstFft {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
-     * #GstFFTF64 provides a FFT implementation and related functions for
-     * 64 bit float samples. To use this call gst_fft_f64_new() for
-     * allocating a #GstFFTF64 instance with the appropriate parameters and
-     * then call gst_fft_f64_fft() or gst_fft_f64_inverse_fft() to perform the
+     * {@link GstFft.FFTF64} provides a FFT implementation and related functions for
+     * 64 bit float samples. To use this call `gst_fft_f64_new()` for
+     * allocating a {@link GstFft.FFTF64} instance with the appropriate parameters and
+     * then call `gst_fft_f64_fft()` or `gst_fft_f64_inverse_fft()` to perform the
      * FFT or inverse FFT on a buffer of samples.
      *
-     * After use free the #GstFFTF64 instance with gst_fft_f64_free().
+     * After use free the {@link GstFft.FFTF64} instance with `gst_fft_f64_free()`.
      *
-     * For the best performance use gst_fft_next_fast_length() to get a
+     * For the best performance use `gst_fft_next_fast_length()` to get a
      * number that is entirely a product of 2, 3 and 5 and use this as the
-     * `len` parameter for gst_fft_f64_new().
+     * `len` parameter for `gst_fft_f64_new()`.
      *
      * The `len` parameter specifies the number of samples in the time domain that
      * will be processed or generated. The number of samples in the frequency domain
-     * is `len/`2 + 1. To get n samples in the frequency domain use 2*n - 2 as `len`.
+     * is `len`/2 + 1. To get n samples in the frequency domain use 2*n - 2 as `len`.
      *
      * Before performing the FFT on time domain data it usually makes sense
-     * to apply a window function to it. For this gst_fft_f64_window() can comfortably
+     * to apply a window function to it. For this `gst_fft_f64_window()` can comfortably
      * be used.
      *
-     * Be aware, that you can't simply run gst_fft_f32_inverse_fft() on the
-     * resulting frequency data of gst_fft_f32_fft() to get the original data back.
+     * Be aware, that you can't simply run `gst_fft_f32_inverse_fft()` on the
+     * resulting frequency data of `gst_fft_f32_fft()` to get the original data back.
      * The relation between them is iFFT (FFT (x)) = x * nfft where nfft is the
      * length of the FFT. This also has to be taken into account when calculation
      * the magnitude of the frequency data.
+     * @gir-type Struct
      */
     abstract class FFTF64 {
         static $gtype: GObject.GType<FFTF64>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -195,9 +183,9 @@ export namespace GstFft {
          * This performs the FFT on `timedata` and puts the result in `freqdata`.
          *
          * `timedata` must have as many samples as specified with the `len` parameter while
-         * allocating the #GstFFTF64 instance with gst_fft_f64_new().
+         * allocating the {@link GstFft.FFTF64} instance with `gst_fft_f64_new()`.
          *
-         * `freqdata` must be large enough to hold `len/`2 + 1 #GstFFTF64Complex frequency
+         * `freqdata` must be large enough to hold `len`/2 + 1 {@link GstFft.FFTF64Complex} frequency
          * domain samples.
          * @param timedata Buffer of the samples in the time domain
          * @param freqdata Target buffer for the samples in the frequency domain
@@ -210,8 +198,8 @@ export namespace GstFft {
         /**
          * This performs the inverse FFT on `freqdata` and puts the result in `timedata`.
          *
-         * `freqdata` must have `len/`2 + 1 samples, where `len` is the parameter specified
-         * while allocating the #GstFFTF64 instance with gst_fft_f64_new().
+         * `freqdata` must have `len`/2 + 1 samples, where `len` is the parameter specified
+         * while allocating the {@link GstFft.FFTF64} instance with `gst_fft_f64_new()`.
          *
          * `timedata` must be large enough to hold `len` time domain samples.
          * @param freqdata Buffer of the samples in the frequency domain
@@ -223,12 +211,13 @@ export namespace GstFft {
          * @param timedata Time domain samples
          * @param window Window function to apply
          */
-        window(timedata: number, window: FFTWindow | null): void;
+        window(timedata: number, window: FFTWindow): void;
     }
 
     /**
      * Data type for complex numbers composed of
      * 64 bit float.
+     * @gir-type Struct
      */
     class FFTF64Complex {
         static $gtype: GObject.GType<FFTF64Complex>;
@@ -246,42 +235,38 @@ export namespace GstFft {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
-     * #GstFFTS16 provides a FFT implementation and related functions for
-     * signed 16 bit integer samples. To use this call gst_fft_s16_new() for
-     * allocating a #GstFFTS16 instance with the appropriate parameters and
-     * then call gst_fft_s16_fft() or gst_fft_s16_inverse_fft() to perform the
+     * {@link GstFft.FFTS16} provides a FFT implementation and related functions for
+     * signed 16 bit integer samples. To use this call `gst_fft_s16_new()` for
+     * allocating a {@link GstFft.FFTS16} instance with the appropriate parameters and
+     * then call `gst_fft_s16_fft()` or `gst_fft_s16_inverse_fft()` to perform the
      * FFT or inverse FFT on a buffer of samples.
      *
-     * After use free the #GstFFTS16 instance with gst_fft_s16_free().
+     * After use free the {@link GstFft.FFTS16} instance with `gst_fft_s16_free()`.
      *
-     * For the best performance use gst_fft_next_fast_length() to get a
+     * For the best performance use `gst_fft_next_fast_length()` to get a
      * number that is entirely a product of 2, 3 and 5 and use this as the
-     * `len` parameter for gst_fft_s16_new().
+     * `len` parameter for `gst_fft_s16_new()`.
      *
      * The `len` parameter specifies the number of samples in the time domain that
      * will be processed or generated. The number of samples in the frequency domain
-     * is `len/`2 + 1. To get n samples in the frequency domain use 2*n - 2 as `len`.
+     * is `len`/2 + 1. To get n samples in the frequency domain use 2*n - 2 as `len`.
      *
      * Before performing the FFT on time domain data it usually makes sense
-     * to apply a window function to it. For this gst_fft_s16_window() can comfortably
+     * to apply a window function to it. For this `gst_fft_s16_window()` can comfortably
      * be used.
      *
-     * Be aware, that you can't simply run gst_fft_s16_inverse_fft() on the
-     * resulting frequency data of gst_fft_s16_fft() to get the original data back.
+     * Be aware, that you can't simply run `gst_fft_s16_inverse_fft()` on the
+     * resulting frequency data of `gst_fft_s16_fft()` to get the original data back.
      * The relation between them is iFFT (FFT (x)) = x / nfft where nfft is the
      * length of the FFT. This also has to be taken into account when calculation
      * the magnitude of the frequency data.
+     * @gir-type Struct
      */
     abstract class FFTS16 {
         static $gtype: GObject.GType<FFTS16>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -289,9 +274,9 @@ export namespace GstFft {
          * This performs the FFT on `timedata` and puts the result in `freqdata`.
          *
          * `timedata` must have as many samples as specified with the `len` parameter while
-         * allocating the #GstFFTS16 instance with gst_fft_s16_new().
+         * allocating the {@link GstFft.FFTS16} instance with `gst_fft_s16_new()`.
          *
-         * `freqdata` must be large enough to hold `len/`2 + 1 #GstFFTS16Complex frequency
+         * `freqdata` must be large enough to hold `len`/2 + 1 {@link GstFft.FFTS16Complex} frequency
          * domain samples.
          * @param timedata Buffer of the samples in the time domain
          * @param freqdata Target buffer for the samples in the frequency domain
@@ -304,8 +289,8 @@ export namespace GstFft {
         /**
          * This performs the inverse FFT on `freqdata` and puts the result in `timedata`.
          *
-         * `freqdata` must have `len/`2 + 1 samples, where `len` is the parameter specified
-         * while allocating the #GstFFTS16 instance with gst_fft_s16_new().
+         * `freqdata` must have `len`/2 + 1 samples, where `len` is the parameter specified
+         * while allocating the {@link GstFft.FFTS16} instance with `gst_fft_s16_new()`.
          *
          * `timedata` must be large enough to hold `len` time domain samples.
          * @param freqdata Buffer of the samples in the frequency domain
@@ -317,12 +302,13 @@ export namespace GstFft {
          * @param timedata Time domain samples
          * @param window Window function to apply
          */
-        window(timedata: number, window: FFTWindow | null): void;
+        window(timedata: number, window: FFTWindow): void;
     }
 
     /**
      * Data type for complex numbers composed of
      * signed 16 bit integers.
+     * @gir-type Struct
      */
     class FFTS16Complex {
         static $gtype: GObject.GType<FFTS16Complex>;
@@ -340,42 +326,38 @@ export namespace GstFft {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**
-     * #GstFFTS32 provides a FFT implementation and related functions for
-     * signed 32 bit integer samples. To use this call gst_fft_s32_new() for
-     * allocating a #GstFFTS32 instance with the appropriate parameters and
-     * then call gst_fft_s32_fft() or gst_fft_s32_inverse_fft() to perform the
+     * {@link GstFft.FFTS32} provides a FFT implementation and related functions for
+     * signed 32 bit integer samples. To use this call `gst_fft_s32_new()` for
+     * allocating a {@link GstFft.FFTS32} instance with the appropriate parameters and
+     * then call `gst_fft_s32_fft()` or `gst_fft_s32_inverse_fft()` to perform the
      * FFT or inverse FFT on a buffer of samples.
      *
-     * After use free the #GstFFTS32 instance with gst_fft_s32_free().
+     * After use free the {@link GstFft.FFTS32} instance with `gst_fft_s32_free()`.
      *
-     * For the best performance use gst_fft_next_fast_length() to get a
+     * For the best performance use `gst_fft_next_fast_length()` to get a
      * number that is entirely a product of 2, 3 and 5 and use this as the
-     * `len` parameter for gst_fft_s32_new().
+     * `len` parameter for `gst_fft_s32_new()`.
      *
      * The `len` parameter specifies the number of samples in the time domain that
      * will be processed or generated. The number of samples in the frequency domain
-     * is `len/`2 + 1. To get n samples in the frequency domain use 2*n - 2 as `len`.
+     * is `len`/2 + 1. To get n samples in the frequency domain use 2*n - 2 as `len`.
      *
      * Before performing the FFT on time domain data it usually makes sense
-     * to apply a window function to it. For this gst_fft_s32_window() can comfortably
+     * to apply a window function to it. For this `gst_fft_s32_window()` can comfortably
      * be used.
      *
-     * Be aware, that you can't simply run gst_fft_s32_inverse_fft() on the
-     * resulting frequency data of gst_fft_s32_fft() to get the original data back.
+     * Be aware, that you can't simply run `gst_fft_s32_inverse_fft()` on the
+     * resulting frequency data of `gst_fft_s32_fft()` to get the original data back.
      * The relation between them is iFFT (FFT (x)) = x / nfft where nfft is the
      * length of the FFT. This also has to be taken into account when calculation
      * the magnitude of the frequency data.
+     * @gir-type Struct
      */
     abstract class FFTS32 {
         static $gtype: GObject.GType<FFTS32>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
@@ -383,9 +365,9 @@ export namespace GstFft {
          * This performs the FFT on `timedata` and puts the result in `freqdata`.
          *
          * `timedata` must have as many samples as specified with the `len` parameter while
-         * allocating the #GstFFTS32 instance with gst_fft_s32_new().
+         * allocating the {@link GstFft.FFTS32} instance with `gst_fft_s32_new()`.
          *
-         * `freqdata` must be large enough to hold `len/`2 + 1 #GstFFTS32Complex frequency
+         * `freqdata` must be large enough to hold `len`/2 + 1 {@link GstFft.FFTS32Complex} frequency
          * domain samples.
          * @param timedata Buffer of the samples in the time domain
          * @param freqdata Target buffer for the samples in the frequency domain
@@ -398,8 +380,8 @@ export namespace GstFft {
         /**
          * This performs the inverse FFT on `freqdata` and puts the result in `timedata`.
          *
-         * `freqdata` must have `len/`2 + 1 samples, where `len` is the parameter specified
-         * while allocating the #GstFFTS32 instance with gst_fft_s32_new().
+         * `freqdata` must have `len`/2 + 1 samples, where `len` is the parameter specified
+         * while allocating the {@link GstFft.FFTS32} instance with `gst_fft_s32_new()`.
          *
          * `timedata` must be large enough to hold `len` time domain samples.
          * @param freqdata Buffer of the samples in the frequency domain
@@ -411,12 +393,13 @@ export namespace GstFft {
          * @param timedata Time domain samples
          * @param window Window function to apply
          */
-        window(timedata: number, window: FFTWindow | null): void;
+        window(timedata: number, window: FFTWindow): void;
     }
 
     /**
      * Data type for complex numbers composed of
      * signed 32 bit integers.
+     * @gir-type Struct
      */
     class FFTS32Complex {
         static $gtype: GObject.GType<FFTS32Complex>;
@@ -434,7 +417,6 @@ export namespace GstFft {
                 i: number;
             }>,
         );
-        _init(...args: any[]): void;
     }
 
     /**

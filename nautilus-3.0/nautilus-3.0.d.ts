@@ -30,18 +30,17 @@ export namespace Nautilus {
      */
 
     /**
-     * Return values for asynchronous operations performed by the extension.
-     * See nautilus_info_provider_update_file_info().
-     */
-
-    /**
-     * Return values for asynchronous operations performed by the extension.
-     * See nautilus_info_provider_update_file_info().
+     * @gir-type Enum
      */
     export namespace OperationResult {
         export const $gtype: GObject.GType<OperationResult>;
     }
 
+    /**
+     * Return values for asynchronous operations performed by the extension.
+     * See `nautilus_info_provider_update_file_info()`.
+     * @gir-type Enum
+     */
     enum OperationResult {
         /**
          * the operation succeeded, and the extension
@@ -59,17 +58,47 @@ export namespace Nautilus {
          */
         IN_PROGRESS,
     }
+
+    /**
+     * @param location the location to create the file info for
+     * @returns a {@link Nautilus.FileInfo}
+     */
     function file_info_create(location: Gio.File): FileInfo;
+    /**
+     * @param uri the URI to lookup the file info for
+     * @returns a {@link Nautilus.FileInfo}
+     */
     function file_info_create_for_uri(uri: string): FileInfo;
+    /**
+     * @param files the files to copy
+     * @returns a copy of `files`.  Use `nautilus_file_info_list_free` to free the list and unref its contents.
+     */
     function file_info_list_copy(files: FileInfo[]): FileInfo[];
+    /**
+     * @param files a list created with `nautilus_file_info_list_copy`
+     */
     function file_info_list_free(files: FileInfo[]): void;
+    /**
+     * @param location the location for which to look up a corresponding {@link Nautilus.FileInfo} object
+     * @returns a {@link Nautilus.FileInfo}
+     */
     function file_info_lookup(location: Gio.File): FileInfo | null;
+    /**
+     * @param uri the URI to lookup the file info for
+     * @returns a {@link Nautilus.FileInfo}
+     */
     function file_info_lookup_for_uri(uri: string): FileInfo | null;
+    /**
+     * @param update_complete
+     * @param provider
+     * @param handle
+     * @param result
+     */
     function info_provider_update_complete_invoke(
         update_complete: GObject.Closure,
         provider: InfoProvider,
         handle: OperationHandle,
-        result: OperationResult | null,
+        result: OperationResult,
     ): void;
     namespace Column {
         // Signal signatures
@@ -98,6 +127,9 @@ export namespace Nautilus {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
 
@@ -105,7 +137,13 @@ export namespace Nautilus {
 
         get attribute(): string;
         set attribute(val: string);
+        /**
+         * @read-only
+         */
         get attribute_q(): number;
+        /**
+         * @read-only
+         */
         get attributeQ(): number;
         get default_sort_order(): Gtk.SortType;
         set default_sort_order(val: Gtk.SortType);
@@ -115,6 +153,9 @@ export namespace Nautilus {
         set description(val: string);
         get label(): string;
         set label(val: string);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get xalign(): number;
         set xalign(val: number);
@@ -138,16 +179,19 @@ export namespace Nautilus {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Column.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Column.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Column.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Column.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -164,6 +208,9 @@ export namespace Nautilus {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
 
@@ -186,16 +233,19 @@ export namespace Nautilus {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Menu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Menu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Menu.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -204,13 +254,24 @@ export namespace Nautilus {
 
         // Methods
 
+        /**
+         * @param item a {@link Nautilus.MenuItem} to append
+         */
         append_item(item: MenuItem): void;
+        /**
+         * @returns the provided {@link Nautilus.MenuItem} list
+         */
         get_items(): MenuItem[] | null;
     }
 
     namespace MenuItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Signals that the user has activated this menu item.
+             * @signal
+             * @run-last
+             */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
             'notify::label': (pspec: GObject.ParamSpec) => void;
@@ -234,6 +295,9 @@ export namespace Nautilus {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
@@ -245,6 +309,9 @@ export namespace Nautilus {
         set label(val: string);
         get menu(): Menu;
         set menu(val: Menu);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get priority(): boolean;
         set priority(val: boolean);
@@ -268,20 +335,23 @@ export namespace Nautilus {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, label: string, tip?: string | null, icon?: string | null): MenuItem;
+        static ['new'](name: string, label: string, tip: string | null, icon: string | null): MenuItem;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -290,24 +360,28 @@ export namespace Nautilus {
 
         // Static methods
 
+        /**
+         * @param item_list a list of {@link Nautilus.MenuItem}
+         */
         static list_free(item_list: MenuItem[]): void;
 
         // Virtual methods
 
         /**
-         * Emits #NautilusMenuItem::activate.
+         * Emits {@link Nautilus.MenuItem.SignalSignatures.activate | Nautilus.MenuItem::activate}.
+         * @virtual
          */
         vfunc_activate(): void;
 
         // Methods
 
         /**
-         * Emits #NautilusMenuItem::activate.
+         * Emits {@link Nautilus.MenuItem.SignalSignatures.activate | Nautilus.MenuItem::activate}.
          */
         activate(): void;
         /**
-         * Attaches a menu to the given #NautilusMenuItem.
-         * @param menu pointer to a #NautilusMenu to attach to the button
+         * Attaches a menu to the given {@link Nautilus.MenuItem}.
+         * @param menu pointer to a {@link Nautilus.Menu} to attach to the button
          */
         set_submenu(menu: Menu): void;
     }
@@ -329,6 +403,9 @@ export namespace Nautilus {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PropertyPage extends GObject.Object {
         static $gtype: GObject.GType<PropertyPage>;
 
@@ -336,6 +413,9 @@ export namespace Nautilus {
 
         get label(): Gtk.Widget;
         set label(val: Gtk.Widget);
+        /**
+         * @construct-only
+         */
         get name(): string;
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
@@ -359,16 +439,19 @@ export namespace Nautilus {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -376,77 +459,74 @@ export namespace Nautilus {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ColumnClass = typeof Column;
     /**
      * Interface for extensions to provide additional list view columns.
+     * @gir-type Struct
      */
     class ColumnProviderInterface {
         static $gtype: GObject.GType<ColumnProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FileInfoInterface = typeof FileInfo;
     /**
      * Interface for extensions to provide additional information about files.
+     * @gir-type Struct
      */
     class InfoProviderInterface {
         static $gtype: GObject.GType<InfoProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
      * Interface for extensions to provide additional location widgets.
+     * @gir-type Struct
      */
     class LocationWidgetProviderInterface {
         static $gtype: GObject.GType<LocationWidgetProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuClass = typeof Menu;
+    /**
+     * @gir-type Alias
+     */
     type MenuItemClass = typeof MenuItem;
     /**
      * Interface for extensions to provide additional menu items.
+     * @gir-type Struct
      */
     class MenuProviderInterface {
         static $gtype: GObject.GType<MenuProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
      * Handle for asynchronous interfaces. These are opaque handles that must
      * be unique within an extension object. These are returned by operations
      * that return #NAUTILUS_OPERATION_IN_PROGRESS.
+     * @gir-type Struct
      */
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PropertyPageClass = typeof PropertyPage;
     /**
      * Interface for extensions to provide additional property pages.
+     * @gir-type Struct
      */
     class PropertyPageProviderInterface {
         static $gtype: GObject.GType<PropertyPageProviderInterface>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     namespace ColumnProvider {
@@ -459,9 +539,15 @@ export namespace Nautilus {
         $gtype: GObject.GType<ColumnProvider>;
         prototype: ColumnProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ColumnProvider extends GObject.Object {
         // Methods
 
+        /**
+         * @returns the provided {@link Nautilus.Column} objects
+         */
         get_columns(): Column[] | null;
     }
 
@@ -477,28 +563,88 @@ export namespace Nautilus {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param emblem_name
+             * @virtual
+             */
             vfunc_add_emblem(emblem_name: string): void;
+            /**
+             * @param attribute_name
+             * @param value
+             * @virtual
+             */
             vfunc_add_string_attribute(attribute_name: string, value: string): void;
+            /**
+             * @virtual
+             */
             vfunc_can_write(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_activation_uri(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_file_type(): Gio.FileType;
+            /**
+             * @virtual
+             */
             vfunc_get_location(): Gio.File;
+            /**
+             * @virtual
+             */
             vfunc_get_mime_type(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_mount(): Gio.Mount | null;
+            /**
+             * @virtual
+             */
             vfunc_get_name(): string;
             /**
              * It's not safe to call this recursively multiple times, as it works
              * only for files already cached by Nautilus.
+             * @virtual
              */
             vfunc_get_parent_info(): FileInfo | null;
+            /**
+             * @virtual
+             */
             vfunc_get_parent_location(): Gio.File | null;
+            /**
+             * @virtual
+             */
             vfunc_get_parent_uri(): string;
+            /**
+             * @param attribute_name
+             * @virtual
+             */
             vfunc_get_string_attribute(attribute_name: string): string;
+            /**
+             * @virtual
+             */
             vfunc_get_uri(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_uri_scheme(): string;
+            /**
+             * @virtual
+             */
             vfunc_invalidate_extension_info(): void;
+            /**
+             * @virtual
+             */
             vfunc_is_directory(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_is_gone(): boolean;
+            /**
+             * @param mime_type
+             * @virtual
+             */
             vfunc_is_mime_type(mime_type: string): boolean;
         }
 
@@ -511,39 +657,88 @@ export namespace Nautilus {
         $gtype: GObject.GType<FileInfo>;
         prototype: FileInfo;
 
+        /**
+         * @param location the location to create the file info for
+         */
         create(location: Gio.File): FileInfo;
+        /**
+         * @param uri the URI to lookup the file info for
+         */
         create_for_uri(uri: string): FileInfo;
+        /**
+         * @param files the files to copy
+         */
         list_copy(files: FileInfo[]): FileInfo[];
+        /**
+         * @param files a list created with `nautilus_file_info_list_copy`
+         */
         list_free(files: FileInfo[]): void;
+        /**
+         * @param location the location for which to look up a corresponding {@link Nautilus.FileInfo} object
+         */
         lookup(location: Gio.File): FileInfo | null;
+        /**
+         * @param uri the URI to lookup the file info for
+         */
         lookup_for_uri(uri: string): FileInfo | null;
     }
+    /**
+     * @gir-type Interface
+     */
     interface FileInfo extends GObject.Object, FileInfo.Interface {
         // Methods
 
+        /**
+         * @param emblem_name
+         */
         add_emblem(emblem_name: string): void;
+        /**
+         * @param attribute_name
+         * @param value
+         */
         add_string_attribute(attribute_name: string, value: string): void;
         can_write(): boolean;
         get_activation_uri(): string;
         get_file_type(): Gio.FileType;
+        /**
+         * @returns a {@link Gio.File} for the location of `file_info`
+         */
         get_location(): Gio.File;
+        /**
+         * @returns the MIME type of `file_info`
+         */
         get_mime_type(): string;
+        /**
+         * @returns a {@link Gio.Mount} for the mount of `file_info`,                                      or `null` if `file_info` has no mount
+         */
         get_mount(): Gio.Mount | null;
         get_name(): string;
         /**
          * It's not safe to call this recursively multiple times, as it works
          * only for files already cached by Nautilus.
-         * @returns a #NautilusFileInfo for the parent of @file_info,                                      or %NULL if @file_info has no parent.
+         * @returns a {@link Nautilus.FileInfo} for the parent of `file_info`,                                      or `null` if `file_info` has no parent.
          */
         get_parent_info(): FileInfo | null;
+        /**
+         * @returns a {@link Gio.File} for the parent location of `file_info`,   or `null` if `file_info` has no parent
+         */
         get_parent_location(): Gio.File | null;
         get_parent_uri(): string;
+        /**
+         * @param attribute_name
+         */
         get_string_attribute(attribute_name: string): string;
         get_uri(): string;
         get_uri_scheme(): string;
         invalidate_extension_info(): void;
         is_directory(): boolean;
+        /**
+         * @returns whether the file has been deleted
+         */
         is_gone(): boolean;
+        /**
+         * @param mime_type
+         */
         is_mime_type(mime_type: string): boolean;
     }
 
@@ -561,6 +756,12 @@ export namespace Nautilus {
         $gtype: GObject.GType<InfoProvider>;
         prototype: InfoProvider;
 
+        /**
+         * @param update_complete
+         * @param provider
+         * @param handle
+         * @param result
+         */
         update_complete_invoke(
             update_complete: GObject.Closure,
             provider: InfoProvider,
@@ -568,10 +769,21 @@ export namespace Nautilus {
             result: OperationResult,
         ): void;
     }
+    /**
+     * @gir-type Interface
+     */
     interface InfoProvider extends GObject.Object {
         // Methods
 
+        /**
+         * @param handle
+         */
         cancel_update(handle: OperationHandle): void;
+        /**
+         * @param file
+         * @param update_complete
+         * @param handle
+         */
         update_file_info(file: FileInfo, update_complete: GObject.Closure, handle: OperationHandle): OperationResult;
     }
 
@@ -589,9 +801,17 @@ export namespace Nautilus {
         $gtype: GObject.GType<LocationWidgetProvider>;
         prototype: LocationWidgetProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface LocationWidgetProvider extends GObject.Object {
         // Methods
 
+        /**
+         * @param uri the URI of the location
+         * @param window parent {@link Gtk.Window}
+         * @returns the location widget for `provider` at `uri`
+         */
         get_widget(uri: string, window: Gtk.Widget): Gtk.Widget | null;
     }
 
@@ -609,14 +829,27 @@ export namespace Nautilus {
         $gtype: GObject.GType<MenuProvider>;
         prototype: MenuProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MenuProvider extends GObject.Object {
         // Methods
 
         /**
-         * Emits #NautilusMenuProvider::items-updated.
+         * Emits {@link Nautilus.MenuProvider.SignalSignatures.items_updated | Nautilus.MenuProvider::items-updated}.
          */
         emit_items_updated_signal(): void;
+        /**
+         * @param window the parent {@link Gtk.Widget} window
+         * @param current_folder the folder for which background items are requested
+         * @returns the provided list of {@link Nautilus.MenuItem}.
+         */
         get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[] | null;
+        /**
+         * @param window the parent {@link Gtk.Widget} window
+         * @param files a list of {@link Nautilus.FileInfo}
+         * @returns the provided list of {@link Nautilus.MenuItem}.
+         */
         get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[] | null;
     }
 
@@ -634,6 +867,9 @@ export namespace Nautilus {
         $gtype: GObject.GType<PropertyPageProvider>;
         prototype: PropertyPageProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface PropertyPageProvider extends GObject.Object {
         // Methods
 
@@ -643,8 +879,8 @@ export namespace Nautilus {
          *
          * This function is called in the main thread before a property page
          * is shown, so it should return quickly.
-         * @param files a #GList of #NautilusFileInfo
-         * @returns A #GList of allocated #NautilusPropertyPage items.
+         * @param files a {@link GLib.List} of {@link Nautilus.FileInfo}
+         * @returns A {@link GLib.List} of allocated {@link Nautilus.PropertyPage} items.
          */
         get_pages(files: FileInfo[]): PropertyPage[] | null;
     }

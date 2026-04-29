@@ -9,7 +9,5 @@
 
 import './lasem-0.4-ambient.d.ts';
 
-import './lasem-0.4-import.d.ts';
-
 import Lasem from './lasem-0.4.js';
 export default Lasem;

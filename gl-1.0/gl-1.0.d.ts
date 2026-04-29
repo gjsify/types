@@ -18,108 +18,95 @@ export namespace GL {
      */
 
     function InitNames(): void;
+    /**
+     * @gir-type Struct
+     */
     class bitfield {
         static $gtype: GObject.GType<bitfield>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class charARB {
         static $gtype: GObject.GType<charARB>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class clampf {
         static $gtype: GObject.GType<clampf>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class __boolean {
         static $gtype: GObject.GType<__boolean>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class __enum {
         static $gtype: GObject.GType<__enum>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class float {
         static $gtype: GObject.GType<float>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class handleARB {
         static $gtype: GObject.GType<handleARB>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class int {
         static $gtype: GObject.GType<int>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class intptr {
         static $gtype: GObject.GType<intptr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class sizei {
         static $gtype: GObject.GType<sizei>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class sizeiptr {
         static $gtype: GObject.GType<sizeiptr>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class uint {
         static $gtype: GObject.GType<uint>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class __void {
         static $gtype: GObject.GType<__void>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

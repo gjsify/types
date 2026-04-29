@@ -31,47 +31,33 @@ export namespace Libxfce4ui {
      */
 
     /**
-     * List of item types which are supported by the #XfceGtkActionEntry.
+     * List of item types which are supported by the {@link Libxfce4ui.GtkActionEntry}.
      * To be extended if required.
+     * @gir-type Enum
      */
-
-    /**
-     * List of item types which are supported by the #XfceGtkActionEntry.
-     * To be extended if required.
-     */
-    export namespace GtkMenuItem {
-        export const $gtype: GObject.GType<GtkMenuItem>;
-    }
-
     enum GtkMenuItem {
         /**
-         * see #GtkMenuItem
+         * see {@link Libxfce4ui.GtkMenuItem}
          */
         MENU_ITEM,
         /**
-         * see #GtkImageMenuItem
+         * see {@link Gtk.ImageMenuItem}
          */
         IMAGE_MENU_ITEM,
         /**
-         * see #GtkCheckMenuItem
+         * see {@link Gtk.CheckMenuItem}
          */
         CHECK_MENU_ITEM,
         /**
-         * see #GtkRadioMenuItem
+         * see {@link Gtk.RadioMenuItem}
          */
         RADIO_MENU_ITEM,
     }
-    /**
-     * Some sample priority values for use with xfce_sm_client_set_priority().
-     */
 
     /**
-     * Some sample priority values for use with xfce_sm_client_set_priority().
+     * Some sample priority values for use with `xfce_sm_client_set_priority()`.
+     * @gir-type Enum
      */
-    export namespace SMClientPriority {
-        export const $gtype: GObject.GType<SMClientPriority>;
-    }
-
     enum SMClientPriority {
         /**
          * A high priority value.  You probably
@@ -102,19 +88,12 @@ export namespace Libxfce4ui {
          */
         LOWEST,
     }
-    /**
-     * An enumeration describing how the session manager should restart
-     * the application.
-     */
 
     /**
      * An enumeration describing how the session manager should restart
      * the application.
+     * @gir-type Enum
      */
-    export namespace SMClientRestartStyle {
-        export const $gtype: GObject.GType<SMClientRestartStyle>;
-    }
-
     enum SMClientRestartStyle {
         /**
          * Only restart the application if it is
@@ -128,19 +107,12 @@ export namespace Libxfce4ui {
          */
         IMMEDIATELY,
     }
-    /**
-     * Hints to the session manager what kind of shutdown the session manager
-     * should perform.
-     */
 
     /**
      * Hints to the session manager what kind of shutdown the session manager
      * should perform.
+     * @gir-type Enum
      */
-    export namespace SMClientShutdownHint {
-        export const $gtype: GObject.GType<SMClientShutdownHint>;
-    }
-
     enum SMClientShutdownHint {
         /**
          * Prompt the user for a choice,
@@ -159,17 +131,11 @@ export namespace Libxfce4ui {
          */
         REBOOT,
     }
-    /**
-     * Error codes returned by XfceSmCLient functions.
-     */
 
     /**
      * Error codes returned by XfceSmCLient functions.
+     * @gir-type Enum
      */
-    export namespace SmCLientErrorEnum {
-        export const $gtype: GObject.GType<SmCLientErrorEnum>;
-    }
-
     enum SmCLientErrorEnum {
         /**
          * Failed to connect to the session manager.
@@ -180,15 +146,16 @@ export namespace Libxfce4ui {
          */
         INVALID_CLIENT,
     }
+
     /**
      * This allows you to easily create mixed buttons in a dialog.
      * param1 is used for the stock_id, param2 for the label and
-     * param3 for the response_id. See also xfce_gtk_button_new_mixed().
+     * param3 for the response_id. See also `xfce_gtk_button_new_mixed()`.
      */
     const BUTTON_TYPE_MIXED: string;
     /**
-     * Creates a button with the #GdkPixbuf as button icon.
-     * param1 is the #GdkPixbuf, param2 for the label and
+     * Creates a button with the {@link GdkPixbuf.Pixbuf} as button icon.
+     * param1 is the {@link GdkPixbuf.Pixbuf}, param2 for the label and
      * param3 for the response_id.
      */
     const BUTTON_TYPE_PIXBUF: string;
@@ -200,122 +167,130 @@ export namespace Libxfce4ui {
      * are `num_tabs` open tabs. If `num_tabs` is negative, then the message to the
      * user will state simply that there are "multiple open tabs".
      *
-     * If `show_confirm_box` is %TRUE a checkbox is added to the dialog to allow
+     * If `show_confirm_box` is `true` a checkbox is added to the dialog to allow
      * the user to set whether they wish to see this dialog in future. The initial
      * state of the checkbox is determined by the value stored at `confirm_box_checked`
      * and the value at `confirm_box_checked` after returning records the state of the
-     * checkbox. If `show_confirm_box` is %FALSE, `confirm_box_checked` is ignored and
-     * may be %NULL.
-     * @param parent transient parent of the dialog, or %NULL.
+     * checkbox. If `show_confirm_box` is `false`, `confirm_box_checked` is ignored and
+     * may be `null`.
+     * @param parent transient parent of the dialog, or `null`.
      * @param num_tabs the number of open tabs for display to user
      * @param show_confirm_box whether to ask the user if this confirmation shall be shown in the future
      * @param confirm_box_checked state of confirmation checkbox
      * @returns #GTK_RESPONSE_CANCEL if cancelled, #GTK_RESPONSE_YES if the user wants to close the window, #GTK_RESPONSE_CLOSE if the user wants to close the tab, and #GTK_RESPONSE_NONE for an error.
+     * @since 4.16
      */
     function dialog_confirm_close_tabs(
         parent: Gtk.Window | null,
         num_tabs: number,
         show_confirm_box: boolean,
-        confirm_box_checked?: boolean | null,
+        confirm_box_checked: boolean | null,
     ): number;
     /**
      * Asks the user to visit the online documentation. If confirmed, it will open
      * the webbrowser and redirect the user to the correct location.
      *
-     * Appart from the `component,` `page` and `offset` the following information
-     * is also send to the server: user language and the xfce_version_string().
+     * Appart from the `component`, `page` and `offset` the following information
+     * is also send to the server: user language and the `xfce_version_string()`.
      *
-     * See also: xfce_dialog_show_help_with_version().
-     * @param parent transient parent of the dialog, or %NULL.
-     * @param component name of the component opening the help page or %NULL. If the              value is %NULL the target will be the main page of the              documentation website.
-     * @param page subpage of the @component on the website or %NULL.
-     * @param offset anchor offset in @page or %NULL.
+     * See also: `xfce_dialog_show_help_with_version()`.
+     * @param parent transient parent of the dialog, or `null`.
+     * @param component name of the component opening the help page or `null`. If the              value is `null` the target will be the main page of the              documentation website.
+     * @param page subpage of the `component` on the website or `null`.
+     * @param offset anchor offset in `page` or `null`.
+     * @since 4.10
      */
     function dialog_show_help(
-        parent?: Gtk.Window | null,
-        component?: string | null,
-        page?: string | null,
-        offset?: string | null,
+        parent: Gtk.Window | null,
+        component: string | null,
+        page: string | null,
+        offset: string | null,
     ): void;
     /**
      * Asks the user to visit the online documentation. If confirmed, it will open
      * the webbrowser and redirect the user to the correct location.
      *
-     * Apart from the `component,` `page` and `offset` the following information
-     * is also sent to the server: user language and the xfce_version_string()
+     * Apart from the `component`, `page` and `offset` the following information
+     * is also sent to the server: user language and the `xfce_version_string()`
      * or `version` if set.
      *
-     * See also: xfce_dialog_show_help().
-     * @param parent transient parent of the dialog, or %NULL.
-     * @param component name of the component opening the help page or %NULL. If the              value is %NULL the target will be the main page of the              documentation website.
-     * @param page subpage of the @component on the website or %NULL.
-     * @param offset anchor offset in @page or %NULL.
-     * @param version alternative version, or %NULL to use xfce_version_string().
+     * See also: `xfce_dialog_show_help()`.
+     * @param parent transient parent of the dialog, or `null`.
+     * @param component name of the component opening the help page or `null`. If the              value is `null` the target will be the main page of the              documentation website.
+     * @param page subpage of the `component` on the website or `null`.
+     * @param offset anchor offset in `page` or `null`.
+     * @param version alternative version, or `null` to use `xfce_version_string()`.
+     * @since 4.12
      */
     function dialog_show_help_with_version(
-        parent?: Gtk.Window | null,
-        component?: string | null,
-        page?: string | null,
-        offset?: string | null,
-        version?: string | null,
+        parent: Gtk.Window | null,
+        component: string | null,
+        page: string | null,
+        offset: string | null,
+        version: string | null,
     ): void;
     /**
      * Similar to gdk_seat_grab but tries to grab the seat five times with 100ms
      * between each attempt.
-     * @param seat A #GdkSeat.
-     * @param window The #GdkWindow which will own the grab.
+     * @param seat A {@link Gdk.Seat}.
+     * @param window The {@link Gdk.Window} which will own the grab.
      * @param capabilities Capabilities that will be grabbed.
-     * @param cursor The cursor to display while the grab is active. If this                      is %NULL then the normal cursors are used for window and                      its descendants, and the cursor for window is used                      elsewhere.
-     * @returns %TRUE on success, %FALSE otherwise.
+     * @param cursor The cursor to display while the grab is active. If this                      is `null` then the normal cursors are used for window and                      its descendants, and the cursor for window is used                      elsewhere.
+     * @returns `true` on success, `false` otherwise.
+     * @since 4.18
      */
     function gdk_device_grab(
         seat: Gdk.Seat,
         window: Gdk.Window,
-        capabilities: Gdk.SeatCapabilities | null,
-        cursor?: Gdk.Cursor | null,
+        capabilities: Gdk.SeatCapabilities,
+        cursor: Gdk.Cursor | null,
     ): boolean;
     /**
-     * Returns the currently active #GdkScreen, that is, the screen which
+     * Returns the currently active {@link Gdk.Screen}, that is, the screen which
      * currently contains the pointer. If no active screen was found, the
-     * default #GdkScreen is returned.
-     * @returns the currently active #GdkScreen.
+     * default {@link Gdk.Screen} is returned.
+     * @returns the currently active {@link Gdk.Screen}.
      */
     function gdk_screen_get_active(): [Gdk.Screen, number];
     /**
-     * Returns the width and height of the default #GdkScreen.
+     * Returns the width and height of the default {@link Gdk.Screen}.
      * This is a replacement for gdk_screen_width/gdk_screen_height.
-     * @returns a newly created #GdkRectangle containing the width and height of the screen.
+     * @returns a newly created {@link Gdk.Rectangle} containing the width and height of the screen.
+     * @since 4.14
      */
     function gdk_screen_get_geometry(): Gdk.Rectangle;
     /**
      * This function will first look for a desktop file of `name` and if successful
-     * use the value of the "Icon" property to return a #GIcon.
-     * If no desktop file of `name` is found it will fallback to returning a #GIcon
-     * based on #g_themed_icon_new_with_default_fallbacks and
-     * #gtk_icon_theme_lookup_by_gicon.
+     * use the value of the "Icon" property to return a {@link Gio.Icon}.
+     * If no desktop file of `name` is found it will fallback to returning a {@link Gio.Icon}
+     * based on `g_themed_icon_new_with_default_fallbacks` and
+     * `gtk_icon_theme_lookup_by_gicon`.
      * @param name Name of the application.
-     * @returns a new #GThemedIcon.
+     * @returns a new {@link Gio.ThemedIcon}.
+     * @since 4.16
      */
     function gicon_from_name(name: string): Gio.Icon;
     /**
-     * This method will connect each accel_path from the #XfceGtkActionEntry in action_entries
+     * This method will connect each accel_path from the {@link Libxfce4ui.GtkActionEntry} in action_entries
      * to its related callback. If the accelerator is pressed, the related callback will be called.
-     * @param accel_group the #GtkAccelGroup to connect to
+     * @param accel_group the {@link Gtk.AccelGroup} to connect to
      * @param action_entries array of action_entries to be added
      * @param n_action_entries size of the action_entries array
-     * @param callback_data data which should be passed to the callback of each #XfceGtkActionEntry
+     * @param callback_data data which should be passed to the callback of each {@link Libxfce4ui.GtkActionEntry}
+     * @since 4.16
      */
     function gtk_accel_group_connect_action_entries(
         accel_group: Gtk.AccelGroup,
         action_entries: GtkActionEntry,
         n_action_entries: number,
-        callback_data?: any | null,
+        callback_data: any | null,
     ): void;
     /**
-     * This method will disconnect each accel_path from the #XfceGtkActionEntry in action_entries.
-     * @param accel_group the #GtkAccelGroup to connect to
+     * This method will disconnect each accel_path from the {@link Libxfce4ui.GtkActionEntry} in action_entries.
+     * @param accel_group the {@link Gtk.AccelGroup} to connect to
      * @param action_entries array of action_entries to be added
      * @param n_action_entries size of the action_entries array
+     * @since 4.16
      */
     function gtk_accel_group_disconnect_action_entries(
         accel_group: Gtk.AccelGroup,
@@ -326,30 +301,32 @@ export namespace Libxfce4ui {
      * Adds the default key of each ActionEntry to the accel_map, if no key was defined for the related accel_path so far.
      * @param action_entries array of action_entries to be added
      * @param n_action_entries size of the action_entries array
+     * @since 4.16
      */
     function gtk_accel_map_add_entries(action_entries: GtkActionEntry, n_action_entries: number): void;
     /**
-     * Creates a new #GtkButton containing a mnemonic label and a stock icon.
+     * Creates a new {@link Gtk.Button} containing a mnemonic label and a stock icon.
      * The `stock_id` could be something like #GTK_STOCK_OK or #GTK_STOCK_APPLY.
      *
-     * When the `stock_id` is %NULL a normal mnemonic button will be created,
-     * when `label` is %NULL a stock button will be created. This behaviour
-     * is added for xfce_message_dialog_new().
+     * When the `stock_id` is `null` a normal mnemonic button will be created,
+     * when `label` is `null` a stock button will be created. This behaviour
+     * is added for `xfce_message_dialog_new()`.
      * @param stock_id the name of the stock item.
      * @param label the text of the button, with an underscore                        in front of the mnemonic character.
-     * @returns the newly created #GtkButton widget.
+     * @returns the newly created {@link Gtk.Button} widget.
      */
-    function gtk_button_new_mixed(stock_id?: string | null, label?: string | null): Gtk.Widget;
+    function gtk_button_new_mixed(stock_id: string | null, label: string | null): Gtk.Widget;
     /**
-     * Convenience method to create a #GtkCheckMenuItem and preconfigure it with the passed parameters.
-     * @param label_text Label to use for the #GtkCheckMenuItem
+     * Convenience method to create a {@link Gtk.CheckMenuItem} and preconfigure it with the passed parameters.
+     * @param label_text Label to use for the {@link Gtk.CheckMenuItem}
      * @param tooltip_text Tooltip to add on the passed item, or NULL
      * @param accel_path Unique path, used to identify the accelerator, or NULL
-     * @param callback #GCallback which will be triggered on activation, or NULL
+     * @param callback {@link GObject.Callback} which will be triggered on activation, or NULL
      * @param callback_param optional callback parameter, or NULL.
      * @param active boolean value indicating whether the check box is active.
-     * @param menu_to_append_item #GtkMenuShell on which the item should be appended, or NULL
-     * @returns A new #GtkCheckMenuItem.
+     * @param menu_to_append_item {@link Gtk.MenuShell} on which the item should be appended, or NULL
+     * @returns A new {@link Gtk.CheckMenuItem}.
+     * @since 4.16
      */
     function gtk_check_menu_item_new(
         label_text: string,
@@ -358,41 +335,41 @@ export namespace Libxfce4ui {
         callback: GObject.Callback | null,
         callback_param: GObject.Object | null,
         active: boolean,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
-     * Activates the callback function of the #XfceGtkActionEntry that corresponds to `accel_path`. If no such action
-     * exists in `entries,` then nothing happens.
+     * Activates the callback function of the {@link Libxfce4ui.GtkActionEntry} that corresponds to `accel_path`. If no such action
+     * exists in `entries`, then nothing happens.
      * @param accel_path the accelerator path of the action that we want to activate
      * @param data a pointer of data that will be passed to the callback if a tab-shortcut is found
-     * @param entries a #XfceGtkActionEntry[]
-     * @param entry_count the number of entries in @entries
+     * @param entries a {@link Libxfce4ui.GtkActionEntry}[]
+     * @param entry_count the number of entries in `entries`
      * @returns a boolean that is TRUE if the action was found, otherwise it is FALSE
      */
     function gtk_execute_tab_accel(
         accel_path: string,
         data: any | null,
         entries: GtkActionEntry,
-        entry_count: number,
+        entry_count: bigint | number,
     ): boolean;
     /**
-     * Creates an Xfce-styled frame. The frame is a #GtkFrame, without
+     * Creates an Xfce-styled frame. The frame is a {@link Gtk.Frame}, without
      * outline and an optional bolded text label.  The contents of the
      * frame are indented on the left.
-     * The return value is the #GtkFrame itself.  The `container_return` is
-     * a #GtkAlignment widget to which children of the frame should be added.
+     * The return value is the {@link Gtk.Frame} itself.  The `container_return` is
+     * a {@link Gtk.Alignment} widget to which children of the frame should be added.
      *
-     * See also: xfce_gtk_frame_box_new_with_content().
+     * See also: `xfce_gtk_frame_box_new_with_content()`.
      * @param label the text to use as the label of the frame.
-     * @returns the newly created #GtkFrame widget.
+     * @returns the newly created {@link Gtk.Frame} widget.
      */
     function gtk_frame_box_new(label: string): [Gtk.Widget, Gtk.Widget | null];
     /**
-     * Creates a widget with xfce_gtk_frame_box_new() and adds the
-     * `content` #GtkWidget to the frame.
+     * Creates a widget with `xfce_gtk_frame_box_new()` and adds the
+     * `content` {@link Gtk.Widget} to the frame.
      * @param label the text to use as the label of the frame.
-     * @param content the #GtkWidget to put inside the frame.
-     * @returns the newly created #GtkFrame widget.
+     * @param content the {@link Gtk.Widget} to put inside the frame.
+     * @returns the newly created {@link Gtk.Frame} widget.
      */
     function gtk_frame_box_new_with_content(label: string, content: Gtk.Widget): Gtk.Widget;
     /**
@@ -400,7 +377,8 @@ export namespace Libxfce4ui {
      * @param action_entries array of action_entries to be searched
      * @param n_action_entries size of the action_entries array
      * @param id id of the action entry (usually enum values are used)
-     * @returns The matching #XfceGtkActionEntry or NULL if not found
+     * @returns The matching {@link Libxfce4ui.GtkActionEntry} or NULL if not found
+     * @since 4.16
      */
     function gtk_get_action_entry_by_id(
         action_entries: GtkActionEntry,
@@ -410,11 +388,11 @@ export namespace Libxfce4ui {
     /**
      * The Tab key is used to navigate the interface by GTK+ so we need to handle shortcuts with the Tab accelerator manually.
      * Tab sometimes becomes ISO_Left_Tab (e.g. in Ctrl+Shift+Tab) so check both here.
-     * @param key_event the #GdkEventKey that might trigger a shortcut
-     * @param accel_group the #GtkAccelGroup that will be get queried
+     * @param key_event the {@link Gdk.EventKey} that might trigger a shortcut
+     * @param accel_group the {@link Gtk.AccelGroup} that will be get queried
      * @param data a pointer of data that will be passed to the callback if a tab-shortcut is found
-     * @param entries a #XfceGtkActionEntry[]
-     * @param entry_count the number of entries in @entries
+     * @param entries a {@link Libxfce4ui.GtkActionEntry}[]
+     * @param entry_count the number of entries in `entries`
      * @returns a boolean that is GDK_EVENT_STOP (TRUE) if the event was handled, otherwise it is GDK_EVENT_PROPAGATE (FALSE)
      */
     function gtk_handle_tab_accels(
@@ -422,114 +400,122 @@ export namespace Libxfce4ui {
         accel_group: Gtk.AccelGroup,
         data: any | null,
         entries: GtkActionEntry,
-        entry_count: number,
+        entry_count: bigint | number,
     ): boolean;
     /**
-     * Convenience method to create a deprecated #GtkImageMenuItem and preconfigure it with the passed parameters.
+     * Convenience method to create a deprecated {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.
      * In order to prevent G_GNUC_BEGIN_IGNORE_DEPRECATIONS in all xfce projects, this method can be used
-     * @param label_text Label to use for the #GtkImageMenuItem
+     * @param label_text Label to use for the {@link Gtk.ImageMenuItem}
      * @param tooltip_text Tooltip to add on the passed item, or NULL
      * @param accel_path Unique path, used to identify the accelerator, or NULL
-     * @param callback #GCallback which will be triggered on activation, or NULL
+     * @param callback {@link GObject.Callback} which will be triggered on activation, or NULL
      * @param callback_param optional callback parameter, or NULL.
      * @param image a widget to set as the image for the menu item, or NULL
-     * @param menu_to_append_item #GtkMenuShell on which the item should be appended, or NULL
-     * @returns A new #GtkImageMenuItem.
+     * @param menu_to_append_item {@link Gtk.MenuShell} on which the item should be appended, or NULL
+     * @returns A new {@link Gtk.ImageMenuItem}.
+     * @since 4.16
      */
     function gtk_image_menu_item_new(
         label_text: string,
-        tooltip_text?: string | null,
-        accel_path?: string | null,
-        callback?: GObject.Callback | null,
-        callback_param?: GObject.Object | null,
-        image?: Gtk.Widget | null,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        tooltip_text: string | null,
+        accel_path: string | null,
+        callback: GObject.Callback | null,
+        callback_param: GObject.Object | null,
+        image: Gtk.Widget | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
-     * Convenience method to create a #GtkImageMenuItem and preconfigure it with the passed parameters.
-     * @param label_text Label to use for the #GtkImageMenuItem
+     * Convenience method to create a {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.
+     * @param label_text Label to use for the {@link Gtk.ImageMenuItem}
      * @param tooltip_text Tooltip to add on the passed item, or NULL
      * @param accel_path Unique path, used to identify the accelerator, or NULL
-     * @param callback #GCallback which will be triggered on activation, or NULL
+     * @param callback {@link GObject.Callback} which will be triggered on activation, or NULL
      * @param callback_param optional callback parameter, or NULL.
-     * @param icon_name name of the icon to use for the #GtkImageMenuItem, or NULL
-     * @param menu_to_append_item #GtkMenuShell on which the item should be appended, or NULL
-     * @returns A new #GtkImageMenuItem.
+     * @param icon_name name of the icon to use for the {@link Gtk.ImageMenuItem}, or NULL
+     * @param menu_to_append_item {@link Gtk.MenuShell} on which the item should be appended, or NULL
+     * @returns A new {@link Gtk.ImageMenuItem}.
+     * @since 4.16
      */
     function gtk_image_menu_item_new_from_icon_name(
         label_text: string,
-        tooltip_text?: string | null,
-        accel_path?: string | null,
-        callback?: GObject.Callback | null,
-        callback_param?: GObject.Object | null,
-        icon_name?: string | null,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        tooltip_text: string | null,
+        accel_path: string | null,
+        callback: GObject.Callback | null,
+        callback_param: GObject.Object | null,
+        icon_name: string | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
-     * Sets the `ATK_RELATION_LABEL_FOR` relation on `label` for `widget,` which means
+     * Sets the `ATK_RELATION_LABEL_FOR` relation on `label` for `widget`, which means
      * accessiblity tools will identify `label` as descriptive item for the specified
      * `widget`.
-     * @param label a #GtkLabel.
-     * @param widget a #GtkWidget.
+     * @param label a {@link Gtk.Label}.
+     * @param widget a {@link Gtk.Widget}.
      */
     function gtk_label_set_a11y_relation(label: Gtk.Label, widget: Gtk.Widget): void;
     /**
      * Convenience method do add separators, used to prevent code duplication
-     * @param menu #GtkMenuShell on which the separator should be appended
+     * @param menu {@link Gtk.MenuShell} on which the separator should be appended
+     * @since 4.16
      */
     function gtk_menu_append_separator(menu: Gtk.MenuShell): void;
     /**
      * Convenience method do add separators, used to prevent code duplication
-     * @param menu #GtkMenuShell on which the separator should be appended
+     * @param menu {@link Gtk.MenuShell} on which the separator should be appended
+     * @since 4.16
+     * @deprecated since 4.19.1: Use `xfce_gtk_menu_append_separator()` instead.
      */
     function gtk_menu_append_seperator(menu: Gtk.MenuShell): void;
     /**
-     * Convenience method to create a #GtkMenuItem and preconfigure it with the passed parameters.
-     * @param label_text Label to use for the #GtkMenuItem
+     * Convenience method to create a {@link Libxfce4ui.GtkMenuItem} and preconfigure it with the passed parameters.
+     * @param label_text Label to use for the {@link Libxfce4ui.GtkMenuItem}
      * @param tooltip_text Tooltip to add on the passed item, or NULL
      * @param accel_path Unique path, used to identify the accelerator, or NULL
-     * @param callback #GCallback which will be triggered on activation, or NULL
+     * @param callback {@link GObject.Callback} which will be triggered on activation, or NULL
      * @param callback_param optional callback parameter, or NULL.
-     * @param menu_to_append_item #GtkMenuShell on which the item should be appended, or NULL
-     * @returns A new #GtkMenuItem.
+     * @param menu_to_append_item {@link Gtk.MenuShell} on which the item should be appended, or NULL
+     * @returns A new {@link Libxfce4ui.GtkMenuItem}.
+     * @since 4.16
      */
     function gtk_menu_item_new(
         label_text: string,
-        tooltip_text?: string | null,
-        accel_path?: string | null,
-        callback?: GObject.Callback | null,
-        callback_param?: GObject.Object | null,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        tooltip_text: string | null,
+        accel_path: string | null,
+        callback: GObject.Callback | null,
+        callback_param: GObject.Object | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
      * Method to create a menu item from the passed action entry
-     * @param action_entry Label to use for the #GtkCheckMenuItem
+     * @param action_entry Label to use for the {@link Gtk.CheckMenuItem}
      * @param callback_param optional callback parameter, or NULL.
-     * @param menu_to_append_item #GtkMenuShell on which the item should be appended, or NULL
-     * @returns A new #GtkMenuItem or NULL
+     * @param menu_to_append_item {@link Gtk.MenuShell} on which the item should be appended, or NULL
+     * @returns A new {@link Libxfce4ui.GtkMenuItem} or NULL
+     * @since 4.16
      */
     function gtk_menu_item_new_from_action_entry(
         action_entry: GtkActionEntry,
-        callback_param?: GObject.Object | null,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        callback_param: GObject.Object | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget | null;
     /**
-     * Use the passed accel_path show the related #GtkAccelLabel with the correct accelerator on the item.
-     * @param menu_item #GtkMenuItem on which the accel label is to set
+     * Use the passed accel_path show the related {@link Gtk.AccelLabel} with the correct accelerator on the item.
+     * @param menu_item {@link Libxfce4ui.GtkMenuItem} on which the accel label is to set
      * @param accel_path Unique path, used to identify the accelerator, or NULL to show no accelerator
+     * @since 4.16
      */
-    function gtk_menu_item_set_accel_label(menu_item: Gtk.MenuItem, accel_path?: string | null): void;
+    function gtk_menu_item_set_accel_label(menu_item: Gtk.MenuItem, accel_path: string | null): void;
     /**
-     * Attempts to pop up a #GtkMenu for a short duration. Unlike the original
-     * gtk_menu_popup(), this function will verify that the menu has been mapped
+     * Attempts to pop up a {@link Gtk.Menu} for a short duration. Unlike the original
+     * `gtk_menu_popup()`, this function will verify that the menu has been mapped
      * or will keep trying for up to 250ms. It will also return a value indicating
      * whether the menu was eventually mapped or not. Following is an excerpt from
-     * the GTK+ Documentation on #GtkMenu.
+     * the GTK+ Documentation on {@link Gtk.Menu}.
      *
      * Displays a menu and makes it available for selection.
      *
      * Applications can use this function to display context-sensitive menus, and will
-     * typically supply %NULL for the `parent_menu_shell,` `parent_menu_item,` `func` and
+     * typically supply `null` for the `parent_menu_shell`, `parent_menu_item`, `func` and
      * `data` parameters. The default menu positioning function will position the menu
      * at the current mouse cursor position.
      *
@@ -541,14 +527,15 @@ export namespace Libxfce4ui {
      * requests for mouse/keyboard grab requests. To function properly, this needs to
      * be the timestamp of the user event (such as a mouse click or key press) that
      * caused the initiation of the popup. Only if no such event is available,
-     * gtk_get_current_event_time() can be used instead.
-     * @param menu a #GtkMenu.
-     * @param parent_menu_shell the menu shell containing the triggering menu item, or %NULL.
-     * @param parent_menu_item the menu item whose activation triggered the popup, or %NULL.
-     * @param func a user supplied function used to position the menu, or %NULL.
+     * `gtk_get_current_event_time()` can be used instead.
+     * @param menu a {@link Gtk.Menu}.
+     * @param parent_menu_shell the menu shell containing the triggering menu item, or `null`.
+     * @param parent_menu_item the menu item whose activation triggered the popup, or `null`.
+     * @param func a user supplied function used to position the menu, or `null`.
      * @param button the mouse button which was pressed to initiate the event.
      * @param activate_time the time at which the activation event occurred.
-     * @returns %TRUE if the menu could be mapped, %FALSE otherwise.
+     * @returns `true` if the menu could be mapped, `false` otherwise.
+     * @since 4.14
      */
     function gtk_menu_popup_until_mapped(
         menu: Gtk.Menu,
@@ -559,16 +546,17 @@ export namespace Libxfce4ui {
         activate_time: number,
     ): boolean;
     /**
-     * Convenience method to create a #GtkCheckMenuItem and preconfigure it with the passed parameters.
-     * In order to simplify usage, a #GtkCheckMenuItem is created and drawn as radio-item
-     * @param label_text Label to use for the #GtkCheckMenuItem
+     * Convenience method to create a {@link Gtk.CheckMenuItem} and preconfigure it with the passed parameters.
+     * In order to simplify usage, a {@link Gtk.CheckMenuItem} is created and drawn as radio-item
+     * @param label_text Label to use for the {@link Gtk.CheckMenuItem}
      * @param tooltip_text Tooltip to add on the passed item, or NULL
      * @param accel_path Unique path, used to identify the accelerator, or NULL
-     * @param callback #GCallback which will be triggered on activation, or NULL
+     * @param callback {@link GObject.Callback} which will be triggered on activation, or NULL
      * @param callback_param optional callback parameter, or NULL.
      * @param active boolean value indicating whether the check box is active.
-     * @param menu_to_append_item #GtkMenuShell on which the item should be appended, or NULL
-     * @returns A new #GtkCheckMenuItem.
+     * @param menu_to_append_item {@link Gtk.MenuShell} on which the item should be appended, or NULL
+     * @returns A new {@link Gtk.CheckMenuItem}.
+     * @since 4.16
      */
     function gtk_radio_menu_item_new(
         label_text: string,
@@ -577,29 +565,31 @@ export namespace Libxfce4ui {
         callback: GObject.Callback | null,
         callback_param: GObject.Object | null,
         active: boolean,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget;
     /**
      * Method to create a toggle menu item from the passed action entry
-     * @param action_entry Label to use for the #GtkCheckMenuItem
+     * @param action_entry Label to use for the {@link Gtk.CheckMenuItem}
      * @param callback_param optional callback parameter, or NULL.
      * @param active boolean value indicating whether the check box is active.
-     * @param menu_to_append_item #GtkMenuShell on which the item should be appended, or NULL
-     * @returns A new #GtkMenuItem or NULL
+     * @param menu_to_append_item {@link Gtk.MenuShell} on which the item should be appended, or NULL
+     * @returns A new {@link Libxfce4ui.GtkMenuItem} or NULL
+     * @since 4.16
      */
     function gtk_toggle_menu_item_new_from_action_entry(
         action_entry: GtkActionEntry,
         callback_param: GObject.Object | null,
         active: boolean,
-        menu_to_append_item?: Gtk.MenuShell | null,
+        menu_to_append_item: Gtk.MenuShell | null,
     ): Gtk.Widget | null;
     /**
      * Method to create a toolbar toggle-button from the passed action entry.
-     * @param action_entry Label to use for the #GtkToggleToolButton
-     * @param callback_param optional callback parameter, or %NULL.
+     * @param action_entry Label to use for the {@link Gtk.ToggleToolButton}
+     * @param callback_param optional callback parameter, or `null`.
      * @param active boolean value indicating whether the toggle is initially active.
-     * @param toolbar_to_append_item #GtkToolbar on which the item should be appended
-     * @returns A new #GtkToggleToolButton
+     * @param toolbar_to_append_item {@link Gtk.Toolbar} on which the item should be appended
+     * @returns A new {@link Gtk.ToggleToolButton}
+     * @since 4.17.6
      */
     function gtk_toggle_tool_button_new_from_action_entry(
         action_entry: GtkActionEntry,
@@ -609,10 +599,11 @@ export namespace Libxfce4ui {
     ): Gtk.Widget;
     /**
      * Method to create a toolbar button from the passed action entry.
-     * @param action_entry Label to use for the #GtkToolButton
-     * @param callback_param optional callback parameter, or %NULL.
-     * @param toolbar_to_append_item #GtkToolbar on which the item should be appended
-     * @returns A new #GtkToolButton
+     * @param action_entry Label to use for the {@link Gtk.ToolButton}
+     * @param callback_param optional callback parameter, or `null`.
+     * @param toolbar_to_append_item {@link Gtk.Toolbar} on which the item should be appended
+     * @returns A new {@link Gtk.ToolButton}
+     * @since 4.16
      */
     function gtk_tool_button_new_from_action_entry(
         action_entry: GtkActionEntry,
@@ -623,6 +614,7 @@ export namespace Libxfce4ui {
      * Convenience method to translate the label text and tooltip text of an array of action_entries
      * @param action_entries array of action_entries to be translated
      * @param n_action_entries size of the action_entries array
+     * @since 4.16
      */
     function gtk_translate_action_entries(action_entries: GtkActionEntry, n_action_entries: number): void;
     /**
@@ -631,57 +623,65 @@ export namespace Libxfce4ui {
      * `window` is centered on the default screen.
      *
      * This function only works properly if you call it before realizing the
-     * window and you haven't set a fixed window position using gtk_window_move().
+     * window and you haven't set a fixed window position using `gtk_window_move()`.
      *
-     * See also: xfce_gdk_screen_get_active().
-     * @param window the #GtkWindow to center.
+     * See also: `xfce_gdk_screen_get_active()`.
+     * @param window the {@link Gtk.Window} to center.
      */
     function gtk_window_center_on_active_screen(window: Gtk.Window): void;
     /**
-     * This function can be called to determine if a #GdkWindow is using client-side decorations
+     * This function can be called to determine if a {@link Gdk.Window} is using client-side decorations
      * which is indicated by the _GTK_FRAME_EXTENTS X11 atom. It furthermore sets a pointer
-     * of type #GtkBorder to the actual extents.
-     * @param window A #GdkWindow
-     * @param extents A pointer to a #GtkBorder to copy to.
-     * @returns TRUE if a #GdkWindow has the _GTK_FRAME_EXTENTS atom set.
+     * of type {@link Gtk.Border} to the actual extents.
+     * @param window A {@link Gdk.Window}
+     * @param extents A pointer to a {@link Gtk.Border} to copy to.
+     * @returns TRUE if a {@link Gdk.Window} has the _GTK_FRAME_EXTENTS atom set.
+     * @since 4.16
      */
     function has_gtk_frame_extents(window: Gdk.Window, extents: Gtk.Border): boolean;
+    /**
+     * @param desktop_id Name of the desktop file.
+     * @returns `null` on error, else the string value of the "Icon" property.
+     * @since 4.16
+     */
     function icon_name_from_desktop_id(desktop_id: string): string;
     /**
-     * Like gdk_spawn_on_screen() (GDK 2), but also supports startup notification
+     * Like `gdk_spawn_on_screen()` (GDK 2), but also supports startup notification
      * (if Libxfce4ui was built with startup notification support).
-     * @param screen a #GdkScreen or %NULL to use the active screen,                      see xfce_gdk_screen_get_active().
-     * @param working_directory child's current working directory or %NULL to                      inherit parent's.
+     * @param screen a {@link Gdk.Screen} or `null` to use the active screen,                      see `xfce_gdk_screen_get_active()`.
+     * @param working_directory child's current working directory or `null` to                      inherit parent's.
      * @param argv child's argument vector.
-     * @param envp child's environment vector or %NULL to inherit                      parent's.
-     * @param flags flags from #GSpawnFlags. #G_SPAWN_DO_NOT_REAP_CHILD                      is not allowed, use xfce_spawn_on_screen_with_child_watch()                      if you want a child watch.
+     * @param envp child's environment vector or `null` to inherit                      parent's.
+     * @param flags flags from {@link GLib.SpawnFlags}. #G_SPAWN_DO_NOT_REAP_CHILD                      is not allowed, use `xfce_spawn_on_screen_with_child_watch()`                      if you want a child watch.
      * @param startup_notify whether to use startup notification.
-     * @param startup_timestamp the timestamp to pass to startup notification, use                      the event time here if possible to make focus                      stealing prevention work property. If you don't                      have direct access to the event time you could use                      gtk_get_current_event_time() or if nothing is                      available 0 is valid too.
-     * @param startup_icon_name application icon or %NULL.
-     * @param child_process %TRUE if the process should be a child process,                      %FALSE if it should be reparented to init.
-     * @returns %TRUE on success, %FALSE if @error is set.
+     * @param startup_timestamp the timestamp to pass to startup notification, use                      the event time here if possible to make focus                      stealing prevention work property. If you don't                      have direct access to the event time you could use                      `gtk_get_current_event_time()` or if nothing is                      available 0 is valid too.
+     * @param startup_icon_name application icon or `null`.
+     * @param child_process `true` if the process should be a child process,                      `false` if it should be reparented to init.
+     * @returns `true` on success, `false` if `error` is set.
+     * @since 4.16
      */
     function spawn(
         screen: Gdk.Screen | null,
         working_directory: string | null,
         argv: string,
         envp: string | null,
-        flags: GLib.SpawnFlags | null,
+        flags: GLib.SpawnFlags,
         startup_notify: boolean,
         startup_timestamp: number,
         startup_icon_name: string | null,
         child_process: boolean,
     ): boolean;
     /**
-     * Executes the given `command_line` and returns %TRUE if the
+     * Executes the given `command_line` and returns `true` if the
      * command terminated successfully. Else, the `error` is set
      * to the standard error output.
-     * @param screen a #GdkScreen or %NULL to use the active screen, see xfce_gdk_screen_get_active().
+     * @param screen a {@link Gdk.Screen} or `null` to use the active screen, see `xfce_gdk_screen_get_active()`.
      * @param command_line command line to run.
-     * @param in_terminal whether to run @command_line in a terminal.
+     * @param in_terminal whether to run `command_line` in a terminal.
      * @param startup_notify whether to use startup notification.
-     * @param child_process %TRUE if the process should be a child process, %FALSE if it should be reparented to init.
-     * @returns %TRUE if the @command_line was executed          successfully, %FALSE if @error is set.
+     * @param child_process `true` if the process should be a child process, `false` if it should be reparented to init.
+     * @returns `true` if the `command_line` was executed          successfully, `false` if `error` is set.
+     * @since 4.16
      */
     function spawn_command_line(
         screen: Gdk.Screen | null,
@@ -691,14 +691,15 @@ export namespace Libxfce4ui {
         child_process: boolean,
     ): boolean;
     /**
-     * Executes the given `command_line` and returns %TRUE if the
+     * Executes the given `command_line` and returns `true` if the
      * command terminated successfully. Else, the `error` is set
      * to the standard error output.
-     * @param screen a #GdkScreen or %NULL to use the active screen, see xfce_gdk_screen_get_active().
+     * @param screen a {@link Gdk.Screen} or `null` to use the active screen, see `xfce_gdk_screen_get_active()`.
      * @param command_line command line to run.
-     * @param in_terminal whether to run @command_line in a terminal.
+     * @param in_terminal whether to run `command_line` in a terminal.
      * @param startup_notify whether to use startup notification.
-     * @returns %TRUE if the @command_line was executed          successfully, %FALSE if @error is set.
+     * @returns `true` if the `command_line` was executed          successfully, `false` if `error` is set.
+     * @deprecated since 4.16: Use `xfce_spawn_command_line` instead.
      */
     function spawn_command_line_on_screen(
         screen: Gdk.Screen | null,
@@ -707,31 +708,32 @@ export namespace Libxfce4ui {
         startup_notify: boolean,
     ): boolean;
     /**
-     * Like gdk_spawn_on_screen() (GDK 2), but also supports startup notification
+     * Like `gdk_spawn_on_screen()` (GDK 2), but also supports startup notification
      * (if Libxfce4ui was built with startup notification support).
-     * @param screen a #GdkScreen or %NULL to use the active screen,                      see xfce_gdk_screen_get_active().
-     * @param working_directory child's current working directory or %NULL to                      inherit parent's.
+     * @param screen a {@link Gdk.Screen} or `null` to use the active screen,                      see `xfce_gdk_screen_get_active()`.
+     * @param working_directory child's current working directory or `null` to                      inherit parent's.
      * @param argv child's argument vector.
-     * @param envp child's environment vector or %NULL to inherit                      parent's.
-     * @param flags flags from #GSpawnFlags. #G_SPAWN_DO_NOT_REAP_CHILD                      is not allowed, use xfce_spawn_on_screen_with_child_watch()                      if you want a child watch.
+     * @param envp child's environment vector or `null` to inherit                      parent's.
+     * @param flags flags from {@link GLib.SpawnFlags}. #G_SPAWN_DO_NOT_REAP_CHILD                      is not allowed, use `xfce_spawn_on_screen_with_child_watch()`                      if you want a child watch.
      * @param startup_notify whether to use startup notification.
-     * @param startup_timestamp the timestamp to pass to startup notification, use                      the event time here if possible to make focus                      stealing prevention work property. If you don't                      have direct access to the event time you could use                      gtk_get_current_event_time() or if nothing is                      available 0 is valid too.
-     * @param startup_icon_name application icon or %NULL.
-     * @returns %TRUE on success, %FALSE if @error is set.
+     * @param startup_timestamp the timestamp to pass to startup notification, use                      the event time here if possible to make focus                      stealing prevention work property. If you don't                      have direct access to the event time you could use                      `gtk_get_current_event_time()` or if nothing is                      available 0 is valid too.
+     * @param startup_icon_name application icon or `null`.
+     * @returns `true` on success, `false` if `error` is set.
+     * @deprecated since 4.16: Use `xfce_spawn` instead.
      */
     function spawn_on_screen(
         screen: Gdk.Screen | null,
         working_directory: string | null,
         argv: string,
         envp: string | null,
-        flags: GLib.SpawnFlags | null,
+        flags: GLib.SpawnFlags,
         startup_notify: boolean,
         startup_timestamp: number,
-        startup_icon_name?: string | null,
+        startup_icon_name: string | null,
     ): boolean;
     /**
-     * Like xfce_spawn_on_screen(), but allows to attach a closure to watch the
-     * child's exit status. This because only one g_child_watch_add() is allowed on
+     * Like `xfce_spawn_on_screen()`, but allows to attach a closure to watch the
+     * child's exit status. This because only one `g_child_watch_add()` is allowed on
      * Unix (per PID) and this is already internally needed for a proper
      * startup notification implementation.
      *
@@ -758,40 +760,111 @@ export namespace Libxfce4ui {
      * }
      * </programlisting>
      * </example>
-     * @param screen a #GdkScreen or %NULL to use the active screen,                        see xfce_gdk_screen_get_active().
-     * @param working_directory child's current working directory or %NULL to                        inherit parent's.
+     * @param screen a {@link Gdk.Screen} or `null` to use the active screen,                        see `xfce_gdk_screen_get_active()`.
+     * @param working_directory child's current working directory or `null` to                        inherit parent's.
      * @param argv child's argument vector.
-     * @param envp child's environment vector or %NULL to inherit                        parent's.
-     * @param flags flags from #GSpawnFlags. #G_SPAWN_DO_NOT_REAP_CHILD                        is not allowed, you should use the                        @child_watch_closure for this.
+     * @param envp child's environment vector or `null` to inherit                        parent's.
+     * @param flags flags from {@link GLib.SpawnFlags}. #G_SPAWN_DO_NOT_REAP_CHILD                        is not allowed, you should use the                        `child_watch_closure` for this.
      * @param startup_notify whether to use startup notification.
-     * @param startup_timestamp the timestamp to pass to startup notification, use                        the event time here if possible to make focus                        stealing prevention work property. If you don't                        have direct access to the event time you could use                        gtk_get_current_event_time() or if nothing is                        available 0 is valid too.
-     * @param startup_icon_name application icon or %NULL.
-     * @param child_watch_closure closure that is triggered when the child exists                        or %NULL.
-     * @returns %TRUE on success, %FALSE if @error is set.
+     * @param startup_timestamp the timestamp to pass to startup notification, use                        the event time here if possible to make focus                        stealing prevention work property. If you don't                        have direct access to the event time you could use                        `gtk_get_current_event_time()` or if nothing is                        available 0 is valid too.
+     * @param startup_icon_name application icon or `null`.
+     * @param child_watch_closure closure that is triggered when the child exists                        or `null`.
+     * @returns `true` on success, `false` if `error` is set.
      */
     function spawn_on_screen_with_child_watch(
         screen: Gdk.Screen | null,
         working_directory: string | null,
         argv: string,
         envp: string | null,
-        flags: GLib.SpawnFlags | null,
+        flags: GLib.SpawnFlags,
         startup_notify: boolean,
         startup_timestamp: number,
-        startup_icon_name?: string | null,
-        child_watch_closure?: GObject.Closure | null,
+        startup_icon_name: string | null,
+        child_watch_closure: GObject.Closure | null,
     ): boolean;
     /**
      * Moves a widget from one GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
-     * @param widget a #GtkWidget.
-     * @param new_parent a #GtkContainer to move the widget into
-     * @returns %TRUE if the widget could be moved, %FALSE otherwise.
+     * @param widget a {@link Gtk.Widget}.
+     * @param new_parent a {@link Gtk.Container} to move the widget into
+     * @returns `true` if the widget could be moved, `false` otherwise.
+     * @since 4.14
      */
     function widget_reparent(widget: Gtk.Widget, new_parent: Gtk.Widget): boolean;
+    namespace ClipboardManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class ClipboardManager extends GObject.Object {
+        static $gtype: GObject.GType<ClipboardManager>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: ClipboardManager.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<ClipboardManager.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](replace: boolean): ClipboardManager;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof ClipboardManager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof ClipboardManager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof ClipboardManager.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<ClipboardManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
     namespace FilenameInput {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            /**
+             * Signals that the current text is not a valid filename. This signal is
+             * emitted whenever the user changes the text and the result is not a valid
+             * filename.
+             * @signal
+             * @since 4.16
+             * @run-last
+             */
             'text-invalid': () => void;
+            /**
+             * Signals that the current text is a valid filename. This signal is
+             * emitted whenever the user changes the text and the result is a valid
+             * filename.
+             * @signal
+             * @since 4.16
+             * @run-last
+             */
             'text-valid': () => void;
             'notify::max-text-length': (pspec: GObject.ParamSpec) => void;
             'notify::original-filename': (pspec: GObject.ParamSpec) => void;
@@ -846,7 +919,8 @@ export namespace Libxfce4ui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Box.ConstructorProps,
+            extends
+                Gtk.Box.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Orientable.ConstructorProps {
@@ -859,6 +933,7 @@ export namespace Libxfce4ui {
 
     /**
      * An opaque structure with only private fields.
+     * @gir-type Class
      */
     class FilenameInput extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FilenameInput>;
@@ -868,23 +943,35 @@ export namespace Libxfce4ui {
         /**
          * The maximum permitted length of a filename. A value of -1
          * indicates no maximum length.
+         * @since 4.16
+         * @construct-only
+         * @default -1
          */
         set max_text_length(val: number);
         /**
          * The maximum permitted length of a filename. A value of -1
          * indicates no maximum length.
+         * @since 4.16
+         * @construct-only
+         * @default -1
          */
         set maxTextLength(val: number);
         /**
          * The original name of the file, to be used as the initial text
          * displayed in the GtkEntry. A NULL value indicates no original
          * filename.
+         * @since 4.16
+         * @construct-only
+         * @default null
          */
         set original_filename(val: string);
         /**
          * The original name of the file, to be used as the initial text
          * displayed in the GtkEntry. A NULL value indicates no original
          * filename.
+         * @since 4.16
+         * @construct-only
+         * @default null
          */
         set originalFilename(val: string);
 
@@ -905,16 +992,19 @@ export namespace Libxfce4ui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilenameInput.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilenameInput.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilenameInput.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilenameInput.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilenameInput.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilenameInput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -927,14 +1017,14 @@ export namespace Libxfce4ui {
          * A convenience function to be connected as a callback for the  "text-invalid" signal
          * (for example, using g_connect_swapped) for the simple case where the desired effect
          * of this signal is to set the sensitivity of a single GtkWidget (for example, a GtkButton).
-         * @param widget a #GtkWidget
+         * @param widget a {@link Gtk.Widget}
          */
         static desensitise_widget(widget: Gtk.Widget): void;
         /**
          * A convenience function to be connected as a callback for the  "text-valid" signal
          * (for example, using g_connect_swapped) for the simple case where the desired effect
          * of this signal is to set the sensitivity of a single GtkWidget (for example, a GtkButton).
-         * @param widget a #GtkWidget
+         * @param widget a {@link Gtk.Widget}
          */
         static sensitise_widget(widget: Gtk.Widget): void;
 
@@ -949,8 +1039,8 @@ export namespace Libxfce4ui {
          */
         check(): void;
         /**
-         * Gets the #GtkEntry associated to filename_input
-         * @returns A #GtkEntry
+         * Gets the {@link Gtk.Entry} associated to filename_input
+         * @returns A {@link Gtk.Entry}
          */
         get_entry(): Gtk.Entry;
         /**
@@ -958,25 +1048,24 @@ export namespace Libxfce4ui {
          * @returns the string representing the current text
          */
         get_text(): string;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @since 2.16
+         * @default Gtk.Orientation.HORIZONTAL
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable.
+         * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
-        set_orientation(orientation: Gtk.Orientation | null): void;
+        set_orientation(orientation: Gtk.Orientation): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -990,90 +1079,68 @@ export namespace Libxfce4ui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1081,7 +1148,7 @@ export namespace Libxfce4ui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1089,9 +1156,9 @@ export namespace Libxfce4ui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1111,9 +1178,9 @@ export namespace Libxfce4ui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1127,33 +1194,33 @@ export namespace Libxfce4ui {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1186,21 +1253,21 @@ export namespace Libxfce4ui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1210,8 +1277,8 @@ export namespace Libxfce4ui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1228,14 +1295,14 @@ export namespace Libxfce4ui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1246,13 +1313,13 @@ export namespace Libxfce4ui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1283,21 +1350,21 @@ export namespace Libxfce4ui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1307,33 +1374,34 @@ export namespace Libxfce4ui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1342,6 +1410,7 @@ export namespace Libxfce4ui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1350,12 +1419,14 @@ export namespace Libxfce4ui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1364,20 +1435,22 @@ export namespace Libxfce4ui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1389,8 +1462,9 @@ export namespace Libxfce4ui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1421,10 +1495,67 @@ export namespace Libxfce4ui {
     namespace SMClient {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the application is required to quit.  This is not
+             * optional: if the client does not quit a short time after receiving
+             * this signal, it will likely be terminated in some other way.  While
+             * not required, the application will usually receive quit-requested
+             * before receiving quit.  If the application does not connect to this
+             * signal, {@link Libxfce4ui.SMClient} will call <function>exit(3)</function> with
+             * an exit code of zero on behalf of the application.
+             * @signal
+             * @run-last
+             */
             quit: () => void;
+            /**
+             * Informs the application that it will not need to quit.  In most cases,
+             * quit-cancelled will be emitted a short time after quit-requested.
+             * @signal
+             * @run-last
+             */
             'quit-cancelled': () => void;
+            /**
+             * Signals the client that the session manager will soon want the
+             * application to quit, perhaps as a part of ending the session
+             * (but this should not be assumed).  The application can take
+             * this opportunity to prompt the user to save any unsaved work
+             * to disk.
+             *
+             * This signal also expects a return value from the handler.  If the
+             * application wishes to cancel the quit request (perhaps because the
+             * user selected "Cancel" in prompts to save unsaved work), it should
+             * return `true` from the handler.  If the application is satisfied
+             * with possibly needing to quit soon, the handler should return `false`.
+             * @signal
+             * @run-last
+             */
             'quit-requested': () => boolean | void;
+            /**
+             * Signals the client that it should save a copy of its current state
+             * such that it could be restarted later in exactly the same state as
+             * it is at the time of signal emission.
+             *
+             * If the state is simple enough to be encoded in the application's
+             * command line, `xfce_sm_client_set_restart_command()` can be used
+             * to set that command line.  For more complex state data,
+             * `xfce_sm_client_get_state_file()` should be used.
+             *
+             * The application should attempt to save its state as quickly as
+             * possible, and MUST NOT interact with the user as a part of saving
+             * state.
+             * @signal
+             * @run-last
+             */
             'save-state': () => void;
+            /**
+             * Allows the application to save extra state information after all
+             * other applications in the session have had a chance to save their
+             * state.  This is mainly used by the window manager to save window
+             * positions.  Most applications should not need to connect to this
+             * signal.
+             * @signal
+             * @run-last
+             */
             'save-state-extended': () => void;
             'notify::argc': (pspec: GObject.ParamSpec) => void;
             'notify::argv': (pspec: GObject.ParamSpec) => void;
@@ -1433,7 +1564,6 @@ export namespace Libxfce4ui {
             'notify::desktop-file': (pspec: GObject.ParamSpec) => void;
             'notify::priority': (pspec: GObject.ParamSpec) => void;
             'notify::restart-command': (pspec: GObject.ParamSpec) => void;
-            'notify::restart-style': (pspec: GObject.ParamSpec) => void;
             'notify::resumed': (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1451,42 +1581,71 @@ export namespace Libxfce4ui {
             priority: number;
             restart_command: string[];
             restartCommand: string[];
-            restart_style: SMClientRestartStyle;
-            restartStyle: SMClientRestartStyle;
             resumed: boolean;
         }
     }
 
     /**
      * An opaque struct with only private fields.
+     * @gir-type Class
      */
     class SMClient extends GObject.Object {
         static $gtype: GObject.GType<SMClient>;
 
         // Properties
 
+        /**
+         * @construct-only
+         * @default 0
+         */
         set argc(val: number);
+        /**
+         * @construct-only
+         */
         set argv(val: string[]);
+        /**
+         * @construct-only
+         * @default null
+         */
         get client_id(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get clientId(): string;
+        /**
+         * @default null
+         */
         get current_directory(): string;
         set current_directory(val: string);
+        /**
+         * @default null
+         */
         get currentDirectory(): string;
         set currentDirectory(val: string);
+        /**
+         * @default null
+         */
         get desktop_file(): string;
         set desktop_file(val: string);
+        /**
+         * @default null
+         */
         get desktopFile(): string;
         set desktopFile(val: string);
+        /**
+         * @default 50
+         */
         get priority(): number;
         set priority(val: number);
         get restart_command(): string[];
         set restart_command(val: string[]);
         get restartCommand(): string[];
         set restartCommand(val: string[]);
-        get restart_style(): SMClientRestartStyle;
-        set restart_style(val: SMClientRestartStyle);
-        get restartStyle(): SMClientRestartStyle;
-        set restartStyle(val: SMClientRestartStyle);
+        /**
+         * @read-only
+         * @default false
+         */
         get resumed(): boolean;
 
         /**
@@ -1524,16 +1683,19 @@ export namespace Libxfce4ui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SMClient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SMClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SMClient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SMClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SMClient.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SMClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1547,14 +1709,14 @@ export namespace Libxfce4ui {
          */
         static error_quark(): GLib.Quark;
         /**
-         * Constructs a #GOptionGroup suitable for use with Glib's
+         * Constructs a {@link GLib.OptionGroup} suitable for use with Glib's
          * command-line option parser.
          *
          * This function is a bit sneaky in that it will make a copy of
          * the program's argc and argv <emphasis>before</emphasis> GTK+ etc.
-         * has a chance to mess around with it, so #XfceSMClient can later
+         * has a chance to mess around with it, so {@link Libxfce4ui.SMClient} can later
          * construct an accurate restart command.  Instead of calling
-         * gtk_init() or gtk_init_with_args(), instead you'd do something
+         * `gtk_init()` or `gtk_init_with_args()`, instead you'd do something
          * like:
          *
          * <informalexample><programlisting>
@@ -1565,7 +1727,7 @@ export namespace Libxfce4ui {
          * </programlisting></informalexample>
          *
          * Error checking is omitted here for brevity, and of course you could
-         * add your app's own options with g_option_context_add_main_entries()
+         * add your app's own options with `g_option_context_add_main_entries()`
          * or similar.
          * @param argc The application's argument count
          * @param argv The application's argument vector
@@ -1576,9 +1738,12 @@ export namespace Libxfce4ui {
 
         /**
          * Attempts to connect to the session manager.
-         * @returns %TRUE on success, %FALSE otherwise.  If an error          occurs, @error will be set.
+         * @returns `true` on success, `false` otherwise.  If an error          occurs, `error` will be set.
          */
         connect(): boolean;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnects the application from the session manager.
@@ -1598,33 +1763,33 @@ export namespace Libxfce4ui {
          *
          * <note><para>
          * Instead of constructing a state filename, it is
-         * recommended to use xfce_sm_client_get_state_file().
+         * recommended to use `xfce_sm_client_get_state_file()`.
          * </para></note>
          * @returns an opaque object-owned string
          */
         get_client_id(): string;
         /**
          * Retrieves the session client's working directory.  See
-         * xfce_sm_client_set_current_directory() for more information.
+         * `xfce_sm_client_set_current_directory()` for more information.
          * @returns an object-owned string
          */
         get_current_directory(): string;
         /**
          * Retrieves the session client's restart priority.  See
-         * xfce_sm_client_set_priority() for more information.
+         * `xfce_sm_client_set_priority()` for more information.
          * @returns a value from #G_MININT8 to #G_MAXINT8
          */
         get_priority(): number;
         /**
          * Retrieves the session client's restart command.  See
-         * xfce_sm_client_set_restart_command() for more information.
+         * `xfce_sm_client_set_restart_command()` for more information.
          * @returns an object-owned string vector
          */
         get_restart_command(): string[];
         /**
          * Retrieves the session client's restart style.  See
-         * xfce_sm_client_set_restart_style() for more information.
-         * @returns a value from the #XfceSMClientRestartStyle enum
+         * `xfce_sm_client_set_restart_style()` for more information.
+         * @returns a value from the {@link Libxfce4ui.SMClientRestartStyle} enum
          */
         get_restart_style(): SMClientRestartStyle;
         /**
@@ -1644,26 +1809,26 @@ export namespace Libxfce4ui {
          * and handle state cleanup (setting of the discard command) for you.
          *
          * Before calling this function, the application must have a
-         * valid client ID (see xfce_sm_client_get_client_id()).
-         * @returns a file name string, owned by the object or %NULL if          the session client is disabled.
+         * valid client ID (see `xfce_sm_client_get_client_id()`).
+         * @returns a file name string, owned by the object or `null` if          the session client is disabled.
          */
         get_state_file(): string;
         /**
          * Determines whether or not the application has connected to the
          * session manager.
-         * @returns %TRUE if connected to the session manager, %FALSE otherwise
+         * @returns `true` if connected to the session manager, `false` otherwise
          */
         is_connected(): boolean;
         /**
          * Determines whether the application was resumed from a previous
          * session, or if the application has been started fresh with no
          * state information associated with it.
-         * @returns %TRUE if resumed from a previous session, %FALSE otherwise
+         * @returns `true` if resumed from a previous session, `false` otherwise
          */
         is_resumed(): boolean;
         /**
          * Sends a request to the session manager to end the session.
-         * Depending on `hint,` the session manager may prompt for a
+         * Depending on `hint`, the session manager may prompt for a
          * certain action (log out, halt, reboot, etc.) or may take the
          * requested action without user intervention.
          *
@@ -1673,7 +1838,7 @@ export namespace Libxfce4ui {
          * </para></note>
          * @param shutdown_hint The type of shutdown requested
          */
-        request_shutdown(shutdown_hint: SMClientShutdownHint | null): void;
+        request_shutdown(shutdown_hint: SMClientShutdownHint): void;
         /**
          * Sets the startup working directory of `sm_client` to
          * `current_directory`.  If unset, defaults to the user's
@@ -1685,9 +1850,9 @@ export namespace Libxfce4ui {
          * Sets the application's .desktop file.  In addition to informing
          * the session manager of the .desktop file so it can present localized
          * names and an icon in session listings and the splash screen, this
-         * also calls g_set_application_name() and
-         * gtk_window_set_default_icon_name() (or
-         * gtk_window_set_default_icon_from_file()) if the Name and Icon
+         * also calls `g_set_application_name()` and
+         * `gtk_window_set_default_icon_name()` (or
+         * `gtk_window_set_default_icon_from_file()`) if the Name and Icon
          * keys are present, respectively.
          *
          * If a relative path to the file is provided, this function will search
@@ -1717,9 +1882,9 @@ export namespace Libxfce4ui {
         set_restart_command(restart_command: string): void;
         /**
          * Sets the restart style hint to `restart_style`.
-         * @param restart_style An #XfceSMClientRestartStyle value
+         * @param restart_style An {@link Libxfce4ui.SMClientRestartStyle} value
          */
-        set_restart_style(restart_style: SMClientRestartStyle | null): void;
+        set_restart_style(restart_style: SMClientRestartStyle): void;
     }
 
     namespace Screensaver {
@@ -1742,21 +1907,42 @@ export namespace Libxfce4ui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Screensaver extends GObject.Object {
         static $gtype: GObject.GType<Screensaver>;
 
         // Properties
 
+        /**
+         * @default null
+         */
         get heartbeat_command(): string;
         set heartbeat_command(val: string);
+        /**
+         * @default null
+         */
         get heartbeatCommand(): string;
         set heartbeatCommand(val: string);
+        /**
+         * @default null
+         */
         get lock_command(): string;
         set lock_command(val: string);
+        /**
+         * @default null
+         */
         get lockCommand(): string;
         set lockCommand(val: string);
+        /**
+         * @default false
+         */
         get lock_on_sleep(): boolean;
         set lock_on_sleep(val: boolean);
+        /**
+         * @default false
+         */
         get lockOnSleep(): boolean;
         set lockOnSleep(val: boolean);
 
@@ -1779,16 +1965,19 @@ export namespace Libxfce4ui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Screensaver.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Screensaver.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Screensaver.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Screensaver.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Screensaver.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Screensaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1798,12 +1987,12 @@ export namespace Libxfce4ui {
         // Methods
 
         /**
-         * Calling this function with `inhibit` as %TRUE will prevent the user's
+         * Calling this function with `inhibit` as `true` will prevent the user's
          * screensaver from activating. This is useful when the user is watching
          * a movie or giving a presentation.
          *
-         * Calling this function with `inhibit` as %FALSE will remove any current
-         * screensaver inhibit the #XfceScreensaver object has.
+         * Calling this function with `inhibit` as `false` will remove any current
+         * screensaver inhibit the {@link Libxfce4ui.Screensaver} object has.
          * @param inhibit whether to inhibit the screensaver from activating
          */
         inhibit(inhibit: boolean): void;
@@ -1811,7 +2000,7 @@ export namespace Libxfce4ui {
          * Attempts to lock the screen, either with one of the screensaver
          * D-Bus proxies, the Xfconf lock command, or one of the
          * fallback scripts such as xdg-screensaver.
-         * @returns %TRUE if the lock attempt returns success, %FALSE otherwise.
+         * @returns `true` if the lock attempt returns success, `false` otherwise.
          */
         lock(): boolean;
     }
@@ -1901,15 +2090,14 @@ export namespace Libxfce4ui {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             subtitle: string;
         }
     }
 
     /**
      * An opaque struct with only private fields.
+     * @gir-type Class
      */
     class TitledDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TitledDialog>;
@@ -1918,6 +2106,7 @@ export namespace Libxfce4ui {
 
         /**
          * The subtitle displayed below the main dialog title.
+         * @default null
          */
         get subtitle(): string;
         set subtitle(val: string);
@@ -1941,16 +2130,19 @@ export namespace Libxfce4ui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TitledDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TitledDialog.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TitledDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TitledDialog.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TitledDialog.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TitledDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1960,40 +2152,33 @@ export namespace Libxfce4ui {
         // Methods
 
         /**
-         * This function is a replacement for #gtk_dialog_add_action_widget and assumes that
-         * you have called #xfce_titled_dialog_create_action_area before.
+         * This function is a replacement for `gtk_dialog_add_action_widget`.
          *
          * Children with #GTK_RESPONSE_HELP will be added to the secondary group of children
-         * (see #gtk_button_box_set_child_secondary for reference).
+         * (see `gtk_button_box_set_child_secondary` for reference).
          * @param child an activatable widget.
-         * @param response_id response ID for @child.
+         * @param response_id response ID for `child`.
          */
         add_action_widget(child: Gtk.Widget, response_id: number): void;
         /**
-         * This function is a replacement for #gtk_dialog_add_button and assumes that
-         * you have called #xfce_titled_dialog_create_action_area before.
+         * This function is a replacement for `gtk_dialog_add_button`.
          *
          * Buttons with #GTK_RESPONSE_HELP will be added to the secondary group of children
-         * (see #gtk_button_box_set_child_secondary for reference).
+         * (see `gtk_button_box_set_child_secondary` for reference).
          * @param button_text text of button.
-         * @param response_id response ID for @child.
+         * @param response_id response ID for `child`.
          * @returns the GtkButton widget that was added.
          */
         add_button(button_text: string, response_id: number): Gtk.Widget;
         /**
-         * This function creates a custom action area (of type #GtkButtonBox) and has to
-         * be used in combination with #xfce_titled_dialog_add_action_widget.
-         *
-         * When using the XfceTitledDialogClass directly to create dialogs this function is
-         * useful to keep action widgets out of the #GtkHeaderBar in which they would
-         * normally end up by calling #gtk_dialog_add_action_widget.
+         * This function is a no-op since 4.19.3.
          */
         create_action_area(): void;
         /**
-         * Returns the subtitle of the `titled_dialog,` or %NULL
+         * Returns the subtitle of the `titled_dialog`, or `null`
          * if no subtitle is displayed in the `titled_dialog`.
-         * This is just a convenience function around #gtk_header_bar_get_subtitle.
-         * @returns the subtitle of @titled_dialog, or %NULL.
+         * This is just a convenience function around `gtk_header_bar_get_subtitle`.
+         * @returns the subtitle of `titled_dialog`, or `null`.
          */
         get_subtitle(): string;
         /**
@@ -2001,22 +2186,20 @@ export namespace Libxfce4ui {
          * as the default widget for the dialog. Pressing “Enter” normally activates
          * the default widget.
          *
-         * This function is a replacement for #gtk_dialog_set_default_response, which does
-         * not work with #XfceTitledDialog.
+         * This function is a replacement for `gtk_dialog_set_default_response`, which does
+         * not work with {@link Libxfce4ui.TitledDialog}.
          * @param response_id a response ID
          */
         set_default_response(response_id: number): void;
         /**
-         * Sets the subtitle displayed by `titled_dialog` to `subtitle;` if
-         * `subtitle` is %NULL no subtitle will be displayed by the `titled_dialog`.
-         * This is just a convenience function around #gtk_header_bar_set_subtitle
+         * Sets the subtitle displayed by `titled_dialog` to `subtitle`; if
+         * `subtitle` is `null` no subtitle will be displayed by the `titled_dialog`.
+         * This is just a convenience function around `gtk_header_bar_set_subtitle`
          * when dialogs use header bars. Otherwise a simple label and separator are
          * shown at the top of dialog.
-         * @param subtitle the new subtitle for the @titled_dialog, or %NULL.
+         * @param subtitle the new subtitle for the `titled_dialog`, or `null`.
          */
-        set_subtitle(subtitle?: string | null): void;
-
-        // Inherited methods
+        set_subtitle(subtitle: string | null): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2030,90 +2213,68 @@ export namespace Libxfce4ui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2121,7 +2282,7 @@ export namespace Libxfce4ui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2129,9 +2290,9 @@ export namespace Libxfce4ui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2151,9 +2312,9 @@ export namespace Libxfce4ui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2167,33 +2328,33 @@ export namespace Libxfce4ui {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2226,21 +2387,21 @@ export namespace Libxfce4ui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2250,8 +2411,8 @@ export namespace Libxfce4ui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2268,14 +2429,14 @@ export namespace Libxfce4ui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2286,13 +2447,13 @@ export namespace Libxfce4ui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2323,21 +2484,21 @@ export namespace Libxfce4ui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2347,33 +2508,34 @@ export namespace Libxfce4ui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2382,6 +2544,7 @@ export namespace Libxfce4ui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2390,12 +2553,14 @@ export namespace Libxfce4ui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2404,20 +2569,22 @@ export namespace Libxfce4ui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2429,8 +2596,9 @@ export namespace Libxfce4ui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2458,14 +2626,22 @@ export namespace Libxfce4ui {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
+    type ClipboardManagerClass = typeof ClipboardManager;
+    /**
+     * @gir-type Alias
+     */
     type FilenameInputClass = typeof FilenameInput;
     /**
-     * Replacement for the deprecated #GtkActionEntry.
-     * The idea is to provide a fixed list of #XfceGtkActionEntrys:
-     * - use xfce_gtk_translate_action_entries() once to translate the list
-     * - use xfce_gtk_accel_map_add_entries() once to register the provided accelerators
-     * - use xfce_gtk_get_action_entry_by_id() to find a single entry, e.g. by using a enumeration
+     * Replacement for the deprecated {@link Libxfce4ui.GtkActionEntry}.
+     * The idea is to provide a fixed list of `XfceGtkActionEntrys`:
+     * - use `xfce_gtk_translate_action_entries()` once to translate the list
+     * - use `xfce_gtk_accel_map_add_entries()` once to register the provided accelerators
+     * - use `xfce_gtk_get_action_entry_by_id()` to find a single entry, e.g. by using a enumeration
      * - use xfce_gtk_*_new_from_action_entry() to create the specific menu- or tool-items from the entry
+     * @gir-type Struct
      */
     class GtkActionEntry {
         static $gtype: GObject.GType<GtkActionEntry>;
@@ -2480,22 +2656,26 @@ export namespace Libxfce4ui {
         menu_item_tooltip_text: string;
         menu_item_icon_name: string;
         callback: GObject.Callback;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScreensaverClass = typeof Screensaver;
+    /**
+     * @gir-type Alias
+     */
     type TitledDialogClass = typeof TitledDialog;
+    /**
+     * @gir-type Struct
+     */
     abstract class TitledDialogPrivate {
         static $gtype: GObject.GType<TitledDialogPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScreenSaver = Screensaver;
     /**
      * Name of the imported GIR library

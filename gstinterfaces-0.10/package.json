@@ -1,56 +1,62 @@
 {
     "name": "@girs/gstinterfaces-0.10",
-    "version": "0.10.0-4.0.0-beta.38",
+    "version": "0.10.0-4.0.0-rc.6",
     "description": "GJS TypeScript type definitions for GstInterfaces-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstinterfaces-0.10.js",
     "main": "gstinterfaces-0.10.js",
     "exports": {
-      "./ambient": {
-        "types": "./gstinterfaces-0.10-ambient.d.ts",
-        "import": "./gstinterfaces-0.10-ambient.js",
-        "default": "./gstinterfaces-0.10-ambient.js"
-      },
-      "./import": {
-        "types": "./gstinterfaces-0.10-import.d.ts",
-        "import": "./gstinterfaces-0.10-import.js",
-        "default": "./gstinterfaces-0.10-import.js"
-      },
-      "./gstinterfaces-0.10": {
-        "types": "./gstinterfaces-0.10.d.ts",
-        "import": "./gstinterfaces-0.10.js",
-        "default": "./gstinterfaces-0.10.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./gstinterfaces-0.10-ambient.d.ts",
+            "import": "./gstinterfaces-0.10-ambient.js",
+            "default": "./gstinterfaces-0.10-ambient.js"
+        },
+        "./import": {
+            "types": "./gstinterfaces-0.10-import.d.ts",
+            "import": "./gstinterfaces-0.10-import.js",
+            "default": "./gstinterfaces-0.10-import.js"
+        },
+        "./gstinterfaces-0.10": {
+            "types": "./gstinterfaces-0.10.d.ts",
+            "import": "./gstinterfaces-0.10.js",
+            "default": "./gstinterfaces-0.10.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/gst-0.10": "0.10.29-4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gst-0.10": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GstInterfaces-0.10"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GstInterfaces-0.10"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gstinterfaces-0.10#readme"
 }
-
-

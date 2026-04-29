@@ -18,99 +18,128 @@ export namespace xlib {
      */
 
     function open_display(): void;
+    /**
+     * @gir-type Struct
+     */
     class Display {
         static $gtype: GObject.GType<Display>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Screen {
         static $gtype: GObject.GType<Screen>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Visual {
         static $gtype: GObject.GType<Visual>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XConfigureEvent {
         static $gtype: GObject.GType<XConfigureEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XImage {
         static $gtype: GObject.GType<XImage>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XFontStruct {
         static $gtype: GObject.GType<XFontStruct>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XTrapezoid {
         static $gtype: GObject.GType<XTrapezoid>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XVisualInfo {
         static $gtype: GObject.GType<XVisualInfo>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XWindowAttributes {
         static $gtype: GObject.GType<XWindowAttributes>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XEvent {
         static $gtype: GObject.GType<XEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
-    type Atom = number;
-    type Colormap = number;
-    type Cursor = number;
-    type Drawable = number;
+    /**
+     * @gir-type Alias
+     */
+    type Atom = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type Colormap = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type Cursor = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type Drawable = bigint | number;
+    /**
+     * @gir-type Alias
+     */
     type GC = any;
+    /**
+     * @gir-type Alias
+     */
     type KeyCode = number;
-    type KeySym = number;
-    type Picture = number;
-    type Time = number;
-    type VisualID = number;
-    type Window = number;
-    type XID = number;
-    type Pixmap = number;
+    /**
+     * @gir-type Alias
+     */
+    type KeySym = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type Picture = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type Time = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type VisualID = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type Window = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type XID = bigint | number;
+    /**
+     * @gir-type Alias
+     */
+    type Pixmap = bigint | number;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

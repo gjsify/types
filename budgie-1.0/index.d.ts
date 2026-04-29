@@ -9,7 +9,5 @@
 
 import './budgie-1.0-ambient.d.ts';
 
-import './budgie-1.0-import.d.ts';
-
 import Budgie from './budgie-1.0.js';
 export default Budgie;

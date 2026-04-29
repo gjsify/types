@@ -17,53 +17,48 @@ export namespace DBus {
      * DBus-1.0
      */
 
-    export namespace BusType {
-        export const $gtype: GObject.GType<BusType>;
-    }
-
+    /**
+     * @gir-type Enum
+     */
     enum BusType {
         SESSION,
         SYSTEM,
         STARTER,
     }
+
+    /**
+     * @gir-type Struct
+     */
     class Connection {
         static $gtype: GObject.GType<Connection>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Error {
         static $gtype: GObject.GType<Error>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Message {
         static $gtype: GObject.GType<Message>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MessageIter {
         static $gtype: GObject.GType<MessageIter>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PendingCall {
         static $gtype: GObject.GType<PendingCall>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

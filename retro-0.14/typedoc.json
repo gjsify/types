@@ -2,6 +2,8 @@
     "entryPoints": ["./retro-0.14.d.ts"],
     "readme": "./README.md",
     "name": "Retro-0.14",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

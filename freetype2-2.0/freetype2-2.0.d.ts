@@ -17,30 +17,30 @@ export namespace freetype2 {
      * freetype2-2.0
      */
 
+    /**
+     * @gir-type Struct
+     */
     class Bitmap {
         static $gtype: GObject.GType<Bitmap>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Face {
         static $gtype: GObject.GType<Face>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Library {
         static $gtype: GObject.GType<Library>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type Int32 = number;
     /**
      * Name of the imported GIR library

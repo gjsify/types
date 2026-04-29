@@ -19,10 +19,16 @@ export namespace Avahi {
      * Avahi-0.6
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BrowserEvent {
         export const $gtype: GObject.GType<BrowserEvent>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum BrowserEvent {
         GA_BROWSER_NEW,
         GA_BROWSER_REMOVE,
@@ -31,20 +37,32 @@ export namespace Avahi {
         GA_BROWSER_FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientFlags {
         export const $gtype: GObject.GType<ClientFlags>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClientFlags {
         GA_CLIENT_FLAG_NO_FLAGS,
         GA_CLIENT_FLAG_IGNORE_USER_CONFIG,
         GA_CLIENT_FLAG_NO_FAIL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClientState {
         export const $gtype: GObject.GType<ClientState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClientState {
         GA_CLIENT_STATE_NOT_STARTED,
         GA_CLIENT_STATE_S_REGISTERING,
@@ -54,10 +72,16 @@ export namespace Avahi {
         GA_CLIENT_STATE_CONNECTING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EntryGroupState {
         export const $gtype: GObject.GType<EntryGroupState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum EntryGroupState {
         GA_ENTRY_GROUP_STATE_UNCOMMITED,
         GA_ENTRY_GROUP_STATE_REGISTERING,
@@ -66,10 +90,16 @@ export namespace Avahi {
         GA_ENTRY_GROUP_STATE_FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LookupFlags {
         export const $gtype: GObject.GType<LookupFlags>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LookupFlags {
         GA_LOOKUP_NO_FLAGS,
         GA_LOOKUP_USE_WIDE_AREA,
@@ -78,10 +108,16 @@ export namespace Avahi {
         GA_LOOKUP_NO_ADDRESS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LookupResultFlags {
         export const $gtype: GObject.GType<LookupResultFlags>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LookupResultFlags {
         GA_LOOKUP_RESULT_CACHED,
         GA_LOOKUP_RESULT_WIDE_AREA,
@@ -91,33 +127,62 @@ export namespace Avahi {
         GA_LOOKUP_RESULT_STATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Protocol {
         export const $gtype: GObject.GType<Protocol>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Protocol {
         GA_PROTOCOL_INET,
         GA_PROTOCOL_INET6,
         GA_PROTOCOL_UNSPEC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ResolverEvent {
         export const $gtype: GObject.GType<ResolverEvent>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ResolverEvent {
         GA_RESOLVER_FOUND,
         GA_RESOLVER_FAILURE,
     }
+
     function error_quark(): GLib.Quark;
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'state-changed': (arg0: ClientState) => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
+            /**
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'state-changed::flags': (arg0: ClientState) => void;
+            /**
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'state-changed::state': (arg0: ClientState) => void;
+            [key: `state-changed::${string}`]: (arg0: ClientState) => void;
         }
 
         // Constructor properties interface
@@ -128,12 +193,23 @@ export namespace Avahi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
         // Properties
 
+        /**
+         * @construct-only
+         * @default Avahi.ClientFlags.GA_CLIENT_FLAG_NO_FLAGS
+         */
         get flags(): ClientFlags;
+        /**
+         * @read-only
+         * @default Avahi.ClientState.GA_CLIENT_STATE_NOT_STARTED
+         */
         get state(): ClientState;
 
         /**
@@ -155,16 +231,19 @@ export namespace Avahi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -174,15 +253,29 @@ export namespace Avahi {
         // Methods
 
         start(): boolean;
+        /**
+         * @param context
+         */
         start_in_context(context: GLib.MainContext): boolean;
     }
 
     namespace EntryGroup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'state-changed': (arg0: EntryGroupState) => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
+            /**
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'state-changed::state': (arg0: EntryGroupState) => void;
+            [key: `state-changed::${string}`]: (arg0: EntryGroupState) => void;
         }
 
         // Constructor properties interface
@@ -192,11 +285,18 @@ export namespace Avahi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class EntryGroup extends GObject.Object {
         static $gtype: GObject.GType<EntryGroup>;
 
         // Properties
 
+        /**
+         * @read-only
+         * @default Avahi.EntryGroupState.GA_ENTRY_GROUP_STATE_UNCOMMITED
+         */
         get state(): EntryGroupState;
 
         /**
@@ -218,16 +318,19 @@ export namespace Avahi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EntryGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EntryGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EntryGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EntryGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EntryGroup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EntryGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -236,25 +339,47 @@ export namespace Avahi {
 
         // Methods
 
+        /**
+         * @param flags
+         * @param name
+         * @param type
+         * @param ttl
+         * @param rdata
+         * @param size
+         */
         add_record(
-            flags: AvahiCore.PublishFlags | null,
+            flags: AvahiCore.PublishFlags,
             name: string,
             type: number,
             ttl: number,
             rdata: any | null,
-            size: number,
+            size: bigint | number,
         ): boolean;
+        /**
+         * @param _interface
+         * @param protocol
+         * @param flags
+         * @param name
+         * @param clazz
+         * @param type
+         * @param ttl
+         * @param rdata
+         * @param size
+         */
         add_record_full(
             _interface: AvahiCore.IfIndex,
-            protocol: AvahiCore.Protocol | null,
-            flags: AvahiCore.PublishFlags | null,
+            protocol: AvahiCore.Protocol,
+            flags: AvahiCore.PublishFlags,
             name: string,
             clazz: number,
             type: number,
             ttl: number,
             rdata: any | null,
-            size: number,
+            size: bigint | number,
         ): boolean;
+        /**
+         * @param client
+         */
         attach(client: Client): boolean;
         commit(): boolean;
         reset(): boolean;
@@ -263,9 +388,25 @@ export namespace Avahi {
     namespace RecordBrowser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'all-for-now': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'cache-exhausted': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             failure: (arg0: any | null) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'new-record': (
                 arg0: number,
                 arg1: Protocol,
@@ -276,6 +417,10 @@ export namespace Avahi {
                 arg6: number,
                 arg7: LookupResultFlags,
             ) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'removed-record': (
                 arg0: number,
                 arg1: Protocol,
@@ -306,21 +451,42 @@ export namespace Avahi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBrowser extends GObject.Object {
         static $gtype: GObject.GType<RecordBrowser>;
 
         // Properties
 
+        /**
+         * @default 0
+         */
         get class(): number;
         set class(val: number);
+        /**
+         * @default Avahi.LookupFlags.GA_LOOKUP_NO_FLAGS
+         */
         get flags(): LookupFlags;
         set flags(val: LookupFlags);
+        /**
+         * @default -1
+         */
         get interface(): number;
         set interface(val: number);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @default Avahi.Protocol.GA_PROTOCOL_UNSPEC
+         */
         get protocol(): Protocol;
         set protocol(val: Protocol);
+        /**
+         * @default 0
+         */
         get type(): number;
         set type(val: number);
 
@@ -352,16 +518,19 @@ export namespace Avahi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBrowser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBrowser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBrowser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBrowser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBrowser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -370,15 +539,34 @@ export namespace Avahi {
 
         // Methods
 
+        /**
+         * @param client
+         */
         attach(client: Client): boolean;
     }
 
     namespace ServiceBrowser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'all-for-now': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'cache-exhausted': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             failure: (arg0: any | null) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'new-service': (
                 arg0: number,
                 arg1: Protocol,
@@ -387,6 +575,10 @@ export namespace Avahi {
                 arg4: string,
                 arg5: LookupResultFlags,
             ) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'removed-service': (
                 arg0: number,
                 arg1: Protocol,
@@ -413,19 +605,37 @@ export namespace Avahi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ServiceBrowser extends GObject.Object {
         static $gtype: GObject.GType<ServiceBrowser>;
 
         // Properties
 
+        /**
+         * @default null
+         */
         get domain(): string;
         set domain(val: string);
+        /**
+         * @default Avahi.LookupFlags.GA_LOOKUP_NO_FLAGS
+         */
         get flags(): LookupFlags;
         set flags(val: LookupFlags);
+        /**
+         * @default -1
+         */
         get interface(): number;
         set interface(val: number);
+        /**
+         * @default Avahi.Protocol.GA_PROTOCOL_UNSPEC
+         */
         get protocol(): Protocol;
         set protocol(val: Protocol);
+        /**
+         * @default null
+         */
         get type(): string;
         set type(val: string);
 
@@ -456,16 +666,19 @@ export namespace Avahi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServiceBrowser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceBrowser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServiceBrowser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceBrowser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServiceBrowser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServiceBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -474,13 +687,24 @@ export namespace Avahi {
 
         // Methods
 
+        /**
+         * @param client
+         */
         attach(client: Client): boolean;
     }
 
     namespace ServiceResolver {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             failure: (arg0: any | null) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             found: (
                 arg0: number,
                 arg1: Protocol,
@@ -515,23 +739,47 @@ export namespace Avahi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ServiceResolver extends GObject.Object {
         static $gtype: GObject.GType<ServiceResolver>;
 
         // Properties
 
+        /**
+         * @default Avahi.Protocol.GA_PROTOCOL_UNSPEC
+         */
         get aprotocol(): Protocol;
         set aprotocol(val: Protocol);
+        /**
+         * @default null
+         */
         get domain(): string;
         set domain(val: string);
+        /**
+         * @default Avahi.LookupFlags.GA_LOOKUP_NO_FLAGS
+         */
         get flags(): LookupFlags;
         set flags(val: LookupFlags);
+        /**
+         * @default -1
+         */
         get interface(): number;
         set interface(val: number);
+        /**
+         * @default null
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @default Avahi.Protocol.GA_PROTOCOL_UNSPEC
+         */
         get protocol(): Protocol;
         set protocol(val: Protocol);
+        /**
+         * @default null
+         */
         get type(): string;
         set type(val: string);
 
@@ -562,16 +810,19 @@ export namespace Avahi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceResolver.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceResolver.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServiceResolver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -580,12 +831,28 @@ export namespace Avahi {
 
         // Methods
 
+        /**
+         * @param client
+         */
         attach(client: Client): boolean;
+        /**
+         * @param address
+         * @param port
+         */
         get_address(address: AvahiCore.Address, port: number): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type EntryGroupClass = typeof EntryGroup;
+    /**
+     * @gir-type Struct
+     */
     class EntryGroupService {
         static $gtype: GObject.GType<EntryGroupService>;
 
@@ -600,21 +867,38 @@ export namespace Avahi {
         host: string;
         port: number;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Methods
 
         freeze(): void;
+        /**
+         * @param key
+         */
         remove_key(key: string): boolean;
+        /**
+         * @param key
+         * @param value
+         */
         set(key: string, value: string): boolean;
-        set_arbitrary(key: string, value: number, size: number): boolean;
+        /**
+         * @param key
+         * @param value
+         * @param size
+         */
+        set_arbitrary(key: string, value: number, size: bigint | number): boolean;
         thaw(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RecordBrowserClass = typeof RecordBrowser;
+    /**
+     * @gir-type Alias
+     */
     type ServiceBrowserClass = typeof ServiceBrowser;
+    /**
+     * @gir-type Alias
+     */
     type ServiceResolverClass = typeof ServiceResolver;
     /**
      * Name of the imported GIR library

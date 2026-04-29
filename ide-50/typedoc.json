@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["./ide-50.d.ts"],
+    "readme": "./README.md",
+    "name": "Ide-50",
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
+}
+

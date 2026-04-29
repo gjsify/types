@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["./meta-18.d.ts"],
+    "readme": "./README.md",
+    "name": "Meta-18",
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
+}
+

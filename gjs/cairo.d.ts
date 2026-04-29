@@ -46,6 +46,23 @@ declare namespace giCairo {
     }
 
     /**
+     * Font metrics in user-space coordinates (cairo_font_extents_t).
+     * Not present in cairo-gobject GIR; defined locally to match the C API.
+     */
+    export interface FontExtents {
+        /** Distance the font extends above the baseline */
+        ascent: number;
+        /** Distance the font extends below the baseline (positive for typical fonts) */
+        descent: number;
+        /** Recommended vertical distance between baselines for consecutive lines */
+        height: number;
+        /** Maximum X advance for any glyph */
+        maxXAdvance: number;
+        /** Maximum Y advance for any glyph (typically 0 for horizontal text) */
+        maxYAdvance: number;
+    }
+
+    /**
      * The main Cairo drawing context
      *
      * A Cairo context is used to draw to surfaces and perform drawing operations.
@@ -510,6 +527,13 @@ declare namespace giCairo {
         showText(utf8: string): void;
 
         /**
+         * Adds the text outline to the current path (cairo_text_path).
+         * After this call the context will have a current point.
+         * @param utf8 A string of text encoded in UTF-8
+         */
+        textPath(utf8: string): void;
+
+        /**
          * Strokes the current path using the current line width, line join,
          * line cap, and dash settings, then clears the path
          */
@@ -532,6 +556,34 @@ declare namespace giCairo {
          * @returns Text extents information
          */
         textExtents(utf8: string): TextExtents;
+
+        /**
+         * Gets the font extents for the currently selected font
+         * @returns Font extents in user-space coordinates
+         */
+        fontExtents(): FontExtents;
+
+        /**
+         * Renders an array of glyphs at the current point (low-level text API)
+         * @param glyphs Array of glyphs to show
+         */
+        showGlyphs(glyphs: Glyph[]): void;
+
+        /**
+         * Renders glyphs with embedded text and cluster mapping (e.g. for PDF/PS)
+         * @param utf8 UTF-8 text string
+         * @param glyphs Array of glyphs
+         * @param clusters Cluster mapping (bytes to glyphs)
+         * @param clusterFlags Direction of cluster mapping
+         */
+        showTextGlyphs(utf8: string, glyphs: Glyph[], clusters: TextCluster[], clusterFlags: TextClusterFlags): void;
+
+        /**
+         * Computes the extents of an array of glyphs in user-space coordinates
+         * @param glyphs Array of glyphs
+         * @returns Extents as [x_bearing, y_bearing, width, height, x_advance, y_advance]
+         */
+        glyphExtents(glyphs: Glyph[]): TextExtents;
 
         /**
          * Translates the current transformation matrix
@@ -608,6 +660,21 @@ declare namespace giCairo {
          * Finishes the surface and drops all references to external resources
          */
         finish(): void;
+
+        /**
+         * Attaches user data to the surface (C API: cairo_surface_set_user_data)
+         * @param key Key for the user data
+         * @param userData Data to attach
+         * @param destroy Optional callback when the surface is destroyed or data is replaced
+         */
+        set_user_data(key: UserDataKey, userData: unknown, destroy?: (data: unknown) => void): Status;
+
+        /**
+         * Returns user data attached to the surface (C API: cairo_surface_get_user_data)
+         * @param key Key used when setting the data
+         * @returns The attached data or null
+         */
+        get_user_data(key: UserDataKey): unknown;
     }
 
     /**
@@ -820,14 +887,35 @@ declare namespace giCairo {
     export class ScaledFont extends Cairo.ScaledFont {}
 
     /**
-     * A glyph object used for storing and manipulating glyphs
+     * A glyph object used for storing and manipulating glyphs (cairo_glyph_t).
+     * Defined locally so the template works even when the generated cairo-1.0
+     * does not include this record (GIR may omit it in some setups).
      */
-    export class Glyph extends Cairo.Glyph {}
+    export interface Glyph {
+        index: number;
+        x: number;
+        y: number;
+    }
 
     /**
-     * A text cluster object used for storing and manipulating text clusters
+     * A text cluster object used for storing and manipulating text clusters (cairo_text_cluster_t).
+     * Defined locally so the template works even when the generated cairo-1.0
+     * does not include this record (GIR may omit it in some setups).
      */
-    export class TextCluster extends Cairo.TextCluster {}
+    export interface TextCluster {
+        num_bytes: number;
+        num_glyphs: number;
+    }
+
+    /**
+     * Key for attaching user data to surfaces/contexts (cairo_user_data_key_t).
+     * In C only the key's address matters; in GJS any object can serve as key.
+     * Not in cairo-gobject GIR; defined locally for set_user_data/get_user_data.
+     */
+    export interface UserDataKey {
+        /** Unused in C; present only for ABI. In GJS keys are typically plain objects. */
+        readonly unused?: number;
+    }
 
     /**
      * A font options object used for storing and manipulating font options

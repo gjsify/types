@@ -2,6 +2,8 @@
     "entryPoints": ["./grlnet-0.3.d.ts"],
     "readme": "./README.md",
     "name": "GrlNet-0.3",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

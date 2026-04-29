@@ -25,9 +25,10 @@ export namespace GUPnP {
 
     /**
      * Error codes used during invocation of service actions.
+     * @gir-type Struct
      */
     class ControlError extends GLib.Error {
-        static $gtype: GObject.GType<ControlError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -51,7 +52,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -60,9 +60,10 @@ export namespace GUPnP {
 
     /**
      * Error codes during eventing of state variables.
+     * @gir-type Struct
      */
     class EventingError extends GLib.Error {
-        static $gtype: GObject.GType<EventingError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -82,7 +83,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -90,15 +90,16 @@ export namespace GUPnP {
     }
 
     /**
-     * Errors during [class`GUPnP`.RootDevice] creation
+     * Errors during {@link GUPnP.RootDevice} creation
+     * @gir-type Struct
      */
     class RootdeviceError extends GLib.Error {
-        static $gtype: GObject.GType<RootdeviceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
         /**
-         * No #GUPnPContext was passed to the root device.
+         * No {@link GUPnP.Context} was passed to the root device.
          */
         static NO_CONTEXT: number;
         /**
@@ -118,7 +119,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -127,9 +127,10 @@ export namespace GUPnP {
 
     /**
      * Error codes during communication with another server.
+     * @gir-type Struct
      */
     class ServerError extends GLib.Error {
-        static $gtype: GObject.GType<ServerError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -161,7 +162,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -169,16 +169,16 @@ export namespace GUPnP {
     }
 
     /**
-     * Represents the direction of a service state variable.
-     */
-
-    /**
-     * Represents the direction of a service state variable.
+     * @gir-type Enum
      */
     export namespace ServiceActionArgDirection {
         export const $gtype: GObject.GType<ServiceActionArgDirection>;
     }
 
+    /**
+     * Represents the direction of a service state variable.
+     * @gir-type Enum
+     */
     enum ServiceActionArgDirection {
         /**
          * An "in" variable, to the service.
@@ -189,23 +189,24 @@ export namespace GUPnP {
          */
         OUT,
     }
+
     /**
      * Errors during service handling
+     * @gir-type Struct
      */
     class ServiceError extends GLib.Error {
-        static $gtype: GObject.GType<ServiceError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
         /**
-         * [method`GUPnP`.Service.signals_autoconnect] failed
+         * {@link GUPnP.Service.signals_autoconnect} failed
          */
         static AUTOCONNECT: number;
 
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -214,9 +215,10 @@ export namespace GUPnP {
 
     /**
      * Errors during service introspection
+     * @gir-type Struct
      */
     class ServiceIntrospectionError extends GLib.Error {
-        static $gtype: GObject.GType<ServiceIntrospectionError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -228,7 +230,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -237,9 +238,10 @@ export namespace GUPnP {
 
     /**
      * Errors during occuring during processing of XML data.
+     * @gir-type Struct
      */
     class XMLError extends GLib.Error {
-        static $gtype: GObject.GType<XMLError>;
+        static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
 
@@ -267,7 +269,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
 
         // Static methods
 
@@ -279,6 +280,7 @@ export namespace GUPnP {
     /**
      * Generate and return a new UUID.
      * @returns A newly generated UUID in string representation.
+     * @deprecated since 1.6.: Use {@link GLib.uuid_string_random} instead.
      */
     function get_uuid(): string;
     function rootdevice_error_quark(): GLib.Quark;
@@ -286,20 +288,53 @@ export namespace GUPnP {
     function service_error_quark(): GLib.Quark;
     function service_introspection_error_quark(): GLib.Quark;
     function xml_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Callback
+     */
     interface ServiceProxyActionCallback {
         (proxy: ServiceProxy, action: ServiceProxyAction): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ServiceProxyNotifyCallback {
-        (proxy: ServiceProxy, variable: string, value: GObject.Value | any): void;
+        (proxy: ServiceProxy, variable: string, value: unknown): void;
     }
+    /**
+     * @gir-type Alias
+     */
     type BinBase64 = object | null;
+    /**
+     * @gir-type Alias
+     */
     type BinHex = object | null;
+    /**
+     * @gir-type Alias
+     */
     type Date = object | null;
+    /**
+     * @gir-type Alias
+     */
     type DateTime = object | null;
+    /**
+     * @gir-type Alias
+     */
     type DateTimeTZ = object | null;
+    /**
+     * @gir-type Alias
+     */
     type Time = object | null;
+    /**
+     * @gir-type Alias
+     */
     type TimeTZ = object | null;
+    /**
+     * @gir-type Alias
+     */
     type URI = object | null;
+    /**
+     * @gir-type Alias
+     */
     type UUID = object | null;
     namespace Context {
         // Signal signatures
@@ -341,11 +376,12 @@ export namespace GUPnP {
     /**
      * Context object wrapping shared networking bits.
      *
-     * #GUPnPContext wraps the networking bits that are used by the various
+     * {@link GUPnP.Context} wraps the networking bits that are used by the various
      * GUPnP classes. It automatically starts a web server on demand.
      *
      * For debugging, it is possible to see the messages being sent and received by
      * setting the environment variable `GUPNP_DEBUG`.
+     * @gir-type Class
      */
     class Context extends GSSDP.Client implements Gio.Initable {
         static $gtype: GObject.GType<Context>;
@@ -354,6 +390,7 @@ export namespace GUPnP {
 
         /**
          * An access control list.
+         * @since 0.20.11
          */
         get acl(): Acl;
         set acl(val: Acl);
@@ -361,6 +398,8 @@ export namespace GUPnP {
          * The content of the Content-Language header id the client
          * sends Accept-Language and no language-specific pages to serve
          * exist. The property defaults to 'en'.
+         * @since 0.18.0
+         * @default en
          */
         get default_language(): string;
         set default_language(val: string);
@@ -368,27 +407,35 @@ export namespace GUPnP {
          * The content of the Content-Language header id the client
          * sends Accept-Language and no language-specific pages to serve
          * exist. The property defaults to 'en'.
+         * @since 0.18.0
+         * @default en
          */
         get defaultLanguage(): string;
         set defaultLanguage(val: string);
         /**
-         * The #SoupServer HTTP server used by GUPnP.
+         * The {@link Soup.Server} HTTP server used by GUPnP.
+         * @read-only
          */
         get server(): Soup.Server;
         /**
-         * The #SoupSession object used by GUPnP.
+         * The {@link Soup.Session} object used by GUPnP.
+         * @read-only
          */
         get session(): Soup.Session;
         /**
          * The preferred subscription timeout: the number of seconds after
          * which subscriptions are renewed. Set to '0' if subscriptions
          * are never to time out.
+         * @construct-only
+         * @default 1800
          */
         get subscription_timeout(): number;
         /**
          * The preferred subscription timeout: the number of seconds after
          * which subscriptions are renewed. Set to '0' if subscriptions
          * are never to time out.
+         * @construct-only
+         * @default 1800
          */
         get subscriptionTimeout(): number;
 
@@ -423,16 +470,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -442,22 +492,22 @@ export namespace GUPnP {
         // Methods
 
         /**
-         * Add a #SoupServerCallback to the #GUPnPContext<!-- -->'s #SoupServer.
-         * @param use_acl %TRUE, if the path should query the GUPnPContext::acl before serving the resource, %FALSE otherwise.
+         * Add a {@link Soup.ServerCallback} to the {@link GUPnP.Context}<!-- -->'s {@link Soup.Server}.
+         * @param use_acl `true`, if the path should query the GUPnPContext::acl before serving the resource, `false` otherwise.
          * @param path the toplevel path for the handler.
-         * @param callback callback to invoke for requests under @path
-         * @param destroy A #GDestroyNotify for @user_data or %NULL if none.
+         * @param callback callback to invoke for requests under `path`
+         * @param destroy A {@link GLib.DestroyNotify} for `user_data` or `null` if none.
          */
         add_server_handler(
             use_acl: boolean,
             path: string,
             callback: Soup.ServerCallback,
-            destroy?: GLib.DestroyNotify | null,
+            destroy: GLib.DestroyNotify | null,
         ): void;
         /**
-         * Access the #GUPnPAcl associated with this client. If there isn't any,
-         * retturns %NULL. The returned ACL must not be freed.
-         * @returns The access control list associated with this context or %NULL if no acl is set.
+         * Access the {@link GUPnP.Acl} associated with this client. If there isn't any,
+         * retturns `null`. The returned ACL must not be freed.
+         * @returns The access control list associated with this context or `null` if no acl is set.
          */
         get_acl(): Acl;
         /**
@@ -471,13 +521,13 @@ export namespace GUPnP {
          */
         get_port(): number;
         /**
-         * Get the #SoupServer HTTP server that GUPnP is using.
-         * @returns The #SoupServer used by GUPnP. Do not unref this when finished.
+         * Get the {@link Soup.Server} HTTP server that GUPnP is using.
+         * @returns The {@link Soup.Server} used by GUPnP. Do not unref this when finished.
          */
         get_server(): Soup.Server;
         /**
-         * Get the #SoupSession object that GUPnP is using.
-         * @returns The #SoupSession used by GUPnP. Do not unref this when finished.
+         * Get the {@link Soup.Session} object that GUPnP is using.
+         * @returns The {@link Soup.Session} used by GUPnP. Do not unref this when finished.
          */
         get_session(): Soup.Session;
         /**
@@ -491,7 +541,7 @@ export namespace GUPnP {
          * `local_path`.LOCALE (if they exist) will be served up when LOCALE is
          * specified in the request's Accept-Language header.
          * @param local_path Path to the local file or folder to be hosted
-         * @param server_path Web server path where @local_path should be hosted
+         * @param server_path Web server path where `local_path` should be hosted
          */
         host_path(local_path: string, server_path: string): void;
         /**
@@ -499,12 +549,12 @@ export namespace GUPnP {
          * path `server_path` must already be hosted by `context`.
          * @param local_path Path to the local file or folder to be hosted
          * @param server_path Web server path already being hosted
-         * @param user_agent The user-agent as a #GRegex.
-         * @returns %TRUE on success, %FALSE otherwise.
+         * @param user_agent The user-agent as a {@link GLib.Regex}.
+         * @returns `true` on success, `false` otherwise.
          */
         host_path_for_agent(local_path: string, server_path: string, user_agent: GLib.Regex): boolean;
         /**
-         * Remove a #SoupServerCallback from the #GUPnPContext<!-- -->'s #SoupServer.
+         * Remove a {@link Soup.ServerCallback} from the {@link GUPnP.Context}<!-- -->'s {@link Soup.Server}.
          * @param path the toplevel path for the handler.
          */
         remove_server_handler(path: string): void;
@@ -512,15 +562,15 @@ export namespace GUPnP {
          * Utility function to re-write an uri to the IPv6 link-local form which has
          * the zone index appended to the IP address.
          * @param uri an uri to rewrite if necessary
-         * @returns A re-written version of the @uri if the context is on a link-local IPv6 address, a copy of the @uri otherwise or %NULL if @uri was invalid
+         * @returns A re-written version of the `uri` if the context is on a link-local IPv6 address, a copy of the `uri` otherwise or `null` if `uri` was invalid
          */
         rewrite_uri(uri: string): string;
         /**
          * Attach or remove the assoicated access control list to this context. If
-         * `acl` is %NULL, the current access control list will be removed.
-         * @param acl The new access control list or %NULL to remove the current list.
+         * `acl` is `null`, the current access control list will be removed.
+         * @param acl The new access control list or `null` to remove the current list.
          */
-        set_acl(acl?: Acl | null): void;
+        set_acl(acl: Acl | null): void;
         /**
          * Set the default language for the Content-Language header to `language`.
          *
@@ -543,34 +593,32 @@ export namespace GUPnP {
          * @param server_path Web server path where the file or folder is hosted
          */
         unhost_path(server_path: string): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -580,40 +628,40 @@ export namespace GUPnP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -623,13 +671,14 @@ export namespace GUPnP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -643,90 +692,68 @@ export namespace GUPnP {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -734,7 +761,7 @@ export namespace GUPnP {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -742,9 +769,9 @@ export namespace GUPnP {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -764,9 +791,9 @@ export namespace GUPnP {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -780,33 +807,33 @@ export namespace GUPnP {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -839,21 +866,21 @@ export namespace GUPnP {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -863,8 +890,8 @@ export namespace GUPnP {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -881,14 +908,14 @@ export namespace GUPnP {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -899,13 +926,13 @@ export namespace GUPnP {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -936,21 +963,21 @@ export namespace GUPnP {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -960,33 +987,34 @@ export namespace GUPnP {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -995,6 +1023,7 @@ export namespace GUPnP {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1003,12 +1032,14 @@ export namespace GUPnP {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1017,20 +1048,22 @@ export namespace GUPnP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1042,8 +1075,9 @@ export namespace GUPnP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1082,19 +1116,19 @@ export namespace GUPnP {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             enabled: boolean;
-            entries: string[];
+            entries: string[] | null;
         }
     }
 
     /**
-     * Network context filter, used by [class`GUPnP`.ContextManager]
+     * Network context filter, used by {@link GUPnP.ContextManager}
      *
-     * #GUPnPContextFilter handles network filtering. It provides API to manage a
-     * list of entries that will be used to positive filter networks. The #GUPnPContextFilter
+     * {@link GUPnP.ContextFilter} handles network filtering. It provides API to manage a
+     * list of entries that will be used to positive filter networks. The {@link GUPnP.ContextFilter}
      * could be enabled or not. If it's enabled but the entries list is empty, it
      * behaves as if being disabled.
      *
-     * The GUPnPContextFilter is used with the [class`GUPnP`.ContextManager]
+     * The GUPnPContextFilter is used with the {@link GUPnP.ContextManager}
      * to narrow down the contexts that are notified by it.
      *
      * Contexts can be filtered by the following criteria:
@@ -1104,7 +1138,7 @@ export namespace GUPnP {
      *  - The name of the network the context would join
      *
      * To add or modify a context filter, you need to retrieve the current context filter
-     * from the context manger using [method`GUPnP`.ContextManager.get_context_filter].
+     * from the context manger using {@link GUPnP.ContextManager.get_context_filter}.
      *
      * By default, a context filter is empty and disabled.
      *
@@ -1125,6 +1159,8 @@ export namespace GUPnP {
      * gupnp_context_filter_add_entryv (filter, filter_entries);
      * gupnp_context_filter_set_enabled (filter, TRUE);
      * ```
+     * @gir-type Class
+     * @since 1.4.0
      */
     class ContextFilter extends GObject.Object {
         static $gtype: GObject.GType<ContextFilter>;
@@ -1133,13 +1169,17 @@ export namespace GUPnP {
 
         /**
          * Whether this context filter is active or not.
+         * @since 1.4.0
+         * @default false
          */
         get enabled(): boolean;
         set enabled(val: boolean);
         /**
          * A list of items to filter for.
+         * @since 1.4.0
+         * @construct-only
          */
-        get entries(): string[];
+        get entries(): string[] | null;
 
         /**
          * Compile-time signal type information.
@@ -1158,16 +1198,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContextFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1181,56 +1224,56 @@ export namespace GUPnP {
          * filter networks.
          * if `entry` already exists, it won't be added a second time.
          * @param entry A value used to filter network
-         * @returns %TRUE if @entry is added, %FALSE otherwise.
+         * @returns `true` if `entry` is added, `false` otherwise.
          */
         add_entry(entry: string): boolean;
         /**
-         * Add a list of entries to a #GUPnPContextFilter. This is a helper function to
-         * directly add a %NULL-terminated array of string usually acquired from
+         * Add a list of entries to a {@link GUPnP.ContextFilter}. This is a helper function to
+         * directly add a `null`-terminated array of string usually acquired from
          * command line arguments.
-         * @param entries A %NULL-terminated list of strings
+         * @param entries A `null`-terminated list of strings
          */
         add_entryv(entries: string[]): void;
         /**
          * It will check if the `context` is allowed or not. The `context_filter` will
-         * check all its entries against #GUPnPContext interface, host IP and network
+         * check all its entries against {@link GUPnP.Context} interface, host IP and network
          * fields information. This function doesn't take into account the
          * `context_filter` status (enabled or not).
-         * @param context A #GUPnPContext to test.
-         * @returns %TRUE if @context is matching the @context_filter criteria, %FALSE otherwise.
+         * @param context A {@link GUPnP.Context} to test.
+         * @returns `true` if `context` is matching the `context_filter` criteria, `false` otherwise.
          */
         check_context(context: Context): boolean;
         /**
-         * Remove all entries from #GList that compose the context filter.
-         * The list is now empty. Even if #GUPnPContextFilter is enabled, it will have
+         * Remove all entries from {@link GLib.List} that compose the context filter.
+         * The list is now empty. Even if {@link GUPnP.ContextFilter} is enabled, it will have
          * the same behavior as if it was disabled.
          */
         clear(): void;
         /**
-         * Return the status of the #GUPnPContextFilter
-         * @returns %TRUE if @context_filter is enabled, %FALSE otherwise.
+         * Return the status of the {@link GUPnP.ContextFilter}
+         * @returns `true` if `context_filter` is enabled, `false` otherwise.
          */
         get_enabled(): boolean;
         /**
-         * Get the #GList of entries that compose the context filter. Do not free
-         * @returns a #GList of entries used to filter networks, interfaces,... or %NULL.
+         * Get the {@link GLib.List} of entries that compose the context filter. Do not free
+         * @returns a {@link GLib.List} of entries used to filter networks, interfaces,... or `null`.
          */
         get_entries(): string[] | null;
         /**
-         * Return the state of the entries list of #GUPnPContextFilter
-         * @returns %TRUE if @context_filter is empty, %FALSE otherwise.
+         * Return the state of the entries list of {@link GUPnP.ContextFilter}
+         * @returns `true` if `context_filter` is empty, `false` otherwise.
          */
         is_empty(): boolean;
         /**
          * Remove `entry` in the list of valid criteria used by `context_filter` to
          * filter networks.
          * @param entry A value to remove from the filter list.
-         * @returns %TRUE if @entry is removed, %FALSE otherwise.
+         * @returns `true` if `entry` is removed, `false` otherwise.
          */
         remove_entry(entry: string): boolean;
         /**
-         * Enable or disable the #GUPnPContextFilter to perform the network filtering.
-         * @param enable %TRUE to enable @context_filter, %FALSE otherwise
+         * Enable or disable the {@link GUPnP.ContextFilter} to perform the network filtering.
+         * @param enable `true` to enable `context_filter`, `false` otherwise
          */
         set_enabled(enable: boolean): void;
     }
@@ -1238,7 +1281,17 @@ export namespace GUPnP {
     namespace ContextManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Signals the availability of new {@link GUPnP.Context}.
+             * @signal
+             * @run-first
+             */
             'context-available': (arg0: Context) => void;
+            /**
+             * Signals the unavailability of a {@link GUPnP.Context}.
+             * @signal
+             * @run-first
+             */
             'context-unavailable': (arg0: Context) => void;
             'notify::context-filter': (pspec: GObject.ParamSpec) => void;
             'notify::family': (pspec: GObject.ParamSpec) => void;
@@ -1259,17 +1312,19 @@ export namespace GUPnP {
     }
 
     /**
-     * A manager for [class`GUPnP`.Context] instances.
+     * A manager for {@link GUPnP.Context} instances.
      *
      * This utility class that takes care of dynamic creation and destruction of
-     * #GUPnPContext objects for all available network interfaces as they go up
+     * {@link GUPnP.Context} objects for all available network interfaces as they go up
      * (connect) and down (disconnect), respectively.
      *
      * The final implementation depends either on the underlying operating system
      * or can configured during compile time.
      *
-     * It also provides a simple filtering facility if required. See [method`GUPnP`.ContextManager.get_context_filter] and
-     * [class`GUPnP`.ContextFilter] for details.
+     * It also provides a simple filtering facility if required. See {@link GUPnP.ContextManager.get_context_filter} and
+     * {@link GUPnP.ContextFilter} for details.
+     * @gir-type Class
+     * @since 0.14.0
      */
     abstract class ContextManager extends GObject.Object {
         static $gtype: GObject.GType<ContextManager>;
@@ -1278,31 +1333,44 @@ export namespace GUPnP {
 
         /**
          * The context filter to use.
+         * @read-only
          */
         get context_filter(): ContextFilter;
         /**
          * The context filter to use.
+         * @read-only
          */
         get contextFilter(): ContextFilter;
         /**
-         * The socket family to create contexts for. Use %G_SOCKET_FAMILY_INVALID
-         * for any or %G_SOCKET_FAMILY_IPV4 for IPv4 contexts or
-         * %G_SOCKET_FAMILY_IPV6 for IPv6 contexts
+         * The socket family to create contexts for. Use {@link Gio.SocketFamily.INVALID}
+         * for any or {@link Gio.SocketFamily.IPV4} for IPv4 contexts or
+         * {@link Gio.SocketFamily.IPV6} for IPv6 contexts
+         * @since 1.2.0
+         * @construct-only
+         * @default Gio.SocketFamily.INVALID
          */
         get family(): Gio.SocketFamily;
         /**
          * Port the contexts listen on, or 0 if you don't care what
-         * port is used by #GUPnPContext objects created by this object.
+         * port is used by {@link GUPnP.Context} objects created by this object.
+         * @construct-only
+         * @default 0
          */
         get port(): number;
         /**
-         * The UDA version the contexts will support. Use %GSSDP_UDA_VERSION_UNSPECIFIED
+         * The UDA version the contexts will support. Use {@link GSSDP.UDAVersion.VERSION_UNSPECIFIED}
          * for using the default UDA version.
+         * @since 1.2.0
+         * @construct-only
+         * @default GSSDP.UDAVersion.VERSION_UNSPECIFIED
          */
         get uda_version(): GSSDP.UDAVersion;
         /**
-         * The UDA version the contexts will support. Use %GSSDP_UDA_VERSION_UNSPECIFIED
+         * The UDA version the contexts will support. Use {@link GSSDP.UDAVersion.VERSION_UNSPECIFIED}
          * for using the default UDA version.
+         * @since 1.2.0
+         * @construct-only
+         * @default GSSDP.UDAVersion.VERSION_UNSPECIFIED
          */
         get udaVersion(): GSSDP.UDAVersion;
 
@@ -1323,16 +1391,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContextManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1342,22 +1413,22 @@ export namespace GUPnP {
         // Static methods
 
         /**
-         * Factory-method to create a new #GUPnPContextManager. The final type of the
-         * #GUPnPContextManager depends on the compile-time selection or - in case of
+         * Factory-method to create a new {@link GUPnP.ContextManager}. The final type of the
+         * {@link GUPnP.ContextManager} depends on the compile-time selection or - in case of
          * NetworkManager - on its availability during run-time. If it is not available,
          * the implementation falls back to the basic Unix context manager instead.
          *
-         * Equivalent to calling #gupnp_context_manager_create_full (%GSSDP_UDA_VERSION_1_0, %G_SOCKET_FAMILY_IPV4, port);
+         * Equivalent to calling `gupnp_context_manager_create_full` ({@link GSSDP.UDAVersion.VERSION_1_0}, {@link Gio.SocketFamily.IPV4}, port);
          * @param port Port to create contexts for, or 0 if you don't care what port is used.
          */
         static create(port: number): ContextManager;
         /**
-         * Factory-method to create a new #GUPnPContextManager. The final type of the
-         * #GUPnPContextManager depends on the compile-time selection or - in case of
+         * Factory-method to create a new {@link GUPnP.ContextManager}. The final type of the
+         * {@link GUPnP.ContextManager} depends on the compile-time selection or - in case of
          * NetworkManager - on its availability during run-time. If it is not available,
          * the implementation falls back to the basic Unix context manager instead.
-         * @param uda_version #GSSDPUDAVersion the created contexts should implement (UDA 1.0 or 1.1). For %GSSDP_UDA_VERSION_UNSPECIFIED for default.
-         * @param family #GSocketFamily to create the context for
+         * @param uda_version {@link GSSDP.UDAVersion} the created contexts should implement (UDA 1.0 or 1.1). For {@link GSSDP.UDAVersion.VERSION_UNSPECIFIED} for default.
+         * @param family {@link Gio.SocketFamily} to create the context for
          * @param port Port to create contexts for, or 0 if you don't care what port is used.
          */
         static create_full(uda_version: GSSDP.UDAVersion, family: Gio.SocketFamily, port: number): ContextManager;
@@ -1365,8 +1436,8 @@ export namespace GUPnP {
         // Methods
 
         /**
-         * Get the #GUPnPContextFilter associated with `manager`.
-         * @returns The #GUPnPContextFilter associated with this context manager.
+         * Get the {@link GUPnP.ContextFilter} associated with `manager`.
+         * @returns The {@link GUPnP.ContextFilter} associated with this context manager.
          */
         get_context_filter(): ContextFilter;
         /**
@@ -1375,8 +1446,8 @@ export namespace GUPnP {
          */
         get_port(): number;
         /**
-         * Get the #GSocketFamily the contexts are created for. Can be
-         * %G_SOCKET_FAMILY_IPV6, %G_SOCKET_FAMILY_IPV4 or %G_SOCKET_FAMILY_INVALID for
+         * Get the {@link Gio.SocketFamily} the contexts are created for. Can be
+         * {@link Gio.SocketFamily.IPV6}, {@link Gio.SocketFamily.IPV4} or {@link Gio.SocketFamily.INVALID} for
          * both
          * @returns The socket family
          */
@@ -1388,10 +1459,10 @@ export namespace GUPnP {
         get_uda_version(): GSSDP.UDAVersion;
         /**
          * By calling this function, you are asking `manager` to keep a reference to
-         * `control_point` until its associated #GUPnPContext is no longer available.
+         * `control_point` until its associated {@link GUPnP.Context} is no longer available.
          * You usually want to call this function from your
-         * [signal`GUPnP`.ContextManager::context-available] handler after you create a
-         * #GUPnPControlPoint object for the newly available context.
+         * `GUPnP.ContextManager::context-available` handler after you create a
+         * {@link GUPnP.ControlPoint} object for the newly available context.
          * You usually then give up your own reference to the control point so it will be
          * automatically destroyed if its context is no longer available.
          *
@@ -1406,15 +1477,15 @@ export namespace GUPnP {
          *     g_object_unref (cp);
          * }
          * ```
-         * @param control_point The #GUPnPControlPoint to be taken care of
+         * @param control_point The {@link GUPnP.ControlPoint} to be taken care of
          */
         manage_control_point(control_point: ControlPoint): void;
         /**
          * By calling this function, you are asking `manager` to keep a reference to
-         * `root_device` when its associated #GUPnPContext is no longer available. You
+         * `root_device` when its associated {@link GUPnP.Context} is no longer available. You
          * usually want to call this function from
-         * [signal`GUPnP`.ContextManager::context-available] handler after you create a
-         * #GUPnPRootDevice object for the newly available context.
+         * `GUPnP.ContextManager::context-available` handler after you create a
+         * {@link GUPnP.RootDevice} object for the newly available context.
          *
          * You usually then give up your own reference to the root device so it will be
          * automatically destroyed if its context is no longer available.
@@ -1432,7 +1503,7 @@ export namespace GUPnP {
          *     g_object_unref (rd);
          * }
          * ```
-         * @param root_device The #GUPnPRootDevice to be taken care of
+         * @param root_device The {@link GUPnP.RootDevice} to be taken care of
          */
         manage_root_device(root_device: RootDevice): void;
         /**
@@ -1447,9 +1518,33 @@ export namespace GUPnP {
     namespace ControlPoint {
         // Signal signatures
         interface SignalSignatures extends GSSDP.ResourceBrowser.SignalSignatures {
+            /**
+             * The ::device-proxy-available signal is emitted whenever a new
+             * device has become available.
+             * @signal
+             * @run-last
+             */
             'device-proxy-available': (arg0: DeviceProxy) => void;
+            /**
+             * The ::device-proxy-unavailable signal is emitted whenever a
+             * device is not available any more.
+             * @signal
+             * @run-last
+             */
             'device-proxy-unavailable': (arg0: DeviceProxy) => void;
+            /**
+             * The ::service-proxy-available signal is emitted whenever a new
+             * service has become available.
+             * @signal
+             * @run-last
+             */
             'service-proxy-available': (arg0: ServiceProxy) => void;
+            /**
+             * The ::service-proxy-unavailable signal is emitted whenever a
+             * service is not available any more.
+             * @signal
+             * @run-last
+             */
             'service-proxy-unavailable': (arg0: ServiceProxy) => void;
             'notify::resource-factory': (pspec: GObject.ParamSpec) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
@@ -1469,14 +1564,15 @@ export namespace GUPnP {
     /**
      * Network resource discovery.
      *
-     * #GUPnPControlPoint handles device and service discovery. After creating
-     * a control point and activating it using [method`GSSDP`.ResourceBrowser.set_active],
-     * the [signal`GUPnP`.ControlPoint::device-proxy-available],
-     * [signal`GUPnP`.ControlPoint::service-proxy-available],
-     * [signal`GUPnP`.ControlPoint::device-proxy-unavailable] and
-     * [signal`GUPnP`.ControlPoint::service-proxy-unavailable] signals will
+     * {@link GUPnP.ControlPoint} handles device and service discovery. After creating
+     * a control point and activating it using {@link GSSDP.ResourceBrowser.set_active},
+     * the `GUPnP.ControlPoint::device-proxy-available`,
+     * `GUPnP.ControlPoint::service-proxy-available`,
+     * `GUPnP.ControlPoint::device-proxy-unavailable` and
+     * `GUPnP.ControlPoint::service-proxy-unavailable` signals will
      * be emitted whenever the availability of a device or service matching
      * the specified discovery target changes.
+     * @gir-type Class
      */
     class ControlPoint extends GSSDP.ResourceBrowser {
         static $gtype: GObject.GType<ControlPoint>;
@@ -1485,10 +1581,12 @@ export namespace GUPnP {
 
         /**
          * The resource factory to use. Set to NULL for default factory.
+         * @construct-only
          */
         get resource_factory(): ResourceFactory;
         /**
          * The resource factory to use. Set to NULL for default factory.
+         * @construct-only
          */
         get resourceFactory(): ResourceFactory;
 
@@ -1513,16 +1611,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ControlPoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ControlPoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ControlPoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1531,27 +1632,43 @@ export namespace GUPnP {
 
         // Virtual methods
 
+        /**
+         * @param proxy
+         * @virtual
+         */
         vfunc_device_proxy_available(proxy: DeviceProxy): void;
+        /**
+         * @param proxy
+         * @virtual
+         */
         vfunc_device_proxy_unavailable(proxy: DeviceProxy): void;
+        /**
+         * @param proxy
+         * @virtual
+         */
         vfunc_service_proxy_available(proxy: ServiceProxy): void;
+        /**
+         * @param proxy
+         * @virtual
+         */
         vfunc_service_proxy_unavailable(proxy: ServiceProxy): void;
 
         // Methods
 
         /**
-         * Get the #GUPnPControlPoint associated with `control_point`.
-         * @returns The #GUPnPContext.
+         * Get the {@link GUPnP.ControlPoint} associated with `control_point`.
+         * @returns The {@link GUPnP.Context}.
          */
         get_context(): Context;
         /**
-         * Get the #GUPnPResourceFactory used by the `control_point`. If none was set during construction
-         * by calling [ctor`GUPnP`.ControlPoint.new_full], equivalent to calling
-         * [func`GUPnP`.ResourceFactory.get_default]
-         * @returns The #GUPnPResourceFactory used by this control point
+         * Get the {@link GUPnP.ResourceFactory} used by the `control_point`. If none was set during construction
+         * by calling {@link GUPnP.ControlPoint.new_full}, equivalent to calling
+         * {@link GUPnP.ResourceFactory.get_default}
+         * @returns The {@link GUPnP.ResourceFactory} used by this control point
          */
         get_resource_factory(): ResourceFactory;
         /**
-         * Get the list of #GUPnPDeviceProxy objects the control point currently assumes to
+         * Get the list of {@link GUPnP.DeviceProxy} objects the control point currently assumes to
          * be active.
          *
          * Since a device might have gone offline without signalizing it, but
@@ -1563,7 +1680,7 @@ export namespace GUPnP {
          */
         list_device_proxies(): DeviceProxy[];
         /**
-         * Get the list of discovered #GUPnPServiceProxy objects the control point currently assumes to
+         * Get the list of discovered {@link GUPnP.ServiceProxy} objects the control point currently assumes to
          * be active.
          *
          * Since a device might have gone offline without signalizing it, but
@@ -1601,9 +1718,10 @@ export namespace GUPnP {
     /**
      * Base class for UPnP device implementations.
      *
-     * #GUPnPDevice allows for retrieving a device's sub-devices
-     * and services. #GUPnPDevice implements the #GUPnPDeviceInfo
+     * {@link GUPnP.Device} allows for retrieving a device's sub-devices
+     * and services. {@link GUPnP.Device} implements the {@link GUPnP.DeviceInfo}
      * interface.
+     * @gir-type Class
      */
     class Device extends DeviceInfo {
         static $gtype: GObject.GType<Device>;
@@ -1611,13 +1729,15 @@ export namespace GUPnP {
         // Properties
 
         /**
-         * The containing #GUPnPRootDevice, or NULL if this is the root
+         * The containing {@link GUPnP.RootDevice}, or NULL if this is the root
          * device.
+         * @construct-only
          */
         get root_device(): RootDevice;
         /**
-         * The containing #GUPnPRootDevice, or NULL if this is the root
+         * The containing {@link GUPnP.RootDevice}, or NULL if this is the root
          * device.
+         * @construct-only
          */
         get rootDevice(): RootDevice;
 
@@ -1638,16 +1758,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1690,6 +1813,7 @@ export namespace GUPnP {
      *
      * This class aggregates the information that is shared between remote and local
      * devices.
+     * @gir-type Class
      */
     abstract class DeviceInfo extends GObject.Object {
         static $gtype: GObject.GType<DeviceInfo>;
@@ -1697,15 +1821,20 @@ export namespace GUPnP {
         // Properties
 
         /**
-         * The #GUPnPContext to use.
+         * The {@link GUPnP.Context} to use.
+         * @construct-only
          */
         get context(): Context;
         /**
          * The device type, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
+         * @construct-only
+         * @default null
          */
         get device_type(): string;
         /**
          * The device type, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
+         * @construct-only
+         * @default null
          */
         get deviceType(): string;
         /**
@@ -1715,32 +1844,38 @@ export namespace GUPnP {
         set document(val: XMLDoc);
         /**
          * Private property.
+         * @write-only
          */
         set element(val: any);
         /**
          * The location of the device description file.
+         * @default null
          */
         get location(): string;
         set location(val: string);
         /**
          * The resource factory to use. Set to NULL for default factory.
+         * @construct-only
          */
         get resource_factory(): ResourceFactory;
         /**
          * The resource factory to use. Set to NULL for default factory.
+         * @construct-only
          */
         get resourceFactory(): ResourceFactory;
         /**
          * The UDN of this device.
+         * @construct-only
+         * @default null
          */
         get udn(): string;
         /**
-         * The URL base (#GUri).
+         * The URL base ({@link GLib.Uri}).
          */
         get url_base(): GLib.Uri;
         set url_base(val: GLib.Uri);
         /**
-         * The URL base (#GUri).
+         * The URL base ({@link GLib.Uri}).
          */
         get urlBase(): GLib.Uri;
         set urlBase(val: GLib.Uri);
@@ -1762,16 +1897,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1781,47 +1919,47 @@ export namespace GUPnP {
         // Methods
 
         /**
-         * Get the associated #GUPnPContext.
-         * @returns The #GUPnPContext the devices is operating on.
+         * Get the associated {@link GUPnP.Context}.
+         * @returns The {@link GUPnP.Context} the devices is operating on.
          */
         get_context(): Context;
         /**
          * This function provides generic access to the contents of arbitrary elements
          * in the device description file.
          * @param element Name of the description element to retrieve
-         * @returns a newly allocated string containing the requested value or %NULL if the device description doesn't contain the given @element
+         * @returns a newly allocated string containing the requested value or `null` if the device description doesn't contain the given `element`
          */
         get_description_value(element: string): string | null;
         /**
          * Get the device with type `type` directly contained in `info` as
-         * a new object implementing #GUPnPDeviceInfo, or %NULL if no such device
+         * a new object implementing {@link GUPnP.DeviceInfo}, or `null` if no such device
          * was found. The returned object should be unreffed when done.
          *
          * Note that devices are not cached internally, so that every time you call
          * this function a new object is created. The application must cache any used
          * devices if it wishes to keep them around and re-use them.
          * @param type The type of the device to be retrieved.
-         * @returns A new #GUPnPDeviceInfo.
+         * @returns A new {@link GUPnP.DeviceInfo}.
          */
         get_device(type: string): DeviceInfo | null;
         /**
-         * Get the UPnP device type of this #GUPnPDeviceInfo, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
-         * @returns A constant string, or %NULL.
+         * Get the UPnP device type of this {@link GUPnP.DeviceInfo}, e.g. `urn:schemas-upnp-org:device:InternetGatewayDevice:1`
+         * @returns A constant string, or `null`.
          */
         get_device_type(): string;
         /**
          * Get the friendly name of the device.
-         * @returns A newly allocated string containing the "friendly name" of the device, or %NULL if not available. g_free() after use.
+         * @returns A newly allocated string containing the "friendly name" of the device, or `null` if not available. `g_free()` after use.
          */
         get_friendly_name(): string | null;
         /**
          * Download the device icon matching the request parameters. For details on
-         * the lookup procedure, see [method`GUPnP`.DeviceInfo.get_icon_url]
-         * @param requested_mime_type The requested file format, or %NULL for any
+         * the lookup procedure, see {@link GUPnP.DeviceInfo.get_icon_url}
+         * @param requested_mime_type The requested file format, or `null` for any
          * @param requested_depth The requested color depth, or -1 for any
          * @param requested_width The requested width, or -1 for any
          * @param requested_height The requested height, or -1 for any
-         * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
+         * @param prefer_bigger `true` if a bigger, rather than a smaller icon should be returned if no exact match could be found
          * @param cancellable
          */
         get_icon_async(
@@ -1830,16 +1968,16 @@ export namespace GUPnP {
             requested_width: number,
             requested_height: number,
             prefer_bigger: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<[GLib.Bytes, string, number, number, number]>;
         /**
          * Download the device icon matching the request parameters. For details on
-         * the lookup procedure, see [method`GUPnP`.DeviceInfo.get_icon_url]
-         * @param requested_mime_type The requested file format, or %NULL for any
+         * the lookup procedure, see {@link GUPnP.DeviceInfo.get_icon_url}
+         * @param requested_mime_type The requested file format, or `null` for any
          * @param requested_depth The requested color depth, or -1 for any
          * @param requested_width The requested width, or -1 for any
          * @param requested_height The requested height, or -1 for any
-         * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
+         * @param prefer_bigger `true` if a bigger, rather than a smaller icon should be returned if no exact match could be found
          * @param cancellable
          * @param callback
          */
@@ -1854,12 +1992,12 @@ export namespace GUPnP {
         ): void;
         /**
          * Download the device icon matching the request parameters. For details on
-         * the lookup procedure, see [method`GUPnP`.DeviceInfo.get_icon_url]
-         * @param requested_mime_type The requested file format, or %NULL for any
+         * the lookup procedure, see {@link GUPnP.DeviceInfo.get_icon_url}
+         * @param requested_mime_type The requested file format, or `null` for any
          * @param requested_depth The requested color depth, or -1 for any
          * @param requested_width The requested width, or -1 for any
          * @param requested_height The requested height, or -1 for any
-         * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
+         * @param prefer_bigger `true` if a bigger, rather than a smaller icon should be returned if no exact match could be found
          * @param cancellable
          * @param callback
          */
@@ -1869,13 +2007,17 @@ export namespace GUPnP {
             requested_width: number,
             requested_height: number,
             prefer_bigger: boolean,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[GLib.Bytes, string, number, number, number]> | void;
+        /**
+         * @param res A GAsyncResult
+         * @returns A GBytes contaning the icon or NULL on either error or no matching icon was found.
+         */
         get_icon_finish(res: Gio.AsyncResult): [GLib.Bytes, string, number, number, number];
         /**
          * Get an URL pointing to the icon most closely matching the
-         * given criteria, or %NULL.
+         * given criteria, or `null`.
          *
          * If `requested_mime_type` is set, only icons with
          * this mime type will be returned. If `requested_depth` is set, only icons with
@@ -1883,12 +2025,12 @@ export namespace GUPnP {
          * `requested_height` are set, only icons that are this size or smaller are
          * returned, unless `prefer_bigger` is set, in which case the next biggest icon
          * will be returned. The returned strings should be freed.
-         * @param requested_mime_type The requested file format, or %NULL for any
+         * @param requested_mime_type The requested file format, or `null` for any
          * @param requested_depth The requested color depth, or -1 for any
          * @param requested_width The requested width, or -1 for any
          * @param requested_height The requested height, or -1 for any
-         * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
-         * @returns a string, or %NULL.  g_free() after use.
+         * @param prefer_bigger `true` if a bigger, rather than a smaller icon should be returned if no exact match could be found
+         * @returns a string, or `null`.  `g_free()` after use.
          */
         get_icon_url(
             requested_mime_type: string | null,
@@ -1904,59 +2046,59 @@ export namespace GUPnP {
         get_location(): string;
         /**
          * Get the manufacturer of the device.
-         * @returns A newly allocated string containing the manufacturer of the device, or %NULL if not available. g_free() after use.
+         * @returns A newly allocated string containing the manufacturer of the device, or `null` if not available. `g_free()` after use.
          */
         get_manufacturer(): string | null;
         /**
          * Get an URL pointing to the manufacturer's website.
-         * @returns A string, or %NULL. g_free() after use.
+         * @returns A string, or `null`. `g_free()` after use.
          */
         get_manufacturer_url(): string | null;
         /**
          * Get the description of the device model.
-         * @returns A string, or %NULL. g_free() after use.
+         * @returns A string, or `null`. `g_free()` after use.
          */
         get_model_description(): string | null;
         /**
          * Get the model name of the device.
-         * @returns A string, or %NULL. g_free() after use.
+         * @returns A string, or `null`. `g_free()` after use.
          */
         get_model_name(): string | null;
         /**
          * Get the model number of the device.
-         * @returns A string, or %NULL. g_free() after use.
+         * @returns A string, or `null`. `g_free()` after use.
          */
         get_model_number(): string | null;
         /**
          * Get an URL pointing to the device model's website.
-         * @returns A string, or %NULL. g_free() after use.
+         * @returns A string, or `null`. `g_free()` after use.
          */
         get_model_url(): string | null;
         /**
          * Get an URL pointing to the device's presentation page, for web-based
          * administration, if available.
-         * @returns A string, or %NULL. g_free() after use.
+         * @returns A string, or `null`. `g_free()` after use.
          */
         get_presentation_url(): string | null;
         /**
-         * Get the #GUPnPResourceFactory used by the `device_info`.
-         * @returns A #GUPnPResourceFactory.
+         * Get the {@link GUPnP.ResourceFactory} used by the `device_info`.
+         * @returns A {@link GUPnP.ResourceFactory}.
          */
         get_resource_factory(): ResourceFactory;
         /**
          * Get the serial number of the device.
-         * @returns A string, or %NULL. g_free() after use.
+         * @returns A string, or `null`. `g_free()` after use.
          */
         get_serial_number(): string | null;
         /**
          * Get the service with type `type` directly contained in `info` as a new object
-         * implementing #GUPnPServiceInfo, or %NULL if no such device was found.
+         * implementing {@link GUPnP.ServiceInfo}, or `null` if no such device was found.
          *
          * Note that services are not cached internally, so that every time you call
          * this function a new object is created. The application must cache any used
          * services if it wishes to keep them around and re-use them.
          * @param type The type of the service to be retrieved.
-         * @returns A #GUPnPServiceInfo.
+         * @returns A {@link GUPnP.ServiceInfo}.
          */
         get_service(type: string): ServiceInfo | null;
         /**
@@ -1966,59 +2108,59 @@ export namespace GUPnP {
         get_udn(): string;
         /**
          * Get the Universal Product Code of the device.
-         * @returns A string, or %NULL. g_free() after use.
+         * @returns A string, or `null`. `g_free()` after use.
          */
         get_upc(): string | null;
         /**
          * Get the URL base of this device.
-         * @returns A #SoupURI.
+         * @returns A `SoupURI`.
          */
         get_url_base(): GLib.Uri;
         /**
-         * Get a #GList of strings representing the types of the devices
+         * Get a {@link GLib.List} of strings representing the types of the devices
          * directly contained in `info`.
-         * @returns A #GList of strings. The elements should be g_free()'d and the list should be g_list_free()'d.
+         * @returns A {@link GLib.List} of strings. The elements should be `g_free()`'d and the list should be `g_list_free()`'d.
          */
         list_device_types(): string[] | null;
         /**
-         * Get a #GList of new objects implementing #GUPnPDeviceInfo
-         * representing the devices directly contained in `info,` excluding itself.
+         * Get a {@link GLib.List} of new objects implementing {@link GUPnP.DeviceInfo}
+         * representing the devices directly contained in `info`, excluding itself.
          *
          * Note that devices are not cached internally, so that every time you
          * call this function new objects are created. The application
          * must cache any used devices if it wishes to keep them around and re-use
          * them.
-         * @returns a #GList of new #GUPnPDeviceInfo objects or %NULL if no devices are
+         * @returns a {@link GLib.List} of new {@link GUPnP.DeviceInfo} objects or `null` if no devices are
          */
         list_devices(): DeviceInfo[] | null;
         /**
-         * Get a #GList of strings that represent the device capabilities as announced
+         * Get a {@link GLib.List} of strings that represent the device capabilities as announced
          * in the device description file using the &lt;dlna:X_DLNACAP&gt; element.
-         * @returns a #GList of newly allocated strings or %NULL if the device description doesn't contain the &lt;dlna:X_DLNACAP&gt; element.
+         * @returns a {@link GLib.List} of newly allocated strings or `null` if the device description doesn't contain the &lt;dlna:X_DLNACAP&gt; element.
          */
         list_dlna_capabilities(): string[] | null;
         /**
          * Get a list of strings that represent the device class and version as
          * announced in the device description file using the `<dlna:X_DLNADOC>`
          * element, e.g. `DMS-1.51`, `M-DMS-1.51` and so on.
-         * @returns a #GList of newly allocated strings or %NULL if the device description doesn't contain any `<dlna:X_DLNADOC>` element.
+         * @returns a {@link GLib.List} of newly allocated strings or `null` if the device description doesn't contain any `<dlna:X_DLNADOC>` element.
          */
         list_dlna_device_class_identifier(): string[] | null;
         /**
-         * Get a #GList of strings representing the types of the services
-         * directly contained in `info,` but not in its subdevices.
-         * @returns A #GList of strings. The elements should be g_free()'d and the list should be g_list_free()'d.
+         * Get a {@link GLib.List} of strings representing the types of the services
+         * directly contained in `info`, but not in its subdevices.
+         * @returns A {@link GLib.List} of strings. The elements should be `g_free()`'d and the list should be `g_list_free()`'d.
          */
         list_service_types(): string[] | null;
         /**
-         * Get a #GList of new objects implementing #GUPnPServiceInfo representing the
+         * Get a {@link GLib.List} of new objects implementing {@link GUPnP.ServiceInfo} representing the
          * services directly contained in `info`. The returned list should be
-         * g_list_free()'d and the elements should be g_object_unref()'d.
+         * `g_list_free()`'d and the elements should be `g_object_unref()`'d.
          *
          * Note that services are not cached internally, so that every time you call
          * function new objects are created. The application must cache any used
          * services if it wishes to keep them around and re-use them.
-         * @returns A #GList of new #GUPnPServiceInfo objects.
+         * @returns A {@link GLib.List} of new {@link GUPnP.ServiceInfo} objects.
          */
         list_services(): ServiceInfo[] | null;
     }
@@ -2044,8 +2186,9 @@ export namespace GUPnP {
     /**
      * Interaction with remote UPnP devices.
      *
-     * #GUPnPDeviceProxy allows for retrieving proxies for a device's sub-devices
-     * and services. It implements the [class`GUPnP`.DeviceInfo] abstract class.
+     * {@link GUPnP.DeviceProxy} allows for retrieving proxies for a device's sub-devices
+     * and services. It implements the {@link GUPnP.DeviceInfo} abstract class.
+     * @gir-type Class
      */
     class DeviceProxy extends DeviceInfo {
         static $gtype: GObject.GType<DeviceProxy>;
@@ -2067,16 +2210,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2096,15 +2242,16 @@ export namespace GUPnP {
     /**
      * Associating custom Services, Devices, ServiceProxies and DeviceProxies with UPnP types.
      *
-     * #GUPnPResourceFactory objects are used by [class`GUPnP`.ControlPoint],
-     * [class`GUPnP`.DeviceProxy] and [class`GUPnP`.Device] to create resource proxy and resource
+     * {@link GUPnP.ResourceFactory} objects are used by {@link GUPnP.ControlPoint},
+     * {@link GUPnP.DeviceProxy} and {@link GUPnP.Device} to create resource proxy and resource
      * objects.
      *
-     * Register UPnP type - [alias`GLib`.Type] pairs to have resource or resource proxy
-     * objects created with the specified #GType whenever an object for a resource
-     * of the specified UPnP type is requested. The #GType needs
+     * Register UPnP type - {@link GLib.Type} pairs to have resource or resource proxy
+     * objects created with the specified {@link GObject.GType} whenever an object for a resource
+     * of the specified UPnP type is requested. The {@link GObject.GType} needs
      * to be derived from the relevant resource or resource proxy type (e.g.
-     * a device proxy type needs to be derived from [class`GUPnP`.DeviceProxy]).
+     * a device proxy type needs to be derived from {@link GUPnP.DeviceProxy}).
+     * @gir-type Class
      */
     class ResourceFactory extends GObject.Object {
         static $gtype: GObject.GType<ResourceFactory>;
@@ -2128,16 +2275,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResourceFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResourceFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ResourceFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2147,7 +2297,7 @@ export namespace GUPnP {
         // Static methods
 
         /**
-         * Get the default singleton #GUPnPResourceFactory object.
+         * Get the default singleton {@link GUPnP.ResourceFactory} object.
          */
         static get_default(): ResourceFactory;
 
@@ -2184,13 +2334,13 @@ export namespace GUPnP {
          * Unregisters the GType assignment for the proxy of resource of UPnP type
          * `upnp_type`.
          * @param upnp_type The UPnP type name of the resource.
-         * @returns %TRUE if GType assignment was removed successfully, %FALSE otherwise.
+         * @returns `true` if GType assignment was removed successfully, `false` otherwise.
          */
         unregister_resource_proxy_type(upnp_type: string): boolean;
         /**
          * Unregisters the GType assignment for the resource of UPnP type `upnp_type`.
          * @param upnp_type The UPnP type name of the resource.
-         * @returns %TRUE if GType assignment was removed successfully, %FALSE otherwise.
+         * @returns `true` if GType assignment was removed successfully, `false` otherwise.
          */
         unregister_resource_type(upnp_type: string): boolean;
     }
@@ -2226,7 +2376,8 @@ export namespace GUPnP {
     /**
      * Implementation of an UPnP root device.
      *
-     * #GUPnPRootDevice allows for implementing root devices.
+     * {@link GUPnP.RootDevice} allows for implementing root devices.
+     * @gir-type Class
      */
     class RootDevice extends Device implements Gio.Initable {
         static $gtype: GObject.GType<RootDevice>;
@@ -2235,25 +2386,36 @@ export namespace GUPnP {
 
         /**
          * TRUE if this device is available.
+         * @default false
          */
         get available(): boolean;
         set available(val: boolean);
         /**
          * The path to a folder where description documents are provided.
+         * @construct-only
+         * @default null
          */
         get description_dir(): string;
         /**
          * The path to a folder where description documents are provided.
+         * @construct-only
+         * @default null
          */
         get descriptionDir(): string;
         /**
          * The path to device description document. This could either be an
          * absolute path or path relative to GUPnPRootDevice:description-dir.
+         * @since 0.13.0
+         * @construct-only
+         * @default null
          */
         get description_path(): string;
         /**
          * The path to device description document. This could either be an
          * absolute path or path relative to GUPnPRootDevice:description-dir.
+         * @since 0.13.0
+         * @construct-only
+         * @default null
          */
         get descriptionPath(): string;
 
@@ -2284,16 +2446,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RootDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2304,64 +2469,62 @@ export namespace GUPnP {
 
         /**
          * Checks whether `root_device` is available on the network (announcing its presence).
-         * @returns %TRUE if @root_device is available, %FALSE otherwise.
+         * @returns `true` if `root_device` is available, `false` otherwise.
          */
         get_available(): boolean;
         /**
          * Gets the path to the directory containing description documents related to
          * `root_device`.
-         * @returns The path to description document directory of @root_device.
+         * @returns The path to description document directory of `root_device`.
          */
         get_description_dir(): string;
         /**
          * Gets the name of the description document as hosted via HTTP.
-         * @returns The relative location of @root_device.
+         * @returns The relative location of `root_device`.
          */
         get_description_document_name(): string;
         /**
          * Gets the path to the device description document of `root_device`.
-         * @returns The path to device description document of @root_device.
+         * @returns The path to device description document of `root_device`.
          */
         get_description_path(): string;
         /**
-         * Gets the #GSSDPResourceGroup used by `root_device`.
-         * @returns The #GSSDPResourceGroup of @root_device.
+         * Gets the {@link GSSDP.ResourceGroup} used by `root_device`.
+         * @returns The {@link GSSDP.ResourceGroup} of `root_device`.
          */
         get_ssdp_resource_group(): GSSDP.ResourceGroup;
         /**
          * Sets the availability of `root_device` on the network (announcing
          * its presence).
-         * @param available %TRUE if @root_device should be available
+         * @param available `true` if `root_device` should be available
          */
         set_available(available: boolean): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2371,40 +2534,40 @@ export namespace GUPnP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2414,13 +2577,14 @@ export namespace GUPnP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2434,90 +2598,68 @@ export namespace GUPnP {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2525,7 +2667,7 @@ export namespace GUPnP {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2533,9 +2675,9 @@ export namespace GUPnP {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2555,9 +2697,9 @@ export namespace GUPnP {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2571,33 +2713,33 @@ export namespace GUPnP {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2630,21 +2772,21 @@ export namespace GUPnP {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2654,8 +2796,8 @@ export namespace GUPnP {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2672,14 +2814,14 @@ export namespace GUPnP {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -2690,13 +2832,13 @@ export namespace GUPnP {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2727,21 +2869,21 @@ export namespace GUPnP {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2751,33 +2893,34 @@ export namespace GUPnP {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2786,6 +2929,7 @@ export namespace GUPnP {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2794,12 +2938,14 @@ export namespace GUPnP {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2808,20 +2954,22 @@ export namespace GUPnP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2833,8 +2981,9 @@ export namespace GUPnP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -2865,9 +3014,29 @@ export namespace GUPnP {
     namespace Service {
         // Signal signatures
         interface SignalSignatures extends ServiceInfo.SignalSignatures {
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked': (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever notification of a client fails.
+             * @signal
+             * @run-last
+             */
             'notify-failed': (arg0: GLib.Uri[], arg1: GLib.Error) => void;
-            'query-variable': (arg0: string, arg1: GObject.Value) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable': (arg0: string, arg1: unknown) => void;
             'notify::root-device': (pspec: GObject.ParamSpec) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
@@ -2876,22 +3045,144 @@ export namespace GUPnP {
             'notify::service-type': (pspec: GObject.ParamSpec) => void;
             'notify::udn': (pspec: GObject.ParamSpec) => void;
             'notify::url-base': (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked::root-device': (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked::context': (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked::document': (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked::element': (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked::location': (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked::service-type': (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked::udn': (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever an action is invoked. Handler should process
+             * `action` and must call either {@link GUPnP.ServiceAction.return_success} or
+             * {@link GUPnP.ServiceAction.return_error}.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'action-invoked::url-base': (arg0: ServiceAction) => void;
-            'query-variable::root-device': (arg0: string, arg1: GObject.Value) => void;
-            'query-variable::context': (arg0: string, arg1: GObject.Value) => void;
-            'query-variable::document': (arg0: string, arg1: GObject.Value) => void;
-            'query-variable::element': (arg0: string, arg1: GObject.Value) => void;
-            'query-variable::location': (arg0: string, arg1: GObject.Value) => void;
-            'query-variable::service-type': (arg0: string, arg1: GObject.Value) => void;
-            'query-variable::udn': (arg0: string, arg1: GObject.Value) => void;
-            'query-variable::url-base': (arg0: string, arg1: GObject.Value) => void;
+            [key: `action-invoked::${string}`]: (arg0: ServiceAction) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable::root-device': (arg0: string, arg1: unknown) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable::context': (arg0: string, arg1: unknown) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable::document': (arg0: string, arg1: unknown) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable::element': (arg0: string, arg1: unknown) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable::location': (arg0: string, arg1: unknown) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable::service-type': (arg0: string, arg1: unknown) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable::udn': (arg0: string, arg1: unknown) => void;
+            /**
+             * Emitted whenever `service` needs to know the value of `variable`.
+             * Handler should fill `value` with the value of `variable`.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            'query-variable::url-base': (arg0: string, arg1: unknown) => void;
+            [key: `query-variable::${string}`]: (arg0: string, arg1: unknown) => void;
         }
 
         // Constructor properties interface
@@ -2905,14 +3196,15 @@ export namespace GUPnP {
     /**
      * Implementation of an UPnP service
      *
-     * #GUPnPService allows for handling incoming actions and state variable
-     * notification. It implements the [class`GUPnP`.ServiceInfo] interface.
+     * {@link GUPnP.Service} allows for handling incoming actions and state variable
+     * notification. It implements the {@link GUPnP.ServiceInfo} interface.
      *
-     * To implement a service, you can either connect to the [signal`GUPnP`.Service::action-invoked]
-     * and [signal`GUPnP`.Service::query-variable] or derive from the `GUPnPService` class and override
-     * the virtual functions [vfunc`GUPnP`.Service.action_invoked] and  [vfunc`GUPnP`.Service.query_variable].
+     * To implement a service, you can either connect to the `GUPnP.Service::action-invoked`
+     * and `GUPnP.Service::query-variable` or derive from the {@link GUPnP.Service} class and override
+     * the virtual functions {@link GUPnP.Service.action_invoked} and  {@link GUPnP.Service.query_variable}.
      *
      * For more details, see the ["Implementing UPnP devices"](server-tutorial.html#implementing-a-service) document
+     * @gir-type Class
      */
     class Service extends ServiceInfo {
         static $gtype: GObject.GType<Service>;
@@ -2920,11 +3212,13 @@ export namespace GUPnP {
         // Properties
 
         /**
-         * The containing #GUPnPRootDevice.
+         * The containing {@link GUPnP.RootDevice}.
+         * @construct-only
          */
         get root_device(): RootDevice;
         /**
-         * The containing #GUPnPRootDevice.
+         * The containing {@link GUPnP.RootDevice}.
+         * @construct-only
          */
         get rootDevice(): RootDevice;
 
@@ -2945,16 +3239,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2964,46 +3261,49 @@ export namespace GUPnP {
         // Virtual methods
 
         /**
-         * Default handler for [signal`GUPnP`.Service::action_invoked]. See its documentation for details.
+         * Default handler for `GUPnP.Service::action_invoked`. See its documentation for details.
          *
          * Can be overridden by child classes instead of connecting to the signal.
-         * @param action a `GUPnPServiceAction`
+         * @param action a {@link GUPnP.ServiceAction}
+         * @virtual
          */
         vfunc_action_invoked(action: ServiceAction): void;
         /**
-         * Default handler for [signal`GUPnP`.Service::notify_failed]. See its documentation for details.
+         * Default handler for `GUPnP.Service::notify_failed`. See its documentation for details.
          *
          * Can be overridden by child classes instead of connecting to the signal.
          * @param callback_urls a list of call-back urls that failed the notification
          * @param reason An error that describes why the notification failed
+         * @virtual
          */
         vfunc_notify_failed(callback_urls: GLib.Uri[], reason: GLib.Error): void;
         /**
-         * Default handler for [signal`GUPnP`.Service::query_variable]. See its documentation for details.
+         * Default handler for `GUPnP.Service::query_variable`. See its documentation for details.
          *
          * Can be overridden by child classes instead of connecting to the signal.
          * @param variable the name of the variable that was queried
-         * @param value a value that should be filled to the current value of @variable
+         * @param value a value that should be filled to the current value of `variable`
+         * @virtual
          */
-        vfunc_query_variable(variable: string, value: GObject.Value | any): void;
+        vfunc_query_variable(variable: string, value: unknown): void;
 
         // Methods
 
         /**
-         * Default handler for [signal`GUPnP`.Service::action_invoked]. See its documentation for details.
+         * Default handler for `GUPnP.Service::action_invoked`. See its documentation for details.
          *
          * Can be overridden by child classes instead of connecting to the signal.
-         * @param action a `GUPnPServiceAction`
+         * @param action a {@link GUPnP.ServiceAction}
          */
         action_invoked(action: ServiceAction): void;
         /**
          * Stops sending out notifications to remote clients.
          *
-         * It causes new notifications to be queued up until [method`GUPnP`.Service.thaw_notify] is called.
+         * It causes new notifications to be queued up until {@link GUPnP.Service.thaw_notify} is called.
          */
         freeze_notify(): void;
         /**
-         * Default handler for [signal`GUPnP`.Service::notify_failed]. See its documentation for details.
+         * Default handler for `GUPnP.Service::notify_failed`. See its documentation for details.
          *
          * Can be overridden by child classes instead of connecting to the signal.
          * @param callback_urls a list of call-back urls that failed the notification
@@ -3017,11 +3317,11 @@ export namespace GUPnP {
          */
         notify_value(variable: string, value: GObject.Value | any): void;
         /**
-         * Default handler for [signal`GUPnP`.Service::query_variable]. See its documentation for details.
+         * Default handler for `GUPnP.Service::query_variable`. See its documentation for details.
          *
          * Can be overridden by child classes instead of connecting to the signal.
          * @param variable the name of the variable that was queried
-         * @param value a value that should be filled to the current value of @variable
+         * @param value a value that should be filled to the current value of `variable`
          */
         query_variable(variable: string, value: GObject.Value | any): void;
         /**
@@ -3061,6 +3361,7 @@ export namespace GUPnP {
      * Service information shared by local and remote services.
      *
      * A class that contains the common parts between local and remote services.
+     * @gir-type Class
      */
     abstract class ServiceInfo extends GObject.Object {
         static $gtype: GObject.GType<ServiceInfo>;
@@ -3068,39 +3369,52 @@ export namespace GUPnP {
         // Properties
 
         /**
-         * The #GUPnPContext to use.
+         * The {@link GUPnP.Context} to use.
+         * @construct-only
          */
         get context(): Context;
         /**
          * Private property.
+         * @construct-only
          */
         set document(val: XMLDoc);
         /**
          * Private property.
+         * @construct-only
          */
         set element(val: any);
         /**
          * The location of the device description file.
+         * @construct-only
+         * @default null
          */
         get location(): string;
         /**
          * The service type.
+         * @construct-only
+         * @default null
          */
         get service_type(): string;
         /**
          * The service type.
+         * @construct-only
+         * @default null
          */
         get serviceType(): string;
         /**
          * The UDN of the containing device.
+         * @construct-only
+         * @default null
          */
         get udn(): string;
         /**
-         * The URL base (#SoupURI).
+         * The URL base (`SoupURI`).
+         * @construct-only
          */
         get url_base(): GLib.Uri;
         /**
-         * The URL base (#SoupURI).
+         * The URL base (`SoupURI`).
+         * @construct-only
          */
         get urlBase(): GLib.Uri;
 
@@ -3121,16 +3435,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServiceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3140,28 +3457,28 @@ export namespace GUPnP {
         // Methods
 
         /**
-         * Get the #GUPnPContext associated with `info`.
-         * @returns A #GUPnPContext.
+         * Get the {@link GUPnP.Context} associated with `info`.
+         * @returns A {@link GUPnP.Context}.
          */
         get_context(): Context;
         /**
-         * Get the control URL for this service, or %NULL..
-         * @returns A string. This string should be freed with g_free() after use.
+         * Get the control URL for this service, or `null`..
+         * @returns A string. This string should be freed with `g_free()` after use.
          */
         get_control_url(): string;
         /**
-         * Get the event subscription URL for this service, or %NULL.
-         * @returns A string. This string should be freed with g_free() after use.
+         * Get the event subscription URL for this service, or `null`.
+         * @returns A string. This string should be freed with `g_free()` after use.
          */
         get_event_subscription_url(): string;
         /**
-         * Get the serviceID of this service, or %NULL if there is no ID.
+         * Get the serviceID of this service, or `null` if there is no ID.
          *
          * The serviceID should be unique to a device. This makes it possible to provide
          * the same serviceType multiple times on one device
          *
          * Example: `org:serviceId:RenderingControl`
-         * @returns A string. This string should be freed with g_free() after use.
+         * @returns A string. This string should be freed with `g_free()` after use.
          */
         get_id(): string;
         /**
@@ -3170,12 +3487,12 @@ export namespace GUPnP {
          */
         get_location(): string;
         /**
-         * Get the SCPD URL for this service, or %NULL if there is no SCPD.
-         * @returns A string. This string should be freed with g_free() after use.
+         * Get the SCPD URL for this service, or `null` if there is no SCPD.
+         * @returns A string. This string should be freed with `g_free()` after use.
          */
         get_scpd_url(): string;
         /**
-         * Get the UPnP service type, or %NULL.
+         * Get the UPnP service type, or `null`.
          *
          * Example: `urn:schemas-upnp-org:service:RenderingControl:1`
          * @returns A constant string.
@@ -3188,7 +3505,7 @@ export namespace GUPnP {
         get_udn(): string;
         /**
          * Get the URL base of this service.
-         * @returns A constant #SoupURI.
+         * @returns A constant `SoupURI`.
          */
         get_url_base(): GLib.Uri;
         /**
@@ -3197,18 +3514,18 @@ export namespace GUPnP {
          * if the service does not provide a SCPD.
          *
          * If `cancellable` is used to cancel the call, `callback` will be called with
-         * error code %G_IO_ERROR_CANCELLED.
-         * @param cancellable a #GCancellable that can be used to cancel the call.
+         * error code {@link Gio.IOErrorEnum.CANCELLED}.
+         * @param cancellable a {@link Gio.Cancellable} that can be used to cancel the call.
          */
-        introspect_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>;
+        introspect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>;
         /**
          * Note that introspection object is created from the information in service
          * description document (SCPD) provided by the service so it can not be created
          * if the service does not provide a SCPD.
          *
          * If `cancellable` is used to cancel the call, `callback` will be called with
-         * error code %G_IO_ERROR_CANCELLED.
-         * @param cancellable a #GCancellable that can be used to cancel the call.
+         * error code {@link Gio.IOErrorEnum.CANCELLED}.
+         * @param cancellable a {@link Gio.Cancellable} that can be used to cancel the call.
          * @param callback callback to be called when introspection object is ready.
          */
         introspect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3218,19 +3535,19 @@ export namespace GUPnP {
          * if the service does not provide a SCPD.
          *
          * If `cancellable` is used to cancel the call, `callback` will be called with
-         * error code %G_IO_ERROR_CANCELLED.
-         * @param cancellable a #GCancellable that can be used to cancel the call.
+         * error code {@link Gio.IOErrorEnum.CANCELLED}.
+         * @param cancellable a {@link Gio.Cancellable} that can be used to cancel the call.
          * @param callback callback to be called when introspection object is ready.
          */
         introspect_async(
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ServiceIntrospection | null> | void;
         /**
          * Finish an asynchronous call initiated with
-         * gupnp_service_info_introspect_async().
-         * @param res A #GAsyncResult
-         * @returns %NULL, if the call had an error, a #GUPnPServiceIntrospection object otherwise.
+         * `gupnp_service_info_introspect_async()`.
+         * @param res A {@link Gio.AsyncResult}
+         * @returns `null`, if the call had an error, a {@link GUPnP.ServiceIntrospection} object otherwise.
          */
         introspect_finish(res: Gio.AsyncResult): ServiceIntrospection | null;
     }
@@ -3251,11 +3568,11 @@ export namespace GUPnP {
     /**
      * Introspection of local and remote services..
      *
-     * The #GUPnPServiceIntrospection class provides methods for service
+     * The {@link GUPnP.ServiceIntrospection} class provides methods for service
      * introspection based on information contained in its service description
      * document (SCPD). There is no constructor provided for this class, please use
-     * [method`GUPnP`.ServiceInfo.introspect_async] to create a
-     * #GUPnPServiceIntrospection object for a specific service.
+     * {@link GUPnP.ServiceInfo.introspect_async} to create a
+     * {@link GUPnP.ServiceIntrospection} object for a specific service.
      *
      * Note that all the introspection information is retrieved from the service
      * description document (SCPD) provided by the service and hence can not be
@@ -3265,6 +3582,7 @@ export namespace GUPnP {
      *
      * This class exposes internals of the UPnP protocol and should not need
      * to be used for regular device or control point development.
+     * @gir-type Class
      */
     class ServiceIntrospection extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<ServiceIntrospection>;
@@ -3273,6 +3591,7 @@ export namespace GUPnP {
 
         /**
          * The scpd of the device description file.
+         * @construct-only
          */
         set scpd(val: any);
 
@@ -3293,16 +3612,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceIntrospection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceIntrospection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServiceIntrospection.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3316,65 +3638,63 @@ export namespace GUPnP {
         /**
          * Returns the action by the name `action_name` in this service.
          * @param action_name The name of the action to retrieve
-         * @returns the action or %NULL. Do not modify or free it.
+         * @returns the action or `null`. Do not modify or free it.
          */
         get_action(action_name: string): ServiceActionInfo | null;
         /**
          * Returns the state variable by the name `variable_name` in this service.
          * @param variable_name The name of the variable to retrieve
-         * @returns the state variable or %NULL. Do not modify or free it.
+         * @returns the state variable or `null`. Do not modify or free it.
          */
         get_state_variable(variable_name: string): ServiceStateVariableInfo | null;
         /**
          * Returns a GList of names of all the actions in this service.
-         * @returns A GList of names of all the actions or %NULL. Do not modify or free it or its contents.
+         * @returns A GList of names of all the actions or `null`. Do not modify or free it or its contents.
          */
         list_action_names(): string[];
         /**
-         * Returns a #GList of all the actions (of type #GUPnPServiceActionInfo) in
+         * Returns a {@link GLib.List} of all the actions (of type {@link GUPnP.ServiceActionInfo}) in
          * this service.
-         * @returns A #GList of all the actions or %NULL. Do not modify or free it or its contents.
+         * @returns A {@link GLib.List} of all the actions or `null`. Do not modify or free it or its contents.
          */
         list_actions(): ServiceActionInfo[];
         /**
-         * Returns a #GList of names of all the state variables in this service.
-         * @returns A #GList of names of all the state variables or %NULL. Do not modify or free it or its contents.
+         * Returns a {@link GLib.List} of names of all the state variables in this service.
+         * @returns A {@link GLib.List} of names of all the state variables or `null`. Do not modify or free it or its contents.
          */
         list_state_variable_names(): string[];
         /**
          * Returns a GList of all the state variables (of type
-         * #GUPnPServiceStateVariableInfo) in this service.
-         * @returns A #GList of all the state variables or %NULL. Do not modify or free it or its contents.
+         * {@link GUPnP.ServiceStateVariableInfo}) in this service.
+         * @returns A {@link GLib.List} of all the state variables or `null`. Do not modify or free it or its contents.
          */
         list_state_variables(): ServiceStateVariableInfo[];
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3384,40 +3704,40 @@ export namespace GUPnP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3427,13 +3747,14 @@ export namespace GUPnP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3447,90 +3768,68 @@ export namespace GUPnP {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3538,7 +3837,7 @@ export namespace GUPnP {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3546,9 +3845,9 @@ export namespace GUPnP {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3568,9 +3867,9 @@ export namespace GUPnP {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3584,33 +3883,33 @@ export namespace GUPnP {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3643,21 +3942,21 @@ export namespace GUPnP {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3667,8 +3966,8 @@ export namespace GUPnP {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3685,14 +3984,14 @@ export namespace GUPnP {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3703,13 +4002,13 @@ export namespace GUPnP {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3740,21 +4039,21 @@ export namespace GUPnP {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3764,33 +4063,34 @@ export namespace GUPnP {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3799,6 +4099,7 @@ export namespace GUPnP {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3807,12 +4108,14 @@ export namespace GUPnP {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3821,20 +4124,22 @@ export namespace GUPnP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3846,8 +4151,9 @@ export namespace GUPnP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3878,6 +4184,12 @@ export namespace GUPnP {
     namespace ServiceProxy {
         // Signal signatures
         interface SignalSignatures extends ServiceInfo.SignalSignatures {
+            /**
+             * Emitted whenever the subscription to this service has been lost due
+             * to an error condition.
+             * @signal
+             * @run-last
+             */
             'subscription-lost': (arg0: GLib.Error) => void;
             'notify::subscribed': (pspec: GObject.ParamSpec) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -3899,8 +4211,9 @@ export namespace GUPnP {
     /**
      * Proxy class for remote services.
      *
-     * #GUPnPServiceProxy sends commands to a remote UPnP service and handles
+     * {@link GUPnP.ServiceProxy} sends commands to a remote UPnP service and handles
      * incoming event notifications.
+     * @gir-type Class
      */
     class ServiceProxy extends ServiceInfo {
         static $gtype: GObject.GType<ServiceProxy>;
@@ -3909,6 +4222,7 @@ export namespace GUPnP {
 
         /**
          * Whether we are subscribed to this service.
+         * @default false
          */
         get subscribed(): boolean;
         set subscribed(val: boolean);
@@ -3930,16 +4244,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServiceProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3948,6 +4265,10 @@ export namespace GUPnP {
 
         // Virtual methods
 
+        /**
+         * @param reason
+         * @virtual
+         */
         vfunc_subscription_lost(reason: GLib.Error): void;
 
         // Methods
@@ -3957,57 +4278,57 @@ export namespace GUPnP {
          * `variable` is recieved.
          * @param variable The variable to add notification for
          * @param type The type of the variable
-         * @param callback The callback to call when @variable changes
-         * @param notify Function to call when the notification is removed, or %NULL
-         * @returns %TRUE on success.
+         * @param callback The callback to call when `variable` changes
+         * @param notify Function to call when the notification is removed, or `null`
+         * @returns `true` on success.
          */
         add_notify(
             variable: string,
             type: GObject.GType,
             callback: ServiceProxyNotifyCallback,
-            notify?: GLib.DestroyNotify | null,
+            notify: GLib.DestroyNotify | null,
         ): boolean;
         /**
          * Get a notification for anything that happens on the peer.
          *
          * `value` in `callback` will be of type G_TYPE_POINTER and contain the pre-parsed
-         * [type`libxml2`.Doc]. Do NOT free or modify this document.
+         * {@link libxml2.Doc}. Do NOT free or modify this document.
          * @param callback The callback to call when the peer issues any variable notification.
-         * @param notify A #GDestroyNotify for @user_data
-         * @returns %TRUE on success.
+         * @param notify A {@link GLib.DestroyNotify} for `user_data`
+         * @returns `true` on success.
          */
-        add_raw_notify(callback: ServiceProxyNotifyCallback, notify?: GLib.DestroyNotify | null): boolean;
+        add_raw_notify(callback: ServiceProxyNotifyCallback, notify: GLib.DestroyNotify | null): boolean;
         /**
          * Synchronously call the `action` on the remote UPnP service.
          * @param action An action
-         * @param cancellable A #GCancellable which can be used to cancel the current action call
-         * @returns %NULL on error, @action if successful.
+         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
+         * @returns `null` on error, `action` if successful.
          */
-        call_action(action: ServiceProxyAction, cancellable?: Gio.Cancellable | null): ServiceProxyAction | null;
+        call_action(action: ServiceProxyAction, cancellable: Gio.Cancellable | null): ServiceProxyAction | null;
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
-         * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
-         * the call and gupnp_service_proxy_action_get_result(),
-         * gupnp_service_proxy_action_get_result_hash() or
-         * gupnp_service_proxy_action_get_result_list() to extract the result of the
+         * Use `gupnp_service_proxy_call_action_finish()` in the `callback` to finalize
+         * the call and `gupnp_service_proxy_action_get_result()`,
+         * `gupnp_service_proxy_action_get_result_hash()` or
+         * `gupnp_service_proxy_action_get_result_list()` to extract the result of the
          * remote call.
-         * @param action A #GUPnPServiceProxyAction to call
-         * @param cancellable A #GCancellable which can be used to cancel the current action call
+         * @param action A {@link GUPnP.ServiceProxyAction} to call
+         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
          */
         call_action_async(
             action: ServiceProxyAction,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<ServiceProxyAction | null>;
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
-         * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
-         * the call and gupnp_service_proxy_action_get_result(),
-         * gupnp_service_proxy_action_get_result_hash() or
-         * gupnp_service_proxy_action_get_result_list() to extract the result of the
+         * Use `gupnp_service_proxy_call_action_finish()` in the `callback` to finalize
+         * the call and `gupnp_service_proxy_action_get_result()`,
+         * `gupnp_service_proxy_action_get_result_hash()` or
+         * `gupnp_service_proxy_action_get_result_list()` to extract the result of the
          * remote call.
-         * @param action A #GUPnPServiceProxyAction to call
-         * @param cancellable A #GCancellable which can be used to cancel the current action call
-         * @param callback A #GAsyncReadyCallback to call when the action is finished.
+         * @param action A {@link GUPnP.ServiceProxyAction} to call
+         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the action is finished.
          */
         call_action_async(
             action: ServiceProxyAction,
@@ -4016,52 +4337,52 @@ export namespace GUPnP {
         ): void;
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
-         * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
-         * the call and gupnp_service_proxy_action_get_result(),
-         * gupnp_service_proxy_action_get_result_hash() or
-         * gupnp_service_proxy_action_get_result_list() to extract the result of the
+         * Use `gupnp_service_proxy_call_action_finish()` in the `callback` to finalize
+         * the call and `gupnp_service_proxy_action_get_result()`,
+         * `gupnp_service_proxy_action_get_result_hash()` or
+         * `gupnp_service_proxy_action_get_result_list()` to extract the result of the
          * remote call.
-         * @param action A #GUPnPServiceProxyAction to call
-         * @param cancellable A #GCancellable which can be used to cancel the current action call
-         * @param callback A #GAsyncReadyCallback to call when the action is finished.
+         * @param action A {@link GUPnP.ServiceProxyAction} to call
+         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the action is finished.
          */
         call_action_async(
             action: ServiceProxyAction,
-            cancellable?: Gio.Cancellable | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ServiceProxyAction | null> | void;
         /**
          * Finish an asynchronous call initiated with
-         * gupnp_service_proxy_call_action_async().
-         * @param result a #GAsyncResult
-         * @returns %NULL, if the call had an error, the action otherwise.
+         * `gupnp_service_proxy_call_action_async()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `null`, if the call had an error, the action otherwise.
          */
         call_action_finish(result: Gio.AsyncResult): ServiceProxyAction | null;
         /**
          * Returns if we are subscribed to this service.
-         * @returns %TRUE if we are subscribed to this service, otherwise %FALSE.
+         * @returns `true` if we are subscribed to this service, otherwise `false`.
          */
         get_subscribed(): boolean;
         /**
          * Cancels the variable change notification for `callback` and `user_data`.
          *
          * Up to version 0.20.9 this function must not be called directlya or
-         * indirectly from a #GUPnPServiceProxyNotifyCallback associated with this
+         * indirectly from a {@link GUPnP.ServiceProxyNotifyCallback} associated with this
          * service proxy, even if it is for another variable. In later versions such
          * calls are allowed.
          * @param variable The variable to add notification for
-         * @param callback The callback to call when @variable changes
-         * @returns %TRUE on success.
+         * @param callback The callback to call when `variable` changes
+         * @returns `true` on success.
          */
         remove_notify(variable: string, callback: ServiceProxyNotifyCallback): boolean;
         /**
          * Cancels the variable change notification for `callback` and `user_data`.
          *
          * This function must not be called directly or indirectly from a
-         * #GUPnPServiceProxyNotifyCallback associated with this service proxy, even
+         * {@link GUPnP.ServiceProxyNotifyCallback} associated with this service proxy, even
          * if it is for another variable.
-         * @param callback The callback to call when @variable changes
-         * @returns %TRUE on success.
+         * @param callback The callback to call when `variable` changes
+         * @returns `true` on success.
          */
         remove_raw_notify(callback: ServiceProxyNotifyCallback): boolean;
         /**
@@ -4077,7 +4398,7 @@ export namespace GUPnP {
          * If you want to unsubcribe from this service because the application
          * is quitting, rely on automatic synchronised unsubscription on object
          * destruction instead.</note>
-         * @param subscribed %TRUE to subscribe to this service
+         * @param subscribed `true` to subscribe to this service
          */
         set_subscribed(subscribed: boolean): void;
     }
@@ -4099,13 +4420,22 @@ export namespace GUPnP {
 
     /**
      * Reference-counting wrapper for libxml's #xmlDoc
+     * @gir-type Class
+     * @since 0.14.0
      */
     class XMLDoc extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<XMLDoc>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set doc(val: any);
+        /**
+         * @construct-only
+         * @default null
+         */
         set path(val: string);
 
         /**
@@ -4129,16 +4459,19 @@ export namespace GUPnP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XMLDoc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLDoc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XMLDoc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLDoc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XMLDoc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XMLDoc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4147,35 +4480,36 @@ export namespace GUPnP {
 
         // Methods
 
+        /**
+         * @returns a pointer to the wrapped #xmlDoc
+         */
         get_doc(): libxml2.Doc;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -4185,40 +4519,40 @@ export namespace GUPnP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable?: Gio.Cancellable | null): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -4228,13 +4562,14 @@ export namespace GUPnP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4248,90 +4583,68 @@ export namespace GUPnP {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4339,7 +4652,7 @@ export namespace GUPnP {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4347,9 +4660,9 @@ export namespace GUPnP {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4369,9 +4682,9 @@ export namespace GUPnP {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4385,33 +4698,33 @@ export namespace GUPnP {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4444,21 +4757,21 @@ export namespace GUPnP {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4468,8 +4781,8 @@ export namespace GUPnP {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4486,14 +4799,14 @@ export namespace GUPnP {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -4504,13 +4817,13 @@ export namespace GUPnP {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4541,21 +4854,21 @@ export namespace GUPnP {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4565,33 +4878,34 @@ export namespace GUPnP {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4600,6 +4914,7 @@ export namespace GUPnP {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4608,12 +4923,14 @@ export namespace GUPnP {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4622,20 +4939,22 @@ export namespace GUPnP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4647,8 +4966,9 @@ export namespace GUPnP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -4676,70 +4996,97 @@ export namespace GUPnP {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AclInterface = typeof Acl;
+    /**
+     * @gir-type Alias
+     */
     type ContextClass = typeof Context;
+    /**
+     * @gir-type Alias
+     */
     type ContextFilterClass = typeof ContextFilter;
+    /**
+     * @gir-type Alias
+     */
     type ContextManagerClass = typeof ContextManager;
+    /**
+     * @gir-type Alias
+     */
     type ControlPointClass = typeof ControlPoint;
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
+    /**
+     * @gir-type Alias
+     */
     type DeviceInfoClass = typeof DeviceInfo;
+    /**
+     * @gir-type Alias
+     */
     type DeviceProxyClass = typeof DeviceProxy;
+    /**
+     * @gir-type Alias
+     */
     type ResourceFactoryClass = typeof ResourceFactory;
+    /**
+     * @gir-type Alias
+     */
     type RootDeviceClass = typeof RootDevice;
     /**
      * Opaque structure for holding in-progress action data.
+     * @gir-type Struct
      */
     abstract class ServiceAction {
         static $gtype: GObject.GType<ServiceAction>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
 
         // Methods
 
         /**
          * Get the number of IN arguments from the `action` and return it.
-         * @returns The number of IN arguments from the @action.
+         * @returns The number of IN arguments from the `action`.
          */
         get_argument_count(): number;
         /**
          * Retrieves the value of `argument` into a GValue of type `type` and returns it.
          * The method exists only and only to satify PyGI, please use
-         * gupnp_service_action_get_value() and ignore this if possible.
+         * `gupnp_service_action_get_value()` and ignore this if possible.
          * @param argument The name of the argument to retrieve
          * @param type The type of argument to retrieve
-         * @returns Value as #GValue associated with @action. g_value_unset() and g_slice_free() it after usage.
+         * @returns Value as {@link GObject.Value} associated with `action`. `g_value_unset()` and `g_slice_free()` it after usage.
          */
         get_value(argument: string, type: GObject.GType): unknown;
         /**
-         * Get an ordered (preferred first) #GList of locales preferred by
+         * Get an ordered (preferred first) {@link GLib.List} of locales preferred by
          * the client. Free list and elements after use.
-         * @returns A #GList of #char* locale names.
+         * @returns A {@link GLib.List} of #char* locale names.
          */
         get_locales(): string[];
         /**
-         * Get the #SoupMessage associated with `action`. Mainly intended for
+         * Get the {@link Soup.Message} associated with `action`. Mainly intended for
          * applications to be able to read HTTP headers received from clients.
-         * @returns #SoupServerMessage associated with @action. Unref after using it.
+         * @returns {@link Soup.ServerMessage} associated with `action`. Unref after using it.
          */
         get_message(): Soup.ServerMessage;
         /**
          * Get the name of `action`.
-         * @returns The name of @action
+         * @returns The name of `action`
          */
         get_name(): string;
         /**
-         * A variant of #gupnp_service_action_get that uses #GList instead of varargs.
-         * @param arg_names A #GList of argument names as string
-         * @param arg_types A #GList of argument types as #GType
-         * @returns The values as #GList of #GValue. g_list_free() the returned list and g_value_unset() and g_slice_free() each element.
+         * A variant of `gupnp_service_action_get` that uses {@link GLib.List} instead of varargs.
+         * @param arg_names A {@link GLib.List} of argument names as string
+         * @param arg_types A {@link GLib.List} of argument types as {@link GObject.GType}
+         * @returns The values as {@link GLib.List} of {@link GObject.Value}. `g_list_free()` the returned list and `g_value_unset()` and `g_slice_free()` each element.
          */
         get_values(arg_names: string[], arg_types: GObject.GType[]): unknown[];
         /**
          * Return `error_code`.
          * @param error_code The error code
-         * @param error_description The error description, or %NULL if @error_code is one of #GUPNP_CONTROL_ERROR_INVALID_ACTION, #GUPNP_CONTROL_ERROR_INVALID_ARGS, #GUPNP_CONTROL_ERROR_OUT_OF_SYNC or #GUPNP_CONTROL_ERROR_ACTION_FAILED, in which case a description is provided automatically.
+         * @param error_description The error description, or `null` if `error_code` is one of #GUPNP_CONTROL_ERROR_INVALID_ACTION, #GUPNP_CONTROL_ERROR_INVALID_ARGS, #GUPNP_CONTROL_ERROR_OUT_OF_SYNC or #GUPNP_CONTROL_ERROR_ACTION_FAILED, in which case a description is provided automatically.
          */
         return_error(error_code: number, error_description: string): void;
         /**
@@ -4749,19 +5096,20 @@ export namespace GUPnP {
         /**
          * Sets the value of `argument` to `value`.
          * @param argument The name of the return value to retrieve
-         * @param value The #GValue to store the return value
+         * @param value The {@link GObject.Value} to store the return value
          */
         set_value(argument: string, value: GObject.Value | any): void;
         /**
          * Sets the specified action return values.
-         * @param arg_names A #GList of argument names
-         * @param arg_values The #GList of values (as #GValue<!-- -->s) that line up with @arg_names.
+         * @param arg_names A {@link GLib.List} of argument names
+         * @param arg_values The {@link GLib.List} of values (as {@link GObject.Value}<!-- -->s) that line up with `arg_names`.
          */
         set_values(arg_names: string[], arg_values: (GObject.Value | any)[]): void;
     }
 
     /**
      * This structure contains information about the argument of service action.
+     * @gir-type Struct
      */
     class ServiceActionArgInfo {
         static $gtype: GObject.GType<ServiceActionArgInfo>;
@@ -4772,14 +5120,11 @@ export namespace GUPnP {
         direction: ServiceActionArgDirection;
         related_state_variable: string;
         retval: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
      * This structure contains information about a service action.
+     * @gir-type Struct
      */
     class ServiceActionInfo {
         static $gtype: GObject.GType<ServiceActionInfo>;
@@ -4787,17 +5132,24 @@ export namespace GUPnP {
         // Fields
 
         name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
+        'arguments': ServiceActionArgInfo[];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServiceClass = typeof Service;
+    /**
+     * @gir-type Alias
+     */
     type ServiceInfoClass = typeof ServiceInfo;
+    /**
+     * @gir-type Alias
+     */
     type ServiceIntrospectionClass = typeof ServiceIntrospection;
     /**
      * Opaque structure for holding in-progress action data.
+     * @gir-type Struct
      */
     class ServiceProxyAction {
         static $gtype: GObject.GType<ServiceProxyAction>;
@@ -4805,7 +5157,6 @@ export namespace GUPnP {
         // Constructors
 
         constructor(action: string, ___: any[]);
-        _init(...args: any[]): void;
 
         static new_from_list(
             action: string,
@@ -4816,11 +5167,11 @@ export namespace GUPnP {
         // Methods
 
         /**
-         * See gupnp_service_proxy_action_get_result(); this version takes a #GHashTable for
+         * See `gupnp_service_proxy_action_get_result()`; this version takes a {@link GLib.HashTable} for
          * runtime generated parameter lists.
          *
          * The `out_hash` needs to be pre-initialized with key value pairs denoting the argument
-         * to retrieve and an empty #GValue initialized to hold the wanted type with g_value_init().
+         * to retrieve and an empty {@link GObject.Value} initialized to hold the wanted type with `g_value_init()`.
          *
          * ```c
          * void on_action_finished(GObject *object, GAsyncResult *res, gpointer user_data)
@@ -4861,14 +5212,14 @@ export namespace GUPnP {
          *     g_hash_table_unref (out_args);
          * }
          * ```
-         * @param out_hash A #GHashTable of out parameter name and initialised #GValue pairs
-         * @returns %TRUE on success.
+         * @param out_hash A {@link GLib.HashTable} of out parameter name and initialised {@link GObject.Value} pairs
+         * @returns `true` on success.
          */
         get_result_hash(
             out_hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): [boolean, GLib.HashTable<string, GObject.Value>];
         /**
-         * A variant of gupnp_service_proxy_action_get_result() that takes lists of
+         * A variant of `gupnp_service_proxy_action_get_result()` that takes lists of
          * out-parameter names, types and place-holders for values.
          *
          * The returned list in `out_values` must be freed using `g_list_free` and each element
@@ -4918,14 +5269,14 @@ export namespace GUPnP {
          *     g_list_free (out_values);
          * }
          * ```
-         * @param out_names #GList of 'out' parameter names (as strings)
-         * @param out_types #GList of types (as #GType) that line up with @out_names
-         * @returns %TRUE on success.
+         * @param out_names {@link GLib.List} of 'out' parameter names (as strings)
+         * @param out_types {@link GLib.List} of types (as {@link GObject.GType}) that line up with `out_names`
+         * @returns `true` on success.
          */
         get_result_list(out_names: string[], out_types: GObject.GType[]): [boolean, unknown[]];
         /**
          * Increases reference count of `action`
-         * @returns @action with an increased reference count
+         * @returns `action` with an increased reference count
          */
         ref(): ServiceProxyAction | null;
         /**
@@ -4933,7 +5284,7 @@ export namespace GUPnP {
          *
          * `key` needs to already exist in `action`.
          * @param key the name of the value to modify
-         * @param value the new value of @key
+         * @param value the new value of `key`
          * @returns true if successfully modified, false otherwise
          */
         set(key: string, value: GObject.Value | any): boolean;
@@ -4944,9 +5295,13 @@ export namespace GUPnP {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServiceProxyClass = typeof ServiceProxy;
     /**
      * This structure contains information about service state variable.
+     * @gir-type Struct
      */
     class ServiceStateVariableInfo {
         static $gtype: GObject.GType<ServiceStateVariableInfo>;
@@ -4958,12 +5313,11 @@ export namespace GUPnP {
         is_numeric: boolean;
         type: GObject.GType;
         allowed_values: string[];
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XMLDocClass = typeof XMLDoc;
     namespace Acl {
         /**
@@ -4974,56 +5328,60 @@ export namespace GUPnP {
             // Virtual methods
 
             /**
-             * Check whether [method`GUPnP`.Acl.is_allowed_async] is supported.
+             * Check whether {@link GUPnP.Acl.is_allowed_async} is supported.
+             * @virtual
              */
             vfunc_can_sync(): boolean;
             /**
              * Check whether an IP address is allowed to access this resource.
-             * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
-             * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+             * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+             * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
              * @param path The path being served.
              * @param address IP address of the peer.
-             * @param agent The User-Agent header of the peer or %NULL if unknown. @returns %TRUE if the peer is allowed, %FALSE otherwise
+             * @param agent The User-Agent header of the peer or `null` if unknown. `returns` `true` if the peer is allowed, `false` otherwise
+             * @virtual
              */
             vfunc_is_allowed(
                 device: any | null,
                 service: any | null,
                 path: string,
                 address: string,
-                agent?: string | null,
+                agent: string | null,
             ): boolean;
             /**
              * Check asynchronously whether an IP address is allowed to access
              * this resource.
              *
-             * This function is optional. [method`GUPnP`.Acl.can_sync] should return %TRUE
+             * This function is optional. {@link GUPnP.Acl.can_sync} should return `true`
              * if the implementing class supports it. If it is supported, GUPnP will
-             * prefer to use this function over [method`GUPnP`.Acl.is_allowed].
+             * prefer to use this function over {@link GUPnP.Acl.is_allowed}.
              *
              * Implement this function if the process of verifying the access right
              * is expected to take some time, for example when using D-Bus etc.
              *
-             * Use [method`GUPnP`.Acl.is_allowed_finish] to retrieve the result.
-             * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
-             * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+             * Use {@link GUPnP.Acl.is_allowed_finish} to retrieve the result.
+             * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+             * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
              * @param path The path being served.
              * @param address IP address of the peer
-             * @param agent The User-Agent header of the peer or %NULL if not unknown.
+             * @param agent The User-Agent header of the peer or `null` if not unknown.
              * @param cancellable A cancellable which can be used to cancel the operation.
              * @param callback Callback to call after the function is done.
+             * @virtual
              */
             vfunc_is_allowed_async(
                 device: any | null,
                 service: any | null,
                 path: string,
                 address: string,
-                agent?: string | null,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
+                agent: string | null,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
-             * Get the result of [method`GUPnP`.Acl.is_allowed_async].
-             * @param res [iface@Gio.AsyncResult] obtained from the callback passed to [method@GUPnP.Acl.is_allowed_async]
+             * Get the result of {@link GUPnP.Acl.is_allowed_async}.
+             * @param res {@link Gio.AsyncResult} obtained from the callback passed to {@link GUPnP.Acl.is_allowed_async}
+             * @virtual
              */
             vfunc_is_allowed_finish(res: Gio.AsyncResult): boolean;
         }
@@ -5037,45 +5395,53 @@ export namespace GUPnP {
         $gtype: GObject.GType<Acl>;
         prototype: Acl;
     }
+    /**
+     * Access control provider for {@link GUPnP.Context}
+     *
+     * GUPnPAcl provides either synchronous or asynchronous functions to check
+     * whether a peer should be able to access a resource that is hosted by GUPnP or not.
+     * @gir-type Interface
+     * @since 0.20.11
+     */
     interface Acl extends GObject.Object, Acl.Interface {
         // Methods
 
         /**
-         * Check whether [method`GUPnP`.Acl.is_allowed_async] is supported.
+         * Check whether {@link GUPnP.Acl.is_allowed_async} is supported.
          */
         can_sync(): boolean;
         /**
          * Check whether an IP address is allowed to access this resource.
-         * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
-         * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
          * @param path The path being served.
          * @param address IP address of the peer.
-         * @param agent The User-Agent header of the peer or %NULL if unknown. @returns %TRUE if the peer is allowed, %FALSE otherwise
+         * @param agent The User-Agent header of the peer or `null` if unknown. `returns` `true` if the peer is allowed, `false` otherwise
          */
         is_allowed(
             device: any | null,
             service: any | null,
             path: string,
             address: string,
-            agent?: string | null,
+            agent: string | null,
         ): boolean;
         /**
          * Check asynchronously whether an IP address is allowed to access
          * this resource.
          *
-         * This function is optional. [method`GUPnP`.Acl.can_sync] should return %TRUE
+         * This function is optional. {@link GUPnP.Acl.can_sync} should return `true`
          * if the implementing class supports it. If it is supported, GUPnP will
-         * prefer to use this function over [method`GUPnP`.Acl.is_allowed].
+         * prefer to use this function over {@link GUPnP.Acl.is_allowed}.
          *
          * Implement this function if the process of verifying the access right
          * is expected to take some time, for example when using D-Bus etc.
          *
-         * Use [method`GUPnP`.Acl.is_allowed_finish] to retrieve the result.
-         * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
-         * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+         * Use {@link GUPnP.Acl.is_allowed_finish} to retrieve the result.
+         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
          * @param path The path being served.
          * @param address IP address of the peer
-         * @param agent The User-Agent header of the peer or %NULL if not unknown.
+         * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A cancellable which can be used to cancel the operation.
          */
         is_allowed_async(
@@ -5083,26 +5449,26 @@ export namespace GUPnP {
             service: any | null,
             path: string,
             address: string,
-            agent?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            agent: string | null,
+            cancellable: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
          * Check asynchronously whether an IP address is allowed to access
          * this resource.
          *
-         * This function is optional. [method`GUPnP`.Acl.can_sync] should return %TRUE
+         * This function is optional. {@link GUPnP.Acl.can_sync} should return `true`
          * if the implementing class supports it. If it is supported, GUPnP will
-         * prefer to use this function over [method`GUPnP`.Acl.is_allowed].
+         * prefer to use this function over {@link GUPnP.Acl.is_allowed}.
          *
          * Implement this function if the process of verifying the access right
          * is expected to take some time, for example when using D-Bus etc.
          *
-         * Use [method`GUPnP`.Acl.is_allowed_finish] to retrieve the result.
-         * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
-         * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+         * Use {@link GUPnP.Acl.is_allowed_finish} to retrieve the result.
+         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
          * @param path The path being served.
          * @param address IP address of the peer
-         * @param agent The User-Agent header of the peer or %NULL if not unknown.
+         * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A cancellable which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
          */
@@ -5119,19 +5485,19 @@ export namespace GUPnP {
          * Check asynchronously whether an IP address is allowed to access
          * this resource.
          *
-         * This function is optional. [method`GUPnP`.Acl.can_sync] should return %TRUE
+         * This function is optional. {@link GUPnP.Acl.can_sync} should return `true`
          * if the implementing class supports it. If it is supported, GUPnP will
-         * prefer to use this function over [method`GUPnP`.Acl.is_allowed].
+         * prefer to use this function over {@link GUPnP.Acl.is_allowed}.
          *
          * Implement this function if the process of verifying the access right
          * is expected to take some time, for example when using D-Bus etc.
          *
-         * Use [method`GUPnP`.Acl.is_allowed_finish] to retrieve the result.
-         * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
-         * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+         * Use {@link GUPnP.Acl.is_allowed_finish} to retrieve the result.
+         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
          * @param path The path being served.
          * @param address IP address of the peer
-         * @param agent The User-Agent header of the peer or %NULL if not unknown.
+         * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A cancellable which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
          */
@@ -5140,13 +5506,13 @@ export namespace GUPnP {
             service: any | null,
             path: string,
             address: string,
-            agent?: string | null,
-            cancellable?: Gio.Cancellable | null,
+            agent: string | null,
+            cancellable: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Get the result of [method`GUPnP`.Acl.is_allowed_async].
-         * @param res [iface@Gio.AsyncResult] obtained from the callback passed to [method@GUPnP.Acl.is_allowed_async]
+         * Get the result of {@link GUPnP.Acl.is_allowed_async}.
+         * @param res {@link Gio.AsyncResult} obtained from the callback passed to {@link GUPnP.Acl.is_allowed_async}
          */
         is_allowed_finish(res: Gio.AsyncResult): boolean;
     }

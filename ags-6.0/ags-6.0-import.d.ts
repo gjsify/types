@@ -1,9 +1,1 @@
-import type Ags60 from '@girs/ags-6.0';
-
-declare global {
-    export interface GjsGiImports {
-        Ags: typeof Ags60;
-    }
-}
-
-export default GjsGiImports;
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Ags"

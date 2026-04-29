@@ -19,36 +19,32 @@ export namespace xft {
      */
 
     function init(): void;
+    /**
+     * @gir-type Struct
+     */
     class Color {
         static $gtype: GObject.GType<Color>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Draw {
         static $gtype: GObject.GType<Draw>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Font {
         static $gtype: GObject.GType<Font>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class GlyphSpec {
         static $gtype: GObject.GType<GlyphSpec>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

@@ -22,10 +22,16 @@ export namespace Unity {
      * Unity-7.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CategoryType {
         export const $gtype: GObject.GType<CategoryType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CategoryType {
         NONE,
         APPLICATION,
@@ -56,20 +62,32 @@ export namespace Unity {
         N_CATEGORIES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IconSizeHint {
         export const $gtype: GObject.GType<IconSizeHint>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum IconSizeHint {
         DEFAULT,
         SMALL,
         LARGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CategoryRenderer {
         export const $gtype: GObject.GType<CategoryRenderer>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CategoryRenderer {
         DEFAULT,
         GRID,
@@ -81,10 +99,16 @@ export namespace Unity {
         HORIZONTAL_TILE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CategoryContentType {
         export const $gtype: GObject.GType<CategoryContentType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CategoryContentType {
         DEFAULT,
         APPLICATIONS,
@@ -95,10 +119,16 @@ export namespace Unity {
         WEATHER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterRenderer {
         export const $gtype: GObject.GType<FilterRenderer>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FilterRenderer {
         CHECK_OPTIONS,
         RADIO_OPTIONS,
@@ -107,10 +137,16 @@ export namespace Unity {
         CHECK_OPTIONS_COMPACT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LayoutHint {
         export const $gtype: GObject.GType<LayoutHint>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LayoutHint {
         NONE,
         LEFT,
@@ -119,10 +155,16 @@ export namespace Unity {
         BOTTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace HandledType {
         export const $gtype: GObject.GType<HandledType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum HandledType {
         NOT_HANDLED,
         SHOW_DASH,
@@ -132,129 +174,226 @@ export namespace Unity {
         PERFORM_SEARCH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchType {
         export const $gtype: GObject.GType<SearchType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SearchType {
         DEFAULT,
         GLOBAL,
         N_TYPES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ResultType {
         export const $gtype: GObject.GType<ResultType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ResultType {
         DEFAULT,
         PERSONAL,
         SEMI_PERSONAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SerializationType {
         export const $gtype: GObject.GType<SerializationType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SerializationType {
         BINARY,
         JSON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlaybackState {
         export const $gtype: GObject.GType<PlaybackState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PlaybackState {
         PLAYING,
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OptionsFilterSortType {
         export const $gtype: GObject.GType<OptionsFilterSortType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum OptionsFilterSortType {
         MANUAL,
         DISPLAY_NAME,
         ID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PreferencesManagerRemoteContent {
         export const $gtype: GObject.GType<PreferencesManagerRemoteContent>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PreferencesManagerRemoteContent {
         ALL,
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MusicPreviewTrackState {
         export const $gtype: GObject.GType<MusicPreviewTrackState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MusicPreviewTrackState {
         STOPPED,
         PLAYING,
         PAUSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PaymentPreviewType {
         export const $gtype: GObject.GType<PaymentPreviewType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PaymentPreviewType {
         APPLICATION,
         MUSIC,
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SchemaFieldType {
         export const $gtype: GObject.GType<SchemaFieldType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SchemaFieldType {
         OPTIONAL,
         REQUIRED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AggregatorScopeSortFlags {
         export const $gtype: GObject.GType<AggregatorScopeSortFlags>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AggregatorScopeSortFlags {
         ASCENDING,
         DESCENDING,
         CASE_INSENSITIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AggregatorScopeMergeMode {
         export const $gtype: GObject.GType<AggregatorScopeMergeMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AggregatorScopeMergeMode {
         CATEGORY_ID,
         OWNER_SCOPE,
     }
+
     const SCOPE_API_VERSION: number;
+    /**
+     * @param renderer_name
+     */
     function category_renderer_from_string(renderer_name: string): CategoryRenderer;
-    function category_renderer_to_string(val: CategoryRenderer | null): string;
+    /**
+     * @param val
+     */
+    function category_renderer_to_string(val: CategoryRenderer): string;
+    /**
+     * @param content_type
+     */
     function category_content_type_from_string(content_type: string): CategoryContentType;
-    function category_content_type_to_string(val: CategoryContentType | null): string;
-    function filter_renderer_to_string(renderer: FilterRenderer | null): string;
+    /**
+     * @param val
+     */
+    function category_content_type_to_string(val: CategoryContentType): string;
+    /**
+     * @param renderer
+     */
+    function filter_renderer_to_string(renderer: FilterRenderer): string;
+    /**
+     * @param renderer_name
+     */
     function filter_renderer_from_string(renderer_name: string): FilterRenderer;
     function scope_module_get_version(): number;
     function scope_module_load_scopes(): AbstractScope[];
+    /**
+     * @param object
+     */
     function object_unref(object: any): void;
+    /**
+     * @gir-type Callback
+     */
     interface ScopeSearchBaseCallback {
         (instance: ScopeSearchBase): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AbstractPreviewCallback {
         (previewer: ResultPreviewer, preview: AbstractPreview): void;
     }
     namespace AppInfoManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: (arg0: string, arg1: Gio.AppInfo) => void;
         }
 
@@ -263,6 +402,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AppInfoManager extends GObject.Object {
         static $gtype: GObject.GType<AppInfoManager>;
 
@@ -283,16 +425,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AppInfoManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AppInfoManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AppInfoManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -306,13 +451,39 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param id
+         */
         lookup(id: string): Gio.AppInfo;
+        /**
+         * @param id
+         */
         get_categories(id: string): string[];
+        /**
+         * @param id
+         */
         get_keywords(id: string): string[];
+        /**
+         * @param id
+         */
         get_path(id: string): string;
+        /**
+         * @param id
+         */
         lookup_async(id: string): globalThis.Promise<Gio.AppInfo>;
+        /**
+         * @param id
+         * @param _callback_
+         */
         lookup_async(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param id
+         * @param _callback_
+         */
         lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.AppInfo> | void;
+        /**
+         * @param _res_
+         */
         lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo;
         clear(): void;
     }
@@ -337,6 +508,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AnnotatedIcon extends GObject.Object {
         static $gtype: GObject.GType<AnnotatedIcon>;
 
@@ -372,16 +546,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotatedIcon.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotatedIcon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotatedIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -390,16 +567,34 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param r
+         * @param g
+         * @param b
+         * @param a
+         */
         set_colorize_rgba(r: number, g: number, b: number, a: number): void;
         to_string(): string;
         get_icon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_icon(value: Gio.Icon): void;
         get_ribbon(): string;
+        /**
+         * @param value
+         */
         set_ribbon(value: string): void;
         get_category(): CategoryType;
-        set_category(value: CategoryType | null): void;
+        /**
+         * @param value
+         */
+        set_category(value: CategoryType): void;
         get_size_hint(): IconSizeHint;
-        set_size_hint(value: IconSizeHint | null): void;
+        /**
+         * @param value
+         */
+        set_size_hint(value: IconSizeHint): void;
     }
 
     namespace Inspector {
@@ -419,14 +614,29 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Inspector extends GObject.Object {
         static $gtype: GObject.GType<Inspector>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get unity_running(): boolean;
+        /**
+         * @read-only
+         */
         get unityRunning(): boolean;
+        /**
+         * @read-only
+         */
         get unity_bus_name(): string;
+        /**
+         * @read-only
+         */
         get unityBusName(): string;
 
         /**
@@ -446,16 +656,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Inspector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Inspector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Inspector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Inspector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Inspector.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Inspector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -489,7 +702,7 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Dee.Serializable.ConstructorProps {
             app_uri: string;
             appUri: string;
-            count: number;
+            count: bigint | number;
             count_visible: boolean;
             countVisible: boolean;
             progress: number;
@@ -500,6 +713,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LauncherEntry extends GObject.Object implements Dee.Serializable {
         static $gtype: GObject.GType<LauncherEntry>;
 
@@ -510,7 +726,7 @@ export namespace Unity {
         get appUri(): string;
         set appUri(val: string);
         get count(): number;
-        set count(val: number);
+        set count(val: bigint | number);
         get count_visible(): boolean;
         set count_visible(val: boolean);
         get countVisible(): boolean;
@@ -543,16 +759,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LauncherEntry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LauncherEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LauncherEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -561,53 +780,82 @@ export namespace Unity {
 
         // Static methods
 
+        /**
+         * @param app_uri
+         */
         static get_for_app_uri(app_uri: string): LauncherEntry;
+        /**
+         * @param desktop_id
+         */
         static get_for_desktop_id(desktop_id: string): LauncherEntry;
+        /**
+         * @param desktop_file
+         */
         static get_for_desktop_file(desktop_file: string): LauncherEntry;
 
         // Methods
 
         get_app_uri(): string;
+        /**
+         * @param value
+         */
         set_app_uri(value: string): void;
         get_count(): number;
-        set_count(value: number): void;
+        /**
+         * @param value
+         */
+        set_count(value: bigint | number): void;
         get_count_visible(): boolean;
+        /**
+         * @param value
+         */
         set_count_visible(value: boolean): void;
         get_progress(): number;
+        /**
+         * @param value
+         */
         set_progress(value: number): void;
         get_progress_visible(): boolean;
+        /**
+         * @param value
+         */
         set_progress_visible(value: boolean): void;
         get_urgent(): boolean;
+        /**
+         * @param value
+         */
         set_urgent(value: boolean): void;
         get_quicklist(): Dbusmenu.Menuitem;
+        /**
+         * @param value
+         */
         set_quicklist(value: Dbusmenu.Menuitem): void;
-
-        // Inherited methods
         /**
          * Build an externalized form of `self` which can be used together with
-         * dee_serializable_parse_external() to rebuild a copy of `self`.
+         * `dee_serializable_parse_external()` to rebuild a copy of `self`.
          *
          * It is important to note that the variant returned from this method does
          * not have the same type signature as returned from a call to
-         * dee_serializable_serialize(). Externalization will wrap the serialized data
+         * `dee_serializable_serialize()`. Externalization will wrap the serialized data
          * in a container format with versioning information and headers with type
          * information.
-         * @returns A floating reference to a #GVariant with the externalized data.
+         * @returns A floating reference to a {@link GLib.Variant} with the externalized data.
          */
         externalize(): GLib.Variant;
         /**
          * Build a clean serialized representation of `self`. The signature of the
          * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
-         * @returns A reference to a #GVariant with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               g_variant_unref().
+         * You can recreate a serialized instance by calling `dee_serializable_parse()`
+         * provided that you know the correct {@link GObject.GType} for the serialized instance.
+         * @returns A reference to a {@link GLib.Variant} with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               `g_variant_unref()`.
          */
         serialize(): GLib.Variant;
         /**
          * Build a clean serialized representation of `self`. The signature of the
          * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
+         * You can recreate a serialized instance by calling `dee_serializable_parse()`
+         * provided that you know the correct {@link GObject.GType} for the serialized instance.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant;
         /**
@@ -623,90 +871,68 @@ export namespace Unity {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -714,7 +940,7 @@ export namespace Unity {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -722,9 +948,9 @@ export namespace Unity {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -744,9 +970,9 @@ export namespace Unity {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -760,33 +986,33 @@ export namespace Unity {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -819,21 +1045,21 @@ export namespace Unity {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -843,8 +1069,8 @@ export namespace Unity {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -861,14 +1087,14 @@ export namespace Unity {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -879,13 +1105,13 @@ export namespace Unity {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -916,21 +1142,21 @@ export namespace Unity {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -940,33 +1166,34 @@ export namespace Unity {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -975,6 +1202,7 @@ export namespace Unity {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -983,12 +1211,14 @@ export namespace Unity {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -997,20 +1227,22 @@ export namespace Unity {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1022,8 +1254,9 @@ export namespace Unity {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1054,6 +1287,9 @@ export namespace Unity {
     namespace LauncherFavorites {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: () => void;
         }
 
@@ -1062,6 +1298,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LauncherFavorites extends GObject.Object {
         static $gtype: GObject.GType<LauncherFavorites>;
 
@@ -1082,16 +1321,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LauncherFavorites.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LauncherFavorites.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LauncherFavorites.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1104,8 +1346,17 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param appinfo
+         */
         has_app_info(appinfo: Gio.AppInfo): boolean;
+        /**
+         * @param app_id
+         */
         has_app_id(app_id: string): boolean;
+        /**
+         * @param app_id
+         */
         lookup(app_id: string): Gio.AppInfo;
         enumerate_ids(): string[];
         enumerate_app_infos(): Gio.AppInfo[];
@@ -1120,6 +1371,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MetadataProvider extends GObject.Object {
         static $gtype: GObject.GType<MetadataProvider>;
 
@@ -1140,16 +1394,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MetadataProvider.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataProvider.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MetadataProvider.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataProvider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MetadataProvider.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MetadataProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1174,14 +1431,29 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ProgressSourceProvider extends MetadataProvider {
         static $gtype: GObject.GType<ProgressSourceProvider>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dbus_name(): string;
+        /**
+         * @construct-only
+         */
         get dbusName(): string;
+        /**
+         * @construct-only
+         */
         get dbus_path(): string;
+        /**
+         * @construct-only
+         */
         get dbusPath(): string;
 
         /**
@@ -1203,16 +1475,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProgressSourceProvider.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProgressSourceProvider.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProgressSourceProvider.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProgressSourceProvider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProgressSourceProvider.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProgressSourceProvider.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1256,16 +1531,37 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Category extends GObject.Object {
         static $gtype: GObject.GType<Category>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get default_renderer(): CategoryRenderer;
+        /**
+         * @construct-only
+         */
         get defaultRenderer(): CategoryRenderer;
         get content_type(): CategoryContentType;
         set content_type(val: CategoryContentType);
@@ -1275,6 +1571,9 @@ export namespace Unity {
         set renderer_hint(val: string);
         get rendererHint(): string;
         set rendererHint(val: string);
+        /**
+         * @read-only
+         */
         get renderer(): string;
 
         /**
@@ -1296,16 +1595,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Category.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Category.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Category.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1314,14 +1616,23 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param provider
+         */
         add_metadata_provider(provider: MetadataProvider): void;
         get_id(): string;
         get_name(): string;
         get_icon_hint(): Gio.Icon;
         get_default_renderer(): CategoryRenderer;
         get_content_type(): CategoryContentType;
-        set_content_type(value: CategoryContentType | null): void;
+        /**
+         * @param value
+         */
+        set_content_type(value: CategoryContentType): void;
         get_renderer_hint(): string;
+        /**
+         * @param value
+         */
         set_renderer_hint(value: string): void;
         get_renderer(): string;
     }
@@ -1329,6 +1640,9 @@ export namespace Unity {
     namespace Filter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: () => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
             'notify::display-name': (pspec: GObject.ParamSpec) => void;
@@ -1354,18 +1668,33 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Filter extends GObject.Object implements Dee.Serializable {
         static $gtype: GObject.GType<Filter>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
         get display_name(): string;
         set display_name(val: string);
         get displayName(): string;
         set displayName(val: string);
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get renderer(): FilterRenderer;
         get visible(): boolean;
         set visible(val: boolean);
@@ -1391,16 +1720,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Filter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Filter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Filter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1414,36 +1746,38 @@ export namespace Unity {
         get_icon_hint(): Gio.Icon;
         get_renderer(): FilterRenderer;
         get_visible(): boolean;
+        /**
+         * @param value
+         */
         set_visible(value: boolean): void;
         get_collapsed(): boolean;
         get_filtering(): boolean;
-
-        // Inherited methods
         /**
          * Build an externalized form of `self` which can be used together with
-         * dee_serializable_parse_external() to rebuild a copy of `self`.
+         * `dee_serializable_parse_external()` to rebuild a copy of `self`.
          *
          * It is important to note that the variant returned from this method does
          * not have the same type signature as returned from a call to
-         * dee_serializable_serialize(). Externalization will wrap the serialized data
+         * `dee_serializable_serialize()`. Externalization will wrap the serialized data
          * in a container format with versioning information and headers with type
          * information.
-         * @returns A floating reference to a #GVariant with the externalized data.
+         * @returns A floating reference to a {@link GLib.Variant} with the externalized data.
          */
         externalize(): GLib.Variant;
         /**
          * Build a clean serialized representation of `self`. The signature of the
          * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
-         * @returns A reference to a #GVariant with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               g_variant_unref().
+         * You can recreate a serialized instance by calling `dee_serializable_parse()`
+         * provided that you know the correct {@link GObject.GType} for the serialized instance.
+         * @returns A reference to a {@link GLib.Variant} with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               `g_variant_unref()`.
          */
         serialize(): GLib.Variant;
         /**
          * Build a clean serialized representation of `self`. The signature of the
          * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
+         * You can recreate a serialized instance by calling `dee_serializable_parse()`
+         * provided that you know the correct {@link GObject.GType} for the serialized instance.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant;
         /**
@@ -1459,90 +1793,68 @@ export namespace Unity {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1550,7 +1862,7 @@ export namespace Unity {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1558,9 +1870,9 @@ export namespace Unity {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1580,9 +1892,9 @@ export namespace Unity {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1596,33 +1908,33 @@ export namespace Unity {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1655,21 +1967,21 @@ export namespace Unity {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1679,8 +1991,8 @@ export namespace Unity {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1697,14 +2009,14 @@ export namespace Unity {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1715,13 +2027,13 @@ export namespace Unity {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1752,21 +2064,21 @@ export namespace Unity {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1776,33 +2088,34 @@ export namespace Unity {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1811,6 +2124,7 @@ export namespace Unity {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1819,12 +2133,14 @@ export namespace Unity {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1833,20 +2149,22 @@ export namespace Unity {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1858,8 +2176,9 @@ export namespace Unity {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1908,15 +2227,33 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FilterOption extends GObject.Object {
         static $gtype: GObject.GType<FilterOption>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get display_name(): string;
+        /**
+         * @construct-only
+         */
         get displayName(): string;
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
         get active(): boolean;
         set active(val: boolean);
@@ -1940,16 +2277,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterOption.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterOption.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterOption.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1962,6 +2302,9 @@ export namespace Unity {
         get_display_name(): string;
         get_icon_hint(): Gio.Icon;
         get_active(): boolean;
+        /**
+         * @param value
+         */
         set_active(value: boolean): void;
     }
 
@@ -1989,6 +2332,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OptionsFilter extends Filter {
         static $gtype: GObject.GType<OptionsFilter>;
 
@@ -2026,16 +2372,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OptionsFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OptionsFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OptionsFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2044,12 +2393,29 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param id
+         * @param display_name
+         * @param icon_hint
+         */
         add_option(id: string, display_name: string, icon_hint: Gio.Icon): FilterOption;
+        /**
+         * @param id
+         */
         get_option(id: string): FilterOption;
+        /**
+         * @param id
+         */
         remove_option(id: string): boolean;
         get_sort_type(): OptionsFilterSortType;
-        set_sort_type(value: OptionsFilterSortType | null): void;
+        /**
+         * @param value
+         */
+        set_sort_type(value: OptionsFilterSortType): void;
         get_show_all_button(): boolean;
+        /**
+         * @param value
+         */
         set_show_all_button(value: boolean): void;
     }
 
@@ -2072,6 +2438,9 @@ export namespace Unity {
         interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RadioOptionFilter extends OptionsFilter {
         static $gtype: GObject.GType<RadioOptionFilter>;
 
@@ -2097,16 +2466,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RadioOptionFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RadioOptionFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RadioOptionFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2137,6 +2509,9 @@ export namespace Unity {
         interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CheckOptionFilter extends OptionsFilter {
         static $gtype: GObject.GType<CheckOptionFilter>;
 
@@ -2162,16 +2537,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CheckOptionFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CheckOptionFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CheckOptionFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2198,6 +2576,9 @@ export namespace Unity {
         interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CheckOptionFilterCompact extends OptionsFilter {
         static $gtype: GObject.GType<CheckOptionFilterCompact>;
 
@@ -2228,16 +2609,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CheckOptionFilterCompact.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CheckOptionFilterCompact.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CheckOptionFilterCompact.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2267,6 +2651,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RatingsFilter extends Filter {
         static $gtype: GObject.GType<RatingsFilter>;
 
@@ -2294,16 +2681,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RatingsFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RatingsFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RatingsFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2334,6 +2724,9 @@ export namespace Unity {
         interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MultiRangeFilter extends OptionsFilter {
         static $gtype: GObject.GType<MultiRangeFilter>;
 
@@ -2359,16 +2752,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultiRangeFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultiRangeFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MultiRangeFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2407,6 +2803,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PreferencesManager extends GObject.Object {
         static $gtype: GObject.GType<PreferencesManager>;
 
@@ -2450,16 +2849,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreferencesManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreferencesManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PreferencesManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2473,20 +2875,38 @@ export namespace Unity {
         // Methods
 
         get_remote_content_search(): PreferencesManagerRemoteContent;
-        set_remote_content_search(value: PreferencesManagerRemoteContent | null): void;
+        /**
+         * @param value
+         */
+        set_remote_content_search(value: PreferencesManagerRemoteContent): void;
         get_always_search(): string[];
+        /**
+         * @param value
+         */
         set_always_search(value: string[]): void;
         get_home_lens_priority(): string[];
+        /**
+         * @param value
+         */
         set_home_lens_priority(value: string[]): void;
         get_home_lens_default_view(): string[];
+        /**
+         * @param value
+         */
         set_home_lens_default_view(value: string[]): void;
         get_disabled_scopes(): string[];
+        /**
+         * @param value
+         */
         set_disabled_scopes(value: string[]): void;
     }
 
     namespace DeprecatedScopeSearch {
         // Signal signatures
         interface SignalSignatures extends ScopeSearchBase.SignalSignatures {
+            /**
+             * @signal
+             */
             finished: () => void;
             'notify::channel-id': (pspec: GObject.ParamSpec) => void;
             'notify::search-string': (pspec: GObject.ParamSpec) => void;
@@ -2505,27 +2925,60 @@ export namespace Unity {
             searchString: string;
             search_type: SearchType;
             searchType: SearchType;
-            hints: GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
             results_model: Dee.SerializableModel;
             resultsModel: Dee.SerializableModel;
             owner: DeprecatedScopeBase;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DeprecatedScopeSearch extends ScopeSearchBase {
         static $gtype: GObject.GType<DeprecatedScopeSearch>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get channel_id(): string;
+        /**
+         * @construct-only
+         */
         get channelId(): string;
+        /**
+         * @read-only
+         */
         get search_string(): string;
+        /**
+         * @read-only
+         */
         get searchString(): string;
+        /**
+         * @read-only
+         */
         get search_type(): SearchType;
+        /**
+         * @read-only
+         */
         get searchType(): SearchType;
+        /**
+         * @construct-only
+         */
         get hints(): GLib.HashTable<string, GLib.Variant>;
+        /**
+         * @construct-only
+         */
         get results_model(): Dee.SerializableModel;
+        /**
+         * @construct-only
+         */
         get resultsModel(): Dee.SerializableModel;
+        /**
+         * @construct-only
+         */
         get owner(): DeprecatedScopeBase;
 
         /**
@@ -2545,16 +2998,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeprecatedScopeSearch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeprecatedScopeSearch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeprecatedScopeSearch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeprecatedScopeSearch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeprecatedScopeSearch.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeprecatedScopeSearch.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2565,8 +3021,18 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param key
+         * @param variant
+         */
         set_reply_hint(key: string, variant: GLib.Variant): void;
+        /**
+         * @param filter_id
+         */
         get_filter(filter_id: string): Filter;
+        /**
+         * @param other
+         */
         equals(other: DeprecatedScopeSearch): boolean;
         get_channel_id(): string;
         get_search_string(): string;
@@ -2579,7 +3045,13 @@ export namespace Unity {
     namespace AggregatedScopeSearch {
         // Signal signatures
         interface SignalSignatures extends DeprecatedScopeSearch.SignalSignatures {
+            /**
+             * @signal
+             */
             'transaction-complete': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'category-order-changed': (arg0: number[]) => void;
             'notify::channel-id': (pspec: GObject.ParamSpec) => void;
             'notify::search-string': (pspec: GObject.ParamSpec) => void;
@@ -2594,6 +3066,9 @@ export namespace Unity {
         interface ConstructorProps extends DeprecatedScopeSearch.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AggregatedScopeSearch extends DeprecatedScopeSearch {
         static $gtype: GObject.GType<AggregatedScopeSearch>;
 
@@ -2621,16 +3096,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AggregatedScopeSearch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AggregatedScopeSearch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AggregatedScopeSearch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AggregatedScopeSearch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AggregatedScopeSearch.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AggregatedScopeSearch.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2641,45 +3119,91 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param scope_id
+         * @param search_string
+         * @param search_type
+         * @param hints
+         */
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType | null,
+            search_type: SearchType,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
+        /**
+         * @param scope_id
+         * @param search_string
+         * @param search_type
+         * @param hints
+         * @param _callback_
+         */
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType | null,
+            search_type: SearchType,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        /**
+         * @param scope_id
+         * @param search_string
+         * @param search_type
+         * @param hints
+         * @param _callback_
+         */
         search_scope(
             scope_id: string,
             search_string: string,
-            search_type: SearchType | null,
+            search_type: SearchType,
             hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
+        /**
+         * @param _res_
+         */
         search_scope_finish(_res_: Gio.AsyncResult): GLib.HashTable<string, GLib.Variant>;
+        /**
+         * @param scope_id
+         * @param results_model
+         * @param category_ids
+         */
         push_results(
             scope_id: string,
             results_model: Dee.SerializableModel,
             category_ids: string[],
         ): globalThis.Promise<void>;
+        /**
+         * @param scope_id
+         * @param results_model
+         * @param category_ids
+         * @param _callback_
+         */
         push_results(
             scope_id: string,
             results_model: Dee.SerializableModel,
             category_ids: string[],
             _callback_: Gio.AsyncReadyCallback<this>,
         ): void;
+        /**
+         * @param scope_id
+         * @param results_model
+         * @param category_ids
+         * @param _callback_
+         */
         push_results(
             scope_id: string,
             results_model: Dee.SerializableModel,
             category_ids: string[],
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         push_results_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param filters
+         */
         push_filter_settings(filters: FilterSet): void;
     }
 
@@ -2706,6 +3230,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Preview extends AbstractPreview implements Dee.Serializable {
         static $gtype: GObject.GType<Preview>;
 
@@ -2743,16 +3270,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Preview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Preview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Preview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Preview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Preview.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Preview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2761,45 +3291,65 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param action
+         */
         add_action(action: PreviewAction): void;
+        /**
+         * @param info_hint
+         */
         add_info(info_hint: InfoHint): void;
         get_title(): string;
+        /**
+         * @param value
+         */
         set_title(value: string): void;
         get_subtitle(): string;
+        /**
+         * @param value
+         */
         set_subtitle(value: string): void;
         get_description_markup(): string;
+        /**
+         * @param value
+         */
         set_description_markup(value: string): void;
         get_image_source_uri(): string;
+        /**
+         * @param value
+         */
         set_image_source_uri(value: string): void;
         get_image(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_image(value: Gio.Icon): void;
-
-        // Inherited methods
         /**
          * Build an externalized form of `self` which can be used together with
-         * dee_serializable_parse_external() to rebuild a copy of `self`.
+         * `dee_serializable_parse_external()` to rebuild a copy of `self`.
          *
          * It is important to note that the variant returned from this method does
          * not have the same type signature as returned from a call to
-         * dee_serializable_serialize(). Externalization will wrap the serialized data
+         * `dee_serializable_serialize()`. Externalization will wrap the serialized data
          * in a container format with versioning information and headers with type
          * information.
-         * @returns A floating reference to a #GVariant with the externalized data.
+         * @returns A floating reference to a {@link GLib.Variant} with the externalized data.
          */
         externalize(): GLib.Variant;
         /**
          * Build a clean serialized representation of `self`. The signature of the
          * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
-         * @returns A reference to a #GVariant with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               g_variant_unref().
+         * You can recreate a serialized instance by calling `dee_serializable_parse()`
+         * provided that you know the correct {@link GObject.GType} for the serialized instance.
+         * @returns A reference to a {@link GLib.Variant} with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               `g_variant_unref()`.
          */
         serialize(): GLib.Variant;
         /**
          * Build a clean serialized representation of `self`. The signature of the
          * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
+         * You can recreate a serialized instance by calling `dee_serializable_parse()`
+         * provided that you know the correct {@link GObject.GType} for the serialized instance.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant;
         /**
@@ -2815,90 +3365,68 @@ export namespace Unity {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2906,7 +3434,7 @@ export namespace Unity {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2914,9 +3442,9 @@ export namespace Unity {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2936,9 +3464,9 @@ export namespace Unity {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2952,33 +3480,33 @@ export namespace Unity {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3011,21 +3539,21 @@ export namespace Unity {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3035,8 +3563,8 @@ export namespace Unity {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3053,14 +3581,14 @@ export namespace Unity {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3071,13 +3599,13 @@ export namespace Unity {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3108,21 +3636,21 @@ export namespace Unity {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3132,33 +3660,34 @@ export namespace Unity {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3167,6 +3696,7 @@ export namespace Unity {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3175,12 +3705,14 @@ export namespace Unity {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3189,20 +3721,22 @@ export namespace Unity {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3214,8 +3748,9 @@ export namespace Unity {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3246,6 +3781,9 @@ export namespace Unity {
     namespace PreviewAction {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             activated: (arg0: string) => ActivationResponse;
             'notify::id': (pspec: GObject.ParamSpec) => void;
             'notify::display-name': (pspec: GObject.ParamSpec) => void;
@@ -3267,26 +3805,53 @@ export namespace Unity {
             iconHint: Gio.Icon;
             layout_hint: LayoutHint;
             layoutHint: LayoutHint;
-            hints: GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PreviewAction extends GObject.Object implements Dee.Serializable {
         static $gtype: GObject.GType<PreviewAction>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get display_name(): string;
+        /**
+         * @construct-only
+         */
         get displayName(): string;
         get extra_text(): string;
         set extra_text(val: string);
         get extraText(): string;
         set extraText(val: string);
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get layout_hint(): LayoutHint;
+        /**
+         * @construct-only
+         */
         get layoutHint(): LayoutHint;
+        /**
+         * @read-only
+         */
         get hints(): GLib.HashTable<string, GLib.Variant>;
 
         /**
@@ -3317,16 +3882,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviewAction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviewAction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PreviewAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3338,37 +3906,39 @@ export namespace Unity {
         get_id(): string;
         get_display_name(): string;
         get_extra_text(): string;
+        /**
+         * @param value
+         */
         set_extra_text(value: string): void;
         get_icon_hint(): Gio.Icon;
         get_layout_hint(): LayoutHint;
         get_hints(): GLib.HashTable<string, GLib.Variant>;
-
-        // Inherited methods
         /**
          * Build an externalized form of `self` which can be used together with
-         * dee_serializable_parse_external() to rebuild a copy of `self`.
+         * `dee_serializable_parse_external()` to rebuild a copy of `self`.
          *
          * It is important to note that the variant returned from this method does
          * not have the same type signature as returned from a call to
-         * dee_serializable_serialize(). Externalization will wrap the serialized data
+         * `dee_serializable_serialize()`. Externalization will wrap the serialized data
          * in a container format with versioning information and headers with type
          * information.
-         * @returns A floating reference to a #GVariant with the externalized data.
+         * @returns A floating reference to a {@link GLib.Variant} with the externalized data.
          */
         externalize(): GLib.Variant;
         /**
          * Build a clean serialized representation of `self`. The signature of the
          * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
-         * @returns A reference to a #GVariant with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               g_variant_unref().
+         * You can recreate a serialized instance by calling `dee_serializable_parse()`
+         * provided that you know the correct {@link GObject.GType} for the serialized instance.
+         * @returns A reference to a {@link GLib.Variant} with               the serialized data. The variants type signature is entirely               dependent of the underlying implementation. Free using               `g_variant_unref()`.
          */
         serialize(): GLib.Variant;
         /**
          * Build a clean serialized representation of `self`. The signature of the
          * returned variant is entirely determined by the underlying implementation.
-         * You can recreate a serialized instance by calling dee_serializable_parse()
-         * provided that you know the correct #GType for the serialized instance.
+         * You can recreate a serialized instance by calling `dee_serializable_parse()`
+         * provided that you know the correct {@link GObject.GType} for the serialized instance.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant;
         /**
@@ -3384,90 +3954,68 @@ export namespace Unity {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3475,7 +4023,7 @@ export namespace Unity {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3483,9 +4031,9 @@ export namespace Unity {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3505,9 +4053,9 @@ export namespace Unity {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3521,33 +4069,33 @@ export namespace Unity {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3580,21 +4128,21 @@ export namespace Unity {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3604,8 +4152,8 @@ export namespace Unity {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3622,14 +4170,14 @@ export namespace Unity {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -3640,13 +4188,13 @@ export namespace Unity {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3677,21 +4225,21 @@ export namespace Unity {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3701,33 +4249,34 @@ export namespace Unity {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3736,6 +4285,7 @@ export namespace Unity {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3744,12 +4294,14 @@ export namespace Unity {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3758,20 +4310,22 @@ export namespace Unity {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3783,8 +4337,9 @@ export namespace Unity {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -3833,16 +4388,37 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class InfoHint extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<InfoHint>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get display_name(): string;
+        /**
+         * @construct-only
+         */
         get displayName(): string;
+        /**
+         * @construct-only
+         */
         get icon_hint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get iconHint(): Gio.Icon;
+        /**
+         * @construct-only
+         */
         get data(): GLib.Variant;
 
         /**
@@ -3866,16 +4442,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InfoHint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfoHint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InfoHint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfoHint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InfoHint.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InfoHint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3888,6 +4467,9 @@ export namespace Unity {
         get_display_name(): string;
         get_icon_hint(): Gio.Icon;
         get_data(): GLib.Variant;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
     }
@@ -3907,6 +4489,9 @@ export namespace Unity {
         interface ConstructorProps extends Preview.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GenericPreview extends Preview {
         static $gtype: GObject.GType<GenericPreview>;
 
@@ -3929,16 +4514,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GenericPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GenericPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GenericPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3972,6 +4560,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ApplicationPreview extends Preview {
         static $gtype: GObject.GType<ApplicationPreview>;
 
@@ -4015,16 +4606,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ApplicationPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4033,14 +4627,30 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param rating
+         * @param num_ratings
+         */
         set_rating(rating: number, num_ratings: number): void;
         get_app_icon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_app_icon(value: Gio.Icon): void;
         get_license(): string;
+        /**
+         * @param value
+         */
         set_license(value: string): void;
         get_copyright(): string;
+        /**
+         * @param value
+         */
         set_copyright(value: string): void;
         get_last_update(): string;
+        /**
+         * @param value
+         */
         set_last_update(value: string): void;
     }
 
@@ -4059,6 +4669,9 @@ export namespace Unity {
         interface ConstructorProps extends Preview.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MusicPreview extends Preview {
         static $gtype: GObject.GType<MusicPreview>;
 
@@ -4081,16 +4694,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MusicPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MusicPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MusicPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4099,6 +4715,9 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param track
+         */
         add_track(track: TrackMetadata): void;
     }
 
@@ -4134,6 +4753,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PaymentPreview extends Preview {
         static $gtype: GObject.GType<PaymentPreview>;
 
@@ -4187,16 +4809,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PaymentPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PaymentPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PaymentPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PaymentPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PaymentPreview.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PaymentPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4206,17 +4831,35 @@ export namespace Unity {
         // Methods
 
         get_header(): string;
+        /**
+         * @param value
+         */
         set_header(value: string): void;
         get_email(): string;
+        /**
+         * @param value
+         */
         set_email(value: string): void;
         get_payment_method(): string;
+        /**
+         * @param value
+         */
         set_payment_method(value: string): void;
         get_purchase_prize(): string;
+        /**
+         * @param value
+         */
         set_purchase_prize(value: string): void;
         get_purchase_type(): string;
+        /**
+         * @param value
+         */
         set_purchase_type(value: string): void;
         get_preview_type(): PaymentPreviewType;
-        set_preview_type(value: PaymentPreviewType | null): void;
+        /**
+         * @param value
+         */
+        set_preview_type(value: PaymentPreviewType): void;
     }
 
     namespace MoviePreview {
@@ -4237,6 +4880,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MoviePreview extends Preview {
         static $gtype: GObject.GType<MoviePreview>;
 
@@ -4264,16 +4910,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MoviePreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MoviePreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MoviePreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4282,8 +4931,15 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param rating
+         * @param num_ratings
+         */
         set_rating(rating: number, num_ratings: number): void;
         get_year(): string;
+        /**
+         * @param value
+         */
         set_year(value: string): void;
     }
 
@@ -4309,6 +4965,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SocialPreview extends Preview {
         static $gtype: GObject.GType<SocialPreview>;
 
@@ -4340,16 +4999,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SocialPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SocialPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SocialPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4358,12 +5020,24 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param comment
+         */
         add_comment(comment: SocialPreviewComment): void;
         get_avatar(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_avatar(value: Gio.Icon): void;
         get_content(): string;
+        /**
+         * @param value
+         */
         set_content(value: string): void;
         get_sender(): string;
+        /**
+         * @param value
+         */
         set_sender(value: string): void;
     }
 
@@ -4386,14 +5060,29 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SocialPreviewComment extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<SocialPreviewComment>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get text(): string;
+        /**
+         * @construct-only
+         */
         get time(): string;
 
         /**
@@ -4415,16 +5104,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SocialPreviewComment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SocialPreviewComment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SocialPreviewComment.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4457,11 +5149,17 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ActivationResponse extends GObject.Object {
         static $gtype: GObject.GType<ActivationResponse>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get handled(): HandledType;
         get goto_uri(): string;
         set goto_uri(val: string);
@@ -4495,16 +5193,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ActivationResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ActivationResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ActivationResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4515,6 +5216,9 @@ export namespace Unity {
 
         get_handled(): HandledType;
         get_goto_uri(): string;
+        /**
+         * @param value
+         */
         set_goto_uri(value: string): void;
     }
 
@@ -4539,10 +5243,13 @@ export namespace Unity {
             actionType: number;
             scope_result: ScopeResult;
             scopeResult: ScopeResult;
-            hints: GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AggregatorActivation extends GObject.Object {
         static $gtype: GObject.GType<AggregatorActivation>;
 
@@ -4565,7 +5272,7 @@ export namespace Unity {
         get scopeResult(): ScopeResult;
         set scopeResult(val: ScopeResult);
         get hints(): GLib.HashTable<string, GLib.Variant>;
-        set hints(val: GLib.HashTable<string, GLib.Variant>);
+        set hints(val: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
 
         /**
          * Compile-time signal type information.
@@ -4591,16 +5298,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AggregatorActivation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AggregatorActivation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AggregatorActivation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AggregatorActivation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AggregatorActivation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AggregatorActivation.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4612,12 +5322,24 @@ export namespace Unity {
         // Methods
 
         get_channel_id(): string;
+        /**
+         * @param value
+         */
         set_channel_id(value: string): void;
         get_scope_id(): string;
+        /**
+         * @param value
+         */
         set_scope_id(value: string): void;
         get_action_type(): number;
+        /**
+         * @param value
+         */
         set_action_type(value: number): void;
         get_scope_result(): ScopeResult;
+        /**
+         * @param value
+         */
         set_scope_result(value: ScopeResult): void;
         get_hints(): GLib.HashTable<string, GLib.Variant>;
     }
@@ -4631,6 +5353,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FilterSet extends GObject.Object {
         static $gtype: GObject.GType<FilterSet>;
 
@@ -4653,16 +5378,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4671,13 +5399,30 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @param filter
+         * @virtual
+         */
         vfunc_add(filter: Filter): void;
+        /**
+         * @param filter_id
+         * @virtual
+         */
         vfunc_get_filter_by_id(filter_id: string): Filter;
+        /**
+         * @virtual
+         */
         vfunc_get_filters(): Filter[];
 
         // Methods
 
+        /**
+         * @param filter
+         */
         add(filter: Filter): void;
+        /**
+         * @param filter_id
+         */
         get_filter_by_id(filter_id: string): Filter;
         get_filters(): Filter[];
     }
@@ -4691,6 +5436,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CategorySet extends GObject.Object {
         static $gtype: GObject.GType<CategorySet>;
 
@@ -4713,16 +5461,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CategorySet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CategorySet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CategorySet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CategorySet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CategorySet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CategorySet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4731,11 +5482,21 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @param category
+         * @virtual
+         */
         vfunc_add(category: Category): void;
+        /**
+         * @virtual
+         */
         vfunc_get_categories(): Category[];
 
         // Methods
 
+        /**
+         * @param category
+         */
         add(category: Category): void;
         get_categories(): Category[];
     }
@@ -4749,6 +5510,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Schema extends GObject.Object {
         static $gtype: GObject.GType<Schema>;
 
@@ -4771,16 +5535,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Schema.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Schema.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Schema.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Schema.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Schema.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Schema.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4789,12 +5556,26 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @param name
+         * @param schema
+         * @param type
+         * @virtual
+         */
         vfunc_add_field(name: string, schema: string, type: SchemaFieldType): void;
+        /**
+         * @virtual
+         */
         vfunc_get_fields(): SchemaFieldInfo[];
 
         // Methods
 
-        add_field(name: string, schema: string, type: SchemaFieldType | null): void;
+        /**
+         * @param name
+         * @param schema
+         * @param type
+         */
+        add_field(name: string, schema: string, type: SchemaFieldType): void;
         get_fields(): SchemaFieldInfo[];
     }
 
@@ -4807,6 +5588,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Cancellable extends GObject.Object {
         static $gtype: GObject.GType<Cancellable>;
 
@@ -4827,16 +5611,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cancellable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cancellable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Cancellable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4849,8 +5636,17 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_cancel(): void;
+        /**
+         * @virtual
+         */
         vfunc_is_cancelled(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_gcancellable(): Gio.Cancellable;
 
         // Methods
@@ -4869,6 +5665,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class ScopeSearchBase extends GObject.Object {
         static $gtype: GObject.GType<ScopeSearchBase>;
 
@@ -4889,16 +5688,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScopeSearchBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScopeSearchBase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScopeSearchBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScopeSearchBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScopeSearchBase.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScopeSearchBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4907,14 +5709,31 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_run(): void;
+        /**
+         * @param async_callback
+         * @virtual
+         */
         vfunc_run_async(async_callback: ScopeSearchBaseCallback): void;
+        /**
+         * @param ctx
+         * @virtual
+         */
         vfunc_set_search_context(ctx: SearchContext): void;
 
         // Methods
 
         run(): void;
+        /**
+         * @param async_callback
+         */
         run_async(async_callback: ScopeSearchBaseCallback): void;
+        /**
+         * @param ctx
+         */
         set_search_context(ctx: SearchContext): void;
     }
 
@@ -4927,6 +5746,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class ResultSet extends GObject.Object {
         static $gtype: GObject.GType<ResultSet>;
 
@@ -4951,16 +5773,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ResultSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResultSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ResultSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResultSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ResultSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ResultSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4969,13 +5794,30 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @param result
+         * @virtual
+         */
         vfunc_add_result(result: ScopeResult): void;
+        /**
+         * @param variant
+         * @virtual
+         */
         vfunc_add_result_from_variant(variant: GLib.Variant): void;
+        /**
+         * @virtual
+         */
         vfunc_flush(): void;
 
         // Methods
 
+        /**
+         * @param result
+         */
         add_result(result: ScopeResult): void;
+        /**
+         * @param variant
+         */
         add_result_from_variant(variant: GLib.Variant): void;
         flush(): void;
     }
@@ -4989,6 +5831,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractPreview extends GObject.Object {
         static $gtype: GObject.GType<AbstractPreview>;
 
@@ -5009,16 +5854,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractPreview.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractPreview.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractPreview.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractPreview.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5027,11 +5875,18 @@ export namespace Unity {
 
         // Virtual methods
 
-        vfunc_serialize_as(serialization_type: SerializationType): Uint8Array;
+        /**
+         * @param serialization_type
+         * @virtual
+         */
+        vfunc_serialize_as(serialization_type: SerializationType): Uint8Array | string;
 
         // Methods
 
-        serialize_as(serialization_type: SerializationType | null): Uint8Array;
+        /**
+         * @param serialization_type
+         */
+        serialize_as(serialization_type: SerializationType): Uint8Array;
     }
 
     namespace ResultPreviewer {
@@ -5043,6 +5898,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class ResultPreviewer extends GObject.Object {
         static $gtype: GObject.GType<ResultPreviewer>;
 
@@ -5068,16 +5926,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ResultPreviewer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResultPreviewer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ResultPreviewer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResultPreviewer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ResultPreviewer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ResultPreviewer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5086,14 +5947,30 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_run(): AbstractPreview;
+        /**
+         * @param async_callback
+         * @virtual
+         */
         vfunc_run_async(async_callback: AbstractPreviewCallback): void;
 
         // Methods
 
         run(): AbstractPreview;
+        /**
+         * @param async_callback
+         */
         run_async(async_callback: AbstractPreviewCallback): void;
+        /**
+         * @param scope_result
+         */
         set_scope_result(scope_result: ScopeResult): void;
+        /**
+         * @param search_metadata
+         */
         set_search_metadata(search_metadata: SearchMetadata): void;
     }
 
@@ -5115,14 +5992,29 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SearchMetadata extends GObject.Object {
         static $gtype: GObject.GType<SearchMetadata>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get locale(): string;
+        /**
+         * @read-only
+         */
         get form_factor(): string;
+        /**
+         * @read-only
+         */
         get formFactor(): string;
+        /**
+         * @read-only
+         */
         get location(): GeoCoordinate;
 
         /**
@@ -5144,16 +6036,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SearchMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SearchMetadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SearchMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SearchMetadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SearchMetadata.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SearchMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5162,7 +6057,13 @@ export namespace Unity {
 
         // Static methods
 
+        /**
+         * @param metadata
+         */
         static create(metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): SearchMetadata;
+        /**
+         * @param metadata
+         */
         static create_from_variant(metadata: GLib.Variant): SearchMetadata;
 
         // Methods
@@ -5181,6 +6082,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GeoCoordinate extends GObject.Object {
         static $gtype: GObject.GType<GeoCoordinate>;
 
@@ -5211,16 +6115,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GeoCoordinate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GeoCoordinate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GeoCoordinate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GeoCoordinate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GeoCoordinate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GeoCoordinate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5235,6 +6142,9 @@ export namespace Unity {
     namespace AbstractScope {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'results-invalidated-internal': (arg0: SearchType) => void;
         }
 
@@ -5243,6 +6153,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractScope extends GObject.Object {
         static $gtype: GObject.GType<AbstractScope>;
 
@@ -5263,16 +6176,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractScope.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractScope.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractScope.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractScope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5281,20 +6197,64 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @param search_context
+         * @virtual
+         */
         vfunc_create_search_for_query(search_context: SearchContext): ScopeSearchBase;
+        /**
+         * @param result
+         * @param metadata
+         * @virtual
+         */
         vfunc_create_previewer(result: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
+        /**
+         * @virtual
+         */
         vfunc_get_categories(): CategorySet;
+        /**
+         * @virtual
+         */
         vfunc_get_filters(): FilterSet;
+        /**
+         * @virtual
+         */
         vfunc_get_schema(): Schema;
+        /**
+         * @virtual
+         */
         vfunc_get_search_hint(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_group_name(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_unique_name(): string;
+        /**
+         * @param result
+         * @param metadata
+         * @param action_id
+         * @virtual
+         */
         vfunc_activate(result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
+        /**
+         * @param search_query
+         * @virtual
+         */
         vfunc_normalize_search_query(search_query: string): string;
 
         // Methods
 
+        /**
+         * @param search_context
+         */
         create_search_for_query(search_context: SearchContext): ScopeSearchBase;
+        /**
+         * @param result
+         * @param metadata
+         */
         create_previewer(result: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
         get_categories(): CategorySet;
         get_filters(): FilterSet;
@@ -5302,9 +6262,20 @@ export namespace Unity {
         get_search_hint(): string;
         get_group_name(): string;
         get_unique_name(): string;
+        /**
+         * @param result
+         * @param metadata
+         * @param action_id
+         */
         activate(result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
+        /**
+         * @param search_query
+         */
         normalize_search_query(search_query: string): string;
-        results_invalidated(search_type: SearchType | null): void;
+        /**
+         * @param search_type
+         */
+        results_invalidated(search_type: SearchType): void;
     }
 
     namespace ScopeDBusConnector {
@@ -5320,11 +6291,17 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScopeDBusConnector extends GObject.Object {
         static $gtype: GObject.GType<ScopeDBusConnector>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get scope(): AbstractScope;
 
         /**
@@ -5346,16 +6323,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScopeDBusConnector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScopeDBusConnector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScopeDBusConnector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScopeDBusConnector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScopeDBusConnector.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScopeDBusConnector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5377,6 +6357,9 @@ export namespace Unity {
     namespace DeprecatedScopeBase {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'active-sources-changed': (arg0: string[]) => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
             'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
@@ -5410,13 +6393,25 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class DeprecatedScopeBase extends GObject.Object {
         static $gtype: GObject.GType<DeprecatedScopeBase>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         get dbus_path(): string;
+        /**
+         * @construct-only
+         */
         get dbusPath(): string;
         get search_in_global(): boolean;
         set search_in_global(val: boolean);
@@ -5424,7 +6419,13 @@ export namespace Unity {
         set searchInGlobal(val: boolean);
         get visible(): boolean;
         set visible(val: boolean);
+        /**
+         * @construct-only
+         */
         get is_master(): boolean;
+        /**
+         * @construct-only
+         */
         get isMaster(): boolean;
         get search_hint(): string;
         set search_hint(val: string);
@@ -5456,16 +6457,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeprecatedScopeBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeprecatedScopeBase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeprecatedScopeBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeprecatedScopeBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeprecatedScopeBase.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeprecatedScopeBase.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5481,27 +6485,57 @@ export namespace Unity {
         get_id(): string;
         get_dbus_path(): string;
         get_search_in_global(): boolean;
+        /**
+         * @param value
+         */
         set_search_in_global(value: boolean): void;
         get_visible(): boolean;
+        /**
+         * @param value
+         */
         set_visible(value: boolean): void;
         get_is_master(): boolean;
         get_search_hint(): string;
+        /**
+         * @param value
+         */
         set_search_hint(value: string): void;
         get_sources(): OptionsFilter;
         get_categories(): CategorySet;
+        /**
+         * @param value
+         */
         set_categories(value: CategorySet): void;
         get_filters(): FilterSet;
+        /**
+         * @param value
+         */
         set_filters(value: FilterSet): void;
         get_schema(): Schema;
+        /**
+         * @param value
+         */
         set_schema(value: Schema): void;
     }
 
     namespace DeprecatedScope {
         // Signal signatures
         interface SignalSignatures extends DeprecatedScopeBase.SignalSignatures {
+            /**
+             * @signal
+             */
             'activate-uri': (arg0: string) => ActivationResponse;
+            /**
+             * @signal
+             */
             'preview-uri': (arg0: string) => Preview;
+            /**
+             * @signal
+             */
             'generate-search-key': (arg0: DeprecatedScopeSearch) => string;
+            /**
+             * @signal
+             */
             'search-changed': (arg0: DeprecatedScopeSearch, arg1: SearchType, arg2: Gio.Cancellable) => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
             'notify::dbus-path': (pspec: GObject.ParamSpec) => void;
@@ -5520,6 +6554,9 @@ export namespace Unity {
         interface ConstructorProps extends DeprecatedScopeBase.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DeprecatedScope extends DeprecatedScopeBase {
         static $gtype: GObject.GType<DeprecatedScope>;
 
@@ -5542,16 +6579,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeprecatedScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeprecatedScope.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeprecatedScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeprecatedScope.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeprecatedScope.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeprecatedScope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5560,28 +6600,77 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @param result
+         * @param _callback_
+         * @virtual
+         */
         vfunc_preview_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_preview_result_finish(_res_: Gio.AsyncResult): Preview;
+        /**
+         * @param result
+         * @param _callback_
+         * @virtual
+         */
         vfunc_activate_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse;
 
         // Methods
 
+        /**
+         * @param result
+         */
         preview_result(result: ScopeResult): globalThis.Promise<Preview>;
+        /**
+         * @param result
+         * @param _callback_
+         */
         preview_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param result
+         * @param _callback_
+         */
         preview_result(
             result: ScopeResult,
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<Preview> | void;
+        /**
+         * @param _res_
+         */
         preview_result_finish(_res_: Gio.AsyncResult): Preview;
+        /**
+         * @param result
+         */
         activate_result(result: ScopeResult): globalThis.Promise<ActivationResponse>;
+        /**
+         * @param result
+         * @param _callback_
+         */
         activate_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param result
+         * @param _callback_
+         */
         activate_result(
             result: ScopeResult,
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<ActivationResponse> | void;
+        /**
+         * @param _res_
+         */
         activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse;
-        queue_search_changed(search_type: SearchType | null): void;
+        /**
+         * @param search_type
+         */
+        queue_search_changed(search_type: SearchType): void;
     }
 
     namespace AggregatorScope {
@@ -5614,6 +6703,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AggregatorScope extends DeprecatedScopeBase {
         static $gtype: GObject.GType<AggregatorScope>;
 
@@ -5649,16 +6741,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AggregatorScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AggregatorScope.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AggregatorScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AggregatorScope.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AggregatorScope.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AggregatorScope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5667,36 +6762,107 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @param scope_id
+         * @virtual
+         */
         vfunc_category_index_for_scope_id(scope_id: string): number;
+        /**
+         * @param scope_search
+         * @param _callback_
+         * @virtual
+         */
         vfunc_search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_search_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param activation
+         * @param _callback_
+         * @virtual
+         */
         vfunc_activate(activation: AggregatorActivation, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_activate_finish(_res_: Gio.AsyncResult): ActivationResponse;
 
         // Methods
 
+        /**
+         * @param scope_id
+         */
         category_index_for_scope_id(scope_id: string): number;
-        add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags | null): void;
+        /**
+         * @param category_index
+         * @param field
+         * @param flags
+         */
+        add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags): void;
+        /**
+         * @param category_index
+         * @param field
+         */
         add_constraint(category_index: number, field: string): void;
+        /**
+         * @param scope_search
+         */
         search(scope_search: AggregatedScopeSearch): globalThis.Promise<void>;
+        /**
+         * @param scope_search
+         * @param _callback_
+         */
         search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param scope_search
+         * @param _callback_
+         */
         search(
             scope_search: AggregatedScopeSearch,
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         search_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param activation
+         */
         activate(activation: AggregatorActivation): globalThis.Promise<ActivationResponse>;
+        /**
+         * @param activation
+         * @param _callback_
+         */
         activate(activation: AggregatorActivation, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param activation
+         * @param _callback_
+         */
         activate(
             activation: AggregatorActivation,
             _callback_?: Gio.AsyncReadyCallback<this>,
         ): globalThis.Promise<ActivationResponse> | void;
+        /**
+         * @param _res_
+         */
         activate_finish(_res_: Gio.AsyncResult): ActivationResponse;
         get_merge_mode(): AggregatorScopeMergeMode;
-        set_merge_mode(value: AggregatorScopeMergeMode | null): void;
+        /**
+         * @param value
+         */
+        set_merge_mode(value: AggregatorScopeMergeMode): void;
         get_proxy_filter_hints(): boolean;
+        /**
+         * @param value
+         */
         set_proxy_filter_hints(value: boolean): void;
         get_automatic_flushing(): boolean;
+        /**
+         * @param value
+         */
         set_automatic_flushing(value: boolean): void;
     }
 
@@ -5727,6 +6893,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MasterScope extends AggregatorScope {
         static $gtype: GObject.GType<MasterScope>;
 
@@ -5756,16 +6925,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MasterScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MasterScope.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MasterScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MasterScope.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MasterScope.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MasterScope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5775,6 +6947,9 @@ export namespace Unity {
         // Methods
 
         get_no_content_hint(): string;
+        /**
+         * @param value
+         */
         set_no_content_hint(value: string): void;
     }
 
@@ -5822,6 +6997,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SimpleScope extends AbstractScope {
         static $gtype: GObject.GType<SimpleScope>;
 
@@ -5869,16 +7047,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SimpleScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleScope.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SimpleScope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleScope.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SimpleScope.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SimpleScope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5887,22 +7068,55 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param func
+         */
         set_search_func(func: SimpleScope.SearchRunFunc): void;
+        /**
+         * @param func
+         */
         set_search_async_func(func: SimpleScope.SearchRunAsyncFunc): void;
+        /**
+         * @param func
+         */
         set_activate_func(func: SimpleScope.ActivateFunc): void;
+        /**
+         * @param func
+         */
         set_preview_func(func: SimpleScope.PreviewRunFunc): void;
+        /**
+         * @param func
+         */
         set_preview_async_func(func: SimpleScope.PreviewRunAsyncFunc): void;
         get_filter_set(): FilterSet;
+        /**
+         * @param value
+         */
         set_filter_set(value: FilterSet): void;
         get_category_set(): CategorySet;
+        /**
+         * @param value
+         */
         set_category_set(value: CategorySet): void;
         get_schema(): Schema;
+        /**
+         * @param value
+         */
         set_schema(value: Schema): void;
         get_search_hint(): string;
+        /**
+         * @param value
+         */
         set_search_hint(value: string): void;
         get_group_name(): string;
+        /**
+         * @param value
+         */
         set_group_name(value: string): void;
         get_unique_name(): string;
+        /**
+         * @param value
+         */
         set_unique_name(value: string): void;
     }
 
@@ -5915,6 +7129,9 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScopeLoader extends GObject.Object {
         static $gtype: GObject.GType<ScopeLoader>;
 
@@ -5937,16 +7154,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScopeLoader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScopeLoader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScopeLoader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScopeLoader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScopeLoader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScopeLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5955,15 +7175,41 @@ export namespace Unity {
 
         // Virtual methods
 
+        /**
+         * @param module_name
+         * @param module_type
+         * @virtual
+         */
         vfunc_get_scopes(module_name: string, module_type: string): AbstractScope[];
+        /**
+         * @param scopes
+         * @virtual
+         */
         vfunc_export_scopes(scopes: AbstractScope[]): void;
 
         // Methods
 
+        /**
+         * @param module_name
+         * @param module_type
+         */
         get_scopes(module_name: string, module_type: string): AbstractScope[];
+        /**
+         * @param scopes
+         */
         export_scopes(scopes: AbstractScope[]): void;
+        /**
+         * @param group_name
+         */
         load_group(group_name: string): void;
+        /**
+         * @param scope_id
+         */
         load_scope(scope_id: string): void;
+        /**
+         * @param module
+         * @param module_type
+         */
         load_module(module: string, module_type: string): void;
     }
 
@@ -5997,6 +7243,9 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TrackMetadata extends GObject.Object {
         static $gtype: GObject.GType<TrackMetadata>;
 
@@ -6053,16 +7302,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TrackMetadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TrackMetadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TrackMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6072,20 +7324,44 @@ export namespace Unity {
         // Methods
 
         get_uri(): string;
+        /**
+         * @param value
+         */
         set_uri(value: string): void;
         get_track_no(): number;
+        /**
+         * @param value
+         */
         set_track_no(value: number): void;
         get_artist(): string;
+        /**
+         * @param value
+         */
         set_artist(value: string): void;
         get_title(): string;
+        /**
+         * @param value
+         */
         set_title(value: string): void;
         get_album(): string;
+        /**
+         * @param value
+         */
         set_album(value: string): void;
         get_length(): number;
+        /**
+         * @param value
+         */
         set_length(value: number): void;
         get_art_location(): Gio.File;
+        /**
+         * @param value
+         */
         set_art_location(value: Gio.File): void;
         get_art_icon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_art_icon(value: Gio.Icon): void;
     }
 
@@ -6115,11 +7391,17 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Playlist extends GObject.Object {
         static $gtype: GObject.GType<Playlist>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get id(): string;
         get name(): string;
         set name(val: string);
@@ -6157,16 +7439,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Playlist.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Playlist.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Playlist.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Playlist.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6177,24 +7462,54 @@ export namespace Unity {
 
         get_id(): string;
         get_name(): string;
+        /**
+         * @param value
+         */
         set_name(value: string): void;
         get_icon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_icon(value: Gio.Icon): void;
         get_creation_date(): GLib.DateTime;
+        /**
+         * @param value
+         */
         set_creation_date(value: GLib.DateTime): void;
         get_modification_date(): GLib.DateTime;
+        /**
+         * @param value
+         */
         set_modification_date(value: GLib.DateTime): void;
         get_last_play_date(): GLib.DateTime;
+        /**
+         * @param value
+         */
         set_last_play_date(value: GLib.DateTime): void;
     }
 
     namespace MusicPlayer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             raise: () => void;
+            /**
+             * @signal
+             */
             'play-pause': () => void;
+            /**
+             * @signal
+             */
             previous: () => void;
+            /**
+             * @signal
+             */
             next: () => void;
+            /**
+             * @signal
+             */
             'activate-playlist': (arg0: never) => void;
             'notify::app-info': (pspec: GObject.ParamSpec) => void;
             'notify::desktop-file-name': (pspec: GObject.ParamSpec) => void;
@@ -6242,14 +7557,29 @@ export namespace Unity {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MusicPlayer extends GObject.Object {
         static $gtype: GObject.GType<MusicPlayer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get app_info(): Gio.AppInfo;
+        /**
+         * @construct-only
+         */
         get appInfo(): Gio.AppInfo;
+        /**
+         * @construct-only
+         */
         get desktop_file_name(): string;
+        /**
+         * @construct-only
+         */
         get desktopFileName(): string;
         get is_blacklisted(): boolean;
         set is_blacklisted(val: boolean);
@@ -6313,16 +7643,19 @@ export namespace Unity {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MusicPlayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MusicPlayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MusicPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6333,342 +7666,456 @@ export namespace Unity {
 
         ['export'](): void;
         unexport(): void;
+        /**
+         * @param p
+         */
         add_playlist(p: Playlist): boolean;
+        /**
+         * @param p
+         */
         remove_playlist(p: Playlist): boolean;
         get_playlists(): Playlist[];
+        /**
+         * @param id
+         * @param name
+         */
         edit_playlist_name(id: string, name: string): void;
         get_app_info(): Gio.AppInfo;
         get_desktop_file_name(): string;
         get_is_blacklisted(): boolean;
+        /**
+         * @param value
+         */
         set_is_blacklisted(value: boolean): void;
         get_title(): string;
+        /**
+         * @param value
+         */
         set_title(value: string): void;
         get_can_go_next(): boolean;
+        /**
+         * @param value
+         */
         set_can_go_next(value: boolean): void;
         get_can_go_previous(): boolean;
+        /**
+         * @param value
+         */
         set_can_go_previous(value: boolean): void;
         get_can_play(): boolean;
+        /**
+         * @param value
+         */
         set_can_play(value: boolean): void;
         get_can_pause(): boolean;
+        /**
+         * @param value
+         */
         set_can_pause(value: boolean): void;
         get_current_track(): TrackMetadata;
+        /**
+         * @param value
+         */
         set_current_track(value: TrackMetadata): void;
         get_playback_state(): PlaybackState;
-        set_playback_state(value: PlaybackState | null): void;
+        /**
+         * @param value
+         */
+        set_playback_state(value: PlaybackState): void;
         get_current_playlist(): Playlist;
+        /**
+         * @param value
+         */
         set_current_playlist(value: Playlist): void;
         get_track_menu(): Dbusmenu.Menuitem;
+        /**
+         * @param value
+         */
         set_track_menu(value: Dbusmenu.Menuitem): void;
         get_player_menu(): Dbusmenu.Menuitem;
+        /**
+         * @param value
+         */
         set_player_menu(value: Dbusmenu.Menuitem): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AppInfoManagerClass = typeof AppInfoManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class AppInfoManagerPrivate {
         static $gtype: GObject.GType<AppInfoManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AnnotatedIconClass = typeof AnnotatedIcon;
+    /**
+     * @gir-type Struct
+     */
     abstract class AnnotatedIconPrivate {
         static $gtype: GObject.GType<AnnotatedIconPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InspectorClass = typeof Inspector;
+    /**
+     * @gir-type Struct
+     */
     abstract class InspectorPrivate {
         static $gtype: GObject.GType<InspectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LauncherEntryClass = typeof LauncherEntry;
+    /**
+     * @gir-type Struct
+     */
     abstract class LauncherEntryPrivate {
         static $gtype: GObject.GType<LauncherEntryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LauncherFavoritesClass = typeof LauncherFavorites;
+    /**
+     * @gir-type Struct
+     */
     abstract class LauncherFavoritesPrivate {
         static $gtype: GObject.GType<LauncherFavoritesPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MetadataProviderClass = typeof MetadataProvider;
+    /**
+     * @gir-type Struct
+     */
     abstract class MetadataProviderPrivate {
         static $gtype: GObject.GType<MetadataProviderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProgressSourceProviderClass = typeof ProgressSourceProvider;
+    /**
+     * @gir-type Struct
+     */
     abstract class ProgressSourceProviderPrivate {
         static $gtype: GObject.GType<ProgressSourceProviderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CategoryClass = typeof Category;
+    /**
+     * @gir-type Struct
+     */
     abstract class CategoryPrivate {
         static $gtype: GObject.GType<CategoryPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FilterClass = typeof Filter;
+    /**
+     * @gir-type Struct
+     */
     abstract class FilterPrivate {
         static $gtype: GObject.GType<FilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FilterOptionClass = typeof FilterOption;
+    /**
+     * @gir-type Struct
+     */
     abstract class FilterOptionPrivate {
         static $gtype: GObject.GType<FilterOptionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type OptionsFilterClass = typeof OptionsFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class OptionsFilterPrivate {
         static $gtype: GObject.GType<OptionsFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RadioOptionFilterClass = typeof RadioOptionFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class RadioOptionFilterPrivate {
         static $gtype: GObject.GType<RadioOptionFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CheckOptionFilterClass = typeof CheckOptionFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class CheckOptionFilterPrivate {
         static $gtype: GObject.GType<CheckOptionFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CheckOptionFilterCompactClass = typeof CheckOptionFilterCompact;
+    /**
+     * @gir-type Struct
+     */
     abstract class CheckOptionFilterCompactPrivate {
         static $gtype: GObject.GType<CheckOptionFilterCompactPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RatingsFilterClass = typeof RatingsFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class RatingsFilterPrivate {
         static $gtype: GObject.GType<RatingsFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MultiRangeFilterClass = typeof MultiRangeFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class MultiRangeFilterPrivate {
         static $gtype: GObject.GType<MultiRangeFilterPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PreferencesManagerClass = typeof PreferencesManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class PreferencesManagerPrivate {
         static $gtype: GObject.GType<PreferencesManagerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeprecatedScopeSearchClass = typeof DeprecatedScopeSearch;
+    /**
+     * @gir-type Struct
+     */
     abstract class DeprecatedScopeSearchPrivate {
         static $gtype: GObject.GType<DeprecatedScopeSearchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AggregatedScopeSearchClass = typeof AggregatedScopeSearch;
+    /**
+     * @gir-type Struct
+     */
     abstract class AggregatedScopeSearchPrivate {
         static $gtype: GObject.GType<AggregatedScopeSearchPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PreviewClass = typeof Preview;
+    /**
+     * @gir-type Struct
+     */
     abstract class PreviewPrivate {
         static $gtype: GObject.GType<PreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PreviewActionClass = typeof PreviewAction;
+    /**
+     * @gir-type Struct
+     */
     abstract class PreviewActionPrivate {
         static $gtype: GObject.GType<PreviewActionPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InfoHintClass = typeof InfoHint;
+    /**
+     * @gir-type Struct
+     */
     abstract class InfoHintPrivate {
         static $gtype: GObject.GType<InfoHintPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GenericPreviewClass = typeof GenericPreview;
+    /**
+     * @gir-type Struct
+     */
     abstract class GenericPreviewPrivate {
         static $gtype: GObject.GType<GenericPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationPreviewClass = typeof ApplicationPreview;
+    /**
+     * @gir-type Struct
+     */
     abstract class ApplicationPreviewPrivate {
         static $gtype: GObject.GType<ApplicationPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MusicPreviewClass = typeof MusicPreview;
+    /**
+     * @gir-type Struct
+     */
     abstract class MusicPreviewPrivate {
         static $gtype: GObject.GType<MusicPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PaymentPreviewClass = typeof PaymentPreview;
+    /**
+     * @gir-type Struct
+     */
     abstract class PaymentPreviewPrivate {
         static $gtype: GObject.GType<PaymentPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MoviePreviewClass = typeof MoviePreview;
+    /**
+     * @gir-type Struct
+     */
     abstract class MoviePreviewPrivate {
         static $gtype: GObject.GType<MoviePreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SocialPreviewClass = typeof SocialPreview;
+    /**
+     * @gir-type Struct
+     */
     abstract class SocialPreviewPrivate {
         static $gtype: GObject.GType<SocialPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SocialPreviewCommentClass = typeof SocialPreviewComment;
+    /**
+     * @gir-type Struct
+     */
     abstract class SocialPreviewCommentPrivate {
         static $gtype: GObject.GType<SocialPreviewCommentPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ActivationResponseClass = typeof ActivationResponse;
+    /**
+     * @gir-type Struct
+     */
     abstract class ActivationResponsePrivate {
         static $gtype: GObject.GType<ActivationResponsePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AggregatorActivationClass = typeof AggregatorActivation;
+    /**
+     * @gir-type Struct
+     */
     abstract class AggregatorActivationPrivate {
         static $gtype: GObject.GType<AggregatorActivationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FilterSetClass = typeof FilterSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class FilterSetPrivate {
         static $gtype: GObject.GType<FilterSetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CategorySetClass = typeof CategorySet;
+    /**
+     * @gir-type Struct
+     */
     abstract class CategorySetPrivate {
         static $gtype: GObject.GType<CategorySetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SchemaClass = typeof Schema;
+    /**
+     * @gir-type Struct
+     */
     abstract class SchemaPrivate {
         static $gtype: GObject.GType<SchemaPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SchemaFieldInfo {
         static $gtype: GObject.GType<SchemaFieldInfo>;
 
@@ -6677,174 +8124,209 @@ export namespace Unity {
         name: string;
         schema: string;
         type: SchemaFieldType;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CancellableClass = typeof Cancellable;
+    /**
+     * @gir-type Struct
+     */
     abstract class CancellablePrivate {
         static $gtype: GObject.GType<CancellablePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScopeSearchBaseClass = typeof ScopeSearchBase;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScopeSearchBasePrivate {
         static $gtype: GObject.GType<ScopeSearchBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ResultSetClass = typeof ResultSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class ResultSetPrivate {
         static $gtype: GObject.GType<ResultSetPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractPreviewClass = typeof AbstractPreview;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractPreviewPrivate {
         static $gtype: GObject.GType<AbstractPreviewPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ResultPreviewerClass = typeof ResultPreviewer;
+    /**
+     * @gir-type Struct
+     */
     abstract class ResultPreviewerPrivate {
         static $gtype: GObject.GType<ResultPreviewerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SearchMetadataClass = typeof SearchMetadata;
+    /**
+     * @gir-type Struct
+     */
     abstract class SearchMetadataPrivate {
         static $gtype: GObject.GType<SearchMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GeoCoordinateClass = typeof GeoCoordinate;
+    /**
+     * @gir-type Struct
+     */
     abstract class GeoCoordinatePrivate {
         static $gtype: GObject.GType<GeoCoordinatePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractScopeClass = typeof AbstractScope;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractScopePrivate {
         static $gtype: GObject.GType<AbstractScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScopeDBusConnectorClass = typeof ScopeDBusConnector;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScopeDBusConnectorPrivate {
         static $gtype: GObject.GType<ScopeDBusConnectorPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeprecatedScopeBaseClass = typeof DeprecatedScopeBase;
+    /**
+     * @gir-type Struct
+     */
     abstract class DeprecatedScopeBasePrivate {
         static $gtype: GObject.GType<DeprecatedScopeBasePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeprecatedScopeClass = typeof DeprecatedScope;
+    /**
+     * @gir-type Struct
+     */
     abstract class DeprecatedScopePrivate {
         static $gtype: GObject.GType<DeprecatedScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AggregatorScopeClass = typeof AggregatorScope;
+    /**
+     * @gir-type Struct
+     */
     abstract class AggregatorScopePrivate {
         static $gtype: GObject.GType<AggregatorScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MasterScopeClass = typeof MasterScope;
+    /**
+     * @gir-type Struct
+     */
     abstract class MasterScopePrivate {
         static $gtype: GObject.GType<MasterScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SimpleScopeClass = typeof SimpleScope;
+    /**
+     * @gir-type Struct
+     */
     abstract class SimpleScopePrivate {
         static $gtype: GObject.GType<SimpleScopePrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScopeLoaderClass = typeof ScopeLoader;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScopeLoaderPrivate {
         static $gtype: GObject.GType<ScopeLoaderPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TrackMetadataClass = typeof TrackMetadata;
+    /**
+     * @gir-type Struct
+     */
     abstract class TrackMetadataPrivate {
         static $gtype: GObject.GType<TrackMetadataPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlaylistClass = typeof Playlist;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlaylistPrivate {
         static $gtype: GObject.GType<PlaylistPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MusicPlayerClass = typeof MusicPlayer;
+    /**
+     * @gir-type Struct
+     */
     abstract class MusicPlayerPrivate {
         static $gtype: GObject.GType<MusicPlayerPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ScopeResult {
         static $gtype: GObject.GType<ScopeResult>;
 
@@ -6859,12 +8341,19 @@ export namespace Unity {
         comment: string;
         dnd_uri: string;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
+        /**
+         * @param uri
+         * @param icon_hint
+         * @param category
+         * @param result_type
+         * @param mimetype
+         * @param title
+         * @param comment
+         * @param dnd_uri
+         * @param metadata
+         */
         static create(
             uri: string,
             icon_hint: string,
@@ -6876,9 +8365,15 @@ export namespace Unity {
             dnd_uri: string,
             metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
         ): ScopeResult;
+        /**
+         * @param variant
+         */
         static create_from_variant(variant: GLib.Variant): ScopeResult;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SearchContext {
         static $gtype: GObject.GType<SearchContext>;
 
@@ -6891,12 +8386,16 @@ export namespace Unity {
         result_set: ResultSet;
         cancellable: Cancellable;
 
-        // Constructors
-
-        _init(...args: any[]): void;
-
         // Static methods
 
+        /**
+         * @param search_query
+         * @param search_type
+         * @param filter_state
+         * @param metadata
+         * @param result_set
+         * @param cancellable
+         */
         static create(
             search_query: string,
             search_type: SearchType,
@@ -6908,9 +8407,15 @@ export namespace Unity {
 
         // Methods
 
+        /**
+         * @param metadata
+         */
         set_search_metadata(metadata: SearchMetadata): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PlaylistDetails {
         static $gtype: GObject.GType<PlaylistDetails>;
 
@@ -6919,22 +8424,17 @@ export namespace Unity {
         id: never;
         name: string;
         icon_name: string;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ActivePlaylistContainer {
         static $gtype: GObject.GType<ActivePlaylistContainer>;
 
         // Fields
 
         valid: boolean;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

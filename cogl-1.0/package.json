@@ -1,54 +1,60 @@
 {
     "name": "@girs/cogl-1.0",
-    "version": "1.0.0-4.0.0-beta.38",
+    "version": "1.0.0-4.0.0-rc.6",
     "description": "GJS TypeScript type definitions for Cogl-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "cogl-1.0.js",
     "main": "cogl-1.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./cogl-1.0-ambient.d.ts",
-        "import": "./cogl-1.0-ambient.js",
-        "default": "./cogl-1.0-ambient.js"
-      },
-      "./import": {
-        "types": "./cogl-1.0-import.d.ts",
-        "import": "./cogl-1.0-import.js",
-        "default": "./cogl-1.0-import.js"
-      },
-      "./cogl-1.0": {
-        "types": "./cogl-1.0.d.ts",
-        "import": "./cogl-1.0.js",
-        "default": "./cogl-1.0.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./cogl-1.0-ambient.d.ts",
+            "import": "./cogl-1.0-ambient.js",
+            "default": "./cogl-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./cogl-1.0-import.d.ts",
+            "import": "./cogl-1.0-import.js",
+            "default": "./cogl-1.0-import.js"
+        },
+        "./cogl-1.0": {
+            "types": "./cogl-1.0.d.ts",
+            "import": "./cogl-1.0.js",
+            "default": "./cogl-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/gl-1.0": "1.0.0-4.0.0-beta.38"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Cogl-1.0"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Cogl-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/cogl-1.0#readme"
 }
-
-

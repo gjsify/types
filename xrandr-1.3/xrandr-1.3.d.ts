@@ -17,60 +17,53 @@ export namespace xrandr {
      * xrandr-1.3
      */
 
+    /**
+     * @gir-type Struct
+     */
     class ScreenSize {
         static $gtype: GObject.GType<ScreenSize>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ScreenChangeNotifyEvent {
         static $gtype: GObject.GType<ScreenChangeNotifyEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class NotifyEvent {
         static $gtype: GObject.GType<NotifyEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ScreenResources {
         static $gtype: GObject.GType<ScreenResources>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class OutputChangeNotifyEvent {
         static $gtype: GObject.GType<OutputChangeNotifyEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class CrtcChangeNotifyEvent {
         static $gtype: GObject.GType<CrtcChangeNotifyEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class OutputPropertyNotifyEvent {
         static $gtype: GObject.GType<OutputPropertyNotifyEvent>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**

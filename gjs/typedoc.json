@@ -1,7 +1,9 @@
 {
-    "entryPoints": ["./gjs.d.ts"],
+    "entryPoints": ["./gjs.d.ts","./cairo.d.ts","./gettext.d.ts","./system.d.ts","./dom.d.ts","./console.d.ts"],
     "readme": "./README.md",
     "name": "Gjs",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

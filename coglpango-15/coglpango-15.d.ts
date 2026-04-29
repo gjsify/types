@@ -36,38 +36,41 @@ export namespace CoglPango {
      *
      * This api should be used to avoid mid-scene modifications of
      * glyph-cache textures which can lead to undefined rendering results.
-     * @param layout A #PangoLayout
+     * @param layout A {@link Pango.Layout}
      */
     function ensure_glyph_cache_for_layout(layout: Pango.Layout): void;
     /**
-     * Create a [class`Pango`.Context] for the given `font_map`.
-     * @param font_map a #CoglPangoFontMap
-     * @returns the newly created context: free with [method@GObject.Object.unref].
+     * Create a {@link Pango.Context} for the given `font_map`.
+     * @param font_map a {@link CoglPango.FontMap}
+     * @returns the newly created context: free with {@link GObject.Object.unref}.
      */
     function font_map_create_context(font_map: FontMap): Pango.Context;
     /**
-     * Retrieves the [class`CoglPango`.Renderer] for the passed `font_map`.
-     * @param font_map a #CoglPangoFontMap
-     * @returns a #PangoRenderer
+     * Retrieves the {@link CoglPango.Renderer} for the passed `font_map`.
+     * @param font_map a {@link CoglPango.FontMap}
+     * @returns a {@link Pango.Renderer}
      */
     function font_map_get_renderer(font_map: FontMap): Pango.Renderer;
     /**
      * Creates a new font map.
      * @param context
-     * @returns the newly created #PangoFontMap
+     * @returns the newly created {@link Pango.FontMap}
      */
     function font_map_new(context: Cogl.Context): Pango.FontMap;
     /**
      * Sets the resolution for the `font_map`.
      *
      * This is a scale factor between points specified in a
-     * [struct`Pango`.FontDescription] and Cogl units.
+     * {@link Pango.FontDescription} and Cogl units.
      * The default value is %96, meaning that a 10 point font will be 13
      * units high. (10 * 96. / 72. = 13.3).
-     * @param font_map a #CoglPangoFontMap
+     * @param font_map a {@link CoglPango.FontMap}
      * @param dpi The resolution in "dots per inch". (Physical inches aren't       actually involved; the terminology is conventional.)
      */
     function font_map_set_resolution(font_map: FontMap, dpi: number): void;
+    /**
+     * @gir-type Callback
+     */
     interface PipelineSetup {
         (pipeline: Cogl.Pipeline): void;
     }
@@ -84,11 +87,17 @@ export namespace CoglPango {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set context(val: Cogl.Context);
 
         /**
@@ -108,16 +117,19 @@ export namespace CoglPango {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -125,7 +137,13 @@ export namespace CoglPango {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RendererClass = typeof Renderer;
+    /**
+     * @gir-type Alias
+     */
     type FontMap = PangoCairo.FontMap;
     /**
      * Name of the imported GIR library

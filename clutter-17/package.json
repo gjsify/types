@@ -1,64 +1,70 @@
 {
     "name": "@girs/clutter-17",
-    "version": "17.0.0-4.0.0-beta.38",
+    "version": "17.0.0-4.0.0-rc.6",
     "description": "GJS TypeScript type definitions for Clutter-17, generated from library version 17.0.0",
     "type": "module",
     "module": "clutter-17.js",
     "main": "clutter-17.js",
     "exports": {
-      "./ambient": {
-        "types": "./clutter-17-ambient.d.ts",
-        "import": "./clutter-17-ambient.js",
-        "default": "./clutter-17-ambient.js"
-      },
-      "./import": {
-        "types": "./clutter-17-import.d.ts",
-        "import": "./clutter-17-import.js",
-        "default": "./clutter-17-import.js"
-      },
-      "./clutter-17": {
-        "types": "./clutter-17.d.ts",
-        "import": "./clutter-17.js",
-        "default": "./clutter-17.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./clutter-17-ambient.d.ts",
+            "import": "./clutter-17-ambient.js",
+            "default": "./clutter-17-ambient.js"
+        },
+        "./import": {
+            "types": "./clutter-17-import.d.ts",
+            "import": "./clutter-17-import.js",
+            "default": "./clutter-17-import.js"
+        },
+        "./clutter-17": {
+            "types": "./clutter-17.d.ts",
+            "import": "./clutter-17.js",
+            "default": "./clutter-17.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.38",
-      "@girs/pango-1.0": "1.57.0-4.0.0-beta.38",
-      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
-      "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.38",
-      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
-      "@girs/mtk-17": "17.0.0-4.0.0-beta.38",
-      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.38",
-      "@girs/gl-1.0": "1.0.0-4.0.0-beta.38",
-      "@girs/cogl-17": "17.0.0-4.0.0-beta.38",
-      "@girs/atk-1.0": "2.58.0-4.0.0-beta.38"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/atk-1.0": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/cogl-17": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/gl-1.0": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/mtk-17": "workspace:^",
+        "@girs/pango-1.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Clutter-17"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Clutter-17"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/clutter-17#readme"
 }
-
-

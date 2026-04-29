@@ -30,10 +30,16 @@ export namespace GtkVnc {
      * GtkVnc-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayCredential {
         export const $gtype: GObject.GType<DisplayCredential>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DisplayCredential {
         PASSWORD,
         USERNAME,
@@ -41,10 +47,16 @@ export namespace GtkVnc {
         CA_CERT_DATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayDepthColor {
         export const $gtype: GObject.GType<DisplayDepthColor>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DisplayDepthColor {
         DEFAULT,
         FULL,
@@ -53,15 +65,22 @@ export namespace GtkVnc {
         ULTRA_LOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DisplayKeyEvent {
         export const $gtype: GObject.GType<DisplayKeyEvent>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DisplayKeyEvent {
         PRESS,
         RELEASE,
         CLICK,
     }
+
     namespace CairoFramebuffer {
         // Signal signatures
         interface SignalSignatures extends GVnc.BaseFramebuffer.SignalSignatures {
@@ -82,11 +101,17 @@ export namespace GtkVnc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CairoFramebuffer extends GVnc.BaseFramebuffer implements GVnc.Framebuffer {
         static $gtype: GObject.GType<CairoFramebuffer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get surface(): any;
 
         /**
@@ -111,16 +136,19 @@ export namespace GtkVnc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CairoFramebuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CairoFramebuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CairoFramebuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CairoFramebuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CairoFramebuffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CairoFramebuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -135,13 +163,19 @@ export namespace GtkVnc {
          * @returns the cairo surface
          */
         get_surface(): cairo.Surface;
-
-        // Inherited methods
+        /**
+         * @param src
+         * @param rowstride
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         */
         blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
-         * Copies data from the range (`srcx,` `srcy)` to
-         * (`srcx+``width,` `srcy+``height)` over to the
-         * range starting at (`dstx,` `dsty)`.
+         * Copies data from the range (`srcx`, `srcy`) to
+         * (`srcx`+`width`, `srcy`+`height`) over to the
+         * range starting at (`dstx`, `dsty`).
          * @param srcx the horizontal starting pixel
          * @param srcy the vertical starting pixel
          * @param dstx the horizontal target pixel
@@ -151,8 +185,8 @@ export namespace GtkVnc {
          */
         copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
@@ -194,8 +228,8 @@ export namespace GtkVnc {
          */
         perfect_format_match(): boolean;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is always
          * 3 as it must be in plain RGB24 format.
          * @param src the new pixel data
@@ -219,7 +253,7 @@ export namespace GtkVnc {
          */
         set_color_map(map: GVnc.ColorMap): void;
         /**
-         * Sets a pixel in the framebuffer at (`x,` `y)` to the
+         * Sets a pixel in the framebuffer at (`x`, `y`) to the
          * value in `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
@@ -227,22 +261,32 @@ export namespace GtkVnc {
          * @param y the vertical pixel to set
          */
         set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
+        /**
+         * @param src
+         * @param rowstride
+         * @param x
+         * @param y
+         * @param width
+         * @param height
+         * @virtual
+         */
         vfunc_blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
-         * Copies data from the range (`srcx,` `srcy)` to
-         * (`srcx+``width,` `srcy+``height)` over to the
-         * range starting at (`dstx,` `dsty)`.
+         * Copies data from the range (`srcx`, `srcy`) to
+         * (`srcx`+`width`, `srcy`+`height`) over to the
+         * range starting at (`dstx`, `dsty`).
          * @param srcx the horizontal starting pixel
          * @param srcy the vertical starting pixel
          * @param dstx the horizontal target pixel
          * @param dsty the vertical target pixel
          * @param width the width of the region
          * @param height the height of the region
+         * @virtual
          */
         vfunc_copyrect(srcx: number, srcy: number, dstx: number, dsty: number, width: number, height: number): void;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
@@ -250,33 +294,45 @@ export namespace GtkVnc {
          * @param y the vertical pixel to start filling
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
+         * @virtual
          */
-        vfunc_fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
+        vfunc_fill(src: Uint8Array, x: number, y: number, width: number, height: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_buffer(): number;
         /**
          * Query the height of the remote framebuffer
+         * @virtual
          */
         vfunc_get_height(): number;
         /**
          * Get the pixel format used to store the framebuffer locally
+         * @virtual
          */
         vfunc_get_local_format(): GVnc.PixelFormat;
+        /**
+         * @virtual
+         */
         vfunc_get_remote_format(): GVnc.PixelFormat;
         /**
          * Get the number of bytes per line of the framebuffer
+         * @virtual
          */
         vfunc_get_rowstride(): number;
         /**
          * Query the width of the remote framebuffer
+         * @virtual
          */
         vfunc_get_width(): number;
         /**
          * Determine if the local and remote pixel formats match
+         * @virtual
          */
         vfunc_perfect_format_match(): boolean;
         /**
-         * Fill all the pixels in the range (`x,` `y)` to
-         * (`x` + `width,` `y` + `height)` to the value in
+         * Fill all the pixels in the range (`x`, `y`) to
+         * (`x` + `width`, `y` + `height`) to the value in
          * `src`. The number of bytes in `src` is always
          * 3 as it must be in plain RGB24 format.
          * @param src the new pixel data
@@ -285,29 +341,25 @@ export namespace GtkVnc {
          * @param y the vertical pixel to start filling
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
+         * @virtual
          */
-        vfunc_rgb24_blt(
-            src: Uint8Array | string,
-            rowstride: number,
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-        ): void;
+        vfunc_rgb24_blt(src: Uint8Array, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
          * Set the color map to use for the framebuffer
          * @param map the new color map
+         * @virtual
          */
         vfunc_set_color_map(map: GVnc.ColorMap): void;
         /**
-         * Sets a pixel in the framebuffer at (`x,` `y)` to the
+         * Sets a pixel in the framebuffer at (`x`, `y`) to the
          * value in `src`. The number of bytes in `src` is
          * determined by the remote pixel format
          * @param src the new pixel data
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
+         * @virtual
          */
-        vfunc_set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
+        vfunc_set_pixel_at(src: Uint8Array, x: number, y: number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -321,90 +373,68 @@ export namespace GtkVnc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -412,7 +442,7 @@ export namespace GtkVnc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -420,9 +450,9 @@ export namespace GtkVnc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -442,9 +472,9 @@ export namespace GtkVnc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -458,33 +488,33 @@ export namespace GtkVnc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -517,21 +547,21 @@ export namespace GtkVnc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -541,8 +571,8 @@ export namespace GtkVnc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -559,14 +589,14 @@ export namespace GtkVnc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -577,13 +607,13 @@ export namespace GtkVnc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -614,21 +644,21 @@ export namespace GtkVnc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -638,33 +668,34 @@ export namespace GtkVnc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -673,6 +704,7 @@ export namespace GtkVnc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -681,12 +713,14 @@ export namespace GtkVnc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -695,20 +729,22 @@ export namespace GtkVnc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -720,8 +756,9 @@ export namespace GtkVnc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -752,22 +789,90 @@ export namespace GtkVnc {
     namespace Display {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-auth-credential': (arg0: GObject.ValueArray) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-auth-failure': (arg0: string) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-auth-unsupported': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-bell': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-connected': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-desktop-rename': (arg0: string) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-desktop-resize': (arg0: number, arg1: number) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-disconnected': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-error': (arg0: string) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'vnc-initialized': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-keyboard-grab': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-keyboard-ungrab': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-pointer-grab': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-pointer-ungrab': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-power-control-failed': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-power-control-initialized': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'vnc-server-cut-text': (arg0: string) => void;
             'notify::allow-resize': (pspec: GObject.ParamSpec) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -831,7 +936,8 @@ export namespace GtkVnc {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Gtk.DrawingArea.ConstructorProps,
+            extends
+                Gtk.DrawingArea.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps {
             allow_resize: boolean;
@@ -867,65 +973,155 @@ export namespace GtkVnc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Display extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
 
         // Properties
 
+        /**
+         * @default false
+         */
         get allow_resize(): boolean;
         set allow_resize(val: boolean);
+        /**
+         * @default false
+         */
         get allowResize(): boolean;
         set allowResize(val: boolean);
+        /**
+         * @read-only
+         */
         get connection(): GVnc.Connection;
+        /**
+         * @default GtkVnc.DisplayDepthColor.DEFAULT
+         */
         get depth(): DisplayDepthColor;
         set depth(val: DisplayDepthColor);
+        /**
+         * @default true
+         */
         get force_size(): boolean;
         set force_size(val: boolean);
+        /**
+         * @default true
+         */
         get forceSize(): boolean;
         set forceSize(val: boolean);
+        /**
+         * @default false
+         */
         get grab_keyboard(): boolean;
         set grab_keyboard(val: boolean);
+        /**
+         * @default false
+         */
         get grabKeyboard(): boolean;
         set grabKeyboard(val: boolean);
         get grab_keys(): GrabSequence;
         set grab_keys(val: GrabSequence);
         get grabKeys(): GrabSequence;
         set grabKeys(val: GrabSequence);
+        /**
+         * @default false
+         */
         get grab_pointer(): boolean;
         set grab_pointer(val: boolean);
+        /**
+         * @default false
+         */
         get grabPointer(): boolean;
         set grabPointer(val: boolean);
+        /**
+         * @read-only
+         * @default 0
+         */
         get height(): number;
+        /**
+         * @default false
+         */
         get keep_aspect_ratio(): boolean;
         set keep_aspect_ratio(val: boolean);
+        /**
+         * @default false
+         */
         get keepAspectRatio(): boolean;
         set keepAspectRatio(val: boolean);
+        /**
+         * @default false
+         */
         get local_pointer(): boolean;
         set local_pointer(val: boolean);
+        /**
+         * @default false
+         */
         get localPointer(): boolean;
         set localPointer(val: boolean);
+        /**
+         * @default false
+         */
         get lossy_encoding(): boolean;
         set lossy_encoding(val: boolean);
+        /**
+         * @default false
+         */
         get lossyEncoding(): boolean;
         set lossyEncoding(val: boolean);
+        /**
+         * @read-only
+         * @default null
+         */
         get name(): string;
+        /**
+         * @default false
+         */
         get read_only(): boolean;
         set read_only(val: boolean);
+        /**
+         * @default false
+         */
         get readOnly(): boolean;
         set readOnly(val: boolean);
+        /**
+         * @default 0
+         */
         get rotation(): number;
         set rotation(val: number);
+        /**
+         * @default false
+         */
         get scaling(): boolean;
         set scaling(val: boolean);
+        /**
+         * @default false
+         */
         get shared_flag(): boolean;
         set shared_flag(val: boolean);
+        /**
+         * @default false
+         */
         get sharedFlag(): boolean;
         set sharedFlag(val: boolean);
+        /**
+         * @default true
+         */
         get smoothing(): boolean;
         set smoothing(val: boolean);
+        /**
+         * @read-only
+         * @default 0
+         */
         get width(): number;
+        /**
+         * @default 100
+         */
         get zoom_level(): number;
         set zoom_level(val: number);
+        /**
+         * @default 100
+         */
         get zoomLevel(): number;
         set zoomLevel(val: number);
 
@@ -948,16 +1144,19 @@ export namespace GtkVnc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -979,13 +1178,29 @@ export namespace GtkVnc {
 
         // Virtual methods
 
+        /**
+         * @param credList
+         * @virtual
+         */
         vfunc_vnc_auth_credential(credList: GObject.ValueArray): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_connected(): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_disconnected(): void;
+        /**
+         * @virtual
+         */
         vfunc_vnc_initialized(): void;
 
         // Methods
 
+        /**
+         * @param text
+         */
         client_cut_text(text: string): void;
         /**
          * Request that the connection to the remote display
@@ -1064,7 +1279,7 @@ export namespace GtkVnc {
         get_name(): string;
         /**
          * Take a screenshot of the display.
-         * @returns a #GdkPixbuf with the screenshot image buffer
+         * @returns a {@link GdkPixbuf.Pixbuf} with the screenshot image buffer
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
         /**
@@ -1147,7 +1362,7 @@ export namespace GtkVnc {
          * @param hostname the hostname
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_addr(addr: Gio.SocketAddress, hostname?: string | null): boolean;
+        open_addr(addr: Gio.SocketAddress, hostname: string | null): boolean;
         /**
          * Open a connection using `fd` as the transport. If `fd`
          * refers to a TCP connection, it is recommended to use
@@ -1169,7 +1384,7 @@ export namespace GtkVnc {
          * @param hostname the host associated with the connection
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_fd_with_hostname(fd: number, hostname?: string | null): boolean;
+        open_fd_with_hostname(fd: number, hostname: string | null): boolean;
         /**
          * Open a TCP connection to the remote desktop at `host`
          * listening on `port`.
@@ -1200,9 +1415,9 @@ export namespace GtkVnc {
          * @param keyvals Keyval array
          * @param kind the type of event to send
          */
-        send_keys_ex(keyvals: number[], kind: DisplayKeyEvent | null): void;
+        send_keys_ex(keyvals: number[], kind: DisplayKeyEvent): void;
         /**
-         * Move the remote pointer to position (`x,` `y)` and set the
+         * Move the remote pointer to position (`x`, `y`) and set the
          * button state to `button_mask`.  This method will only
          * work if the desktop is using absolute pointer mode. It
          * will be a no-op if in relative pointer mode.
@@ -1237,7 +1452,7 @@ export namespace GtkVnc {
          * remote server
          * @param depth the desired colour depth
          */
-        set_depth(depth: DisplayDepthColor | null): void;
+        set_depth(depth: DisplayDepthColor): void;
         /**
          * Set whether the widget size will be forced to match the
          * remote desktop size. If the widget size does not match
@@ -1340,8 +1555,6 @@ export namespace GtkVnc {
          * @param zoom the zoom percentage level
          */
         set_zoom_level(zoom: number): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1355,90 +1568,68 @@ export namespace GtkVnc {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
+            flags: GObject.BindingFlags,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
-         *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * This function is the language bindings friendly version of
+         * `g_object_bind_property_full()`, using `GClosures` instead of
+         * function pointers.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to a {@link GObject.Closure} wrapping the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from a {@link GObject.Closure} wrapping the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
             target: GObject.Object,
             target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
+            flags: GObject.BindingFlags,
+            transform_to: GObject.Closure | null,
+            transform_from: GObject.Closure | null,
         ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1446,7 +1637,7 @@ export namespace GtkVnc {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1454,9 +1645,9 @@ export namespace GtkVnc {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1476,9 +1667,9 @@ export namespace GtkVnc {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1492,33 +1683,33 @@ export namespace GtkVnc {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1551,21 +1742,21 @@ export namespace GtkVnc {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1575,8 +1766,8 @@ export namespace GtkVnc {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1593,14 +1784,14 @@ export namespace GtkVnc {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data?: any | null): void;
+        set_data(key: string, data: any | null): void;
         /**
          * Sets a property on an object.
          * @param property_name The name of the property to set
@@ -1611,13 +1802,13 @@ export namespace GtkVnc {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1648,21 +1839,21 @@ export namespace GtkVnc {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1672,33 +1863,34 @@ export namespace GtkVnc {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1707,6 +1899,7 @@ export namespace GtkVnc {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1715,12 +1908,14 @@ export namespace GtkVnc {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1729,20 +1924,22 @@ export namespace GtkVnc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1754,8 +1951,9 @@ export namespace GtkVnc {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
          * @param id Handler ID of the handler to be disconnected
@@ -1783,24 +1981,31 @@ export namespace GtkVnc {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CairoFramebufferClass = typeof CairoFramebuffer;
+    /**
+     * @gir-type Struct
+     */
     abstract class CairoFramebufferPrivate {
         static $gtype: GObject.GType<CairoFramebufferPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DisplayClass = typeof Display;
+    /**
+     * @gir-type Struct
+     */
     abstract class DisplayPrivate {
         static $gtype: GObject.GType<DisplayPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class GrabSequence {
         static $gtype: GObject.GType<GrabSequence>;
 
@@ -1817,7 +2022,6 @@ export namespace GtkVnc {
                 keysyms: number;
             }>,
         );
-        _init(...args: any[]): void;
 
         static ['new'](keysyms: number[]): GrabSequence;
 

@@ -23,6 +23,9 @@ export namespace RestExtras {
      * RestExtras-0.7
      */
 
+    /**
+     * @gir-type Callback
+     */
     interface YoutubeProxyUploadCallback<A = GObject.Object> {
         (
             proxy: YoutubeProxy,
@@ -61,17 +64,37 @@ export namespace RestExtras {
     }
 
     /**
-     * #FlickrProxy has no publicly available members.
+     * {@link RestExtras.FlickrProxy} has no publicly available members.
+     * @gir-type Class
      */
     class FlickrProxy extends Rest.Proxy {
         static $gtype: GObject.GType<FlickrProxy>;
 
         // Properties
 
+        /**
+         * @construct-only
+         * @default null
+         */
         get api_key(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get apiKey(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get shared_secret(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get sharedSecret(): string;
+        /**
+         * @default null
+         */
         get token(): string;
         set token(val: string);
 
@@ -99,16 +122,19 @@ export namespace RestExtras {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FlickrProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FlickrProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FlickrProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FlickrProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -126,32 +152,36 @@ export namespace RestExtras {
 
         // Methods
 
+        /**
+         * @param frob
+         * @param perms
+         */
         build_login_url(frob: string, perms: string): string;
         /**
          * Get the API key.
-         * @returns the API key. This string is owned by #FlickrProxy and should not be freed.
+         * @returns the API key. This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
          */
         get_api_key(): string;
         /**
          * Get the shared secret for authentication.
-         * @returns the shared secret. This string is owned by #FlickrProxy and should not be freed.
+         * @returns the shared secret. This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
          */
         get_shared_secret(): string;
         /**
          * Get the current token.
-         * @returns the token, or %NULL if there is no token yet.  This string is owned by #FlickrProxy and should not be freed.
+         * @returns the token, or `null` if there is no token yet.  This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
          */
         get_token(): string;
         /**
-         * Create a new #RestProxyCall that can be used for uploading.
+         * Create a new {@link Rest.ProxyCall} that can be used for uploading.
          *
          * See http://www.flickr.com/services/api/upload.api.html for details on
          * uploading to Flickr.
-         * @returns a new #FlickrProxyCall
+         * @returns a new {@link RestExtras.FlickrProxyCall}
          */
         new_upload(): FlickrProxyCall;
         /**
-         * Create a new #RestProxyCall that can be used for uploading.  `filename` will
+         * Create a new {@link Rest.ProxyCall} that can be used for uploading.  `filename` will
          * be set as the "photo" parameter for you, avoiding you from having to open the
          * file and determine the MIME type.
          *
@@ -160,7 +190,7 @@ export namespace RestExtras {
          * See http://www.flickr.com/services/api/upload.api.html for details on
          * uploading to Flickr.
          * @param filename the file to upload
-         * @returns a new #FlickrProxyCall
+         * @returns a new {@link RestExtras.FlickrProxyCall}
          */
         new_upload_for_file(filename: string): FlickrProxyCall;
         /**
@@ -168,6 +198,9 @@ export namespace RestExtras {
          * @param token the access token
          */
         set_token(token: string): void;
+        /**
+         * @param params
+         */
         sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
     }
 
@@ -186,7 +219,8 @@ export namespace RestExtras {
     }
 
     /**
-     * #FlickrProxyCall has no publicly available members.
+     * {@link RestExtras.FlickrProxyCall} has no publicly available members.
+     * @gir-type Class
      */
     class FlickrProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<FlickrProxyCall>;
@@ -196,6 +230,8 @@ export namespace RestExtras {
         /**
          * Set if the call should be sent to the photo upload endpoint and not the
          * general-purpose endpoint.
+         * @construct-only
+         * @default false
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
         upload: boolean | any;
@@ -217,16 +253,19 @@ export namespace RestExtras {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FlickrProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FlickrProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FlickrProxyCall.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FlickrProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -262,18 +301,37 @@ export namespace RestExtras {
     }
 
     /**
-     * #LastfmProxy has no publicly available members.
+     * {@link RestExtras.LastfmProxy} has no publicly available members.
+     * @gir-type Class
      */
     class LastfmProxy extends Rest.Proxy {
         static $gtype: GObject.GType<LastfmProxy>;
 
         // Properties
 
+        /**
+         * @construct-only
+         * @default null
+         */
         get api_key(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get apiKey(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get secret(): string;
+        /**
+         * @default null
+         */
         get session_key(): string;
         set session_key(val: string);
+        /**
+         * @default null
+         */
         get sessionKey(): string;
         set sessionKey(val: string);
 
@@ -301,16 +359,19 @@ export namespace RestExtras {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LastfmProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LastfmProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LastfmProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LastfmProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -328,20 +389,23 @@ export namespace RestExtras {
 
         // Methods
 
+        /**
+         * @param token
+         */
         build_login_url(token: string): string;
         /**
          * Get the API key.
-         * @returns the API key. This string is owned by #LastfmProxy and should not be freed.
+         * @returns the API key. This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
          */
         get_api_key(): string;
         /**
          * Get the secret for authentication.
-         * @returns the secret. This string is owned by #LastfmProxy and should not be freed.
+         * @returns the secret. This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
          */
         get_secret(): string;
         /**
          * Get the current session key.
-         * @returns the session key, or %NULL if there is no session key yet.  This string is owned by #LastfmProxy and should not be freed.
+         * @returns the session key, or `null` if there is no session key yet.  This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
          */
         get_session_key(): string;
         /**
@@ -349,6 +413,9 @@ export namespace RestExtras {
          * @param session_key the access session_key
          */
         set_session_key(session_key: string): void;
+        /**
+         * @param params
+         */
         sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
     }
 
@@ -364,7 +431,8 @@ export namespace RestExtras {
     }
 
     /**
-     * #LastfmProxyCall has no publicly available members.
+     * {@link RestExtras.LastfmProxyCall} has no publicly available members.
+     * @gir-type Class
      */
     class LastfmProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<LastfmProxyCall>;
@@ -386,16 +454,19 @@ export namespace RestExtras {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LastfmProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LastfmProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LastfmProxyCall.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LastfmProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -429,17 +500,32 @@ export namespace RestExtras {
     }
 
     /**
-     * #YoutubeProxy has no publicly available members.
+     * {@link RestExtras.YoutubeProxy} has no publicly available members.
+     * @gir-type Class
      */
     class YoutubeProxy extends Rest.Proxy {
         static $gtype: GObject.GType<YoutubeProxy>;
 
         // Properties
 
+        /**
+         * @construct-only
+         * @default null
+         */
         get developer_key(): string;
+        /**
+         * @construct-only
+         * @default null
+         */
         get developerKey(): string;
+        /**
+         * @default null
+         */
         get user_auth(): string;
         set user_auth(val: string);
+        /**
+         * @default null
+         */
         get userAuth(): string;
         set userAuth(val: string);
 
@@ -464,16 +550,19 @@ export namespace RestExtras {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof YoutubeProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof YoutubeProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof YoutubeProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<YoutubeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -482,6 +571,9 @@ export namespace RestExtras {
 
         // Methods
 
+        /**
+         * @param user_auth
+         */
         set_user_auth(user_auth: string): void;
         /**
          * Upload a file.
@@ -490,7 +582,7 @@ export namespace RestExtras {
          * @param incomplete incomplete
          * @param callback callback to invoke upon completion
          * @param weak_object an object instance used to tie the life cycle of the proxy to
-         * @returns %TRUE, or %FALSE if the file could not be opened
+         * @returns `true`, or `false` if the file could not be opened
          */
         upload_async(
             filename: string,
@@ -501,33 +593,45 @@ export namespace RestExtras {
         ): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FlickrProxyCallClass = typeof FlickrProxyCall;
+    /**
+     * @gir-type Alias
+     */
     type FlickrProxyClass = typeof FlickrProxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class FlickrProxyPrivate {
         static $gtype: GObject.GType<FlickrProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LastfmProxyCallClass = typeof LastfmProxyCall;
+    /**
+     * @gir-type Alias
+     */
     type LastfmProxyClass = typeof LastfmProxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class LastfmProxyPrivate {
         static $gtype: GObject.GType<LastfmProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type YoutubeProxyClass = typeof YoutubeProxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class YoutubeProxyPrivate {
         static $gtype: GObject.GType<YoutubeProxyPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
     }
 
     /**
